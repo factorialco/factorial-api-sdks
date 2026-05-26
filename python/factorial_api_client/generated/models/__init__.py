@@ -1,0 +1,2559 @@
+"""Contains all the data models used in inputs/outputs"""
+
+from .api_public_credential import ApiPublicCredential
+from .api_public_webhook_subscription import ApiPublicWebhookSubscription
+from .ats_answer import AtsAnswer
+from .ats_answer_original_question_type import AtsAnswerOriginalQuestionType
+from .ats_application import AtsApplication
+from .ats_application_phase import AtsApplicationPhase
+from .ats_application_phase_phase_type import AtsApplicationPhasePhaseType
+from .ats_candidate import AtsCandidate
+from .ats_candidate_gender import AtsCandidateGender
+from .ats_candidate_source import AtsCandidateSource
+from .ats_candidate_source_category import AtsCandidateSourceCategory
+from .ats_evaluation_form import AtsEvaluationForm
+from .ats_feedback import AtsFeedback
+from .ats_hiring_stage import AtsHiringStage
+from .ats_hiring_stage_name import AtsHiringStageName
+from .ats_job_posting import AtsJobPosting
+from .ats_job_posting_contract_type import AtsJobPostingContractType
+from .ats_job_posting_cover_letter_requirement import AtsJobPostingCoverLetterRequirement
+from .ats_job_posting_cv_requirement import AtsJobPostingCvRequirement
+from .ats_job_posting_personal_url_requirement import AtsJobPostingPersonalUrlRequirement
+from .ats_job_posting_phone_requirement import AtsJobPostingPhoneRequirement
+from .ats_job_posting_photo_requirement import AtsJobPostingPhotoRequirement
+from .ats_job_posting_salary_format import AtsJobPostingSalaryFormat
+from .ats_job_posting_salary_period import AtsJobPostingSalaryPeriod
+from .ats_job_posting_schedule_type import AtsJobPostingScheduleType
+from .ats_job_posting_status import AtsJobPostingStatus
+from .ats_job_posting_workplace_type import AtsJobPostingWorkplaceType
+from .ats_message import AtsMessage
+from .ats_question import AtsQuestion
+from .ats_question_question_type import AtsQuestionQuestionType
+from .ats_rejection_reason import AtsRejectionReason
+from .ats_rejection_reason_decision_maker import AtsRejectionReasonDecisionMaker
+from .attendance_break_configuration import AttendanceBreakConfiguration
+from .attendance_edit_timesheet_request import AttendanceEditTimesheetRequest
+from .attendance_edit_timesheet_request_location_type import (
+    AttendanceEditTimesheetRequestLocationType,
+)
+from .attendance_edit_timesheet_request_request_type import (
+    AttendanceEditTimesheetRequestRequestType,
+)
+from .attendance_estimated_time import AttendanceEstimatedTime
+from .attendance_estimated_time_source import AttendanceEstimatedTimeSource
+from .attendance_estimated_time_time_unit import AttendanceEstimatedTimeTimeUnit
+from .attendance_open_shift import AttendanceOpenShift
+from .attendance_open_shift_status import AttendanceOpenShiftStatus
+from .attendance_overtime_request import AttendanceOvertimeRequest
+from .attendance_overtime_request_status import AttendanceOvertimeRequestStatus
+from .attendance_review import AttendanceReview
+from .attendance_shift import AttendanceShift
+from .attendance_shift_half_day import AttendanceShiftHalfDay
+from .attendance_shift_location_type import AttendanceShiftLocationType
+from .attendance_worked_time import AttendanceWorkedTime
+from .attendance_worked_time_day_type import AttendanceWorkedTimeDayType
+from .attendance_worked_time_time_unit import AttendanceWorkedTimeTimeUnit
+from .banking_bank_account import BankingBankAccount
+from .banking_bank_account_account_number_type import BankingBankAccountAccountNumberType
+from .banking_bank_account_number import BankingBankAccountNumber
+from .banking_bank_account_number_format import BankingBankAccountNumberFormat
+from .banking_card_payment import BankingCardPayment
+from .banking_card_payment_rejected_reason import BankingCardPaymentRejectedReason
+from .banking_card_payment_status import BankingCardPaymentStatus
+from .banking_card_payment_type import BankingCardPaymentType
+from .banking_transaction import BankingTransaction
+from .banking_transaction_type import BankingTransactionType
+from .bookkeepers_management_incidence import BookkeepersManagementIncidence
+from .companies_legal_entity import CompaniesLegalEntity
+from .compensations_concept import CompensationsConcept
+from .compensations_concept_category import CompensationsConceptCategory
+from .compensations_concept_unit_type import CompensationsConceptUnitType
+from .contracts_compensation import ContractsCompensation
+from .contracts_compensation_time_condition import ContractsCompensationTimeCondition
+from .contracts_contract_template import ContractsContractTemplate
+from .contracts_contract_version import ContractsContractVersion
+from .contracts_contract_version_annual_working_time_distribution import (
+    ContractsContractVersionAnnualWorkingTimeDistribution,
+)
+from .contracts_contract_version_bank_holiday_treatment import (
+    ContractsContractVersionBankHolidayTreatment,
+)
+from .contracts_contract_version_history import ContractsContractVersionHistory
+from .contracts_contract_version_meta_data import ContractsContractVersionMetaData
+from .contracts_french_contract_type import ContractsFrenchContractType
+from .contracts_german_contract_type import ContractsGermanContractType
+from .contracts_portuguese_contract_type import ContractsPortugueseContractType
+from .contracts_spanish_contract_type import ContractsSpanishContractType
+from .contracts_spanish_education_level import ContractsSpanishEducationLevel
+from .contracts_spanish_professional_category import ContractsSpanishProfessionalCategory
+from .contracts_spanish_working_day_type import ContractsSpanishWorkingDayType
+from .contracts_taxonomy import ContractsTaxonomy
+from .custom_fields_field import CustomFieldsField
+from .custom_fields_field_field_type import CustomFieldsFieldFieldType
+from .custom_fields_option import CustomFieldsOption
+from .custom_fields_resource_field import CustomFieldsResourceField
+from .custom_fields_value import CustomFieldsValue
+from .custom_resources_resource import CustomResourcesResource
+from .custom_resources_schema import CustomResourcesSchema
+from .custom_resources_value import CustomResourcesValue
+from .documents_document import DocumentsDocument
+from .documents_document_signature_status import DocumentsDocumentSignatureStatus
+from .documents_download_url import DocumentsDownloadUrl
+from .documents_folder import DocumentsFolder
+from .employee_updates_absence import EmployeeUpdatesAbsence
+from .employee_updates_contract_change import EmployeeUpdatesContractChange
+from .employee_updates_new_hire import EmployeeUpdatesNewHire
+from .employee_updates_personal_change import EmployeeUpdatesPersonalChange
+from .employee_updates_summary import EmployeeUpdatesSummary
+from .employee_updates_termination import EmployeeUpdatesTermination
+from .employees_employee import EmployeesEmployee
+from .employees_employee_bank_number_format import EmployeesEmployeeBankNumberFormat
+from .expenses_expensable import ExpensesExpensable
+from .expenses_expensable_reimbursement_method import ExpensesExpensableReimbursementMethod
+from .expenses_expensable_status import ExpensesExpensableStatus
+from .expenses_expensable_type import ExpensesExpensableType
+from .expenses_expense import ExpensesExpense
+from .expenses_expense_card import ExpensesExpenseCard
+from .expenses_expense_category import ExpensesExpenseCategory
+from .expenses_expense_creation_type import ExpensesExpenseCreationType
+from .expenses_expense_payment import ExpensesExpensePayment
+from .expenses_expense_signed_document import ExpensesExpenseSignedDocument
+from .expenses_expense_status import ExpensesExpenseStatus
+from .expenses_mileage import ExpensesMileage
+from .expenses_mileage_category import ExpensesMileageCategory
+from .expenses_mileage_payment import ExpensesMileagePayment
+from .expenses_per_diem import ExpensesPerDiem
+from .expenses_per_diem_category import ExpensesPerDiemCategory
+from .expenses_per_diem_payment import ExpensesPerDiemPayment
+from .expenses_per_diem_status import ExpensesPerDiemStatus
+from .finance_account import FinanceAccount
+from .finance_account_type import FinanceAccountType
+from .finance_accounting_setting import FinanceAccountingSetting
+from .finance_category import FinanceCategory
+from .finance_contact import FinanceContact
+from .finance_contact_address import FinanceContactAddress
+from .finance_contact_preferred_payment_method import FinanceContactPreferredPaymentMethod
+from .finance_cost_center import FinanceCostCenter
+from .finance_cost_center_membership import FinanceCostCenterMembership
+from .finance_financial_document import FinanceFinancialDocument
+from .finance_financial_document_document_type import FinanceFinancialDocumentDocumentType
+from .finance_financial_document_file import FinanceFinancialDocumentFile
+from .finance_financial_document_status import FinanceFinancialDocumentStatus
+from .finance_journal_entry import FinanceJournalEntry
+from .finance_journal_entry_source_type import FinanceJournalEntrySourceType
+from .finance_journal_entry_status import FinanceJournalEntryStatus
+from .finance_journal_entry_type import FinanceJournalEntryType
+from .finance_journal_line import FinanceJournalLine
+from .finance_ledger_account_resource import FinanceLedgerAccountResource
+from .finance_ledger_account_resource_balance_type import FinanceLedgerAccountResourceBalanceType
+from .finance_ledger_account_resource_resource_type import FinanceLedgerAccountResourceResourceType
+from .finance_tax_rate import FinanceTaxRate
+from .finance_tax_type import FinanceTaxType
+from .finance_tax_type_type import FinanceTaxTypeType
+from .get_api_20251001_resources_api_public_credentials_response_200 import (
+    GetApi20251001ResourcesApiPublicCredentialsResponse200,
+)
+from .get_api_20251001_resources_api_public_webhook_subscriptions_response_200 import (
+    GetApi20251001ResourcesApiPublicWebhookSubscriptionsResponse200,
+)
+from .get_api_20251001_resources_ats_answers_response_200 import (
+    GetApi20251001ResourcesAtsAnswersResponse200,
+)
+from .get_api_20251001_resources_ats_application_phases_response_200 import (
+    GetApi20251001ResourcesAtsApplicationPhasesResponse200,
+)
+from .get_api_20251001_resources_ats_applications_response_200 import (
+    GetApi20251001ResourcesAtsApplicationsResponse200,
+)
+from .get_api_20251001_resources_ats_candidate_sources_response_200 import (
+    GetApi20251001ResourcesAtsCandidateSourcesResponse200,
+)
+from .get_api_20251001_resources_ats_candidates_response_200 import (
+    GetApi20251001ResourcesAtsCandidatesResponse200,
+)
+from .get_api_20251001_resources_ats_evaluation_forms_response_200 import (
+    GetApi20251001ResourcesAtsEvaluationFormsResponse200,
+)
+from .get_api_20251001_resources_ats_feedbacks_response_200 import (
+    GetApi20251001ResourcesAtsFeedbacksResponse200,
+)
+from .get_api_20251001_resources_ats_hiring_stages_response_200 import (
+    GetApi20251001ResourcesAtsHiringStagesResponse200,
+)
+from .get_api_20251001_resources_ats_job_postings_response_200 import (
+    GetApi20251001ResourcesAtsJobPostingsResponse200,
+)
+from .get_api_20251001_resources_ats_job_postings_status import (
+    GetApi20251001ResourcesAtsJobPostingsStatus,
+)
+from .get_api_20251001_resources_ats_messages_response_200 import (
+    GetApi20251001ResourcesAtsMessagesResponse200,
+)
+from .get_api_20251001_resources_ats_questions_response_200 import (
+    GetApi20251001ResourcesAtsQuestionsResponse200,
+)
+from .get_api_20251001_resources_ats_rejection_reasons_response_200 import (
+    GetApi20251001ResourcesAtsRejectionReasonsResponse200,
+)
+from .get_api_20251001_resources_attendance_break_configurations_response_200 import (
+    GetApi20251001ResourcesAttendanceBreakConfigurationsResponse200,
+)
+from .get_api_20251001_resources_attendance_edit_timesheet_requests_response_200 import (
+    GetApi20251001ResourcesAttendanceEditTimesheetRequestsResponse200,
+)
+from .get_api_20251001_resources_attendance_estimated_times_response_200 import (
+    GetApi20251001ResourcesAttendanceEstimatedTimesResponse200,
+)
+from .get_api_20251001_resources_attendance_open_shifts_response_200 import (
+    GetApi20251001ResourcesAttendanceOpenShiftsResponse200,
+)
+from .get_api_20251001_resources_attendance_overtime_requests_response_200 import (
+    GetApi20251001ResourcesAttendanceOvertimeRequestsResponse200,
+)
+from .get_api_20251001_resources_attendance_overtime_requests_status import (
+    GetApi20251001ResourcesAttendanceOvertimeRequestsStatus,
+)
+from .get_api_20251001_resources_attendance_reviews_response_200 import (
+    GetApi20251001ResourcesAttendanceReviewsResponse200,
+)
+from .get_api_20251001_resources_attendance_shifts_response_200 import (
+    GetApi20251001ResourcesAttendanceShiftsResponse200,
+)
+from .get_api_20251001_resources_attendance_worked_times_response_200 import (
+    GetApi20251001ResourcesAttendanceWorkedTimesResponse200,
+)
+from .get_api_20251001_resources_banking_bank_accounts_response_200 import (
+    GetApi20251001ResourcesBankingBankAccountsResponse200,
+)
+from .get_api_20251001_resources_banking_card_payments_response_200 import (
+    GetApi20251001ResourcesBankingCardPaymentsResponse200,
+)
+from .get_api_20251001_resources_banking_card_payments_status import (
+    GetApi20251001ResourcesBankingCardPaymentsStatus,
+)
+from .get_api_20251001_resources_banking_transactions_response_200 import (
+    GetApi20251001ResourcesBankingTransactionsResponse200,
+)
+from .get_api_20251001_resources_bookkeepers_management_incidences_response_200 import (
+    GetApi20251001ResourcesBookkeepersManagementIncidencesResponse200,
+)
+from .get_api_20251001_resources_companies_legal_entities_response_200 import (
+    GetApi20251001ResourcesCompaniesLegalEntitiesResponse200,
+)
+from .get_api_20251001_resources_compensations_concepts_categories import (
+    GetApi20251001ResourcesCompensationsConceptsCategories,
+)
+from .get_api_20251001_resources_compensations_concepts_response_200 import (
+    GetApi20251001ResourcesCompensationsConceptsResponse200,
+)
+from .get_api_20251001_resources_contracts_compensations_response_200 import (
+    GetApi20251001ResourcesContractsCompensationsResponse200,
+)
+from .get_api_20251001_resources_contracts_contract_templates_response_200 import (
+    GetApi20251001ResourcesContractsContractTemplatesResponse200,
+)
+from .get_api_20251001_resources_contracts_contract_version_histories_response_200 import (
+    GetApi20251001ResourcesContractsContractVersionHistoriesResponse200,
+)
+from .get_api_20251001_resources_contracts_contract_version_meta_data_response_200 import (
+    GetApi20251001ResourcesContractsContractVersionMetaDataResponse200,
+)
+from .get_api_20251001_resources_contracts_contract_versions_response_200 import (
+    GetApi20251001ResourcesContractsContractVersionsResponse200,
+)
+from .get_api_20251001_resources_contracts_french_contract_types_response_200 import (
+    GetApi20251001ResourcesContractsFrenchContractTypesResponse200,
+)
+from .get_api_20251001_resources_contracts_german_contract_types_response_200 import (
+    GetApi20251001ResourcesContractsGermanContractTypesResponse200,
+)
+from .get_api_20251001_resources_contracts_portuguese_contract_types_response_200 import (
+    GetApi20251001ResourcesContractsPortugueseContractTypesResponse200,
+)
+from .get_api_20251001_resources_contracts_reference_contracts_response_200 import (
+    GetApi20251001ResourcesContractsReferenceContractsResponse200,
+)
+from .get_api_20251001_resources_contracts_spanish_contract_types_response_200 import (
+    GetApi20251001ResourcesContractsSpanishContractTypesResponse200,
+)
+from .get_api_20251001_resources_contracts_spanish_education_levels_response_200 import (
+    GetApi20251001ResourcesContractsSpanishEducationLevelsResponse200,
+)
+from .get_api_20251001_resources_contracts_spanish_professional_categories_response_200 import (
+    GetApi20251001ResourcesContractsSpanishProfessionalCategoriesResponse200,
+)
+from .get_api_20251001_resources_contracts_spanish_working_day_types_response_200 import (
+    GetApi20251001ResourcesContractsSpanishWorkingDayTypesResponse200,
+)
+from .get_api_20251001_resources_contracts_taxonomies_response_200 import (
+    GetApi20251001ResourcesContractsTaxonomiesResponse200,
+)
+from .get_api_20251001_resources_custom_fields_fields_field_type import (
+    GetApi20251001ResourcesCustomFieldsFieldsFieldType,
+)
+from .get_api_20251001_resources_custom_fields_fields_response_200 import (
+    GetApi20251001ResourcesCustomFieldsFieldsResponse200,
+)
+from .get_api_20251001_resources_custom_fields_options_response_200 import (
+    GetApi20251001ResourcesCustomFieldsOptionsResponse200,
+)
+from .get_api_20251001_resources_custom_fields_resource_fields_response_200 import (
+    GetApi20251001ResourcesCustomFieldsResourceFieldsResponse200,
+)
+from .get_api_20251001_resources_custom_fields_values_response_200 import (
+    GetApi20251001ResourcesCustomFieldsValuesResponse200,
+)
+from .get_api_20251001_resources_custom_resources_resources_response_200 import (
+    GetApi20251001ResourcesCustomResourcesResourcesResponse200,
+)
+from .get_api_20251001_resources_custom_resources_schemas_response_200 import (
+    GetApi20251001ResourcesCustomResourcesSchemasResponse200,
+)
+from .get_api_20251001_resources_custom_resources_values_response_200 import (
+    GetApi20251001ResourcesCustomResourcesValuesResponse200,
+)
+from .get_api_20251001_resources_documents_documents_response_200 import (
+    GetApi20251001ResourcesDocumentsDocumentsResponse200,
+)
+from .get_api_20251001_resources_documents_folders_response_200 import (
+    GetApi20251001ResourcesDocumentsFoldersResponse200,
+)
+from .get_api_20251001_resources_employee_updates_absences_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesAbsencesResponse200,
+)
+from .get_api_20251001_resources_employee_updates_contract_changes_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesContractChangesResponse200,
+)
+from .get_api_20251001_resources_employee_updates_new_hires_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesNewHiresResponse200,
+)
+from .get_api_20251001_resources_employee_updates_personal_changes_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesPersonalChangesResponse200,
+)
+from .get_api_20251001_resources_employee_updates_summaries_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesSummariesResponse200,
+)
+from .get_api_20251001_resources_employee_updates_terminations_response_200 import (
+    GetApi20251001ResourcesEmployeeUpdatesTerminationsResponse200,
+)
+from .get_api_20251001_resources_employees_employees_response_200 import (
+    GetApi20251001ResourcesEmployeesEmployeesResponse200,
+)
+from .get_api_20251001_resources_expenses_expensables_response_200 import (
+    GetApi20251001ResourcesExpensesExpensablesResponse200,
+)
+from .get_api_20251001_resources_expenses_expensables_status import (
+    GetApi20251001ResourcesExpensesExpensablesStatus,
+)
+from .get_api_20251001_resources_expenses_expenses_response_200 import (
+    GetApi20251001ResourcesExpensesExpensesResponse200,
+)
+from .get_api_20251001_resources_expenses_mileages_response_200 import (
+    GetApi20251001ResourcesExpensesMileagesResponse200,
+)
+from .get_api_20251001_resources_expenses_per_diems_response_200 import (
+    GetApi20251001ResourcesExpensesPerDiemsResponse200,
+)
+from .get_api_20251001_resources_finance_accounting_settings_response_200 import (
+    GetApi20251001ResourcesFinanceAccountingSettingsResponse200,
+)
+from .get_api_20251001_resources_finance_accounts_response_200 import (
+    GetApi20251001ResourcesFinanceAccountsResponse200,
+)
+from .get_api_20251001_resources_finance_categories_category_level import (
+    GetApi20251001ResourcesFinanceCategoriesCategoryLevel,
+)
+from .get_api_20251001_resources_finance_categories_response_200 import (
+    GetApi20251001ResourcesFinanceCategoriesResponse200,
+)
+from .get_api_20251001_resources_finance_categories_statuses import (
+    GetApi20251001ResourcesFinanceCategoriesStatuses,
+)
+from .get_api_20251001_resources_finance_categories_type import (
+    GetApi20251001ResourcesFinanceCategoriesType,
+)
+from .get_api_20251001_resources_finance_contacts_contact_type import (
+    GetApi20251001ResourcesFinanceContactsContactType,
+)
+from .get_api_20251001_resources_finance_contacts_response_200 import (
+    GetApi20251001ResourcesFinanceContactsResponse200,
+)
+from .get_api_20251001_resources_finance_cost_center_memberships_response_200 import (
+    GetApi20251001ResourcesFinanceCostCenterMembershipsResponse200,
+)
+from .get_api_20251001_resources_finance_cost_centers_response_200 import (
+    GetApi20251001ResourcesFinanceCostCentersResponse200,
+)
+from .get_api_20251001_resources_finance_financial_documents_document_types import (
+    GetApi20251001ResourcesFinanceFinancialDocumentsDocumentTypes,
+)
+from .get_api_20251001_resources_finance_financial_documents_response_200 import (
+    GetApi20251001ResourcesFinanceFinancialDocumentsResponse200,
+)
+from .get_api_20251001_resources_finance_financial_documents_statuses import (
+    GetApi20251001ResourcesFinanceFinancialDocumentsStatuses,
+)
+from .get_api_20251001_resources_finance_journal_entries_response_200 import (
+    GetApi20251001ResourcesFinanceJournalEntriesResponse200,
+)
+from .get_api_20251001_resources_finance_journal_entries_source_type import (
+    GetApi20251001ResourcesFinanceJournalEntriesSourceType,
+)
+from .get_api_20251001_resources_finance_journal_entries_status import (
+    GetApi20251001ResourcesFinanceJournalEntriesStatus,
+)
+from .get_api_20251001_resources_finance_journal_entries_types import (
+    GetApi20251001ResourcesFinanceJournalEntriesTypes,
+)
+from .get_api_20251001_resources_finance_journal_lines_journal_entry_types import (
+    GetApi20251001ResourcesFinanceJournalLinesJournalEntryTypes,
+)
+from .get_api_20251001_resources_finance_journal_lines_reconciliation_status import (
+    GetApi20251001ResourcesFinanceJournalLinesReconciliationStatus,
+)
+from .get_api_20251001_resources_finance_journal_lines_response_200 import (
+    GetApi20251001ResourcesFinanceJournalLinesResponse200,
+)
+from .get_api_20251001_resources_finance_ledger_account_resources_resource_type import (
+    GetApi20251001ResourcesFinanceLedgerAccountResourcesResourceType,
+)
+from .get_api_20251001_resources_finance_ledger_account_resources_response_200 import (
+    GetApi20251001ResourcesFinanceLedgerAccountResourcesResponse200,
+)
+from .get_api_20251001_resources_finance_tax_rates_response_200 import (
+    GetApi20251001ResourcesFinanceTaxRatesResponse200,
+)
+from .get_api_20251001_resources_finance_tax_types_response_200 import (
+    GetApi20251001ResourcesFinanceTaxTypesResponse200,
+)
+from .get_api_20251001_resources_finance_tax_types_type import (
+    GetApi20251001ResourcesFinanceTaxTypesType,
+)
+from .get_api_20251001_resources_holidays_company_holidays_response_200 import (
+    GetApi20251001ResourcesHolidaysCompanyHolidaysResponse200,
+)
+from .get_api_20251001_resources_integrations_syncable_items_response_200 import (
+    GetApi20251001ResourcesIntegrationsSyncableItemsResponse200,
+)
+from .get_api_20251001_resources_job_catalog_levels_response_200 import (
+    GetApi20251001ResourcesJobCatalogLevelsResponse200,
+)
+from .get_api_20251001_resources_job_catalog_roles_response_200 import (
+    GetApi20251001ResourcesJobCatalogRolesResponse200,
+)
+from .get_api_20251001_resources_locations_locations_response_200 import (
+    GetApi20251001ResourcesLocationsLocationsResponse200,
+)
+from .get_api_20251001_resources_locations_work_areas_response_200 import (
+    GetApi20251001ResourcesLocationsWorkAreasResponse200,
+)
+from .get_api_20251001_resources_marketplace_installation_settings_response_200 import (
+    GetApi20251001ResourcesMarketplaceInstallationSettingsResponse200,
+)
+from .get_api_20251001_resources_payroll_employees_identifiers_country import (
+    GetApi20251001ResourcesPayrollEmployeesIdentifiersCountry,
+)
+from .get_api_20251001_resources_payroll_employees_identifiers_response_200 import (
+    GetApi20251001ResourcesPayrollEmployeesIdentifiersResponse200,
+)
+from .get_api_20251001_resources_payroll_family_situations_response_200 import (
+    GetApi20251001ResourcesPayrollFamilySituationsResponse200,
+)
+from .get_api_20251001_resources_payroll_integrations_base_codes_integrations import (
+    GetApi20251001ResourcesPayrollIntegrationsBaseCodesIntegrations,
+)
+from .get_api_20251001_resources_payroll_integrations_base_codes_response_200 import (
+    GetApi20251001ResourcesPayrollIntegrationsBaseCodesResponse200,
+)
+from .get_api_20251001_resources_payroll_supplements_response_200 import (
+    GetApi20251001ResourcesPayrollSupplementsResponse200,
+)
+from .get_api_20251001_resources_performance_agreements_response_200 import (
+    GetApi20251001ResourcesPerformanceAgreementsResponse200,
+)
+from .get_api_20251001_resources_performance_company_employee_score_scales_response_200 import (
+    GetApi20251001ResourcesPerformanceCompanyEmployeeScoreScalesResponse200,
+)
+from .get_api_20251001_resources_performance_employee_score_scales_response_200 import (
+    GetApi20251001ResourcesPerformanceEmployeeScoreScalesResponse200,
+)
+from .get_api_20251001_resources_performance_review_evaluation_answers_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationAnswersResponse200,
+)
+from .get_api_20251001_resources_performance_review_evaluation_scores_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationScoresResponse200,
+)
+from .get_api_20251001_resources_performance_review_evaluation_scores_reviewer_strategies import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationScoresReviewerStrategies,
+)
+from .get_api_20251001_resources_performance_review_evaluations_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationsResponse200,
+)
+from .get_api_20251001_resources_performance_review_evaluations_reviewer_strategies import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationsReviewerStrategies,
+)
+from .get_api_20251001_resources_performance_review_evaluations_with_targets_managed_by_filter import (
+    GetApi20251001ResourcesPerformanceReviewEvaluationsWithTargetsManagedByFilter,
+)
+from .get_api_20251001_resources_performance_review_owners_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewOwnersResponse200,
+)
+from .get_api_20251001_resources_performance_review_process_custom_templates_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewProcessCustomTemplatesResponse200,
+)
+from .get_api_20251001_resources_performance_review_process_estimated_targets_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewProcessEstimatedTargetsResponse200,
+)
+from .get_api_20251001_resources_performance_review_process_targets_agreement_completion_status import (
+    GetApi20251001ResourcesPerformanceReviewProcessTargetsAgreementCompletionStatus,
+)
+from .get_api_20251001_resources_performance_review_process_targets_managed_by_filter import (
+    GetApi20251001ResourcesPerformanceReviewProcessTargetsManagedByFilter,
+)
+from .get_api_20251001_resources_performance_review_process_targets_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewProcessTargetsResponse200,
+)
+from .get_api_20251001_resources_performance_review_processes_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewProcessesResponse200,
+)
+from .get_api_20251001_resources_performance_review_questionnaire_by_strategies_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesResponse200,
+)
+from .get_api_20251001_resources_performance_review_visibility_settings_response_200 import (
+    GetApi20251001ResourcesPerformanceReviewVisibilitySettingsResponse200,
+)
+from .get_api_20251001_resources_performance_target_managers_response_200 import (
+    GetApi20251001ResourcesPerformanceTargetManagersResponse200,
+)
+from .get_api_20251001_resources_posts_comments_response_200 import (
+    GetApi20251001ResourcesPostsCommentsResponse200,
+)
+from .get_api_20251001_resources_posts_groups_response_200 import (
+    GetApi20251001ResourcesPostsGroupsResponse200,
+)
+from .get_api_20251001_resources_posts_posts_response_200 import (
+    GetApi20251001ResourcesPostsPostsResponse200,
+)
+from .get_api_20251001_resources_project_management_expense_records_response_200 import (
+    GetApi20251001ResourcesProjectManagementExpenseRecordsResponse200,
+)
+from .get_api_20251001_resources_project_management_exportable_expenses_response_200 import (
+    GetApi20251001ResourcesProjectManagementExportableExpensesResponse200,
+)
+from .get_api_20251001_resources_project_management_flexible_time_record_comments_response_200 import (
+    GetApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsResponse200,
+)
+from .get_api_20251001_resources_project_management_flexible_time_records_response_200 import (
+    GetApi20251001ResourcesProjectManagementFlexibleTimeRecordsResponse200,
+)
+from .get_api_20251001_resources_project_management_project_tasks_due_status import (
+    GetApi20251001ResourcesProjectManagementProjectTasksDueStatus,
+)
+from .get_api_20251001_resources_project_management_project_tasks_response_200 import (
+    GetApi20251001ResourcesProjectManagementProjectTasksResponse200,
+)
+from .get_api_20251001_resources_project_management_project_workers_response_200 import (
+    GetApi20251001ResourcesProjectManagementProjectWorkersResponse200,
+)
+from .get_api_20251001_resources_project_management_projects_response_200 import (
+    GetApi20251001ResourcesProjectManagementProjectsResponse200,
+)
+from .get_api_20251001_resources_project_management_subprojects_response_200 import (
+    GetApi20251001ResourcesProjectManagementSubprojectsResponse200,
+)
+from .get_api_20251001_resources_project_management_time_records_response_200 import (
+    GetApi20251001ResourcesProjectManagementTimeRecordsResponse200,
+)
+from .get_api_20251001_resources_shift_management_shifts_only_states import (
+    GetApi20251001ResourcesShiftManagementShiftsOnlyStates,
+)
+from .get_api_20251001_resources_shift_management_shifts_response_200 import (
+    GetApi20251001ResourcesShiftManagementShiftsResponse200,
+)
+from .get_api_20251001_resources_tasks_task_files_response_200 import (
+    GetApi20251001ResourcesTasksTaskFilesResponse200,
+)
+from .get_api_20251001_resources_tasks_tasks_response_200 import (
+    GetApi20251001ResourcesTasksTasksResponse200,
+)
+from .get_api_20251001_resources_tasks_tasks_task_status import (
+    GetApi20251001ResourcesTasksTasksTaskStatus,
+)
+from .get_api_20251001_resources_teams_memberships_response_200 import (
+    GetApi20251001ResourcesTeamsMembershipsResponse200,
+)
+from .get_api_20251001_resources_teams_teams_response_200 import (
+    GetApi20251001ResourcesTeamsTeamsResponse200,
+)
+from .get_api_20251001_resources_time_planning_planned_breaks_response_200 import (
+    GetApi20251001ResourcesTimePlanningPlannedBreaksResponse200,
+)
+from .get_api_20251001_resources_time_planning_planning_versions_planning_tool import (
+    GetApi20251001ResourcesTimePlanningPlanningVersionsPlanningTool,
+)
+from .get_api_20251001_resources_time_planning_planning_versions_response_200 import (
+    GetApi20251001ResourcesTimePlanningPlanningVersionsResponse200,
+)
+from .get_api_20251001_resources_time_settings_break_configurations_response_200 import (
+    GetApi20251001ResourcesTimeSettingsBreakConfigurationsResponse200,
+)
+from .get_api_20251001_resources_timeoff_allowance_incidences_response_200 import (
+    GetApi20251001ResourcesTimeoffAllowanceIncidencesResponse200,
+)
+from .get_api_20251001_resources_timeoff_allowance_stats_response_200 import (
+    GetApi20251001ResourcesTimeoffAllowanceStatsResponse200,
+)
+from .get_api_20251001_resources_timeoff_allowances_response_200 import (
+    GetApi20251001ResourcesTimeoffAllowancesResponse200,
+)
+from .get_api_20251001_resources_timeoff_blocked_periods_response_200 import (
+    GetApi20251001ResourcesTimeoffBlockedPeriodsResponse200,
+)
+from .get_api_20251001_resources_timeoff_leave_types_response_200 import (
+    GetApi20251001ResourcesTimeoffLeaveTypesResponse200,
+)
+from .get_api_20251001_resources_timeoff_leaves_response_200 import (
+    GetApi20251001ResourcesTimeoffLeavesResponse200,
+)
+from .get_api_20251001_resources_timeoff_policies_response_200 import (
+    GetApi20251001ResourcesTimeoffPoliciesResponse200,
+)
+from .get_api_20251001_resources_timeoff_policy_assignments_response_200 import (
+    GetApi20251001ResourcesTimeoffPolicyAssignmentsResponse200,
+)
+from .get_api_20251001_resources_timeoff_policy_timelines_response_200 import (
+    GetApi20251001ResourcesTimeoffPolicyTimelinesResponse200,
+)
+from .get_api_20251001_resources_trainings_categories_response_200 import (
+    GetApi20251001ResourcesTrainingsCategoriesResponse200,
+)
+from .get_api_20251001_resources_trainings_session_access_memberships_response_200 import (
+    GetApi20251001ResourcesTrainingsSessionAccessMembershipsResponse200,
+)
+from .get_api_20251001_resources_trainings_session_attendances_response_200 import (
+    GetApi20251001ResourcesTrainingsSessionAttendancesResponse200,
+)
+from .get_api_20251001_resources_trainings_sessions_response_200 import (
+    GetApi20251001ResourcesTrainingsSessionsResponse200,
+)
+from .get_api_20251001_resources_trainings_training_classes_response_200 import (
+    GetApi20251001ResourcesTrainingsTrainingClassesResponse200,
+)
+from .get_api_20251001_resources_trainings_training_memberships_response_200 import (
+    GetApi20251001ResourcesTrainingsTrainingMembershipsResponse200,
+)
+from .get_api_20251001_resources_trainings_trainings_response_200 import (
+    GetApi20251001ResourcesTrainingsTrainingsResponse200,
+)
+from .get_api_20251001_resources_work_schedule_day_configurations_response_200 import (
+    GetApi20251001ResourcesWorkScheduleDayConfigurationsResponse200,
+)
+from .get_api_20251001_resources_work_schedule_overlap_periods_response_200 import (
+    GetApi20251001ResourcesWorkScheduleOverlapPeriodsResponse200,
+)
+from .get_api_20251001_resources_work_schedule_schedules_response_200 import (
+    GetApi20251001ResourcesWorkScheduleSchedulesResponse200,
+)
+from .holidays_company_holiday import HolidaysCompanyHoliday
+from .holidays_company_holiday_half_day import HolidaysCompanyHolidayHalfDay
+from .integrations_syncable_item import IntegrationsSyncableItem
+from .integrations_syncable_item_sync_payload import IntegrationsSyncableItemSyncPayload
+from .integrations_syncable_sync_run import IntegrationsSyncableSyncRun
+from .integrations_syncable_sync_run_status import IntegrationsSyncableSyncRunStatus
+from .job_catalog_level import JobCatalogLevel
+from .job_catalog_role import JobCatalogRole
+from .locations_location import LocationsLocation
+from .locations_work_area import LocationsWorkArea
+from .marketplace_installation import MarketplaceInstallation
+from .marketplace_installation_settings import MarketplaceInstallationSettings
+from .paged_index_meta import PagedIndexMeta
+from .payroll_employees_identifier import PayrollEmployeesIdentifier
+from .payroll_employees_identifier_country import PayrollEmployeesIdentifierCountry
+from .payroll_family_situation import PayrollFamilySituation
+from .payroll_family_situation_civil_status import PayrollFamilySituationCivilStatus
+from .payroll_integrations_base_code import PayrollIntegrationsBaseCode
+from .payroll_integrations_base_code_integration import PayrollIntegrationsBaseCodeIntegration
+from .payroll_policy_period import PayrollPolicyPeriod
+from .payroll_supplement import PayrollSupplement
+from .payroll_supplement_unit import PayrollSupplementUnit
+from .performance_agreement import PerformanceAgreement
+from .performance_agreement_conclusions import PerformanceAgreementConclusions
+from .performance_agreement_status import PerformanceAgreementStatus
+from .performance_company_employee_score_scale import PerformanceCompanyEmployeeScoreScale
+from .performance_employee_score_scale import PerformanceEmployeeScoreScale
+from .performance_review_employee_score import PerformanceReviewEmployeeScore
+from .performance_review_employee_score_reviewer_strategy import (
+    PerformanceReviewEmployeeScoreReviewerStrategy,
+)
+from .performance_review_evaluation import PerformanceReviewEvaluation
+from .performance_review_evaluation_answer import PerformanceReviewEvaluationAnswer
+from .performance_review_evaluation_answer_answered_employee_potential_score_questionnaire import (
+    PerformanceReviewEvaluationAnswerAnsweredEmployeePotentialScoreQuestionnaire,
+)
+from .performance_review_evaluation_answer_answered_employee_score_questionnaire import (
+    PerformanceReviewEvaluationAnswerAnsweredEmployeeScoreQuestionnaire,
+)
+from .performance_review_evaluation_answer_answered_questionnaire_with_sections import (
+    PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSections,
+)
+from .performance_review_evaluation_evaluation_type import PerformanceReviewEvaluationEvaluationType
+from .performance_review_evaluation_score import PerformanceReviewEvaluationScore
+from .performance_review_evaluation_score_reviewer_strategy import (
+    PerformanceReviewEvaluationScoreReviewerStrategy,
+)
+from .performance_review_evaluation_status import PerformanceReviewEvaluationStatus
+from .performance_review_owner import PerformanceReviewOwner
+from .performance_review_process import PerformanceReviewProcess
+from .performance_review_process_agreements_configuration import (
+    PerformanceReviewProcessAgreementsConfiguration,
+)
+from .performance_review_process_competencies_assessments_configuration import (
+    PerformanceReviewProcessCompetenciesAssessmentsConfiguration,
+)
+from .performance_review_process_custom_template import PerformanceReviewProcessCustomTemplate
+from .performance_review_process_custom_template_reviewer_strategies import (
+    PerformanceReviewProcessCustomTemplateReviewerStrategies,
+)
+from .performance_review_process_custom_template_target_strategy import (
+    PerformanceReviewProcessCustomTemplateTargetStrategy,
+)
+from .performance_review_process_custom_template_visibility_settings import (
+    PerformanceReviewProcessCustomTemplateVisibilitySettings,
+)
+from .performance_review_process_estimated_target import PerformanceReviewProcessEstimatedTarget
+from .performance_review_process_reviewer_strategies import (
+    PerformanceReviewProcessReviewerStrategies,
+)
+from .performance_review_process_start_validation_errors import (
+    PerformanceReviewProcessStartValidationErrors,
+)
+from .performance_review_process_status import PerformanceReviewProcessStatus
+from .performance_review_process_target import PerformanceReviewProcessTarget
+from .performance_review_process_target_strategy import PerformanceReviewProcessTargetStrategy
+from .performance_review_questionnaires_by_strategy import PerformanceReviewQuestionnairesByStrategy
+from .performance_review_questionnaires_by_strategy_direct_report_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyDirectReportQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_employee_potential_score_manager_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyEmployeePotentialScoreManagerQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_employee_score_manager_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyEmployeeScoreManagerQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_employee_score_self_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_manager_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyManagerQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_peers_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategyPeersQuestionnaire,
+)
+from .performance_review_questionnaires_by_strategy_self_questionnaire import (
+    PerformanceReviewQuestionnairesByStrategySelfQuestionnaire,
+)
+from .performance_review_visibility_setting import PerformanceReviewVisibilitySetting
+from .performance_target_manager import PerformanceTargetManager
+from .post_api_20251001_resources_api_public_webhook_subscriptions_body import (
+    PostApi20251001ResourcesApiPublicWebhookSubscriptionsBody,
+)
+from .post_api_20251001_resources_api_public_webhook_subscriptions_body_api_version import (
+    PostApi20251001ResourcesApiPublicWebhookSubscriptionsBodyApiVersion,
+)
+from .post_api_20251001_resources_ats_answers_body import PostApi20251001ResourcesAtsAnswersBody
+from .post_api_20251001_resources_ats_answers_body_original_question_type import (
+    PostApi20251001ResourcesAtsAnswersBodyOriginalQuestionType,
+)
+from .post_api_20251001_resources_ats_applications_apply_body import (
+    PostApi20251001ResourcesAtsApplicationsApplyBody,
+)
+from .post_api_20251001_resources_ats_applications_body import (
+    PostApi20251001ResourcesAtsApplicationsBody,
+)
+from .post_api_20251001_resources_ats_applications_body_author_type import (
+    PostApi20251001ResourcesAtsApplicationsBodyAuthorType,
+)
+from .post_api_20251001_resources_ats_candidates_body import (
+    PostApi20251001ResourcesAtsCandidatesBody,
+)
+from .post_api_20251001_resources_ats_evaluation_forms_save_as_template_body import (
+    PostApi20251001ResourcesAtsEvaluationFormsSaveAsTemplateBody,
+)
+from .post_api_20251001_resources_ats_feedbacks_body import PostApi20251001ResourcesAtsFeedbacksBody
+from .post_api_20251001_resources_ats_job_postings_body import (
+    PostApi20251001ResourcesAtsJobPostingsBody,
+)
+from .post_api_20251001_resources_ats_job_postings_body_contract_type import (
+    PostApi20251001ResourcesAtsJobPostingsBodyContractType,
+)
+from .post_api_20251001_resources_ats_job_postings_body_cover_letter_requirement import (
+    PostApi20251001ResourcesAtsJobPostingsBodyCoverLetterRequirement,
+)
+from .post_api_20251001_resources_ats_job_postings_body_cv_requirement import (
+    PostApi20251001ResourcesAtsJobPostingsBodyCvRequirement,
+)
+from .post_api_20251001_resources_ats_job_postings_body_personal_url_requirement import (
+    PostApi20251001ResourcesAtsJobPostingsBodyPersonalUrlRequirement,
+)
+from .post_api_20251001_resources_ats_job_postings_body_phone_requirement import (
+    PostApi20251001ResourcesAtsJobPostingsBodyPhoneRequirement,
+)
+from .post_api_20251001_resources_ats_job_postings_body_photo_requirement import (
+    PostApi20251001ResourcesAtsJobPostingsBodyPhotoRequirement,
+)
+from .post_api_20251001_resources_ats_job_postings_body_salary_format import (
+    PostApi20251001ResourcesAtsJobPostingsBodySalaryFormat,
+)
+from .post_api_20251001_resources_ats_job_postings_body_salary_period import (
+    PostApi20251001ResourcesAtsJobPostingsBodySalaryPeriod,
+)
+from .post_api_20251001_resources_ats_job_postings_body_schedule_type import (
+    PostApi20251001ResourcesAtsJobPostingsBodyScheduleType,
+)
+from .post_api_20251001_resources_ats_job_postings_body_status import (
+    PostApi20251001ResourcesAtsJobPostingsBodyStatus,
+)
+from .post_api_20251001_resources_ats_job_postings_body_workplace_type import (
+    PostApi20251001ResourcesAtsJobPostingsBodyWorkplaceType,
+)
+from .post_api_20251001_resources_ats_job_postings_duplicate_body import (
+    PostApi20251001ResourcesAtsJobPostingsDuplicateBody,
+)
+from .post_api_20251001_resources_ats_messages_body import PostApi20251001ResourcesAtsMessagesBody
+from .post_api_20251001_resources_ats_messages_body_sent_by_type import (
+    PostApi20251001ResourcesAtsMessagesBodySentByType,
+)
+from .post_api_20251001_resources_ats_questions_body import PostApi20251001ResourcesAtsQuestionsBody
+from .post_api_20251001_resources_ats_questions_body_question_type import (
+    PostApi20251001ResourcesAtsQuestionsBodyQuestionType,
+)
+from .post_api_20251001_resources_attendance_break_configurations_body import (
+    PostApi20251001ResourcesAttendanceBreakConfigurationsBody,
+)
+from .post_api_20251001_resources_attendance_edit_timesheet_requests_body import (
+    PostApi20251001ResourcesAttendanceEditTimesheetRequestsBody,
+)
+from .post_api_20251001_resources_attendance_edit_timesheet_requests_body_location_type import (
+    PostApi20251001ResourcesAttendanceEditTimesheetRequestsBodyLocationType,
+)
+from .post_api_20251001_resources_attendance_edit_timesheet_requests_body_request_type import (
+    PostApi20251001ResourcesAttendanceEditTimesheetRequestsBodyRequestType,
+)
+from .post_api_20251001_resources_attendance_overtime_requests_approve_body import (
+    PostApi20251001ResourcesAttendanceOvertimeRequestsApproveBody,
+)
+from .post_api_20251001_resources_attendance_overtime_requests_body import (
+    PostApi20251001ResourcesAttendanceOvertimeRequestsBody,
+)
+from .post_api_20251001_resources_attendance_overtime_requests_reject_body import (
+    PostApi20251001ResourcesAttendanceOvertimeRequestsRejectBody,
+)
+from .post_api_20251001_resources_attendance_reviews_bulk_create_body import (
+    PostApi20251001ResourcesAttendanceReviewsBulkCreateBody,
+)
+from .post_api_20251001_resources_attendance_reviews_bulk_destroy_body import (
+    PostApi20251001ResourcesAttendanceReviewsBulkDestroyBody,
+)
+from .post_api_20251001_resources_attendance_shifts_autofill_body import (
+    PostApi20251001ResourcesAttendanceShiftsAutofillBody,
+)
+from .post_api_20251001_resources_attendance_shifts_body import (
+    PostApi20251001ResourcesAttendanceShiftsBody,
+)
+from .post_api_20251001_resources_attendance_shifts_body_location_type import (
+    PostApi20251001ResourcesAttendanceShiftsBodyLocationType,
+)
+from .post_api_20251001_resources_attendance_shifts_body_source import (
+    PostApi20251001ResourcesAttendanceShiftsBodySource,
+)
+from .post_api_20251001_resources_attendance_shifts_break_end_body import (
+    PostApi20251001ResourcesAttendanceShiftsBreakEndBody,
+)
+from .post_api_20251001_resources_attendance_shifts_break_start_body import (
+    PostApi20251001ResourcesAttendanceShiftsBreakStartBody,
+)
+from .post_api_20251001_resources_attendance_shifts_clock_in_body import (
+    PostApi20251001ResourcesAttendanceShiftsClockInBody,
+)
+from .post_api_20251001_resources_attendance_shifts_clock_in_body_location_type import (
+    PostApi20251001ResourcesAttendanceShiftsClockInBodyLocationType,
+)
+from .post_api_20251001_resources_attendance_shifts_clock_out_body import (
+    PostApi20251001ResourcesAttendanceShiftsClockOutBody,
+)
+from .post_api_20251001_resources_attendance_shifts_toggle_clock_body import (
+    PostApi20251001ResourcesAttendanceShiftsToggleClockBody,
+)
+from .post_api_20251001_resources_attendance_shifts_toggle_clock_body_location_type import (
+    PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType,
+)
+from .post_api_20251001_resources_banking_bank_accounts_create_manual_body import (
+    PostApi20251001ResourcesBankingBankAccountsCreateManualBody,
+)
+from .post_api_20251001_resources_banking_bank_accounts_create_manual_body_account_number_type import (
+    PostApi20251001ResourcesBankingBankAccountsCreateManualBodyAccountNumberType,
+)
+from .post_api_20251001_resources_companies_legal_entities_body import (
+    PostApi20251001ResourcesCompaniesLegalEntitiesBody,
+)
+from .post_api_20251001_resources_contracts_compensations_body import (
+    PostApi20251001ResourcesContractsCompensationsBody,
+)
+from .post_api_20251001_resources_contracts_compensations_body_time_condition import (
+    PostApi20251001ResourcesContractsCompensationsBodyTimeCondition,
+)
+from .post_api_20251001_resources_contracts_contract_versions_body import (
+    PostApi20251001ResourcesContractsContractVersionsBody,
+)
+from .post_api_20251001_resources_contracts_contract_versions_body_annual_working_time_distribution import (
+    PostApi20251001ResourcesContractsContractVersionsBodyAnnualWorkingTimeDistribution,
+)
+from .post_api_20251001_resources_contracts_contract_versions_body_bank_holiday_treatment import (
+    PostApi20251001ResourcesContractsContractVersionsBodyBankHolidayTreatment,
+)
+from .post_api_20251001_resources_contracts_spanish_contract_types_body import (
+    PostApi20251001ResourcesContractsSpanishContractTypesBody,
+)
+from .post_api_20251001_resources_contracts_spanish_education_levels_body import (
+    PostApi20251001ResourcesContractsSpanishEducationLevelsBody,
+)
+from .post_api_20251001_resources_contracts_spanish_professional_categories_body import (
+    PostApi20251001ResourcesContractsSpanishProfessionalCategoriesBody,
+)
+from .post_api_20251001_resources_contracts_spanish_working_day_types_body import (
+    PostApi20251001ResourcesContractsSpanishWorkingDayTypesBody,
+)
+from .post_api_20251001_resources_custom_fields_fields_body import (
+    PostApi20251001ResourcesCustomFieldsFieldsBody,
+)
+from .post_api_20251001_resources_custom_fields_fields_body_editable import (
+    PostApi20251001ResourcesCustomFieldsFieldsBodyEditable,
+)
+from .post_api_20251001_resources_custom_fields_fields_body_field_type import (
+    PostApi20251001ResourcesCustomFieldsFieldsBodyFieldType,
+)
+from .post_api_20251001_resources_custom_fields_fields_body_visible import (
+    PostApi20251001ResourcesCustomFieldsFieldsBodyVisible,
+)
+from .post_api_20251001_resources_custom_fields_options_body import (
+    PostApi20251001ResourcesCustomFieldsOptionsBody,
+)
+from .post_api_20251001_resources_custom_fields_resource_fields_body import (
+    PostApi20251001ResourcesCustomFieldsResourceFieldsBody,
+)
+from .post_api_20251001_resources_custom_fields_resource_fields_body_editable import (
+    PostApi20251001ResourcesCustomFieldsResourceFieldsBodyEditable,
+)
+from .post_api_20251001_resources_custom_fields_resource_fields_body_field_type import (
+    PostApi20251001ResourcesCustomFieldsResourceFieldsBodyFieldType,
+)
+from .post_api_20251001_resources_custom_fields_resource_fields_body_visible import (
+    PostApi20251001ResourcesCustomFieldsResourceFieldsBodyVisible,
+)
+from .post_api_20251001_resources_custom_fields_values_body import (
+    PostApi20251001ResourcesCustomFieldsValuesBody,
+)
+from .post_api_20251001_resources_custom_resources_schemas_body import (
+    PostApi20251001ResourcesCustomResourcesSchemasBody,
+)
+from .post_api_20251001_resources_custom_resources_values_body import (
+    PostApi20251001ResourcesCustomResourcesValuesBody,
+)
+from .post_api_20251001_resources_documents_documents_body import (
+    PostApi20251001ResourcesDocumentsDocumentsBody,
+)
+from .post_api_20251001_resources_documents_documents_body_space import (
+    PostApi20251001ResourcesDocumentsDocumentsBodySpace,
+)
+from .post_api_20251001_resources_documents_documents_move_to_trash_bin_body import (
+    PostApi20251001ResourcesDocumentsDocumentsMoveToTrashBinBody,
+)
+from .post_api_20251001_resources_documents_documents_restore_from_trash_bin_body import (
+    PostApi20251001ResourcesDocumentsDocumentsRestoreFromTrashBinBody,
+)
+from .post_api_20251001_resources_documents_download_urls_bulk_create_body import (
+    PostApi20251001ResourcesDocumentsDownloadUrlsBulkCreateBody,
+)
+from .post_api_20251001_resources_documents_folders_body import (
+    PostApi20251001ResourcesDocumentsFoldersBody,
+)
+from .post_api_20251001_resources_employees_employees_create_with_contract_body import (
+    PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBody,
+)
+from .post_api_20251001_resources_employees_employees_create_with_contract_body_contracts_annual_working_time_distribution import (
+    PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBodyContractsAnnualWorkingTimeDistribution,
+)
+from .post_api_20251001_resources_employees_employees_create_with_contract_body_contracts_bank_holiday_treatment import (
+    PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBodyContractsBankHolidayTreatment,
+)
+from .post_api_20251001_resources_employees_employees_invite_body import (
+    PostApi20251001ResourcesEmployeesEmployeesInviteBody,
+)
+from .post_api_20251001_resources_employees_employees_terminate_body import (
+    PostApi20251001ResourcesEmployeesEmployeesTerminateBody,
+)
+from .post_api_20251001_resources_employees_employees_unterminate_body import (
+    PostApi20251001ResourcesEmployeesEmployeesUnterminateBody,
+)
+from .post_api_20251001_resources_expenses_expensables_bulk_set_to_paid_body import (
+    PostApi20251001ResourcesExpensesExpensablesBulkSetToPaidBody,
+)
+from .post_api_20251001_resources_finance_accounting_settings_upsert_body import (
+    PostApi20251001ResourcesFinanceAccountingSettingsUpsertBody,
+)
+from .post_api_20251001_resources_finance_accounts_body import (
+    PostApi20251001ResourcesFinanceAccountsBody,
+)
+from .post_api_20251001_resources_finance_accounts_body_type import (
+    PostApi20251001ResourcesFinanceAccountsBodyType,
+)
+from .post_api_20251001_resources_finance_contacts_body import (
+    PostApi20251001ResourcesFinanceContactsBody,
+)
+from .post_api_20251001_resources_finance_contacts_body_address import (
+    PostApi20251001ResourcesFinanceContactsBodyAddress,
+)
+from .post_api_20251001_resources_finance_cost_center_memberships_bulk_create_update_body import (
+    PostApi20251001ResourcesFinanceCostCenterMembershipsBulkCreateUpdateBody,
+)
+from .post_api_20251001_resources_finance_cost_centers_body import (
+    PostApi20251001ResourcesFinanceCostCentersBody,
+)
+from .post_api_20251001_resources_finance_cost_centers_edit_body import (
+    PostApi20251001ResourcesFinanceCostCentersEditBody,
+)
+from .post_api_20251001_resources_finance_journal_entries_body import (
+    PostApi20251001ResourcesFinanceJournalEntriesBody,
+)
+from .post_api_20251001_resources_finance_journal_entries_body_status import (
+    PostApi20251001ResourcesFinanceJournalEntriesBodyStatus,
+)
+from .post_api_20251001_resources_finance_journal_entries_body_type import (
+    PostApi20251001ResourcesFinanceJournalEntriesBodyType,
+)
+from .post_api_20251001_resources_finance_ledger_account_resources_upsert_body import (
+    PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBody,
+)
+from .post_api_20251001_resources_finance_ledger_account_resources_upsert_body_balance_type import (
+    PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyBalanceType,
+)
+from .post_api_20251001_resources_finance_ledger_account_resources_upsert_body_operation_type import (
+    PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyOperationType,
+)
+from .post_api_20251001_resources_finance_ledger_account_resources_upsert_body_resource_type import (
+    PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyResourceType,
+)
+from .post_api_20251001_resources_finance_tax_rates_body import (
+    PostApi20251001ResourcesFinanceTaxRatesBody,
+)
+from .post_api_20251001_resources_finance_tax_types_body import (
+    PostApi20251001ResourcesFinanceTaxTypesBody,
+)
+from .post_api_20251001_resources_finance_tax_types_body_type import (
+    PostApi20251001ResourcesFinanceTaxTypesBodyType,
+)
+from .post_api_20251001_resources_locations_locations_body import (
+    PostApi20251001ResourcesLocationsLocationsBody,
+)
+from .post_api_20251001_resources_locations_work_areas_archive_body import (
+    PostApi20251001ResourcesLocationsWorkAreasArchiveBody,
+)
+from .post_api_20251001_resources_locations_work_areas_body import (
+    PostApi20251001ResourcesLocationsWorkAreasBody,
+)
+from .post_api_20251001_resources_locations_work_areas_unarchive_body import (
+    PostApi20251001ResourcesLocationsWorkAreasUnarchiveBody,
+)
+from .post_api_20251001_resources_marketplace_installations_body import (
+    PostApi20251001ResourcesMarketplaceInstallationsBody,
+)
+from .post_api_20251001_resources_payroll_employees_identifiers_body import (
+    PostApi20251001ResourcesPayrollEmployeesIdentifiersBody,
+)
+from .post_api_20251001_resources_payroll_employees_identifiers_body_country import (
+    PostApi20251001ResourcesPayrollEmployeesIdentifiersBodyCountry,
+)
+from .post_api_20251001_resources_payroll_family_situations_body import (
+    PostApi20251001ResourcesPayrollFamilySituationsBody,
+)
+from .post_api_20251001_resources_payroll_family_situations_body_civil_status import (
+    PostApi20251001ResourcesPayrollFamilySituationsBodyCivilStatus,
+)
+from .post_api_20251001_resources_payroll_integrations_base_codes_body import (
+    PostApi20251001ResourcesPayrollIntegrationsBaseCodesBody,
+)
+from .post_api_20251001_resources_payroll_integrations_base_codes_body_integration import (
+    PostApi20251001ResourcesPayrollIntegrationsBaseCodesBodyIntegration,
+)
+from .post_api_20251001_resources_payroll_policy_periods_change_status_body import (
+    PostApi20251001ResourcesPayrollPolicyPeriodsChangeStatusBody,
+)
+from .post_api_20251001_resources_payroll_policy_periods_change_status_body_status import (
+    PostApi20251001ResourcesPayrollPolicyPeriodsChangeStatusBodyStatus,
+)
+from .post_api_20251001_resources_payroll_supplements_body import (
+    PostApi20251001ResourcesPayrollSupplementsBody,
+)
+from .post_api_20251001_resources_performance_agreements_bulk_initiate_body import (
+    PostApi20251001ResourcesPerformanceAgreementsBulkInitiateBody,
+)
+from .post_api_20251001_resources_performance_agreements_initiate_body import (
+    PostApi20251001ResourcesPerformanceAgreementsInitiateBody,
+)
+from .post_api_20251001_resources_performance_company_employee_score_scales_set_body import (
+    PostApi20251001ResourcesPerformanceCompanyEmployeeScoreScalesSetBody,
+)
+from .post_api_20251001_resources_performance_review_evaluations_replace_reviewer_body import (
+    PostApi20251001ResourcesPerformanceReviewEvaluationsReplaceReviewerBody,
+)
+from .post_api_20251001_resources_performance_review_owners_bulk_create_body import (
+    PostApi20251001ResourcesPerformanceReviewOwnersBulkCreateBody,
+)
+from .post_api_20251001_resources_performance_review_process_targets_add_peers_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessTargetsAddPeersBody,
+)
+from .post_api_20251001_resources_performance_review_process_targets_bulk_create_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessTargetsBulkCreateBody,
+)
+from .post_api_20251001_resources_performance_review_process_targets_remove_peer_evaluations_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsBody,
+)
+from .post_api_20251001_resources_performance_review_processes_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesBody,
+)
+from .post_api_20251001_resources_performance_review_processes_body_reviewer_strategies import (
+    PostApi20251001ResourcesPerformanceReviewProcessesBodyReviewerStrategies,
+)
+from .post_api_20251001_resources_performance_review_processes_body_target_strategy import (
+    PostApi20251001ResourcesPerformanceReviewProcessesBodyTargetStrategy,
+)
+from .post_api_20251001_resources_performance_review_processes_create_from_template_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesCreateFromTemplateBody,
+)
+from .post_api_20251001_resources_performance_review_processes_create_from_template_body_template_type import (
+    PostApi20251001ResourcesPerformanceReviewProcessesCreateFromTemplateBodyTemplateType,
+)
+from .post_api_20251001_resources_performance_review_processes_duplicate_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesDuplicateBody,
+)
+from .post_api_20251001_resources_performance_review_processes_remind_in_bulk_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesRemindInBulkBody,
+)
+from .post_api_20251001_resources_performance_review_processes_remind_in_bulk_body_evaluation_types import (
+    PostApi20251001ResourcesPerformanceReviewProcessesRemindInBulkBodyEvaluationTypes,
+)
+from .post_api_20251001_resources_performance_review_processes_remove_schedule_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesRemoveScheduleBody,
+)
+from .post_api_20251001_resources_performance_review_processes_reopen_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesReopenBody,
+)
+from .post_api_20251001_resources_performance_review_processes_schedule_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesScheduleBody,
+)
+from .post_api_20251001_resources_performance_review_processes_start_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesStartBody,
+)
+from .post_api_20251001_resources_performance_review_processes_stop_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesStopBody,
+)
+from .post_api_20251001_resources_performance_review_processes_toggle_archive_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesToggleArchiveBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_agreements_configuration_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_basic_info_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateBasicInfoBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_competencies_assessments_configuration_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_deadline_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateDeadlineBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_employee_score_configuration_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_reviewer_strategies_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_reviewer_strategies_body_reviewer_strategies import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesBodyReviewerStrategies,
+)
+from .post_api_20251001_resources_performance_review_processes_update_schedule_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateScheduleBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_target_strategy_body import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateTargetStrategyBody,
+)
+from .post_api_20251001_resources_performance_review_processes_update_target_strategy_body_target_strategy import (
+    PostApi20251001ResourcesPerformanceReviewProcessesUpdateTargetStrategyBodyTargetStrategy,
+)
+from .post_api_20251001_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale_body import (
+    PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleBody,
+)
+from .post_api_20251001_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy_body import (
+    PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyBody,
+)
+from .post_api_20251001_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy_body_strategy import (
+    PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyBodyStrategy,
+)
+from .post_api_20251001_resources_posts_comments_body import (
+    PostApi20251001ResourcesPostsCommentsBody,
+)
+from .post_api_20251001_resources_posts_groups_archive_body import (
+    PostApi20251001ResourcesPostsGroupsArchiveBody,
+)
+from .post_api_20251001_resources_posts_groups_body import PostApi20251001ResourcesPostsGroupsBody
+from .post_api_20251001_resources_posts_posts_body import PostApi20251001ResourcesPostsPostsBody
+from .post_api_20251001_resources_project_management_flexible_time_record_comments_body import (
+    PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsBody,
+)
+from .post_api_20251001_resources_project_management_flexible_time_record_comments_delete_by_flexible_time_record_body import (
+    PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordBody,
+)
+from .post_api_20251001_resources_project_management_flexible_time_record_comments_update_by_flexible_time_record_body import (
+    PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordBody,
+)
+from .post_api_20251001_resources_project_management_flexible_time_records_body import (
+    PostApi20251001ResourcesProjectManagementFlexibleTimeRecordsBody,
+)
+from .post_api_20251001_resources_project_management_project_tasks_body import (
+    PostApi20251001ResourcesProjectManagementProjectTasksBody,
+)
+from .post_api_20251001_resources_project_management_project_tasks_body_status import (
+    PostApi20251001ResourcesProjectManagementProjectTasksBodyStatus,
+)
+from .post_api_20251001_resources_project_management_project_tasks_bulk_destroy_body import (
+    PostApi20251001ResourcesProjectManagementProjectTasksBulkDestroyBody,
+)
+from .post_api_20251001_resources_project_management_project_tasks_bulk_duplicate_body import (
+    PostApi20251001ResourcesProjectManagementProjectTasksBulkDuplicateBody,
+)
+from .post_api_20251001_resources_project_management_project_workers_body import (
+    PostApi20251001ResourcesProjectManagementProjectWorkersBody,
+)
+from .post_api_20251001_resources_project_management_project_workers_bulk_assign_body import (
+    PostApi20251001ResourcesProjectManagementProjectWorkersBulkAssignBody,
+)
+from .post_api_20251001_resources_project_management_project_workers_bulk_create_body import (
+    PostApi20251001ResourcesProjectManagementProjectWorkersBulkCreateBody,
+)
+from .post_api_20251001_resources_project_management_project_workers_unassign_body import (
+    PostApi20251001ResourcesProjectManagementProjectWorkersUnassignBody,
+)
+from .post_api_20251001_resources_project_management_projects_activate_body import (
+    PostApi20251001ResourcesProjectManagementProjectsActivateBody,
+)
+from .post_api_20251001_resources_project_management_projects_body import (
+    PostApi20251001ResourcesProjectManagementProjectsBody,
+)
+from .post_api_20251001_resources_project_management_projects_change_assignment_body import (
+    PostApi20251001ResourcesProjectManagementProjectsChangeAssignmentBody,
+)
+from .post_api_20251001_resources_project_management_projects_change_status_body import (
+    PostApi20251001ResourcesProjectManagementProjectsChangeStatusBody,
+)
+from .post_api_20251001_resources_project_management_projects_change_status_body_status import (
+    PostApi20251001ResourcesProjectManagementProjectsChangeStatusBodyStatus,
+)
+from .post_api_20251001_resources_project_management_projects_close_body import (
+    PostApi20251001ResourcesProjectManagementProjectsCloseBody,
+)
+from .post_api_20251001_resources_project_management_projects_soft_delete_body import (
+    PostApi20251001ResourcesProjectManagementProjectsSoftDeleteBody,
+)
+from .post_api_20251001_resources_project_management_subprojects_body import (
+    PostApi20251001ResourcesProjectManagementSubprojectsBody,
+)
+from .post_api_20251001_resources_project_management_subprojects_rename_body import (
+    PostApi20251001ResourcesProjectManagementSubprojectsRenameBody,
+)
+from .post_api_20251001_resources_project_management_time_records_body import (
+    PostApi20251001ResourcesProjectManagementTimeRecordsBody,
+)
+from .post_api_20251001_resources_project_management_time_records_bulk_delete_body import (
+    PostApi20251001ResourcesProjectManagementTimeRecordsBulkDeleteBody,
+)
+from .post_api_20251001_resources_project_management_time_records_bulk_process_body import (
+    PostApi20251001ResourcesProjectManagementTimeRecordsBulkProcessBody,
+)
+from .post_api_20251001_resources_project_management_time_records_update_project_worker_body import (
+    PostApi20251001ResourcesProjectManagementTimeRecordsUpdateProjectWorkerBody,
+)
+from .post_api_20251001_resources_shift_management_shifts_body import (
+    PostApi20251001ResourcesShiftManagementShiftsBody,
+)
+from .post_api_20251001_resources_shift_management_shifts_bulk_create_body import (
+    PostApi20251001ResourcesShiftManagementShiftsBulkCreateBody,
+)
+from .post_api_20251001_resources_shift_management_shifts_bulk_delete_body import (
+    PostApi20251001ResourcesShiftManagementShiftsBulkDeleteBody,
+)
+from .post_api_20251001_resources_tasks_task_files_body import (
+    PostApi20251001ResourcesTasksTaskFilesBody,
+)
+from .post_api_20251001_resources_tasks_tasks_body import PostApi20251001ResourcesTasksTasksBody
+from .post_api_20251001_resources_tasks_tasks_body_status import (
+    PostApi20251001ResourcesTasksTasksBodyStatus,
+)
+from .post_api_20251001_resources_tasks_tasks_bulk_create_body import (
+    PostApi20251001ResourcesTasksTasksBulkCreateBody,
+)
+from .post_api_20251001_resources_tasks_tasks_bulk_create_body_status import (
+    PostApi20251001ResourcesTasksTasksBulkCreateBodyStatus,
+)
+from .post_api_20251001_resources_tasks_tasks_bulk_delete_body import (
+    PostApi20251001ResourcesTasksTasksBulkDeleteBody,
+)
+from .post_api_20251001_resources_tasks_tasks_bulk_update_body import (
+    PostApi20251001ResourcesTasksTasksBulkUpdateBody,
+)
+from .post_api_20251001_resources_tasks_tasks_copy_body import (
+    PostApi20251001ResourcesTasksTasksCopyBody,
+)
+from .post_api_20251001_resources_tasks_tasks_create_comment_body import (
+    PostApi20251001ResourcesTasksTasksCreateCommentBody,
+)
+from .post_api_20251001_resources_teams_memberships_body import (
+    PostApi20251001ResourcesTeamsMembershipsBody,
+)
+from .post_api_20251001_resources_teams_teams_body import PostApi20251001ResourcesTeamsTeamsBody
+from .post_api_20251001_resources_time_planning_planned_breaks_bulk_create_body import (
+    PostApi20251001ResourcesTimePlanningPlannedBreaksBulkCreateBody,
+)
+from .post_api_20251001_resources_time_planning_planning_versions_body import (
+    PostApi20251001ResourcesTimePlanningPlanningVersionsBody,
+)
+from .post_api_20251001_resources_time_planning_planning_versions_bulk_create_body import (
+    PostApi20251001ResourcesTimePlanningPlanningVersionsBulkCreateBody,
+)
+from .post_api_20251001_resources_time_settings_break_configurations_body import (
+    PostApi20251001ResourcesTimeSettingsBreakConfigurationsBody,
+)
+from .post_api_20251001_resources_timeoff_allowance_incidences_body import (
+    PostApi20251001ResourcesTimeoffAllowanceIncidencesBody,
+)
+from .post_api_20251001_resources_timeoff_allowance_incidences_body_target_balance import (
+    PostApi20251001ResourcesTimeoffAllowanceIncidencesBodyTargetBalance,
+)
+from .post_api_20251001_resources_timeoff_allowances_body import (
+    PostApi20251001ResourcesTimeoffAllowancesBody,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_accrued_units_availability import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyAccruedUnitsAvailability,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_allowance_type import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyAllowanceType,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_available_days import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyAvailableDays,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_cycle_start import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyCycleStart,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_days_type import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyDaysType,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_frequency import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyFrequency,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_negative_counter_type import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyNegativeCounterType,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_proration_type import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyProrationType,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_range_type import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyRangeType,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_rounding import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyRounding,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_source_units import (
+    PostApi20251001ResourcesTimeoffAllowancesBodySourceUnits,
+)
+from .post_api_20251001_resources_timeoff_allowances_body_tenure_period_transition import (
+    PostApi20251001ResourcesTimeoffAllowancesBodyTenurePeriodTransition,
+)
+from .post_api_20251001_resources_timeoff_allowances_delete_with_alt_allowance_body import (
+    PostApi20251001ResourcesTimeoffAllowancesDeleteWithAltAllowanceBody,
+)
+from .post_api_20251001_resources_timeoff_blocked_periods_body import (
+    PostApi20251001ResourcesTimeoffBlockedPeriodsBody,
+)
+from .post_api_20251001_resources_timeoff_leave_types_body import (
+    PostApi20251001ResourcesTimeoffLeaveTypesBody,
+)
+from .post_api_20251001_resources_timeoff_leaves_approve_all_body import (
+    PostApi20251001ResourcesTimeoffLeavesApproveAllBody,
+)
+from .post_api_20251001_resources_timeoff_leaves_approve_body import (
+    PostApi20251001ResourcesTimeoffLeavesApproveBody,
+)
+from .post_api_20251001_resources_timeoff_leaves_body import (
+    PostApi20251001ResourcesTimeoffLeavesBody,
+)
+from .post_api_20251001_resources_timeoff_leaves_reject_body import (
+    PostApi20251001ResourcesTimeoffLeavesRejectBody,
+)
+from .post_api_20251001_resources_timeoff_policies_body import (
+    PostApi20251001ResourcesTimeoffPoliciesBody,
+)
+from .post_api_20251001_resources_timeoff_policy_assignments_body import (
+    PostApi20251001ResourcesTimeoffPolicyAssignmentsBody,
+)
+from .post_api_20251001_resources_trainings_categories_body import (
+    PostApi20251001ResourcesTrainingsCategoriesBody,
+)
+from .post_api_20251001_resources_trainings_session_access_memberships_bulk_create_body import (
+    PostApi20251001ResourcesTrainingsSessionAccessMembershipsBulkCreateBody,
+)
+from .post_api_20251001_resources_trainings_session_access_memberships_bulk_destroy_body import (
+    PostApi20251001ResourcesTrainingsSessionAccessMembershipsBulkDestroyBody,
+)
+from .post_api_20251001_resources_trainings_session_attendances_bulk_update_body import (
+    PostApi20251001ResourcesTrainingsSessionAttendancesBulkUpdateBody,
+)
+from .post_api_20251001_resources_trainings_sessions_body import (
+    PostApi20251001ResourcesTrainingsSessionsBody,
+)
+from .post_api_20251001_resources_trainings_sessions_body_modality import (
+    PostApi20251001ResourcesTrainingsSessionsBodyModality,
+)
+from .post_api_20251001_resources_trainings_sessions_body_schedule import (
+    PostApi20251001ResourcesTrainingsSessionsBodySchedule,
+)
+from .post_api_20251001_resources_trainings_training_classes_body import (
+    PostApi20251001ResourcesTrainingsTrainingClassesBody,
+)
+from .post_api_20251001_resources_trainings_training_memberships_bulk_create_body import (
+    PostApi20251001ResourcesTrainingsTrainingMembershipsBulkCreateBody,
+)
+from .post_api_20251001_resources_trainings_training_memberships_bulk_destroy_body import (
+    PostApi20251001ResourcesTrainingsTrainingMembershipsBulkDestroyBody,
+)
+from .post_api_20251001_resources_trainings_trainings_body import (
+    PostApi20251001ResourcesTrainingsTrainingsBody,
+)
+from .post_api_20251001_resources_trainings_trainings_bulk_delete_body import (
+    PostApi20251001ResourcesTrainingsTrainingsBulkDeleteBody,
+)
+from .post_api_20251001_resources_trainings_trainings_bulk_update_catalog_body import (
+    PostApi20251001ResourcesTrainingsTrainingsBulkUpdateCatalogBody,
+)
+from .post_api_20251001_resources_trainings_trainings_update_status_body import (
+    PostApi20251001ResourcesTrainingsTrainingsUpdateStatusBody,
+)
+from .post_api_20251001_resources_work_schedule_day_configurations_bulk_cud_body import (
+    PostApi20251001ResourcesWorkScheduleDayConfigurationsBulkCudBody,
+)
+from .post_api_20251001_resources_work_schedule_overlap_periods_body import (
+    PostApi20251001ResourcesWorkScheduleOverlapPeriodsBody,
+)
+from .post_api_20251001_resources_work_schedule_schedules_body import (
+    PostApi20251001ResourcesWorkScheduleSchedulesBody,
+)
+from .post_api_20251001_resources_work_schedule_schedules_toggle_archive_body import (
+    PostApi20251001ResourcesWorkScheduleSchedulesToggleArchiveBody,
+)
+from .posts_comment import PostsComment
+from .posts_group import PostsGroup
+from .posts_post import PostsPost
+from .project_management_expense_record import ProjectManagementExpenseRecord
+from .project_management_exportable_expense import ProjectManagementExportableExpense
+from .project_management_exportable_project import ProjectManagementExportableProject
+from .project_management_flexible_time_record import ProjectManagementFlexibleTimeRecord
+from .project_management_flexible_time_record_comment import (
+    ProjectManagementFlexibleTimeRecordComment,
+)
+from .project_management_project import ProjectManagementProject
+from .project_management_project_employees_assignment import (
+    ProjectManagementProjectEmployeesAssignment,
+)
+from .project_management_project_status import ProjectManagementProjectStatus
+from .project_management_project_task import ProjectManagementProjectTask
+from .project_management_project_worker import ProjectManagementProjectWorker
+from .project_management_subproject import ProjectManagementSubproject
+from .project_management_time_record import ProjectManagementTimeRecord
+from .put_api_20251001_resources_api_public_webhook_subscriptions_id_body import (
+    PutApi20251001ResourcesApiPublicWebhookSubscriptionsIdBody,
+)
+from .put_api_20251001_resources_api_public_webhook_subscriptions_id_body_api_version import (
+    PutApi20251001ResourcesApiPublicWebhookSubscriptionsIdBodyApiVersion,
+)
+from .put_api_20251001_resources_ats_applications_id_body import (
+    PutApi20251001ResourcesAtsApplicationsIdBody,
+)
+from .put_api_20251001_resources_ats_applications_id_body_author_type import (
+    PutApi20251001ResourcesAtsApplicationsIdBodyAuthorType,
+)
+from .put_api_20251001_resources_ats_candidates_id_body import (
+    PutApi20251001ResourcesAtsCandidatesIdBody,
+)
+from .put_api_20251001_resources_ats_feedbacks_id_body import (
+    PutApi20251001ResourcesAtsFeedbacksIdBody,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body import (
+    PutApi20251001ResourcesAtsJobPostingsIdBody,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_contract_type import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyContractType,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_cover_letter_requirement import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyCoverLetterRequirement,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_cv_requirement import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyCvRequirement,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_personal_url_requirement import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyPersonalUrlRequirement,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_phone_requirement import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyPhoneRequirement,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_photo_requirement import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyPhotoRequirement,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_salary_format import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodySalaryFormat,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_salary_period import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodySalaryPeriod,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_schedule_type import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyScheduleType,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_status import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyStatus,
+)
+from .put_api_20251001_resources_ats_job_postings_id_body_workplace_type import (
+    PutApi20251001ResourcesAtsJobPostingsIdBodyWorkplaceType,
+)
+from .put_api_20251001_resources_ats_questions_id_body import (
+    PutApi20251001ResourcesAtsQuestionsIdBody,
+)
+from .put_api_20251001_resources_attendance_break_configurations_id_body import (
+    PutApi20251001ResourcesAttendanceBreakConfigurationsIdBody,
+)
+from .put_api_20251001_resources_attendance_edit_timesheet_requests_id_body import (
+    PutApi20251001ResourcesAttendanceEditTimesheetRequestsIdBody,
+)
+from .put_api_20251001_resources_attendance_edit_timesheet_requests_id_body_location_type import (
+    PutApi20251001ResourcesAttendanceEditTimesheetRequestsIdBodyLocationType,
+)
+from .put_api_20251001_resources_attendance_overtime_requests_id_body import (
+    PutApi20251001ResourcesAttendanceOvertimeRequestsIdBody,
+)
+from .put_api_20251001_resources_attendance_shifts_id_body import (
+    PutApi20251001ResourcesAttendanceShiftsIdBody,
+)
+from .put_api_20251001_resources_attendance_shifts_id_body_location_type import (
+    PutApi20251001ResourcesAttendanceShiftsIdBodyLocationType,
+)
+from .put_api_20251001_resources_bookkeepers_management_incidences_id_body import (
+    PutApi20251001ResourcesBookkeepersManagementIncidencesIdBody,
+)
+from .put_api_20251001_resources_contracts_compensations_id_body import (
+    PutApi20251001ResourcesContractsCompensationsIdBody,
+)
+from .put_api_20251001_resources_contracts_compensations_id_body_time_condition import (
+    PutApi20251001ResourcesContractsCompensationsIdBodyTimeCondition,
+)
+from .put_api_20251001_resources_contracts_contract_versions_id_body import (
+    PutApi20251001ResourcesContractsContractVersionsIdBody,
+)
+from .put_api_20251001_resources_contracts_contract_versions_id_body_annual_working_time_distribution import (
+    PutApi20251001ResourcesContractsContractVersionsIdBodyAnnualWorkingTimeDistribution,
+)
+from .put_api_20251001_resources_contracts_contract_versions_id_body_bank_holiday_treatment import (
+    PutApi20251001ResourcesContractsContractVersionsIdBodyBankHolidayTreatment,
+)
+from .put_api_20251001_resources_custom_fields_values_id_body import (
+    PutApi20251001ResourcesCustomFieldsValuesIdBody,
+)
+from .put_api_20251001_resources_documents_documents_id_body import (
+    PutApi20251001ResourcesDocumentsDocumentsIdBody,
+)
+from .put_api_20251001_resources_documents_folders_id_body import (
+    PutApi20251001ResourcesDocumentsFoldersIdBody,
+)
+from .put_api_20251001_resources_employees_employees_id_body import (
+    PutApi20251001ResourcesEmployeesEmployeesIdBody,
+)
+from .put_api_20251001_resources_finance_accounts_id_body import (
+    PutApi20251001ResourcesFinanceAccountsIdBody,
+)
+from .put_api_20251001_resources_finance_accounts_id_body_type import (
+    PutApi20251001ResourcesFinanceAccountsIdBodyType,
+)
+from .put_api_20251001_resources_finance_contacts_id_body import (
+    PutApi20251001ResourcesFinanceContactsIdBody,
+)
+from .put_api_20251001_resources_finance_contacts_id_body_address import (
+    PutApi20251001ResourcesFinanceContactsIdBodyAddress,
+)
+from .put_api_20251001_resources_finance_tax_rates_id_body import (
+    PutApi20251001ResourcesFinanceTaxRatesIdBody,
+)
+from .put_api_20251001_resources_finance_tax_types_id_body import (
+    PutApi20251001ResourcesFinanceTaxTypesIdBody,
+)
+from .put_api_20251001_resources_finance_tax_types_id_body_type import (
+    PutApi20251001ResourcesFinanceTaxTypesIdBodyType,
+)
+from .put_api_20251001_resources_integrations_syncable_sync_runs_id_body import (
+    PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBody,
+)
+from .put_api_20251001_resources_integrations_syncable_sync_runs_id_body_error_messages import (
+    PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBodyErrorMessages,
+)
+from .put_api_20251001_resources_integrations_syncable_sync_runs_id_body_status import (
+    PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBodyStatus,
+)
+from .put_api_20251001_resources_locations_locations_id_body import (
+    PutApi20251001ResourcesLocationsLocationsIdBody,
+)
+from .put_api_20251001_resources_locations_work_areas_id_body import (
+    PutApi20251001ResourcesLocationsWorkAreasIdBody,
+)
+from .put_api_20251001_resources_payroll_employees_identifiers_id_body import (
+    PutApi20251001ResourcesPayrollEmployeesIdentifiersIdBody,
+)
+from .put_api_20251001_resources_payroll_employees_identifiers_id_body_country import (
+    PutApi20251001ResourcesPayrollEmployeesIdentifiersIdBodyCountry,
+)
+from .put_api_20251001_resources_payroll_family_situations_id_body import (
+    PutApi20251001ResourcesPayrollFamilySituationsIdBody,
+)
+from .put_api_20251001_resources_payroll_family_situations_id_body_civil_status import (
+    PutApi20251001ResourcesPayrollFamilySituationsIdBodyCivilStatus,
+)
+from .put_api_20251001_resources_payroll_integrations_base_codes_id_body import (
+    PutApi20251001ResourcesPayrollIntegrationsBaseCodesIdBody,
+)
+from .put_api_20251001_resources_payroll_supplements_id_body import (
+    PutApi20251001ResourcesPayrollSupplementsIdBody,
+)
+from .put_api_20251001_resources_performance_review_visibility_settings_id_body import (
+    PutApi20251001ResourcesPerformanceReviewVisibilitySettingsIdBody,
+)
+from .put_api_20251001_resources_posts_comments_id_body import (
+    PutApi20251001ResourcesPostsCommentsIdBody,
+)
+from .put_api_20251001_resources_posts_groups_id_body import (
+    PutApi20251001ResourcesPostsGroupsIdBody,
+)
+from .put_api_20251001_resources_posts_posts_id_body import PutApi20251001ResourcesPostsPostsIdBody
+from .put_api_20251001_resources_project_management_flexible_time_records_id_body import (
+    PutApi20251001ResourcesProjectManagementFlexibleTimeRecordsIdBody,
+)
+from .put_api_20251001_resources_project_management_project_tasks_id_body import (
+    PutApi20251001ResourcesProjectManagementProjectTasksIdBody,
+)
+from .put_api_20251001_resources_project_management_project_tasks_id_body_status import (
+    PutApi20251001ResourcesProjectManagementProjectTasksIdBodyStatus,
+)
+from .put_api_20251001_resources_project_management_projects_id_body import (
+    PutApi20251001ResourcesProjectManagementProjectsIdBody,
+)
+from .put_api_20251001_resources_tasks_tasks_id_body import PutApi20251001ResourcesTasksTasksIdBody
+from .put_api_20251001_resources_tasks_tasks_id_body_status import (
+    PutApi20251001ResourcesTasksTasksIdBodyStatus,
+)
+from .put_api_20251001_resources_teams_memberships_id_body import (
+    PutApi20251001ResourcesTeamsMembershipsIdBody,
+)
+from .put_api_20251001_resources_teams_teams_id_body import PutApi20251001ResourcesTeamsTeamsIdBody
+from .put_api_20251001_resources_time_planning_planning_versions_id_body import (
+    PutApi20251001ResourcesTimePlanningPlanningVersionsIdBody,
+)
+from .put_api_20251001_resources_time_settings_break_configurations_id_body import (
+    PutApi20251001ResourcesTimeSettingsBreakConfigurationsIdBody,
+)
+from .put_api_20251001_resources_timeoff_allowance_incidences_id_body import (
+    PutApi20251001ResourcesTimeoffAllowanceIncidencesIdBody,
+)
+from .put_api_20251001_resources_timeoff_allowance_incidences_id_body_target_balance import (
+    PutApi20251001ResourcesTimeoffAllowanceIncidencesIdBodyTargetBalance,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBody,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_available_days import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyAvailableDays,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_days_type import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyDaysType,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_frequency import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyFrequency,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_negative_counter_type import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyNegativeCounterType,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_proration_type import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyProrationType,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_range_type import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyRangeType,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_rounding import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyRounding,
+)
+from .put_api_20251001_resources_timeoff_allowances_id_body_tenure_period_transition import (
+    PutApi20251001ResourcesTimeoffAllowancesIdBodyTenurePeriodTransition,
+)
+from .put_api_20251001_resources_timeoff_blocked_periods_id_body import (
+    PutApi20251001ResourcesTimeoffBlockedPeriodsIdBody,
+)
+from .put_api_20251001_resources_timeoff_leave_types_id_body import (
+    PutApi20251001ResourcesTimeoffLeaveTypesIdBody,
+)
+from .put_api_20251001_resources_timeoff_leaves_id_body import (
+    PutApi20251001ResourcesTimeoffLeavesIdBody,
+)
+from .put_api_20251001_resources_timeoff_policies_id_body import (
+    PutApi20251001ResourcesTimeoffPoliciesIdBody,
+)
+from .put_api_20251001_resources_timeoff_policy_assignments_id_body import (
+    PutApi20251001ResourcesTimeoffPolicyAssignmentsIdBody,
+)
+from .put_api_20251001_resources_trainings_sessions_id_body import (
+    PutApi20251001ResourcesTrainingsSessionsIdBody,
+)
+from .put_api_20251001_resources_trainings_sessions_id_body_schedule import (
+    PutApi20251001ResourcesTrainingsSessionsIdBodySchedule,
+)
+from .put_api_20251001_resources_trainings_training_classes_id_body import (
+    PutApi20251001ResourcesTrainingsTrainingClassesIdBody,
+)
+from .put_api_20251001_resources_trainings_training_memberships_id_body import (
+    PutApi20251001ResourcesTrainingsTrainingMembershipsIdBody,
+)
+from .put_api_20251001_resources_trainings_trainings_id_body import (
+    PutApi20251001ResourcesTrainingsTrainingsIdBody,
+)
+from .put_api_20251001_resources_work_schedule_overlap_periods_id_body import (
+    PutApi20251001ResourcesWorkScheduleOverlapPeriodsIdBody,
+)
+from .put_api_20251001_resources_work_schedule_schedules_id_body import (
+    PutApi20251001ResourcesWorkScheduleSchedulesIdBody,
+)
+from .shift_management_shift import ShiftManagementShift
+from .shift_management_shift_state import ShiftManagementShiftState
+from .tasks_task import TasksTask
+from .tasks_task_file import TasksTaskFile
+from .tasks_task_status import TasksTaskStatus
+from .teams_membership import TeamsMembership
+from .teams_team import TeamsTeam
+from .time_planning_planned_break import TimePlanningPlannedBreak
+from .time_planning_planned_break_break_type import TimePlanningPlannedBreakBreakType
+from .time_planning_planning_version import TimePlanningPlanningVersion
+from .time_settings_break_configuration import TimeSettingsBreakConfiguration
+from .timeoff_allowance import TimeoffAllowance
+from .timeoff_allowance_accrued_units_availability import TimeoffAllowanceAccruedUnitsAvailability
+from .timeoff_allowance_allowance_type import TimeoffAllowanceAllowanceType
+from .timeoff_allowance_available_days import TimeoffAllowanceAvailableDays
+from .timeoff_allowance_days_type import TimeoffAllowanceDaysType
+from .timeoff_allowance_frequency import TimeoffAllowanceFrequency
+from .timeoff_allowance_incidence import TimeoffAllowanceIncidence
+from .timeoff_allowance_negative_counter_type import TimeoffAllowanceNegativeCounterType
+from .timeoff_allowance_proration_type import TimeoffAllowanceProrationType
+from .timeoff_allowance_range_type import TimeoffAllowanceRangeType
+from .timeoff_allowance_rounding import TimeoffAllowanceRounding
+from .timeoff_allowance_source_units import TimeoffAllowanceSourceUnits
+from .timeoff_allowance_stats_new import TimeoffAllowanceStatsNew
+from .timeoff_allowance_tenure_period_transition import TimeoffAllowanceTenurePeriodTransition
+from .timeoff_blocked_periods_policy import TimeoffBlockedPeriodsPolicy
+from .timeoff_leave import TimeoffLeave
+from .timeoff_leave_type import TimeoffLeaveType
+from .timeoff_policy import TimeoffPolicy
+from .timeoff_policy_assignment import TimeoffPolicyAssignment
+from .timeoff_policy_timeline import TimeoffPolicyTimeline
+from .trainings_category import TrainingsCategory
+from .trainings_session import TrainingsSession
+from .trainings_session_access_membership import TrainingsSessionAccessMembership
+from .trainings_session_attendance import TrainingsSessionAttendance
+from .trainings_session_attendance_status import TrainingsSessionAttendanceStatus
+from .trainings_session_modality import TrainingsSessionModality
+from .trainings_session_schedule import TrainingsSessionSchedule
+from .trainings_training import TrainingsTraining
+from .trainings_training_class import TrainingsTrainingClass
+from .trainings_training_membership import TrainingsTrainingMembership
+from .trainings_training_membership_status import TrainingsTrainingMembershipStatus
+from .trainings_training_status import TrainingsTrainingStatus
+from .trainings_training_training_attendance_status import TrainingsTrainingTrainingAttendanceStatus
+from .work_schedule_day_configuration import WorkScheduleDayConfiguration
+from .work_schedule_overlap_period import WorkScheduleOverlapPeriod
+from .work_schedule_schedule import WorkScheduleSchedule
+
+__all__ = (
+    "ApiPublicCredential",
+    "ApiPublicWebhookSubscription",
+    "AtsAnswer",
+    "AtsAnswerOriginalQuestionType",
+    "AtsApplication",
+    "AtsApplicationPhase",
+    "AtsApplicationPhasePhaseType",
+    "AtsCandidate",
+    "AtsCandidateGender",
+    "AtsCandidateSource",
+    "AtsCandidateSourceCategory",
+    "AtsEvaluationForm",
+    "AtsFeedback",
+    "AtsHiringStage",
+    "AtsHiringStageName",
+    "AtsJobPosting",
+    "AtsJobPostingContractType",
+    "AtsJobPostingCoverLetterRequirement",
+    "AtsJobPostingCvRequirement",
+    "AtsJobPostingPersonalUrlRequirement",
+    "AtsJobPostingPhoneRequirement",
+    "AtsJobPostingPhotoRequirement",
+    "AtsJobPostingSalaryFormat",
+    "AtsJobPostingSalaryPeriod",
+    "AtsJobPostingScheduleType",
+    "AtsJobPostingStatus",
+    "AtsJobPostingWorkplaceType",
+    "AtsMessage",
+    "AtsQuestion",
+    "AtsQuestionQuestionType",
+    "AtsRejectionReason",
+    "AtsRejectionReasonDecisionMaker",
+    "AttendanceBreakConfiguration",
+    "AttendanceEditTimesheetRequest",
+    "AttendanceEditTimesheetRequestLocationType",
+    "AttendanceEditTimesheetRequestRequestType",
+    "AttendanceEstimatedTime",
+    "AttendanceEstimatedTimeSource",
+    "AttendanceEstimatedTimeTimeUnit",
+    "AttendanceOpenShift",
+    "AttendanceOpenShiftStatus",
+    "AttendanceOvertimeRequest",
+    "AttendanceOvertimeRequestStatus",
+    "AttendanceReview",
+    "AttendanceShift",
+    "AttendanceShiftHalfDay",
+    "AttendanceShiftLocationType",
+    "AttendanceWorkedTime",
+    "AttendanceWorkedTimeDayType",
+    "AttendanceWorkedTimeTimeUnit",
+    "BankingBankAccount",
+    "BankingBankAccountAccountNumberType",
+    "BankingBankAccountNumber",
+    "BankingBankAccountNumberFormat",
+    "BankingCardPayment",
+    "BankingCardPaymentRejectedReason",
+    "BankingCardPaymentStatus",
+    "BankingCardPaymentType",
+    "BankingTransaction",
+    "BankingTransactionType",
+    "BookkeepersManagementIncidence",
+    "CompaniesLegalEntity",
+    "CompensationsConcept",
+    "CompensationsConceptCategory",
+    "CompensationsConceptUnitType",
+    "ContractsCompensation",
+    "ContractsCompensationTimeCondition",
+    "ContractsContractTemplate",
+    "ContractsContractVersion",
+    "ContractsContractVersionAnnualWorkingTimeDistribution",
+    "ContractsContractVersionBankHolidayTreatment",
+    "ContractsContractVersionHistory",
+    "ContractsContractVersionMetaData",
+    "ContractsFrenchContractType",
+    "ContractsGermanContractType",
+    "ContractsPortugueseContractType",
+    "ContractsSpanishContractType",
+    "ContractsSpanishEducationLevel",
+    "ContractsSpanishProfessionalCategory",
+    "ContractsSpanishWorkingDayType",
+    "ContractsTaxonomy",
+    "CustomFieldsField",
+    "CustomFieldsFieldFieldType",
+    "CustomFieldsOption",
+    "CustomFieldsResourceField",
+    "CustomFieldsValue",
+    "CustomResourcesResource",
+    "CustomResourcesSchema",
+    "CustomResourcesValue",
+    "DocumentsDocument",
+    "DocumentsDocumentSignatureStatus",
+    "DocumentsDownloadUrl",
+    "DocumentsFolder",
+    "EmployeesEmployee",
+    "EmployeesEmployeeBankNumberFormat",
+    "EmployeeUpdatesAbsence",
+    "EmployeeUpdatesContractChange",
+    "EmployeeUpdatesNewHire",
+    "EmployeeUpdatesPersonalChange",
+    "EmployeeUpdatesSummary",
+    "EmployeeUpdatesTermination",
+    "ExpensesExpensable",
+    "ExpensesExpensableReimbursementMethod",
+    "ExpensesExpensableStatus",
+    "ExpensesExpensableType",
+    "ExpensesExpense",
+    "ExpensesExpenseCard",
+    "ExpensesExpenseCategory",
+    "ExpensesExpenseCreationType",
+    "ExpensesExpensePayment",
+    "ExpensesExpenseSignedDocument",
+    "ExpensesExpenseStatus",
+    "ExpensesMileage",
+    "ExpensesMileageCategory",
+    "ExpensesMileagePayment",
+    "ExpensesPerDiem",
+    "ExpensesPerDiemCategory",
+    "ExpensesPerDiemPayment",
+    "ExpensesPerDiemStatus",
+    "FinanceAccount",
+    "FinanceAccountingSetting",
+    "FinanceAccountType",
+    "FinanceCategory",
+    "FinanceContact",
+    "FinanceContactAddress",
+    "FinanceContactPreferredPaymentMethod",
+    "FinanceCostCenter",
+    "FinanceCostCenterMembership",
+    "FinanceFinancialDocument",
+    "FinanceFinancialDocumentDocumentType",
+    "FinanceFinancialDocumentFile",
+    "FinanceFinancialDocumentStatus",
+    "FinanceJournalEntry",
+    "FinanceJournalEntrySourceType",
+    "FinanceJournalEntryStatus",
+    "FinanceJournalEntryType",
+    "FinanceJournalLine",
+    "FinanceLedgerAccountResource",
+    "FinanceLedgerAccountResourceBalanceType",
+    "FinanceLedgerAccountResourceResourceType",
+    "FinanceTaxRate",
+    "FinanceTaxType",
+    "FinanceTaxTypeType",
+    "GetApi20251001ResourcesApiPublicCredentialsResponse200",
+    "GetApi20251001ResourcesApiPublicWebhookSubscriptionsResponse200",
+    "GetApi20251001ResourcesAtsAnswersResponse200",
+    "GetApi20251001ResourcesAtsApplicationPhasesResponse200",
+    "GetApi20251001ResourcesAtsApplicationsResponse200",
+    "GetApi20251001ResourcesAtsCandidateSourcesResponse200",
+    "GetApi20251001ResourcesAtsCandidatesResponse200",
+    "GetApi20251001ResourcesAtsEvaluationFormsResponse200",
+    "GetApi20251001ResourcesAtsFeedbacksResponse200",
+    "GetApi20251001ResourcesAtsHiringStagesResponse200",
+    "GetApi20251001ResourcesAtsJobPostingsResponse200",
+    "GetApi20251001ResourcesAtsJobPostingsStatus",
+    "GetApi20251001ResourcesAtsMessagesResponse200",
+    "GetApi20251001ResourcesAtsQuestionsResponse200",
+    "GetApi20251001ResourcesAtsRejectionReasonsResponse200",
+    "GetApi20251001ResourcesAttendanceBreakConfigurationsResponse200",
+    "GetApi20251001ResourcesAttendanceEditTimesheetRequestsResponse200",
+    "GetApi20251001ResourcesAttendanceEstimatedTimesResponse200",
+    "GetApi20251001ResourcesAttendanceOpenShiftsResponse200",
+    "GetApi20251001ResourcesAttendanceOvertimeRequestsResponse200",
+    "GetApi20251001ResourcesAttendanceOvertimeRequestsStatus",
+    "GetApi20251001ResourcesAttendanceReviewsResponse200",
+    "GetApi20251001ResourcesAttendanceShiftsResponse200",
+    "GetApi20251001ResourcesAttendanceWorkedTimesResponse200",
+    "GetApi20251001ResourcesBankingBankAccountsResponse200",
+    "GetApi20251001ResourcesBankingCardPaymentsResponse200",
+    "GetApi20251001ResourcesBankingCardPaymentsStatus",
+    "GetApi20251001ResourcesBankingTransactionsResponse200",
+    "GetApi20251001ResourcesBookkeepersManagementIncidencesResponse200",
+    "GetApi20251001ResourcesCompaniesLegalEntitiesResponse200",
+    "GetApi20251001ResourcesCompensationsConceptsCategories",
+    "GetApi20251001ResourcesCompensationsConceptsResponse200",
+    "GetApi20251001ResourcesContractsCompensationsResponse200",
+    "GetApi20251001ResourcesContractsContractTemplatesResponse200",
+    "GetApi20251001ResourcesContractsContractVersionHistoriesResponse200",
+    "GetApi20251001ResourcesContractsContractVersionMetaDataResponse200",
+    "GetApi20251001ResourcesContractsContractVersionsResponse200",
+    "GetApi20251001ResourcesContractsFrenchContractTypesResponse200",
+    "GetApi20251001ResourcesContractsGermanContractTypesResponse200",
+    "GetApi20251001ResourcesContractsPortugueseContractTypesResponse200",
+    "GetApi20251001ResourcesContractsReferenceContractsResponse200",
+    "GetApi20251001ResourcesContractsSpanishContractTypesResponse200",
+    "GetApi20251001ResourcesContractsSpanishEducationLevelsResponse200",
+    "GetApi20251001ResourcesContractsSpanishProfessionalCategoriesResponse200",
+    "GetApi20251001ResourcesContractsSpanishWorkingDayTypesResponse200",
+    "GetApi20251001ResourcesContractsTaxonomiesResponse200",
+    "GetApi20251001ResourcesCustomFieldsFieldsFieldType",
+    "GetApi20251001ResourcesCustomFieldsFieldsResponse200",
+    "GetApi20251001ResourcesCustomFieldsOptionsResponse200",
+    "GetApi20251001ResourcesCustomFieldsResourceFieldsResponse200",
+    "GetApi20251001ResourcesCustomFieldsValuesResponse200",
+    "GetApi20251001ResourcesCustomResourcesResourcesResponse200",
+    "GetApi20251001ResourcesCustomResourcesSchemasResponse200",
+    "GetApi20251001ResourcesCustomResourcesValuesResponse200",
+    "GetApi20251001ResourcesDocumentsDocumentsResponse200",
+    "GetApi20251001ResourcesDocumentsFoldersResponse200",
+    "GetApi20251001ResourcesEmployeesEmployeesResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesAbsencesResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesContractChangesResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesNewHiresResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesPersonalChangesResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesSummariesResponse200",
+    "GetApi20251001ResourcesEmployeeUpdatesTerminationsResponse200",
+    "GetApi20251001ResourcesExpensesExpensablesResponse200",
+    "GetApi20251001ResourcesExpensesExpensablesStatus",
+    "GetApi20251001ResourcesExpensesExpensesResponse200",
+    "GetApi20251001ResourcesExpensesMileagesResponse200",
+    "GetApi20251001ResourcesExpensesPerDiemsResponse200",
+    "GetApi20251001ResourcesFinanceAccountingSettingsResponse200",
+    "GetApi20251001ResourcesFinanceAccountsResponse200",
+    "GetApi20251001ResourcesFinanceCategoriesCategoryLevel",
+    "GetApi20251001ResourcesFinanceCategoriesResponse200",
+    "GetApi20251001ResourcesFinanceCategoriesStatuses",
+    "GetApi20251001ResourcesFinanceCategoriesType",
+    "GetApi20251001ResourcesFinanceContactsContactType",
+    "GetApi20251001ResourcesFinanceContactsResponse200",
+    "GetApi20251001ResourcesFinanceCostCenterMembershipsResponse200",
+    "GetApi20251001ResourcesFinanceCostCentersResponse200",
+    "GetApi20251001ResourcesFinanceFinancialDocumentsDocumentTypes",
+    "GetApi20251001ResourcesFinanceFinancialDocumentsResponse200",
+    "GetApi20251001ResourcesFinanceFinancialDocumentsStatuses",
+    "GetApi20251001ResourcesFinanceJournalEntriesResponse200",
+    "GetApi20251001ResourcesFinanceJournalEntriesSourceType",
+    "GetApi20251001ResourcesFinanceJournalEntriesStatus",
+    "GetApi20251001ResourcesFinanceJournalEntriesTypes",
+    "GetApi20251001ResourcesFinanceJournalLinesJournalEntryTypes",
+    "GetApi20251001ResourcesFinanceJournalLinesReconciliationStatus",
+    "GetApi20251001ResourcesFinanceJournalLinesResponse200",
+    "GetApi20251001ResourcesFinanceLedgerAccountResourcesResourceType",
+    "GetApi20251001ResourcesFinanceLedgerAccountResourcesResponse200",
+    "GetApi20251001ResourcesFinanceTaxRatesResponse200",
+    "GetApi20251001ResourcesFinanceTaxTypesResponse200",
+    "GetApi20251001ResourcesFinanceTaxTypesType",
+    "GetApi20251001ResourcesHolidaysCompanyHolidaysResponse200",
+    "GetApi20251001ResourcesIntegrationsSyncableItemsResponse200",
+    "GetApi20251001ResourcesJobCatalogLevelsResponse200",
+    "GetApi20251001ResourcesJobCatalogRolesResponse200",
+    "GetApi20251001ResourcesLocationsLocationsResponse200",
+    "GetApi20251001ResourcesLocationsWorkAreasResponse200",
+    "GetApi20251001ResourcesMarketplaceInstallationSettingsResponse200",
+    "GetApi20251001ResourcesPayrollEmployeesIdentifiersCountry",
+    "GetApi20251001ResourcesPayrollEmployeesIdentifiersResponse200",
+    "GetApi20251001ResourcesPayrollFamilySituationsResponse200",
+    "GetApi20251001ResourcesPayrollIntegrationsBaseCodesIntegrations",
+    "GetApi20251001ResourcesPayrollIntegrationsBaseCodesResponse200",
+    "GetApi20251001ResourcesPayrollSupplementsResponse200",
+    "GetApi20251001ResourcesPerformanceAgreementsResponse200",
+    "GetApi20251001ResourcesPerformanceCompanyEmployeeScoreScalesResponse200",
+    "GetApi20251001ResourcesPerformanceEmployeeScoreScalesResponse200",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationAnswersResponse200",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationScoresResponse200",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationScoresReviewerStrategies",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationsResponse200",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationsReviewerStrategies",
+    "GetApi20251001ResourcesPerformanceReviewEvaluationsWithTargetsManagedByFilter",
+    "GetApi20251001ResourcesPerformanceReviewOwnersResponse200",
+    "GetApi20251001ResourcesPerformanceReviewProcessCustomTemplatesResponse200",
+    "GetApi20251001ResourcesPerformanceReviewProcessesResponse200",
+    "GetApi20251001ResourcesPerformanceReviewProcessEstimatedTargetsResponse200",
+    "GetApi20251001ResourcesPerformanceReviewProcessTargetsAgreementCompletionStatus",
+    "GetApi20251001ResourcesPerformanceReviewProcessTargetsManagedByFilter",
+    "GetApi20251001ResourcesPerformanceReviewProcessTargetsResponse200",
+    "GetApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesResponse200",
+    "GetApi20251001ResourcesPerformanceReviewVisibilitySettingsResponse200",
+    "GetApi20251001ResourcesPerformanceTargetManagersResponse200",
+    "GetApi20251001ResourcesPostsCommentsResponse200",
+    "GetApi20251001ResourcesPostsGroupsResponse200",
+    "GetApi20251001ResourcesPostsPostsResponse200",
+    "GetApi20251001ResourcesProjectManagementExpenseRecordsResponse200",
+    "GetApi20251001ResourcesProjectManagementExportableExpensesResponse200",
+    "GetApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsResponse200",
+    "GetApi20251001ResourcesProjectManagementFlexibleTimeRecordsResponse200",
+    "GetApi20251001ResourcesProjectManagementProjectsResponse200",
+    "GetApi20251001ResourcesProjectManagementProjectTasksDueStatus",
+    "GetApi20251001ResourcesProjectManagementProjectTasksResponse200",
+    "GetApi20251001ResourcesProjectManagementProjectWorkersResponse200",
+    "GetApi20251001ResourcesProjectManagementSubprojectsResponse200",
+    "GetApi20251001ResourcesProjectManagementTimeRecordsResponse200",
+    "GetApi20251001ResourcesShiftManagementShiftsOnlyStates",
+    "GetApi20251001ResourcesShiftManagementShiftsResponse200",
+    "GetApi20251001ResourcesTasksTaskFilesResponse200",
+    "GetApi20251001ResourcesTasksTasksResponse200",
+    "GetApi20251001ResourcesTasksTasksTaskStatus",
+    "GetApi20251001ResourcesTeamsMembershipsResponse200",
+    "GetApi20251001ResourcesTeamsTeamsResponse200",
+    "GetApi20251001ResourcesTimeoffAllowanceIncidencesResponse200",
+    "GetApi20251001ResourcesTimeoffAllowancesResponse200",
+    "GetApi20251001ResourcesTimeoffAllowanceStatsResponse200",
+    "GetApi20251001ResourcesTimeoffBlockedPeriodsResponse200",
+    "GetApi20251001ResourcesTimeoffLeavesResponse200",
+    "GetApi20251001ResourcesTimeoffLeaveTypesResponse200",
+    "GetApi20251001ResourcesTimeoffPoliciesResponse200",
+    "GetApi20251001ResourcesTimeoffPolicyAssignmentsResponse200",
+    "GetApi20251001ResourcesTimeoffPolicyTimelinesResponse200",
+    "GetApi20251001ResourcesTimePlanningPlannedBreaksResponse200",
+    "GetApi20251001ResourcesTimePlanningPlanningVersionsPlanningTool",
+    "GetApi20251001ResourcesTimePlanningPlanningVersionsResponse200",
+    "GetApi20251001ResourcesTimeSettingsBreakConfigurationsResponse200",
+    "GetApi20251001ResourcesTrainingsCategoriesResponse200",
+    "GetApi20251001ResourcesTrainingsSessionAccessMembershipsResponse200",
+    "GetApi20251001ResourcesTrainingsSessionAttendancesResponse200",
+    "GetApi20251001ResourcesTrainingsSessionsResponse200",
+    "GetApi20251001ResourcesTrainingsTrainingClassesResponse200",
+    "GetApi20251001ResourcesTrainingsTrainingMembershipsResponse200",
+    "GetApi20251001ResourcesTrainingsTrainingsResponse200",
+    "GetApi20251001ResourcesWorkScheduleDayConfigurationsResponse200",
+    "GetApi20251001ResourcesWorkScheduleOverlapPeriodsResponse200",
+    "GetApi20251001ResourcesWorkScheduleSchedulesResponse200",
+    "HolidaysCompanyHoliday",
+    "HolidaysCompanyHolidayHalfDay",
+    "IntegrationsSyncableItem",
+    "IntegrationsSyncableItemSyncPayload",
+    "IntegrationsSyncableSyncRun",
+    "IntegrationsSyncableSyncRunStatus",
+    "JobCatalogLevel",
+    "JobCatalogRole",
+    "LocationsLocation",
+    "LocationsWorkArea",
+    "MarketplaceInstallation",
+    "MarketplaceInstallationSettings",
+    "PagedIndexMeta",
+    "PayrollEmployeesIdentifier",
+    "PayrollEmployeesIdentifierCountry",
+    "PayrollFamilySituation",
+    "PayrollFamilySituationCivilStatus",
+    "PayrollIntegrationsBaseCode",
+    "PayrollIntegrationsBaseCodeIntegration",
+    "PayrollPolicyPeriod",
+    "PayrollSupplement",
+    "PayrollSupplementUnit",
+    "PerformanceAgreement",
+    "PerformanceAgreementConclusions",
+    "PerformanceAgreementStatus",
+    "PerformanceCompanyEmployeeScoreScale",
+    "PerformanceEmployeeScoreScale",
+    "PerformanceReviewEmployeeScore",
+    "PerformanceReviewEmployeeScoreReviewerStrategy",
+    "PerformanceReviewEvaluation",
+    "PerformanceReviewEvaluationAnswer",
+    "PerformanceReviewEvaluationAnswerAnsweredEmployeePotentialScoreQuestionnaire",
+    "PerformanceReviewEvaluationAnswerAnsweredEmployeeScoreQuestionnaire",
+    "PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSections",
+    "PerformanceReviewEvaluationEvaluationType",
+    "PerformanceReviewEvaluationScore",
+    "PerformanceReviewEvaluationScoreReviewerStrategy",
+    "PerformanceReviewEvaluationStatus",
+    "PerformanceReviewOwner",
+    "PerformanceReviewProcess",
+    "PerformanceReviewProcessAgreementsConfiguration",
+    "PerformanceReviewProcessCompetenciesAssessmentsConfiguration",
+    "PerformanceReviewProcessCustomTemplate",
+    "PerformanceReviewProcessCustomTemplateReviewerStrategies",
+    "PerformanceReviewProcessCustomTemplateTargetStrategy",
+    "PerformanceReviewProcessCustomTemplateVisibilitySettings",
+    "PerformanceReviewProcessEstimatedTarget",
+    "PerformanceReviewProcessReviewerStrategies",
+    "PerformanceReviewProcessStartValidationErrors",
+    "PerformanceReviewProcessStatus",
+    "PerformanceReviewProcessTarget",
+    "PerformanceReviewProcessTargetStrategy",
+    "PerformanceReviewQuestionnairesByStrategy",
+    "PerformanceReviewQuestionnairesByStrategyDirectReportQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategyEmployeePotentialScoreManagerQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategyEmployeeScoreManagerQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategyManagerQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategyPeersQuestionnaire",
+    "PerformanceReviewQuestionnairesByStrategySelfQuestionnaire",
+    "PerformanceReviewVisibilitySetting",
+    "PerformanceTargetManager",
+    "PostApi20251001ResourcesApiPublicWebhookSubscriptionsBody",
+    "PostApi20251001ResourcesApiPublicWebhookSubscriptionsBodyApiVersion",
+    "PostApi20251001ResourcesAtsAnswersBody",
+    "PostApi20251001ResourcesAtsAnswersBodyOriginalQuestionType",
+    "PostApi20251001ResourcesAtsApplicationsApplyBody",
+    "PostApi20251001ResourcesAtsApplicationsBody",
+    "PostApi20251001ResourcesAtsApplicationsBodyAuthorType",
+    "PostApi20251001ResourcesAtsCandidatesBody",
+    "PostApi20251001ResourcesAtsEvaluationFormsSaveAsTemplateBody",
+    "PostApi20251001ResourcesAtsFeedbacksBody",
+    "PostApi20251001ResourcesAtsJobPostingsBody",
+    "PostApi20251001ResourcesAtsJobPostingsBodyContractType",
+    "PostApi20251001ResourcesAtsJobPostingsBodyCoverLetterRequirement",
+    "PostApi20251001ResourcesAtsJobPostingsBodyCvRequirement",
+    "PostApi20251001ResourcesAtsJobPostingsBodyPersonalUrlRequirement",
+    "PostApi20251001ResourcesAtsJobPostingsBodyPhoneRequirement",
+    "PostApi20251001ResourcesAtsJobPostingsBodyPhotoRequirement",
+    "PostApi20251001ResourcesAtsJobPostingsBodySalaryFormat",
+    "PostApi20251001ResourcesAtsJobPostingsBodySalaryPeriod",
+    "PostApi20251001ResourcesAtsJobPostingsBodyScheduleType",
+    "PostApi20251001ResourcesAtsJobPostingsBodyStatus",
+    "PostApi20251001ResourcesAtsJobPostingsBodyWorkplaceType",
+    "PostApi20251001ResourcesAtsJobPostingsDuplicateBody",
+    "PostApi20251001ResourcesAtsMessagesBody",
+    "PostApi20251001ResourcesAtsMessagesBodySentByType",
+    "PostApi20251001ResourcesAtsQuestionsBody",
+    "PostApi20251001ResourcesAtsQuestionsBodyQuestionType",
+    "PostApi20251001ResourcesAttendanceBreakConfigurationsBody",
+    "PostApi20251001ResourcesAttendanceEditTimesheetRequestsBody",
+    "PostApi20251001ResourcesAttendanceEditTimesheetRequestsBodyLocationType",
+    "PostApi20251001ResourcesAttendanceEditTimesheetRequestsBodyRequestType",
+    "PostApi20251001ResourcesAttendanceOvertimeRequestsApproveBody",
+    "PostApi20251001ResourcesAttendanceOvertimeRequestsBody",
+    "PostApi20251001ResourcesAttendanceOvertimeRequestsRejectBody",
+    "PostApi20251001ResourcesAttendanceReviewsBulkCreateBody",
+    "PostApi20251001ResourcesAttendanceReviewsBulkDestroyBody",
+    "PostApi20251001ResourcesAttendanceShiftsAutofillBody",
+    "PostApi20251001ResourcesAttendanceShiftsBody",
+    "PostApi20251001ResourcesAttendanceShiftsBodyLocationType",
+    "PostApi20251001ResourcesAttendanceShiftsBodySource",
+    "PostApi20251001ResourcesAttendanceShiftsBreakEndBody",
+    "PostApi20251001ResourcesAttendanceShiftsBreakStartBody",
+    "PostApi20251001ResourcesAttendanceShiftsClockInBody",
+    "PostApi20251001ResourcesAttendanceShiftsClockInBodyLocationType",
+    "PostApi20251001ResourcesAttendanceShiftsClockOutBody",
+    "PostApi20251001ResourcesAttendanceShiftsToggleClockBody",
+    "PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType",
+    "PostApi20251001ResourcesBankingBankAccountsCreateManualBody",
+    "PostApi20251001ResourcesBankingBankAccountsCreateManualBodyAccountNumberType",
+    "PostApi20251001ResourcesCompaniesLegalEntitiesBody",
+    "PostApi20251001ResourcesContractsCompensationsBody",
+    "PostApi20251001ResourcesContractsCompensationsBodyTimeCondition",
+    "PostApi20251001ResourcesContractsContractVersionsBody",
+    "PostApi20251001ResourcesContractsContractVersionsBodyAnnualWorkingTimeDistribution",
+    "PostApi20251001ResourcesContractsContractVersionsBodyBankHolidayTreatment",
+    "PostApi20251001ResourcesContractsSpanishContractTypesBody",
+    "PostApi20251001ResourcesContractsSpanishEducationLevelsBody",
+    "PostApi20251001ResourcesContractsSpanishProfessionalCategoriesBody",
+    "PostApi20251001ResourcesContractsSpanishWorkingDayTypesBody",
+    "PostApi20251001ResourcesCustomFieldsFieldsBody",
+    "PostApi20251001ResourcesCustomFieldsFieldsBodyEditable",
+    "PostApi20251001ResourcesCustomFieldsFieldsBodyFieldType",
+    "PostApi20251001ResourcesCustomFieldsFieldsBodyVisible",
+    "PostApi20251001ResourcesCustomFieldsOptionsBody",
+    "PostApi20251001ResourcesCustomFieldsResourceFieldsBody",
+    "PostApi20251001ResourcesCustomFieldsResourceFieldsBodyEditable",
+    "PostApi20251001ResourcesCustomFieldsResourceFieldsBodyFieldType",
+    "PostApi20251001ResourcesCustomFieldsResourceFieldsBodyVisible",
+    "PostApi20251001ResourcesCustomFieldsValuesBody",
+    "PostApi20251001ResourcesCustomResourcesSchemasBody",
+    "PostApi20251001ResourcesCustomResourcesValuesBody",
+    "PostApi20251001ResourcesDocumentsDocumentsBody",
+    "PostApi20251001ResourcesDocumentsDocumentsBodySpace",
+    "PostApi20251001ResourcesDocumentsDocumentsMoveToTrashBinBody",
+    "PostApi20251001ResourcesDocumentsDocumentsRestoreFromTrashBinBody",
+    "PostApi20251001ResourcesDocumentsDownloadUrlsBulkCreateBody",
+    "PostApi20251001ResourcesDocumentsFoldersBody",
+    "PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBody",
+    "PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBodyContractsAnnualWorkingTimeDistribution",
+    "PostApi20251001ResourcesEmployeesEmployeesCreateWithContractBodyContractsBankHolidayTreatment",
+    "PostApi20251001ResourcesEmployeesEmployeesInviteBody",
+    "PostApi20251001ResourcesEmployeesEmployeesTerminateBody",
+    "PostApi20251001ResourcesEmployeesEmployeesUnterminateBody",
+    "PostApi20251001ResourcesExpensesExpensablesBulkSetToPaidBody",
+    "PostApi20251001ResourcesFinanceAccountingSettingsUpsertBody",
+    "PostApi20251001ResourcesFinanceAccountsBody",
+    "PostApi20251001ResourcesFinanceAccountsBodyType",
+    "PostApi20251001ResourcesFinanceContactsBody",
+    "PostApi20251001ResourcesFinanceContactsBodyAddress",
+    "PostApi20251001ResourcesFinanceCostCenterMembershipsBulkCreateUpdateBody",
+    "PostApi20251001ResourcesFinanceCostCentersBody",
+    "PostApi20251001ResourcesFinanceCostCentersEditBody",
+    "PostApi20251001ResourcesFinanceJournalEntriesBody",
+    "PostApi20251001ResourcesFinanceJournalEntriesBodyStatus",
+    "PostApi20251001ResourcesFinanceJournalEntriesBodyType",
+    "PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBody",
+    "PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyBalanceType",
+    "PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyOperationType",
+    "PostApi20251001ResourcesFinanceLedgerAccountResourcesUpsertBodyResourceType",
+    "PostApi20251001ResourcesFinanceTaxRatesBody",
+    "PostApi20251001ResourcesFinanceTaxTypesBody",
+    "PostApi20251001ResourcesFinanceTaxTypesBodyType",
+    "PostApi20251001ResourcesLocationsLocationsBody",
+    "PostApi20251001ResourcesLocationsWorkAreasArchiveBody",
+    "PostApi20251001ResourcesLocationsWorkAreasBody",
+    "PostApi20251001ResourcesLocationsWorkAreasUnarchiveBody",
+    "PostApi20251001ResourcesMarketplaceInstallationsBody",
+    "PostApi20251001ResourcesPayrollEmployeesIdentifiersBody",
+    "PostApi20251001ResourcesPayrollEmployeesIdentifiersBodyCountry",
+    "PostApi20251001ResourcesPayrollFamilySituationsBody",
+    "PostApi20251001ResourcesPayrollFamilySituationsBodyCivilStatus",
+    "PostApi20251001ResourcesPayrollIntegrationsBaseCodesBody",
+    "PostApi20251001ResourcesPayrollIntegrationsBaseCodesBodyIntegration",
+    "PostApi20251001ResourcesPayrollPolicyPeriodsChangeStatusBody",
+    "PostApi20251001ResourcesPayrollPolicyPeriodsChangeStatusBodyStatus",
+    "PostApi20251001ResourcesPayrollSupplementsBody",
+    "PostApi20251001ResourcesPerformanceAgreementsBulkInitiateBody",
+    "PostApi20251001ResourcesPerformanceAgreementsInitiateBody",
+    "PostApi20251001ResourcesPerformanceCompanyEmployeeScoreScalesSetBody",
+    "PostApi20251001ResourcesPerformanceReviewEvaluationsReplaceReviewerBody",
+    "PostApi20251001ResourcesPerformanceReviewOwnersBulkCreateBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesBodyReviewerStrategies",
+    "PostApi20251001ResourcesPerformanceReviewProcessesBodyTargetStrategy",
+    "PostApi20251001ResourcesPerformanceReviewProcessesCreateFromTemplateBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesCreateFromTemplateBodyTemplateType",
+    "PostApi20251001ResourcesPerformanceReviewProcessesDuplicateBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesRemindInBulkBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesRemindInBulkBodyEvaluationTypes",
+    "PostApi20251001ResourcesPerformanceReviewProcessesRemoveScheduleBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesReopenBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesScheduleBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesStartBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesStopBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesToggleArchiveBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateBasicInfoBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateDeadlineBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesBodyReviewerStrategies",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateScheduleBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateTargetStrategyBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessesUpdateTargetStrategyBodyTargetStrategy",
+    "PostApi20251001ResourcesPerformanceReviewProcessTargetsAddPeersBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessTargetsBulkCreateBody",
+    "PostApi20251001ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsBody",
+    "PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleBody",
+    "PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyBody",
+    "PostApi20251001ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyBodyStrategy",
+    "PostApi20251001ResourcesPostsCommentsBody",
+    "PostApi20251001ResourcesPostsGroupsArchiveBody",
+    "PostApi20251001ResourcesPostsGroupsBody",
+    "PostApi20251001ResourcesPostsPostsBody",
+    "PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsBody",
+    "PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordBody",
+    "PostApi20251001ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordBody",
+    "PostApi20251001ResourcesProjectManagementFlexibleTimeRecordsBody",
+    "PostApi20251001ResourcesProjectManagementProjectsActivateBody",
+    "PostApi20251001ResourcesProjectManagementProjectsBody",
+    "PostApi20251001ResourcesProjectManagementProjectsChangeAssignmentBody",
+    "PostApi20251001ResourcesProjectManagementProjectsChangeStatusBody",
+    "PostApi20251001ResourcesProjectManagementProjectsChangeStatusBodyStatus",
+    "PostApi20251001ResourcesProjectManagementProjectsCloseBody",
+    "PostApi20251001ResourcesProjectManagementProjectsSoftDeleteBody",
+    "PostApi20251001ResourcesProjectManagementProjectTasksBody",
+    "PostApi20251001ResourcesProjectManagementProjectTasksBodyStatus",
+    "PostApi20251001ResourcesProjectManagementProjectTasksBulkDestroyBody",
+    "PostApi20251001ResourcesProjectManagementProjectTasksBulkDuplicateBody",
+    "PostApi20251001ResourcesProjectManagementProjectWorkersBody",
+    "PostApi20251001ResourcesProjectManagementProjectWorkersBulkAssignBody",
+    "PostApi20251001ResourcesProjectManagementProjectWorkersBulkCreateBody",
+    "PostApi20251001ResourcesProjectManagementProjectWorkersUnassignBody",
+    "PostApi20251001ResourcesProjectManagementSubprojectsBody",
+    "PostApi20251001ResourcesProjectManagementSubprojectsRenameBody",
+    "PostApi20251001ResourcesProjectManagementTimeRecordsBody",
+    "PostApi20251001ResourcesProjectManagementTimeRecordsBulkDeleteBody",
+    "PostApi20251001ResourcesProjectManagementTimeRecordsBulkProcessBody",
+    "PostApi20251001ResourcesProjectManagementTimeRecordsUpdateProjectWorkerBody",
+    "PostApi20251001ResourcesShiftManagementShiftsBody",
+    "PostApi20251001ResourcesShiftManagementShiftsBulkCreateBody",
+    "PostApi20251001ResourcesShiftManagementShiftsBulkDeleteBody",
+    "PostApi20251001ResourcesTasksTaskFilesBody",
+    "PostApi20251001ResourcesTasksTasksBody",
+    "PostApi20251001ResourcesTasksTasksBodyStatus",
+    "PostApi20251001ResourcesTasksTasksBulkCreateBody",
+    "PostApi20251001ResourcesTasksTasksBulkCreateBodyStatus",
+    "PostApi20251001ResourcesTasksTasksBulkDeleteBody",
+    "PostApi20251001ResourcesTasksTasksBulkUpdateBody",
+    "PostApi20251001ResourcesTasksTasksCopyBody",
+    "PostApi20251001ResourcesTasksTasksCreateCommentBody",
+    "PostApi20251001ResourcesTeamsMembershipsBody",
+    "PostApi20251001ResourcesTeamsTeamsBody",
+    "PostApi20251001ResourcesTimeoffAllowanceIncidencesBody",
+    "PostApi20251001ResourcesTimeoffAllowanceIncidencesBodyTargetBalance",
+    "PostApi20251001ResourcesTimeoffAllowancesBody",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyAccruedUnitsAvailability",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyAllowanceType",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyAvailableDays",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyCycleStart",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyDaysType",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyFrequency",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyNegativeCounterType",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyProrationType",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyRangeType",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyRounding",
+    "PostApi20251001ResourcesTimeoffAllowancesBodySourceUnits",
+    "PostApi20251001ResourcesTimeoffAllowancesBodyTenurePeriodTransition",
+    "PostApi20251001ResourcesTimeoffAllowancesDeleteWithAltAllowanceBody",
+    "PostApi20251001ResourcesTimeoffBlockedPeriodsBody",
+    "PostApi20251001ResourcesTimeoffLeavesApproveAllBody",
+    "PostApi20251001ResourcesTimeoffLeavesApproveBody",
+    "PostApi20251001ResourcesTimeoffLeavesBody",
+    "PostApi20251001ResourcesTimeoffLeavesRejectBody",
+    "PostApi20251001ResourcesTimeoffLeaveTypesBody",
+    "PostApi20251001ResourcesTimeoffPoliciesBody",
+    "PostApi20251001ResourcesTimeoffPolicyAssignmentsBody",
+    "PostApi20251001ResourcesTimePlanningPlannedBreaksBulkCreateBody",
+    "PostApi20251001ResourcesTimePlanningPlanningVersionsBody",
+    "PostApi20251001ResourcesTimePlanningPlanningVersionsBulkCreateBody",
+    "PostApi20251001ResourcesTimeSettingsBreakConfigurationsBody",
+    "PostApi20251001ResourcesTrainingsCategoriesBody",
+    "PostApi20251001ResourcesTrainingsSessionAccessMembershipsBulkCreateBody",
+    "PostApi20251001ResourcesTrainingsSessionAccessMembershipsBulkDestroyBody",
+    "PostApi20251001ResourcesTrainingsSessionAttendancesBulkUpdateBody",
+    "PostApi20251001ResourcesTrainingsSessionsBody",
+    "PostApi20251001ResourcesTrainingsSessionsBodyModality",
+    "PostApi20251001ResourcesTrainingsSessionsBodySchedule",
+    "PostApi20251001ResourcesTrainingsTrainingClassesBody",
+    "PostApi20251001ResourcesTrainingsTrainingMembershipsBulkCreateBody",
+    "PostApi20251001ResourcesTrainingsTrainingMembershipsBulkDestroyBody",
+    "PostApi20251001ResourcesTrainingsTrainingsBody",
+    "PostApi20251001ResourcesTrainingsTrainingsBulkDeleteBody",
+    "PostApi20251001ResourcesTrainingsTrainingsBulkUpdateCatalogBody",
+    "PostApi20251001ResourcesTrainingsTrainingsUpdateStatusBody",
+    "PostApi20251001ResourcesWorkScheduleDayConfigurationsBulkCudBody",
+    "PostApi20251001ResourcesWorkScheduleOverlapPeriodsBody",
+    "PostApi20251001ResourcesWorkScheduleSchedulesBody",
+    "PostApi20251001ResourcesWorkScheduleSchedulesToggleArchiveBody",
+    "PostsComment",
+    "PostsGroup",
+    "PostsPost",
+    "ProjectManagementExpenseRecord",
+    "ProjectManagementExportableExpense",
+    "ProjectManagementExportableProject",
+    "ProjectManagementFlexibleTimeRecord",
+    "ProjectManagementFlexibleTimeRecordComment",
+    "ProjectManagementProject",
+    "ProjectManagementProjectEmployeesAssignment",
+    "ProjectManagementProjectStatus",
+    "ProjectManagementProjectTask",
+    "ProjectManagementProjectWorker",
+    "ProjectManagementSubproject",
+    "ProjectManagementTimeRecord",
+    "PutApi20251001ResourcesApiPublicWebhookSubscriptionsIdBody",
+    "PutApi20251001ResourcesApiPublicWebhookSubscriptionsIdBodyApiVersion",
+    "PutApi20251001ResourcesAtsApplicationsIdBody",
+    "PutApi20251001ResourcesAtsApplicationsIdBodyAuthorType",
+    "PutApi20251001ResourcesAtsCandidatesIdBody",
+    "PutApi20251001ResourcesAtsFeedbacksIdBody",
+    "PutApi20251001ResourcesAtsJobPostingsIdBody",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyContractType",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyCoverLetterRequirement",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyCvRequirement",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyPersonalUrlRequirement",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyPhoneRequirement",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyPhotoRequirement",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodySalaryFormat",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodySalaryPeriod",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyScheduleType",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyStatus",
+    "PutApi20251001ResourcesAtsJobPostingsIdBodyWorkplaceType",
+    "PutApi20251001ResourcesAtsQuestionsIdBody",
+    "PutApi20251001ResourcesAttendanceBreakConfigurationsIdBody",
+    "PutApi20251001ResourcesAttendanceEditTimesheetRequestsIdBody",
+    "PutApi20251001ResourcesAttendanceEditTimesheetRequestsIdBodyLocationType",
+    "PutApi20251001ResourcesAttendanceOvertimeRequestsIdBody",
+    "PutApi20251001ResourcesAttendanceShiftsIdBody",
+    "PutApi20251001ResourcesAttendanceShiftsIdBodyLocationType",
+    "PutApi20251001ResourcesBookkeepersManagementIncidencesIdBody",
+    "PutApi20251001ResourcesContractsCompensationsIdBody",
+    "PutApi20251001ResourcesContractsCompensationsIdBodyTimeCondition",
+    "PutApi20251001ResourcesContractsContractVersionsIdBody",
+    "PutApi20251001ResourcesContractsContractVersionsIdBodyAnnualWorkingTimeDistribution",
+    "PutApi20251001ResourcesContractsContractVersionsIdBodyBankHolidayTreatment",
+    "PutApi20251001ResourcesCustomFieldsValuesIdBody",
+    "PutApi20251001ResourcesDocumentsDocumentsIdBody",
+    "PutApi20251001ResourcesDocumentsFoldersIdBody",
+    "PutApi20251001ResourcesEmployeesEmployeesIdBody",
+    "PutApi20251001ResourcesFinanceAccountsIdBody",
+    "PutApi20251001ResourcesFinanceAccountsIdBodyType",
+    "PutApi20251001ResourcesFinanceContactsIdBody",
+    "PutApi20251001ResourcesFinanceContactsIdBodyAddress",
+    "PutApi20251001ResourcesFinanceTaxRatesIdBody",
+    "PutApi20251001ResourcesFinanceTaxTypesIdBody",
+    "PutApi20251001ResourcesFinanceTaxTypesIdBodyType",
+    "PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBody",
+    "PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBodyErrorMessages",
+    "PutApi20251001ResourcesIntegrationsSyncableSyncRunsIdBodyStatus",
+    "PutApi20251001ResourcesLocationsLocationsIdBody",
+    "PutApi20251001ResourcesLocationsWorkAreasIdBody",
+    "PutApi20251001ResourcesPayrollEmployeesIdentifiersIdBody",
+    "PutApi20251001ResourcesPayrollEmployeesIdentifiersIdBodyCountry",
+    "PutApi20251001ResourcesPayrollFamilySituationsIdBody",
+    "PutApi20251001ResourcesPayrollFamilySituationsIdBodyCivilStatus",
+    "PutApi20251001ResourcesPayrollIntegrationsBaseCodesIdBody",
+    "PutApi20251001ResourcesPayrollSupplementsIdBody",
+    "PutApi20251001ResourcesPerformanceReviewVisibilitySettingsIdBody",
+    "PutApi20251001ResourcesPostsCommentsIdBody",
+    "PutApi20251001ResourcesPostsGroupsIdBody",
+    "PutApi20251001ResourcesPostsPostsIdBody",
+    "PutApi20251001ResourcesProjectManagementFlexibleTimeRecordsIdBody",
+    "PutApi20251001ResourcesProjectManagementProjectsIdBody",
+    "PutApi20251001ResourcesProjectManagementProjectTasksIdBody",
+    "PutApi20251001ResourcesProjectManagementProjectTasksIdBodyStatus",
+    "PutApi20251001ResourcesTasksTasksIdBody",
+    "PutApi20251001ResourcesTasksTasksIdBodyStatus",
+    "PutApi20251001ResourcesTeamsMembershipsIdBody",
+    "PutApi20251001ResourcesTeamsTeamsIdBody",
+    "PutApi20251001ResourcesTimeoffAllowanceIncidencesIdBody",
+    "PutApi20251001ResourcesTimeoffAllowanceIncidencesIdBodyTargetBalance",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBody",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyAvailableDays",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyDaysType",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyFrequency",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyNegativeCounterType",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyProrationType",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyRangeType",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyRounding",
+    "PutApi20251001ResourcesTimeoffAllowancesIdBodyTenurePeriodTransition",
+    "PutApi20251001ResourcesTimeoffBlockedPeriodsIdBody",
+    "PutApi20251001ResourcesTimeoffLeavesIdBody",
+    "PutApi20251001ResourcesTimeoffLeaveTypesIdBody",
+    "PutApi20251001ResourcesTimeoffPoliciesIdBody",
+    "PutApi20251001ResourcesTimeoffPolicyAssignmentsIdBody",
+    "PutApi20251001ResourcesTimePlanningPlanningVersionsIdBody",
+    "PutApi20251001ResourcesTimeSettingsBreakConfigurationsIdBody",
+    "PutApi20251001ResourcesTrainingsSessionsIdBody",
+    "PutApi20251001ResourcesTrainingsSessionsIdBodySchedule",
+    "PutApi20251001ResourcesTrainingsTrainingClassesIdBody",
+    "PutApi20251001ResourcesTrainingsTrainingMembershipsIdBody",
+    "PutApi20251001ResourcesTrainingsTrainingsIdBody",
+    "PutApi20251001ResourcesWorkScheduleOverlapPeriodsIdBody",
+    "PutApi20251001ResourcesWorkScheduleSchedulesIdBody",
+    "ShiftManagementShift",
+    "ShiftManagementShiftState",
+    "TasksTask",
+    "TasksTaskFile",
+    "TasksTaskStatus",
+    "TeamsMembership",
+    "TeamsTeam",
+    "TimeoffAllowance",
+    "TimeoffAllowanceAccruedUnitsAvailability",
+    "TimeoffAllowanceAllowanceType",
+    "TimeoffAllowanceAvailableDays",
+    "TimeoffAllowanceDaysType",
+    "TimeoffAllowanceFrequency",
+    "TimeoffAllowanceIncidence",
+    "TimeoffAllowanceNegativeCounterType",
+    "TimeoffAllowanceProrationType",
+    "TimeoffAllowanceRangeType",
+    "TimeoffAllowanceRounding",
+    "TimeoffAllowanceSourceUnits",
+    "TimeoffAllowanceStatsNew",
+    "TimeoffAllowanceTenurePeriodTransition",
+    "TimeoffBlockedPeriodsPolicy",
+    "TimeoffLeave",
+    "TimeoffLeaveType",
+    "TimeoffPolicy",
+    "TimeoffPolicyAssignment",
+    "TimeoffPolicyTimeline",
+    "TimePlanningPlannedBreak",
+    "TimePlanningPlannedBreakBreakType",
+    "TimePlanningPlanningVersion",
+    "TimeSettingsBreakConfiguration",
+    "TrainingsCategory",
+    "TrainingsSession",
+    "TrainingsSessionAccessMembership",
+    "TrainingsSessionAttendance",
+    "TrainingsSessionAttendanceStatus",
+    "TrainingsSessionModality",
+    "TrainingsSessionSchedule",
+    "TrainingsTraining",
+    "TrainingsTrainingClass",
+    "TrainingsTrainingMembership",
+    "TrainingsTrainingMembershipStatus",
+    "TrainingsTrainingStatus",
+    "TrainingsTrainingTrainingAttendanceStatus",
+    "WorkScheduleDayConfiguration",
+    "WorkScheduleOverlapPeriod",
+    "WorkScheduleSchedule",
+)

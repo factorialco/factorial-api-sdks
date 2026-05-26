@@ -1,0 +1,20 @@
+# openapi-python-client generator configuration
+# https://github.com/openapi-generators/openapi-python-client
+
+# Override the generated package name
+project_name_override: factorial-api-client-generated
+package_name_override: factorial_api_client_generated
+
+# Use the API version as the package version
+package_version_override: "2026-04-01"
+
+# Use Literal enums for cleaner type annotations
+literal_enums: false
+
+# Put attribute descriptions in attribute docstrings (better for AI agent introspection)
+docstrings_on_attributes: true
+
+# Clean up with ruff after generation
+post_hooks:
+  - "ruff check . --fix-only --silent"
+  - "ruff format . --silent"

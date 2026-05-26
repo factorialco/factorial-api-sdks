@@ -1,0 +1,16 @@
+from enum import Enum
+
+
+class PutApi20251001ResourcesPayrollFamilySituationsIdBodyCivilStatus(str, Enum):
+    CIVIL_PARTNERSHIP = "civil_partnership"
+    COHABITATING = "cohabitating"
+    DIVORCED = "divorced"
+    MARRIED = "married"
+    NOT_APPLICABLE = "not_applicable"
+    SEPARATED = "separated"
+    SINGLE = "single"
+    UNKNOWN = "unknown"
+    WIDOW = "widow"
+
+    def __str__(self) -> str:
+        return str(self.value)

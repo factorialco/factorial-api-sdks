@@ -1,0 +1,99 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.post_api_20251001_resources_attendance_shifts_toggle_clock_body_location_type import (
+    PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType,
+)
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PostApi20251001ResourcesAttendanceShiftsToggleClockBody")
+
+
+@_attrs_define
+class PostApi20251001ResourcesAttendanceShiftsToggleClockBody:
+    employee_id: int
+    """ Employee identifier """
+    clock_time: str
+    """ Clock in or out Timestamp """
+    location_type: PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType | Unset = (
+        UNSET
+    )
+    """ Place where user has clocked in """
+    observations: str | Unset = UNSET
+    """ Notes on the shift record """
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        employee_id = self.employee_id
+
+        clock_time = self.clock_time
+
+        location_type: str | Unset = UNSET
+        if not isinstance(self.location_type, Unset):
+            location_type = self.location_type.value
+
+        observations = self.observations
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "employee_id": employee_id,
+                "clock_time": clock_time,
+            }
+        )
+        if location_type is not UNSET:
+            field_dict["location_type"] = location_type
+        if observations is not UNSET:
+            field_dict["observations"] = observations
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        employee_id = d.pop("employee_id")
+
+        clock_time = d.pop("clock_time")
+
+        _location_type = d.pop("location_type", UNSET)
+        location_type: PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType | Unset
+        if isinstance(_location_type, Unset):
+            location_type = UNSET
+        else:
+            location_type = PostApi20251001ResourcesAttendanceShiftsToggleClockBodyLocationType(
+                _location_type
+            )
+
+        observations = d.pop("observations", UNSET)
+
+        post_api_20251001_resources_attendance_shifts_toggle_clock_body = cls(
+            employee_id=employee_id,
+            clock_time=clock_time,
+            location_type=location_type,
+            observations=observations,
+        )
+
+        post_api_20251001_resources_attendance_shifts_toggle_clock_body.additional_properties = d
+        return post_api_20251001_resources_attendance_shifts_toggle_clock_body
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

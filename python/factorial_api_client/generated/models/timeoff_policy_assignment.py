@@ -1,0 +1,84 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="TimeoffPolicyAssignment")
+
+
+@_attrs_define
+class TimeoffPolicyAssignment:
+    timeoff_policy_id: int
+    """ The time off policy id """
+    employee_id: int
+    """ The employee id """
+    effective_at: str
+    """ The effective date of the policy assignment """
+    id: int | Unset = UNSET
+    """ Unique identifier of the policy assignment """
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        timeoff_policy_id = self.timeoff_policy_id
+
+        employee_id = self.employee_id
+
+        effective_at = self.effective_at
+
+        id = self.id
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "timeoff_policy_id": timeoff_policy_id,
+                "employee_id": employee_id,
+                "effective_at": effective_at,
+            }
+        )
+        if id is not UNSET:
+            field_dict["id"] = id
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        timeoff_policy_id = d.pop("timeoff_policy_id")
+
+        employee_id = d.pop("employee_id")
+
+        effective_at = d.pop("effective_at")
+
+        id = d.pop("id", UNSET)
+
+        timeoff_policy_assignment = cls(
+            timeoff_policy_id=timeoff_policy_id,
+            employee_id=employee_id,
+            effective_at=effective_at,
+            id=id,
+        )
+
+        timeoff_policy_assignment.additional_properties = d
+        return timeoff_policy_assignment
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties
