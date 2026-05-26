@@ -54,6 +54,10 @@ class TrainingsTraining:
     total_participants: int
     """ Number of participants of all course's groups """
     training_attendance_status: TrainingsTrainingTrainingAttendanceStatus
+    total_duration: float
+    """ The total duration in hours and minutes of the course """
+    is_mandatory: bool
+    """ This field is used to define if the training is mandatory or not """
     code: str | Unset = UNSET
     """ Code of the training """
     created_at: str | Unset = UNSET
@@ -120,6 +124,10 @@ class TrainingsTraining:
 
         training_attendance_status = self.training_attendance_status.value
 
+        total_duration = self.total_duration
+
+        is_mandatory = self.is_mandatory
+
         code = self.code
 
         created_at = self.created_at
@@ -171,6 +179,8 @@ class TrainingsTraining:
                 "total_training_subsidized_cost": total_training_subsidized_cost,
                 "total_participants": total_participants,
                 "training_attendance_status": training_attendance_status,
+                "total_duration": total_duration,
+                "is_mandatory": is_mandatory,
             }
         )
         if code is not UNSET:
@@ -245,6 +255,10 @@ class TrainingsTraining:
             d.pop("training_attendance_status")
         )
 
+        total_duration = d.pop("total_duration")
+
+        is_mandatory = d.pop("is_mandatory")
+
         code = d.pop("code", UNSET)
 
         created_at = d.pop("created_at", UNSET)
@@ -294,6 +308,8 @@ class TrainingsTraining:
             total_training_subsidized_cost=total_training_subsidized_cost,
             total_participants=total_participants,
             training_attendance_status=training_attendance_status,
+            total_duration=total_duration,
+            is_mandatory=is_mandatory,
             code=code,
             created_at=created_at,
             updated_at=updated_at,

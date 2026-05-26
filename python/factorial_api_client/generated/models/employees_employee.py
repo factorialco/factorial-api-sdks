@@ -74,6 +74,8 @@ class EmployeesEmployee:
     """ bank number format. """
     legal_entity_id: int | Unset = UNSET
     """ legal entity of the employee, references to companies/legal_entities. """
+    default_work_area_id: int | Unset = UNSET
+    """ Default work area ID for the employee at the default workplace. References locations/work_areas. """
     social_security_number: str | Unset = UNSET
     """ social security number of the employee. """
     terminated_on: str | Unset = UNSET
@@ -182,6 +184,8 @@ class EmployeesEmployee:
 
         legal_entity_id = self.legal_entity_id
 
+        default_work_area_id = self.default_work_area_id
+
         social_security_number = self.social_security_number
 
         terminated_on = self.terminated_on
@@ -279,6 +283,8 @@ class EmployeesEmployee:
             field_dict["bank_number_format"] = bank_number_format
         if legal_entity_id is not UNSET:
             field_dict["legal_entity_id"] = legal_entity_id
+        if default_work_area_id is not UNSET:
+            field_dict["default_work_area_id"] = default_work_area_id
         if social_security_number is not UNSET:
             field_dict["social_security_number"] = social_security_number
         if terminated_on is not UNSET:
@@ -392,6 +398,8 @@ class EmployeesEmployee:
 
         legal_entity_id = d.pop("legal_entity_id", UNSET)
 
+        default_work_area_id = d.pop("default_work_area_id", UNSET)
+
         social_security_number = d.pop("social_security_number", UNSET)
 
         terminated_on = d.pop("terminated_on", UNSET)
@@ -465,6 +473,7 @@ class EmployeesEmployee:
             swift_bic=swift_bic,
             bank_number_format=bank_number_format,
             legal_entity_id=legal_entity_id,
+            default_work_area_id=default_work_area_id,
             social_security_number=social_security_number,
             terminated_on=terminated_on,
             termination_reason_type=termination_reason_type,

@@ -23,6 +23,8 @@ class TimeoffLeave:
     """ The start date of the leave """
     updated_at: str
     """ The updated at date of the leave """
+    days_taken: float
+    """ Number of days taken for paid leave """
     finish_on: str | Unset = UNSET
     """ The end date of the leave """
     half_day: str | Unset = UNSET
@@ -62,6 +64,8 @@ class TimeoffLeave:
 
         updated_at = self.updated_at
 
+        days_taken = self.days_taken
+
         finish_on = self.finish_on
 
         half_day = self.half_day
@@ -97,6 +101,7 @@ class TimeoffLeave:
                 "employee_id": employee_id,
                 "start_on": start_on,
                 "updated_at": updated_at,
+                "days_taken": days_taken,
             }
         )
         if finish_on is not UNSET:
@@ -141,6 +146,8 @@ class TimeoffLeave:
 
         updated_at = d.pop("updated_at")
 
+        days_taken = d.pop("days_taken")
+
         finish_on = d.pop("finish_on", UNSET)
 
         half_day = d.pop("half_day", UNSET)
@@ -173,6 +180,7 @@ class TimeoffLeave:
             employee_id=employee_id,
             start_on=start_on,
             updated_at=updated_at,
+            days_taken=days_taken,
             finish_on=finish_on,
             half_day=half_day,
             description=description,

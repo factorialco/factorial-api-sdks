@@ -31,6 +31,8 @@ class ExpensesPerDiem:
     """ The files attached to the per diem. """
     status: ExpensesPerDiemStatus
     """ The status of the per diem. """
+    cost_center_ids: list[int]
+    """ Array of cost center IDs associated with this per diem """
     rates: list[Any]
     """ The rates for the per diem. """
     employee_id: int | Unset = UNSET
@@ -45,6 +47,8 @@ class ExpensesPerDiem:
     """ The location the per diem is from. """
     to: str | Unset = UNSET
     """ The location the per diem is to. """
+    trip_name: str | Unset = UNSET
+    """ The name of the trip. """
     ledger_account_id: int | Unset = UNSET
     """ The ID of the ledger account the per diem is for. """
     amount: int | Unset = UNSET
@@ -65,6 +69,10 @@ class ExpensesPerDiem:
     """ The category of the per diem. """
     subcategory: str | Unset = UNSET
     """ The subcategory of the per diem. """
+    budget_id: int | Unset = UNSET
+    """ The id of the budget associated with this per diem """
+    project_id: int | Unset = UNSET
+    """ The id of the project associated with this per diem """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,6 +88,8 @@ class ExpensesPerDiem:
 
         status = self.status.value
 
+        cost_center_ids = self.cost_center_ids
+
         rates = self.rates
 
         employee_id = self.employee_id
@@ -93,6 +103,8 @@ class ExpensesPerDiem:
         from_ = self.from_
 
         to = self.to
+
+        trip_name = self.trip_name
 
         ledger_account_id = self.ledger_account_id
 
@@ -116,6 +128,10 @@ class ExpensesPerDiem:
 
         subcategory = self.subcategory
 
+        budget_id = self.budget_id
+
+        project_id = self.project_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -126,6 +142,7 @@ class ExpensesPerDiem:
                 "payment": payment,
                 "files": files,
                 "status": status,
+                "cost_center_ids": cost_center_ids,
                 "rates": rates,
             }
         )
@@ -141,6 +158,8 @@ class ExpensesPerDiem:
             field_dict["from"] = from_
         if to is not UNSET:
             field_dict["to"] = to
+        if trip_name is not UNSET:
+            field_dict["trip_name"] = trip_name
         if ledger_account_id is not UNSET:
             field_dict["ledger_account_id"] = ledger_account_id
         if amount is not UNSET:
@@ -161,6 +180,10 @@ class ExpensesPerDiem:
             field_dict["category"] = category
         if subcategory is not UNSET:
             field_dict["subcategory"] = subcategory
+        if budget_id is not UNSET:
+            field_dict["budget_id"] = budget_id
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
 
         return field_dict
 
@@ -181,6 +204,8 @@ class ExpensesPerDiem:
 
         status = ExpensesPerDiemStatus(d.pop("status"))
 
+        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
+
         rates = cast(list[Any], d.pop("rates"))
 
         employee_id = d.pop("employee_id", UNSET)
@@ -194,6 +219,8 @@ class ExpensesPerDiem:
         from_ = d.pop("from", UNSET)
 
         to = d.pop("to", UNSET)
+
+        trip_name = d.pop("trip_name", UNSET)
 
         ledger_account_id = d.pop("ledger_account_id", UNSET)
 
@@ -220,6 +247,10 @@ class ExpensesPerDiem:
 
         subcategory = d.pop("subcategory", UNSET)
 
+        budget_id = d.pop("budget_id", UNSET)
+
+        project_id = d.pop("project_id", UNSET)
+
         expenses_per_diem = cls(
             id=id,
             company_id=company_id,
@@ -227,6 +258,7 @@ class ExpensesPerDiem:
             payment=payment,
             files=files,
             status=status,
+            cost_center_ids=cost_center_ids,
             rates=rates,
             employee_id=employee_id,
             expenses_expensable_id=expenses_expensable_id,
@@ -234,6 +266,7 @@ class ExpensesPerDiem:
             start_date=start_date,
             from_=from_,
             to=to,
+            trip_name=trip_name,
             ledger_account_id=ledger_account_id,
             amount=amount,
             reimbursable_amount=reimbursable_amount,
@@ -244,6 +277,8 @@ class ExpensesPerDiem:
             description=description,
             category=category,
             subcategory=subcategory,
+            budget_id=budget_id,
+            project_id=project_id,
         )
 
         expenses_per_diem.additional_properties = d

@@ -14,14 +14,26 @@ T = TypeVar("T", bound="EmployeeUpdatesTermination")
 @_attrs_define
 class EmployeeUpdatesTermination:
     id: int
+    """ ID of the termination """
     status: str
+    """ Status of the termination """
     employee_id: int
+    """ Employee ID """
     remaining_holidays: list[Any]
+    """ Remaining holidays """
     terminated_on: str | Unset = UNSET
+    """ Date terminated on """
+    contract_end_date: str | Unset = UNSET
+    """ End date of contract (employment end). Users can still have have access to Factorial after this date. To
+    revoke access, use the terminated_on field. """
     termination_reason: str | Unset = UNSET
+    """ Reason for the termination """
     termination_observations: str | Unset = UNSET
+    """ Observations about the termination """
     legal_entity_id: int | Unset = UNSET
+    """ Legal entity ID """
     termination_reason_type: str | Unset = UNSET
+    """ Termination reason type """
     termination_type_description: str | Unset = UNSET
     """ The description of the termination type. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -36,6 +48,8 @@ class EmployeeUpdatesTermination:
         remaining_holidays = self.remaining_holidays
 
         terminated_on = self.terminated_on
+
+        contract_end_date = self.contract_end_date
 
         termination_reason = self.termination_reason
 
@@ -59,6 +73,8 @@ class EmployeeUpdatesTermination:
         )
         if terminated_on is not UNSET:
             field_dict["terminated_on"] = terminated_on
+        if contract_end_date is not UNSET:
+            field_dict["contract_end_date"] = contract_end_date
         if termination_reason is not UNSET:
             field_dict["termination_reason"] = termination_reason
         if termination_observations is not UNSET:
@@ -85,6 +101,8 @@ class EmployeeUpdatesTermination:
 
         terminated_on = d.pop("terminated_on", UNSET)
 
+        contract_end_date = d.pop("contract_end_date", UNSET)
+
         termination_reason = d.pop("termination_reason", UNSET)
 
         termination_observations = d.pop("termination_observations", UNSET)
@@ -101,6 +119,7 @@ class EmployeeUpdatesTermination:
             employee_id=employee_id,
             remaining_holidays=remaining_holidays,
             terminated_on=terminated_on,
+            contract_end_date=contract_end_date,
             termination_reason=termination_reason,
             termination_observations=termination_observations,
             legal_entity_id=legal_entity_id,

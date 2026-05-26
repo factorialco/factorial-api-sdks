@@ -14,13 +14,13 @@ T = TypeVar("T", bound="TimePlanningPlanningVersion")
 @_attrs_define
 class TimePlanningPlanningVersion:
     effective_at: str
-    """ Start date of the planning version """
+    """ Planning version start date """
     planning_tool: str
     """ Type of planning tool (shift_management, work_schedules, contract_hours) """
     employee_id: int
     """ Employee identifier """
     id: int | Unset = UNSET
-    """ Identifier of planning version """
+    """ Planning version identifier """
     number_of_rest_days_in_cents: int | Unset = UNSET
     """ Amount of rest days per week if applicable (in cents) """
     work_schedule_schedule_id: int | Unset = UNSET

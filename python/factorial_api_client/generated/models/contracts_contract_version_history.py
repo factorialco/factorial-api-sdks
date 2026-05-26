@@ -38,6 +38,10 @@ class ContractsContractVersionHistory:
     """ job title of the employee. """
     job_catalog_level_id: int | Unset = UNSET
     """ job catalog level identifier, refers to /job_catalog/levels endpoint. """
+    job_catalog_tree_node_uuid: str | Unset = UNSET
+    """ the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job
+    catalog tree you can get the full ancestor path to the root node including the role. Refer to
+    job_catalog/tree_nodes endpoint. """
     starts_on: str | Unset = UNSET
     """ the day the employee is hired. """
     ends_on: str | Unset = UNSET
@@ -118,6 +122,9 @@ class ContractsContractVersionHistory:
     """ french work type identifier. """
     de_contract_type_id: int | Unset = UNSET
     """ german contract type identifier. """
+    de_base_salary_type_id: int | Unset = UNSET
+    """ Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts
+    endpoint. """
     pt_contract_type_id: int | Unset = UNSET
     """ portuguese contract type identifier. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -146,6 +153,8 @@ class ContractsContractVersionHistory:
         job_title = self.job_title
 
         job_catalog_level_id = self.job_catalog_level_id
+
+        job_catalog_tree_node_uuid = self.job_catalog_tree_node_uuid
 
         starts_on = self.starts_on
 
@@ -227,6 +236,8 @@ class ContractsContractVersionHistory:
 
         de_contract_type_id = self.de_contract_type_id
 
+        de_base_salary_type_id = self.de_base_salary_type_id
+
         pt_contract_type_id = self.pt_contract_type_id
 
         field_dict: dict[str, Any] = {}
@@ -250,6 +261,8 @@ class ContractsContractVersionHistory:
             field_dict["job_title"] = job_title
         if job_catalog_level_id is not UNSET:
             field_dict["job_catalog_level_id"] = job_catalog_level_id
+        if job_catalog_tree_node_uuid is not UNSET:
+            field_dict["job_catalog_tree_node_uuid"] = job_catalog_tree_node_uuid
         if starts_on is not UNSET:
             field_dict["starts_on"] = starts_on
         if ends_on is not UNSET:
@@ -330,6 +343,8 @@ class ContractsContractVersionHistory:
             field_dict["fr_work_type_id"] = fr_work_type_id
         if de_contract_type_id is not UNSET:
             field_dict["de_contract_type_id"] = de_contract_type_id
+        if de_base_salary_type_id is not UNSET:
+            field_dict["de_base_salary_type_id"] = de_base_salary_type_id
         if pt_contract_type_id is not UNSET:
             field_dict["pt_contract_type_id"] = pt_contract_type_id
 
@@ -361,6 +376,8 @@ class ContractsContractVersionHistory:
         job_title = d.pop("job_title", UNSET)
 
         job_catalog_level_id = d.pop("job_catalog_level_id", UNSET)
+
+        job_catalog_tree_node_uuid = d.pop("job_catalog_tree_node_uuid", UNSET)
 
         starts_on = d.pop("starts_on", UNSET)
 
@@ -442,6 +459,8 @@ class ContractsContractVersionHistory:
 
         de_contract_type_id = d.pop("de_contract_type_id", UNSET)
 
+        de_base_salary_type_id = d.pop("de_base_salary_type_id", UNSET)
+
         pt_contract_type_id = d.pop("pt_contract_type_id", UNSET)
 
         contracts_contract_version_history = cls(
@@ -457,6 +476,7 @@ class ContractsContractVersionHistory:
             country=country,
             job_title=job_title,
             job_catalog_level_id=job_catalog_level_id,
+            job_catalog_tree_node_uuid=job_catalog_tree_node_uuid,
             starts_on=starts_on,
             ends_on=ends_on,
             salary_amount=salary_amount,
@@ -497,6 +517,7 @@ class ContractsContractVersionHistory:
             fr_professional_category_id=fr_professional_category_id,
             fr_work_type_id=fr_work_type_id,
             de_contract_type_id=de_contract_type_id,
+            de_base_salary_type_id=de_base_salary_type_id,
             pt_contract_type_id=pt_contract_type_id,
         )
 

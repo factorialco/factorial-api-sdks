@@ -38,6 +38,8 @@ class ExpensesExpense:
     """ The files of the expense """
     taxes: list[Any]
     """ The taxes of the expense """
+    cost_center_ids: list[int]
+    """ Array of cost center IDs associated with this expense """
     id: int | Unset = UNSET
     """ The id of the expense """
     employee_id: int | Unset = UNSET
@@ -98,6 +100,10 @@ class ExpensesExpense:
     """ The id of the category """
     ledger_account_id: int | Unset = UNSET
     """ The id of the ledger account """
+    budget_id: int | Unset = UNSET
+    """ The id of the budget associated with this expense """
+    project_id: int | Unset = UNSET
+    """ The id of the project associated with this expense """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -116,6 +122,8 @@ class ExpensesExpense:
         files = self.files
 
         taxes = self.taxes
+
+        cost_center_ids = self.cost_center_ids
 
         id = self.id
 
@@ -185,6 +193,10 @@ class ExpensesExpense:
 
         ledger_account_id = self.ledger_account_id
 
+        budget_id = self.budget_id
+
+        project_id = self.project_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -197,6 +209,7 @@ class ExpensesExpense:
                 "status_updated_at": status_updated_at,
                 "files": files,
                 "taxes": taxes,
+                "cost_center_ids": cost_center_ids,
             }
         )
         if id is not UNSET:
@@ -259,6 +272,10 @@ class ExpensesExpense:
             field_dict["category_id"] = category_id
         if ledger_account_id is not UNSET:
             field_dict["ledger_account_id"] = ledger_account_id
+        if budget_id is not UNSET:
+            field_dict["budget_id"] = budget_id
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
 
         return field_dict
 
@@ -284,6 +301,8 @@ class ExpensesExpense:
         files = cast(list[Any], d.pop("files"))
 
         taxes = cast(list[Any], d.pop("taxes"))
+
+        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
 
         id = d.pop("id", UNSET)
 
@@ -365,6 +384,10 @@ class ExpensesExpense:
 
         ledger_account_id = d.pop("ledger_account_id", UNSET)
 
+        budget_id = d.pop("budget_id", UNSET)
+
+        project_id = d.pop("project_id", UNSET)
+
         expenses_expense = cls(
             company_id=company_id,
             creation_type=creation_type,
@@ -374,6 +397,7 @@ class ExpensesExpense:
             status_updated_at=status_updated_at,
             files=files,
             taxes=taxes,
+            cost_center_ids=cost_center_ids,
             id=id,
             employee_id=employee_id,
             card_payment_id=card_payment_id,
@@ -404,6 +428,8 @@ class ExpensesExpense:
             reimbursable_amount=reimbursable_amount,
             category_id=category_id,
             ledger_account_id=ledger_account_id,
+            budget_id=budget_id,
+            project_id=project_id,
         )
 
         expenses_expense.additional_properties = d

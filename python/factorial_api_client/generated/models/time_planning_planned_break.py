@@ -15,7 +15,7 @@ T = TypeVar("T", bound="TimePlanningPlannedBreak")
 @_attrs_define
 class TimePlanningPlannedBreak:
     id: int
-    """ Identifier of the planned break """
+    """ Planned break identifier """
     break_type: TimePlanningPlannedBreakBreakType
     """ Type of the break """
     break_configuration_id: int
@@ -25,9 +25,9 @@ class TimePlanningPlannedBreak:
     break_configuration_paid: bool
     """ Whether the break is paid """
     start_at: str | Unset = UNSET
-    """ Start date of the break """
+    """ Break start time """
     end_at: str | Unset = UNSET
-    """ End date of the break """
+    """ Break end time """
     duration: int | Unset = UNSET
     """ Duration of the break in minutes """
     default_shift_id: int | Unset = UNSET

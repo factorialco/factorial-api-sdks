@@ -17,10 +17,10 @@ class ContractsSpanishEducationLevel:
     """ Education level identifier """
     name: str
     """ education level name """
-    contracts_contract_template_id: int
-    """ Contract template identifier, refers to contracts/contract_templates """
     default: bool | Unset = UNSET
     """ Whether the education level is a predefined value """
+    contracts_contract_template_id: int | Unset = UNSET
+    """ Contract template identifier, refers to contracts/contract_templates """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -28,9 +28,9 @@ class ContractsSpanishEducationLevel:
 
         name = self.name
 
-        contracts_contract_template_id = self.contracts_contract_template_id
-
         default = self.default
+
+        contracts_contract_template_id = self.contracts_contract_template_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -38,11 +38,12 @@ class ContractsSpanishEducationLevel:
             {
                 "id": id,
                 "name": name,
-                "contracts_contract_template_id": contracts_contract_template_id,
             }
         )
         if default is not UNSET:
             field_dict["default"] = default
+        if contracts_contract_template_id is not UNSET:
+            field_dict["contracts_contract_template_id"] = contracts_contract_template_id
 
         return field_dict
 
@@ -53,15 +54,15 @@ class ContractsSpanishEducationLevel:
 
         name = d.pop("name")
 
-        contracts_contract_template_id = d.pop("contracts_contract_template_id")
-
         default = d.pop("default", UNSET)
+
+        contracts_contract_template_id = d.pop("contracts_contract_template_id", UNSET)
 
         contracts_spanish_education_level = cls(
             id=id,
             name=name,
-            contracts_contract_template_id=contracts_contract_template_id,
             default=default,
+            contracts_contract_template_id=contracts_contract_template_id,
         )
 
         contracts_spanish_education_level.additional_properties = d

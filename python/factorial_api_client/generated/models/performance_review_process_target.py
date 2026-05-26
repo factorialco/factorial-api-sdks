@@ -12,12 +12,13 @@ T = TypeVar("T", bound="PerformanceReviewProcessTarget")
 @_attrs_define
 class PerformanceReviewProcessTarget:
     id: str
-    """ Review process target ID """
+    """ Review process target ID (composed with performance_review_process_id and access_id) """
     access_id: int
     """ Participant access ID """
     performance_review_process_id: int
     """ Review process ID """
     materialized_process_target_id: int
+    """ Materialized review process target ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

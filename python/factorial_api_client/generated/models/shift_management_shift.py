@@ -15,35 +15,41 @@ T = TypeVar("T", bound="ShiftManagementShift")
 @_attrs_define
 class ShiftManagementShift:
     id: int
-    """ Shift identifier """
+    """ Unique identifier for the shift """
     company_id: int
-    """ Company identifier """
+    """ Identifier of the company that owns this shift """
     state: ShiftManagementShiftState
-    """ The state of the shift. """
+    """ Current state of the shift. 'draft' means the shift is not yet visible to employees, 'published' means it's
+    visible and confirmed, 'backup' indicates a backup shift that can be replaced """
     employee_id: int
-    """ Employee identifier """
+    """ Identifier of the employee assigned to this shift """
     start_at: str
-    """ Start date of the shift """
+    """ Timestamp indicating when the shift starts """
     end_at: str
-    """ End date of the shift """
+    """ Timestamp indicating when the shift ends """
     extra_hours: bool
-    """ Flag to indicate if the shift has extra hours """
+    """ Indicates whether this shift counts as extra hours beyond the employee's regular schedule. Used for overtime
+    calculations """
     timezone: str
-    """ Shift timezone """
+    """ IANA timezone identifier (e.g., 'Europe/Madrid', 'America/New_York') used to display the shift times in the
+    local timezone """
     local_start_at: str
-    """ Local start date of the shift """
+    """ Start time of the shift converted to the local timezone. This is what employees see in their schedule """
     local_end_at: str
-    """ Local end date of the shift """
+    """ End time of the shift converted to the local timezone. This is what employees see in their schedule """
     name: str | Unset = UNSET
-    """ Name of the shift, doing a fallback to the default shift title or template week name """
+    """ Display name of the shift. If not explicitly set, falls back to the default shift title or template week
+    name """
     location_id: int | Unset = UNSET
-    """ Shift location identifier """
+    """ Identifier of the location where the shift takes place. Can be null if the shift uses the employee's default
+    location """
     locations_work_area_id: int | Unset = UNSET
-    """ Shift work area identifier """
+    """ Identifier of the specific work area within the location where the shift occurs. Work areas allow further
+    subdivision of locations """
     notes: str | Unset = UNSET
-    """ Shift notes """
+    """ Optional notes or comments about the shift, visible to managers and schedulers """
     default_shift_title: str | Unset = UNSET
-    """ Default shift title """
+    """ Title from the default shift template that was used to create this shift, if applicable """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

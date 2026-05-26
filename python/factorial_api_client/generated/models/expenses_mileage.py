@@ -19,31 +19,55 @@ T = TypeVar("T", bound="ExpensesMileage")
 @_attrs_define
 class ExpensesMileage:
     id: int
+    """ Unique identifier for the mileage """
     company_id: int
+    """ The ID of the company that owns the mileage """
     currency: str
+    """ The currency code in ISO 4217 format """
     status: str
+    """ The status of the mileage """
     files: list[Any]
+    """ The files associated with the mileage """
     payment: ExpensesMileagePayment
+    """ The payment method """
+    cost_center_ids: list[int]
+    """ Array of cost center IDs associated with this mileage """
     employee_id: int | Unset = UNSET
+    """ The ID of the employee that owns the mileage """
     expenses_expensable_id: int | Unset = UNSET
+    """ The ID of the expensable associated with this mileage """
     category: ExpensesMileageCategory | Unset = UNSET
+    """ The category of the mileage """
     subcategory: str | Unset = UNSET
+    """ The subcategory of the mileage """
     category_id: int | Unset = UNSET
+    """ The ID of the category """
     amount: int | Unset = UNSET
+    """ The amount in cents """
     reimbursable_amount: int | Unset = UNSET
     """ The amount to be reimbursed for the mileage in cents. """
     reimbursable_currency: str | Unset = UNSET
     """ The currency for the reimbursable amount. """
     mileage: int | Unset = UNSET
+    """ The mileage distance """
     units: str | Unset = UNSET
+    """ The units for the mileage """
     rate: str | Unset = UNSET
+    """ The rate per unit """
     from_: str | Unset = UNSET
+    """ The origin location """
     to: str | Unset = UNSET
+    """ The destination location """
     description: str | Unset = UNSET
+    """ The description of the mileage """
     effective_on: str | Unset = UNSET
+    """ The date when the mileage was effective """
     review_request_at: str | Unset = UNSET
+    """ The date when the mileage was requested for review """
     paid_at: str | Unset = UNSET
+    """ The date when the mileage was paid """
     ledger_account_id: int | Unset = UNSET
+    """ The ID of the ledger account """
     round_trip: bool | Unset = UNSET
     """ Indicates if the mileage is a round trip """
     origin_longitude: str | Unset = UNSET
@@ -56,6 +80,10 @@ class ExpensesMileage:
     """ The latitude of the destination of the mileage """
     calculated_mileage: int | Unset = UNSET
     """ The calculated mileage between origin and destination in decameters/10-milers """
+    budget_id: int | Unset = UNSET
+    """ The id of the budget associated with this mileage """
+    project_id: int | Unset = UNSET
+    """ The id of the project associated with this mileage """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,6 +98,8 @@ class ExpensesMileage:
         files = self.files
 
         payment = self.payment.value
+
+        cost_center_ids = self.cost_center_ids
 
         employee_id = self.employee_id
 
@@ -121,6 +151,10 @@ class ExpensesMileage:
 
         calculated_mileage = self.calculated_mileage
 
+        budget_id = self.budget_id
+
+        project_id = self.project_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -131,6 +165,7 @@ class ExpensesMileage:
                 "status": status,
                 "files": files,
                 "payment": payment,
+                "cost_center_ids": cost_center_ids,
             }
         )
         if employee_id is not UNSET:
@@ -181,6 +216,10 @@ class ExpensesMileage:
             field_dict["destination_latitude"] = destination_latitude
         if calculated_mileage is not UNSET:
             field_dict["calculated_mileage"] = calculated_mileage
+        if budget_id is not UNSET:
+            field_dict["budget_id"] = budget_id
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
 
         return field_dict
 
@@ -200,6 +239,8 @@ class ExpensesMileage:
         files = cast(list[Any], d.pop("files"))
 
         payment = ExpensesMileagePayment(d.pop("payment"))
+
+        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
 
         employee_id = d.pop("employee_id", UNSET)
 
@@ -254,6 +295,10 @@ class ExpensesMileage:
 
         calculated_mileage = d.pop("calculated_mileage", UNSET)
 
+        budget_id = d.pop("budget_id", UNSET)
+
+        project_id = d.pop("project_id", UNSET)
+
         expenses_mileage = cls(
             id=id,
             company_id=company_id,
@@ -261,6 +306,7 @@ class ExpensesMileage:
             status=status,
             files=files,
             payment=payment,
+            cost_center_ids=cost_center_ids,
             employee_id=employee_id,
             expenses_expensable_id=expenses_expensable_id,
             category=category,
@@ -285,6 +331,8 @@ class ExpensesMileage:
             destination_longitude=destination_longitude,
             destination_latitude=destination_latitude,
             calculated_mileage=calculated_mileage,
+            budget_id=budget_id,
+            project_id=project_id,
         )
 
         expenses_mileage.additional_properties = d

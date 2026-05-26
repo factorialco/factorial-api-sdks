@@ -15,10 +15,18 @@ T = TypeVar("T", bound="TrainingsSessionAttendance")
 @_attrs_define
 class TrainingsSessionAttendance:
     id: int
+    """ Unique identifier of the session attendance """
     status: TrainingsSessionAttendanceStatus
+    """ Status of the session attendance """
     session_access_membership_id: int
+    """ Identifier of the session access membership """
     access_id: int
+    """ Identifier of the access associated with the employee """
     employee_id: int | Unset = UNSET
+    """ Identifier of the employee """
+    completed_duration: str | Unset = UNSET
+    """ Completed duration in hours (decimal format, e.g. 1.5 means 1h 30m). Null when session attendance status is
+    not completed. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,6 +40,8 @@ class TrainingsSessionAttendance:
 
         employee_id = self.employee_id
 
+        completed_duration = self.completed_duration
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -44,6 +54,8 @@ class TrainingsSessionAttendance:
         )
         if employee_id is not UNSET:
             field_dict["employee_id"] = employee_id
+        if completed_duration is not UNSET:
+            field_dict["completed_duration"] = completed_duration
 
         return field_dict
 
@@ -60,12 +72,15 @@ class TrainingsSessionAttendance:
 
         employee_id = d.pop("employee_id", UNSET)
 
+        completed_duration = d.pop("completed_duration", UNSET)
+
         trainings_session_attendance = cls(
             id=id,
             status=status,
             session_access_membership_id=session_access_membership_id,
             access_id=access_id,
             employee_id=employee_id,
+            completed_duration=completed_duration,
         )
 
         trainings_session_attendance.additional_properties = d

@@ -6,6 +6,7 @@ class PerformanceReviewProcessStatus(str, Enum):
     DRAFT = "draft"
     FINISHED = "finished"
     SCHEDULED = "scheduled"
+    STARTING = "starting"
 
     def __str__(self) -> str:
         return str(self.value)

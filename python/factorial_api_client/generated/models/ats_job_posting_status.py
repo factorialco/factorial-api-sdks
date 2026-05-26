@@ -4,6 +4,7 @@ from enum import Enum
 class AtsJobPostingStatus(str, Enum):
     ARCHIVED = "archived"
     CANCELLED = "cancelled"
+    DELETED = "deleted"
     DRAFT = "draft"
     PUBLISHED = "published"
     UNLISTED = "unlisted"

@@ -17,7 +17,7 @@ class ProjectManagementTimeRecord:
     """ Id of the time record """
     project_worker_id: int
     """ Id of the project worker """
-    attendance_shift_id: int
+    attendance_shift_id: int | Unset = UNSET
     """ Id of the attendance shift """
     subproject_id: int | Unset = UNSET
     """ Id of the subproject """
@@ -54,9 +54,10 @@ class ProjectManagementTimeRecord:
             {
                 "id": id,
                 "project_worker_id": project_worker_id,
-                "attendance_shift_id": attendance_shift_id,
             }
         )
+        if attendance_shift_id is not UNSET:
+            field_dict["attendance_shift_id"] = attendance_shift_id
         if subproject_id is not UNSET:
             field_dict["subproject_id"] = subproject_id
         if date is not UNSET:
@@ -77,7 +78,7 @@ class ProjectManagementTimeRecord:
 
         project_worker_id = d.pop("project_worker_id")
 
-        attendance_shift_id = d.pop("attendance_shift_id")
+        attendance_shift_id = d.pop("attendance_shift_id", UNSET)
 
         subproject_id = d.pop("subproject_id", UNSET)
 

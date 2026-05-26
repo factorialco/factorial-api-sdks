@@ -41,6 +41,8 @@ class CustomFieldsValue:
     """ The identifier of the usage group """
     usage_group_slug: str | Unset = UNSET
     """ The slug of the usage group """
+    updated_at: str | Unset = UNSET
+    """ The date and time the custom field value was last updated. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,6 +74,8 @@ class CustomFieldsValue:
 
         usage_group_slug = self.usage_group_slug
 
+        updated_at = self.updated_at
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -101,6 +105,8 @@ class CustomFieldsValue:
             field_dict["usage_group_id"] = usage_group_id
         if usage_group_slug is not UNSET:
             field_dict["usage_group_slug"] = usage_group_slug
+        if updated_at is not UNSET:
+            field_dict["updated_at"] = updated_at
 
         return field_dict
 
@@ -135,6 +141,8 @@ class CustomFieldsValue:
 
         usage_group_slug = d.pop("usage_group_slug", UNSET)
 
+        updated_at = d.pop("updated_at", UNSET)
+
         custom_fields_value = cls(
             id=id,
             custom_field_identifier=custom_field_identifier,
@@ -150,6 +158,7 @@ class CustomFieldsValue:
             required=required,
             usage_group_id=usage_group_id,
             usage_group_slug=usage_group_slug,
+            updated_at=updated_at,
         )
 
         custom_fields_value.additional_properties = d

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -35,6 +35,8 @@ class ExpensesExpensable:
     """ The optional date and time when the status was last updated """
     updated_at: str
     """ The date and time when the expensable was last updated """
+    cost_center_ids: list[int]
+    """ The ids of the cost centers """
     group_id: int | Unset = UNSET
     """ The optional ID of the group that the expensable belongs to """
     legal_entity_id: int | Unset = UNSET
@@ -65,6 +67,10 @@ class ExpensesExpensable:
     """ The optional ID of the mileage that the expensable belongs to """
     per_diem_id: int | Unset = UNSET
     """ The optional ID of the per_diem that the expensable belongs to """
+    budget_id: int | Unset = UNSET
+    """ The id of the budget """
+    project_id: int | Unset = UNSET
+    """ The id of the project """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -85,6 +91,8 @@ class ExpensesExpensable:
         status_updated_at = self.status_updated_at
 
         updated_at = self.updated_at
+
+        cost_center_ids = self.cost_center_ids
 
         group_id = self.group_id
 
@@ -118,6 +126,10 @@ class ExpensesExpensable:
 
         per_diem_id = self.per_diem_id
 
+        budget_id = self.budget_id
+
+        project_id = self.project_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -131,6 +143,7 @@ class ExpensesExpensable:
                 "status": status,
                 "status_updated_at": status_updated_at,
                 "updated_at": updated_at,
+                "cost_center_ids": cost_center_ids,
             }
         )
         if group_id is not UNSET:
@@ -163,6 +176,10 @@ class ExpensesExpensable:
             field_dict["mileage_id"] = mileage_id
         if per_diem_id is not UNSET:
             field_dict["per_diem_id"] = per_diem_id
+        if budget_id is not UNSET:
+            field_dict["budget_id"] = budget_id
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
 
         return field_dict
 
@@ -186,6 +203,8 @@ class ExpensesExpensable:
         status_updated_at = d.pop("status_updated_at")
 
         updated_at = d.pop("updated_at")
+
+        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
 
         group_id = d.pop("group_id", UNSET)
 
@@ -222,6 +241,10 @@ class ExpensesExpensable:
 
         per_diem_id = d.pop("per_diem_id", UNSET)
 
+        budget_id = d.pop("budget_id", UNSET)
+
+        project_id = d.pop("project_id", UNSET)
+
         expenses_expensable = cls(
             id=id,
             type_=type_,
@@ -232,6 +255,7 @@ class ExpensesExpensable:
             status=status,
             status_updated_at=status_updated_at,
             updated_at=updated_at,
+            cost_center_ids=cost_center_ids,
             group_id=group_id,
             legal_entity_id=legal_entity_id,
             amount=amount,
@@ -247,6 +271,8 @@ class ExpensesExpensable:
             expense_id=expense_id,
             mileage_id=mileage_id,
             per_diem_id=per_diem_id,
+            budget_id=budget_id,
+            project_id=project_id,
         )
 
         expenses_expensable.additional_properties = d

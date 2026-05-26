@@ -27,10 +27,10 @@ class CompensationsConcept:
     """ The label of the concept """
     name: str
     """ The name of the concept """
+    translated_name: str
+    """ The translated name of the concept if it is a default concept. """
     category: CompensationsConceptCategory | Unset = UNSET
     """ The category of the concept """
-    translated_name: str | Unset = UNSET
-    """ The translated name of the concept if it is a default concept. """
     unit_name: str | Unset = UNSET
     """ The name of the unit of the concept """
     unit_type: CompensationsConceptUnitType | Unset = UNSET
@@ -50,11 +50,11 @@ class CompensationsConcept:
 
         name = self.name
 
+        translated_name = self.translated_name
+
         category: str | Unset = UNSET
         if not isinstance(self.category, Unset):
             category = self.category.value
-
-        translated_name = self.translated_name
 
         unit_name = self.unit_name
 
@@ -72,12 +72,11 @@ class CompensationsConcept:
                 "description": description,
                 "label": label,
                 "name": name,
+                "translated_name": translated_name,
             }
         )
         if category is not UNSET:
             field_dict["category"] = category
-        if translated_name is not UNSET:
-            field_dict["translated_name"] = translated_name
         if unit_name is not UNSET:
             field_dict["unit_name"] = unit_name
         if unit_type is not UNSET:
@@ -100,14 +99,14 @@ class CompensationsConcept:
 
         name = d.pop("name")
 
+        translated_name = d.pop("translated_name")
+
         _category = d.pop("category", UNSET)
         category: CompensationsConceptCategory | Unset
         if isinstance(_category, Unset):
             category = UNSET
         else:
             category = CompensationsConceptCategory(_category) if _category is not None else None
-
-        translated_name = d.pop("translated_name", UNSET)
 
         unit_name = d.pop("unit_name", UNSET)
 
@@ -125,8 +124,8 @@ class CompensationsConcept:
             description=description,
             label=label,
             name=name,
-            category=category,
             translated_name=translated_name,
+            category=category,
             unit_name=unit_name,
             unit_type=unit_type,
         )

@@ -27,6 +27,7 @@ class AtsJobPosting:
     id: int
     """ Unique identifier for the job posting """
     company_id: int
+    """ Identifier of the company associated with the job posting """
     ats_company_id: int
     """ Identifier of the ATS company associated with the job posting """
     title: str
@@ -46,6 +47,7 @@ class AtsJobPosting:
     personal_url_requirement: AtsJobPostingPersonalUrlRequirement
     """ Requirement for the personal URL (e.g, mandatory, optional, do_not_ask) """
     salary_period: AtsJobPostingSalaryPeriod
+    """ The period of the salary (e.g., annual, monthly, daily) """
     created_at: str
     """ Date in ISO 8601 format when the job posting was created """
     description: str | Unset = UNSET

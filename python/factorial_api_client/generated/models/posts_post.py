@@ -17,8 +17,6 @@ class PostsPost:
     """ identifiers of the post """
     allow_comments_and_reactions: bool
     """ allow comments and reactions on the post """
-    published_at: str
-    """ date when the post has been published """
     created_at: str
     """ date when the post has been created """
     updated_at: str
@@ -30,6 +28,8 @@ class PostsPost:
     """ title of the post """
     description: str | Unset = UNSET
     """ description of the post """
+    published_at: str | Unset = UNSET
+    """ date when the post has been published """
     cover_image_url: str | Unset = UNSET
     """ url of the cover image """
     posts_group_id: int | Unset = UNSET
@@ -40,8 +40,6 @@ class PostsPost:
         id = self.id
 
         allow_comments_and_reactions = self.allow_comments_and_reactions
-
-        published_at = self.published_at
 
         created_at = self.created_at
 
@@ -55,6 +53,8 @@ class PostsPost:
 
         description = self.description
 
+        published_at = self.published_at
+
         cover_image_url = self.cover_image_url
 
         posts_group_id = self.posts_group_id
@@ -65,7 +65,6 @@ class PostsPost:
             {
                 "id": id,
                 "allow_comments_and_reactions": allow_comments_and_reactions,
-                "published_at": published_at,
                 "created_at": created_at,
                 "updated_at": updated_at,
                 "visits_count": visits_count,
@@ -76,6 +75,8 @@ class PostsPost:
             field_dict["title"] = title
         if description is not UNSET:
             field_dict["description"] = description
+        if published_at is not UNSET:
+            field_dict["published_at"] = published_at
         if cover_image_url is not UNSET:
             field_dict["cover_image_url"] = cover_image_url
         if posts_group_id is not UNSET:
@@ -90,8 +91,6 @@ class PostsPost:
 
         allow_comments_and_reactions = d.pop("allow_comments_and_reactions")
 
-        published_at = d.pop("published_at")
-
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
@@ -104,6 +103,8 @@ class PostsPost:
 
         description = d.pop("description", UNSET)
 
+        published_at = d.pop("published_at", UNSET)
+
         cover_image_url = d.pop("cover_image_url", UNSET)
 
         posts_group_id = d.pop("posts_group_id", UNSET)
@@ -111,13 +112,13 @@ class PostsPost:
         posts_post = cls(
             id=id,
             allow_comments_and_reactions=allow_comments_and_reactions,
-            published_at=published_at,
             created_at=created_at,
             updated_at=updated_at,
             visits_count=visits_count,
             comments_count=comments_count,
             title=title,
             description=description,
+            published_at=published_at,
             cover_image_url=cover_image_url,
             posts_group_id=posts_group_id,
         )

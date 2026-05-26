@@ -19,12 +19,12 @@ class ApiPublicWebhookSubscription:
     """ URL where the webhook payload will be sent """
     type_: str
     """ Type of the webhook subscription """
+    company_id: int
+    """ Company identifier of the webhook subscription """
     enabled: bool
     """ Boolean to enable/disable the subscription """
     api_version: str
     """ API version of the webhook subscription that determines the schema of the payload """
-    company_id: int | Unset = UNSET
-    """ Company identifier of the webhook subscription """
     name: str | Unset = UNSET
     """ Name of the webhook subscription """
     challenge: str | Unset = UNSET
@@ -38,11 +38,11 @@ class ApiPublicWebhookSubscription:
 
         type_ = self.type_
 
+        company_id = self.company_id
+
         enabled = self.enabled
 
         api_version = self.api_version
-
-        company_id = self.company_id
 
         name = self.name
 
@@ -55,12 +55,11 @@ class ApiPublicWebhookSubscription:
                 "id": id,
                 "target_url": target_url,
                 "type": type_,
+                "company_id": company_id,
                 "enabled": enabled,
                 "api_version": api_version,
             }
         )
-        if company_id is not UNSET:
-            field_dict["company_id"] = company_id
         if name is not UNSET:
             field_dict["name"] = name
         if challenge is not UNSET:
@@ -77,11 +76,11 @@ class ApiPublicWebhookSubscription:
 
         type_ = d.pop("type")
 
+        company_id = d.pop("company_id")
+
         enabled = d.pop("enabled")
 
         api_version = d.pop("api_version")
-
-        company_id = d.pop("company_id", UNSET)
 
         name = d.pop("name", UNSET)
 
@@ -91,9 +90,9 @@ class ApiPublicWebhookSubscription:
             id=id,
             target_url=target_url,
             type_=type_,
+            company_id=company_id,
             enabled=enabled,
             api_version=api_version,
-            company_id=company_id,
             name=name,
             challenge=challenge,
         )

@@ -1,6 +1,6 @@
 {
   "name": "@factorial/api-client",
-  "version": "2025.10.1",
+  "version": "2026.4.1",
   "description": "Official TypeScript SDK for the Factorial API",
   "type": "module",
   "main": "./dist/index.js",
