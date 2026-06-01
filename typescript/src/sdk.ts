@@ -6771,7 +6771,7 @@ export class WorkScheduleNamespace {
  *
  * @example
  * ```ts
- * import { FactorialClient } from "@factorial/api-client";
+ * import { FactorialClient } from "@factorialco/api-client";
  *
  * const client = new FactorialClient({
  *   apiKey: process.env.FACTORIAL_API_KEY,

@@ -6,14 +6,14 @@ Both SDKs are generated from the OpenAPI spec and wrapped with a generated `Fact
 
 ## SDKs
 
-### TypeScript · `@factorial/api-client`
+### TypeScript · `@factorialco/api-client`
 
 ```bash
-npm install @factorial/api-client
+npm install @factorialco/api-client
 ```
 
 ```ts
-import { FactorialClient } from "@factorial/api-client";
+import { FactorialClient } from "@factorialco/api-client";
 
 const client = new FactorialClient({ apiKey: process.env.FACTORIAL_API_KEY });
 
@@ -49,18 +49,17 @@ for emp in client.employees.employee.paginate(max_items=50):
 
 ## Versioning
 
-SDK versions mirror the Factorial API version date using the format `YYYY.M.D`:
+Both SDKs use standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
 
-| API version | SDK version |
-|-------------|-------------|
-| `2026-04-01` | `2026.4.1` |
-| `2026-07-01` | `2026.7.1` |
+| SDK version | Factorial API version |
+|-------------|----------------------|
+| `1.x.y`     | `2026-04-01`         |
 
 Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). To release a new SDK version:
 
 1. Run the release script in the relevant SDK directory.
 2. Enter the API version date (`yyyy-mm-dd`) when prompted.
-3. The script fetches the spec from `https://api.factorialhr.com/oas/?version=<date>`, regenerates all generated code, and sets the SDK version automatically.
+3. The script fetches the spec from `https://api.factorialhr.com/oas/?version=<date>`, regenerates all generated code, and bumps the semver (`--bump major|minor|patch`, default `patch`).
 4. After building, it asks whether to publish — answer `y` to push to npm/PyPI or `n` to skip.
 
 See the per-SDK READMEs for full instructions: [TypeScript](typescript/README.md) · [Python](python/README.md)

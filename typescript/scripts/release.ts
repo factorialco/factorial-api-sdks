@@ -1,19 +1,21 @@
 #!/usr/bin/env tsx
 /**
- * Release script for @factorial/api-client.
+ * Release script for @factorialco/api-client.
  *
  * Steps:
  *   0. Prompt for the API version date (yyyy-mm-dd) to generate
  *   1. Fetch the OpenAPI spec from https://api.factorialhr.com/oas/?version=<date>
- *   2. Derive SDK version from API date (yyyy-mm-dd → YYYY.M.D)
+ *   2. Bump SDK semver (--bump major|minor|patch, default: patch)
  *   3. Regenerate all *.gen.ts files via openapi-ts  (stage 1)
  *   3b. Regenerate src/sdk.ts via generate-sdk.ts    (stage 2)
  *   4. Update package.json version
  *   5. Publish to npm  (skipped with --dry-run)
  *
  * Usage:
- *   npm run release             # full release
- *   npm run release:dry-run     # preview only, no writes / publish
+ *   npm run release                    # patch bump
+ *   npm run release -- --bump minor    # minor bump
+ *   npm run release -- --bump major    # major bump
+ *   npm run release:dry-run            # preview only, no writes / publish
  */
 
 import { execSync } from "child_process";
@@ -26,6 +28,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
 const isDryRun = process.argv.includes("--dry-run");
+
+const bumpArgIdx = process.argv.indexOf("--bump");
+const bumpType: "major" | "minor" | "patch" =
+  bumpArgIdx !== -1 ? (process.argv[bumpArgIdx + 1] as "major" | "minor" | "patch") : "patch";
+
+if (!["major", "minor", "patch"].includes(bumpType)) {
+  throw new Error(`Invalid --bump value: "${bumpType}". Expected major, minor, or patch.`);
+}
+
+function bumpSemver(version: string, bump: "major" | "minor" | "patch"): string {
+  const [major, minor, patch] = version.split(".").map(Number);
+  if (bump === "major") return `${major + 1}.0.0`;
+  if (bump === "minor") return `${major}.${minor + 1}.0`;
+  return `${major}.${minor}.${patch + 1}`;
+}
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -91,17 +108,14 @@ const newSpec = (await specResponse.json()) as Record<string, unknown>;
 const specVersion = (newSpec.info as Record<string, string>).version;
 log(`    API version in spec: ${specVersion}`);
 
-// ─── Step 2: Derive SDK version from API date ───────────────────────────────
-
-// Convert yyyy-mm-dd → YYYY.M.D (valid semver with large major)
-const [year, month, day] = apiVersion.split("-").map(Number);
-const newSdkVersion = `${year}.${month}.${day}`;
+// ─── Step 2: Bump SDK semver ─────────────────────────────────────────────────
 
 const pkgPath = join(ROOT, "package.json");
 const pkg = readJson<{ version: string; name: string }>(pkgPath);
+const newSdkVersion = bumpSemver(pkg.version, bumpType);
 
 log(`\n🔖  Version:`);
-log(`    SDK:  ${pkg.version} → ${newSdkVersion}`);
+log(`    SDK:  ${pkg.version} → ${newSdkVersion}  (${bumpType} bump)`);
 log(`    API version: ${apiVersion}`);
 
 if (isDryRun) {
@@ -132,12 +146,12 @@ writeJson(pkgPath, pkg);
 log(`\n🏗️   Building …`);
 run(`npm run build`);
 
-const shouldPublish = (await prompt("Publish @factorial/api-client@" + newSdkVersion + " to npm? [y/N] ")).toLowerCase() === "y";
+const shouldPublish = (await prompt("Publish @factorialco/api-client@" + newSdkVersion + " to npm? [y/N] ")).toLowerCase() === "y";
 
 if (shouldPublish) {
-  log(`\n🚀  Publishing @factorial/api-client@${newSdkVersion} to npm …`);
+  log(`\n🚀  Publishing @factorialco/api-client@${newSdkVersion} to npm …`);
   run(`npm publish --access public`);
-  log(`\n✅  Released @factorial/api-client@${newSdkVersion} successfully!\n`);
+  log(`\n✅  Released @factorialco/api-client@${newSdkVersion} successfully!\n`);
 } else {
   log(`\n⏭️   Skipped publish. Package built and version bumped to ${newSdkVersion}.\n`);
 }

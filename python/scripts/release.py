@@ -7,7 +7,7 @@ Steps:
   1. Fetch the OpenAPI spec from https://api.factorialhr.com/oas/?version=<date>
      (or use --spec-path for a local file).
   2. Patch invalid `type: "unknown"` fields to `type: "string"`.
-  3. Determine semver bump (minor by default, overridable with --bump).
+  3. Bump SDK semver (--bump major|minor|patch, default: patch).
   4. Regenerate the generated layer:
        - openapi-python-client generate → factorial_api_client/generated/
        - Re-run /tmp/generate_python_sdk.py → factorial_api_client/client.py
@@ -16,6 +16,8 @@ Steps:
 
 Usage:
     uv run python scripts/release.py [--dry-run] [--version yyyy-mm-dd] [--spec-path PATH] [--bump major|minor|patch]
+
+    --bump defaults to patch. Use minor for new API features, major for breaking changes.
 """
 
 from __future__ import annotations
@@ -147,6 +149,8 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="Skip publish and file writes")
     parser.add_argument("--version", help="API version date to generate (yyyy-mm-dd)")
     parser.add_argument("--spec-path", help="Local spec file instead of fetching")
+    parser.add_argument("--bump", choices=["major", "minor", "patch"], default="patch",
+                        help="Semver bump type (default: patch)")
     args = parser.parse_args()
 
     print("=== Factorial Python SDK Release ===\n")
@@ -171,13 +175,11 @@ def main() -> None:
     print("Step 2: Patch spec (type: unknown → string)")
     patched_spec = patch_spec(new_spec)
 
-    # 3. Derive SDK version from API date (yyyy-mm-dd → YYYY.M.D)
-    print("Step 3: Derive SDK version")
-    year, month, day = (int(p) for p in api_version.split("-"))
-    new_version = f"{year}.{month}.{day}"
-
+    # 3. Bump SDK semver
+    print("Step 3: Bump SDK version")
     current_version = get_current_version()
-    print(f"  Version: {current_version} → {new_version}")
+    new_version = bump_version(current_version, args.bump)
+    print(f"  Version: {current_version} → {new_version}  ({args.bump} bump)")
 
     if args.dry_run:
         print("\n[DRY RUN] Stopping before making changes.")

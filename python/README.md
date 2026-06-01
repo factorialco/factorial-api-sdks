@@ -84,10 +84,13 @@ for emp in client.employees.employee.paginate(max_items=50):
 all_leaves = client.timeoff.leave.all()
 ```
 
-## API version & versioning
+## Versioning
 
-SDK versions mirror the Factorial API version date using the format `YYYY.M.D`
-(e.g. `2026-04-01` → `2026.4.1`).
+The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
+
+| SDK version | Factorial API version |
+|-------------|----------------------|
+| `1.x.y`     | `2026-04-01`         |
 
 Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). Each version is supported for one year.
 
@@ -97,10 +100,14 @@ Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). Each version is
 # Dry run (shows what would change, no writes)
 uv run python scripts/release.py --dry-run
 
-# Full release — prompts for version date and whether to publish
+# Full release — patch bump (default)
 uv run python scripts/release.py
 
-# Supply version non-interactively
+# Minor or major bump
+uv run python scripts/release.py --bump minor
+uv run python scripts/release.py --bump major
+
+# Supply API version non-interactively
 uv run python scripts/release.py --version 2026-07-01
 ```
 
@@ -108,7 +115,7 @@ The release script:
 1. Prompts for the API version date (`yyyy-mm-dd`).
 2. Fetches and patches the spec from `https://api.factorialhr.com/oas/?version=<date>`.
 3. Regenerates `factorial_api_client/generated/` and `client.py`.
-4. Sets the SDK version to match the API date (e.g. `2026-07-01` → `2026.7.1`).
+4. Bumps the SDK semver (`--bump major|minor|patch`, default `patch`).
 5. Builds the package, then asks whether to publish to PyPI.
 
 ## Smoke test

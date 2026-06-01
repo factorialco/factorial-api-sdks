@@ -1,0 +1,41 @@
+name: "Setup Node and pnpm"
+description: "Setup Node.js and pnpm, install dependencies and build"
+inputs:
+  node-version:
+    description: "Node.js version"
+    required: false
+    default: "22.x"
+  registry:
+    description: "Registry URL"
+    required: false
+    default: "https://registry.npmjs.org/"
+  scope:
+    description: "Scope"
+    required: false
+    default: "@factorialco"
+  working-directory:
+    description: "Working directory"
+    required: false
+    default: "."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v6
+      with:
+        version: 10
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: ${{ inputs.registry }}
+        scope: ${{ inputs.scope }}
+        cache: pnpm
+        cache-dependency-path: ${{ inputs.working-directory }}/pnpm-lock.yaml
+
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}

@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Live API test script for @factorial/api-client.
+ * Live API test script for @factorialco/api-client.
  *
  * Demonstrates:
  *   1. list()     — fetch a single page of employees

@@ -1,0 +1,45 @@
+name: "Publish to npmjs"
+
+inputs:
+  registry_token:
+    description: "Registry token"
+    required: true
+  working-directory:
+    description: "Working directory"
+    required: false
+    default: "."
+
+outputs:
+  published:
+    description: "Published packages"
+    value: ${{ steps.publish.outputs.published }}
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ./.github/actions/setup-node-pnpm
+      name: Setup Node and pnpm
+      with:
+        working-directory: ${{ inputs.working-directory }}
+
+    - name: Build
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: pnpm build
+
+    - name: Publish to registry
+      shell: bash
+      id: publish
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        result=$(pnpm publish --no-git-checks --access=public)
+        if [[ $result == "There are no new packages that should be published" ]]
+        then
+          echo "No new packages to publish"
+          echo "published=false" >> $GITHUB_OUTPUT
+        else
+          echo "Packages published"
+          echo "published=true" >> $GITHUB_OUTPUT
+        fi
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.registry_token }}
