@@ -1,0 +1,89 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+T = TypeVar("T", bound="PostsComment")
+
+
+@_attrs_define
+class PostsComment:
+    id: int
+    """ identifier of the comment """
+    post_id: int
+    """ identifier of the post """
+    author_id: int
+    """ author identifier refers to the employee access, you can get the employee from the employee endpoint """
+    text: str
+    """ text of the comment """
+    created_at: str
+    """ date of the comment """
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
+        post_id = self.post_id
+
+        author_id = self.author_id
+
+        text = self.text
+
+        created_at = self.created_at
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "id": id,
+                "post_id": post_id,
+                "author_id": author_id,
+                "text": text,
+                "created_at": created_at,
+            }
+        )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        id = d.pop("id")
+
+        post_id = d.pop("post_id")
+
+        author_id = d.pop("author_id")
+
+        text = d.pop("text")
+
+        created_at = d.pop("created_at")
+
+        posts_comment = cls(
+            id=id,
+            post_id=post_id,
+            author_id=author_id,
+            text=text,
+            created_at=created_at,
+        )
+
+        posts_comment.additional_properties = d
+        return posts_comment
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

@@ -1,0 +1,42 @@
+{
+  "name": "@factorial/api-client",
+  "version": "2026.4.1",
+  "description": "Official TypeScript SDK for the Factorial API",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "generate": "openapi-ts",
+    "generate-sdk": "tsx scripts/generate-sdk.ts",
+    "release": "tsx scripts/release.ts",
+    "release:dry-run": "tsx scripts/release.ts --dry-run",
+    "test:api": "tsx scripts/test-api.ts"
+  },
+  "keywords": [
+    "factorial",
+    "hr",
+    "api",
+    "sdk",
+    "typescript",
+    "openapi"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@hey-api/client-fetch": "0.9.0"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "0.76.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3"
+  }
+}
