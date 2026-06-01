@@ -64,6 +64,49 @@ Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). To release a ne
 
 See the per-SDK READMEs for full instructions: [TypeScript](typescript/README.md) · [Python](python/README.md)
 
+## Development
+
+### TypeScript
+
+**Generate SDK from latest spec**
+
+```sh
+cd typescript
+npm run generate
+```
+
+Fetches the OpenAPI spec from `https://api.factorialhr.com/oas/?version=<date>` and regenerates all `src/generated/*.gen.ts` files. Override the URL with:
+
+```sh
+OPENAPI_SPEC_URL=./local-spec.json npm run generate
+```
+
+**Test against the live API**
+
+```sh
+FACTORIAL_API_KEY=your_key npm run test:api
+# or with OAuth token:
+FACTORIAL_OAUTH_TOKEN=your_token npm run test:api
+```
+
+**Release a new version**
+
+```sh
+npm run release                    # patch bump (default)
+npm run release -- --bump minor    # minor bump
+npm run release -- --bump major    # major bump
+npm run release:dry-run            # preview only — no writes, no publish
+```
+
+The release script:
+1. Prompts for the API version date (`yyyy-mm-dd`).
+2. Fetches the spec from `https://api.factorialhr.com/oas/?version=<date>`.
+3. Regenerates `src/generated/` (stage 1) and `src/sdk.ts` (stage 2).
+4. Bumps the SDK semver (`--bump major|minor|patch`, default `patch`).
+5. Builds the package, then asks whether to publish to npm.
+
+---
+
 ## Authentication
 
 Both SDKs support:

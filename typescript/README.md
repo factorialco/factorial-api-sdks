@@ -2,6 +2,18 @@
 
 Official TypeScript SDK for the [Factorial API](https://apidoc.factorialhr.com).
 
+## Versioning
+
+The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
+
+| SDK version | Factorial API version |
+|-------------|----------------------|
+| `1.x.y`     | `2026-04-01`         |
+
+Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
+
+See the [Factorial API versioning docs](https://apidoc.factorialhr.com/docs/api-versioning) for details.
+
 ## Installation
 
 ```sh
@@ -141,54 +153,3 @@ const client = new FactorialClient({
   baseUrl: "https://api.factorialhr.com", // default
 });
 ```
-
-## Development
-
-### Generate SDK from latest spec
-
-```sh
-npm run generate
-```
-
-This fetches the OpenAPI spec for the given version from `https://api.factorialhr.com/oas/?version=<date>` and
-regenerates all `src/generated/*.gen.ts` files. Override the URL with:
-
-```sh
-OPENAPI_SPEC_URL=./local-spec.json npm run generate
-```
-
-### Test against the live API
-
-```sh
-FACTORIAL_API_KEY=your_key npm run test:api
-# or with OAuth token:
-FACTORIAL_OAUTH_TOKEN=your_token npm run test:api
-```
-
-### Release a new version
-
-```sh
-npm run release                    # patch bump (default)
-npm run release -- --bump minor    # minor bump
-npm run release -- --bump major    # major bump
-npm run release:dry-run            # preview only — no writes, no publish
-```
-
-The release script:
-1. Prompts for the API version date (`yyyy-mm-dd`).
-2. Fetches the spec from `https://api.factorialhr.com/oas/?version=<date>`.
-3. Regenerates `src/generated/` (stage 1) and `src/sdk.ts` (stage 2).
-4. Bumps the SDK semver (`--bump major|minor|patch`, default `patch`).
-5. Builds the package, then asks whether to publish to npm.
-
-## Versioning
-
-The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
-
-| SDK version | Factorial API version |
-|-------------|----------------------|
-| `1.x.y`     | `2026-04-01`         |
-
-Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). When a new API version ships, run `npm run release` with the appropriate `--bump` level and enter the new date.
-
-See the [Factorial API versioning docs](https://apidoc.factorialhr.com/docs/api-versioning) for details.
