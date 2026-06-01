@@ -44,6 +44,10 @@ jobs:
             echo "No entry for major version $MAJOR in version_map.json" >&2
             exit 1
           fi
+          LATEST_MAJOR=$(jq -r '.latest' version_map.json)
+          if [ "$MAJOR" = "$LATEST_MAJOR" ]; then
+            TAG="$TAG latest"
+          fi
           echo "npm_tag=$TAG" >> "$GITHUB_OUTPUT"
 
       - uses: ./.github/actions/publish-to-npmjs
