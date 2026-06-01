@@ -27,6 +27,20 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
+function resolveNpmTag(sdkVersion: string): string {
+  const major = sdkVersion.split(".")[0];
+  const { versions } = JSON.parse(readFileSync(join(ROOT, "../version_map.json"), "utf-8")) as {
+    versions: Record<string, string>;
+  };
+  const tag = versions[major];
+  if (!tag) {
+    throw new Error(
+      `No Factorial API version found for SDK major version ${major} in version_map.json`
+    );
+  }
+  return tag;
+}
+
 const isDryRun = process.argv.includes("--dry-run");
 
 const bumpArgIdx = process.argv.indexOf("--bump");
@@ -149,9 +163,10 @@ run(`npm run build`);
 const shouldPublish = (await prompt("Publish @factorialco/api-client@" + newSdkVersion + " to npm? [y/N] ")).toLowerCase() === "y";
 
 if (shouldPublish) {
-  log(`\n🚀  Publishing @factorialco/api-client@${newSdkVersion} to npm …`);
-  run(`npm publish --access public`);
-  log(`\n✅  Released @factorialco/api-client@${newSdkVersion} successfully!\n`);
+  const npmTag = resolveNpmTag(newSdkVersion);
+  log(`\n🚀  Publishing @factorialco/api-client@${newSdkVersion} to npm (tag: ${npmTag}) …`);
+  run(`npm publish --access public --tag ${npmTag}`);
+  log(`\n✅  Released @factorialco/api-client@${newSdkVersion} (tag: ${npmTag}) successfully!\n`);
 } else {
   log(`\n⏭️   Skipped publish. Package built and version bumped to ${newSdkVersion}.\n`);
 }

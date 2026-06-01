@@ -34,8 +34,21 @@ jobs:
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.release.tag_name || github.event.inputs.release_tag || github.sha }} # Checkout the tagged release
+
+      - name: Resolve npm dist-tag
+        id: resolve-tag
+        run: |
+          MAJOR=$(node -p "require('./typescript/package.json').version.split('.')[0]")
+          TAG=$(jq -r ".versions[\"$MAJOR\"]" version_map.json)
+          if [ "$TAG" = "null" ] || [ -z "$TAG" ]; then
+            echo "No entry for major version $MAJOR in version_map.json" >&2
+            exit 1
+          fi
+          echo "npm_tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - uses: ./.github/actions/publish-to-npmjs
         id: publish
         with:
           registry_token: ${{ secrets.NPMJS_TOKEN }}
           working-directory: ./typescript
+          tag: ${{ steps.resolve-tag.outputs.npm_tag }}

@@ -8,6 +8,10 @@ inputs:
     description: "Working directory"
     required: false
     default: "."
+  tag:
+    description: "Space-separated npm dist-tag(s) to publish under (e.g. '2026-04-01 latest'). Omit to publish with the default 'latest' tag."
+    required: false
+    default: ""
 
 outputs:
   published:
@@ -32,14 +36,29 @@ runs:
       id: publish
       working-directory: ${{ inputs.working-directory }}
       run: |
-        result=$(pnpm publish --no-git-checks --access=public)
-        if [[ $result == "There are no new packages that should be published" ]]
-        then
+        TAGS=(${{ inputs.tag }})
+        if [ ${#TAGS[@]} -gt 0 ]; then
+          PUBLISH_CMD="pnpm publish --no-git-checks --access=public --tag ${TAGS[0]}"
+        else
+          PUBLISH_CMD="pnpm publish --no-git-checks --access=public"
+        fi
+
+        result=$($PUBLISH_CMD)
+        if [[ $result == "There are no new packages that should be published" ]]; then
           echo "No new packages to publish"
           echo "published=false" >> $GITHUB_OUTPUT
         else
           echo "Packages published"
           echo "published=true" >> $GITHUB_OUTPUT
+
+          # Add any extra dist-tags
+          if [ ${#TAGS[@]} -gt 1 ]; then
+            PACKAGE=$(node -p "require('./package.json').name")
+            VERSION=$(node -p "require('./package.json').version")
+            for extra_tag in "${TAGS[@]:1}"; do
+              npm dist-tag add "$PACKAGE@$VERSION" "$extra_tag"
+            done
+          fi
         fi
       env:
         NODE_AUTH_TOKEN: ${{ inputs.registry_token }}
