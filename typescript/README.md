@@ -29,7 +29,7 @@ const client = new FactorialClient({
   apiKey: process.env.FACTORIAL_API_KEY,
 });
 
-const { data, meta } = await client.employees.employees.list();
+const { data: { data: { data, meta } = {}, error } = {}, error } = await client.employees.employees.list();
 console.log(`${meta.total} employees total`);
 ```
 
@@ -70,7 +70,7 @@ Every resource exposes the standard methods available in the API:
 
 ```ts
 // List (single page, up to 100 items)
-const { data, meta } = await client.employees.employees.list({
+const { data: { data, meta } = {}, error } = await client.employees.employees.list({
   query: { only_active: true },
 });
 
@@ -95,18 +95,18 @@ await client.timeoff.leaves.delete({ path: { id: 99 } });
 
 // Named actions
 await client.timeoff.leaves.approve({ body: { id: 99 } });
-await client.attendance.shifts.clockIn({ body: { employee_id: 1 } });
+await client.attendance.shifts.clockIn({ body: { employee_id: 1, , now: new Date().toISOString().slice(0, 19) } });
 ```
 
 ## Pagination
 
 The Factorial API uses **cursor-based pagination**. All list endpoints return
-`{ data, meta }` where `meta` contains `has_next_page`, `end_cursor`, and `total`.
+`{ data: { data, meta } = {}, error }` where `meta` contains `has_next_page`, `end_cursor`, and `total`.
 
 ### Single page
 
 ```ts
-const { data, meta } = await client.employees.employees.list({ query: { limit: 50 } });
+const { data: { data, meta } = {}, error } = await client.employees.employees.list({ query: { limit: 50 } });
 
 // Fetch next page manually
 if (meta.has_next_page) {
