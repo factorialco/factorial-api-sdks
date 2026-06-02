@@ -17,7 +17,7 @@ See the [Factorial API versioning docs](https://apidoc.factorialhr.com/docs/api-
 ## Installation
 
 ```sh
-npm install @factorialco/api-client
+npm install @factorialco/api-client@2026-04-01
 ```
 
 ## Quick start
