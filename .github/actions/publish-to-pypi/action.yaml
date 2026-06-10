@@ -47,7 +47,7 @@ runs:
       id: publish
       working-directory: ${{ inputs.working-directory }}
       run: |
-        uv publish --publish-url https://upload.pypi.org/legacy/ 2>&1 | tee publish.log
+        uv publish 2>&1 | tee publish.log
         if grep -q "Uploaded" publish.log; then
           echo "published=true" >> $GITHUB_OUTPUT
         else
