@@ -40,6 +40,9 @@ dev = [
 [tool.hatch.build.targets.wheel]
 packages = ["factorial_api_client"]
 
+[tool.hatch.build.targets.sdist]
+include = ["factorial_api_client/"]
+
 [tool.ruff]
 line-length = 100
 
