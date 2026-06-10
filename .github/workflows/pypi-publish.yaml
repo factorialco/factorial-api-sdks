@@ -1,0 +1,38 @@
+name: "Publish Python package to PyPI"
+
+on:
+  release:
+    types: [released]
+  workflow_run:
+    workflows: [Create release]
+    types:
+      - completed
+
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "The release tag to checkout"
+        required: true
+
+jobs:
+  publish-python:
+    name: "[🎯 API-CLIENT] Publish to PyPI"
+    if: |
+      contains(github.event.release.tag_name, 'python-v') &&
+      github.head_ref != 'release-please--branches--master' && !contains(github.event.pull_request.labels.*.name, 'autorelease') && 
+      github.event_name == 'workflow_dispatch' || github.event_name == 'release' || 
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.outputs.new_version)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.release.tag_name || github.event.inputs.release_tag || github.sha }}
+
+      - uses: ./.github/actions/publish-to-pypi
+        id: publish
+        with:
+          registry_token: ${{ secrets.PYPI_TOKEN }}
+          working-directory: ./python

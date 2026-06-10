@@ -1,0 +1,57 @@
+name: "Publish to PyPI"
+description: "Publish package to PyPI registry"
+
+inputs:
+  registry_token:
+    description: "PyPI token"
+    required: true
+  working-directory:
+    description: "Working directory"
+    required: false
+    default: "."
+  python-version:
+    description: "Python version"
+    required: false
+    default: "3.11"
+
+outputs:
+  published:
+    description: "Whether package was published"
+    value: ${{ steps.publish.outputs.published }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Setup uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: uv sync
+
+    - name: Build
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: uv build
+
+    - name: Publish to PyPI
+      shell: bash
+      id: publish
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        uv publish --publish-url https://upload.pypi.org/legacy/ 2>&1 | tee publish.log
+        if grep -q "Uploaded" publish.log; then
+          echo "published=true" >> $GITHUB_OUTPUT
+        else
+          echo "published=false" >> $GITHUB_OUTPUT
+        fi
+      env:
+        UV_PUBLISH_TOKEN: ${{ inputs.registry_token }}
