@@ -2,9 +2,18 @@
 
 Official Python SDK for the [Factorial API](https://apidoc.factorialhr.com).
 
-Auto-generated from the OpenAPI spec with a generated `FactorialClient` wrapper
-providing clean domain-namespaced access, cursor pagination helpers, and both sync
-and async support.
+
+## Versioning
+
+The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
+
+| SDK version | Factorial API version |
+|-------------|----------------------|
+| `1.x.y`     | `2026-04-01`         |
+
+Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
+
+See the [Factorial API versioning docs](https://apidoc.factorialhr.com/docs/api-versioning) for details.
 
 ## Installation
 
@@ -82,57 +91,4 @@ for emp in client.employees.employee.paginate(max_items=50):
 
 # Collect everything (use carefully on large datasets)
 all_leaves = client.timeoff.leave.all()
-```
-
-## Versioning
-
-The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
-
-| SDK version | Factorial API version |
-|-------------|----------------------|
-| `1.x.y`     | `2026-04-01`         |
-
-Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). Each version is supported for one year.
-
-## Release
-
-```bash
-# Dry run (shows what would change, no writes)
-uv run python scripts/release.py --dry-run
-
-# Full release — patch bump (default)
-uv run python scripts/release.py
-
-# Minor or major bump
-uv run python scripts/release.py --bump minor
-uv run python scripts/release.py --bump major
-
-# Supply API version non-interactively
-uv run python scripts/release.py --version 2026-07-01
-```
-
-The release script:
-1. Prompts for the API version date (`yyyy-mm-dd`).
-2. Fetches and patches the spec from `https://api.factorialhr.com/oas/?version=<date>`.
-3. Regenerates `factorial_api_client/generated/` and `client.py`.
-4. Bumps the SDK semver (`--bump major|minor|patch`, default `patch`).
-5. Builds the package, then asks whether to publish to PyPI.
-
-## Smoke test
-
-```bash
-FACTORIAL_API_KEY=xxx uv run python scripts/test_api.py
-```
-
-## Development
-
-```bash
-# Install dependencies
-uv sync
-
-# Type check
-uv run mypy factorial_api_client --ignore-missing-imports
-
-# Lint
-uv run ruff check factorial_api_client
 ```

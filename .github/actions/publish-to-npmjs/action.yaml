@@ -1,4 +1,5 @@
 name: "Publish to npmjs"
+description: "Publish package to npmjs registry"
 
 inputs:
   registry_token:
