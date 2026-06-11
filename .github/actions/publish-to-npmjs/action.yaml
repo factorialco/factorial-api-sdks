@@ -27,12 +27,29 @@ runs:
       with:
         working-directory: ${{ inputs.working-directory }}
 
+    - name: Check if version already published
+      shell: bash
+      id: check
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        PACKAGE=$(node -p "require('./package.json').name")
+        VERSION=$(node -p "require('./package.json').version")
+        if npm view "$PACKAGE@$VERSION" version >/dev/null 2>&1; then
+          echo "✅ $PACKAGE@$VERSION is already published — skipping publish."
+          echo "skip=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "$PACKAGE@$VERSION is not yet published — proceeding."
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Build
+      if: steps.check.outputs.skip != 'true'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: pnpm build
 
     - name: Publish to registry
+      if: steps.check.outputs.skip != 'true'
       shell: bash
       id: publish
       working-directory: ${{ inputs.working-directory }}
