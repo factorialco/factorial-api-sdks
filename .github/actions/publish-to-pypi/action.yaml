@@ -32,17 +32,36 @@ runs:
       with:
         enable-cache: true
 
+    - name: Check if version already published
+      shell: bash
+      id: check
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        PACKAGE=$(grep -E '^name = ' pyproject.toml | head -1 | sed -E 's/^name = "(.*)"/\1/')
+        VERSION=$(grep -E '^version = ' pyproject.toml | head -1 | sed -E 's/^version = "(.*)"/\1/')
+        CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://pypi.org/pypi/$PACKAGE/$VERSION/json")
+        if [ "$CODE" = "200" ]; then
+          echo "✅ $PACKAGE $VERSION is already on PyPI — skipping publish."
+          echo "skip=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "$PACKAGE $VERSION is not yet on PyPI (HTTP $CODE) — proceeding."
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Install dependencies
+      if: steps.check.outputs.skip != 'true'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: uv sync
 
     - name: Build
+      if: steps.check.outputs.skip != 'true'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: uv build
 
     - name: Publish to PyPI
+      if: steps.check.outputs.skip != 'true'
       shell: bash
       id: publish
       working-directory: ${{ inputs.working-directory }}
