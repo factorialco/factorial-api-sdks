@@ -61,6 +61,38 @@ client = FactorialClient(api_key="YOUR_KEY")
 client = FactorialClient(token="YOUR_BEARER_TOKEN")
 ```
 
+### Environment variables
+
+When an argument is omitted, the client falls back to environment variables.
+Explicit arguments always take precedence.
+
+| Variable | Maps to | Sent as |
+|----------|---------|---------|
+| `FACTORIAL_API_KEY` | `api_key` | `x-api-key` header |
+| `FACTORIAL_OAUTH_TOKEN` | `token` | `Authorization: Bearer` |
+| `FACTORIAL_BASE_URL` | `base_url` | — (defaults to `https://api.factorialhr.com`) |
+
+```python
+# No arguments needed — reads FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN / FACTORIAL_BASE_URL
+client = FactorialClient()
+```
+
+## Error handling
+
+The client fails loudly on non-2xx responses (bad/expired token, wrong base
+URL, `4xx`/`5xx`) instead of silently returning `None`. These raise
+`UnexpectedStatus`:
+
+```python
+from factorial_api_client.generated.errors import UnexpectedStatus
+
+try:
+    employees = client.employees.employee.list()
+except UnexpectedStatus as e:
+    print(e.status_code)  # e.g. 401
+    print(e.content)      # raw response body (bytes)
+```
+
 ## Domain namespaces
 
 The client is organised as `client.{domain}.{resource}.{method}()`.

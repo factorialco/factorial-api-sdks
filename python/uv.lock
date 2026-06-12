@@ -118,7 +118,7 @@ wheels = [
 
 [[package]]
 name = "factorial-api-client"
-version = "2026.4.1"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "attrs" },
