@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "separate-pull-requests": true,
+  "include-component-in-tag": true,
+  "pull-request-title-pattern": "chore: release ${component} ${version}",
+  "packages": {
+    "typescript": {
+      "release-type": "node",
+      "component": "typescript",
+      "package-name": "@factorialco/api-client"
+    },
+    "python": {
+      "release-type": "python",
+      "component": "python",
+      "package-name": "factorial-api-client"
+    }
+  }
+}

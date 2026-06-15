@@ -55,14 +55,16 @@ Both SDKs use standard semver (`MAJOR.MINOR.PATCH`), independent of the Factoria
 |-------------|----------------------|
 | `1.x.y`     | `2026-04-01`         |
 
-Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). To release a new SDK version:
+Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
 
-1. Run the release script in the relevant SDK directory.
-2. Enter the API version date (`yyyy-mm-dd`) when prompted.
-3. The script fetches the spec from `https://api.factorialhr.com/oas/?version=<date>`, regenerates all generated code, and bumps the semver (`--bump major|minor|patch`, default `patch`).
-4. After building, it asks whether to publish — answer `y` to push to npm/PyPI or `n` to skip.
+**Releases are automated with [release-please](https://github.com/googleapis/release-please).**
+Land [Conventional Commits](https://www.conventionalcommits.org/) on `main`, then
+merge the Release PR it opens — that bumps the version, tags the commit, creates
+the GitHub Release, and publishes to npm / PyPI. You never tag or publish by hand.
+See **[RELEASING.md](RELEASING.md)** for the full flow.
 
-See the per-SDK READMEs for full instructions: [TypeScript](typescript/README.md) · [Python](python/README.md)
+The `release.ts` / `release.py` scripts remain for **regenerating** the SDK from a
+new OpenAPI spec; see the per-SDK READMEs: [TypeScript](typescript/README.md) · [Python](python/README.md)
 
 ## Development
 
