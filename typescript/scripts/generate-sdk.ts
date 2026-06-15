@@ -486,18 +486,21 @@ import { paginate, collectAll } from "./pagination.js";
 export type { PagedMeta, PaginateOptions } from "./pagination.js";
 
 export type FactorialClientConfig = Omit<Partial<Config<ClientOptions>>, "baseUrl" | "auth"> & {
-  /** Base URL of the Factorial API. Defaults to https://api.factorialhr.com */
+  /**
+   * Base URL of the Factorial API.
+   * Falls back to the \`FACTORIAL_BASE_URL\` env var, then https://api.factorialhr.com
+   */
   baseUrl?: string;
   /**
    * Factorial API key — sent as the \`x-api-key\` header.
    * Obtain one from Settings → API Keys in the Factorial dashboard.
-   * @example apiKey: process.env.FACTORIAL_API_KEY
+   * Falls back to the \`FACTORIAL_API_KEY\` env var when omitted.
    */
   apiKey?: string;
   /**
    * OAuth2 bearer token — sent as \`Authorization: Bearer <token>\`.
    * Use this when authenticating via OAuth2 instead of an API key.
-   * @example token: oauthAccessToken
+   * Falls back to the \`FACTORIAL_TOKEN\` env var when omitted.
    */
   token?: string;
 };
@@ -551,12 +554,34 @@ for (const ns of namespaces) {
   parts.push(`  readonly ${namespaceProp(ns)}: ${ns}Namespace;\n`);
 }
 
+// The emitted constructor sets `throwOnError: true` so hey-api throws on non-2xx
+// responses (bad/expired token, wrong base URL, server errors) instead of silently
+// resolving to { data: undefined, error }. Overridable per-client via config.throwOnError.
 parts.push(`
   constructor(config: FactorialClientConfig = {}) {
     const { apiKey, token, baseUrl, ...rest } = config;
 
-    if (!apiKey && !token) {
-      throw new Error("FactorialClient: provide either apiKey or token");
+    // Fall back to environment variables when options are omitted. Guarded so
+    // the SDK keeps working in non-Node runtimes (e.g. browsers) where
+    // \`process\` is undefined.
+    const env: Record<string, string | undefined> =
+      typeof globalThis !== "undefined" &&
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (globalThis as any).process &&
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (globalThis as any).process.env
+        ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (globalThis as any).process.env
+        : {};
+    const resolvedApiKey = apiKey ?? env.FACTORIAL_API_KEY;
+    const resolvedToken = token ?? env.FACTORIAL_TOKEN;
+    const resolvedBaseUrl =
+      baseUrl ?? env.FACTORIAL_BASE_URL ?? "https://api.factorialhr.com";
+
+    if (!resolvedApiKey && !resolvedToken) {
+      throw new Error(
+        "FactorialClient: provide either apiKey or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"
+      );
     }
 
     // hey-api calls the auth callback once per security scheme in spec order:
@@ -564,14 +589,15 @@ parts.push(`
     // 2. { type: 'apiKey', name: 'x-api-key' } → x-api-key: <key>
     // Return a value only for the matching scheme so the other is skipped.
     const auth = (scheme: { type: string }) => {
-      if (scheme.type === "http") return token;       // OAuth bearer
-      if (scheme.type === "apiKey") return apiKey;    // API key
+      if (scheme.type === "http") return resolvedToken;    // OAuth bearer
+      if (scheme.type === "apiKey") return resolvedApiKey;  // API key
       return undefined;
     };
 
     const client = createClient(
       createConfig<ClientOptions>({
-        baseUrl: baseUrl ?? "https://api.factorialhr.com",
+        baseUrl: resolvedBaseUrl,
+        throwOnError: true,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         auth: auth as any,
         ...(rest as any),

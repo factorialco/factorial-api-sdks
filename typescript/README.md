@@ -49,6 +49,25 @@ const client = new FactorialClient({
 });
 ```
 
+### Environment variables
+
+When an option is omitted, the client falls back to environment variables.
+Explicit options always take precedence.
+
+| Variable | Maps to option | Sent as |
+|----------|----------------|---------|
+| `FACTORIAL_API_KEY` | `apiKey` | `x-api-key` header |
+| `FACTORIAL_TOKEN` | `token` | `Authorization: Bearer` |
+| `FACTORIAL_BASE_URL` | `baseUrl` | — (defaults to `https://api.factorialhr.com`) |
+
+```ts
+// No options needed — reads FACTORIAL_API_KEY / FACTORIAL_TOKEN / FACTORIAL_BASE_URL
+const client = new FactorialClient();
+```
+
+The fallback reads `process.env`, so it applies in Node-like runtimes. In the
+browser there is no `process.env` — pass credentials explicitly.
+
 ## SDK structure
 
 All resources are grouped by domain, mirroring the Factorial API hierarchy:
@@ -135,21 +154,29 @@ Both `paginate()` and `all()` are available on every list endpoint.
 
 ## Error handling
 
-```ts
-const { data, error } = await client.employees.employees.list();
+The client is configured with `throwOnError: true`, so any non-2xx response
+(bad/expired token, wrong base URL, `4xx`/`5xx`) **throws** rather than silently
+resolving to empty data. Wrap calls in `try`/`catch`:
 
-if (error) {
-  console.error("API error:", error);
-} else {
+```ts
+try {
+  const { data } = await client.employees.employees.list();
   console.log(data);
+} catch (err) {
+  // For HTTP errors, `err` is the API's parsed error body.
+  // For transport failures (DNS/connection), `err` is a TypeError.
+  console.error("Request failed:", err);
 }
 ```
+
+You can opt out per client (restoring the `{ data, error }` return shape) with
+`new FactorialClient({ ..., throwOnError: false })`.
 
 ## Custom base URL
 
 ```ts
 const client = new FactorialClient({
   apiKey: process.env.FACTORIAL_API_KEY,
-  baseUrl: "https://api.factorialhr.com", // default
+  baseUrl: "https://api.factorialhr.com", // default; or set FACTORIAL_BASE_URL
 });
 ```

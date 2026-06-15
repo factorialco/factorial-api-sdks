@@ -11,7 +11,7 @@
  *   FACTORIAL_API_KEY=your_key npm run test:api
  *
  * Or with OAuth token:
- *   FACTORIAL_OAUTH_TOKEN=your_token npm run test:api
+ *   FACTORIAL_TOKEN=your_token npm run test:api
  *
  * Optional overrides:
  *   FACTORIAL_BASE_URL=https://api.factorialhr.com  (default)
@@ -22,13 +22,13 @@ import { FactorialClient } from "../src/index.js";
 // ─── Auth ────────────────────────────────────────────────────────────────────
 
 const apiKey = process.env.FACTORIAL_API_KEY;
-const oauthToken = process.env.FACTORIAL_OAUTH_TOKEN;
+const oauthToken = process.env.FACTORIAL_TOKEN;
 const token = apiKey ?? oauthToken;
 
 if (!token) {
   console.error(
     "❌  No auth token found.\n" +
-      "    Set FACTORIAL_API_KEY or FACTORIAL_OAUTH_TOKEN environment variable.\n" +
+      "    Set FACTORIAL_API_KEY or FACTORIAL_TOKEN environment variable.\n" +
       "    Example: FACTORIAL_API_KEY=your_key npm run test:api",
   );
   process.exit(1);

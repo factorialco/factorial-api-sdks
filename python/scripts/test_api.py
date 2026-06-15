@@ -4,11 +4,11 @@ test_api.py — Live smoke test for the Factorial Python SDK.
 
 Requires one of:
   FACTORIAL_API_KEY      — sent as x-api-key header
-  FACTORIAL_OAUTH_TOKEN  — sent as Authorization: Bearer header
+  FACTORIAL_TOKEN  — sent as Authorization: Bearer header
 
 Usage:
     FACTORIAL_API_KEY=xxx uv run python scripts/test_api.py
-    FACTORIAL_OAUTH_TOKEN=xxx uv run python scripts/test_api.py
+    FACTORIAL_TOKEN=xxx uv run python scripts/test_api.py
 """
 
 from __future__ import annotations
@@ -61,10 +61,10 @@ async def test_async(client: FactorialClient) -> None:
 
 def main() -> None:
     api_key = os.environ.get("FACTORIAL_API_KEY")
-    oauth_token = os.environ.get("FACTORIAL_OAUTH_TOKEN")
+    oauth_token = os.environ.get("FACTORIAL_TOKEN")
 
     if not api_key and not oauth_token:
-        print("ERROR: Set FACTORIAL_API_KEY or FACTORIAL_OAUTH_TOKEN environment variable")
+        print("ERROR: Set FACTORIAL_API_KEY or FACTORIAL_TOKEN environment variable")
         sys.exit(1)
 
     if api_key:

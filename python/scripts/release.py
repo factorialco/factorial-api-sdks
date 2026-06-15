@@ -126,6 +126,92 @@ def _patch_enum_none_safety(models_dir: Path) -> None:
     print(f"  Patched {patched_files} model files for enum None-safety")
 
 
+def _patch_raise_on_unexpected_status(client_py: Path) -> None:
+    """
+    The stage-2 generator builds the AuthenticatedClient without
+    raise_on_unexpected_status, which defaults to False. That makes the
+    generated sync/asyncio helpers return None on any undocumented status
+    (bad/expired token, wrong base URL, server errors) — the SDK fails
+    silently. Inject raise_on_unexpected_status=True so it fails loudly.
+    """
+    if not client_py.exists():
+        print(f"  WARNING: {client_py} not found — skipping raise_on_unexpected_status patch")
+        return
+
+    content = client_py.read_text()
+    if "raise_on_unexpected_status=True" in content:
+        print("  client.py already raises on unexpected status — nothing to patch")
+        return
+
+    patched = content.replace(
+        '            auth_header_name="x-api-key",\n        )',
+        '            auth_header_name="x-api-key",\n'
+        '            raise_on_unexpected_status=True,\n        )',
+        1,
+    )
+    if patched == content:
+        print("  WARNING: could not locate AuthenticatedClient(...) call to patch")
+        return
+
+    client_py.write_text(patched)
+    print("  Patched client.py to raise on unexpected status")
+
+
+def _patch_env_var_support(client_py: Path) -> None:
+    """
+    The stage-2 generator builds FactorialClient.__init__ to read credentials
+    only from its arguments. Patch it so that, when an argument is omitted, the
+    client falls back to environment variables — FACTORIAL_API_KEY,
+    FACTORIAL_TOKEN and FACTORIAL_BASE_URL — so consumers don't have to
+    wire them up by hand. Explicit arguments still take precedence.
+    """
+    if not client_py.exists():
+        print(f"  WARNING: {client_py} not found — skipping env var patch")
+        return
+
+    content = client_py.read_text()
+    if 'os.environ.get("FACTORIAL_API_KEY")' in content:
+        print("  client.py already reads env vars — nothing to patch")
+        return
+
+    original = content
+
+    # Ensure `import os` is present (placed just above the typing import).
+    if "\nimport os\n" not in content:
+        content = content.replace(
+            "\nfrom typing import Any, List\n",
+            "\nimport os\nfrom typing import Any, List\n",
+            1,
+        )
+
+    # Make base_url optional and add the env-var fallbacks + clearer error.
+    content = content.replace(
+        '        base_url: str = "https://api.factorialhr.com",\n'
+        "    ) -> None:\n"
+        "        auth_token = api_key or token\n"
+        "        if not auth_token:\n"
+        '            raise ValueError("Provide api_key or token")',
+        "        base_url: str | None = None,\n"
+        "    ) -> None:\n"
+        '        api_key = api_key or os.environ.get("FACTORIAL_API_KEY")\n'
+        '        token = token or os.environ.get("FACTORIAL_TOKEN")\n'
+        '        base_url = base_url or os.environ.get("FACTORIAL_BASE_URL") or "https://api.factorialhr.com"\n'
+        "        auth_token = api_key or token\n"
+        "        if not auth_token:\n"
+        "            raise ValueError(\n"
+        '                "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"\n'
+        "            )",
+        1,
+    )
+
+    if content == original:
+        print("  WARNING: could not locate FactorialClient.__init__ to patch for env vars")
+        return
+
+    client_py.write_text(content)
+    print("  Patched client.py to read credentials from environment variables")
+
+
 def set_version(new_version: str) -> None:
     content = PYPROJECT_PATH.read_text()
     content = re.sub(
@@ -213,6 +299,12 @@ def main() -> None:
         run(["python3", str(GENERATE_SCRIPT)])
     else:
         print(f"  WARNING: {GENERATE_SCRIPT} not found — skipping client.py regeneration")
+
+    # Make the high-level client fail loudly on undocumented HTTP statuses.
+    _patch_raise_on_unexpected_status(PYTHON_DIR / "factorial_api_client" / "client.py")
+
+    # Let the high-level client read credentials from environment variables.
+    _patch_env_var_support(PYTHON_DIR / "factorial_api_client" / "client.py")
 
     # 5. Bump version
     print(f"\nStep 5: Bump version to {new_version}")

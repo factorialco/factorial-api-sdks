@@ -86,7 +86,7 @@ OPENAPI_SPEC_URL=./local-spec.json npm run generate
 ```sh
 FACTORIAL_API_KEY=your_key npm run test:api
 # or with OAuth token:
-FACTORIAL_OAUTH_TOKEN=your_token npm run test:api
+FACTORIAL_TOKEN=your_token npm run test:api
 ```
 
 **Release a new version**
@@ -113,3 +113,36 @@ Both SDKs support:
 
 - **API key** — via `apiKey:` / `api_key=` (sent as `x-api-key` header)
 - **OAuth2 bearer token** — via `token:` / `token=` (sent as `Authorization: Bearer`)
+
+### Environment variables
+
+If you don't pass credentials (or a base URL) explicitly, the client reads them
+from the environment. Explicit arguments always take precedence.
+
+| Variable | Maps to | Sent as |
+|----------|---------|---------|
+| `FACTORIAL_API_KEY` | API key | `x-api-key` header |
+| `FACTORIAL_TOKEN` | OAuth2 token | `Authorization: Bearer` |
+| `FACTORIAL_BASE_URL` | Base URL | — (defaults to `https://api.factorialhr.com`) |
+
+```ts
+// TypeScript — picks up FACTORIAL_API_KEY / FACTORIAL_TOKEN / FACTORIAL_BASE_URL
+const client = new FactorialClient();
+```
+
+```python
+# Python — same
+client = FactorialClient()
+```
+
+> The TypeScript client reads `process.env`, so env-var fallback applies in Node-like
+> runtimes; in the browser, pass credentials explicitly.
+
+## Error handling
+
+Both SDKs **fail loudly** on non-2xx responses (bad/expired token, wrong base URL,
+server errors) instead of silently returning empty data:
+
+- **TypeScript** throws — wrap calls in `try`/`catch`.
+- **Python** raises `factorial_api_client.generated.errors.UnexpectedStatus`
+  (with `.status_code` and `.content`).
