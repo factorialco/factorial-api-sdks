@@ -57,11 +57,11 @@ Explicit options always take precedence.
 | Variable | Maps to option | Sent as |
 |----------|----------------|---------|
 | `FACTORIAL_API_KEY` | `apiKey` | `x-api-key` header |
-| `FACTORIAL_OAUTH_TOKEN` | `token` | `Authorization: Bearer` |
+| `FACTORIAL_TOKEN` | `token` | `Authorization: Bearer` |
 | `FACTORIAL_BASE_URL` | `baseUrl` | — (defaults to `https://api.factorialhr.com`) |
 
 ```ts
-// No options needed — reads FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN / FACTORIAL_BASE_URL
+// No options needed — reads FACTORIAL_API_KEY / FACTORIAL_TOKEN / FACTORIAL_BASE_URL
 const client = new FactorialClient();
 ```
 

@@ -500,7 +500,7 @@ export type FactorialClientConfig = Omit<Partial<Config<ClientOptions>>, "baseUr
   /**
    * OAuth2 bearer token — sent as \`Authorization: Bearer <token>\`.
    * Use this when authenticating via OAuth2 instead of an API key.
-   * Falls back to the \`FACTORIAL_OAUTH_TOKEN\` env var when omitted.
+   * Falls back to the \`FACTORIAL_TOKEN\` env var when omitted.
    */
   token?: string;
 };
@@ -574,13 +574,13 @@ parts.push(`
           (globalThis as any).process.env
         : {};
     const resolvedApiKey = apiKey ?? env.FACTORIAL_API_KEY;
-    const resolvedToken = token ?? env.FACTORIAL_OAUTH_TOKEN;
+    const resolvedToken = token ?? env.FACTORIAL_TOKEN;
     const resolvedBaseUrl =
       baseUrl ?? env.FACTORIAL_BASE_URL ?? "https://api.factorialhr.com";
 
     if (!resolvedApiKey && !resolvedToken) {
       throw new Error(
-        "FactorialClient: provide either apiKey or token (or set FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN)"
+        "FactorialClient: provide either apiKey or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"
       );
     }
 

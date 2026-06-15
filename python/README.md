@@ -69,11 +69,11 @@ Explicit arguments always take precedence.
 | Variable | Maps to | Sent as |
 |----------|---------|---------|
 | `FACTORIAL_API_KEY` | `api_key` | `x-api-key` header |
-| `FACTORIAL_OAUTH_TOKEN` | `token` | `Authorization: Bearer` |
+| `FACTORIAL_TOKEN` | `token` | `Authorization: Bearer` |
 | `FACTORIAL_BASE_URL` | `base_url` | — (defaults to `https://api.factorialhr.com`) |
 
 ```python
-# No arguments needed — reads FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN / FACTORIAL_BASE_URL
+# No arguments needed — reads FACTORIAL_API_KEY / FACTORIAL_TOKEN / FACTORIAL_BASE_URL
 client = FactorialClient()
 ```
 

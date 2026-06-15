@@ -86,7 +86,7 @@ OPENAPI_SPEC_URL=./local-spec.json npm run generate
 ```sh
 FACTORIAL_API_KEY=your_key npm run test:api
 # or with OAuth token:
-FACTORIAL_OAUTH_TOKEN=your_token npm run test:api
+FACTORIAL_TOKEN=your_token npm run test:api
 ```
 
 **Release a new version**
@@ -122,11 +122,11 @@ from the environment. Explicit arguments always take precedence.
 | Variable | Maps to | Sent as |
 |----------|---------|---------|
 | `FACTORIAL_API_KEY` | API key | `x-api-key` header |
-| `FACTORIAL_OAUTH_TOKEN` | OAuth2 token | `Authorization: Bearer` |
+| `FACTORIAL_TOKEN` | OAuth2 token | `Authorization: Bearer` |
 | `FACTORIAL_BASE_URL` | Base URL | — (defaults to `https://api.factorialhr.com`) |
 
 ```ts
-// TypeScript — picks up FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN / FACTORIAL_BASE_URL
+// TypeScript — picks up FACTORIAL_API_KEY / FACTORIAL_TOKEN / FACTORIAL_BASE_URL
 const client = new FactorialClient();
 ```
 

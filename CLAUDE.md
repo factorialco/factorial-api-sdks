@@ -50,7 +50,7 @@ Two options — use one or both:
 | `apiKey` | `x-api-key: <value>` |
 | `token` | `Authorization: Bearer <value>` |
 
-Environment variables for smoke tests: `FACTORIAL_API_KEY`, `FACTORIAL_OAUTH_TOKEN`.
+Environment variables for smoke tests: `FACTORIAL_API_KEY`, `FACTORIAL_TOKEN`.
 
 Note: the Factorial API key is JWT-formatted but sent as `x-api-key`, not bearer.
 

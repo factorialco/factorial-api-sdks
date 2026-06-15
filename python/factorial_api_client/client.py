@@ -10894,12 +10894,12 @@ class FactorialClient:
         base_url: str | None = None,
     ) -> None:
         api_key = api_key or os.environ.get("FACTORIAL_API_KEY")
-        token = token or os.environ.get("FACTORIAL_OAUTH_TOKEN")
+        token = token or os.environ.get("FACTORIAL_TOKEN")
         base_url = base_url or os.environ.get("FACTORIAL_BASE_URL") or "https://api.factorialhr.com"
         auth_token = api_key or token
         if not auth_token:
             raise ValueError(
-                "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN)"
+                "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"
             )
         self._client = AuthenticatedClient(
             base_url=base_url,

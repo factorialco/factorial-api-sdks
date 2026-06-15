@@ -162,7 +162,7 @@ def _patch_env_var_support(client_py: Path) -> None:
     The stage-2 generator builds FactorialClient.__init__ to read credentials
     only from its arguments. Patch it so that, when an argument is omitted, the
     client falls back to environment variables — FACTORIAL_API_KEY,
-    FACTORIAL_OAUTH_TOKEN and FACTORIAL_BASE_URL — so consumers don't have to
+    FACTORIAL_TOKEN and FACTORIAL_BASE_URL — so consumers don't have to
     wire them up by hand. Explicit arguments still take precedence.
     """
     if not client_py.exists():
@@ -194,12 +194,12 @@ def _patch_env_var_support(client_py: Path) -> None:
         "        base_url: str | None = None,\n"
         "    ) -> None:\n"
         '        api_key = api_key or os.environ.get("FACTORIAL_API_KEY")\n'
-        '        token = token or os.environ.get("FACTORIAL_OAUTH_TOKEN")\n'
+        '        token = token or os.environ.get("FACTORIAL_TOKEN")\n'
         '        base_url = base_url or os.environ.get("FACTORIAL_BASE_URL") or "https://api.factorialhr.com"\n'
         "        auth_token = api_key or token\n"
         "        if not auth_token:\n"
         "            raise ValueError(\n"
-        '                "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_OAUTH_TOKEN)"\n'
+        '                "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"\n'
         "            )",
         1,
     )
