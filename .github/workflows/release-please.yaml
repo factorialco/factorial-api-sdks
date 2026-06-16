@@ -1,0 +1,61 @@
+name: "Create release"
+
+# Model: release-please owns versioning AND tagging.
+#
+# On every push to main, release-please maintains a "Release PR" per package
+# that bumps the version files + CHANGELOG from the Conventional Commits since
+# the last release. Merging that PR makes release-please:
+#   1. bump the version file(s),
+#   2. create the git tag (typescript-vX.Y.Z / python-vX.Y.Z) on the merge commit,
+#   3. create the GitHub Release.
+# Because the tag and the version are produced by the same actor in one step,
+# they can never drift — which is the class of bug this replaces.
+#
+# When a release is created, this workflow then calls the reusable publish.yaml
+# for the affected package(s), checking out the freshly-created tag. Publishing
+# happens in-process (not via a separate `release` event), so it works with the
+# default GITHUB_TOKEN — no PAT required.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+
+jobs:
+  release-please:
+    name: "Run release-please"
+    runs-on: ubuntu-latest
+    outputs:
+      ts_released: ${{ steps.release.outputs['typescript--release_created'] }}
+      ts_tag: ${{ steps.release.outputs['typescript--tag_name'] }}
+      py_released: ${{ steps.release.outputs['python--release_created'] }}
+      py_tag: ${{ steps.release.outputs['python--tag_name'] }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  publish-typescript:
+    name: "Publish TypeScript release"
+    needs: release-please
+    if: needs.release-please.outputs.ts_released == 'true'
+    uses: ./.github/workflows/publish.yaml
+    with:
+      release_tag: ${{ needs.release-please.outputs.ts_tag }}
+    secrets: inherit
+
+  publish-python:
+    name: "Publish Python release"
+    needs: release-please
+    if: needs.release-please.outputs.py_released == 'true'
+    uses: ./.github/workflows/publish.yaml
+    with:
+      release_tag: ${{ needs.release-please.outputs.py_tag }}
+    secrets: inherit

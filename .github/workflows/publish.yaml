@@ -1,35 +1,35 @@
 name: "Publish packages"
 
-on:
-  release:
-    types: [released]
-  # Release is not triggered when the release was created by another workflow using GITHUB_TOKEN
-  # https://github.com/orgs/community/discussions/25281#discussioncomment-3300251
-  workflow_run:
-    workflows: [Create release]
-    types:
-      - completed
+# Reusable publisher. It does NOT decide WHEN to release — it only builds and
+# publishes the package identified by `release_tag` from that exact tag.
+#
+#   - Called automatically by "Create release" (release-please.yaml) right after
+#     a release is created, via `workflow_call`.
+#   - Can be run manually via `workflow_dispatch` to re-publish / recover a
+#     specific tag (e.g. if a publish step failed).
+#
+# Each underlying composite action skips the upload if that version is already
+# present on the registry, so re-running against an existing tag is a no-op.
 
-  workflow_dispatch: # Allows manual triggering
+on:
+  workflow_call:
     inputs:
       release_tag:
-        description: "The release tag to checkout (e.g. typescript-v1.2.0 or python-v1.2.0)"
+        description: "Tag to build & publish (e.g. typescript-v1.2.0 or python-v1.2.0)"
         required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag to build & publish (e.g. typescript-v1.2.0 or python-v1.2.0)"
+        required: true
+        type: string
 
 jobs:
   publish-typescript:
     name: "[🎯 API-CLIENT] Publish to npm"
-    # Only run for TypeScript releases. The tag-prefix check is ANDed with the
-    # event check (note the parentheses) so a python-v* release never triggers
-    # this job, and vice-versa.
-    if: |
-      github.head_ref != 'release-please--branches--master'
-      && !contains(github.event.pull_request.labels.*.name, 'autorelease')
-      && (
-        (github.event_name == 'release' && contains(github.event.release.tag_name, 'typescript-v'))
-        || (github.event_name == 'workflow_dispatch' && contains(github.event.inputs.release_tag, 'typescript-v'))
-        || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.outputs.new_version)
-      )
+    # Only run for TypeScript releases (typescript-v* tag).
+    if: contains(inputs.release_tag, 'typescript-v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,7 +38,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.release.tag_name || github.event.inputs.release_tag || github.sha }}
+          ref: ${{ inputs.release_tag }}
 
       - name: Resolve npm dist-tag
         id: resolve-tag
@@ -65,14 +65,7 @@ jobs:
   publish-python:
     name: "[🎯 API-CLIENT] Publish to PyPI"
     # Only run for Python releases (python-v* tag).
-    if: |
-      github.head_ref != 'release-please--branches--master'
-      && !contains(github.event.pull_request.labels.*.name, 'autorelease')
-      && (
-        (github.event_name == 'release' && contains(github.event.release.tag_name, 'python-v'))
-        || (github.event_name == 'workflow_dispatch' && contains(github.event.inputs.release_tag, 'python-v'))
-        || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.outputs.new_version)
-      )
+    if: contains(inputs.release_tag, 'python-v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -80,7 +73,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.release.tag_name || github.event.inputs.release_tag || github.sha }}
+          ref: ${{ inputs.release_tag }}
 
       - uses: ./.github/actions/publish-to-pypi
         id: publish
