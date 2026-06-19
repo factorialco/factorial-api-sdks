@@ -45,6 +45,9 @@ include = ["factorial_api_client/"]
 
 [tool.ruff]
 line-length = 100
+# Generated code is not hand-maintained and is exempt from linting, mirroring the
+# mypy exclude below. client.py is stage-2 output built by string-patching.
+extend-exclude = ["factorial_api_client/generated/", "factorial_api_client/client.py"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]

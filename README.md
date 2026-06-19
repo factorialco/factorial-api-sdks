@@ -63,6 +63,14 @@ merge the Release PR it opens — that bumps the version, tags the commit, creat
 the GitHub Release, and publishes to npm / PyPI. You never tag or publish by hand.
 See **[RELEASING.md](RELEASING.md)** for the full flow.
 
+When opening a PR, two things decide the release:
+
+- **PRs are squash-merged, so the PR _title_ must be a Conventional Commit**
+  (`feat:` → minor, `fix:` → patch, `feat!:`/`BREAKING CHANGE:` → major).
+- **Which package bumps is decided by file path:** changes under `typescript/`
+  bump the npm package, under `python/` the PyPI package. For a change spanning
+  **both** SDKs, use a bare `feat:`/`fix:` with **no scope** so both bump together.
+
 The `release.ts` / `release.py` scripts remain for **regenerating** the SDK from a
 new OpenAPI spec; see the per-SDK READMEs: [TypeScript](typescript/README.md) · [Python](python/README.md)
 
