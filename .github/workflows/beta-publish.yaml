@@ -9,7 +9,9 @@ name: "Publish beta SDKs"
 #
 # Detection (scripts/beta-detect.mjs) is stateless except for beta_state.json,
 # which only exists to detect a same-date spec RE-ISSUE so the iteration counter
-# can bump. The stable cadence stays owned by release-please; this is decoupled.
+# can bump. That state lives on a dedicated, unprotected `beta-state` branch
+# (never merged into main), so the default GITHUB_TOKEN can update it without any
+# branch-protection bypass. The stable cadence stays owned by release-please.
 
 on:
   schedule:
@@ -31,7 +33,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write # commit beta_state.json
+  contents: write # push beta_state.json to the unprotected beta-state branch
 
 jobs:
   detect:
@@ -50,6 +52,16 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
+      - name: Load prior beta state
+        # Best-effort: pull beta_state.json from the beta-state branch into the
+        # working dir so beta-detect.mjs can read it. Missing branch (first run)
+        # is fine — detection then starts at iteration 0.
+        run: |
+          if git fetch --depth 1 origin beta-state 2>/dev/null; then
+            git show FETCH_HEAD:beta_state.json > beta_state.json && echo "loaded beta_state.json"
+          else
+            echo "no beta-state branch yet — starting fresh"
+          fi
       - name: Detect
         id: detect
         env:
@@ -131,27 +143,41 @@ jobs:
           curl -fsS "https://pypi.org/pypi/factorial-api-client/$PYPI_VERSION/json" > /dev/null
           echo "✅ beta present on both registries; latest unchanged."
 
-      - name: Commit beta_state.json
+      - name: Record beta state on the beta-state branch
+        # Push beta_state.json to a dedicated, unprotected orphan branch (never
+        # merged into main) using a clean temp clone, so the regenerated SDK in
+        # the main working tree is untouched and no main-branch write is needed.
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SPEC_SHA: ${{ needs.detect.outputs.spec_sha256 }}
           ITERATION: ${{ needs.detect.outputs.iteration }}
         run: |
           set -euo pipefail
-          cat > beta_state.json <<EOF
+          tmp=$(mktemp -d)
+          repo_url="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git clone --depth 1 --branch beta-state "$repo_url" "$tmp" 2>/dev/null; then
+            echo "checked out existing beta-state branch"
+          else
+            echo "creating beta-state branch"
+            git clone --depth 1 "$repo_url" "$tmp"
+            git -C "$tmp" checkout --orphan beta-state
+            git -C "$tmp" rm -rf . >/dev/null 2>&1 || true
+          fi
+          cat > "$tmp/beta_state.json" <<EOF
           {
             "target_date": "$TARGET_DATE",
             "spec_sha256": "$SPEC_SHA",
             "iteration": $ITERATION
           }
           EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add beta_state.json
-          if git diff --cached --quiet; then
-            echo "beta_state.json unchanged — nothing to commit."
+          git -C "$tmp" config user.name "github-actions[bot]"
+          git -C "$tmp" config user.email "github-actions[bot]@users.noreply.github.com"
+          git -C "$tmp" add beta_state.json
+          if git -C "$tmp" diff --cached --quiet; then
+            echo "beta_state.json unchanged — nothing to record."
           else
-            git commit -m "chore(beta): record $NPM_VERSION [skip ci]"
-            git push
+            git -C "$tmp" commit -m "chore(beta): record $NPM_VERSION"
+            git -C "$tmp" push origin beta-state
           fi
 
   cleanup-beta-tag:

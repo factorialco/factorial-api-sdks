@@ -13,7 +13,7 @@
 //   npm_version     e.g. "2.0.0-beta.2026070100"
 //   pypi_version    e.g. "2.0.0b2026070100"
 //   iteration       re-issue counter for target_date
-//   spec_sha256     hash of the target spec (committed to beta_state.json on success)
+//   spec_sha256     hash of the target spec (recorded on the beta-state branch on success)
 //   reason          human-readable explanation
 //
 // Env:
