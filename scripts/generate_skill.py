@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Generator for the factorial-api-sdks skill reference/ content.
 
-Reads the OpenAPI spec and the public documentation index (llms.txt) and writes
-the generated, refreshable parts of skills/factorial-api-sdks/reference/:
+Reads the OpenAPI spec and writes the generated, refreshable parts of
+skills/factorial-api-sdks/reference/:
 
   - webhooks.md      — every webhook event, its subscription_type, and payload fields
   - sdk-methods.md   — every REST endpoint grouped by namespace, with the TS SDK call
-  - api-guides/*.md  — vendored copies of the public documentation guides
-  - llms.txt         — vendored documentation index
+
+These are SDK-specific lookup tables that don't exist elsewhere. The skill does
+NOT vendor copies of the public human-oriented docs — those live (and stay
+current) at https://apidoc.factorialhr.com; SKILL.md links to them directly.
 
 SKILL.md itself is hand-written and is NOT touched by this script.
 
@@ -18,8 +20,6 @@ defaults to the unversioned endpoint, which serves the latest spec)::
 
 Wired into both release pipelines (typescript/scripts/release.ts and
 python/scripts/release.py) so the skill stays in sync with each release.
-Requires network access to fetch the documentation guides; guide fetch failures
-are warned about and skipped (the rest of the skill still regenerates).
 """
 
 from __future__ import annotations
@@ -34,10 +34,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIR = REPO_ROOT / "skills" / "factorial-api-sdks"
 REFERENCE_DIR = SKILL_DIR / "reference"
-GUIDES_DIR = REFERENCE_DIR / "api-guides"
 
 DOCS_BASE = "https://apidoc.factorialhr.com"
-LLMS_URL = f"{DOCS_BASE}/llms.txt"
 
 # No version is pinned in code. Pass a spec path/URL or set OPENAPI_SPEC_URL; if
 # neither is given, fall back to the unversioned endpoint, which serves latest.
@@ -265,70 +263,6 @@ def gen_sdk_methods(spec: dict) -> str:
     return "\n".join(out)
 
 
-# ── guides ───────────────────────────────────────────────────────────────────
-
-
-def parse_guide_links(llms: str) -> list[tuple[str, str]]:
-    """Return (title, url) for each doc under the ## Guides section of llms.txt."""
-    guides: list[tuple[str, str]] = []
-    in_guides = False
-    for line in llms.splitlines():
-        if line.startswith("## "):
-            in_guides = line.strip() == "## Guides"
-            continue
-        if in_guides:
-            m = re.match(r"- \[([^\]]+)\]\((https?://[^)]+\.md)\)", line)
-            if m:
-                guides.append((m.group(1), m.group(2)))
-    return guides
-
-
-def strip_readme_callout(md: str) -> str:
-    """Drop the leading '> ## Documentation Index ...' blockquote readme injects."""
-    lines = md.splitlines()
-    out: list[str] = []
-    skipping = True
-    for line in lines:
-        if skipping and (line.startswith(">") or line.strip() == ""):
-            if "Documentation Index" in line or "documentation index" in line or not out:
-                continue
-        skipping = False
-        out.append(line)
-    return "\n".join(out).lstrip("\n")
-
-
-def slug_from_url(url: str) -> str:
-    return url.rstrip("/").split("/")[-1].removesuffix(".md")
-
-
-def gen_guides() -> int:
-    try:
-        llms = fetch(LLMS_URL)
-    except Exception as exc:  # noqa: BLE001
-        print(f"  WARNING: could not fetch {LLMS_URL}: {exc} — skipping guides")
-        return 0
-    REFERENCE_DIR.mkdir(parents=True, exist_ok=True)
-    (REFERENCE_DIR / "llms.txt").write_text(llms)
-
-    GUIDES_DIR.mkdir(parents=True, exist_ok=True)
-    count = 0
-    index: list[str] = ["# Factorial documentation guides\n", "Vendored from the public docs.\n"]
-    for title, url in parse_guide_links(llms):
-        slug = slug_from_url(url)
-        try:
-            body = strip_readme_callout(fetch(url))
-        except Exception as exc:  # noqa: BLE001
-            print(f"  WARNING: could not fetch {url}: {exc}")
-            continue
-        (GUIDES_DIR / f"{slug}.md").write_text(
-            f"<!-- Vendored from {url} -->\n\n{body}\n"
-        )
-        index.append(f"- [{title}]({slug}.md) — <{url.removesuffix('.md')}>")
-        count += 1
-    (GUIDES_DIR / "README.md").write_text("\n".join(index) + "\n")
-    return count
-
-
 # ── main ───────────────────────────────────────────────────────────────────────
 
 
@@ -341,9 +275,6 @@ def main() -> None:
 
     (REFERENCE_DIR / "sdk-methods.md").write_text(gen_sdk_methods(spec))
     print("  Wrote reference/sdk-methods.md")
-
-    n = gen_guides()
-    print(f"  Vendored {n} documentation guides")
 
 
 if __name__ == "__main__":

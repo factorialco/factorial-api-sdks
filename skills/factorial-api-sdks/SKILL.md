@@ -172,8 +172,13 @@ The full list of events, their `subscription_type`, and payload fields is in
 
 ## References
 
+Generated, SDK-specific lookup tables (consult these for exact names/shapes):
+
 - `reference/webhooks.md` — every webhook event, its `subscription_type`, and payload fields.
 - `reference/sdk-methods.md` — every REST endpoint grouped by namespace/resource, with the SDK call.
-- `reference/api-guides/` — vendored copies of the public documentation guides.
-- `reference/llms.txt` — index of all documentation pages and endpoints.
-- Online: <https://apidoc.factorialhr.com/docs/getting-started> · <https://apidoc.factorialhr.com/reference>
+
+For prose guides (OAuth flows, API keys, versioning, webhook policies, etc.), use the
+live docs — always current, not vendored here:
+
+- Getting started: <https://apidoc.factorialhr.com/docs/getting-started>
+- Full API reference: <https://apidoc.factorialhr.com/reference>
