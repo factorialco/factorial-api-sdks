@@ -25,6 +25,7 @@
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "generate": "openapi-ts",
     "generate-sdk": "tsx scripts/generate-sdk.ts",
+    "generate-webhooks": "tsx scripts/generate-webhooks.ts",
     "release": "tsx scripts/release.ts",
     "release:dry-run": "tsx scripts/release.ts --dry-run",
     "test:api": "tsx scripts/test-api.ts"

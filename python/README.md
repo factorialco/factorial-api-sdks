@@ -124,3 +124,45 @@ for emp in client.employees.employee.paginate(max_items=50):
 # Collect everything (use carefully on large datasets)
 all_leaves = client.timeoff.leave.all()
 ```
+
+## Webhooks
+
+Manage subscriptions through the client, and type your handler payloads with the
+generated webhook catalog (re-exported from the package root).
+
+```python
+from factorial_api_client import (
+    FactorialClient,
+    AtsApplicationCreateWebhook,
+    WEBHOOK_CATALOG,
+    WEBHOOK_PAYLOAD_TYPES,
+)
+
+client = FactorialClient(api_key="YOUR_KEY")
+
+# Subscribe to an event. The `challenge` is a secret you choose; Factorial echoes
+# it back in the `x-factorial-wh-challenge` header on every delivery so you can
+# verify the request really came from Factorial.
+client.api_public.webhook_subscription.create(body={
+    "subscription_type": "ats/application/create",
+    "target_url": "https://example.com/webhooks/factorial",
+    "company_id": 55,
+    "challenge": "a-random-secret-you-generate",
+})
+
+# Type a handler directly
+def on_application_created(payload: AtsApplicationCreateWebhook) -> None:
+    print(payload.id)
+
+# Look up the payload model class for a subscription_type at runtime
+model_cls = WEBHOOK_PAYLOAD_TYPES["ats/application/create"]
+print(len(WEBHOOK_CATALOG), "webhook events available")
+```
+
+Factorial delivers the resource object at the **top level** of the POST body (no
+`{type, data}` envelope). A full event→payload reference and an SDK usage guide
+for coding agents are available as a skill:
+
+```bash
+npx skills add https://github.com/factorialco/factorial-api-sdks --skill factorial-api-sdks
+```

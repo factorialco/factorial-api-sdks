@@ -1,0 +1,253 @@
+#!/usr/bin/env python3
+"""Stage-3 generator for factorial_api_client/webhooks.py (the typed webhook catalog).
+
+Reads the OpenAPI spec's top-level ``webhooks`` object and emits clean, importable
+webhook payload types plus a runtime catalog:
+
+  - One clean alias per event, aliasing the generated payload model
+    (e.g. ``AtsApplicationCreateWebhook = AtsApplication``), so a handler can do
+    ``from factorial_api_client import AtsApplicationCreateWebhook``.
+  - ``WebhookSubscriptionType`` — a ``Literal`` of every subscription_type.
+  - ``WEBHOOK_PAYLOAD_TYPES`` — subscription_type → payload model class (runtime dict).
+  - ``WEBHOOK_CATALOG`` — list of ``WebhookCatalogEntry`` describing every event.
+
+Each spec webhook entry looks like::
+
+    "Webhooks > Ats > Application > Creates": {
+      "post": {
+        "description": "Subscription_type: `ats/application/create`",
+        "requestBody": {"content": {"application/json": {
+          "schema": {"$ref": "#/components/schemas/ats_application"}}}}
+      }
+    }
+
+Run manually (spec source optional — pass a path/URL or set OPENAPI_SPEC_URL;
+defaults to the unversioned endpoint, which serves the latest spec)::
+
+    python scripts/generate_webhooks.py [specPathOrUrl]
+
+Also called automatically by scripts/release.py (stage 3) after regenerating
+factorial_api_client/generated/.
+
+Output: factorial_api_client/webhooks.py  (fully overwritten — never edit by hand)
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+PYTHON_DIR = Path(__file__).resolve().parent.parent
+OUT = PYTHON_DIR / "factorial_api_client" / "webhooks.py"
+MODELS_INIT = PYTHON_DIR / "factorial_api_client" / "generated" / "models" / "__init__.py"
+
+# No version is pinned in code. Pass a spec path/URL or set OPENAPI_SPEC_URL; if
+# neither is given, fall back to the unversioned endpoint, which serves latest.
+LATEST_SPEC_URL = "https://api.factorialhr.com/oas"
+
+
+def pascal(snake: str) -> str:
+    """snake_case → PascalCase (matches openapi-python-client schema → class naming)."""
+    return "".join(p[:1].upper() + p[1:] for p in snake.split("_") if p)
+
+
+def alias_name(subscription_type: str) -> str:
+    """ats/application/create → AtsApplicationCreateWebhook."""
+    return "".join(pascal(p) for p in subscription_type.split("/")) + "Webhook"
+
+
+def load_spec(arg: str | None) -> dict:
+    src = arg or os.environ.get("OPENAPI_SPEC_URL") or LATEST_SPEC_URL
+    print(f"Loading OpenAPI spec from {src}")
+    if re.match(r"^https?://", src):
+        # Send a User-Agent — the Factorial host rejects the default urllib UA with a 403.
+        req = urllib.request.Request(
+            src, headers={"User-Agent": "factorial-api-sdks-webhook-generator"}
+        )
+        with urllib.request.urlopen(req) as resp:  # noqa: S310 - trusted Factorial host
+            spec = json.load(resp)
+    else:
+        spec = json.loads(Path(src).read_text())
+    print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
+    return spec
+
+
+def main() -> None:
+    spec = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
+    webhooks = spec.get("webhooks", {})
+
+    entries: list[dict] = []
+    for key, item in webhooks.items():
+        post = item.get("post")
+        if not post:
+            raise SystemExit(f'Webhook "{key}" has no post operation')
+
+        m = re.search(r"`([^`]+)`", post.get("description", ""))
+        if not m:
+            raise SystemExit(f'Webhook "{key}" has no subscription_type in description')
+        subscription_type = m.group(1)
+
+        ref = (
+            post.get("requestBody", {})
+            .get("content", {})
+            .get("application/json", {})
+            .get("schema", {})
+            .get("$ref")
+        )
+        if not ref:
+            raise SystemExit(f'Webhook "{key}" has no payload $ref')
+
+        # key = "Webhooks > Ats > Application > Creates"
+        segments = [s.strip() for s in key.split(">")]
+        _, namespace, resource, event = (segments + ["", "", "", ""])[:4]
+
+        payload_schema = ref.split("/")[-1]
+        entries.append(
+            {
+                "subscription_type": subscription_type,
+                "namespace": namespace,
+                "resource": resource,
+                "event": event,
+                "summary": post.get("summary", key),
+                "payload_schema": payload_schema,
+                "payload_class": pascal(payload_schema),
+                "alias": alias_name(subscription_type),
+            }
+        )
+
+    entries.sort(key=lambda e: e["subscription_type"])
+
+    # ── Sanity guards ─────────────────────────────────────────────────────────
+    distinct_classes = sorted({e["payload_class"] for e in entries})
+    models_src = MODELS_INIT.read_text()
+    missing = [c for c in distinct_classes if f" import {c}\n" not in models_src]
+    if missing:
+        raise SystemExit(f"Payload classes not exported by generated/models: {missing}")
+
+    aliases = [e["alias"] for e in entries]
+    dupes = sorted({a for a in aliases if aliases.count(a) > 1})
+    if dupes:
+        raise SystemExit(f"Duplicate webhook alias names: {dupes}")
+
+    print(f"Parsed {len(entries)} webhook events, {len(distinct_classes)} distinct payload types.")
+
+    # ── Emit ──────────────────────────────────────────────────────────────────
+    lines: list[str] = []
+    lines.append('"""Typed catalog of every Factorial webhook event and its delivered payload.')
+    lines.append("")
+    lines.append("AUTO-GENERATED by scripts/generate_webhooks.py — DO NOT EDIT.")
+    lines.append("")
+    lines.append("Factorial delivers the resource object at the top level of the POST body (it is")
+    lines.append("NOT wrapped in a {type, data} envelope). The subscription_type and author are")
+    lines.append("conveyed out-of-band: subscribe with a subscription_type, and read the")
+    lines.append("x-factorial-author-id / x-factorial-author-type headers if you need the author.")
+    lines.append("See the factorial-api-sdks skill for details.")
+    lines.append("")
+    lines.append("Example::")
+    lines.append("")
+    lines.append("    from factorial_api_client import AtsApplicationCreateWebhook")
+    lines.append("")
+    lines.append("    def on_application_created(payload: AtsApplicationCreateWebhook) -> None:")
+    lines.append("        print(payload.id)")
+    lines.append('"""')
+    lines.append("")
+    # Generated code: some subscription_type dict keys and per-event comments are
+    # unavoidably longer than the line-length limit.
+    lines.append("# ruff: noqa: E501")
+    lines.append("")
+    lines.append("from __future__ import annotations")
+    lines.append("")
+    lines.append("from dataclasses import dataclass")
+    lines.append("from typing import Literal, TypeAlias")
+    lines.append("")
+    lines.append("from factorial_api_client.generated.models import (")
+    for c in distinct_classes:
+        lines.append(f"    {c},")
+    lines.append(")")
+    lines.append("")
+    lines.append("")
+
+    # Per-event aliases
+    lines.append("# ── Per-event payload type aliases ─────────────────────────────────────────")
+    for e in entries:
+        lines.append(f'# Payload for `{e["subscription_type"]}` ({e["summary"]}).')
+        lines.append(f'{e["alias"]}: TypeAlias = {e["payload_class"]}')
+    lines.append("")
+    lines.append("")
+
+    # Subscription type Literal
+    lines.append("# ── Subscription types ─────────────────────────────────────────────────────")
+    lines.append("WebhookSubscriptionType = Literal[")
+    for e in entries:
+        lines.append(f'    {json.dumps(e["subscription_type"])},')
+    lines.append("]")
+    lines.append("")
+    lines.append("")
+
+    # Payload type map
+    lines.append("# ── subscription_type → payload model class ────────────────────────────────")
+    lines.append("WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {")
+    for e in entries:
+        lines.append(f'    {json.dumps(e["subscription_type"])}: {e["payload_class"]},')
+    lines.append("}")
+    lines.append("")
+    lines.append("")
+
+    # Runtime catalog
+    lines.append("# ── Runtime catalog ────────────────────────────────────────────────────────")
+    lines.append("@dataclass(frozen=True)")
+    lines.append("class WebhookCatalogEntry:")
+    lines.append('    """A single Factorial webhook event."""')
+    lines.append("")
+    lines.append("    subscription_type: str")
+    lines.append("    namespace: str")
+    lines.append("    resource: str")
+    lines.append("    event: str")
+    lines.append("    summary: str")
+    lines.append("    payload_schema: str")
+    lines.append("")
+    lines.append("")
+    lines.append("WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [")
+    for e in entries:
+        lines.append(
+            "    WebhookCatalogEntry("
+            f'subscription_type={json.dumps(e["subscription_type"])}, '
+            f'namespace={json.dumps(e["namespace"])}, '
+            f'resource={json.dumps(e["resource"])}, '
+            f'event={json.dumps(e["event"])}, '
+            f'summary={json.dumps(e["summary"])}, '
+            f'payload_schema={json.dumps(e["payload_schema"])}),'
+        )
+    lines.append("]")
+    lines.append("")
+    lines.append("")
+
+    # __all__
+    lines.append("__all__ = [")
+    lines.append('    "WEBHOOK_CATALOG",')
+    lines.append('    "WEBHOOK_PAYLOAD_TYPES",')
+    lines.append('    "WebhookCatalogEntry",')
+    lines.append('    "WebhookSubscriptionType",')
+    for e in entries:
+        lines.append(f'    "{e["alias"]}",')
+    lines.append("]")
+    lines.append("")
+
+    OUT.write_text("\n".join(lines))
+
+    # Format/lint the emitted file so it matches the rest of the package.
+    subprocess.run(["uv", "run", "ruff", "format", str(OUT)], cwd=PYTHON_DIR, check=False)
+    subprocess.run(
+        ["uv", "run", "ruff", "check", "--fix-only", str(OUT)], cwd=PYTHON_DIR, check=False
+    )
+
+    print(f"Written {OUT}")
+
+
+if __name__ == "__main__":
+    main()

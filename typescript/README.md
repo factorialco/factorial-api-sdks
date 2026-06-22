@@ -172,6 +172,56 @@ try {
 You can opt out per client (restoring the `{ data, error }` return shape) with
 `new FactorialClient({ ..., throwOnError: false })`.
 
+## Webhooks
+
+Manage subscriptions through the client, and type your handler payloads with the
+generated webhook catalog (re-exported from the package root).
+
+```ts
+import {
+  FactorialClient,
+  WEBHOOK_CATALOG,
+} from "@factorialco/api-client";
+import type {
+  AtsApplicationCreateWebhook,
+  WebhookSubscriptionType,
+  WebhookPayloadMap,
+} from "@factorialco/api-client";
+
+const client = new FactorialClient({ apiKey: process.env.FACTORIAL_API_KEY });
+
+// Subscribe to an event. The `challenge` is a secret you choose; Factorial echoes
+// it back in the `x-factorial-wh-challenge` header on every delivery so you can
+// verify the request really came from Factorial.
+await client.apiPublic.webhookSubscriptions.create({
+  subscription_type: "ats/application/create",
+  target_url: "https://example.com/webhooks/factorial",
+  company_id: 55,
+  challenge: "a-random-secret-you-generate",
+});
+
+// Type a handler directly…
+function onApplicationCreated(payload: AtsApplicationCreateWebhook) {
+  console.log(payload.id);
+}
+
+// …or dispatch on the runtime subscription_type with full type safety
+function handle<T extends WebhookSubscriptionType>(type: T, payload: WebhookPayloadMap[T]) {
+  /* payload is narrowed to the right type for `type` */
+}
+
+// Discover every event at runtime
+console.log(WEBHOOK_CATALOG.length, "webhook events available");
+```
+
+Factorial delivers the resource object at the **top level** of the POST body (no
+`{ type, data }` envelope). A full event→payload reference and an SDK usage guide
+for coding agents are available as a skill:
+
+```bash
+npx skills add https://github.com/factorialco/factorial-api-sdks --skill factorial-api-sdks
+```
+
 ## Custom base URL
 
 ```ts
