@@ -36,9 +36,9 @@ python/                         # factorial-api-client (PyPI)
     __init__.py                 # public exports
   scripts/
     release.py                  # prompt version → fetch → patch spec → bump → regen → patch → publish
-    test_api.py                 # live smoke test (sync + async)
-/tmp/generate_python_sdk.py     # generates client.py from generated API modules
+    generate_python_sdk.py      # stage-2 generator: generated/api/ → client.py
                                 # re-run after every openapi-python-client generate
+    test_api.py                 # live smoke test (sync + async)
 ```
 
 ## Auth
@@ -115,7 +115,7 @@ Config: `python/openapi-python-client.yaml`
 After running `openapi-python-client generate`, re-run the generator script:
 
 ```bash
-python /tmp/generate_python_sdk.py
+python scripts/generate_python_sdk.py
 ```
 
 This script:

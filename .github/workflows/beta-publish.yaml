@@ -1,0 +1,186 @@
+name: "Publish beta SDKs"
+
+# Daily check for an intermediate Factorial API version (one newer than the
+# current stable) and, if found, publish a BETA of both SDKs that consumers can
+# opt into — NEVER as the default install:
+#   - npm:  <next-major>.0.0-beta.<N> under the `beta` dist-tag (+ the API date),
+#           never `latest`.
+#   - PyPI: <next-major>.0.0b<N> — a PEP 440 pre-release, which pip skips by default.
+#
+# Detection (scripts/beta-detect.mjs) is stateless except for beta_state.json,
+# which only exists to detect a same-date spec RE-ISSUE so the iteration counter
+# can bump. The stable cadence stays owned by release-please; this is decoupled.
+
+on:
+  schedule:
+    - cron: "0 8 * * *" # 08:00 UTC daily. Shift to "0 6"/"0 7" for Madrid-local.
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: "Override API date to build (yyyy-mm-dd). Leave blank to auto-detect."
+        required: false
+        type: string
+      force:
+        description: "Republish even if the spec for the date is unchanged (bumps iteration)."
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: beta-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write # commit beta_state.json
+
+jobs:
+  detect:
+    name: "Detect intermediate API version"
+    runs-on: ubuntu-latest
+    outputs:
+      should_publish: ${{ steps.detect.outputs.should_publish }}
+      target_date: ${{ steps.detect.outputs.target_date }}
+      next_major: ${{ steps.detect.outputs.next_major }}
+      npm_version: ${{ steps.detect.outputs.npm_version }}
+      pypi_version: ${{ steps.detect.outputs.pypi_version }}
+      iteration: ${{ steps.detect.outputs.iteration }}
+      spec_sha256: ${{ steps.detect.outputs.spec_sha256 }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Detect
+        id: detect
+        env:
+          TARGET_DATE: ${{ inputs.target_date }}
+          FORCE: ${{ inputs.force }}
+        run: node scripts/beta-detect.mjs
+
+  build-and-publish:
+    name: "Build & publish beta"
+    needs: detect
+    if: needs.detect.outputs.should_publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    env:
+      TARGET_DATE: ${{ needs.detect.outputs.target_date }}
+      NPM_VERSION: ${{ needs.detect.outputs.npm_version }}
+      PYPI_VERSION: ${{ needs.detect.outputs.pypi_version }}
+    steps:
+      - uses: actions/checkout@v6
+
+      # ── Regenerate BOTH SDKs before publishing either (generation gates all
+      #    publishing — a failure here aborts before anything is uploaded). ──
+      - name: Setup Node + pnpm
+        uses: ./.github/actions/setup-node-pnpm
+        with:
+          working-directory: ./typescript
+      - name: Regenerate TypeScript SDK (beta version)
+        working-directory: ./typescript
+        env:
+          OPENAPI_VERSION: ${{ env.TARGET_DATE }}
+        run: npx tsx scripts/release.ts --set-version "$NPM_VERSION" --no-publish --no-git
+      - name: Type-check TypeScript
+        working-directory: ./typescript
+        run: npx tsc --noEmit
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - name: Regenerate Python SDK (beta version)
+        working-directory: ./python
+        env:
+          OPENAPI_VERSION: ${{ env.TARGET_DATE }}
+        run: |
+          uv sync
+          uv run python scripts/release.py --version "$TARGET_DATE" --set-version "$PYPI_VERSION" --no-publish
+
+      # ── Publish (idempotent: composite actions skip if the version exists). ──
+      - name: Publish npm beta
+        uses: ./.github/actions/publish-to-npmjs
+        with:
+          registry_token: ${{ secrets.NPMJS_TOKEN }}
+          working-directory: ./typescript
+          # primary dist-tag `beta` + the API date; NEVER `latest`.
+          tag: "beta ${{ env.TARGET_DATE }}"
+      - name: Publish PyPI beta
+        uses: ./.github/actions/publish-to-pypi
+        with:
+          registry_token: ${{ secrets.PYPI_TOKEN }}
+          working-directory: ./python
+
+      # ── Safety net + record state. ──
+      - name: Assert never-latest and both published
+        run: |
+          set -euo pipefail
+          LATEST=$(npm view @factorialco/api-client dist-tags.latest)
+          echo "npm latest is: $LATEST"
+          if [ "$LATEST" = "$NPM_VERSION" ]; then
+            echo "::error::npm 'latest' moved to the beta version — aborting." >&2
+            exit 1
+          fi
+          npm view "@factorialco/api-client@$NPM_VERSION" version > /dev/null
+          curl -fsS "https://pypi.org/pypi/factorial-api-client/$PYPI_VERSION/json" > /dev/null
+          echo "✅ beta present on both registries; latest unchanged."
+
+      - name: Commit beta_state.json
+        env:
+          SPEC_SHA: ${{ needs.detect.outputs.spec_sha256 }}
+          ITERATION: ${{ needs.detect.outputs.iteration }}
+        run: |
+          set -euo pipefail
+          cat > beta_state.json <<EOF
+          {
+            "target_date": "$TARGET_DATE",
+            "spec_sha256": "$SPEC_SHA",
+            "iteration": $ITERATION
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add beta_state.json
+          if git diff --cached --quiet; then
+            echo "beta_state.json unchanged — nothing to commit."
+          else
+            git commit -m "chore(beta): record $NPM_VERSION [skip ci]"
+            git push
+          fi
+
+  cleanup-beta-tag:
+    name: "Clean up stale npm beta tag"
+    needs: detect
+    if: needs.detect.outputs.should_publish == 'false'
+    runs-on: ubuntu-latest
+    continue-on-error: true # best-effort; never block the pipeline
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+      - name: Remove npm beta tag if it has been superseded by a stable release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
+        run: |
+          set -euo pipefail
+          PKG=@factorialco/api-client
+          LATEST_MAJOR=$(jq -r '.latest' version_map.json)
+          BETA=$(npm view "$PKG@beta" version 2>/dev/null || true)
+          if [ -z "$BETA" ]; then echo "No beta dist-tag; nothing to clean."; exit 0; fi
+          BETA_MAJOR=${BETA%%.*}
+          # The beta line has graduated once its major is no longer ahead of the
+          # current stable major — at that point @beta points below @latest.
+          if [ "$BETA_MAJOR" -le "$LATEST_MAJOR" ]; then
+            echo "Removing stale beta tag → $PKG@beta ($BETA, major $BETA_MAJOR <= stable $LATEST_MAJOR)"
+            npm dist-tag rm "$PKG" beta
+          else
+            echo "Beta tag ($BETA, major $BETA_MAJOR) is still ahead of stable major $LATEST_MAJOR — keeping."
+          fi

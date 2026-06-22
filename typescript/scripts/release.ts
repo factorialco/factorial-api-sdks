@@ -51,6 +51,18 @@ if (!["major", "minor", "patch"].includes(bumpType)) {
   throw new Error(`Invalid --bump value: "${bumpType}". Expected major, minor, or patch.`);
 }
 
+// CI/beta mode (used by the daily beta-publish workflow):
+//   --set-version <ver>  use this exact version instead of bumping semver
+//                        (e.g. a prerelease like 2.0.0-beta.2026070100)
+//   --no-publish         regenerate + write the version, then stop (no build,
+//                        no publish, no prompt). CI publishes via the composite
+//                        actions instead.
+//   --no-git             accepted for symmetry with release.py; this script
+//                        issues no git commands, so it is a no-op.
+const setVersionIdx = process.argv.indexOf("--set-version");
+const setVersion = setVersionIdx !== -1 ? process.argv[setVersionIdx + 1] : undefined;
+const noPublish = process.argv.includes("--no-publish");
+
 function bumpSemver(version: string, bump: "major" | "minor" | "patch"): string {
   const [major, minor, patch] = version.split(".").map(Number);
   if (bump === "major") return `${major + 1}.0.0`;
@@ -126,10 +138,14 @@ log(`    API version in spec: ${specVersion}`);
 
 const pkgPath = join(ROOT, "package.json");
 const pkg = readJson<{ version: string; name: string }>(pkgPath);
-const newSdkVersion = bumpSemver(pkg.version, bumpType);
+const newSdkVersion = setVersion ?? bumpSemver(pkg.version, bumpType);
 
 log(`\n🔖  Version:`);
-log(`    SDK:  ${pkg.version} → ${newSdkVersion}  (${bumpType} bump)`);
+log(
+  setVersion
+    ? `    SDK:  ${pkg.version} → ${newSdkVersion}  (explicit --set-version)`
+    : `    SDK:  ${pkg.version} → ${newSdkVersion}  (${bumpType} bump)`
+);
 log(`    API version: ${apiVersion}`);
 
 if (isDryRun) {
@@ -154,6 +170,11 @@ log(`    Done.`);
 log(`\n📝  Updating package.json to ${newSdkVersion} …`);
 (pkg as Record<string, unknown>).version = newSdkVersion;
 writeJson(pkgPath, pkg);
+
+if (noPublish) {
+  log(`\n⏭️   --no-publish: regenerated and set version to ${newSdkVersion}; stopping before build/publish.\n`);
+  process.exit(0);
+}
 
 // ─── Step 5: Publish ────────────────────────────────────────────────────────
 
