@@ -167,7 +167,7 @@ After stage 1, the stage-3 generator emits the typed webhook catalog:
 
 ```bash
 npm run generate-webhooks
-# or: npx tsx scripts/generate-webhooks.ts [specPathOrUrl]
+# or: npx tsx scripts/generate-webhooks.ts [specPathOrUrl]   # else OPENAPI_SPEC_URL, else latest
 ```
 
 It parses `spec.webhooks`, maps each `subscription_type` to its payload type
@@ -210,7 +210,7 @@ The stage-3 generator (in-repo, unlike `generate_python_sdk.py`) emits the typed
 webhook catalog:
 
 ```bash
-python scripts/generate_webhooks.py [specPathOrUrl]
+python scripts/generate_webhooks.py [specPathOrUrl]   # else OPENAPI_SPEC_URL, else latest
 ```
 
 It mirrors the TS generator: clean aliases re-exporting the `generated/models/`

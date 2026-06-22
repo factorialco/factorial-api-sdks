@@ -11,7 +11,8 @@ the generated, refreshable parts of skills/factorial-api-sdks/reference/:
 
 SKILL.md itself is hand-written and is NOT touched by this script.
 
-Run manually::
+Run manually (spec source optional — pass a path/URL or set OPENAPI_SPEC_URL;
+defaults to the unversioned endpoint, which serves the latest spec)::
 
     python scripts/generate_skill.py [specPathOrUrl]
 
@@ -24,6 +25,7 @@ are warned about and skipped (the rest of the skill still regenerates).
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -36,7 +38,10 @@ GUIDES_DIR = REFERENCE_DIR / "api-guides"
 
 DOCS_BASE = "https://apidoc.factorialhr.com"
 LLMS_URL = f"{DOCS_BASE}/llms.txt"
-DEFAULT_SPEC_URL = "https://api.factorialhr.com/oas/?version=2026-04-01"
+
+# No version is pinned in code. Pass a spec path/URL or set OPENAPI_SPEC_URL; if
+# neither is given, fall back to the unversioned endpoint, which serves latest.
+LATEST_SPEC_URL = "https://api.factorialhr.com/oas"
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
@@ -50,10 +55,14 @@ def fetch(url: str) -> str:
 
 
 def load_spec(arg: str | None) -> dict:
-    src = arg or DEFAULT_SPEC_URL
+    src = arg or os.environ.get("OPENAPI_SPEC_URL") or LATEST_SPEC_URL
+    print(f"Loading OpenAPI spec from {src}")
     if re.match(r"^https?://", src):
-        return json.loads(fetch(src))
-    return json.loads(Path(src).read_text())
+        spec = json.loads(fetch(src))
+    else:
+        spec = json.loads(Path(src).read_text())
+    print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
+    return spec
 
 
 def camel(snake: str) -> str:

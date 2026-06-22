@@ -21,7 +21,8 @@ Each spec webhook entry looks like::
       }
     }
 
-Run manually::
+Run manually (spec source optional — pass a path/URL or set OPENAPI_SPEC_URL;
+defaults to the unversioned endpoint, which serves the latest spec)::
 
     python scripts/generate_webhooks.py [specPathOrUrl]
 
@@ -34,6 +35,7 @@ Output: factorial_api_client/webhooks.py  (fully overwritten — never edit by h
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -44,7 +46,9 @@ PYTHON_DIR = Path(__file__).resolve().parent.parent
 OUT = PYTHON_DIR / "factorial_api_client" / "webhooks.py"
 MODELS_INIT = PYTHON_DIR / "factorial_api_client" / "generated" / "models" / "__init__.py"
 
-DEFAULT_SPEC_URL = "https://api.factorialhr.com/oas/?version=2026-04-01"
+# No version is pinned in code. Pass a spec path/URL or set OPENAPI_SPEC_URL; if
+# neither is given, fall back to the unversioned endpoint, which serves latest.
+LATEST_SPEC_URL = "https://api.factorialhr.com/oas"
 
 
 def pascal(snake: str) -> str:
@@ -58,11 +62,19 @@ def alias_name(subscription_type: str) -> str:
 
 
 def load_spec(arg: str | None) -> dict:
-    src = arg or DEFAULT_SPEC_URL
+    src = arg or os.environ.get("OPENAPI_SPEC_URL") or LATEST_SPEC_URL
+    print(f"Loading OpenAPI spec from {src}")
     if re.match(r"^https?://", src):
-        with urllib.request.urlopen(src) as resp:  # noqa: S310 - trusted Factorial host
-            return json.load(resp)
-    return json.loads(Path(src).read_text())
+        # Send a User-Agent — the Factorial host rejects the default urllib UA with a 403.
+        req = urllib.request.Request(
+            src, headers={"User-Agent": "factorial-api-sdks-webhook-generator"}
+        )
+        with urllib.request.urlopen(req) as resp:  # noqa: S310 - trusted Factorial host
+            spec = json.load(resp)
+    else:
+        spec = json.loads(Path(src).read_text())
+    print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
+    return spec
 
 
 def main() -> None:

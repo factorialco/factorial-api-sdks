@@ -22,7 +22,8 @@
  *     }
  *   }
  *
- * Run manually:
+ * Run manually (spec source optional — pass a path/URL or set OPENAPI_SPEC_URL;
+ * defaults to the unversioned endpoint, which serves the latest spec):
  *   npx tsx scripts/generate-webhooks.ts [specPathOrUrl]
  *   npm run generate-webhooks
  *
@@ -41,12 +42,14 @@ const ROOT = join(__dirname, "..");
 const OUT = join(ROOT, "src/webhooks.ts");
 const TYPES_GEN = join(ROOT, "src/generated/types.gen.ts");
 
-const DEFAULT_SPEC_URL =
-  process.env.OPENAPI_SPEC_URL ?? "https://api.factorialhr.com/oas/?version=2026-04-01";
+// No version is pinned in code. Pass a spec path/URL or set OPENAPI_SPEC_URL; if
+// neither is given, fall back to the unversioned endpoint, which serves latest.
+const LATEST_SPEC_URL = "https://api.factorialhr.com/oas";
 
 // ─── Spec loading (file path or URL) ─────────────────────────────────────────
 
 type Spec = {
+  info?: { version?: string };
   webhooks?: Record<string, WebhookItem>;
 };
 
@@ -63,13 +66,18 @@ type WebhookItem = {
 };
 
 async function loadSpec(arg: string | undefined): Promise<Spec> {
-  const src = arg ?? DEFAULT_SPEC_URL;
+  const src = arg ?? process.env.OPENAPI_SPEC_URL ?? LATEST_SPEC_URL;
+  console.log(`Loading OpenAPI spec from ${src}`);
+  let spec: Spec;
   if (/^https?:\/\//.test(src)) {
     const res = await fetch(src);
     if (!res.ok) throw new Error(`Failed to fetch spec: ${res.status} ${res.statusText}`);
-    return (await res.json()) as Spec;
+    spec = (await res.json()) as Spec;
+  } else {
+    spec = JSON.parse(readFileSync(src, "utf-8")) as Spec;
   }
-  return JSON.parse(readFileSync(src, "utf-8")) as Spec;
+  console.log(`Spec version: ${spec.info?.version ?? "<unknown>"}`);
+  return spec;
 }
 
 // ─── Name helpers ────────────────────────────────────────────────────────────

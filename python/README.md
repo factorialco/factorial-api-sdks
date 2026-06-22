@@ -140,11 +140,14 @@ from factorial_api_client import (
 
 client = FactorialClient(api_key="YOUR_KEY")
 
-# Subscribe to an event
+# Subscribe to an event. The `challenge` is a secret you choose; Factorial echoes
+# it back in the `x-factorial-wh-challenge` header on every delivery so you can
+# verify the request really came from Factorial.
 client.api_public.webhook_subscription.create(body={
     "subscription_type": "ats/application/create",
     "target_url": "https://example.com/webhooks/factorial",
     "company_id": 55,
+    "challenge": "a-random-secret-you-generate",
 })
 
 # Type a handler directly
