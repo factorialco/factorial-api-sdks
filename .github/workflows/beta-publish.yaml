@@ -129,8 +129,12 @@ jobs:
           registry_token: ${{ secrets.PYPI_TOKEN }}
           working-directory: ./python
 
-      # ── Safety net + record state. ──
-      - name: Assert never-latest and both published
+      # ── Safety gate (hard fail): the beta must NEVER become the default
+      #    install. This runs BEFORE recording state and before the registry
+      #    presence check below, so a slow/lagging registry index can never mask
+      #    a 'latest' regression. (Registry presence is verified separately,
+      #    with retries, after state is recorded — see the last step.)
+      - name: Assert npm 'latest' did not move to the beta
         run: |
           set -euo pipefail
           LATEST=$(npm view @factorialco/api-client dist-tags.latest)
@@ -139,9 +143,7 @@ jobs:
             echo "::error::npm 'latest' moved to the beta version — aborting." >&2
             exit 1
           fi
-          npm view "@factorialco/api-client@$NPM_VERSION" version > /dev/null
-          curl -fsS "https://pypi.org/pypi/factorial-api-client/$PYPI_VERSION/json" > /dev/null
-          echo "✅ beta present on both registries; latest unchanged."
+          echo "✅ npm 'latest' is unchanged ($LATEST) — beta stays opt-in only."
 
       - name: Record beta state on the beta-state branch
         # Push beta_state.json to a dedicated, unprotected orphan branch (never
@@ -179,6 +181,38 @@ jobs:
             git -C "$tmp" commit -m "chore(beta): record $NPM_VERSION"
             git -C "$tmp" push origin beta-state
           fi
+
+      # ── Confirm both registries actually serve the beta. Registry read paths
+      #    lag behind upload (PyPI's CDN can negative-cache a pre-index 404 for
+      #    a while), so poll reliable, fast-updating endpoints with retries
+      #    instead of hitting a per-version URL once: `npm view` for npm, and the
+      #    SIMPLE INDEX (what pip reads) for PyPI, matched on the exact sdist
+      #    filename. Runs AFTER state is recorded, so a slow index here can never
+      #    drop the iteration baseline.
+      - name: Verify beta present on npm and PyPI
+        run: |
+          set -uo pipefail
+          ATTEMPTS=10
+          npm_ok=false
+          for i in $(seq 1 "$ATTEMPTS"); do
+            if npm view "@factorialco/api-client@$NPM_VERSION" version >/dev/null 2>&1; then
+              npm_ok=true; echo "✅ npm serves $NPM_VERSION (attempt $i)."; break
+            fi
+            echo "npm not visible yet ($i/$ATTEMPTS) — retrying in 6s…"; sleep 6
+          done
+          pypi_ok=false
+          PYPI_SDIST="factorial_api_client-${PYPI_VERSION}.tar.gz"
+          for i in $(seq 1 "$ATTEMPTS"); do
+            if curl -fsS "https://pypi.org/simple/factorial-api-client/" | grep -qF "$PYPI_SDIST"; then
+              pypi_ok=true; echo "✅ PyPI simple index lists $PYPI_SDIST (attempt $i)."; break
+            fi
+            echo "PyPI not visible yet ($i/$ATTEMPTS) — retrying in 6s…"; sleep 6
+          done
+          if [ "$npm_ok" != "true" ] || [ "$pypi_ok" != "true" ]; then
+            echo "::error::beta not visible after $ATTEMPTS retries (npm_ok=$npm_ok pypi_ok=$pypi_ok)." >&2
+            exit 1
+          fi
+          echo "✅ beta present on both registries; latest unchanged."
 
   cleanup-beta-tag:
     name: "Clean up stale npm beta tag"
