@@ -588,16 +588,15 @@ export type FactorialClientConfig = Omit<Partial<Config<ClientOptions>>, "baseUr
   token?: string;
 };
 
-/** Methods for the ApiPublic > Credentials resource */
+/** Methods for the api_public > credentials resource */
 export class ApiPublicCredentialsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Credentials */
+  /** Lists all credentials */
   list: typeof getApi20260401ResourcesApiPublicCredentials = (options?: any) => getApi20260401ResourcesApiPublicCredentials({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Credentials records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all credentials, yielding one item at a time.
    * @example for await (const item of client.apiPublic.credentials.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesApiPublicCredentials>[0] & { limit?: number; maxItems?: number }) {
@@ -609,8 +608,7 @@ export class ApiPublicCredentialsResource {
   }
 
   /**
-   * Fetch all Credentials records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all credentials across all pages into a single array.
    * @example const all = await client.apiPublic.credentials.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesApiPublicCredentials>[0] & { limit?: number; maxItems?: number }) {
@@ -618,16 +616,15 @@ export class ApiPublicCredentialsResource {
   }
 
 }
-/** Methods for the ApiPublic > WebhookSubscriptions resource */
+/** Methods for the api_public > webhook_subscriptions resource */
 export class ApiPublicWebhookSubscriptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Webhook Subscriptions */
+  /** Lists all webhook_subscriptions */
   list: typeof getApi20260401ResourcesApiPublicWebhookSubscriptions = (options?: any) => getApi20260401ResourcesApiPublicWebhookSubscriptions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all WebhookSubscriptions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all webhook_subscriptions, yielding one item at a time.
    * @example for await (const item of client.apiPublic.webhookSubscriptions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesApiPublicWebhookSubscriptions>[0] & { limit?: number; maxItems?: number }) {
@@ -639,53 +636,46 @@ export class ApiPublicWebhookSubscriptionsResource {
   }
 
   /**
-   * Fetch all WebhookSubscriptions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all webhook_subscriptions across all pages into a single array.
    * @example const all = await client.apiPublic.webhookSubscriptions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesApiPublicWebhookSubscriptions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Webhook Subscription */
+  /** Creates a webhook_subscriptions record */
   create: typeof postApi20260401ResourcesApiPublicWebhookSubscriptions = (options?: any) => postApi20260401ResourcesApiPublicWebhookSubscriptions({ client: this._client, ...options });
 
-  /** Reads a single Webhook Subscription */
+  /** Reads a single webhook_subscriptions record */
   get: typeof getApi20260401ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => getApi20260401ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
 
-  /** Updates a Webhook Subscription */
+  /** Updates a webhook_subscriptions record */
   update: typeof putApi20260401ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => putApi20260401ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
 
-  /** Deletes a Webhook Subscription */
+  /** Deletes a webhook_subscriptions record */
   delete: typeof deleteApi20260401ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => deleteApi20260401ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
 
 }
-/** Methods for the Approvals > MaterializedApprovalsFlowsApproveResource resource */
-export class ApprovalsMaterializedApprovalsFlowsApproveResourceResource {
+/** Methods for the approvals > materialized_approvals_flows resource */
+export class ApprovalsMaterializedApprovalsFlowsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Creates a Materialized Approvals Flows Approve Resource */
-  create: typeof postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResource = (options?: any) => postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResource({ client: this._client, ...options });
+  /** approveResource */
+  approveResource: typeof postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResource = (options?: any) => postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResource({ client: this._client, ...options });
+
+  /** rejectResource */
+  rejectResource: typeof postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResource = (options?: any) => postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResource({ client: this._client, ...options });
 
 }
-/** Methods for the Approvals > MaterializedApprovalsFlowsRejectResource resource */
-export class ApprovalsMaterializedApprovalsFlowsRejectResourceResource {
-  constructor(private readonly _client: ReturnType<typeof createClient>) {}
-
-  /** Creates a Materialized Approvals Flows Reject Resource */
-  create: typeof postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResource = (options?: any) => postApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResource({ client: this._client, ...options });
-
-}
-/** Methods for the Ats > Answers resource */
+/** Methods for the ats > answers resource */
 export class AtsAnswersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Answers */
+  /** Lists all answers */
   list: typeof getApi20260401ResourcesAtsAnswers = (options?: any) => getApi20260401ResourcesAtsAnswers({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Answers records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all answers, yielding one item at a time.
    * @example for await (const item of client.ats.answers.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsAnswers>[0] & { limit?: number; maxItems?: number }) {
@@ -697,31 +687,29 @@ export class AtsAnswersResource {
   }
 
   /**
-   * Fetch all Answers records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all answers across all pages into a single array.
    * @example const all = await client.ats.answers.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsAnswers>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Answer */
+  /** Creates a answers record */
   create: typeof postApi20260401ResourcesAtsAnswers = (options?: any) => postApi20260401ResourcesAtsAnswers({ client: this._client, ...options });
 
-  /** Reads a single Answer */
+  /** Reads a single answers record */
   get: typeof getApi20260401ResourcesAtsAnswersById = (options?: any) => getApi20260401ResourcesAtsAnswersById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > ApplicationPhases resource */
+/** Methods for the ats > application_phases resource */
 export class AtsApplicationPhasesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Application Phass */
+  /** Lists all application_phases */
   list: typeof getApi20260401ResourcesAtsApplicationPhases = (options?: any) => getApi20260401ResourcesAtsApplicationPhases({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ApplicationPhases records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all application_phases, yielding one item at a time.
    * @example for await (const item of client.ats.applicationPhases.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsApplicationPhases>[0] & { limit?: number; maxItems?: number }) {
@@ -733,28 +721,26 @@ export class AtsApplicationPhasesResource {
   }
 
   /**
-   * Fetch all ApplicationPhases records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all application_phases across all pages into a single array.
    * @example const all = await client.ats.applicationPhases.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsApplicationPhases>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Application Phas */
+  /** Reads a single application_phases record */
   get: typeof getApi20260401ResourcesAtsApplicationPhasesById = (options?: any) => getApi20260401ResourcesAtsApplicationPhasesById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > Applications resource */
+/** Methods for the ats > applications resource */
 export class AtsApplicationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Applications */
+  /** Lists all applications */
   list: typeof getApi20260401ResourcesAtsApplications = (options?: any) => getApi20260401ResourcesAtsApplications({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Applications records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all applications, yielding one item at a time.
    * @example for await (const item of client.ats.applications.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsApplications>[0] & { limit?: number; maxItems?: number }) {
@@ -766,40 +752,38 @@ export class AtsApplicationsResource {
   }
 
   /**
-   * Fetch all Applications records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all applications across all pages into a single array.
    * @example const all = await client.ats.applications.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsApplications>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Application */
+  /** Creates a applications record */
   create: typeof postApi20260401ResourcesAtsApplications = (options?: any) => postApi20260401ResourcesAtsApplications({ client: this._client, ...options });
 
-  /** Reads a single Application */
+  /** Reads a single applications record */
   get: typeof getApi20260401ResourcesAtsApplicationsById = (options?: any) => getApi20260401ResourcesAtsApplicationsById({ client: this._client, ...options });
 
-  /** Updates a Application */
+  /** Updates a applications record */
   update: typeof putApi20260401ResourcesAtsApplicationsById = (options?: any) => putApi20260401ResourcesAtsApplicationsById({ client: this._client, ...options });
 
-  /** Deletes a Application */
+  /** Deletes a applications record */
   delete: typeof deleteApi20260401ResourcesAtsApplicationsById = (options?: any) => deleteApi20260401ResourcesAtsApplicationsById({ client: this._client, ...options });
 
-  /** Apply Application */
+  /** apply */
   apply: typeof postApi20260401ResourcesAtsApplicationsApply = (options?: any) => postApi20260401ResourcesAtsApplicationsApply({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > CandidateSources resource */
+/** Methods for the ats > candidate_sources resource */
 export class AtsCandidateSourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Candidate Sources */
+  /** Lists all candidate_sources */
   list: typeof getApi20260401ResourcesAtsCandidateSources = (options?: any) => getApi20260401ResourcesAtsCandidateSources({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CandidateSources records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all candidate_sources, yielding one item at a time.
    * @example for await (const item of client.ats.candidateSources.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsCandidateSources>[0] & { limit?: number; maxItems?: number }) {
@@ -811,28 +795,26 @@ export class AtsCandidateSourcesResource {
   }
 
   /**
-   * Fetch all CandidateSources records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all candidate_sources across all pages into a single array.
    * @example const all = await client.ats.candidateSources.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsCandidateSources>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Candidate Source */
+  /** Reads a single candidate_sources record */
   get: typeof getApi20260401ResourcesAtsCandidateSourcesById = (options?: any) => getApi20260401ResourcesAtsCandidateSourcesById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > Candidates resource */
+/** Methods for the ats > candidates resource */
 export class AtsCandidatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Candidates */
+  /** Lists all candidates */
   list: typeof getApi20260401ResourcesAtsCandidates = (options?: any) => getApi20260401ResourcesAtsCandidates({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Candidates records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all candidates, yielding one item at a time.
    * @example for await (const item of client.ats.candidates.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsCandidates>[0] & { limit?: number; maxItems?: number }) {
@@ -844,37 +826,35 @@ export class AtsCandidatesResource {
   }
 
   /**
-   * Fetch all Candidates records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all candidates across all pages into a single array.
    * @example const all = await client.ats.candidates.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsCandidates>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Candidate */
+  /** Creates a candidates record */
   create: typeof postApi20260401ResourcesAtsCandidates = (options?: any) => postApi20260401ResourcesAtsCandidates({ client: this._client, ...options });
 
-  /** Reads a single Candidate */
+  /** Reads a single candidates record */
   get: typeof getApi20260401ResourcesAtsCandidatesById = (options?: any) => getApi20260401ResourcesAtsCandidatesById({ client: this._client, ...options });
 
-  /** Updates a Candidate */
+  /** Updates a candidates record */
   update: typeof putApi20260401ResourcesAtsCandidatesById = (options?: any) => putApi20260401ResourcesAtsCandidatesById({ client: this._client, ...options });
 
-  /** Deletes a Candidate */
+  /** Deletes a candidates record */
   delete: typeof deleteApi20260401ResourcesAtsCandidatesById = (options?: any) => deleteApi20260401ResourcesAtsCandidatesById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > EvaluationForms resource */
+/** Methods for the ats > evaluation_forms resource */
 export class AtsEvaluationFormsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Evaluation Forms */
+  /** Lists all evaluation_forms */
   list: typeof getApi20260401ResourcesAtsEvaluationForms = (options?: any) => getApi20260401ResourcesAtsEvaluationForms({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all EvaluationForms records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all evaluation_forms, yielding one item at a time.
    * @example for await (const item of client.ats.evaluationForms.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsEvaluationForms>[0] & { limit?: number; maxItems?: number }) {
@@ -886,31 +866,29 @@ export class AtsEvaluationFormsResource {
   }
 
   /**
-   * Fetch all EvaluationForms records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all evaluation_forms across all pages into a single array.
    * @example const all = await client.ats.evaluationForms.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsEvaluationForms>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Evaluation Form */
+  /** Reads a single evaluation_forms record */
   get: typeof getApi20260401ResourcesAtsEvaluationFormsById = (options?: any) => getApi20260401ResourcesAtsEvaluationFormsById({ client: this._client, ...options });
 
-  /** Save as template Evaluation Form */
+  /** saveAsTemplate */
   saveAsTemplate: typeof postApi20260401ResourcesAtsEvaluationFormsSaveAsTemplate = (options?: any) => postApi20260401ResourcesAtsEvaluationFormsSaveAsTemplate({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > Feedbacks resource */
+/** Methods for the ats > feedbacks resource */
 export class AtsFeedbacksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Feedbacks */
+  /** Lists all feedbacks */
   list: typeof getApi20260401ResourcesAtsFeedbacks = (options?: any) => getApi20260401ResourcesAtsFeedbacks({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Feedbacks records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all feedbacks, yielding one item at a time.
    * @example for await (const item of client.ats.feedbacks.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsFeedbacks>[0] & { limit?: number; maxItems?: number }) {
@@ -922,37 +900,35 @@ export class AtsFeedbacksResource {
   }
 
   /**
-   * Fetch all Feedbacks records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all feedbacks across all pages into a single array.
    * @example const all = await client.ats.feedbacks.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsFeedbacks>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Feedback */
+  /** Creates a feedbacks record */
   create: typeof postApi20260401ResourcesAtsFeedbacks = (options?: any) => postApi20260401ResourcesAtsFeedbacks({ client: this._client, ...options });
 
-  /** Reads a single Feedback */
+  /** Reads a single feedbacks record */
   get: typeof getApi20260401ResourcesAtsFeedbacksById = (options?: any) => getApi20260401ResourcesAtsFeedbacksById({ client: this._client, ...options });
 
-  /** Updates a Feedback */
+  /** Updates a feedbacks record */
   update: typeof putApi20260401ResourcesAtsFeedbacksById = (options?: any) => putApi20260401ResourcesAtsFeedbacksById({ client: this._client, ...options });
 
-  /** Deletes a Feedback */
+  /** Deletes a feedbacks record */
   delete: typeof deleteApi20260401ResourcesAtsFeedbacksById = (options?: any) => deleteApi20260401ResourcesAtsFeedbacksById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > HiringStages resource */
+/** Methods for the ats > hiring_stages resource */
 export class AtsHiringStagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Hiring Stages */
+  /** Lists all hiring_stages */
   list: typeof getApi20260401ResourcesAtsHiringStages = (options?: any) => getApi20260401ResourcesAtsHiringStages({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all HiringStages records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all hiring_stages, yielding one item at a time.
    * @example for await (const item of client.ats.hiringStages.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsHiringStages>[0] & { limit?: number; maxItems?: number }) {
@@ -964,28 +940,26 @@ export class AtsHiringStagesResource {
   }
 
   /**
-   * Fetch all HiringStages records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all hiring_stages across all pages into a single array.
    * @example const all = await client.ats.hiringStages.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsHiringStages>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Hiring Stage */
+  /** Reads a single hiring_stages record */
   get: typeof getApi20260401ResourcesAtsHiringStagesById = (options?: any) => getApi20260401ResourcesAtsHiringStagesById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > JobPostings resource */
+/** Methods for the ats > job_postings resource */
 export class AtsJobPostingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Job Postings */
+  /** Lists all job_postings */
   list: typeof getApi20260401ResourcesAtsJobPostings = (options?: any) => getApi20260401ResourcesAtsJobPostings({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all JobPostings records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all job_postings, yielding one item at a time.
    * @example for await (const item of client.ats.jobPostings.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsJobPostings>[0] & { limit?: number; maxItems?: number }) {
@@ -997,40 +971,38 @@ export class AtsJobPostingsResource {
   }
 
   /**
-   * Fetch all JobPostings records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all job_postings across all pages into a single array.
    * @example const all = await client.ats.jobPostings.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsJobPostings>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Job Posting */
+  /** Creates a job_postings record */
   create: typeof postApi20260401ResourcesAtsJobPostings = (options?: any) => postApi20260401ResourcesAtsJobPostings({ client: this._client, ...options });
 
-  /** Reads a single Job Posting */
+  /** Reads a single job_postings record */
   get: typeof getApi20260401ResourcesAtsJobPostingsById = (options?: any) => getApi20260401ResourcesAtsJobPostingsById({ client: this._client, ...options });
 
-  /** Updates a Job Posting */
+  /** Updates a job_postings record */
   update: typeof putApi20260401ResourcesAtsJobPostingsById = (options?: any) => putApi20260401ResourcesAtsJobPostingsById({ client: this._client, ...options });
 
-  /** Deletes a Job Posting */
+  /** Deletes a job_postings record */
   delete: typeof deleteApi20260401ResourcesAtsJobPostingsById = (options?: any) => deleteApi20260401ResourcesAtsJobPostingsById({ client: this._client, ...options });
 
-  /** Duplicate Job Posting */
+  /** duplicate */
   duplicate: typeof postApi20260401ResourcesAtsJobPostingsDuplicate = (options?: any) => postApi20260401ResourcesAtsJobPostingsDuplicate({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > Messages resource */
+/** Methods for the ats > messages resource */
 export class AtsMessagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Messages */
+  /** Lists all messages */
   list: typeof getApi20260401ResourcesAtsMessages = (options?: any) => getApi20260401ResourcesAtsMessages({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Messages records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all messages, yielding one item at a time.
    * @example for await (const item of client.ats.messages.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsMessages>[0] & { limit?: number; maxItems?: number }) {
@@ -1042,31 +1014,29 @@ export class AtsMessagesResource {
   }
 
   /**
-   * Fetch all Messages records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all messages across all pages into a single array.
    * @example const all = await client.ats.messages.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsMessages>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Message */
+  /** Creates a messages record */
   create: typeof postApi20260401ResourcesAtsMessages = (options?: any) => postApi20260401ResourcesAtsMessages({ client: this._client, ...options });
 
-  /** Reads a single Message */
+  /** Reads a single messages record */
   get: typeof getApi20260401ResourcesAtsMessagesById = (options?: any) => getApi20260401ResourcesAtsMessagesById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > Questions resource */
+/** Methods for the ats > questions resource */
 export class AtsQuestionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Questions */
+  /** Lists all questions */
   list: typeof getApi20260401ResourcesAtsQuestions = (options?: any) => getApi20260401ResourcesAtsQuestions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Questions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all questions, yielding one item at a time.
    * @example for await (const item of client.ats.questions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsQuestions>[0] & { limit?: number; maxItems?: number }) {
@@ -1078,37 +1048,35 @@ export class AtsQuestionsResource {
   }
 
   /**
-   * Fetch all Questions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all questions across all pages into a single array.
    * @example const all = await client.ats.questions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsQuestions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Question */
+  /** Creates a questions record */
   create: typeof postApi20260401ResourcesAtsQuestions = (options?: any) => postApi20260401ResourcesAtsQuestions({ client: this._client, ...options });
 
-  /** Reads a single Question */
+  /** Reads a single questions record */
   get: typeof getApi20260401ResourcesAtsQuestionsById = (options?: any) => getApi20260401ResourcesAtsQuestionsById({ client: this._client, ...options });
 
-  /** Updates a Question */
+  /** Updates a questions record */
   update: typeof putApi20260401ResourcesAtsQuestionsById = (options?: any) => putApi20260401ResourcesAtsQuestionsById({ client: this._client, ...options });
 
-  /** Deletes a Question */
+  /** Deletes a questions record */
   delete: typeof deleteApi20260401ResourcesAtsQuestionsById = (options?: any) => deleteApi20260401ResourcesAtsQuestionsById({ client: this._client, ...options });
 
 }
-/** Methods for the Ats > RejectionReasons resource */
+/** Methods for the ats > rejection_reasons resource */
 export class AtsRejectionReasonsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Rejection Reasons */
+  /** Lists all rejection_reasons */
   list: typeof getApi20260401ResourcesAtsRejectionReasons = (options?: any) => getApi20260401ResourcesAtsRejectionReasons({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all RejectionReasons records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all rejection_reasons, yielding one item at a time.
    * @example for await (const item of client.ats.rejectionReasons.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAtsRejectionReasons>[0] & { limit?: number; maxItems?: number }) {
@@ -1120,28 +1088,26 @@ export class AtsRejectionReasonsResource {
   }
 
   /**
-   * Fetch all RejectionReasons records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all rejection_reasons across all pages into a single array.
    * @example const all = await client.ats.rejectionReasons.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAtsRejectionReasons>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Rejection Reason */
+  /** Reads a single rejection_reasons record */
   get: typeof getApi20260401ResourcesAtsRejectionReasonsById = (options?: any) => getApi20260401ResourcesAtsRejectionReasonsById({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > BreakConfigurations resource */
+/** Methods for the attendance > break_configurations resource */
 export class AttendanceBreakConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Break Configurations */
+  /** Lists all break_configurations */
   list: typeof getApi20260401ResourcesAttendanceBreakConfigurations = (options?: any) => getApi20260401ResourcesAttendanceBreakConfigurations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BreakConfigurations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all break_configurations, yielding one item at a time.
    * @example for await (const item of client.attendance.breakConfigurations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
@@ -1153,34 +1119,32 @@ export class AttendanceBreakConfigurationsResource {
   }
 
   /**
-   * Fetch all BreakConfigurations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all break_configurations across all pages into a single array.
    * @example const all = await client.attendance.breakConfigurations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Break Configuration */
+  /** Creates a break_configurations record */
   create: typeof postApi20260401ResourcesAttendanceBreakConfigurations = (options?: any) => postApi20260401ResourcesAttendanceBreakConfigurations({ client: this._client, ...options });
 
-  /** Reads a single Break Configuration */
+  /** Reads a single break_configurations record */
   get: typeof getApi20260401ResourcesAttendanceBreakConfigurationsById = (options?: any) => getApi20260401ResourcesAttendanceBreakConfigurationsById({ client: this._client, ...options });
 
-  /** Updates a Break Configuration */
+  /** Updates a break_configurations record */
   update: typeof putApi20260401ResourcesAttendanceBreakConfigurationsById = (options?: any) => putApi20260401ResourcesAttendanceBreakConfigurationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > EditTimesheetRequests resource */
+/** Methods for the attendance > edit_timesheet_requests resource */
 export class AttendanceEditTimesheetRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Edit Timesheet Requests */
+  /** Lists all edit_timesheet_requests */
   list: typeof getApi20260401ResourcesAttendanceEditTimesheetRequests = (options?: any) => getApi20260401ResourcesAttendanceEditTimesheetRequests({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all EditTimesheetRequests records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all edit_timesheet_requests, yielding one item at a time.
    * @example for await (const item of client.attendance.editTimesheetRequests.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceEditTimesheetRequests>[0] & { limit?: number; maxItems?: number }) {
@@ -1192,37 +1156,35 @@ export class AttendanceEditTimesheetRequestsResource {
   }
 
   /**
-   * Fetch all EditTimesheetRequests records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all edit_timesheet_requests across all pages into a single array.
    * @example const all = await client.attendance.editTimesheetRequests.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceEditTimesheetRequests>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Edit Timesheet Request */
+  /** Creates a edit_timesheet_requests record */
   create: typeof postApi20260401ResourcesAttendanceEditTimesheetRequests = (options?: any) => postApi20260401ResourcesAttendanceEditTimesheetRequests({ client: this._client, ...options });
 
-  /** Reads a single Edit Timesheet Request */
+  /** Reads a single edit_timesheet_requests record */
   get: typeof getApi20260401ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => getApi20260401ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
 
-  /** Updates a Edit Timesheet Request */
+  /** Updates a edit_timesheet_requests record */
   update: typeof putApi20260401ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => putApi20260401ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
 
-  /** Deletes a Edit Timesheet Request */
+  /** Deletes a edit_timesheet_requests record */
   delete: typeof deleteApi20260401ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => deleteApi20260401ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > EstimatedTimes resource */
+/** Methods for the attendance > estimated_times resource */
 export class AttendanceEstimatedTimesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Estimated Times */
+  /** Lists all estimated_times */
   list: typeof getApi20260401ResourcesAttendanceEstimatedTimes = (options?: any) => getApi20260401ResourcesAttendanceEstimatedTimes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all EstimatedTimes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all estimated_times, yielding one item at a time.
    * @example for await (const item of client.attendance.estimatedTimes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceEstimatedTimes>[0] & { limit?: number; maxItems?: number }) {
@@ -1234,8 +1196,7 @@ export class AttendanceEstimatedTimesResource {
   }
 
   /**
-   * Fetch all EstimatedTimes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all estimated_times across all pages into a single array.
    * @example const all = await client.attendance.estimatedTimes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceEstimatedTimes>[0] & { limit?: number; maxItems?: number }) {
@@ -1243,16 +1204,15 @@ export class AttendanceEstimatedTimesResource {
   }
 
 }
-/** Methods for the Attendance > OpenShifts resource */
+/** Methods for the attendance > open_shifts resource */
 export class AttendanceOpenShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Open Shifts */
+  /** Lists all open_shifts */
   list: typeof getApi20260401ResourcesAttendanceOpenShifts = (options?: any) => getApi20260401ResourcesAttendanceOpenShifts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all OpenShifts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all open_shifts, yielding one item at a time.
    * @example for await (const item of client.attendance.openShifts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceOpenShifts>[0] & { limit?: number; maxItems?: number }) {
@@ -1264,8 +1224,7 @@ export class AttendanceOpenShiftsResource {
   }
 
   /**
-   * Fetch all OpenShifts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all open_shifts across all pages into a single array.
    * @example const all = await client.attendance.openShifts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceOpenShifts>[0] & { limit?: number; maxItems?: number }) {
@@ -1273,16 +1232,15 @@ export class AttendanceOpenShiftsResource {
   }
 
 }
-/** Methods for the Attendance > OvertimeRequests resource */
+/** Methods for the attendance > overtime_requests resource */
 export class AttendanceOvertimeRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Overtime Requests */
+  /** Lists all overtime_requests */
   list: typeof getApi20260401ResourcesAttendanceOvertimeRequests = (options?: any) => getApi20260401ResourcesAttendanceOvertimeRequests({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all OvertimeRequests records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all overtime_requests, yielding one item at a time.
    * @example for await (const item of client.attendance.overtimeRequests.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceOvertimeRequests>[0] & { limit?: number; maxItems?: number }) {
@@ -1294,43 +1252,41 @@ export class AttendanceOvertimeRequestsResource {
   }
 
   /**
-   * Fetch all OvertimeRequests records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all overtime_requests across all pages into a single array.
    * @example const all = await client.attendance.overtimeRequests.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceOvertimeRequests>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Overtime Request */
+  /** Creates a overtime_requests record */
   create: typeof postApi20260401ResourcesAttendanceOvertimeRequests = (options?: any) => postApi20260401ResourcesAttendanceOvertimeRequests({ client: this._client, ...options });
 
-  /** Reads a single Overtime Request */
+  /** Reads a single overtime_requests record */
   get: typeof getApi20260401ResourcesAttendanceOvertimeRequestsById = (options?: any) => getApi20260401ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
 
-  /** Updates a Overtime Request */
+  /** Updates a overtime_requests record */
   update: typeof putApi20260401ResourcesAttendanceOvertimeRequestsById = (options?: any) => putApi20260401ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
 
-  /** Deletes a Overtime Request */
+  /** Deletes a overtime_requests record */
   delete: typeof deleteApi20260401ResourcesAttendanceOvertimeRequestsById = (options?: any) => deleteApi20260401ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
 
-  /** Approve Overtime Request */
+  /** approve */
   approve: typeof postApi20260401ResourcesAttendanceOvertimeRequestsApprove = (options?: any) => postApi20260401ResourcesAttendanceOvertimeRequestsApprove({ client: this._client, ...options });
 
-  /** Reject Overtime Request */
+  /** reject */
   reject: typeof postApi20260401ResourcesAttendanceOvertimeRequestsReject = (options?: any) => postApi20260401ResourcesAttendanceOvertimeRequestsReject({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > Reviews resource */
+/** Methods for the attendance > reviews resource */
 export class AttendanceReviewsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Reviews */
+  /** Lists all reviews */
   list: typeof getApi20260401ResourcesAttendanceReviews = (options?: any) => getApi20260401ResourcesAttendanceReviews({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Reviews records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all reviews, yielding one item at a time.
    * @example for await (const item of client.attendance.reviews.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceReviews>[0] & { limit?: number; maxItems?: number }) {
@@ -1342,31 +1298,29 @@ export class AttendanceReviewsResource {
   }
 
   /**
-   * Fetch all Reviews records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all reviews across all pages into a single array.
    * @example const all = await client.attendance.reviews.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceReviews>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Bulk create Review */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesAttendanceReviewsBulkCreate = (options?: any) => postApi20260401ResourcesAttendanceReviewsBulkCreate({ client: this._client, ...options });
 
-  /** Bulk destroy Review */
+  /** bulkDestroy */
   bulkDestroy: typeof postApi20260401ResourcesAttendanceReviewsBulkDestroy = (options?: any) => postApi20260401ResourcesAttendanceReviewsBulkDestroy({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > Shifts resource */
+/** Methods for the attendance > shifts resource */
 export class AttendanceShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Shifts */
+  /** Lists all shifts */
   list: typeof getApi20260401ResourcesAttendanceShifts = (options?: any) => getApi20260401ResourcesAttendanceShifts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Shifts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all shifts, yielding one item at a time.
    * @example for await (const item of client.attendance.shifts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceShifts>[0] & { limit?: number; maxItems?: number }) {
@@ -1378,55 +1332,53 @@ export class AttendanceShiftsResource {
   }
 
   /**
-   * Fetch all Shifts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all shifts across all pages into a single array.
    * @example const all = await client.attendance.shifts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceShifts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Shift */
+  /** Creates a shifts record */
   create: typeof postApi20260401ResourcesAttendanceShifts = (options?: any) => postApi20260401ResourcesAttendanceShifts({ client: this._client, ...options });
 
-  /** Reads a single Shift */
+  /** Reads a single shifts record */
   get: typeof getApi20260401ResourcesAttendanceShiftsById = (options?: any) => getApi20260401ResourcesAttendanceShiftsById({ client: this._client, ...options });
 
-  /** Updates a Shift */
+  /** Updates a shifts record */
   update: typeof putApi20260401ResourcesAttendanceShiftsById = (options?: any) => putApi20260401ResourcesAttendanceShiftsById({ client: this._client, ...options });
 
-  /** Deletes a Shift */
+  /** Deletes a shifts record */
   delete: typeof deleteApi20260401ResourcesAttendanceShiftsById = (options?: any) => deleteApi20260401ResourcesAttendanceShiftsById({ client: this._client, ...options });
 
-  /** Autofill Shift */
+  /** autofill */
   autofill: typeof postApi20260401ResourcesAttendanceShiftsAutofill = (options?: any) => postApi20260401ResourcesAttendanceShiftsAutofill({ client: this._client, ...options });
 
-  /** Break end Shift */
+  /** breakEnd */
   breakEnd: typeof postApi20260401ResourcesAttendanceShiftsBreakEnd = (options?: any) => postApi20260401ResourcesAttendanceShiftsBreakEnd({ client: this._client, ...options });
 
-  /** Break start Shift */
+  /** breakStart */
   breakStart: typeof postApi20260401ResourcesAttendanceShiftsBreakStart = (options?: any) => postApi20260401ResourcesAttendanceShiftsBreakStart({ client: this._client, ...options });
 
-  /** Clock in Shift */
+  /** clockIn */
   clockIn: typeof postApi20260401ResourcesAttendanceShiftsClockIn = (options?: any) => postApi20260401ResourcesAttendanceShiftsClockIn({ client: this._client, ...options });
 
-  /** Clock out Shift */
+  /** clockOut */
   clockOut: typeof postApi20260401ResourcesAttendanceShiftsClockOut = (options?: any) => postApi20260401ResourcesAttendanceShiftsClockOut({ client: this._client, ...options });
 
-  /** Toggle clock Shift */
+  /** toggleClock */
   toggleClock: typeof postApi20260401ResourcesAttendanceShiftsToggleClock = (options?: any) => postApi20260401ResourcesAttendanceShiftsToggleClock({ client: this._client, ...options });
 
 }
-/** Methods for the Attendance > WorkedTimes resource */
+/** Methods for the attendance > worked_times resource */
 export class AttendanceWorkedTimesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Worked Times */
+  /** Lists all worked_times */
   list: typeof getApi20260401ResourcesAttendanceWorkedTimes = (options?: any) => getApi20260401ResourcesAttendanceWorkedTimes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all WorkedTimes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all worked_times, yielding one item at a time.
    * @example for await (const item of client.attendance.workedTimes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesAttendanceWorkedTimes>[0] & { limit?: number; maxItems?: number }) {
@@ -1438,8 +1390,7 @@ export class AttendanceWorkedTimesResource {
   }
 
   /**
-   * Fetch all WorkedTimes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all worked_times across all pages into a single array.
    * @example const all = await client.attendance.workedTimes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesAttendanceWorkedTimes>[0] & { limit?: number; maxItems?: number }) {
@@ -1447,16 +1398,15 @@ export class AttendanceWorkedTimesResource {
   }
 
 }
-/** Methods for the Banking > BankAccounts resource */
+/** Methods for the banking > bank_accounts resource */
 export class BankingBankAccountsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Bank Accounts */
+  /** Lists all bank_accounts */
   list: typeof getApi20260401ResourcesBankingBankAccounts = (options?: any) => getApi20260401ResourcesBankingBankAccounts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BankAccounts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all bank_accounts, yielding one item at a time.
    * @example for await (const item of client.banking.bankAccounts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesBankingBankAccounts>[0] & { limit?: number; maxItems?: number }) {
@@ -1468,31 +1418,29 @@ export class BankingBankAccountsResource {
   }
 
   /**
-   * Fetch all BankAccounts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all bank_accounts across all pages into a single array.
    * @example const all = await client.banking.bankAccounts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesBankingBankAccounts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Bank Account */
+  /** Reads a single bank_accounts record */
   get: typeof getApi20260401ResourcesBankingBankAccountsById = (options?: any) => getApi20260401ResourcesBankingBankAccountsById({ client: this._client, ...options });
 
-  /** Create manual Bank Account */
+  /** createManual */
   createManual: typeof postApi20260401ResourcesBankingBankAccountsCreateManual = (options?: any) => postApi20260401ResourcesBankingBankAccountsCreateManual({ client: this._client, ...options });
 
 }
-/** Methods for the Banking > CardPayments resource */
+/** Methods for the banking > card_payments resource */
 export class BankingCardPaymentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Card Payments */
+  /** Lists all card_payments */
   list: typeof getApi20260401ResourcesBankingCardPayments = (options?: any) => getApi20260401ResourcesBankingCardPayments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CardPayments records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all card_payments, yielding one item at a time.
    * @example for await (const item of client.banking.cardPayments.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesBankingCardPayments>[0] & { limit?: number; maxItems?: number }) {
@@ -1504,28 +1452,26 @@ export class BankingCardPaymentsResource {
   }
 
   /**
-   * Fetch all CardPayments records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all card_payments across all pages into a single array.
    * @example const all = await client.banking.cardPayments.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesBankingCardPayments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Card Payment */
+  /** Reads a single card_payments record */
   get: typeof getApi20260401ResourcesBankingCardPaymentsById = (options?: any) => getApi20260401ResourcesBankingCardPaymentsById({ client: this._client, ...options });
 
 }
-/** Methods for the Banking > Transactions resource */
+/** Methods for the banking > transactions resource */
 export class BankingTransactionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Transactions */
+  /** Lists all transactions */
   list: typeof getApi20260401ResourcesBankingTransactions = (options?: any) => getApi20260401ResourcesBankingTransactions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Transactions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all transactions, yielding one item at a time.
    * @example for await (const item of client.banking.transactions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesBankingTransactions>[0] & { limit?: number; maxItems?: number }) {
@@ -1537,28 +1483,26 @@ export class BankingTransactionsResource {
   }
 
   /**
-   * Fetch all Transactions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all transactions across all pages into a single array.
    * @example const all = await client.banking.transactions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesBankingTransactions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Transaction */
+  /** Reads a single transactions record */
   get: typeof getApi20260401ResourcesBankingTransactionsById = (options?: any) => getApi20260401ResourcesBankingTransactionsById({ client: this._client, ...options });
 
 }
-/** Methods for the BookkeepersManagement > Incidences resource */
+/** Methods for the bookkeepers_management > incidences resource */
 export class BookkeepersManagementIncidencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Incidences */
+  /** Lists all incidences */
   list: typeof getApi20260401ResourcesBookkeepersManagementIncidences = (options?: any) => getApi20260401ResourcesBookkeepersManagementIncidences({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Incidences records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all incidences, yielding one item at a time.
    * @example for await (const item of client.bookkeepersManagement.incidences.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesBookkeepersManagementIncidences>[0] & { limit?: number; maxItems?: number }) {
@@ -1570,31 +1514,29 @@ export class BookkeepersManagementIncidencesResource {
   }
 
   /**
-   * Fetch all Incidences records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all incidences across all pages into a single array.
    * @example const all = await client.bookkeepersManagement.incidences.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesBookkeepersManagementIncidences>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Incidence */
+  /** Reads a single incidences record */
   get: typeof getApi20260401ResourcesBookkeepersManagementIncidencesById = (options?: any) => getApi20260401ResourcesBookkeepersManagementIncidencesById({ client: this._client, ...options });
 
-  /** Updates a Incidence */
+  /** Updates a incidences record */
   update: typeof putApi20260401ResourcesBookkeepersManagementIncidencesById = (options?: any) => putApi20260401ResourcesBookkeepersManagementIncidencesById({ client: this._client, ...options });
 
 }
-/** Methods for the Companies > LegalEntities resource */
+/** Methods for the companies > legal_entities resource */
 export class CompaniesLegalEntitiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Legal Entitys */
+  /** Lists all legal_entities */
   list: typeof getApi20260401ResourcesCompaniesLegalEntities = (options?: any) => getApi20260401ResourcesCompaniesLegalEntities({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all LegalEntities records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all legal_entities, yielding one item at a time.
    * @example for await (const item of client.companies.legalEntities.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCompaniesLegalEntities>[0] & { limit?: number; maxItems?: number }) {
@@ -1606,31 +1548,29 @@ export class CompaniesLegalEntitiesResource {
   }
 
   /**
-   * Fetch all LegalEntities records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all legal_entities across all pages into a single array.
    * @example const all = await client.companies.legalEntities.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCompaniesLegalEntities>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Legal Entity */
+  /** Creates a legal_entities record */
   create: typeof postApi20260401ResourcesCompaniesLegalEntities = (options?: any) => postApi20260401ResourcesCompaniesLegalEntities({ client: this._client, ...options });
 
-  /** Reads a single Legal Entity */
+  /** Reads a single legal_entities record */
   get: typeof getApi20260401ResourcesCompaniesLegalEntitiesById = (options?: any) => getApi20260401ResourcesCompaniesLegalEntitiesById({ client: this._client, ...options });
 
 }
-/** Methods for the Compensations > Concepts resource */
+/** Methods for the compensations > concepts resource */
 export class CompensationsConceptsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Concepts */
+  /** Lists all concepts */
   list: typeof getApi20260401ResourcesCompensationsConcepts = (options?: any) => getApi20260401ResourcesCompensationsConcepts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Concepts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all concepts, yielding one item at a time.
    * @example for await (const item of client.compensations.concepts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCompensationsConcepts>[0] & { limit?: number; maxItems?: number }) {
@@ -1642,28 +1582,26 @@ export class CompensationsConceptsResource {
   }
 
   /**
-   * Fetch all Concepts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all concepts across all pages into a single array.
    * @example const all = await client.compensations.concepts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCompensationsConcepts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Concept */
+  /** Reads a single concepts record */
   get: typeof getApi20260401ResourcesCompensationsConceptsById = (options?: any) => getApi20260401ResourcesCompensationsConceptsById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > Compensations resource */
+/** Methods for the contracts > compensations resource */
 export class ContractsCompensationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Compensations */
+  /** Lists all compensations */
   list: typeof getApi20260401ResourcesContractsCompensations = (options?: any) => getApi20260401ResourcesContractsCompensations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Compensations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all compensations, yielding one item at a time.
    * @example for await (const item of client.contracts.compensations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsCompensations>[0] & { limit?: number; maxItems?: number }) {
@@ -1675,37 +1613,35 @@ export class ContractsCompensationsResource {
   }
 
   /**
-   * Fetch all Compensations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all compensations across all pages into a single array.
    * @example const all = await client.contracts.compensations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsCompensations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Compensation */
+  /** Creates a compensations record */
   create: typeof postApi20260401ResourcesContractsCompensations = (options?: any) => postApi20260401ResourcesContractsCompensations({ client: this._client, ...options });
 
-  /** Reads a single Compensation */
+  /** Reads a single compensations record */
   get: typeof getApi20260401ResourcesContractsCompensationsById = (options?: any) => getApi20260401ResourcesContractsCompensationsById({ client: this._client, ...options });
 
-  /** Updates a Compensation */
+  /** Updates a compensations record */
   update: typeof putApi20260401ResourcesContractsCompensationsById = (options?: any) => putApi20260401ResourcesContractsCompensationsById({ client: this._client, ...options });
 
-  /** Deletes a Compensation */
+  /** Deletes a compensations record */
   delete: typeof deleteApi20260401ResourcesContractsCompensationsById = (options?: any) => deleteApi20260401ResourcesContractsCompensationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > ContractTemplates resource */
+/** Methods for the contracts > contract_templates resource */
 export class ContractsContractTemplatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contract Templates */
+  /** Lists all contract_templates */
   list: typeof getApi20260401ResourcesContractsContractTemplates = (options?: any) => getApi20260401ResourcesContractsContractTemplates({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ContractTemplates records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contract_templates, yielding one item at a time.
    * @example for await (const item of client.contracts.contractTemplates.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsContractTemplates>[0] & { limit?: number; maxItems?: number }) {
@@ -1717,28 +1653,26 @@ export class ContractsContractTemplatesResource {
   }
 
   /**
-   * Fetch all ContractTemplates records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contract_templates across all pages into a single array.
    * @example const all = await client.contracts.contractTemplates.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsContractTemplates>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Contract Template */
+  /** Reads a single contract_templates record */
   get: typeof getApi20260401ResourcesContractsContractTemplatesById = (options?: any) => getApi20260401ResourcesContractsContractTemplatesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > ContractVersionHistories resource */
+/** Methods for the contracts > contract_version_histories resource */
 export class ContractsContractVersionHistoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contract Version Historys */
+  /** Lists all contract_version_histories */
   list: typeof getApi20260401ResourcesContractsContractVersionHistories = (options?: any) => getApi20260401ResourcesContractsContractVersionHistories({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ContractVersionHistories records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contract_version_histories, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersionHistories.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersionHistories>[0] & { limit?: number; maxItems?: number }) {
@@ -1750,28 +1684,26 @@ export class ContractsContractVersionHistoriesResource {
   }
 
   /**
-   * Fetch all ContractVersionHistories records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contract_version_histories across all pages into a single array.
    * @example const all = await client.contracts.contractVersionHistories.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersionHistories>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Contract Version History */
+  /** Reads a single contract_version_histories record */
   get: typeof getApi20260401ResourcesContractsContractVersionHistoriesById = (options?: any) => getApi20260401ResourcesContractsContractVersionHistoriesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > ContractVersionMetaData resource */
+/** Methods for the contracts > contract_version_meta_data resource */
 export class ContractsContractVersionMetaDataResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contract Version Meta Datas */
+  /** Lists all contract_version_meta_data */
   list: typeof getApi20260401ResourcesContractsContractVersionMetaData = (options?: any) => getApi20260401ResourcesContractsContractVersionMetaData({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ContractVersionMetaData records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contract_version_meta_data, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersionMetaData.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersionMetaData>[0] & { limit?: number; maxItems?: number }) {
@@ -1783,8 +1715,7 @@ export class ContractsContractVersionMetaDataResource {
   }
 
   /**
-   * Fetch all ContractVersionMetaData records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contract_version_meta_data across all pages into a single array.
    * @example const all = await client.contracts.contractVersionMetaData.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersionMetaData>[0] & { limit?: number; maxItems?: number }) {
@@ -1792,16 +1723,15 @@ export class ContractsContractVersionMetaDataResource {
   }
 
 }
-/** Methods for the Contracts > ContractVersions resource */
+/** Methods for the contracts > contract_versions resource */
 export class ContractsContractVersionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contract Versions */
+  /** Lists all contract_versions */
   list: typeof getApi20260401ResourcesContractsContractVersions = (options?: any) => getApi20260401ResourcesContractsContractVersions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ContractVersions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contract_versions, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersions>[0] & { limit?: number; maxItems?: number }) {
@@ -1813,37 +1743,35 @@ export class ContractsContractVersionsResource {
   }
 
   /**
-   * Fetch all ContractVersions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contract_versions across all pages into a single array.
    * @example const all = await client.contracts.contractVersions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsContractVersions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Contract Version */
+  /** Creates a contract_versions record */
   create: typeof postApi20260401ResourcesContractsContractVersions = (options?: any) => postApi20260401ResourcesContractsContractVersions({ client: this._client, ...options });
 
-  /** Reads a single Contract Version */
+  /** Reads a single contract_versions record */
   get: typeof getApi20260401ResourcesContractsContractVersionsById = (options?: any) => getApi20260401ResourcesContractsContractVersionsById({ client: this._client, ...options });
 
-  /** Updates a Contract Version */
+  /** Updates a contract_versions record */
   update: typeof putApi20260401ResourcesContractsContractVersionsById = (options?: any) => putApi20260401ResourcesContractsContractVersionsById({ client: this._client, ...options });
 
-  /** Deletes a Contract Version */
+  /** Deletes a contract_versions record */
   delete: typeof deleteApi20260401ResourcesContractsContractVersionsById = (options?: any) => deleteApi20260401ResourcesContractsContractVersionsById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > FrenchContractTypes resource */
+/** Methods for the contracts > french_contract_types resource */
 export class ContractsFrenchContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all French Contract Types */
+  /** Lists all french_contract_types */
   list: typeof getApi20260401ResourcesContractsFrenchContractTypes = (options?: any) => getApi20260401ResourcesContractsFrenchContractTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all FrenchContractTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all french_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.frenchContractTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsFrenchContractTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -1855,28 +1783,26 @@ export class ContractsFrenchContractTypesResource {
   }
 
   /**
-   * Fetch all FrenchContractTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all french_contract_types across all pages into a single array.
    * @example const all = await client.contracts.frenchContractTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsFrenchContractTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single French Contract Type */
+  /** Reads a single french_contract_types record */
   get: typeof getApi20260401ResourcesContractsFrenchContractTypesById = (options?: any) => getApi20260401ResourcesContractsFrenchContractTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > GermanContractTypes resource */
+/** Methods for the contracts > german_contract_types resource */
 export class ContractsGermanContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all German Contract Types */
+  /** Lists all german_contract_types */
   list: typeof getApi20260401ResourcesContractsGermanContractTypes = (options?: any) => getApi20260401ResourcesContractsGermanContractTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all GermanContractTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all german_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.germanContractTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsGermanContractTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -1888,28 +1814,26 @@ export class ContractsGermanContractTypesResource {
   }
 
   /**
-   * Fetch all GermanContractTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all german_contract_types across all pages into a single array.
    * @example const all = await client.contracts.germanContractTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsGermanContractTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single German Contract Type */
+  /** Reads a single german_contract_types record */
   get: typeof getApi20260401ResourcesContractsGermanContractTypesById = (options?: any) => getApi20260401ResourcesContractsGermanContractTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > PortugueseContractTypes resource */
+/** Methods for the contracts > portuguese_contract_types resource */
 export class ContractsPortugueseContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Portuguese Contract Types */
+  /** Lists all portuguese_contract_types */
   list: typeof getApi20260401ResourcesContractsPortugueseContractTypes = (options?: any) => getApi20260401ResourcesContractsPortugueseContractTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PortugueseContractTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all portuguese_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.portugueseContractTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsPortugueseContractTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -1921,28 +1845,26 @@ export class ContractsPortugueseContractTypesResource {
   }
 
   /**
-   * Fetch all PortugueseContractTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all portuguese_contract_types across all pages into a single array.
    * @example const all = await client.contracts.portugueseContractTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsPortugueseContractTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Portuguese Contract Type */
+  /** Reads a single portuguese_contract_types record */
   get: typeof getApi20260401ResourcesContractsPortugueseContractTypesById = (options?: any) => getApi20260401ResourcesContractsPortugueseContractTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > ReferenceContracts resource */
+/** Methods for the contracts > reference_contracts resource */
 export class ContractsReferenceContractsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Reference Contracts */
+  /** Lists all reference_contracts */
   list: typeof getApi20260401ResourcesContractsReferenceContracts = (options?: any) => getApi20260401ResourcesContractsReferenceContracts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReferenceContracts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all reference_contracts, yielding one item at a time.
    * @example for await (const item of client.contracts.referenceContracts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsReferenceContracts>[0] & { limit?: number; maxItems?: number }) {
@@ -1954,8 +1876,7 @@ export class ContractsReferenceContractsResource {
   }
 
   /**
-   * Fetch all ReferenceContracts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all reference_contracts across all pages into a single array.
    * @example const all = await client.contracts.referenceContracts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsReferenceContracts>[0] & { limit?: number; maxItems?: number }) {
@@ -1963,16 +1884,15 @@ export class ContractsReferenceContractsResource {
   }
 
 }
-/** Methods for the Contracts > SpanishContractTypes resource */
+/** Methods for the contracts > spanish_contract_types resource */
 export class ContractsSpanishContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Spanish Contract Types */
+  /** Lists all spanish_contract_types */
   list: typeof getApi20260401ResourcesContractsSpanishContractTypes = (options?: any) => getApi20260401ResourcesContractsSpanishContractTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SpanishContractTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all spanish_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishContractTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishContractTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -1984,31 +1904,29 @@ export class ContractsSpanishContractTypesResource {
   }
 
   /**
-   * Fetch all SpanishContractTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all spanish_contract_types across all pages into a single array.
    * @example const all = await client.contracts.spanishContractTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishContractTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Spanish Contract Type */
+  /** Creates a spanish_contract_types record */
   create: typeof postApi20260401ResourcesContractsSpanishContractTypes = (options?: any) => postApi20260401ResourcesContractsSpanishContractTypes({ client: this._client, ...options });
 
-  /** Reads a single Spanish Contract Type */
+  /** Reads a single spanish_contract_types record */
   get: typeof getApi20260401ResourcesContractsSpanishContractTypesById = (options?: any) => getApi20260401ResourcesContractsSpanishContractTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > SpanishEducationLevels resource */
+/** Methods for the contracts > spanish_education_levels resource */
 export class ContractsSpanishEducationLevelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Spanish Education Levels */
+  /** Lists all spanish_education_levels */
   list: typeof getApi20260401ResourcesContractsSpanishEducationLevels = (options?: any) => getApi20260401ResourcesContractsSpanishEducationLevels({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SpanishEducationLevels records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all spanish_education_levels, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishEducationLevels.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishEducationLevels>[0] & { limit?: number; maxItems?: number }) {
@@ -2020,31 +1938,29 @@ export class ContractsSpanishEducationLevelsResource {
   }
 
   /**
-   * Fetch all SpanishEducationLevels records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all spanish_education_levels across all pages into a single array.
    * @example const all = await client.contracts.spanishEducationLevels.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishEducationLevels>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Spanish Education Level */
+  /** Creates a spanish_education_levels record */
   create: typeof postApi20260401ResourcesContractsSpanishEducationLevels = (options?: any) => postApi20260401ResourcesContractsSpanishEducationLevels({ client: this._client, ...options });
 
-  /** Reads a single Spanish Education Level */
+  /** Reads a single spanish_education_levels record */
   get: typeof getApi20260401ResourcesContractsSpanishEducationLevelsById = (options?: any) => getApi20260401ResourcesContractsSpanishEducationLevelsById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > SpanishProfessionalCategories resource */
+/** Methods for the contracts > spanish_professional_categories resource */
 export class ContractsSpanishProfessionalCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Spanish Professional Categorys */
+  /** Lists all spanish_professional_categories */
   list: typeof getApi20260401ResourcesContractsSpanishProfessionalCategories = (options?: any) => getApi20260401ResourcesContractsSpanishProfessionalCategories({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SpanishProfessionalCategories records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all spanish_professional_categories, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishProfessionalCategories.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishProfessionalCategories>[0] & { limit?: number; maxItems?: number }) {
@@ -2056,31 +1972,29 @@ export class ContractsSpanishProfessionalCategoriesResource {
   }
 
   /**
-   * Fetch all SpanishProfessionalCategories records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all spanish_professional_categories across all pages into a single array.
    * @example const all = await client.contracts.spanishProfessionalCategories.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishProfessionalCategories>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Spanish Professional Category */
+  /** Creates a spanish_professional_categories record */
   create: typeof postApi20260401ResourcesContractsSpanishProfessionalCategories = (options?: any) => postApi20260401ResourcesContractsSpanishProfessionalCategories({ client: this._client, ...options });
 
-  /** Reads a single Spanish Professional Category */
+  /** Reads a single spanish_professional_categories record */
   get: typeof getApi20260401ResourcesContractsSpanishProfessionalCategoriesById = (options?: any) => getApi20260401ResourcesContractsSpanishProfessionalCategoriesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > SpanishWorkingDayTypes resource */
+/** Methods for the contracts > spanish_working_day_types resource */
 export class ContractsSpanishWorkingDayTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Spanish Working Day Types */
+  /** Lists all spanish_working_day_types */
   list: typeof getApi20260401ResourcesContractsSpanishWorkingDayTypes = (options?: any) => getApi20260401ResourcesContractsSpanishWorkingDayTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SpanishWorkingDayTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all spanish_working_day_types, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishWorkingDayTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishWorkingDayTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -2092,31 +2006,29 @@ export class ContractsSpanishWorkingDayTypesResource {
   }
 
   /**
-   * Fetch all SpanishWorkingDayTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all spanish_working_day_types across all pages into a single array.
    * @example const all = await client.contracts.spanishWorkingDayTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsSpanishWorkingDayTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Spanish Working Day Type */
+  /** Creates a spanish_working_day_types record */
   create: typeof postApi20260401ResourcesContractsSpanishWorkingDayTypes = (options?: any) => postApi20260401ResourcesContractsSpanishWorkingDayTypes({ client: this._client, ...options });
 
-  /** Reads a single Spanish Working Day Type */
+  /** Reads a single spanish_working_day_types record */
   get: typeof getApi20260401ResourcesContractsSpanishWorkingDayTypesById = (options?: any) => getApi20260401ResourcesContractsSpanishWorkingDayTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Contracts > Taxonomies resource */
+/** Methods for the contracts > taxonomies resource */
 export class ContractsTaxonomiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Taxonomys */
+  /** Lists all taxonomies */
   list: typeof getApi20260401ResourcesContractsTaxonomies = (options?: any) => getApi20260401ResourcesContractsTaxonomies({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Taxonomies records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all taxonomies, yielding one item at a time.
    * @example for await (const item of client.contracts.taxonomies.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesContractsTaxonomies>[0] & { limit?: number; maxItems?: number }) {
@@ -2128,28 +2040,26 @@ export class ContractsTaxonomiesResource {
   }
 
   /**
-   * Fetch all Taxonomies records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all taxonomies across all pages into a single array.
    * @example const all = await client.contracts.taxonomies.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesContractsTaxonomies>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Taxonomy */
+  /** Reads a single taxonomies record */
   get: typeof getApi20260401ResourcesContractsTaxonomiesById = (options?: any) => getApi20260401ResourcesContractsTaxonomiesById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomFields > Fields resource */
+/** Methods for the custom_fields > fields resource */
 export class CustomFieldsFieldsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Fields */
+  /** Lists all fields */
   list: typeof getApi20260401ResourcesCustomFieldsFields = (options?: any) => getApi20260401ResourcesCustomFieldsFields({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Fields records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all fields, yielding one item at a time.
    * @example for await (const item of client.customFields.fields.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsFields>[0] & { limit?: number; maxItems?: number }) {
@@ -2161,34 +2071,32 @@ export class CustomFieldsFieldsResource {
   }
 
   /**
-   * Fetch all Fields records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all fields across all pages into a single array.
    * @example const all = await client.customFields.fields.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsFields>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Field */
+  /** Creates a fields record */
   create: typeof postApi20260401ResourcesCustomFieldsFields = (options?: any) => postApi20260401ResourcesCustomFieldsFields({ client: this._client, ...options });
 
-  /** Reads a single Field */
+  /** Reads a single fields record */
   get: typeof getApi20260401ResourcesCustomFieldsFieldsById = (options?: any) => getApi20260401ResourcesCustomFieldsFieldsById({ client: this._client, ...options });
 
-  /** Deletes a Field */
+  /** Deletes a fields record */
   delete: typeof deleteApi20260401ResourcesCustomFieldsFieldsById = (options?: any) => deleteApi20260401ResourcesCustomFieldsFieldsById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomFields > Options resource */
+/** Methods for the custom_fields > options resource */
 export class CustomFieldsOptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Options */
+  /** Lists all options */
   list: typeof getApi20260401ResourcesCustomFieldsOptions = (options?: any) => getApi20260401ResourcesCustomFieldsOptions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Options records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all options, yielding one item at a time.
    * @example for await (const item of client.customFields.options.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsOptions>[0] & { limit?: number; maxItems?: number }) {
@@ -2200,31 +2108,29 @@ export class CustomFieldsOptionsResource {
   }
 
   /**
-   * Fetch all Options records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all options across all pages into a single array.
    * @example const all = await client.customFields.options.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsOptions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Option */
+  /** Creates a options record */
   create: typeof postApi20260401ResourcesCustomFieldsOptions = (options?: any) => postApi20260401ResourcesCustomFieldsOptions({ client: this._client, ...options });
 
-  /** Reads a single Option */
+  /** Reads a single options record */
   get: typeof getApi20260401ResourcesCustomFieldsOptionsById = (options?: any) => getApi20260401ResourcesCustomFieldsOptionsById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomFields > ResourceFields resource */
+/** Methods for the custom_fields > resource_fields resource */
 export class CustomFieldsResourceFieldsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Resource Fields */
+  /** Lists all resource_fields */
   list: typeof getApi20260401ResourcesCustomFieldsResourceFields = (options?: any) => getApi20260401ResourcesCustomFieldsResourceFields({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ResourceFields records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all resource_fields, yielding one item at a time.
    * @example for await (const item of client.customFields.resourceFields.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsResourceFields>[0] & { limit?: number; maxItems?: number }) {
@@ -2236,31 +2142,29 @@ export class CustomFieldsResourceFieldsResource {
   }
 
   /**
-   * Fetch all ResourceFields records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all resource_fields across all pages into a single array.
    * @example const all = await client.customFields.resourceFields.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsResourceFields>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Resource Field */
+  /** Creates a resource_fields record */
   create: typeof postApi20260401ResourcesCustomFieldsResourceFields = (options?: any) => postApi20260401ResourcesCustomFieldsResourceFields({ client: this._client, ...options });
 
-  /** Reads a single Resource Field */
+  /** Reads a single resource_fields record */
   get: typeof getApi20260401ResourcesCustomFieldsResourceFieldsById = (options?: any) => getApi20260401ResourcesCustomFieldsResourceFieldsById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomFields > Values resource */
+/** Methods for the custom_fields > values resource */
 export class CustomFieldsValuesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Values */
+  /** Lists all values */
   list: typeof getApi20260401ResourcesCustomFieldsValues = (options?: any) => getApi20260401ResourcesCustomFieldsValues({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Values records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all values, yielding one item at a time.
    * @example for await (const item of client.customFields.values.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsValues>[0] & { limit?: number; maxItems?: number }) {
@@ -2272,34 +2176,32 @@ export class CustomFieldsValuesResource {
   }
 
   /**
-   * Fetch all Values records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all values across all pages into a single array.
    * @example const all = await client.customFields.values.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomFieldsValues>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Value */
+  /** Creates a values record */
   create: typeof postApi20260401ResourcesCustomFieldsValues = (options?: any) => postApi20260401ResourcesCustomFieldsValues({ client: this._client, ...options });
 
-  /** Reads a single Value */
+  /** Reads a single values record */
   get: typeof getApi20260401ResourcesCustomFieldsValuesById = (options?: any) => getApi20260401ResourcesCustomFieldsValuesById({ client: this._client, ...options });
 
-  /** Updates a Value */
+  /** Updates a values record */
   update: typeof putApi20260401ResourcesCustomFieldsValuesById = (options?: any) => putApi20260401ResourcesCustomFieldsValuesById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomResources > Resources resource */
+/** Methods for the custom_resources > resources resource */
 export class CustomResourcesResourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Resources */
+  /** Lists all resources */
   list: typeof getApi20260401ResourcesCustomResourcesResources = (options?: any) => getApi20260401ResourcesCustomResourcesResources({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Resources records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all resources, yielding one item at a time.
    * @example for await (const item of client.customResources.resources.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesResources>[0] & { limit?: number; maxItems?: number }) {
@@ -2311,28 +2213,26 @@ export class CustomResourcesResourcesResource {
   }
 
   /**
-   * Fetch all Resources records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all resources across all pages into a single array.
    * @example const all = await client.customResources.resources.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesResources>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Resource */
+  /** Reads a single resources record */
   get: typeof getApi20260401ResourcesCustomResourcesResourcesById = (options?: any) => getApi20260401ResourcesCustomResourcesResourcesById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomResources > Schemas resource */
+/** Methods for the custom_resources > schemas resource */
 export class CustomResourcesSchemasResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Schemas */
+  /** Lists all schemas */
   list: typeof getApi20260401ResourcesCustomResourcesSchemas = (options?: any) => getApi20260401ResourcesCustomResourcesSchemas({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Schemas records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all schemas, yielding one item at a time.
    * @example for await (const item of client.customResources.schemas.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesSchemas>[0] & { limit?: number; maxItems?: number }) {
@@ -2344,31 +2244,29 @@ export class CustomResourcesSchemasResource {
   }
 
   /**
-   * Fetch all Schemas records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all schemas across all pages into a single array.
    * @example const all = await client.customResources.schemas.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesSchemas>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Schema */
+  /** Creates a schemas record */
   create: typeof postApi20260401ResourcesCustomResourcesSchemas = (options?: any) => postApi20260401ResourcesCustomResourcesSchemas({ client: this._client, ...options });
 
-  /** Reads a single Schema */
+  /** Reads a single schemas record */
   get: typeof getApi20260401ResourcesCustomResourcesSchemasById = (options?: any) => getApi20260401ResourcesCustomResourcesSchemasById({ client: this._client, ...options });
 
 }
-/** Methods for the CustomResources > Values resource */
+/** Methods for the custom_resources > values resource */
 export class CustomResourcesValuesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Values */
+  /** Lists all values */
   list: typeof getApi20260401ResourcesCustomResourcesValues = (options?: any) => getApi20260401ResourcesCustomResourcesValues({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Values records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all values, yielding one item at a time.
    * @example for await (const item of client.customResources.values.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesValues>[0] & { limit?: number; maxItems?: number }) {
@@ -2380,31 +2278,29 @@ export class CustomResourcesValuesResource {
   }
 
   /**
-   * Fetch all Values records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all values across all pages into a single array.
    * @example const all = await client.customResources.values.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesCustomResourcesValues>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Value */
+  /** Creates a values record */
   create: typeof postApi20260401ResourcesCustomResourcesValues = (options?: any) => postApi20260401ResourcesCustomResourcesValues({ client: this._client, ...options });
 
-  /** Reads a single Value */
+  /** Reads a single values record */
   get: typeof getApi20260401ResourcesCustomResourcesValuesById = (options?: any) => getApi20260401ResourcesCustomResourcesValuesById({ client: this._client, ...options });
 
 }
-/** Methods for the Documents > Documents resource */
+/** Methods for the documents > documents resource */
 export class DocumentsDocumentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Documents */
+  /** Lists all documents */
   list: typeof getApi20260401ResourcesDocumentsDocuments = (options?: any) => getApi20260401ResourcesDocumentsDocuments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Documents records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all documents, yielding one item at a time.
    * @example for await (const item of client.documents.documents.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesDocumentsDocuments>[0] & { limit?: number; maxItems?: number }) {
@@ -2416,51 +2312,49 @@ export class DocumentsDocumentsResource {
   }
 
   /**
-   * Fetch all Documents records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all documents across all pages into a single array.
    * @example const all = await client.documents.documents.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesDocumentsDocuments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Document */
+  /** Creates a documents record */
   create: typeof postApi20260401ResourcesDocumentsDocuments = (options?: any) => postApi20260401ResourcesDocumentsDocuments({ client: this._client, ...options });
 
-  /** Reads a single Document */
+  /** Reads a single documents record */
   get: typeof getApi20260401ResourcesDocumentsDocumentsById = (options?: any) => getApi20260401ResourcesDocumentsDocumentsById({ client: this._client, ...options });
 
-  /** Updates a Document */
+  /** Updates a documents record */
   update: typeof putApi20260401ResourcesDocumentsDocumentsById = (options?: any) => putApi20260401ResourcesDocumentsDocumentsById({ client: this._client, ...options });
 
-  /** Deletes a Document */
+  /** Deletes a documents record */
   delete: typeof deleteApi20260401ResourcesDocumentsDocumentsById = (options?: any) => deleteApi20260401ResourcesDocumentsDocumentsById({ client: this._client, ...options });
 
-  /** Move to trash bin Document */
+  /** moveToTrashBin */
   moveToTrashBin: typeof postApi20260401ResourcesDocumentsDocumentsMoveToTrashBin = (options?: any) => postApi20260401ResourcesDocumentsDocumentsMoveToTrashBin({ client: this._client, ...options });
 
-  /** Restore from trash bin Document */
+  /** restoreFromTrashBin */
   restoreFromTrashBin: typeof postApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBin = (options?: any) => postApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBin({ client: this._client, ...options });
 
 }
-/** Methods for the Documents > DownloadUrlsBulkCreate resource */
-export class DocumentsDownloadUrlsBulkCreateResource {
+/** Methods for the documents > download_urls resource */
+export class DocumentsDownloadUrlsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Creates a Download Urls Bulk Create */
-  create: typeof postApi20260401ResourcesDocumentsDownloadUrlsBulkCreate = (options?: any) => postApi20260401ResourcesDocumentsDownloadUrlsBulkCreate({ client: this._client, ...options });
+  /** bulkCreate */
+  bulkCreate: typeof postApi20260401ResourcesDocumentsDownloadUrlsBulkCreate = (options?: any) => postApi20260401ResourcesDocumentsDownloadUrlsBulkCreate({ client: this._client, ...options });
 
 }
-/** Methods for the Documents > Folders resource */
+/** Methods for the documents > folders resource */
 export class DocumentsFoldersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Folders */
+  /** Lists all folders */
   list: typeof getApi20260401ResourcesDocumentsFolders = (options?: any) => getApi20260401ResourcesDocumentsFolders({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Folders records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all folders, yielding one item at a time.
    * @example for await (const item of client.documents.folders.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesDocumentsFolders>[0] & { limit?: number; maxItems?: number }) {
@@ -2472,34 +2366,32 @@ export class DocumentsFoldersResource {
   }
 
   /**
-   * Fetch all Folders records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all folders across all pages into a single array.
    * @example const all = await client.documents.folders.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesDocumentsFolders>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Folder */
+  /** Creates a folders record */
   create: typeof postApi20260401ResourcesDocumentsFolders = (options?: any) => postApi20260401ResourcesDocumentsFolders({ client: this._client, ...options });
 
-  /** Reads a single Folder */
+  /** Reads a single folders record */
   get: typeof getApi20260401ResourcesDocumentsFoldersById = (options?: any) => getApi20260401ResourcesDocumentsFoldersById({ client: this._client, ...options });
 
-  /** Updates a Folder */
+  /** Updates a folders record */
   update: typeof putApi20260401ResourcesDocumentsFoldersById = (options?: any) => putApi20260401ResourcesDocumentsFoldersById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > Absences resource */
+/** Methods for the employee_updates > absences resource */
 export class EmployeeUpdatesAbsencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Absences */
+  /** Lists all absences */
   list: typeof getApi20260401ResourcesEmployeeUpdatesAbsences = (options?: any) => getApi20260401ResourcesEmployeeUpdatesAbsences({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Absences records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all absences, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.absences.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesAbsences>[0] & { limit?: number; maxItems?: number }) {
@@ -2511,28 +2403,26 @@ export class EmployeeUpdatesAbsencesResource {
   }
 
   /**
-   * Fetch all Absences records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all absences across all pages into a single array.
    * @example const all = await client.employeeUpdates.absences.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesAbsences>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Absence */
+  /** Reads a single absences record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesAbsencesById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesAbsencesById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > ContractChanges resource */
+/** Methods for the employee_updates > contract_changes resource */
 export class EmployeeUpdatesContractChangesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contract Changes */
+  /** Lists all contract_changes */
   list: typeof getApi20260401ResourcesEmployeeUpdatesContractChanges = (options?: any) => getApi20260401ResourcesEmployeeUpdatesContractChanges({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ContractChanges records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contract_changes, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.contractChanges.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesContractChanges>[0] & { limit?: number; maxItems?: number }) {
@@ -2544,28 +2434,26 @@ export class EmployeeUpdatesContractChangesResource {
   }
 
   /**
-   * Fetch all ContractChanges records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contract_changes across all pages into a single array.
    * @example const all = await client.employeeUpdates.contractChanges.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesContractChanges>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Contract Change */
+  /** Reads a single contract_changes record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesContractChangesById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesContractChangesById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > NewHires resource */
+/** Methods for the employee_updates > new_hires resource */
 export class EmployeeUpdatesNewHiresResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all New Hires */
+  /** Lists all new_hires */
   list: typeof getApi20260401ResourcesEmployeeUpdatesNewHires = (options?: any) => getApi20260401ResourcesEmployeeUpdatesNewHires({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all NewHires records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all new_hires, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.newHires.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesNewHires>[0] & { limit?: number; maxItems?: number }) {
@@ -2577,28 +2465,26 @@ export class EmployeeUpdatesNewHiresResource {
   }
 
   /**
-   * Fetch all NewHires records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all new_hires across all pages into a single array.
    * @example const all = await client.employeeUpdates.newHires.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesNewHires>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single New Hire */
+  /** Reads a single new_hires record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesNewHiresById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesNewHiresById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > PersonalChanges resource */
+/** Methods for the employee_updates > personal_changes resource */
 export class EmployeeUpdatesPersonalChangesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Personal Changes */
+  /** Lists all personal_changes */
   list: typeof getApi20260401ResourcesEmployeeUpdatesPersonalChanges = (options?: any) => getApi20260401ResourcesEmployeeUpdatesPersonalChanges({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PersonalChanges records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all personal_changes, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.personalChanges.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesPersonalChanges>[0] & { limit?: number; maxItems?: number }) {
@@ -2610,28 +2496,26 @@ export class EmployeeUpdatesPersonalChangesResource {
   }
 
   /**
-   * Fetch all PersonalChanges records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all personal_changes across all pages into a single array.
    * @example const all = await client.employeeUpdates.personalChanges.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesPersonalChanges>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Personal Change */
+  /** Reads a single personal_changes record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesPersonalChangesById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesPersonalChangesById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > Summaries resource */
+/** Methods for the employee_updates > summaries resource */
 export class EmployeeUpdatesSummariesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Summarys */
+  /** Lists all summaries */
   list: typeof getApi20260401ResourcesEmployeeUpdatesSummaries = (options?: any) => getApi20260401ResourcesEmployeeUpdatesSummaries({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Summaries records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all summaries, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.summaries.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesSummaries>[0] & { limit?: number; maxItems?: number }) {
@@ -2643,28 +2527,26 @@ export class EmployeeUpdatesSummariesResource {
   }
 
   /**
-   * Fetch all Summaries records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all summaries across all pages into a single array.
    * @example const all = await client.employeeUpdates.summaries.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesSummaries>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Summary */
+  /** Reads a single summaries record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesSummariesById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesSummariesById({ client: this._client, ...options });
 
 }
-/** Methods for the EmployeeUpdates > Terminations resource */
+/** Methods for the employee_updates > terminations resource */
 export class EmployeeUpdatesTerminationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Terminations */
+  /** Lists all terminations */
   list: typeof getApi20260401ResourcesEmployeeUpdatesTerminations = (options?: any) => getApi20260401ResourcesEmployeeUpdatesTerminations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Terminations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all terminations, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.terminations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesTerminations>[0] & { limit?: number; maxItems?: number }) {
@@ -2676,28 +2558,26 @@ export class EmployeeUpdatesTerminationsResource {
   }
 
   /**
-   * Fetch all Terminations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all terminations across all pages into a single array.
    * @example const all = await client.employeeUpdates.terminations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeeUpdatesTerminations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Termination */
+  /** Reads a single terminations record */
   get: typeof getApi20260401ResourcesEmployeeUpdatesTerminationsById = (options?: any) => getApi20260401ResourcesEmployeeUpdatesTerminationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Employees > Employees resource */
+/** Methods for the employees > employees resource */
 export class EmployeesEmployeesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Employees */
+  /** Lists all employees */
   list: typeof getApi20260401ResourcesEmployeesEmployees = (options?: any) => getApi20260401ResourcesEmployeesEmployees({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Employees records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all employees, yielding one item at a time.
    * @example for await (const item of client.employees.employees.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesEmployeesEmployees>[0] & { limit?: number; maxItems?: number }) {
@@ -2709,46 +2589,44 @@ export class EmployeesEmployeesResource {
   }
 
   /**
-   * Fetch all Employees records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all employees across all pages into a single array.
    * @example const all = await client.employees.employees.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesEmployeesEmployees>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Employee */
+  /** Reads a single employees record */
   get: typeof getApi20260401ResourcesEmployeesEmployeesById = (options?: any) => getApi20260401ResourcesEmployeesEmployeesById({ client: this._client, ...options });
 
-  /** Updates a Employee */
+  /** Updates a employees record */
   update: typeof putApi20260401ResourcesEmployeesEmployeesById = (options?: any) => putApi20260401ResourcesEmployeesEmployeesById({ client: this._client, ...options });
 
-  /** Create with contract Employee */
+  /** createWithContract */
   createWithContract: typeof postApi20260401ResourcesEmployeesEmployeesCreateWithContract = (options?: any) => postApi20260401ResourcesEmployeesEmployeesCreateWithContract({ client: this._client, ...options });
 
-  /** Invite Employee */
+  /** invite */
   invite: typeof postApi20260401ResourcesEmployeesEmployeesInvite = (options?: any) => postApi20260401ResourcesEmployeesEmployeesInvite({ client: this._client, ...options });
 
-  /** Set regular access start date Employee */
+  /** setRegularAccessStartDate */
   setRegularAccessStartDate: typeof postApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDate = (options?: any) => postApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDate({ client: this._client, ...options });
 
-  /** Terminate Employee */
+  /** terminate */
   terminate: typeof postApi20260401ResourcesEmployeesEmployeesTerminate = (options?: any) => postApi20260401ResourcesEmployeesEmployeesTerminate({ client: this._client, ...options });
 
-  /** Unterminate Employee */
+  /** unterminate */
   unterminate: typeof postApi20260401ResourcesEmployeesEmployeesUnterminate = (options?: any) => postApi20260401ResourcesEmployeesEmployeesUnterminate({ client: this._client, ...options });
 
 }
-/** Methods for the Expenses > Expensables resource */
+/** Methods for the expenses > expensables resource */
 export class ExpensesExpensablesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Expensables */
+  /** Lists all expensables */
   list: typeof getApi20260401ResourcesExpensesExpensables = (options?: any) => getApi20260401ResourcesExpensesExpensables({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Expensables records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all expensables, yielding one item at a time.
    * @example for await (const item of client.expenses.expensables.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesExpensesExpensables>[0] & { limit?: number; maxItems?: number }) {
@@ -2760,31 +2638,29 @@ export class ExpensesExpensablesResource {
   }
 
   /**
-   * Fetch all Expensables records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all expensables across all pages into a single array.
    * @example const all = await client.expenses.expensables.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesExpensesExpensables>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Expensable */
+  /** Reads a single expensables record */
   get: typeof getApi20260401ResourcesExpensesExpensablesById = (options?: any) => getApi20260401ResourcesExpensesExpensablesById({ client: this._client, ...options });
 
-  /** Bulk set to paid Expensable */
+  /** bulkSetToPaid */
   bulkSetToPaid: typeof postApi20260401ResourcesExpensesExpensablesBulkSetToPaid = (options?: any) => postApi20260401ResourcesExpensesExpensablesBulkSetToPaid({ client: this._client, ...options });
 
 }
-/** Methods for the Expenses > Expenses resource */
+/** Methods for the expenses > expenses resource */
 export class ExpensesExpensesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Expenss */
+  /** Lists all expenses */
   list: typeof getApi20260401ResourcesExpensesExpenses = (options?: any) => getApi20260401ResourcesExpensesExpenses({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Expenses records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all expenses, yielding one item at a time.
    * @example for await (const item of client.expenses.expenses.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesExpensesExpenses>[0] & { limit?: number; maxItems?: number }) {
@@ -2796,28 +2672,26 @@ export class ExpensesExpensesResource {
   }
 
   /**
-   * Fetch all Expenses records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all expenses across all pages into a single array.
    * @example const all = await client.expenses.expenses.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesExpensesExpenses>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Expens */
+  /** Reads a single expenses record */
   get: typeof getApi20260401ResourcesExpensesExpensesById = (options?: any) => getApi20260401ResourcesExpensesExpensesById({ client: this._client, ...options });
 
 }
-/** Methods for the Expenses > Mileages resource */
+/** Methods for the expenses > mileages resource */
 export class ExpensesMileagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Mileages */
+  /** Lists all mileages */
   list: typeof getApi20260401ResourcesExpensesMileages = (options?: any) => getApi20260401ResourcesExpensesMileages({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Mileages records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all mileages, yielding one item at a time.
    * @example for await (const item of client.expenses.mileages.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesExpensesMileages>[0] & { limit?: number; maxItems?: number }) {
@@ -2829,28 +2703,26 @@ export class ExpensesMileagesResource {
   }
 
   /**
-   * Fetch all Mileages records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all mileages across all pages into a single array.
    * @example const all = await client.expenses.mileages.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesExpensesMileages>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Mileage */
+  /** Reads a single mileages record */
   get: typeof getApi20260401ResourcesExpensesMileagesById = (options?: any) => getApi20260401ResourcesExpensesMileagesById({ client: this._client, ...options });
 
 }
-/** Methods for the Expenses > PerDiems resource */
+/** Methods for the expenses > per_diems resource */
 export class ExpensesPerDiemsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Per Diems */
+  /** Lists all per_diems */
   list: typeof getApi20260401ResourcesExpensesPerDiems = (options?: any) => getApi20260401ResourcesExpensesPerDiems({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PerDiems records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all per_diems, yielding one item at a time.
    * @example for await (const item of client.expenses.perDiems.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesExpensesPerDiems>[0] & { limit?: number; maxItems?: number }) {
@@ -2862,28 +2734,26 @@ export class ExpensesPerDiemsResource {
   }
 
   /**
-   * Fetch all PerDiems records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all per_diems across all pages into a single array.
    * @example const all = await client.expenses.perDiems.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesExpensesPerDiems>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Per Diem */
+  /** Reads a single per_diems record */
   get: typeof getApi20260401ResourcesExpensesPerDiemsById = (options?: any) => getApi20260401ResourcesExpensesPerDiemsById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > AccountingSettings resource */
+/** Methods for the finance > accounting_settings resource */
 export class FinanceAccountingSettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Accounting Settings */
+  /** Lists all accounting_settings */
   list: typeof getApi20260401ResourcesFinanceAccountingSettings = (options?: any) => getApi20260401ResourcesFinanceAccountingSettings({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all AccountingSettings records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all accounting_settings, yielding one item at a time.
    * @example for await (const item of client.finance.accountingSettings.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceAccountingSettings>[0] & { limit?: number; maxItems?: number }) {
@@ -2895,31 +2765,29 @@ export class FinanceAccountingSettingsResource {
   }
 
   /**
-   * Fetch all AccountingSettings records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all accounting_settings across all pages into a single array.
    * @example const all = await client.finance.accountingSettings.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceAccountingSettings>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Accounting Setting */
+  /** Reads a single accounting_settings record */
   get: typeof getApi20260401ResourcesFinanceAccountingSettingsById = (options?: any) => getApi20260401ResourcesFinanceAccountingSettingsById({ client: this._client, ...options });
 
-  /** Upsert Accounting Setting */
+  /** upsert */
   upsert: typeof postApi20260401ResourcesFinanceAccountingSettingsUpsert = (options?: any) => postApi20260401ResourcesFinanceAccountingSettingsUpsert({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > Accounts resource */
+/** Methods for the finance > accounts resource */
 export class FinanceAccountsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Accounts */
+  /** Lists all accounts */
   list: typeof getApi20260401ResourcesFinanceAccounts = (options?: any) => getApi20260401ResourcesFinanceAccounts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Accounts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all accounts, yielding one item at a time.
    * @example for await (const item of client.finance.accounts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceAccounts>[0] & { limit?: number; maxItems?: number }) {
@@ -2931,34 +2799,32 @@ export class FinanceAccountsResource {
   }
 
   /**
-   * Fetch all Accounts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all accounts across all pages into a single array.
    * @example const all = await client.finance.accounts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceAccounts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Account */
+  /** Creates a accounts record */
   create: typeof postApi20260401ResourcesFinanceAccounts = (options?: any) => postApi20260401ResourcesFinanceAccounts({ client: this._client, ...options });
 
-  /** Reads a single Account */
+  /** Reads a single accounts record */
   get: typeof getApi20260401ResourcesFinanceAccountsById = (options?: any) => getApi20260401ResourcesFinanceAccountsById({ client: this._client, ...options });
 
-  /** Updates a Account */
+  /** Updates a accounts record */
   update: typeof putApi20260401ResourcesFinanceAccountsById = (options?: any) => putApi20260401ResourcesFinanceAccountsById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > BudgetOptions resource */
+/** Methods for the finance > budget_options resource */
 export class FinanceBudgetOptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Budget Options */
+  /** Lists all budget_options */
   list: typeof getApi20260401ResourcesFinanceBudgetOptions = (options?: any) => getApi20260401ResourcesFinanceBudgetOptions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BudgetOptions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all budget_options, yielding one item at a time.
    * @example for await (const item of client.finance.budgetOptions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceBudgetOptions>[0] & { limit?: number; maxItems?: number }) {
@@ -2970,28 +2836,26 @@ export class FinanceBudgetOptionsResource {
   }
 
   /**
-   * Fetch all BudgetOptions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all budget_options across all pages into a single array.
    * @example const all = await client.finance.budgetOptions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceBudgetOptions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Budget Option */
+  /** Reads a single budget_options record */
   get: typeof getApi20260401ResourcesFinanceBudgetOptionsById = (options?: any) => getApi20260401ResourcesFinanceBudgetOptionsById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > Categories resource */
+/** Methods for the finance > categories resource */
 export class FinanceCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Categorys */
+  /** Lists all categories */
   list: typeof getApi20260401ResourcesFinanceCategories = (options?: any) => getApi20260401ResourcesFinanceCategories({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Categories records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all categories, yielding one item at a time.
    * @example for await (const item of client.finance.categories.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceCategories>[0] & { limit?: number; maxItems?: number }) {
@@ -3003,28 +2867,26 @@ export class FinanceCategoriesResource {
   }
 
   /**
-   * Fetch all Categories records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all categories across all pages into a single array.
    * @example const all = await client.finance.categories.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceCategories>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Category */
+  /** Reads a single categories record */
   get: typeof getApi20260401ResourcesFinanceCategoriesById = (options?: any) => getApi20260401ResourcesFinanceCategoriesById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > Contacts resource */
+/** Methods for the finance > contacts resource */
 export class FinanceContactsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Contacts */
+  /** Lists all contacts */
   list: typeof getApi20260401ResourcesFinanceContacts = (options?: any) => getApi20260401ResourcesFinanceContacts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Contacts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all contacts, yielding one item at a time.
    * @example for await (const item of client.finance.contacts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceContacts>[0] & { limit?: number; maxItems?: number }) {
@@ -3036,34 +2898,32 @@ export class FinanceContactsResource {
   }
 
   /**
-   * Fetch all Contacts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all contacts across all pages into a single array.
    * @example const all = await client.finance.contacts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceContacts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Contact */
+  /** Creates a contacts record */
   create: typeof postApi20260401ResourcesFinanceContacts = (options?: any) => postApi20260401ResourcesFinanceContacts({ client: this._client, ...options });
 
-  /** Reads a single Contact */
+  /** Reads a single contacts record */
   get: typeof getApi20260401ResourcesFinanceContactsById = (options?: any) => getApi20260401ResourcesFinanceContactsById({ client: this._client, ...options });
 
-  /** Updates a Contact */
+  /** Updates a contacts record */
   update: typeof putApi20260401ResourcesFinanceContactsById = (options?: any) => putApi20260401ResourcesFinanceContactsById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > CostCenterMemberships resource */
+/** Methods for the finance > cost_center_memberships resource */
 export class FinanceCostCenterMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Cost Center Memberships */
+  /** Lists all cost_center_memberships */
   list: typeof getApi20260401ResourcesFinanceCostCenterMemberships = (options?: any) => getApi20260401ResourcesFinanceCostCenterMemberships({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CostCenterMemberships records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all cost_center_memberships, yielding one item at a time.
    * @example for await (const item of client.finance.costCenterMemberships.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceCostCenterMemberships>[0] & { limit?: number; maxItems?: number }) {
@@ -3075,28 +2935,26 @@ export class FinanceCostCenterMembershipsResource {
   }
 
   /**
-   * Fetch all CostCenterMemberships records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all cost_center_memberships across all pages into a single array.
    * @example const all = await client.finance.costCenterMemberships.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceCostCenterMemberships>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Bulk create update Cost Center Membership */
+  /** bulkCreateUpdate */
   bulkCreateUpdate: typeof postApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdate = (options?: any) => postApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdate({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > CostCenters resource */
+/** Methods for the finance > cost_centers resource */
 export class FinanceCostCentersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Cost Centers */
+  /** Lists all cost_centers */
   list: typeof getApi20260401ResourcesFinanceCostCenters = (options?: any) => getApi20260401ResourcesFinanceCostCenters({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CostCenters records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all cost_centers, yielding one item at a time.
    * @example for await (const item of client.finance.costCenters.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceCostCenters>[0] & { limit?: number; maxItems?: number }) {
@@ -3108,37 +2966,35 @@ export class FinanceCostCentersResource {
   }
 
   /**
-   * Fetch all CostCenters records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all cost_centers across all pages into a single array.
    * @example const all = await client.finance.costCenters.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceCostCenters>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Cost Center */
+  /** Creates a cost_centers record */
   create: typeof postApi20260401ResourcesFinanceCostCenters = (options?: any) => postApi20260401ResourcesFinanceCostCenters({ client: this._client, ...options });
 
-  /** Reads a single Cost Center */
+  /** Reads a single cost_centers record */
   get: typeof getApi20260401ResourcesFinanceCostCentersById = (options?: any) => getApi20260401ResourcesFinanceCostCentersById({ client: this._client, ...options });
 
-  /** Deletes a Cost Center */
+  /** Deletes a cost_centers record */
   delete: typeof deleteApi20260401ResourcesFinanceCostCentersById = (options?: any) => deleteApi20260401ResourcesFinanceCostCentersById({ client: this._client, ...options });
 
-  /** Edit Cost Center */
+  /** edit */
   edit: typeof postApi20260401ResourcesFinanceCostCentersEdit = (options?: any) => postApi20260401ResourcesFinanceCostCentersEdit({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > FinancialDocuments resource */
+/** Methods for the finance > financial_documents resource */
 export class FinanceFinancialDocumentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Financial Documents */
+  /** Lists all financial_documents */
   list: typeof getApi20260401ResourcesFinanceFinancialDocuments = (options?: any) => getApi20260401ResourcesFinanceFinancialDocuments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all FinancialDocuments records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all financial_documents, yielding one item at a time.
    * @example for await (const item of client.finance.financialDocuments.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceFinancialDocuments>[0] & { limit?: number; maxItems?: number }) {
@@ -3150,28 +3006,26 @@ export class FinanceFinancialDocumentsResource {
   }
 
   /**
-   * Fetch all FinancialDocuments records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all financial_documents across all pages into a single array.
    * @example const all = await client.finance.financialDocuments.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceFinancialDocuments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Financial Document */
+  /** Reads a single financial_documents record */
   get: typeof getApi20260401ResourcesFinanceFinancialDocumentsById = (options?: any) => getApi20260401ResourcesFinanceFinancialDocumentsById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > JournalEntries resource */
+/** Methods for the finance > journal_entries resource */
 export class FinanceJournalEntriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Journal Entrys */
+  /** Lists all journal_entries */
   list: typeof getApi20260401ResourcesFinanceJournalEntries = (options?: any) => getApi20260401ResourcesFinanceJournalEntries({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all JournalEntries records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all journal_entries, yielding one item at a time.
    * @example for await (const item of client.finance.journalEntries.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceJournalEntries>[0] & { limit?: number; maxItems?: number }) {
@@ -3183,31 +3037,29 @@ export class FinanceJournalEntriesResource {
   }
 
   /**
-   * Fetch all JournalEntries records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all journal_entries across all pages into a single array.
    * @example const all = await client.finance.journalEntries.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceJournalEntries>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Journal Entry */
+  /** Creates a journal_entries record */
   create: typeof postApi20260401ResourcesFinanceJournalEntries = (options?: any) => postApi20260401ResourcesFinanceJournalEntries({ client: this._client, ...options });
 
-  /** Reads a single Journal Entry */
+  /** Reads a single journal_entries record */
   get: typeof getApi20260401ResourcesFinanceJournalEntriesById = (options?: any) => getApi20260401ResourcesFinanceJournalEntriesById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > JournalLines resource */
+/** Methods for the finance > journal_lines resource */
 export class FinanceJournalLinesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Journal Lines */
+  /** Lists all journal_lines */
   list: typeof getApi20260401ResourcesFinanceJournalLines = (options?: any) => getApi20260401ResourcesFinanceJournalLines({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all JournalLines records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all journal_lines, yielding one item at a time.
    * @example for await (const item of client.finance.journalLines.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceJournalLines>[0] & { limit?: number; maxItems?: number }) {
@@ -3219,28 +3071,26 @@ export class FinanceJournalLinesResource {
   }
 
   /**
-   * Fetch all JournalLines records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all journal_lines across all pages into a single array.
    * @example const all = await client.finance.journalLines.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceJournalLines>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Journal Line */
+  /** Reads a single journal_lines record */
   get: typeof getApi20260401ResourcesFinanceJournalLinesById = (options?: any) => getApi20260401ResourcesFinanceJournalLinesById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > LedgerAccountResources resource */
+/** Methods for the finance > ledger_account_resources resource */
 export class FinanceLedgerAccountResourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Ledger Account Resources */
+  /** Lists all ledger_account_resources */
   list: typeof getApi20260401ResourcesFinanceLedgerAccountResources = (options?: any) => getApi20260401ResourcesFinanceLedgerAccountResources({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all LedgerAccountResources records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all ledger_account_resources, yielding one item at a time.
    * @example for await (const item of client.finance.ledgerAccountResources.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceLedgerAccountResources>[0] & { limit?: number; maxItems?: number }) {
@@ -3252,31 +3102,29 @@ export class FinanceLedgerAccountResourcesResource {
   }
 
   /**
-   * Fetch all LedgerAccountResources records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all ledger_account_resources across all pages into a single array.
    * @example const all = await client.finance.ledgerAccountResources.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceLedgerAccountResources>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Ledger Account Resource */
+  /** Reads a single ledger_account_resources record */
   get: typeof getApi20260401ResourcesFinanceLedgerAccountResourcesById = (options?: any) => getApi20260401ResourcesFinanceLedgerAccountResourcesById({ client: this._client, ...options });
 
-  /** Upsert Ledger Account Resource */
+  /** upsert */
   upsert: typeof postApi20260401ResourcesFinanceLedgerAccountResourcesUpsert = (options?: any) => postApi20260401ResourcesFinanceLedgerAccountResourcesUpsert({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > TaxRates resource */
+/** Methods for the finance > tax_rates resource */
 export class FinanceTaxRatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Tax Rates */
+  /** Lists all tax_rates */
   list: typeof getApi20260401ResourcesFinanceTaxRates = (options?: any) => getApi20260401ResourcesFinanceTaxRates({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TaxRates records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all tax_rates, yielding one item at a time.
    * @example for await (const item of client.finance.taxRates.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceTaxRates>[0] & { limit?: number; maxItems?: number }) {
@@ -3288,34 +3136,32 @@ export class FinanceTaxRatesResource {
   }
 
   /**
-   * Fetch all TaxRates records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all tax_rates across all pages into a single array.
    * @example const all = await client.finance.taxRates.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceTaxRates>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Tax Rate */
+  /** Creates a tax_rates record */
   create: typeof postApi20260401ResourcesFinanceTaxRates = (options?: any) => postApi20260401ResourcesFinanceTaxRates({ client: this._client, ...options });
 
-  /** Reads a single Tax Rate */
+  /** Reads a single tax_rates record */
   get: typeof getApi20260401ResourcesFinanceTaxRatesById = (options?: any) => getApi20260401ResourcesFinanceTaxRatesById({ client: this._client, ...options });
 
-  /** Updates a Tax Rate */
+  /** Updates a tax_rates record */
   update: typeof putApi20260401ResourcesFinanceTaxRatesById = (options?: any) => putApi20260401ResourcesFinanceTaxRatesById({ client: this._client, ...options });
 
 }
-/** Methods for the Finance > TaxTypes resource */
+/** Methods for the finance > tax_types resource */
 export class FinanceTaxTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Tax Types */
+  /** Lists all tax_types */
   list: typeof getApi20260401ResourcesFinanceTaxTypes = (options?: any) => getApi20260401ResourcesFinanceTaxTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TaxTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all tax_types, yielding one item at a time.
    * @example for await (const item of client.finance.taxTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesFinanceTaxTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -3327,34 +3173,32 @@ export class FinanceTaxTypesResource {
   }
 
   /**
-   * Fetch all TaxTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all tax_types across all pages into a single array.
    * @example const all = await client.finance.taxTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesFinanceTaxTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Tax Type */
+  /** Creates a tax_types record */
   create: typeof postApi20260401ResourcesFinanceTaxTypes = (options?: any) => postApi20260401ResourcesFinanceTaxTypes({ client: this._client, ...options });
 
-  /** Reads a single Tax Type */
+  /** Reads a single tax_types record */
   get: typeof getApi20260401ResourcesFinanceTaxTypesById = (options?: any) => getApi20260401ResourcesFinanceTaxTypesById({ client: this._client, ...options });
 
-  /** Updates a Tax Type */
+  /** Updates a tax_types record */
   update: typeof putApi20260401ResourcesFinanceTaxTypesById = (options?: any) => putApi20260401ResourcesFinanceTaxTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Holidays > CompanyHolidays resource */
+/** Methods for the holidays > company_holidays resource */
 export class HolidaysCompanyHolidaysResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Company Holidays */
+  /** Lists all company_holidays */
   list: typeof getApi20260401ResourcesHolidaysCompanyHolidays = (options?: any) => getApi20260401ResourcesHolidaysCompanyHolidays({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CompanyHolidays records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all company_holidays, yielding one item at a time.
    * @example for await (const item of client.holidays.companyHolidays.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesHolidaysCompanyHolidays>[0] & { limit?: number; maxItems?: number }) {
@@ -3366,28 +3210,26 @@ export class HolidaysCompanyHolidaysResource {
   }
 
   /**
-   * Fetch all CompanyHolidays records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all company_holidays across all pages into a single array.
    * @example const all = await client.holidays.companyHolidays.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesHolidaysCompanyHolidays>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Company Holiday */
+  /** Reads a single company_holidays record */
   get: typeof getApi20260401ResourcesHolidaysCompanyHolidaysById = (options?: any) => getApi20260401ResourcesHolidaysCompanyHolidaysById({ client: this._client, ...options });
 
 }
-/** Methods for the Integrations > SyncableItems resource */
+/** Methods for the integrations > syncable_items resource */
 export class IntegrationsSyncableItemsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Syncable Items */
+  /** Lists all syncable_items */
   list: typeof getApi20260401ResourcesIntegrationsSyncableItems = (options?: any) => getApi20260401ResourcesIntegrationsSyncableItems({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SyncableItems records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all syncable_items, yielding one item at a time.
    * @example for await (const item of client.integrations.syncableItems.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesIntegrationsSyncableItems>[0] & { limit?: number; maxItems?: number }) {
@@ -3399,8 +3241,7 @@ export class IntegrationsSyncableItemsResource {
   }
 
   /**
-   * Fetch all SyncableItems records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all syncable_items across all pages into a single array.
    * @example const all = await client.integrations.syncableItems.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesIntegrationsSyncableItems>[0] & { limit?: number; maxItems?: number }) {
@@ -3408,24 +3249,23 @@ export class IntegrationsSyncableItemsResource {
   }
 
 }
-/** Methods for the Integrations > SyncableSyncRuns resource */
+/** Methods for the integrations > syncable_sync_runs resource */
 export class IntegrationsSyncableSyncRunsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Updates a Syncable Sync Run */
+  /** Updates a syncable_sync_runs record */
   update: typeof putApi20260401ResourcesIntegrationsSyncableSyncRunsById = (options?: any) => putApi20260401ResourcesIntegrationsSyncableSyncRunsById({ client: this._client, ...options });
 
 }
-/** Methods for the ItManagement > ItAssetModels resource */
+/** Methods for the it_management > it_asset_models resource */
 export class ItManagementItAssetModelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all It Asset Models */
+  /** Lists all it_asset_models */
   list: typeof getApi20260401ResourcesItManagementItAssetModels = (options?: any) => getApi20260401ResourcesItManagementItAssetModels({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ItAssetModels records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all it_asset_models, yielding one item at a time.
    * @example for await (const item of client.itManagement.itAssetModels.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesItManagementItAssetModels>[0] & { limit?: number; maxItems?: number }) {
@@ -3437,34 +3277,32 @@ export class ItManagementItAssetModelsResource {
   }
 
   /**
-   * Fetch all ItAssetModels records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all it_asset_models across all pages into a single array.
    * @example const all = await client.itManagement.itAssetModels.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesItManagementItAssetModels>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a It Asset Model */
+  /** Creates a it_asset_models record */
   create: typeof postApi20260401ResourcesItManagementItAssetModels = (options?: any) => postApi20260401ResourcesItManagementItAssetModels({ client: this._client, ...options });
 
-  /** Reads a single It Asset Model */
+  /** Reads a single it_asset_models record */
   get: typeof getApi20260401ResourcesItManagementItAssetModelsById = (options?: any) => getApi20260401ResourcesItManagementItAssetModelsById({ client: this._client, ...options });
 
-  /** Updates a It Asset Model */
+  /** Updates a it_asset_models record */
   update: typeof putApi20260401ResourcesItManagementItAssetModelsById = (options?: any) => putApi20260401ResourcesItManagementItAssetModelsById({ client: this._client, ...options });
 
 }
-/** Methods for the ItManagement > ItAssets resource */
+/** Methods for the it_management > it_assets resource */
 export class ItManagementItAssetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all It Assets */
+  /** Lists all it_assets */
   list: typeof getApi20260401ResourcesItManagementItAssets = (options?: any) => getApi20260401ResourcesItManagementItAssets({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ItAssets records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all it_assets, yielding one item at a time.
    * @example for await (const item of client.itManagement.itAssets.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesItManagementItAssets>[0] & { limit?: number; maxItems?: number }) {
@@ -3476,37 +3314,35 @@ export class ItManagementItAssetsResource {
   }
 
   /**
-   * Fetch all ItAssets records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all it_assets across all pages into a single array.
    * @example const all = await client.itManagement.itAssets.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesItManagementItAssets>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a It Asset */
+  /** Creates a it_assets record */
   create: typeof postApi20260401ResourcesItManagementItAssets = (options?: any) => postApi20260401ResourcesItManagementItAssets({ client: this._client, ...options });
 
-  /** Reads a single It Asset */
+  /** Reads a single it_assets record */
   get: typeof getApi20260401ResourcesItManagementItAssetsById = (options?: any) => getApi20260401ResourcesItManagementItAssetsById({ client: this._client, ...options });
 
-  /** Updates a It Asset */
+  /** Updates a it_assets record */
   update: typeof putApi20260401ResourcesItManagementItAssetsById = (options?: any) => putApi20260401ResourcesItManagementItAssetsById({ client: this._client, ...options });
 
-  /** Deletes a It Asset */
+  /** Deletes a it_assets record */
   delete: typeof deleteApi20260401ResourcesItManagementItAssetsById = (options?: any) => deleteApi20260401ResourcesItManagementItAssetsById({ client: this._client, ...options });
 
 }
-/** Methods for the JobCatalog > Levels resource */
+/** Methods for the job_catalog > levels resource */
 export class JobCatalogLevelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Levels */
+  /** Lists all levels */
   list: typeof getApi20260401ResourcesJobCatalogLevels = (options?: any) => getApi20260401ResourcesJobCatalogLevels({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Levels records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all levels, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.levels.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesJobCatalogLevels>[0] & { limit?: number; maxItems?: number }) {
@@ -3518,28 +3354,26 @@ export class JobCatalogLevelsResource {
   }
 
   /**
-   * Fetch all Levels records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all levels across all pages into a single array.
    * @example const all = await client.jobCatalog.levels.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesJobCatalogLevels>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Level */
+  /** Reads a single levels record */
   get: typeof getApi20260401ResourcesJobCatalogLevelsById = (options?: any) => getApi20260401ResourcesJobCatalogLevelsById({ client: this._client, ...options });
 
 }
-/** Methods for the JobCatalog > NodeAttributes resource */
+/** Methods for the job_catalog > node_attributes resource */
 export class JobCatalogNodeAttributesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Node Attributes */
+  /** Lists all node_attributes */
   list: typeof getApi20260401ResourcesJobCatalogNodeAttributes = (options?: any) => getApi20260401ResourcesJobCatalogNodeAttributes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all NodeAttributes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all node_attributes, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.nodeAttributes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesJobCatalogNodeAttributes>[0] & { limit?: number; maxItems?: number }) {
@@ -3551,8 +3385,7 @@ export class JobCatalogNodeAttributesResource {
   }
 
   /**
-   * Fetch all NodeAttributes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all node_attributes across all pages into a single array.
    * @example const all = await client.jobCatalog.nodeAttributes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesJobCatalogNodeAttributes>[0] & { limit?: number; maxItems?: number }) {
@@ -3560,16 +3393,15 @@ export class JobCatalogNodeAttributesResource {
   }
 
 }
-/** Methods for the JobCatalog > Roles resource */
+/** Methods for the job_catalog > roles resource */
 export class JobCatalogRolesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Roles */
+  /** Lists all roles */
   list: typeof getApi20260401ResourcesJobCatalogRoles = (options?: any) => getApi20260401ResourcesJobCatalogRoles({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Roles records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all roles, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.roles.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesJobCatalogRoles>[0] & { limit?: number; maxItems?: number }) {
@@ -3581,28 +3413,26 @@ export class JobCatalogRolesResource {
   }
 
   /**
-   * Fetch all Roles records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all roles across all pages into a single array.
    * @example const all = await client.jobCatalog.roles.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesJobCatalogRoles>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Role */
+  /** Reads a single roles record */
   get: typeof getApi20260401ResourcesJobCatalogRolesById = (options?: any) => getApi20260401ResourcesJobCatalogRolesById({ client: this._client, ...options });
 
 }
-/** Methods for the JobCatalog > TreeNodes resource */
+/** Methods for the job_catalog > tree_nodes resource */
 export class JobCatalogTreeNodesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Tree Nodes */
+  /** Lists all tree_nodes */
   list: typeof getApi20260401ResourcesJobCatalogTreeNodes = (options?: any) => getApi20260401ResourcesJobCatalogTreeNodes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TreeNodes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all tree_nodes, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.treeNodes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesJobCatalogTreeNodes>[0] & { limit?: number; maxItems?: number }) {
@@ -3614,8 +3444,7 @@ export class JobCatalogTreeNodesResource {
   }
 
   /**
-   * Fetch all TreeNodes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all tree_nodes across all pages into a single array.
    * @example const all = await client.jobCatalog.treeNodes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesJobCatalogTreeNodes>[0] & { limit?: number; maxItems?: number }) {
@@ -3623,16 +3452,15 @@ export class JobCatalogTreeNodesResource {
   }
 
 }
-/** Methods for the Locations > Locations resource */
+/** Methods for the locations > locations resource */
 export class LocationsLocationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Locations */
+  /** Lists all locations */
   list: typeof getApi20260401ResourcesLocationsLocations = (options?: any) => getApi20260401ResourcesLocationsLocations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Locations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all locations, yielding one item at a time.
    * @example for await (const item of client.locations.locations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesLocationsLocations>[0] & { limit?: number; maxItems?: number }) {
@@ -3644,37 +3472,35 @@ export class LocationsLocationsResource {
   }
 
   /**
-   * Fetch all Locations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all locations across all pages into a single array.
    * @example const all = await client.locations.locations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesLocationsLocations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Location */
+  /** Creates a locations record */
   create: typeof postApi20260401ResourcesLocationsLocations = (options?: any) => postApi20260401ResourcesLocationsLocations({ client: this._client, ...options });
 
-  /** Reads a single Location */
+  /** Reads a single locations record */
   get: typeof getApi20260401ResourcesLocationsLocationsById = (options?: any) => getApi20260401ResourcesLocationsLocationsById({ client: this._client, ...options });
 
-  /** Updates a Location */
+  /** Updates a locations record */
   update: typeof putApi20260401ResourcesLocationsLocationsById = (options?: any) => putApi20260401ResourcesLocationsLocationsById({ client: this._client, ...options });
 
-  /** Deletes a Location */
+  /** Deletes a locations record */
   delete: typeof deleteApi20260401ResourcesLocationsLocationsById = (options?: any) => deleteApi20260401ResourcesLocationsLocationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Locations > WorkAreas resource */
+/** Methods for the locations > work_areas resource */
 export class LocationsWorkAreasResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Work Areas */
+  /** Lists all work_areas */
   list: typeof getApi20260401ResourcesLocationsWorkAreas = (options?: any) => getApi20260401ResourcesLocationsWorkAreas({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all WorkAreas records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all work_areas, yielding one item at a time.
    * @example for await (const item of client.locations.workAreas.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesLocationsWorkAreas>[0] & { limit?: number; maxItems?: number }) {
@@ -3686,40 +3512,38 @@ export class LocationsWorkAreasResource {
   }
 
   /**
-   * Fetch all WorkAreas records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all work_areas across all pages into a single array.
    * @example const all = await client.locations.workAreas.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesLocationsWorkAreas>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Work Area */
+  /** Creates a work_areas record */
   create: typeof postApi20260401ResourcesLocationsWorkAreas = (options?: any) => postApi20260401ResourcesLocationsWorkAreas({ client: this._client, ...options });
 
-  /** Reads a single Work Area */
+  /** Reads a single work_areas record */
   get: typeof getApi20260401ResourcesLocationsWorkAreasById = (options?: any) => getApi20260401ResourcesLocationsWorkAreasById({ client: this._client, ...options });
 
-  /** Updates a Work Area */
+  /** Updates a work_areas record */
   update: typeof putApi20260401ResourcesLocationsWorkAreasById = (options?: any) => putApi20260401ResourcesLocationsWorkAreasById({ client: this._client, ...options });
 
-  /** Archive Work Area */
+  /** archive */
   archive: typeof postApi20260401ResourcesLocationsWorkAreasArchive = (options?: any) => postApi20260401ResourcesLocationsWorkAreasArchive({ client: this._client, ...options });
 
-  /** Unarchive Work Area */
+  /** unarchive */
   unarchive: typeof postApi20260401ResourcesLocationsWorkAreasUnarchive = (options?: any) => postApi20260401ResourcesLocationsWorkAreasUnarchive({ client: this._client, ...options });
 
 }
-/** Methods for the Marketplace > InstallationSettings resource */
+/** Methods for the marketplace > installation_settings resource */
 export class MarketplaceInstallationSettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Installation Settings */
+  /** Lists all installation_settings */
   list: typeof getApi20260401ResourcesMarketplaceInstallationSettings = (options?: any) => getApi20260401ResourcesMarketplaceInstallationSettings({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all InstallationSettings records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all installation_settings, yielding one item at a time.
    * @example for await (const item of client.marketplace.installationSettings.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesMarketplaceInstallationSettings>[0] & { limit?: number; maxItems?: number }) {
@@ -3731,8 +3555,7 @@ export class MarketplaceInstallationSettingsResource {
   }
 
   /**
-   * Fetch all InstallationSettings records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all installation_settings across all pages into a single array.
    * @example const all = await client.marketplace.installationSettings.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesMarketplaceInstallationSettings>[0] & { limit?: number; maxItems?: number }) {
@@ -3740,24 +3563,23 @@ export class MarketplaceInstallationSettingsResource {
   }
 
 }
-/** Methods for the Marketplace > Installations resource */
+/** Methods for the marketplace > installations resource */
 export class MarketplaceInstallationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Creates a Installation */
+  /** Creates a installations record */
   create: typeof postApi20260401ResourcesMarketplaceInstallations = (options?: any) => postApi20260401ResourcesMarketplaceInstallations({ client: this._client, ...options });
 
 }
-/** Methods for the Payroll > FamilySituations resource */
+/** Methods for the payroll > family_situations resource */
 export class PayrollFamilySituationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Family Situations */
+  /** Lists all family_situations */
   list: typeof getApi20260401ResourcesPayrollFamilySituations = (options?: any) => getApi20260401ResourcesPayrollFamilySituations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all FamilySituations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all family_situations, yielding one item at a time.
    * @example for await (const item of client.payroll.familySituations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPayrollFamilySituations>[0] & { limit?: number; maxItems?: number }) {
@@ -3769,39 +3591,37 @@ export class PayrollFamilySituationsResource {
   }
 
   /**
-   * Fetch all FamilySituations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all family_situations across all pages into a single array.
    * @example const all = await client.payroll.familySituations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPayrollFamilySituations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Family Situation */
+  /** Creates a family_situations record */
   create: typeof postApi20260401ResourcesPayrollFamilySituations = (options?: any) => postApi20260401ResourcesPayrollFamilySituations({ client: this._client, ...options });
 
-  /** Updates a Family Situation */
+  /** Updates a family_situations record */
   update: typeof putApi20260401ResourcesPayrollFamilySituationsById = (options?: any) => putApi20260401ResourcesPayrollFamilySituationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Payroll > PolicyPeriodsChangeStatus resource */
-export class PayrollPolicyPeriodsChangeStatusResource {
+/** Methods for the payroll > policy_periods resource */
+export class PayrollPolicyPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Creates a Policy Periods Change Statu */
-  create: typeof postApi20260401ResourcesPayrollPolicyPeriodsChangeStatus = (options?: any) => postApi20260401ResourcesPayrollPolicyPeriodsChangeStatus({ client: this._client, ...options });
+  /** changeStatus */
+  changeStatus: typeof postApi20260401ResourcesPayrollPolicyPeriodsChangeStatus = (options?: any) => postApi20260401ResourcesPayrollPolicyPeriodsChangeStatus({ client: this._client, ...options });
 
 }
-/** Methods for the Payroll > Supplements resource */
+/** Methods for the payroll > supplements resource */
 export class PayrollSupplementsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Supplements */
+  /** Lists all supplements */
   list: typeof getApi20260401ResourcesPayrollSupplements = (options?: any) => getApi20260401ResourcesPayrollSupplements({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Supplements records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all supplements, yielding one item at a time.
    * @example for await (const item of client.payroll.supplements.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPayrollSupplements>[0] & { limit?: number; maxItems?: number }) {
@@ -3813,37 +3633,35 @@ export class PayrollSupplementsResource {
   }
 
   /**
-   * Fetch all Supplements records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all supplements across all pages into a single array.
    * @example const all = await client.payroll.supplements.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPayrollSupplements>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Supplement */
+  /** Creates a supplements record */
   create: typeof postApi20260401ResourcesPayrollSupplements = (options?: any) => postApi20260401ResourcesPayrollSupplements({ client: this._client, ...options });
 
-  /** Reads a single Supplement */
+  /** Reads a single supplements record */
   get: typeof getApi20260401ResourcesPayrollSupplementsById = (options?: any) => getApi20260401ResourcesPayrollSupplementsById({ client: this._client, ...options });
 
-  /** Updates a Supplement */
+  /** Updates a supplements record */
   update: typeof putApi20260401ResourcesPayrollSupplementsById = (options?: any) => putApi20260401ResourcesPayrollSupplementsById({ client: this._client, ...options });
 
-  /** Deletes a Supplement */
+  /** Deletes a supplements record */
   delete: typeof deleteApi20260401ResourcesPayrollSupplementsById = (options?: any) => deleteApi20260401ResourcesPayrollSupplementsById({ client: this._client, ...options });
 
 }
-/** Methods for the PayrollEmployees > Identifiers resource */
+/** Methods for the payroll_employees > identifiers resource */
 export class PayrollEmployeesIdentifiersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Identifiers */
+  /** Lists all identifiers */
   list: typeof getApi20260401ResourcesPayrollEmployeesIdentifiers = (options?: any) => getApi20260401ResourcesPayrollEmployeesIdentifiers({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Identifiers records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all identifiers, yielding one item at a time.
    * @example for await (const item of client.payrollEmployees.identifiers.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPayrollEmployeesIdentifiers>[0] & { limit?: number; maxItems?: number }) {
@@ -3855,37 +3673,35 @@ export class PayrollEmployeesIdentifiersResource {
   }
 
   /**
-   * Fetch all Identifiers records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all identifiers across all pages into a single array.
    * @example const all = await client.payrollEmployees.identifiers.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPayrollEmployeesIdentifiers>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Identifier */
+  /** Creates a identifiers record */
   create: typeof postApi20260401ResourcesPayrollEmployeesIdentifiers = (options?: any) => postApi20260401ResourcesPayrollEmployeesIdentifiers({ client: this._client, ...options });
 
-  /** Reads a single Identifier */
+  /** Reads a single identifiers record */
   get: typeof getApi20260401ResourcesPayrollEmployeesIdentifiersById = (options?: any) => getApi20260401ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
 
-  /** Updates a Identifier */
+  /** Updates a identifiers record */
   update: typeof putApi20260401ResourcesPayrollEmployeesIdentifiersById = (options?: any) => putApi20260401ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
 
-  /** Deletes a Identifier */
+  /** Deletes a identifiers record */
   delete: typeof deleteApi20260401ResourcesPayrollEmployeesIdentifiersById = (options?: any) => deleteApi20260401ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
 
 }
-/** Methods for the PayrollIntegrationsBase > Codes resource */
+/** Methods for the payroll_integrations_base > codes resource */
 export class PayrollIntegrationsBaseCodesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Codes */
+  /** Lists all codes */
   list: typeof getApi20260401ResourcesPayrollIntegrationsBaseCodes = (options?: any) => getApi20260401ResourcesPayrollIntegrationsBaseCodes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Codes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all codes, yielding one item at a time.
    * @example for await (const item of client.payrollIntegrationsBase.codes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPayrollIntegrationsBaseCodes>[0] & { limit?: number; maxItems?: number }) {
@@ -3897,34 +3713,32 @@ export class PayrollIntegrationsBaseCodesResource {
   }
 
   /**
-   * Fetch all Codes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all codes across all pages into a single array.
    * @example const all = await client.payrollIntegrationsBase.codes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPayrollIntegrationsBaseCodes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Code */
+  /** Creates a codes record */
   create: typeof postApi20260401ResourcesPayrollIntegrationsBaseCodes = (options?: any) => postApi20260401ResourcesPayrollIntegrationsBaseCodes({ client: this._client, ...options });
 
-  /** Updates a Code */
+  /** Updates a codes record */
   update: typeof putApi20260401ResourcesPayrollIntegrationsBaseCodesById = (options?: any) => putApi20260401ResourcesPayrollIntegrationsBaseCodesById({ client: this._client, ...options });
 
-  /** Deletes a Code */
+  /** Deletes a codes record */
   delete: typeof deleteApi20260401ResourcesPayrollIntegrationsBaseCodesById = (options?: any) => deleteApi20260401ResourcesPayrollIntegrationsBaseCodesById({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > Agreements resource */
+/** Methods for the performance > agreements resource */
 export class PerformanceAgreementsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Agreements */
+  /** Lists all agreements */
   list: typeof getApi20260401ResourcesPerformanceAgreements = (options?: any) => getApi20260401ResourcesPerformanceAgreements({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Agreements records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all agreements, yielding one item at a time.
    * @example for await (const item of client.performance.agreements.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceAgreements>[0] & { limit?: number; maxItems?: number }) {
@@ -3936,34 +3750,32 @@ export class PerformanceAgreementsResource {
   }
 
   /**
-   * Fetch all Agreements records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all agreements across all pages into a single array.
    * @example const all = await client.performance.agreements.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceAgreements>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Agreement */
+  /** Reads a single agreements record */
   get: typeof getApi20260401ResourcesPerformanceAgreementsById = (options?: any) => getApi20260401ResourcesPerformanceAgreementsById({ client: this._client, ...options });
 
-  /** Bulk initiate Agreement */
+  /** bulkInitiate */
   bulkInitiate: typeof postApi20260401ResourcesPerformanceAgreementsBulkInitiate = (options?: any) => postApi20260401ResourcesPerformanceAgreementsBulkInitiate({ client: this._client, ...options });
 
-  /** Initiate Agreement */
+  /** initiate */
   initiate: typeof postApi20260401ResourcesPerformanceAgreementsInitiate = (options?: any) => postApi20260401ResourcesPerformanceAgreementsInitiate({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > CompanyEmployeeScoreScales resource */
+/** Methods for the performance > company_employee_score_scales resource */
 export class PerformanceCompanyEmployeeScoreScalesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Company Employee Score Scales */
+  /** Lists all company_employee_score_scales */
   list: typeof getApi20260401ResourcesPerformanceCompanyEmployeeScoreScales = (options?: any) => getApi20260401ResourcesPerformanceCompanyEmployeeScoreScales({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all CompanyEmployeeScoreScales records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all company_employee_score_scales, yielding one item at a time.
    * @example for await (const item of client.performance.companyEmployeeScoreScales.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceCompanyEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
@@ -3975,31 +3787,29 @@ export class PerformanceCompanyEmployeeScoreScalesResource {
   }
 
   /**
-   * Fetch all CompanyEmployeeScoreScales records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all company_employee_score_scales across all pages into a single array.
    * @example const all = await client.performance.companyEmployeeScoreScales.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceCompanyEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Company Employee Score Scale */
+  /** Reads a single company_employee_score_scales record */
   get: typeof getApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesById = (options?: any) => getApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesById({ client: this._client, ...options });
 
-  /** Set Company Employee Score Scale */
+  /** set */
   set: typeof postApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSet = (options?: any) => postApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSet({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > EmployeeScoreScales resource */
+/** Methods for the performance > employee_score_scales resource */
 export class PerformanceEmployeeScoreScalesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Employee Score Scales */
+  /** Lists all employee_score_scales */
   list: typeof getApi20260401ResourcesPerformanceEmployeeScoreScales = (options?: any) => getApi20260401ResourcesPerformanceEmployeeScoreScales({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all EmployeeScoreScales records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all employee_score_scales, yielding one item at a time.
    * @example for await (const item of client.performance.employeeScoreScales.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
@@ -4011,28 +3821,26 @@ export class PerformanceEmployeeScoreScalesResource {
   }
 
   /**
-   * Fetch all EmployeeScoreScales records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all employee_score_scales across all pages into a single array.
    * @example const all = await client.performance.employeeScoreScales.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Employee Score Scale */
+  /** Reads a single employee_score_scales record */
   get: typeof getApi20260401ResourcesPerformanceEmployeeScoreScalesById = (options?: any) => getApi20260401ResourcesPerformanceEmployeeScoreScalesById({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewEvaluationAnswers resource */
+/** Methods for the performance > review_evaluation_answers resource */
 export class PerformanceReviewEvaluationAnswersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Evaluation Answers */
+  /** Lists all review_evaluation_answers */
   list: typeof getApi20260401ResourcesPerformanceReviewEvaluationAnswers = (options?: any) => getApi20260401ResourcesPerformanceReviewEvaluationAnswers({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewEvaluationAnswers records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_evaluation_answers, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluationAnswers.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluationAnswers>[0] & { limit?: number; maxItems?: number }) {
@@ -4044,8 +3852,7 @@ export class PerformanceReviewEvaluationAnswersResource {
   }
 
   /**
-   * Fetch all ReviewEvaluationAnswers records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_evaluation_answers across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluationAnswers.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluationAnswers>[0] & { limit?: number; maxItems?: number }) {
@@ -4053,16 +3860,15 @@ export class PerformanceReviewEvaluationAnswersResource {
   }
 
 }
-/** Methods for the Performance > ReviewEvaluationScores resource */
+/** Methods for the performance > review_evaluation_scores resource */
 export class PerformanceReviewEvaluationScoresResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Evaluation Scores */
+  /** Lists all review_evaluation_scores */
   list: typeof getApi20260401ResourcesPerformanceReviewEvaluationScores = (options?: any) => getApi20260401ResourcesPerformanceReviewEvaluationScores({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewEvaluationScores records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_evaluation_scores, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluationScores.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluationScores>[0] & { limit?: number; maxItems?: number }) {
@@ -4074,28 +3880,26 @@ export class PerformanceReviewEvaluationScoresResource {
   }
 
   /**
-   * Fetch all ReviewEvaluationScores records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_evaluation_scores across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluationScores.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluationScores>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Review Evaluation Score */
+  /** Reads a single review_evaluation_scores record */
   get: typeof getApi20260401ResourcesPerformanceReviewEvaluationScoresById = (options?: any) => getApi20260401ResourcesPerformanceReviewEvaluationScoresById({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewEvaluations resource */
+/** Methods for the performance > review_evaluations resource */
 export class PerformanceReviewEvaluationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Evaluations */
+  /** Lists all review_evaluations */
   list: typeof getApi20260401ResourcesPerformanceReviewEvaluations = (options?: any) => getApi20260401ResourcesPerformanceReviewEvaluations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewEvaluations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_evaluations, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluations>[0] & { limit?: number; maxItems?: number }) {
@@ -4107,31 +3911,29 @@ export class PerformanceReviewEvaluationsResource {
   }
 
   /**
-   * Fetch all ReviewEvaluations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_evaluations across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewEvaluations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Review Evaluation */
+  /** Reads a single review_evaluations record */
   get: typeof getApi20260401ResourcesPerformanceReviewEvaluationsById = (options?: any) => getApi20260401ResourcesPerformanceReviewEvaluationsById({ client: this._client, ...options });
 
-  /** Replace reviewer Review Evaluation */
+  /** replaceReviewer */
   replaceReviewer: typeof postApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewer = (options?: any) => postApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewer({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewOwners resource */
+/** Methods for the performance > review_owners resource */
 export class PerformanceReviewOwnersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Owners */
+  /** Lists all review_owners */
   list: typeof getApi20260401ResourcesPerformanceReviewOwners = (options?: any) => getApi20260401ResourcesPerformanceReviewOwners({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewOwners records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_owners, yielding one item at a time.
    * @example for await (const item of client.performance.reviewOwners.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewOwners>[0] & { limit?: number; maxItems?: number }) {
@@ -4143,31 +3945,29 @@ export class PerformanceReviewOwnersResource {
   }
 
   /**
-   * Fetch all ReviewOwners records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_owners across all pages into a single array.
    * @example const all = await client.performance.reviewOwners.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewOwners>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Deletes a Review Owner */
+  /** Deletes a review_owners record */
   delete: typeof deleteApi20260401ResourcesPerformanceReviewOwnersById = (options?: any) => deleteApi20260401ResourcesPerformanceReviewOwnersById({ client: this._client, ...options });
 
-  /** Bulk create Review Owner */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesPerformanceReviewOwnersBulkCreate = (options?: any) => postApi20260401ResourcesPerformanceReviewOwnersBulkCreate({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewProcessCustomTemplates resource */
+/** Methods for the performance > review_process_custom_templates resource */
 export class PerformanceReviewProcessCustomTemplatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Process Custom Templates */
+  /** Lists all review_process_custom_templates */
   list: typeof getApi20260401ResourcesPerformanceReviewProcessCustomTemplates = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessCustomTemplates({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewProcessCustomTemplates records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_process_custom_templates, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessCustomTemplates.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessCustomTemplates>[0] & { limit?: number; maxItems?: number }) {
@@ -4179,28 +3979,26 @@ export class PerformanceReviewProcessCustomTemplatesResource {
   }
 
   /**
-   * Fetch all ReviewProcessCustomTemplates records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_process_custom_templates across all pages into a single array.
    * @example const all = await client.performance.reviewProcessCustomTemplates.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessCustomTemplates>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Review Process Custom Template */
+  /** Reads a single review_process_custom_templates record */
   get: typeof getApi20260401ResourcesPerformanceReviewProcessCustomTemplatesById = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessCustomTemplatesById({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewProcessEstimatedTargets resource */
+/** Methods for the performance > review_process_estimated_targets resource */
 export class PerformanceReviewProcessEstimatedTargetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Process Estimated Targets */
+  /** Lists all review_process_estimated_targets */
   list: typeof getApi20260401ResourcesPerformanceReviewProcessEstimatedTargets = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessEstimatedTargets({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewProcessEstimatedTargets records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_process_estimated_targets, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessEstimatedTargets.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessEstimatedTargets>[0] & { limit?: number; maxItems?: number }) {
@@ -4212,8 +4010,7 @@ export class PerformanceReviewProcessEstimatedTargetsResource {
   }
 
   /**
-   * Fetch all ReviewProcessEstimatedTargets records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_process_estimated_targets across all pages into a single array.
    * @example const all = await client.performance.reviewProcessEstimatedTargets.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessEstimatedTargets>[0] & { limit?: number; maxItems?: number }) {
@@ -4221,16 +4018,15 @@ export class PerformanceReviewProcessEstimatedTargetsResource {
   }
 
 }
-/** Methods for the Performance > ReviewProcessTargets resource */
+/** Methods for the performance > review_process_targets resource */
 export class PerformanceReviewProcessTargetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Process Targets */
+  /** Lists all review_process_targets */
   list: typeof getApi20260401ResourcesPerformanceReviewProcessTargets = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessTargets({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewProcessTargets records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_process_targets, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessTargets.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessTargets>[0] & { limit?: number; maxItems?: number }) {
@@ -4242,40 +4038,38 @@ export class PerformanceReviewProcessTargetsResource {
   }
 
   /**
-   * Fetch all ReviewProcessTargets records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_process_targets across all pages into a single array.
    * @example const all = await client.performance.reviewProcessTargets.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcessTargets>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Review Process Target */
+  /** Reads a single review_process_targets record */
   get: typeof getApi20260401ResourcesPerformanceReviewProcessTargetsById = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessTargetsById({ client: this._client, ...options });
 
-  /** Deletes a Review Process Target */
+  /** Deletes a review_process_targets record */
   delete: typeof deleteApi20260401ResourcesPerformanceReviewProcessTargetsById = (options?: any) => deleteApi20260401ResourcesPerformanceReviewProcessTargetsById({ client: this._client, ...options });
 
-  /** Add peers Review Process Target */
+  /** addPeers */
   addPeers: typeof postApi20260401ResourcesPerformanceReviewProcessTargetsAddPeers = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessTargetsAddPeers({ client: this._client, ...options });
 
-  /** Bulk create Review Process Target */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreate = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreate({ client: this._client, ...options });
 
-  /** Remove peer evaluations Review Process Target */
+  /** removePeerEvaluations */
   removePeerEvaluations: typeof postApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewProcesses resource */
+/** Methods for the performance > review_processes resource */
 export class PerformanceReviewProcessesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Processess */
+  /** Lists all review_processes */
   list: typeof getApi20260401ResourcesPerformanceReviewProcesses = (options?: any) => getApi20260401ResourcesPerformanceReviewProcesses({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewProcesses records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_processes, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcesses.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcesses>[0] & { limit?: number; maxItems?: number }) {
@@ -4287,85 +4081,83 @@ export class PerformanceReviewProcessesResource {
   }
 
   /**
-   * Fetch all ReviewProcesses records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_processes across all pages into a single array.
    * @example const all = await client.performance.reviewProcesses.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewProcesses>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Review Processes */
+  /** Creates a review_processes record */
   create: typeof postApi20260401ResourcesPerformanceReviewProcesses = (options?: any) => postApi20260401ResourcesPerformanceReviewProcesses({ client: this._client, ...options });
 
-  /** Reads a single Review Processes */
+  /** Reads a single review_processes record */
   get: typeof getApi20260401ResourcesPerformanceReviewProcessesById = (options?: any) => getApi20260401ResourcesPerformanceReviewProcessesById({ client: this._client, ...options });
 
-  /** Deletes a Review Processes */
+  /** Deletes a review_processes record */
   delete: typeof deleteApi20260401ResourcesPerformanceReviewProcessesById = (options?: any) => deleteApi20260401ResourcesPerformanceReviewProcessesById({ client: this._client, ...options });
 
-  /** Create from template Review Processes */
+  /** createFromTemplate */
   createFromTemplate: typeof postApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplate = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplate({ client: this._client, ...options });
 
-  /** Duplicate Review Processes */
+  /** duplicate */
   duplicate: typeof postApi20260401ResourcesPerformanceReviewProcessesDuplicate = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesDuplicate({ client: this._client, ...options });
 
-  /** Remind in bulk Review Processes */
+  /** remindInBulk */
   remindInBulk: typeof postApi20260401ResourcesPerformanceReviewProcessesRemindInBulk = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesRemindInBulk({ client: this._client, ...options });
 
-  /** Remove schedule Review Processes */
+  /** removeSchedule */
   removeSchedule: typeof postApi20260401ResourcesPerformanceReviewProcessesRemoveSchedule = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesRemoveSchedule({ client: this._client, ...options });
 
-  /** Reopen Review Processes */
+  /** reopen */
   reopen: typeof postApi20260401ResourcesPerformanceReviewProcessesReopen = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesReopen({ client: this._client, ...options });
 
-  /** Schedule Review Processes */
+  /** schedule */
   schedule: typeof postApi20260401ResourcesPerformanceReviewProcessesSchedule = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesSchedule({ client: this._client, ...options });
 
-  /** Start Review Processes */
+  /** start */
   start: typeof postApi20260401ResourcesPerformanceReviewProcessesStart = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesStart({ client: this._client, ...options });
 
-  /** Stop Review Processes */
+  /** stop */
   stop: typeof postApi20260401ResourcesPerformanceReviewProcessesStop = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesStop({ client: this._client, ...options });
 
-  /** Toggle archive Review Processes */
+  /** toggleArchive */
   toggleArchive: typeof postApi20260401ResourcesPerformanceReviewProcessesToggleArchive = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesToggleArchive({ client: this._client, ...options });
 
-  /** Update agreements configuration Review Processes */
+  /** updateAgreementsConfiguration */
   updateAgreementsConfiguration: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration({ client: this._client, ...options });
 
-  /** Update basic info Review Processes */
+  /** updateBasicInfo */
   updateBasicInfo: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfo = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfo({ client: this._client, ...options });
 
-  /** Update competencies assessments configuration Review Processes */
+  /** updateCompetenciesAssessmentsConfiguration */
   updateCompetenciesAssessmentsConfiguration: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration({ client: this._client, ...options });
 
-  /** Update deadline Review Processes */
+  /** updateDeadline */
   updateDeadline: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateDeadline = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateDeadline({ client: this._client, ...options });
 
-  /** Update employee score configuration Review Processes */
+  /** updateEmployeeScoreConfiguration */
   updateEmployeeScoreConfiguration: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration({ client: this._client, ...options });
 
-  /** Update reviewer strategies Review Processes */
+  /** updateReviewerStrategies */
   updateReviewerStrategies: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategies = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategies({ client: this._client, ...options });
 
-  /** Update schedule Review Processes */
+  /** updateSchedule */
   updateSchedule: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateSchedule = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateSchedule({ client: this._client, ...options });
 
-  /** Update target strategy Review Processes */
+  /** updateTargetStrategy */
   updateTargetStrategy: typeof postApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategy = (options?: any) => postApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategy({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewQuestionnaireByStrategies resource */
+/** Methods for the performance > review_questionnaire_by_strategies resource */
 export class PerformanceReviewQuestionnaireByStrategiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Questionnaire By Strategys */
+  /** Lists all review_questionnaire_by_strategies */
   list: typeof getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategies = (options?: any) => getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategies({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewQuestionnaireByStrategies records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_questionnaire_by_strategies, yielding one item at a time.
    * @example for await (const item of client.performance.reviewQuestionnaireByStrategies.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategies>[0] & { limit?: number; maxItems?: number }) {
@@ -4377,34 +4169,32 @@ export class PerformanceReviewQuestionnaireByStrategiesResource {
   }
 
   /**
-   * Fetch all ReviewQuestionnaireByStrategies records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_questionnaire_by_strategies across all pages into a single array.
    * @example const all = await client.performance.reviewQuestionnaireByStrategies.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategies>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Review Questionnaire By Strategy */
+  /** Reads a single review_questionnaire_by_strategies record */
   get: typeof getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesById = (options?: any) => getApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesById({ client: this._client, ...options });
 
-  /** Update default rating scale Review Questionnaire By Strategy */
+  /** updateDefaultRatingScale */
   updateDefaultRatingScale: typeof postApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale = (options?: any) => postApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale({ client: this._client, ...options });
 
-  /** Update questionnaire for strategy Review Questionnaire By Strategy */
+  /** updateQuestionnaireForStrategy */
   updateQuestionnaireForStrategy: typeof postApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy = (options?: any) => postApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > ReviewVisibilitySettings resource */
+/** Methods for the performance > review_visibility_settings resource */
 export class PerformanceReviewVisibilitySettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Review Visibility Settings */
+  /** Lists all review_visibility_settings */
   list: typeof getApi20260401ResourcesPerformanceReviewVisibilitySettings = (options?: any) => getApi20260401ResourcesPerformanceReviewVisibilitySettings({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ReviewVisibilitySettings records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all review_visibility_settings, yielding one item at a time.
    * @example for await (const item of client.performance.reviewVisibilitySettings.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewVisibilitySettings>[0] & { limit?: number; maxItems?: number }) {
@@ -4416,28 +4206,26 @@ export class PerformanceReviewVisibilitySettingsResource {
   }
 
   /**
-   * Fetch all ReviewVisibilitySettings records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all review_visibility_settings across all pages into a single array.
    * @example const all = await client.performance.reviewVisibilitySettings.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceReviewVisibilitySettings>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Updates a Review Visibility Setting */
+  /** Updates a review_visibility_settings record */
   update: typeof putApi20260401ResourcesPerformanceReviewVisibilitySettingsById = (options?: any) => putApi20260401ResourcesPerformanceReviewVisibilitySettingsById({ client: this._client, ...options });
 
 }
-/** Methods for the Performance > TargetManagers resource */
+/** Methods for the performance > target_managers resource */
 export class PerformanceTargetManagersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Target Managers */
+  /** Lists all target_managers */
   list: typeof getApi20260401ResourcesPerformanceTargetManagers = (options?: any) => getApi20260401ResourcesPerformanceTargetManagers({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TargetManagers records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all target_managers, yielding one item at a time.
    * @example for await (const item of client.performance.targetManagers.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPerformanceTargetManagers>[0] & { limit?: number; maxItems?: number }) {
@@ -4449,28 +4237,26 @@ export class PerformanceTargetManagersResource {
   }
 
   /**
-   * Fetch all TargetManagers records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all target_managers across all pages into a single array.
    * @example const all = await client.performance.targetManagers.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPerformanceTargetManagers>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Target Manager */
+  /** Reads a single target_managers record */
   get: typeof getApi20260401ResourcesPerformanceTargetManagersById = (options?: any) => getApi20260401ResourcesPerformanceTargetManagersById({ client: this._client, ...options });
 
 }
-/** Methods for the Posts > Comments resource */
+/** Methods for the posts > comments resource */
 export class PostsCommentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Comments */
+  /** Lists all comments */
   list: typeof getApi20260401ResourcesPostsComments = (options?: any) => getApi20260401ResourcesPostsComments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Comments records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all comments, yielding one item at a time.
    * @example for await (const item of client.posts.comments.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPostsComments>[0] & { limit?: number; maxItems?: number }) {
@@ -4482,37 +4268,35 @@ export class PostsCommentsResource {
   }
 
   /**
-   * Fetch all Comments records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all comments across all pages into a single array.
    * @example const all = await client.posts.comments.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPostsComments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Comment */
+  /** Creates a comments record */
   create: typeof postApi20260401ResourcesPostsComments = (options?: any) => postApi20260401ResourcesPostsComments({ client: this._client, ...options });
 
-  /** Reads a single Comment */
+  /** Reads a single comments record */
   get: typeof getApi20260401ResourcesPostsCommentsById = (options?: any) => getApi20260401ResourcesPostsCommentsById({ client: this._client, ...options });
 
-  /** Updates a Comment */
+  /** Updates a comments record */
   update: typeof putApi20260401ResourcesPostsCommentsById = (options?: any) => putApi20260401ResourcesPostsCommentsById({ client: this._client, ...options });
 
-  /** Deletes a Comment */
+  /** Deletes a comments record */
   delete: typeof deleteApi20260401ResourcesPostsCommentsById = (options?: any) => deleteApi20260401ResourcesPostsCommentsById({ client: this._client, ...options });
 
 }
-/** Methods for the Posts > Groups resource */
+/** Methods for the posts > groups resource */
 export class PostsGroupsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Groups */
+  /** Lists all groups */
   list: typeof getApi20260401ResourcesPostsGroups = (options?: any) => getApi20260401ResourcesPostsGroups({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Groups records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all groups, yielding one item at a time.
    * @example for await (const item of client.posts.groups.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPostsGroups>[0] & { limit?: number; maxItems?: number }) {
@@ -4524,40 +4308,38 @@ export class PostsGroupsResource {
   }
 
   /**
-   * Fetch all Groups records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all groups across all pages into a single array.
    * @example const all = await client.posts.groups.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPostsGroups>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Group */
+  /** Creates a groups record */
   create: typeof postApi20260401ResourcesPostsGroups = (options?: any) => postApi20260401ResourcesPostsGroups({ client: this._client, ...options });
 
-  /** Reads a single Group */
+  /** Reads a single groups record */
   get: typeof getApi20260401ResourcesPostsGroupsById = (options?: any) => getApi20260401ResourcesPostsGroupsById({ client: this._client, ...options });
 
-  /** Updates a Group */
+  /** Updates a groups record */
   update: typeof putApi20260401ResourcesPostsGroupsById = (options?: any) => putApi20260401ResourcesPostsGroupsById({ client: this._client, ...options });
 
-  /** Deletes a Group */
+  /** Deletes a groups record */
   delete: typeof deleteApi20260401ResourcesPostsGroupsById = (options?: any) => deleteApi20260401ResourcesPostsGroupsById({ client: this._client, ...options });
 
-  /** Archive Group */
+  /** archive */
   archive: typeof postApi20260401ResourcesPostsGroupsArchive = (options?: any) => postApi20260401ResourcesPostsGroupsArchive({ client: this._client, ...options });
 
 }
-/** Methods for the Posts > Posts resource */
+/** Methods for the posts > posts resource */
 export class PostsPostsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Posts */
+  /** Lists all posts */
   list: typeof getApi20260401ResourcesPostsPosts = (options?: any) => getApi20260401ResourcesPostsPosts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Posts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all posts, yielding one item at a time.
    * @example for await (const item of client.posts.posts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesPostsPosts>[0] & { limit?: number; maxItems?: number }) {
@@ -4569,37 +4351,35 @@ export class PostsPostsResource {
   }
 
   /**
-   * Fetch all Posts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all posts across all pages into a single array.
    * @example const all = await client.posts.posts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesPostsPosts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Post */
+  /** Creates a posts record */
   create: typeof postApi20260401ResourcesPostsPosts = (options?: any) => postApi20260401ResourcesPostsPosts({ client: this._client, ...options });
 
-  /** Reads a single Post */
+  /** Reads a single posts record */
   get: typeof getApi20260401ResourcesPostsPostsById = (options?: any) => getApi20260401ResourcesPostsPostsById({ client: this._client, ...options });
 
-  /** Updates a Post */
+  /** Updates a posts record */
   update: typeof putApi20260401ResourcesPostsPostsById = (options?: any) => putApi20260401ResourcesPostsPostsById({ client: this._client, ...options });
 
-  /** Deletes a Post */
+  /** Deletes a posts record */
   delete: typeof deleteApi20260401ResourcesPostsPostsById = (options?: any) => deleteApi20260401ResourcesPostsPostsById({ client: this._client, ...options });
 
 }
-/** Methods for the Procurement > PurchaseOrders resource */
+/** Methods for the procurement > purchase_orders resource */
 export class ProcurementPurchaseOrdersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Purchase Orders */
+  /** Lists all purchase_orders */
   list: typeof getApi20260401ResourcesProcurementPurchaseOrders = (options?: any) => getApi20260401ResourcesProcurementPurchaseOrders({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PurchaseOrders records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all purchase_orders, yielding one item at a time.
    * @example for await (const item of client.procurement.purchaseOrders.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProcurementPurchaseOrders>[0] & { limit?: number; maxItems?: number }) {
@@ -4611,28 +4391,26 @@ export class ProcurementPurchaseOrdersResource {
   }
 
   /**
-   * Fetch all PurchaseOrders records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all purchase_orders across all pages into a single array.
    * @example const all = await client.procurement.purchaseOrders.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProcurementPurchaseOrders>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Purchase Order */
+  /** Reads a single purchase_orders record */
   get: typeof getApi20260401ResourcesProcurementPurchaseOrdersById = (options?: any) => getApi20260401ResourcesProcurementPurchaseOrdersById({ client: this._client, ...options });
 
 }
-/** Methods for the Procurement > PurchaseRequests resource */
+/** Methods for the procurement > purchase_requests resource */
 export class ProcurementPurchaseRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Purchase Requests */
+  /** Lists all purchase_requests */
   list: typeof getApi20260401ResourcesProcurementPurchaseRequests = (options?: any) => getApi20260401ResourcesProcurementPurchaseRequests({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PurchaseRequests records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all purchase_requests, yielding one item at a time.
    * @example for await (const item of client.procurement.purchaseRequests.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProcurementPurchaseRequests>[0] & { limit?: number; maxItems?: number }) {
@@ -4644,28 +4422,26 @@ export class ProcurementPurchaseRequestsResource {
   }
 
   /**
-   * Fetch all PurchaseRequests records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all purchase_requests across all pages into a single array.
    * @example const all = await client.procurement.purchaseRequests.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProcurementPurchaseRequests>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Purchase Request */
+  /** Reads a single purchase_requests record */
   get: typeof getApi20260401ResourcesProcurementPurchaseRequestsById = (options?: any) => getApi20260401ResourcesProcurementPurchaseRequestsById({ client: this._client, ...options });
 
 }
-/** Methods for the Procurement > Types resource */
+/** Methods for the procurement > types resource */
 export class ProcurementTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Types */
+  /** Lists all types */
   list: typeof getApi20260401ResourcesProcurementTypes = (options?: any) => getApi20260401ResourcesProcurementTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Types records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all types, yielding one item at a time.
    * @example for await (const item of client.procurement.types.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProcurementTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -4677,28 +4453,26 @@ export class ProcurementTypesResource {
   }
 
   /**
-   * Fetch all Types records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all types across all pages into a single array.
    * @example const all = await client.procurement.types.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProcurementTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Type */
+  /** Reads a single types record */
   get: typeof getApi20260401ResourcesProcurementTypesById = (options?: any) => getApi20260401ResourcesProcurementTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > BudgetStrategies resource */
+/** Methods for the project_management > budget_strategies resource */
 export class ProjectManagementBudgetStrategiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Budget Strategys */
+  /** Lists all budget_strategies */
   list: typeof getApi20260401ResourcesProjectManagementBudgetStrategies = (options?: any) => getApi20260401ResourcesProjectManagementBudgetStrategies({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BudgetStrategies records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all budget_strategies, yielding one item at a time.
    * @example for await (const item of client.projectManagement.budgetStrategies.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementBudgetStrategies>[0] & { limit?: number; maxItems?: number }) {
@@ -4710,37 +4484,35 @@ export class ProjectManagementBudgetStrategiesResource {
   }
 
   /**
-   * Fetch all BudgetStrategies records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all budget_strategies across all pages into a single array.
    * @example const all = await client.projectManagement.budgetStrategies.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementBudgetStrategies>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Budget Strategy */
+  /** Creates a budget_strategies record */
   create: typeof postApi20260401ResourcesProjectManagementBudgetStrategies = (options?: any) => postApi20260401ResourcesProjectManagementBudgetStrategies({ client: this._client, ...options });
 
-  /** Reads a single Budget Strategy */
+  /** Reads a single budget_strategies record */
   get: typeof getApi20260401ResourcesProjectManagementBudgetStrategiesById = (options?: any) => getApi20260401ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
 
-  /** Updates a Budget Strategy */
+  /** Updates a budget_strategies record */
   update: typeof putApi20260401ResourcesProjectManagementBudgetStrategiesById = (options?: any) => putApi20260401ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
 
-  /** Deletes a Budget Strategy */
+  /** Deletes a budget_strategies record */
   delete: typeof deleteApi20260401ResourcesProjectManagementBudgetStrategiesById = (options?: any) => deleteApi20260401ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > ExpenseRecords resource */
+/** Methods for the project_management > expense_records resource */
 export class ProjectManagementExpenseRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Expense Records */
+  /** Lists all expense_records */
   list: typeof getApi20260401ResourcesProjectManagementExpenseRecords = (options?: any) => getApi20260401ResourcesProjectManagementExpenseRecords({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ExpenseRecords records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all expense_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.expenseRecords.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementExpenseRecords>[0] & { limit?: number; maxItems?: number }) {
@@ -4752,28 +4524,26 @@ export class ProjectManagementExpenseRecordsResource {
   }
 
   /**
-   * Fetch all ExpenseRecords records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all expense_records across all pages into a single array.
    * @example const all = await client.projectManagement.expenseRecords.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementExpenseRecords>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Expense Record */
+  /** Reads a single expense_records record */
   get: typeof getApi20260401ResourcesProjectManagementExpenseRecordsById = (options?: any) => getApi20260401ResourcesProjectManagementExpenseRecordsById({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > ExportableExpenses resource */
+/** Methods for the project_management > exportable_expenses resource */
 export class ProjectManagementExportableExpensesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Exportable Expenss */
+  /** Lists all exportable_expenses */
   list: typeof getApi20260401ResourcesProjectManagementExportableExpenses = (options?: any) => getApi20260401ResourcesProjectManagementExportableExpenses({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ExportableExpenses records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all exportable_expenses, yielding one item at a time.
    * @example for await (const item of client.projectManagement.exportableExpenses.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementExportableExpenses>[0] & { limit?: number; maxItems?: number }) {
@@ -4785,8 +4555,7 @@ export class ProjectManagementExportableExpensesResource {
   }
 
   /**
-   * Fetch all ExportableExpenses records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all exportable_expenses across all pages into a single array.
    * @example const all = await client.projectManagement.exportableExpenses.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementExportableExpenses>[0] & { limit?: number; maxItems?: number }) {
@@ -4794,16 +4563,15 @@ export class ProjectManagementExportableExpensesResource {
   }
 
 }
-/** Methods for the ProjectManagement > FlexibleTimeRecordComments resource */
+/** Methods for the project_management > flexible_time_record_comments resource */
 export class ProjectManagementFlexibleTimeRecordCommentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Flexible Time Record Comments */
+  /** Lists all flexible_time_record_comments */
   list: typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecordComments = (options?: any) => getApi20260401ResourcesProjectManagementFlexibleTimeRecordComments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all FlexibleTimeRecordComments records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all flexible_time_record_comments, yielding one item at a time.
    * @example for await (const item of client.projectManagement.flexibleTimeRecordComments.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecordComments>[0] & { limit?: number; maxItems?: number }) {
@@ -4815,37 +4583,35 @@ export class ProjectManagementFlexibleTimeRecordCommentsResource {
   }
 
   /**
-   * Fetch all FlexibleTimeRecordComments records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all flexible_time_record_comments across all pages into a single array.
    * @example const all = await client.projectManagement.flexibleTimeRecordComments.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecordComments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Flexible Time Record Comment */
+  /** Creates a flexible_time_record_comments record */
   create: typeof postApi20260401ResourcesProjectManagementFlexibleTimeRecordComments = (options?: any) => postApi20260401ResourcesProjectManagementFlexibleTimeRecordComments({ client: this._client, ...options });
 
-  /** Reads a single Flexible Time Record Comment */
+  /** Reads a single flexible_time_record_comments record */
   get: typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsById = (options?: any) => getApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsById({ client: this._client, ...options });
 
-  /** Delete by flexible time record Flexible Time Record Comment */
+  /** deleteByFlexibleTimeRecord */
   deleteByFlexibleTimeRecord: typeof postApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecord = (options?: any) => postApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecord({ client: this._client, ...options });
 
-  /** Update by flexible time record Flexible Time Record Comment */
+  /** updateByFlexibleTimeRecord */
   updateByFlexibleTimeRecord: typeof postApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecord = (options?: any) => postApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecord({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > FlexibleTimeRecords resource */
+/** Methods for the project_management > flexible_time_records resource */
 export class ProjectManagementFlexibleTimeRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Flexible Time Records */
+  /** Lists all flexible_time_records */
   list: typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecords = (options?: any) => getApi20260401ResourcesProjectManagementFlexibleTimeRecords({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all FlexibleTimeRecords records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all flexible_time_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.flexibleTimeRecords.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecords>[0] & { limit?: number; maxItems?: number }) {
@@ -4857,37 +4623,35 @@ export class ProjectManagementFlexibleTimeRecordsResource {
   }
 
   /**
-   * Fetch all FlexibleTimeRecords records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all flexible_time_records across all pages into a single array.
    * @example const all = await client.projectManagement.flexibleTimeRecords.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecords>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Flexible Time Record */
+  /** Creates a flexible_time_records record */
   create: typeof postApi20260401ResourcesProjectManagementFlexibleTimeRecords = (options?: any) => postApi20260401ResourcesProjectManagementFlexibleTimeRecords({ client: this._client, ...options });
 
-  /** Reads a single Flexible Time Record */
+  /** Reads a single flexible_time_records record */
   get: typeof getApi20260401ResourcesProjectManagementFlexibleTimeRecordsById = (options?: any) => getApi20260401ResourcesProjectManagementFlexibleTimeRecordsById({ client: this._client, ...options });
 
-  /** Updates a Flexible Time Record */
+  /** Updates a flexible_time_records record */
   update: typeof putApi20260401ResourcesProjectManagementFlexibleTimeRecordsById = (options?: any) => putApi20260401ResourcesProjectManagementFlexibleTimeRecordsById({ client: this._client, ...options });
 
-  /** Deletes a Flexible Time Record */
+  /** Deletes a flexible_time_records record */
   delete: typeof deleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsById = (options?: any) => deleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsById({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > PlannedRecords resource */
+/** Methods for the project_management > planned_records resource */
 export class ProjectManagementPlannedRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Planned Records */
+  /** Lists all planned_records */
   list: typeof getApi20260401ResourcesProjectManagementPlannedRecords = (options?: any) => getApi20260401ResourcesProjectManagementPlannedRecords({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PlannedRecords records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all planned_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.plannedRecords.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementPlannedRecords>[0] & { limit?: number; maxItems?: number }) {
@@ -4899,37 +4663,35 @@ export class ProjectManagementPlannedRecordsResource {
   }
 
   /**
-   * Fetch all PlannedRecords records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all planned_records across all pages into a single array.
    * @example const all = await client.projectManagement.plannedRecords.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementPlannedRecords>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Planned Record */
+  /** Reads a single planned_records record */
   get: typeof getApi20260401ResourcesProjectManagementPlannedRecordsById = (options?: any) => getApi20260401ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
 
-  /** Updates a Planned Record */
+  /** Updates a planned_records record */
   update: typeof putApi20260401ResourcesProjectManagementPlannedRecordsById = (options?: any) => putApi20260401ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
 
-  /** Deletes a Planned Record */
+  /** Deletes a planned_records record */
   delete: typeof deleteApi20260401ResourcesProjectManagementPlannedRecordsById = (options?: any) => deleteApi20260401ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
 
-  /** Bulk create Planned Record */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesProjectManagementPlannedRecordsBulkCreate = (options?: any) => postApi20260401ResourcesProjectManagementPlannedRecordsBulkCreate({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > ProjectTasks resource */
+/** Methods for the project_management > project_tasks resource */
 export class ProjectManagementProjectTasksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Project Tasks */
+  /** Lists all project_tasks */
   list: typeof getApi20260401ResourcesProjectManagementProjectTasks = (options?: any) => getApi20260401ResourcesProjectManagementProjectTasks({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ProjectTasks records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all project_tasks, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projectTasks.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjectTasks>[0] & { limit?: number; maxItems?: number }) {
@@ -4941,40 +4703,38 @@ export class ProjectManagementProjectTasksResource {
   }
 
   /**
-   * Fetch all ProjectTasks records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all project_tasks across all pages into a single array.
    * @example const all = await client.projectManagement.projectTasks.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjectTasks>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Project Task */
+  /** Creates a project_tasks record */
   create: typeof postApi20260401ResourcesProjectManagementProjectTasks = (options?: any) => postApi20260401ResourcesProjectManagementProjectTasks({ client: this._client, ...options });
 
-  /** Reads a single Project Task */
+  /** Reads a single project_tasks record */
   get: typeof getApi20260401ResourcesProjectManagementProjectTasksById = (options?: any) => getApi20260401ResourcesProjectManagementProjectTasksById({ client: this._client, ...options });
 
-  /** Updates a Project Task */
+  /** Updates a project_tasks record */
   update: typeof putApi20260401ResourcesProjectManagementProjectTasksById = (options?: any) => putApi20260401ResourcesProjectManagementProjectTasksById({ client: this._client, ...options });
 
-  /** Bulk destroy Project Task */
+  /** bulkDestroy */
   bulkDestroy: typeof postApi20260401ResourcesProjectManagementProjectTasksBulkDestroy = (options?: any) => postApi20260401ResourcesProjectManagementProjectTasksBulkDestroy({ client: this._client, ...options });
 
-  /** Bulk duplicate Project Task */
+  /** bulkDuplicate */
   bulkDuplicate: typeof postApi20260401ResourcesProjectManagementProjectTasksBulkDuplicate = (options?: any) => postApi20260401ResourcesProjectManagementProjectTasksBulkDuplicate({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > ProjectWorkers resource */
+/** Methods for the project_management > project_workers resource */
 export class ProjectManagementProjectWorkersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Project Workers */
+  /** Lists all project_workers */
   list: typeof getApi20260401ResourcesProjectManagementProjectWorkers = (options?: any) => getApi20260401ResourcesProjectManagementProjectWorkers({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all ProjectWorkers records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all project_workers, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projectWorkers.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjectWorkers>[0] & { limit?: number; maxItems?: number }) {
@@ -4986,40 +4746,38 @@ export class ProjectManagementProjectWorkersResource {
   }
 
   /**
-   * Fetch all ProjectWorkers records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all project_workers across all pages into a single array.
    * @example const all = await client.projectManagement.projectWorkers.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjectWorkers>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Project Worker */
+  /** Creates a project_workers record */
   create: typeof postApi20260401ResourcesProjectManagementProjectWorkers = (options?: any) => postApi20260401ResourcesProjectManagementProjectWorkers({ client: this._client, ...options });
 
-  /** Reads a single Project Worker */
+  /** Reads a single project_workers record */
   get: typeof getApi20260401ResourcesProjectManagementProjectWorkersById = (options?: any) => getApi20260401ResourcesProjectManagementProjectWorkersById({ client: this._client, ...options });
 
-  /** Bulk assign Project Worker */
+  /** bulkAssign */
   bulkAssign: typeof postApi20260401ResourcesProjectManagementProjectWorkersBulkAssign = (options?: any) => postApi20260401ResourcesProjectManagementProjectWorkersBulkAssign({ client: this._client, ...options });
 
-  /** Bulk create Project Worker */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesProjectManagementProjectWorkersBulkCreate = (options?: any) => postApi20260401ResourcesProjectManagementProjectWorkersBulkCreate({ client: this._client, ...options });
 
-  /** Unassign Project Worker */
+  /** unassign */
   unassign: typeof postApi20260401ResourcesProjectManagementProjectWorkersUnassign = (options?: any) => postApi20260401ResourcesProjectManagementProjectWorkersUnassign({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > Projects resource */
+/** Methods for the project_management > projects resource */
 export class ProjectManagementProjectsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Projects */
+  /** Lists all projects */
   list: typeof getApi20260401ResourcesProjectManagementProjects = (options?: any) => getApi20260401ResourcesProjectManagementProjects({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Projects records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all projects, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projects.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjects>[0] & { limit?: number; maxItems?: number }) {
@@ -5031,49 +4789,47 @@ export class ProjectManagementProjectsResource {
   }
 
   /**
-   * Fetch all Projects records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all projects across all pages into a single array.
    * @example const all = await client.projectManagement.projects.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementProjects>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Project */
+  /** Creates a projects record */
   create: typeof postApi20260401ResourcesProjectManagementProjects = (options?: any) => postApi20260401ResourcesProjectManagementProjects({ client: this._client, ...options });
 
-  /** Reads a single Project */
+  /** Reads a single projects record */
   get: typeof getApi20260401ResourcesProjectManagementProjectsById = (options?: any) => getApi20260401ResourcesProjectManagementProjectsById({ client: this._client, ...options });
 
-  /** Updates a Project */
+  /** Updates a projects record */
   update: typeof putApi20260401ResourcesProjectManagementProjectsById = (options?: any) => putApi20260401ResourcesProjectManagementProjectsById({ client: this._client, ...options });
 
-  /** Activate Project */
+  /** activate */
   activate: typeof postApi20260401ResourcesProjectManagementProjectsActivate = (options?: any) => postApi20260401ResourcesProjectManagementProjectsActivate({ client: this._client, ...options });
 
-  /** Change assignment Project */
+  /** changeAssignment */
   changeAssignment: typeof postApi20260401ResourcesProjectManagementProjectsChangeAssignment = (options?: any) => postApi20260401ResourcesProjectManagementProjectsChangeAssignment({ client: this._client, ...options });
 
-  /** Change status Project */
+  /** changeStatus */
   changeStatus: typeof postApi20260401ResourcesProjectManagementProjectsChangeStatus = (options?: any) => postApi20260401ResourcesProjectManagementProjectsChangeStatus({ client: this._client, ...options });
 
-  /** Close Project */
+  /** close */
   close: typeof postApi20260401ResourcesProjectManagementProjectsClose = (options?: any) => postApi20260401ResourcesProjectManagementProjectsClose({ client: this._client, ...options });
 
-  /** Soft delete Project */
+  /** softDelete */
   softDelete: typeof postApi20260401ResourcesProjectManagementProjectsSoftDelete = (options?: any) => postApi20260401ResourcesProjectManagementProjectsSoftDelete({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > Subprojects resource */
+/** Methods for the project_management > subprojects resource */
 export class ProjectManagementSubprojectsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Subprojects */
+  /** Lists all subprojects */
   list: typeof getApi20260401ResourcesProjectManagementSubprojects = (options?: any) => getApi20260401ResourcesProjectManagementSubprojects({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Subprojects records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all subprojects, yielding one item at a time.
    * @example for await (const item of client.projectManagement.subprojects.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementSubprojects>[0] & { limit?: number; maxItems?: number }) {
@@ -5085,40 +4841,38 @@ export class ProjectManagementSubprojectsResource {
   }
 
   /**
-   * Fetch all Subprojects records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all subprojects across all pages into a single array.
    * @example const all = await client.projectManagement.subprojects.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementSubprojects>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Subproject */
+  /** Creates a subprojects record */
   create: typeof postApi20260401ResourcesProjectManagementSubprojects = (options?: any) => postApi20260401ResourcesProjectManagementSubprojects({ client: this._client, ...options });
 
-  /** Reads a single Subproject */
+  /** Reads a single subprojects record */
   get: typeof getApi20260401ResourcesProjectManagementSubprojectsById = (options?: any) => getApi20260401ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
 
-  /** Updates a Subproject */
+  /** Updates a subprojects record */
   update: typeof putApi20260401ResourcesProjectManagementSubprojectsById = (options?: any) => putApi20260401ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
 
-  /** Deletes a Subproject */
+  /** Deletes a subprojects record */
   delete: typeof deleteApi20260401ResourcesProjectManagementSubprojectsById = (options?: any) => deleteApi20260401ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
 
-  /** Rename Subproject */
+  /** rename */
   rename: typeof postApi20260401ResourcesProjectManagementSubprojectsRename = (options?: any) => postApi20260401ResourcesProjectManagementSubprojectsRename({ client: this._client, ...options });
 
 }
-/** Methods for the ProjectManagement > TimeRecords resource */
+/** Methods for the project_management > time_records resource */
 export class ProjectManagementTimeRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Time Records */
+  /** Lists all time_records */
   list: typeof getApi20260401ResourcesProjectManagementTimeRecords = (options?: any) => getApi20260401ResourcesProjectManagementTimeRecords({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TimeRecords records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all time_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.timeRecords.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesProjectManagementTimeRecords>[0] & { limit?: number; maxItems?: number }) {
@@ -5130,43 +4884,41 @@ export class ProjectManagementTimeRecordsResource {
   }
 
   /**
-   * Fetch all TimeRecords records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all time_records across all pages into a single array.
    * @example const all = await client.projectManagement.timeRecords.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesProjectManagementTimeRecords>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Time Record */
+  /** Creates a time_records record */
   create: typeof postApi20260401ResourcesProjectManagementTimeRecords = (options?: any) => postApi20260401ResourcesProjectManagementTimeRecords({ client: this._client, ...options });
 
-  /** Reads a single Time Record */
+  /** Reads a single time_records record */
   get: typeof getApi20260401ResourcesProjectManagementTimeRecordsById = (options?: any) => getApi20260401ResourcesProjectManagementTimeRecordsById({ client: this._client, ...options });
 
-  /** Deletes a Time Record */
+  /** Deletes a time_records record */
   delete: typeof deleteApi20260401ResourcesProjectManagementTimeRecordsById = (options?: any) => deleteApi20260401ResourcesProjectManagementTimeRecordsById({ client: this._client, ...options });
 
-  /** Bulk delete Time Record */
+  /** bulkDelete */
   bulkDelete: typeof postApi20260401ResourcesProjectManagementTimeRecordsBulkDelete = (options?: any) => postApi20260401ResourcesProjectManagementTimeRecordsBulkDelete({ client: this._client, ...options });
 
-  /** Bulk process Time Record */
+  /** bulkProcess */
   bulkProcess: typeof postApi20260401ResourcesProjectManagementTimeRecordsBulkProcess = (options?: any) => postApi20260401ResourcesProjectManagementTimeRecordsBulkProcess({ client: this._client, ...options });
 
-  /** Update project worker Time Record */
+  /** updateProjectWorker */
   updateProjectWorker: typeof postApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorker = (options?: any) => postApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorker({ client: this._client, ...options });
 
 }
-/** Methods for the ShiftManagement > Shifts resource */
+/** Methods for the shift_management > shifts resource */
 export class ShiftManagementShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Shifts */
+  /** Lists all shifts */
   list: typeof getApi20260401ResourcesShiftManagementShifts = (options?: any) => getApi20260401ResourcesShiftManagementShifts({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Shifts records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all shifts, yielding one item at a time.
    * @example for await (const item of client.shiftManagement.shifts.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesShiftManagementShifts>[0] & { limit?: number; maxItems?: number }) {
@@ -5178,40 +4930,38 @@ export class ShiftManagementShiftsResource {
   }
 
   /**
-   * Fetch all Shifts records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all shifts across all pages into a single array.
    * @example const all = await client.shiftManagement.shifts.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesShiftManagementShifts>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Shift */
+  /** Creates a shifts record */
   create: typeof postApi20260401ResourcesShiftManagementShifts = (options?: any) => postApi20260401ResourcesShiftManagementShifts({ client: this._client, ...options });
 
-  /** Reads a single Shift */
+  /** Reads a single shifts record */
   get: typeof getApi20260401ResourcesShiftManagementShiftsById = (options?: any) => getApi20260401ResourcesShiftManagementShiftsById({ client: this._client, ...options });
 
-  /** Deletes a Shift */
+  /** Deletes a shifts record */
   delete: typeof deleteApi20260401ResourcesShiftManagementShiftsById = (options?: any) => deleteApi20260401ResourcesShiftManagementShiftsById({ client: this._client, ...options });
 
-  /** Bulk create Shift */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesShiftManagementShiftsBulkCreate = (options?: any) => postApi20260401ResourcesShiftManagementShiftsBulkCreate({ client: this._client, ...options });
 
-  /** Bulk delete Shift */
+  /** bulkDelete */
   bulkDelete: typeof postApi20260401ResourcesShiftManagementShiftsBulkDelete = (options?: any) => postApi20260401ResourcesShiftManagementShiftsBulkDelete({ client: this._client, ...options });
 
 }
-/** Methods for the Tasks > TaskFiles resource */
+/** Methods for the tasks > task_files resource */
 export class TasksTaskFilesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Task Files */
+  /** Lists all task_files */
   list: typeof getApi20260401ResourcesTasksTaskFiles = (options?: any) => getApi20260401ResourcesTasksTaskFiles({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TaskFiles records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all task_files, yielding one item at a time.
    * @example for await (const item of client.tasks.taskFiles.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTasksTaskFiles>[0] & { limit?: number; maxItems?: number }) {
@@ -5223,34 +4973,32 @@ export class TasksTaskFilesResource {
   }
 
   /**
-   * Fetch all TaskFiles records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all task_files across all pages into a single array.
    * @example const all = await client.tasks.taskFiles.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTasksTaskFiles>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Task File */
+  /** Creates a task_files record */
   create: typeof postApi20260401ResourcesTasksTaskFiles = (options?: any) => postApi20260401ResourcesTasksTaskFiles({ client: this._client, ...options });
 
-  /** Reads a single Task File */
+  /** Reads a single task_files record */
   get: typeof getApi20260401ResourcesTasksTaskFilesById = (options?: any) => getApi20260401ResourcesTasksTaskFilesById({ client: this._client, ...options });
 
-  /** Deletes a Task File */
+  /** Deletes a task_files record */
   delete: typeof deleteApi20260401ResourcesTasksTaskFilesById = (options?: any) => deleteApi20260401ResourcesTasksTaskFilesById({ client: this._client, ...options });
 
 }
-/** Methods for the Tasks > Tasks resource */
+/** Methods for the tasks > tasks resource */
 export class TasksTasksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Tasks */
+  /** Lists all tasks */
   list: typeof getApi20260401ResourcesTasksTasks = (options?: any) => getApi20260401ResourcesTasksTasks({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Tasks records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all tasks, yielding one item at a time.
    * @example for await (const item of client.tasks.tasks.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTasksTasks>[0] & { limit?: number; maxItems?: number }) {
@@ -5262,52 +5010,50 @@ export class TasksTasksResource {
   }
 
   /**
-   * Fetch all Tasks records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all tasks across all pages into a single array.
    * @example const all = await client.tasks.tasks.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTasksTasks>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Task */
+  /** Creates a tasks record */
   create: typeof postApi20260401ResourcesTasksTasks = (options?: any) => postApi20260401ResourcesTasksTasks({ client: this._client, ...options });
 
-  /** Reads a single Task */
+  /** Reads a single tasks record */
   get: typeof getApi20260401ResourcesTasksTasksById = (options?: any) => getApi20260401ResourcesTasksTasksById({ client: this._client, ...options });
 
-  /** Updates a Task */
+  /** Updates a tasks record */
   update: typeof putApi20260401ResourcesTasksTasksById = (options?: any) => putApi20260401ResourcesTasksTasksById({ client: this._client, ...options });
 
-  /** Deletes a Task */
+  /** Deletes a tasks record */
   delete: typeof deleteApi20260401ResourcesTasksTasksById = (options?: any) => deleteApi20260401ResourcesTasksTasksById({ client: this._client, ...options });
 
-  /** Bulk create Task */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesTasksTasksBulkCreate = (options?: any) => postApi20260401ResourcesTasksTasksBulkCreate({ client: this._client, ...options });
 
-  /** Bulk delete Task */
+  /** bulkDelete */
   bulkDelete: typeof postApi20260401ResourcesTasksTasksBulkDelete = (options?: any) => postApi20260401ResourcesTasksTasksBulkDelete({ client: this._client, ...options });
 
-  /** Bulk update Task */
+  /** bulkUpdate */
   bulkUpdate: typeof postApi20260401ResourcesTasksTasksBulkUpdate = (options?: any) => postApi20260401ResourcesTasksTasksBulkUpdate({ client: this._client, ...options });
 
-  /** Copy Task */
+  /** copy */
   copy: typeof postApi20260401ResourcesTasksTasksCopy = (options?: any) => postApi20260401ResourcesTasksTasksCopy({ client: this._client, ...options });
 
-  /** Create comment Task */
+  /** createComment */
   createComment: typeof postApi20260401ResourcesTasksTasksCreateComment = (options?: any) => postApi20260401ResourcesTasksTasksCreateComment({ client: this._client, ...options });
 
 }
-/** Methods for the Teams > Memberships resource */
+/** Methods for the teams > memberships resource */
 export class TeamsMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Memberships */
+  /** Lists all memberships */
   list: typeof getApi20260401ResourcesTeamsMemberships = (options?: any) => getApi20260401ResourcesTeamsMemberships({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Memberships records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all memberships, yielding one item at a time.
    * @example for await (const item of client.teams.memberships.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTeamsMemberships>[0] & { limit?: number; maxItems?: number }) {
@@ -5319,37 +5065,35 @@ export class TeamsMembershipsResource {
   }
 
   /**
-   * Fetch all Memberships records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all memberships across all pages into a single array.
    * @example const all = await client.teams.memberships.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTeamsMemberships>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Membership */
+  /** Creates a memberships record */
   create: typeof postApi20260401ResourcesTeamsMemberships = (options?: any) => postApi20260401ResourcesTeamsMemberships({ client: this._client, ...options });
 
-  /** Reads a single Membership */
+  /** Reads a single memberships record */
   get: typeof getApi20260401ResourcesTeamsMembershipsById = (options?: any) => getApi20260401ResourcesTeamsMembershipsById({ client: this._client, ...options });
 
-  /** Updates a Membership */
+  /** Updates a memberships record */
   update: typeof putApi20260401ResourcesTeamsMembershipsById = (options?: any) => putApi20260401ResourcesTeamsMembershipsById({ client: this._client, ...options });
 
-  /** Deletes a Membership */
+  /** Deletes a memberships record */
   delete: typeof deleteApi20260401ResourcesTeamsMembershipsById = (options?: any) => deleteApi20260401ResourcesTeamsMembershipsById({ client: this._client, ...options });
 
 }
-/** Methods for the Teams > Teams resource */
+/** Methods for the teams > teams resource */
 export class TeamsTeamsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Teams */
+  /** Lists all teams */
   list: typeof getApi20260401ResourcesTeamsTeams = (options?: any) => getApi20260401ResourcesTeamsTeams({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Teams records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all teams, yielding one item at a time.
    * @example for await (const item of client.teams.teams.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTeamsTeams>[0] & { limit?: number; maxItems?: number }) {
@@ -5361,37 +5105,35 @@ export class TeamsTeamsResource {
   }
 
   /**
-   * Fetch all Teams records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all teams across all pages into a single array.
    * @example const all = await client.teams.teams.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTeamsTeams>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Team */
+  /** Creates a teams record */
   create: typeof postApi20260401ResourcesTeamsTeams = (options?: any) => postApi20260401ResourcesTeamsTeams({ client: this._client, ...options });
 
-  /** Reads a single Team */
+  /** Reads a single teams record */
   get: typeof getApi20260401ResourcesTeamsTeamsById = (options?: any) => getApi20260401ResourcesTeamsTeamsById({ client: this._client, ...options });
 
-  /** Updates a Team */
+  /** Updates a teams record */
   update: typeof putApi20260401ResourcesTeamsTeamsById = (options?: any) => putApi20260401ResourcesTeamsTeamsById({ client: this._client, ...options });
 
-  /** Deletes a Team */
+  /** Deletes a teams record */
   delete: typeof deleteApi20260401ResourcesTeamsTeamsById = (options?: any) => deleteApi20260401ResourcesTeamsTeamsById({ client: this._client, ...options });
 
 }
-/** Methods for the TimePlanning > PlannedBreaks resource */
+/** Methods for the time_planning > planned_breaks resource */
 export class TimePlanningPlannedBreaksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Planned Breaks */
+  /** Lists all planned_breaks */
   list: typeof getApi20260401ResourcesTimePlanningPlannedBreaks = (options?: any) => getApi20260401ResourcesTimePlanningPlannedBreaks({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PlannedBreaks records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all planned_breaks, yielding one item at a time.
    * @example for await (const item of client.timePlanning.plannedBreaks.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimePlanningPlannedBreaks>[0] & { limit?: number; maxItems?: number }) {
@@ -5403,31 +5145,29 @@ export class TimePlanningPlannedBreaksResource {
   }
 
   /**
-   * Fetch all PlannedBreaks records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all planned_breaks across all pages into a single array.
    * @example const all = await client.timePlanning.plannedBreaks.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimePlanningPlannedBreaks>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Planned Break */
+  /** Reads a single planned_breaks record */
   get: typeof getApi20260401ResourcesTimePlanningPlannedBreaksById = (options?: any) => getApi20260401ResourcesTimePlanningPlannedBreaksById({ client: this._client, ...options });
 
-  /** Bulk create Planned Break */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesTimePlanningPlannedBreaksBulkCreate = (options?: any) => postApi20260401ResourcesTimePlanningPlannedBreaksBulkCreate({ client: this._client, ...options });
 
 }
-/** Methods for the TimePlanning > PlanningVersions resource */
+/** Methods for the time_planning > planning_versions resource */
 export class TimePlanningPlanningVersionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Planning Versions */
+  /** Lists all planning_versions */
   list: typeof getApi20260401ResourcesTimePlanningPlanningVersions = (options?: any) => getApi20260401ResourcesTimePlanningPlanningVersions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PlanningVersions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all planning_versions, yielding one item at a time.
    * @example for await (const item of client.timePlanning.planningVersions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimePlanningPlanningVersions>[0] & { limit?: number; maxItems?: number }) {
@@ -5439,37 +5179,35 @@ export class TimePlanningPlanningVersionsResource {
   }
 
   /**
-   * Fetch all PlanningVersions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all planning_versions across all pages into a single array.
    * @example const all = await client.timePlanning.planningVersions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimePlanningPlanningVersions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Planning Version */
+  /** Creates a planning_versions record */
   create: typeof postApi20260401ResourcesTimePlanningPlanningVersions = (options?: any) => postApi20260401ResourcesTimePlanningPlanningVersions({ client: this._client, ...options });
 
-  /** Updates a Planning Version */
+  /** Updates a planning_versions record */
   update: typeof putApi20260401ResourcesTimePlanningPlanningVersionsById = (options?: any) => putApi20260401ResourcesTimePlanningPlanningVersionsById({ client: this._client, ...options });
 
-  /** Deletes a Planning Version */
+  /** Deletes a planning_versions record */
   delete: typeof deleteApi20260401ResourcesTimePlanningPlanningVersionsById = (options?: any) => deleteApi20260401ResourcesTimePlanningPlanningVersionsById({ client: this._client, ...options });
 
-  /** Bulk create Planning Version */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesTimePlanningPlanningVersionsBulkCreate = (options?: any) => postApi20260401ResourcesTimePlanningPlanningVersionsBulkCreate({ client: this._client, ...options });
 
 }
-/** Methods for the TimeSettings > BreakConfigurations resource */
+/** Methods for the time_settings > break_configurations resource */
 export class TimeSettingsBreakConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Break Configurations */
+  /** Lists all break_configurations */
   list: typeof getApi20260401ResourcesTimeSettingsBreakConfigurations = (options?: any) => getApi20260401ResourcesTimeSettingsBreakConfigurations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BreakConfigurations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all break_configurations, yielding one item at a time.
    * @example for await (const item of client.timeSettings.breakConfigurations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeSettingsBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
@@ -5481,34 +5219,32 @@ export class TimeSettingsBreakConfigurationsResource {
   }
 
   /**
-   * Fetch all BreakConfigurations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all break_configurations across all pages into a single array.
    * @example const all = await client.timeSettings.breakConfigurations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeSettingsBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Break Configuration */
+  /** Creates a break_configurations record */
   create: typeof postApi20260401ResourcesTimeSettingsBreakConfigurations = (options?: any) => postApi20260401ResourcesTimeSettingsBreakConfigurations({ client: this._client, ...options });
 
-  /** Reads a single Break Configuration */
+  /** Reads a single break_configurations record */
   get: typeof getApi20260401ResourcesTimeSettingsBreakConfigurationsById = (options?: any) => getApi20260401ResourcesTimeSettingsBreakConfigurationsById({ client: this._client, ...options });
 
-  /** Updates a Break Configuration */
+  /** Updates a break_configurations record */
   update: typeof putApi20260401ResourcesTimeSettingsBreakConfigurationsById = (options?: any) => putApi20260401ResourcesTimeSettingsBreakConfigurationsById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > AllowanceIncidences resource */
+/** Methods for the timeoff > allowance_incidences resource */
 export class TimeoffAllowanceIncidencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Allowance Incidences */
+  /** Lists all allowance_incidences */
   list: typeof getApi20260401ResourcesTimeoffAllowanceIncidences = (options?: any) => getApi20260401ResourcesTimeoffAllowanceIncidences({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all AllowanceIncidences records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all allowance_incidences, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowanceIncidences.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowanceIncidences>[0] & { limit?: number; maxItems?: number }) {
@@ -5520,37 +5256,35 @@ export class TimeoffAllowanceIncidencesResource {
   }
 
   /**
-   * Fetch all AllowanceIncidences records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all allowance_incidences across all pages into a single array.
    * @example const all = await client.timeoff.allowanceIncidences.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowanceIncidences>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Allowance Incidence */
+  /** Creates a allowance_incidences record */
   create: typeof postApi20260401ResourcesTimeoffAllowanceIncidences = (options?: any) => postApi20260401ResourcesTimeoffAllowanceIncidences({ client: this._client, ...options });
 
-  /** Reads a single Allowance Incidence */
+  /** Reads a single allowance_incidences record */
   get: typeof getApi20260401ResourcesTimeoffAllowanceIncidencesById = (options?: any) => getApi20260401ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
 
-  /** Updates a Allowance Incidence */
+  /** Updates a allowance_incidences record */
   update: typeof putApi20260401ResourcesTimeoffAllowanceIncidencesById = (options?: any) => putApi20260401ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
 
-  /** Deletes a Allowance Incidence */
+  /** Deletes a allowance_incidences record */
   delete: typeof deleteApi20260401ResourcesTimeoffAllowanceIncidencesById = (options?: any) => deleteApi20260401ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > AllowanceStats resource */
+/** Methods for the timeoff > allowance_stats resource */
 export class TimeoffAllowanceStatsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Allowance Stats */
+  /** Lists all allowance_stats */
   list: typeof getApi20260401ResourcesTimeoffAllowanceStats = (options?: any) => getApi20260401ResourcesTimeoffAllowanceStats({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all AllowanceStats records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all allowance_stats, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowanceStats.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowanceStats>[0] & { limit?: number; maxItems?: number }) {
@@ -5562,28 +5296,26 @@ export class TimeoffAllowanceStatsResource {
   }
 
   /**
-   * Fetch all AllowanceStats records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all allowance_stats across all pages into a single array.
    * @example const all = await client.timeoff.allowanceStats.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowanceStats>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Allowance Stat */
+  /** Reads a single allowance_stats record */
   get: typeof getApi20260401ResourcesTimeoffAllowanceStatsById = (options?: any) => getApi20260401ResourcesTimeoffAllowanceStatsById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > Allowances resource */
+/** Methods for the timeoff > allowances resource */
 export class TimeoffAllowancesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Allowances */
+  /** Lists all allowances */
   list: typeof getApi20260401ResourcesTimeoffAllowances = (options?: any) => getApi20260401ResourcesTimeoffAllowances({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Allowances records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all allowances, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowances.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowances>[0] & { limit?: number; maxItems?: number }) {
@@ -5595,40 +5327,38 @@ export class TimeoffAllowancesResource {
   }
 
   /**
-   * Fetch all Allowances records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all allowances across all pages into a single array.
    * @example const all = await client.timeoff.allowances.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffAllowances>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Allowance */
+  /** Creates a allowances record */
   create: typeof postApi20260401ResourcesTimeoffAllowances = (options?: any) => postApi20260401ResourcesTimeoffAllowances({ client: this._client, ...options });
 
-  /** Reads a single Allowance */
+  /** Reads a single allowances record */
   get: typeof getApi20260401ResourcesTimeoffAllowancesById = (options?: any) => getApi20260401ResourcesTimeoffAllowancesById({ client: this._client, ...options });
 
-  /** Updates a Allowance */
+  /** Updates a allowances record */
   update: typeof putApi20260401ResourcesTimeoffAllowancesById = (options?: any) => putApi20260401ResourcesTimeoffAllowancesById({ client: this._client, ...options });
 
-  /** Deletes a Allowance */
+  /** Deletes a allowances record */
   delete: typeof deleteApi20260401ResourcesTimeoffAllowancesById = (options?: any) => deleteApi20260401ResourcesTimeoffAllowancesById({ client: this._client, ...options });
 
-  /** Delete with alt allowance Allowance */
+  /** deleteWithAltAllowance */
   deleteWithAltAllowance: typeof postApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowance = (options?: any) => postApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowance({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > BlockedPeriods resource */
+/** Methods for the timeoff > blocked_periods resource */
 export class TimeoffBlockedPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Blocked Periods */
+  /** Lists all blocked_periods */
   list: typeof getApi20260401ResourcesTimeoffBlockedPeriods = (options?: any) => getApi20260401ResourcesTimeoffBlockedPeriods({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all BlockedPeriods records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all blocked_periods, yielding one item at a time.
    * @example for await (const item of client.timeoff.blockedPeriods.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffBlockedPeriods>[0] & { limit?: number; maxItems?: number }) {
@@ -5640,37 +5370,35 @@ export class TimeoffBlockedPeriodsResource {
   }
 
   /**
-   * Fetch all BlockedPeriods records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all blocked_periods across all pages into a single array.
    * @example const all = await client.timeoff.blockedPeriods.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffBlockedPeriods>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Blocked Period */
+  /** Creates a blocked_periods record */
   create: typeof postApi20260401ResourcesTimeoffBlockedPeriods = (options?: any) => postApi20260401ResourcesTimeoffBlockedPeriods({ client: this._client, ...options });
 
-  /** Reads a single Blocked Period */
+  /** Reads a single blocked_periods record */
   get: typeof getApi20260401ResourcesTimeoffBlockedPeriodsById = (options?: any) => getApi20260401ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
 
-  /** Updates a Blocked Period */
+  /** Updates a blocked_periods record */
   update: typeof putApi20260401ResourcesTimeoffBlockedPeriodsById = (options?: any) => putApi20260401ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
 
-  /** Deletes a Blocked Period */
+  /** Deletes a blocked_periods record */
   delete: typeof deleteApi20260401ResourcesTimeoffBlockedPeriodsById = (options?: any) => deleteApi20260401ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > LeaveTypes resource */
+/** Methods for the timeoff > leave_types resource */
 export class TimeoffLeaveTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Leave Types */
+  /** Lists all leave_types */
   list: typeof getApi20260401ResourcesTimeoffLeaveTypes = (options?: any) => getApi20260401ResourcesTimeoffLeaveTypes({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all LeaveTypes records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all leave_types, yielding one item at a time.
    * @example for await (const item of client.timeoff.leaveTypes.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffLeaveTypes>[0] & { limit?: number; maxItems?: number }) {
@@ -5682,34 +5410,32 @@ export class TimeoffLeaveTypesResource {
   }
 
   /**
-   * Fetch all LeaveTypes records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all leave_types across all pages into a single array.
    * @example const all = await client.timeoff.leaveTypes.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffLeaveTypes>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Leave Type */
+  /** Creates a leave_types record */
   create: typeof postApi20260401ResourcesTimeoffLeaveTypes = (options?: any) => postApi20260401ResourcesTimeoffLeaveTypes({ client: this._client, ...options });
 
-  /** Reads a single Leave Type */
+  /** Reads a single leave_types record */
   get: typeof getApi20260401ResourcesTimeoffLeaveTypesById = (options?: any) => getApi20260401ResourcesTimeoffLeaveTypesById({ client: this._client, ...options });
 
-  /** Updates a Leave Type */
+  /** Updates a leave_types record */
   update: typeof putApi20260401ResourcesTimeoffLeaveTypesById = (options?: any) => putApi20260401ResourcesTimeoffLeaveTypesById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > Leaves resource */
+/** Methods for the timeoff > leaves resource */
 export class TimeoffLeavesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Leaves */
+  /** Lists all leaves */
   list: typeof getApi20260401ResourcesTimeoffLeaves = (options?: any) => getApi20260401ResourcesTimeoffLeaves({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Leaves records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all leaves, yielding one item at a time.
    * @example for await (const item of client.timeoff.leaves.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffLeaves>[0] & { limit?: number; maxItems?: number }) {
@@ -5721,46 +5447,44 @@ export class TimeoffLeavesResource {
   }
 
   /**
-   * Fetch all Leaves records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all leaves across all pages into a single array.
    * @example const all = await client.timeoff.leaves.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffLeaves>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Leave */
+  /** Creates a leaves record */
   create: typeof postApi20260401ResourcesTimeoffLeaves = (options?: any) => postApi20260401ResourcesTimeoffLeaves({ client: this._client, ...options });
 
-  /** Reads a single Leave */
+  /** Reads a single leaves record */
   get: typeof getApi20260401ResourcesTimeoffLeavesById = (options?: any) => getApi20260401ResourcesTimeoffLeavesById({ client: this._client, ...options });
 
-  /** Updates a Leave */
+  /** Updates a leaves record */
   update: typeof putApi20260401ResourcesTimeoffLeavesById = (options?: any) => putApi20260401ResourcesTimeoffLeavesById({ client: this._client, ...options });
 
-  /** Deletes a Leave */
+  /** Deletes a leaves record */
   delete: typeof deleteApi20260401ResourcesTimeoffLeavesById = (options?: any) => deleteApi20260401ResourcesTimeoffLeavesById({ client: this._client, ...options });
 
-  /** Approve Leave */
+  /** approve */
   approve: typeof postApi20260401ResourcesTimeoffLeavesApprove = (options?: any) => postApi20260401ResourcesTimeoffLeavesApprove({ client: this._client, ...options });
 
-  /** Approve all Leave */
+  /** approveAll */
   approveAll: typeof postApi20260401ResourcesTimeoffLeavesApproveAll = (options?: any) => postApi20260401ResourcesTimeoffLeavesApproveAll({ client: this._client, ...options });
 
-  /** Reject Leave */
+  /** reject */
   reject: typeof postApi20260401ResourcesTimeoffLeavesReject = (options?: any) => postApi20260401ResourcesTimeoffLeavesReject({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > Policies resource */
+/** Methods for the timeoff > policies resource */
 export class TimeoffPoliciesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Policys */
+  /** Lists all policies */
   list: typeof getApi20260401ResourcesTimeoffPolicies = (options?: any) => getApi20260401ResourcesTimeoffPolicies({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Policies records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all policies, yielding one item at a time.
    * @example for await (const item of client.timeoff.policies.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicies>[0] & { limit?: number; maxItems?: number }) {
@@ -5772,37 +5496,35 @@ export class TimeoffPoliciesResource {
   }
 
   /**
-   * Fetch all Policies records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all policies across all pages into a single array.
    * @example const all = await client.timeoff.policies.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicies>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Policy */
+  /** Creates a policies record */
   create: typeof postApi20260401ResourcesTimeoffPolicies = (options?: any) => postApi20260401ResourcesTimeoffPolicies({ client: this._client, ...options });
 
-  /** Reads a single Policy */
+  /** Reads a single policies record */
   get: typeof getApi20260401ResourcesTimeoffPoliciesById = (options?: any) => getApi20260401ResourcesTimeoffPoliciesById({ client: this._client, ...options });
 
-  /** Updates a Policy */
+  /** Updates a policies record */
   update: typeof putApi20260401ResourcesTimeoffPoliciesById = (options?: any) => putApi20260401ResourcesTimeoffPoliciesById({ client: this._client, ...options });
 
-  /** Deletes a Policy */
+  /** Deletes a policies record */
   delete: typeof deleteApi20260401ResourcesTimeoffPoliciesById = (options?: any) => deleteApi20260401ResourcesTimeoffPoliciesById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > PolicyAssignments resource */
+/** Methods for the timeoff > policy_assignments resource */
 export class TimeoffPolicyAssignmentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Policy Assignments */
+  /** Lists all policy_assignments */
   list: typeof getApi20260401ResourcesTimeoffPolicyAssignments = (options?: any) => getApi20260401ResourcesTimeoffPolicyAssignments({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PolicyAssignments records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all policy_assignments, yielding one item at a time.
    * @example for await (const item of client.timeoff.policyAssignments.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicyAssignments>[0] & { limit?: number; maxItems?: number }) {
@@ -5814,37 +5536,35 @@ export class TimeoffPolicyAssignmentsResource {
   }
 
   /**
-   * Fetch all PolicyAssignments records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all policy_assignments across all pages into a single array.
    * @example const all = await client.timeoff.policyAssignments.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicyAssignments>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Policy Assignment */
+  /** Creates a policy_assignments record */
   create: typeof postApi20260401ResourcesTimeoffPolicyAssignments = (options?: any) => postApi20260401ResourcesTimeoffPolicyAssignments({ client: this._client, ...options });
 
-  /** Reads a single Policy Assignment */
+  /** Reads a single policy_assignments record */
   get: typeof getApi20260401ResourcesTimeoffPolicyAssignmentsById = (options?: any) => getApi20260401ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
 
-  /** Updates a Policy Assignment */
+  /** Updates a policy_assignments record */
   update: typeof putApi20260401ResourcesTimeoffPolicyAssignmentsById = (options?: any) => putApi20260401ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
 
-  /** Deletes a Policy Assignment */
+  /** Deletes a policy_assignments record */
   delete: typeof deleteApi20260401ResourcesTimeoffPolicyAssignmentsById = (options?: any) => deleteApi20260401ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
 
 }
-/** Methods for the Timeoff > PolicyTimelines resource */
+/** Methods for the timeoff > policy_timelines resource */
 export class TimeoffPolicyTimelinesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Policy Timelines */
+  /** Lists all policy_timelines */
   list: typeof getApi20260401ResourcesTimeoffPolicyTimelines = (options?: any) => getApi20260401ResourcesTimeoffPolicyTimelines({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all PolicyTimelines records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all policy_timelines, yielding one item at a time.
    * @example for await (const item of client.timeoff.policyTimelines.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicyTimelines>[0] & { limit?: number; maxItems?: number }) {
@@ -5856,8 +5576,7 @@ export class TimeoffPolicyTimelinesResource {
   }
 
   /**
-   * Fetch all PolicyTimelines records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all policy_timelines across all pages into a single array.
    * @example const all = await client.timeoff.policyTimelines.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTimeoffPolicyTimelines>[0] & { limit?: number; maxItems?: number }) {
@@ -5865,16 +5584,15 @@ export class TimeoffPolicyTimelinesResource {
   }
 
 }
-/** Methods for the Trainings > Categories resource */
+/** Methods for the trainings > categories resource */
 export class TrainingsCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Categorys */
+  /** Lists all categories */
   list: typeof getApi20260401ResourcesTrainingsCategories = (options?: any) => getApi20260401ResourcesTrainingsCategories({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Categories records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all categories, yielding one item at a time.
    * @example for await (const item of client.trainings.categories.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsCategories>[0] & { limit?: number; maxItems?: number }) {
@@ -5886,34 +5604,32 @@ export class TrainingsCategoriesResource {
   }
 
   /**
-   * Fetch all Categories records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all categories across all pages into a single array.
    * @example const all = await client.trainings.categories.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsCategories>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Category */
+  /** Creates a categories record */
   create: typeof postApi20260401ResourcesTrainingsCategories = (options?: any) => postApi20260401ResourcesTrainingsCategories({ client: this._client, ...options });
 
-  /** Reads a single Category */
+  /** Reads a single categories record */
   get: typeof getApi20260401ResourcesTrainingsCategoriesById = (options?: any) => getApi20260401ResourcesTrainingsCategoriesById({ client: this._client, ...options });
 
-  /** Deletes a Category */
+  /** Deletes a categories record */
   delete: typeof deleteApi20260401ResourcesTrainingsCategoriesById = (options?: any) => deleteApi20260401ResourcesTrainingsCategoriesById({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > SessionAccessMemberships resource */
+/** Methods for the trainings > session_access_memberships resource */
 export class TrainingsSessionAccessMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Session Access Memberships */
+  /** Lists all session_access_memberships */
   list: typeof getApi20260401ResourcesTrainingsSessionAccessMemberships = (options?: any) => getApi20260401ResourcesTrainingsSessionAccessMemberships({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SessionAccessMemberships records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all session_access_memberships, yielding one item at a time.
    * @example for await (const item of client.trainings.sessionAccessMemberships.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessionAccessMemberships>[0] & { limit?: number; maxItems?: number }) {
@@ -5925,34 +5641,32 @@ export class TrainingsSessionAccessMembershipsResource {
   }
 
   /**
-   * Fetch all SessionAccessMemberships records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all session_access_memberships across all pages into a single array.
    * @example const all = await client.trainings.sessionAccessMemberships.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessionAccessMemberships>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Session Access Membership */
+  /** Reads a single session_access_memberships record */
   get: typeof getApi20260401ResourcesTrainingsSessionAccessMembershipsById = (options?: any) => getApi20260401ResourcesTrainingsSessionAccessMembershipsById({ client: this._client, ...options });
 
-  /** Bulk create Session Access Membership */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreate = (options?: any) => postApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreate({ client: this._client, ...options });
 
-  /** Bulk destroy Session Access Membership */
+  /** bulkDestroy */
   bulkDestroy: typeof postApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroy = (options?: any) => postApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroy({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > SessionAttendances resource */
+/** Methods for the trainings > session_attendances resource */
 export class TrainingsSessionAttendancesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Session Attendances */
+  /** Lists all session_attendances */
   list: typeof getApi20260401ResourcesTrainingsSessionAttendances = (options?: any) => getApi20260401ResourcesTrainingsSessionAttendances({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all SessionAttendances records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all session_attendances, yielding one item at a time.
    * @example for await (const item of client.trainings.sessionAttendances.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessionAttendances>[0] & { limit?: number; maxItems?: number }) {
@@ -5964,31 +5678,29 @@ export class TrainingsSessionAttendancesResource {
   }
 
   /**
-   * Fetch all SessionAttendances records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all session_attendances across all pages into a single array.
    * @example const all = await client.trainings.sessionAttendances.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessionAttendances>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Session Attendance */
+  /** Reads a single session_attendances record */
   get: typeof getApi20260401ResourcesTrainingsSessionAttendancesById = (options?: any) => getApi20260401ResourcesTrainingsSessionAttendancesById({ client: this._client, ...options });
 
-  /** Bulk update Session Attendance */
+  /** bulkUpdate */
   bulkUpdate: typeof postApi20260401ResourcesTrainingsSessionAttendancesBulkUpdate = (options?: any) => postApi20260401ResourcesTrainingsSessionAttendancesBulkUpdate({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > Sessions resource */
+/** Methods for the trainings > sessions resource */
 export class TrainingsSessionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Sessions */
+  /** Lists all sessions */
   list: typeof getApi20260401ResourcesTrainingsSessions = (options?: any) => getApi20260401ResourcesTrainingsSessions({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Sessions records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all sessions, yielding one item at a time.
    * @example for await (const item of client.trainings.sessions.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessions>[0] & { limit?: number; maxItems?: number }) {
@@ -6000,37 +5712,35 @@ export class TrainingsSessionsResource {
   }
 
   /**
-   * Fetch all Sessions records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all sessions across all pages into a single array.
    * @example const all = await client.trainings.sessions.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsSessions>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Session */
+  /** Creates a sessions record */
   create: typeof postApi20260401ResourcesTrainingsSessions = (options?: any) => postApi20260401ResourcesTrainingsSessions({ client: this._client, ...options });
 
-  /** Reads a single Session */
+  /** Reads a single sessions record */
   get: typeof getApi20260401ResourcesTrainingsSessionsById = (options?: any) => getApi20260401ResourcesTrainingsSessionsById({ client: this._client, ...options });
 
-  /** Updates a Session */
+  /** Updates a sessions record */
   update: typeof putApi20260401ResourcesTrainingsSessionsById = (options?: any) => putApi20260401ResourcesTrainingsSessionsById({ client: this._client, ...options });
 
-  /** Deletes a Session */
+  /** Deletes a sessions record */
   delete: typeof deleteApi20260401ResourcesTrainingsSessionsById = (options?: any) => deleteApi20260401ResourcesTrainingsSessionsById({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > TrainingClasses resource */
+/** Methods for the trainings > training_classes resource */
 export class TrainingsTrainingClassesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Training Classess */
+  /** Lists all training_classes */
   list: typeof getApi20260401ResourcesTrainingsTrainingClasses = (options?: any) => getApi20260401ResourcesTrainingsTrainingClasses({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TrainingClasses records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all training_classes, yielding one item at a time.
    * @example for await (const item of client.trainings.trainingClasses.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainingClasses>[0] & { limit?: number; maxItems?: number }) {
@@ -6042,37 +5752,35 @@ export class TrainingsTrainingClassesResource {
   }
 
   /**
-   * Fetch all TrainingClasses records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all training_classes across all pages into a single array.
    * @example const all = await client.trainings.trainingClasses.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainingClasses>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Training Classes */
+  /** Creates a training_classes record */
   create: typeof postApi20260401ResourcesTrainingsTrainingClasses = (options?: any) => postApi20260401ResourcesTrainingsTrainingClasses({ client: this._client, ...options });
 
-  /** Reads a single Training Classes */
+  /** Reads a single training_classes record */
   get: typeof getApi20260401ResourcesTrainingsTrainingClassesById = (options?: any) => getApi20260401ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
 
-  /** Updates a Training Classes */
+  /** Updates a training_classes record */
   update: typeof putApi20260401ResourcesTrainingsTrainingClassesById = (options?: any) => putApi20260401ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
 
-  /** Deletes a Training Classes */
+  /** Deletes a training_classes record */
   delete: typeof deleteApi20260401ResourcesTrainingsTrainingClassesById = (options?: any) => deleteApi20260401ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > TrainingMemberships resource */
+/** Methods for the trainings > training_memberships resource */
 export class TrainingsTrainingMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Training Memberships */
+  /** Lists all training_memberships */
   list: typeof getApi20260401ResourcesTrainingsTrainingMemberships = (options?: any) => getApi20260401ResourcesTrainingsTrainingMemberships({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all TrainingMemberships records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all training_memberships, yielding one item at a time.
    * @example for await (const item of client.trainings.trainingMemberships.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainingMemberships>[0] & { limit?: number; maxItems?: number }) {
@@ -6084,37 +5792,35 @@ export class TrainingsTrainingMembershipsResource {
   }
 
   /**
-   * Fetch all TrainingMemberships records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all training_memberships across all pages into a single array.
    * @example const all = await client.trainings.trainingMemberships.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainingMemberships>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Training Membership */
+  /** Reads a single training_memberships record */
   get: typeof getApi20260401ResourcesTrainingsTrainingMembershipsById = (options?: any) => getApi20260401ResourcesTrainingsTrainingMembershipsById({ client: this._client, ...options });
 
-  /** Updates a Training Membership */
+  /** Updates a training_memberships record */
   update: typeof putApi20260401ResourcesTrainingsTrainingMembershipsById = (options?: any) => putApi20260401ResourcesTrainingsTrainingMembershipsById({ client: this._client, ...options });
 
-  /** Bulk create Training Membership */
+  /** bulkCreate */
   bulkCreate: typeof postApi20260401ResourcesTrainingsTrainingMembershipsBulkCreate = (options?: any) => postApi20260401ResourcesTrainingsTrainingMembershipsBulkCreate({ client: this._client, ...options });
 
-  /** Bulk destroy Training Membership */
+  /** bulkDestroy */
   bulkDestroy: typeof postApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroy = (options?: any) => postApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroy({ client: this._client, ...options });
 
 }
-/** Methods for the Trainings > Trainings resource */
+/** Methods for the trainings > trainings resource */
 export class TrainingsTrainingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Trainings */
+  /** Lists all trainings */
   list: typeof getApi20260401ResourcesTrainingsTrainings = (options?: any) => getApi20260401ResourcesTrainingsTrainings({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Trainings records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all trainings, yielding one item at a time.
    * @example for await (const item of client.trainings.trainings.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainings>[0] & { limit?: number; maxItems?: number }) {
@@ -6126,46 +5832,44 @@ export class TrainingsTrainingsResource {
   }
 
   /**
-   * Fetch all Trainings records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all trainings across all pages into a single array.
    * @example const all = await client.trainings.trainings.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesTrainingsTrainings>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Training */
+  /** Creates a trainings record */
   create: typeof postApi20260401ResourcesTrainingsTrainings = (options?: any) => postApi20260401ResourcesTrainingsTrainings({ client: this._client, ...options });
 
-  /** Reads a single Training */
+  /** Reads a single trainings record */
   get: typeof getApi20260401ResourcesTrainingsTrainingsById = (options?: any) => getApi20260401ResourcesTrainingsTrainingsById({ client: this._client, ...options });
 
-  /** Updates a Training */
+  /** Updates a trainings record */
   update: typeof putApi20260401ResourcesTrainingsTrainingsById = (options?: any) => putApi20260401ResourcesTrainingsTrainingsById({ client: this._client, ...options });
 
-  /** Deletes a Training */
+  /** Deletes a trainings record */
   delete: typeof deleteApi20260401ResourcesTrainingsTrainingsById = (options?: any) => deleteApi20260401ResourcesTrainingsTrainingsById({ client: this._client, ...options });
 
-  /** Bulk delete Training */
+  /** bulkDelete */
   bulkDelete: typeof postApi20260401ResourcesTrainingsTrainingsBulkDelete = (options?: any) => postApi20260401ResourcesTrainingsTrainingsBulkDelete({ client: this._client, ...options });
 
-  /** Bulk update catalog Training */
+  /** bulkUpdateCatalog */
   bulkUpdateCatalog: typeof postApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalog = (options?: any) => postApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalog({ client: this._client, ...options });
 
-  /** Update status Training */
+  /** updateStatus */
   updateStatus: typeof postApi20260401ResourcesTrainingsTrainingsUpdateStatus = (options?: any) => postApi20260401ResourcesTrainingsTrainingsUpdateStatus({ client: this._client, ...options });
 
 }
-/** Methods for the WorkSchedule > DayConfigurations resource */
+/** Methods for the work_schedule > day_configurations resource */
 export class WorkScheduleDayConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Day Configurations */
+  /** Lists all day_configurations */
   list: typeof getApi20260401ResourcesWorkScheduleDayConfigurations = (options?: any) => getApi20260401ResourcesWorkScheduleDayConfigurations({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all DayConfigurations records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all day_configurations, yielding one item at a time.
    * @example for await (const item of client.workSchedule.dayConfigurations.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleDayConfigurations>[0] & { limit?: number; maxItems?: number }) {
@@ -6177,31 +5881,29 @@ export class WorkScheduleDayConfigurationsResource {
   }
 
   /**
-   * Fetch all DayConfigurations records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all day_configurations across all pages into a single array.
    * @example const all = await client.workSchedule.dayConfigurations.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleDayConfigurations>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Reads a single Day Configuration */
+  /** Reads a single day_configurations record */
   get: typeof getApi20260401ResourcesWorkScheduleDayConfigurationsById = (options?: any) => getApi20260401ResourcesWorkScheduleDayConfigurationsById({ client: this._client, ...options });
 
-  /** Bulk cud Day Configuration */
+  /** bulkCud */
   bulkCud: typeof postApi20260401ResourcesWorkScheduleDayConfigurationsBulkCud = (options?: any) => postApi20260401ResourcesWorkScheduleDayConfigurationsBulkCud({ client: this._client, ...options });
 
 }
-/** Methods for the WorkSchedule > OverlapPeriods resource */
+/** Methods for the work_schedule > overlap_periods resource */
 export class WorkScheduleOverlapPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Overlap Periods */
+  /** Lists all overlap_periods */
   list: typeof getApi20260401ResourcesWorkScheduleOverlapPeriods = (options?: any) => getApi20260401ResourcesWorkScheduleOverlapPeriods({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all OverlapPeriods records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all overlap_periods, yielding one item at a time.
    * @example for await (const item of client.workSchedule.overlapPeriods.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleOverlapPeriods>[0] & { limit?: number; maxItems?: number }) {
@@ -6213,37 +5915,35 @@ export class WorkScheduleOverlapPeriodsResource {
   }
 
   /**
-   * Fetch all OverlapPeriods records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all overlap_periods across all pages into a single array.
    * @example const all = await client.workSchedule.overlapPeriods.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleOverlapPeriods>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Overlap Period */
+  /** Creates a overlap_periods record */
   create: typeof postApi20260401ResourcesWorkScheduleOverlapPeriods = (options?: any) => postApi20260401ResourcesWorkScheduleOverlapPeriods({ client: this._client, ...options });
 
-  /** Reads a single Overlap Period */
+  /** Reads a single overlap_periods record */
   get: typeof getApi20260401ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => getApi20260401ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
 
-  /** Updates a Overlap Period */
+  /** Updates a overlap_periods record */
   update: typeof putApi20260401ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => putApi20260401ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
 
-  /** Deletes a Overlap Period */
+  /** Deletes a overlap_periods record */
   delete: typeof deleteApi20260401ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => deleteApi20260401ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
 
 }
-/** Methods for the WorkSchedule > Schedules resource */
+/** Methods for the work_schedule > schedules resource */
 export class WorkScheduleSchedulesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
-  /** Reads all Schedules */
+  /** Lists all schedules */
   list: typeof getApi20260401ResourcesWorkScheduleSchedules = (options?: any) => getApi20260401ResourcesWorkScheduleSchedules({ client: this._client, ...options });
 
   /**
-   * Auto-paginate through all Schedules records, yielding one item at a time.
-   * Uses cursor-based pagination with `after_id` / `before_id`.
+   * Auto-paginate through all schedules, yielding one item at a time.
    * @example for await (const item of client.workSchedule.schedules.paginate()) { ... }
    */
   paginate(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleSchedules>[0] & { limit?: number; maxItems?: number }) {
@@ -6255,28 +5955,27 @@ export class WorkScheduleSchedulesResource {
   }
 
   /**
-   * Fetch all Schedules records across all pages into a single array.
-   * @param options.maxItems - Safety cap on total items fetched (default: no limit)
+   * Fetch all schedules across all pages into a single array.
    * @example const all = await client.workSchedule.schedules.all()
    */
   all(options?: Parameters<typeof getApi20260401ResourcesWorkScheduleSchedules>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
-  /** Creates a Schedule */
+  /** Creates a schedules record */
   create: typeof postApi20260401ResourcesWorkScheduleSchedules = (options?: any) => postApi20260401ResourcesWorkScheduleSchedules({ client: this._client, ...options });
 
-  /** Reads a single Schedule */
+  /** Reads a single schedules record */
   get: typeof getApi20260401ResourcesWorkScheduleSchedulesById = (options?: any) => getApi20260401ResourcesWorkScheduleSchedulesById({ client: this._client, ...options });
 
-  /** Updates a Schedule */
+  /** Updates a schedules record */
   update: typeof putApi20260401ResourcesWorkScheduleSchedulesById = (options?: any) => putApi20260401ResourcesWorkScheduleSchedulesById({ client: this._client, ...options });
 
-  /** Toggle archive Schedule */
+  /** toggleArchive */
   toggleArchive: typeof postApi20260401ResourcesWorkScheduleSchedulesToggleArchive = (options?: any) => postApi20260401ResourcesWorkScheduleSchedulesToggleArchive({ client: this._client, ...options });
 
 }
-/** Namespace for all ApiPublic resources */
+/** Namespace for all api_public resources */
 export class ApiPublicNamespace {
   readonly credentials: ApiPublicCredentialsResource;
   readonly webhookSubscriptions: ApiPublicWebhookSubscriptionsResource;
@@ -6285,22 +5984,20 @@ export class ApiPublicNamespace {
     this.webhookSubscriptions = new ApiPublicWebhookSubscriptionsResource(client);
   }
 }
-/** Namespace for all Approvals resources */
+/** Namespace for all approvals resources */
 export class ApprovalsNamespace {
-  readonly materializedApprovalsFlowsApproveResource: ApprovalsMaterializedApprovalsFlowsApproveResourceResource;
-  readonly materializedApprovalsFlowsRejectResource: ApprovalsMaterializedApprovalsFlowsRejectResourceResource;
+  readonly materializedApprovalsFlows: ApprovalsMaterializedApprovalsFlowsResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.materializedApprovalsFlowsApproveResource = new ApprovalsMaterializedApprovalsFlowsApproveResourceResource(client);
-    this.materializedApprovalsFlowsRejectResource = new ApprovalsMaterializedApprovalsFlowsRejectResourceResource(client);
+    this.materializedApprovalsFlows = new ApprovalsMaterializedApprovalsFlowsResource(client);
   }
 }
-/** Namespace for all Ats resources */
+/** Namespace for all ats resources */
 export class AtsNamespace {
   readonly answers: AtsAnswersResource;
-  readonly applications: AtsApplicationsResource;
   readonly applicationPhases: AtsApplicationPhasesResource;
-  readonly candidates: AtsCandidatesResource;
+  readonly applications: AtsApplicationsResource;
   readonly candidateSources: AtsCandidateSourcesResource;
+  readonly candidates: AtsCandidatesResource;
   readonly evaluationForms: AtsEvaluationFormsResource;
   readonly feedbacks: AtsFeedbacksResource;
   readonly hiringStages: AtsHiringStagesResource;
@@ -6310,10 +6007,10 @@ export class AtsNamespace {
   readonly rejectionReasons: AtsRejectionReasonsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.answers = new AtsAnswersResource(client);
-    this.applications = new AtsApplicationsResource(client);
     this.applicationPhases = new AtsApplicationPhasesResource(client);
-    this.candidates = new AtsCandidatesResource(client);
+    this.applications = new AtsApplicationsResource(client);
     this.candidateSources = new AtsCandidateSourcesResource(client);
+    this.candidates = new AtsCandidatesResource(client);
     this.evaluationForms = new AtsEvaluationFormsResource(client);
     this.feedbacks = new AtsFeedbacksResource(client);
     this.hiringStages = new AtsHiringStagesResource(client);
@@ -6323,7 +6020,7 @@ export class AtsNamespace {
     this.rejectionReasons = new AtsRejectionReasonsResource(client);
   }
 }
-/** Namespace for all Attendance resources */
+/** Namespace for all attendance resources */
 export class AttendanceNamespace {
   readonly breakConfigurations: AttendanceBreakConfigurationsResource;
   readonly editTimesheetRequests: AttendanceEditTimesheetRequestsResource;
@@ -6344,7 +6041,7 @@ export class AttendanceNamespace {
     this.workedTimes = new AttendanceWorkedTimesResource(client);
   }
 }
-/** Namespace for all Banking resources */
+/** Namespace for all banking resources */
 export class BankingNamespace {
   readonly bankAccounts: BankingBankAccountsResource;
   readonly cardPayments: BankingCardPaymentsResource;
@@ -6355,34 +6052,34 @@ export class BankingNamespace {
     this.transactions = new BankingTransactionsResource(client);
   }
 }
-/** Namespace for all BookkeepersManagement resources */
+/** Namespace for all bookkeepers_management resources */
 export class BookkeepersManagementNamespace {
   readonly incidences: BookkeepersManagementIncidencesResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.incidences = new BookkeepersManagementIncidencesResource(client);
   }
 }
-/** Namespace for all Companies resources */
+/** Namespace for all companies resources */
 export class CompaniesNamespace {
   readonly legalEntities: CompaniesLegalEntitiesResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.legalEntities = new CompaniesLegalEntitiesResource(client);
   }
 }
-/** Namespace for all Compensations resources */
+/** Namespace for all compensations resources */
 export class CompensationsNamespace {
   readonly concepts: CompensationsConceptsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.concepts = new CompensationsConceptsResource(client);
   }
 }
-/** Namespace for all Contracts resources */
+/** Namespace for all contracts resources */
 export class ContractsNamespace {
   readonly compensations: ContractsCompensationsResource;
   readonly contractTemplates: ContractsContractTemplatesResource;
-  readonly contractVersions: ContractsContractVersionsResource;
   readonly contractVersionHistories: ContractsContractVersionHistoriesResource;
   readonly contractVersionMetaData: ContractsContractVersionMetaDataResource;
+  readonly contractVersions: ContractsContractVersionsResource;
   readonly frenchContractTypes: ContractsFrenchContractTypesResource;
   readonly germanContractTypes: ContractsGermanContractTypesResource;
   readonly portugueseContractTypes: ContractsPortugueseContractTypesResource;
@@ -6395,9 +6092,9 @@ export class ContractsNamespace {
   constructor(client: ReturnType<typeof createClient>) {
     this.compensations = new ContractsCompensationsResource(client);
     this.contractTemplates = new ContractsContractTemplatesResource(client);
-    this.contractVersions = new ContractsContractVersionsResource(client);
     this.contractVersionHistories = new ContractsContractVersionHistoriesResource(client);
     this.contractVersionMetaData = new ContractsContractVersionMetaDataResource(client);
+    this.contractVersions = new ContractsContractVersionsResource(client);
     this.frenchContractTypes = new ContractsFrenchContractTypesResource(client);
     this.germanContractTypes = new ContractsGermanContractTypesResource(client);
     this.portugueseContractTypes = new ContractsPortugueseContractTypesResource(client);
@@ -6409,7 +6106,7 @@ export class ContractsNamespace {
     this.taxonomies = new ContractsTaxonomiesResource(client);
   }
 }
-/** Namespace for all CustomFields resources */
+/** Namespace for all custom_fields resources */
 export class CustomFieldsNamespace {
   readonly fields: CustomFieldsFieldsResource;
   readonly options: CustomFieldsOptionsResource;
@@ -6422,7 +6119,7 @@ export class CustomFieldsNamespace {
     this.values = new CustomFieldsValuesResource(client);
   }
 }
-/** Namespace for all CustomResources resources */
+/** Namespace for all custom_resources resources */
 export class CustomResourcesNamespace {
   readonly resources: CustomResourcesResourcesResource;
   readonly schemas: CustomResourcesSchemasResource;
@@ -6433,18 +6130,18 @@ export class CustomResourcesNamespace {
     this.values = new CustomResourcesValuesResource(client);
   }
 }
-/** Namespace for all Documents resources */
+/** Namespace for all documents resources */
 export class DocumentsNamespace {
   readonly documents: DocumentsDocumentsResource;
-  readonly downloadUrlsBulkCreate: DocumentsDownloadUrlsBulkCreateResource;
+  readonly downloadUrls: DocumentsDownloadUrlsResource;
   readonly folders: DocumentsFoldersResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.documents = new DocumentsDocumentsResource(client);
-    this.downloadUrlsBulkCreate = new DocumentsDownloadUrlsBulkCreateResource(client);
+    this.downloadUrls = new DocumentsDownloadUrlsResource(client);
     this.folders = new DocumentsFoldersResource(client);
   }
 }
-/** Namespace for all EmployeeUpdates resources */
+/** Namespace for all employee_updates resources */
 export class EmployeeUpdatesNamespace {
   readonly absences: EmployeeUpdatesAbsencesResource;
   readonly contractChanges: EmployeeUpdatesContractChangesResource;
@@ -6461,14 +6158,14 @@ export class EmployeeUpdatesNamespace {
     this.terminations = new EmployeeUpdatesTerminationsResource(client);
   }
 }
-/** Namespace for all Employees resources */
+/** Namespace for all employees resources */
 export class EmployeesNamespace {
   readonly employees: EmployeesEmployeesResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.employees = new EmployeesEmployeesResource(client);
   }
 }
-/** Namespace for all Expenses resources */
+/** Namespace for all expenses resources */
 export class ExpensesNamespace {
   readonly expensables: ExpensesExpensablesResource;
   readonly expenses: ExpensesExpensesResource;
@@ -6481,15 +6178,15 @@ export class ExpensesNamespace {
     this.perDiems = new ExpensesPerDiemsResource(client);
   }
 }
-/** Namespace for all Finance resources */
+/** Namespace for all finance resources */
 export class FinanceNamespace {
-  readonly accounts: FinanceAccountsResource;
   readonly accountingSettings: FinanceAccountingSettingsResource;
+  readonly accounts: FinanceAccountsResource;
   readonly budgetOptions: FinanceBudgetOptionsResource;
   readonly categories: FinanceCategoriesResource;
   readonly contacts: FinanceContactsResource;
-  readonly costCenters: FinanceCostCentersResource;
   readonly costCenterMemberships: FinanceCostCenterMembershipsResource;
+  readonly costCenters: FinanceCostCentersResource;
   readonly financialDocuments: FinanceFinancialDocumentsResource;
   readonly journalEntries: FinanceJournalEntriesResource;
   readonly journalLines: FinanceJournalLinesResource;
@@ -6497,13 +6194,13 @@ export class FinanceNamespace {
   readonly taxRates: FinanceTaxRatesResource;
   readonly taxTypes: FinanceTaxTypesResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.accounts = new FinanceAccountsResource(client);
     this.accountingSettings = new FinanceAccountingSettingsResource(client);
+    this.accounts = new FinanceAccountsResource(client);
     this.budgetOptions = new FinanceBudgetOptionsResource(client);
     this.categories = new FinanceCategoriesResource(client);
     this.contacts = new FinanceContactsResource(client);
-    this.costCenters = new FinanceCostCentersResource(client);
     this.costCenterMemberships = new FinanceCostCenterMembershipsResource(client);
+    this.costCenters = new FinanceCostCentersResource(client);
     this.financialDocuments = new FinanceFinancialDocumentsResource(client);
     this.journalEntries = new FinanceJournalEntriesResource(client);
     this.journalLines = new FinanceJournalLinesResource(client);
@@ -6512,14 +6209,14 @@ export class FinanceNamespace {
     this.taxTypes = new FinanceTaxTypesResource(client);
   }
 }
-/** Namespace for all Holidays resources */
+/** Namespace for all holidays resources */
 export class HolidaysNamespace {
   readonly companyHolidays: HolidaysCompanyHolidaysResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.companyHolidays = new HolidaysCompanyHolidaysResource(client);
   }
 }
-/** Namespace for all Integrations resources */
+/** Namespace for all integrations resources */
 export class IntegrationsNamespace {
   readonly syncableItems: IntegrationsSyncableItemsResource;
   readonly syncableSyncRuns: IntegrationsSyncableSyncRunsResource;
@@ -6528,16 +6225,16 @@ export class IntegrationsNamespace {
     this.syncableSyncRuns = new IntegrationsSyncableSyncRunsResource(client);
   }
 }
-/** Namespace for all ItManagement resources */
+/** Namespace for all it_management resources */
 export class ItManagementNamespace {
-  readonly itAssets: ItManagementItAssetsResource;
   readonly itAssetModels: ItManagementItAssetModelsResource;
+  readonly itAssets: ItManagementItAssetsResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.itAssets = new ItManagementItAssetsResource(client);
     this.itAssetModels = new ItManagementItAssetModelsResource(client);
+    this.itAssets = new ItManagementItAssetsResource(client);
   }
 }
-/** Namespace for all JobCatalog resources */
+/** Namespace for all job_catalog resources */
 export class JobCatalogNamespace {
   readonly levels: JobCatalogLevelsResource;
   readonly nodeAttributes: JobCatalogNodeAttributesResource;
@@ -6550,7 +6247,7 @@ export class JobCatalogNamespace {
     this.treeNodes = new JobCatalogTreeNodesResource(client);
   }
 }
-/** Namespace for all Locations resources */
+/** Namespace for all locations resources */
 export class LocationsNamespace {
   readonly locations: LocationsLocationsResource;
   readonly workAreas: LocationsWorkAreasResource;
@@ -6559,53 +6256,53 @@ export class LocationsNamespace {
     this.workAreas = new LocationsWorkAreasResource(client);
   }
 }
-/** Namespace for all Marketplace resources */
+/** Namespace for all marketplace resources */
 export class MarketplaceNamespace {
-  readonly installations: MarketplaceInstallationsResource;
   readonly installationSettings: MarketplaceInstallationSettingsResource;
+  readonly installations: MarketplaceInstallationsResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.installations = new MarketplaceInstallationsResource(client);
     this.installationSettings = new MarketplaceInstallationSettingsResource(client);
+    this.installations = new MarketplaceInstallationsResource(client);
   }
 }
-/** Namespace for all Payroll resources */
+/** Namespace for all payroll resources */
 export class PayrollNamespace {
   readonly familySituations: PayrollFamilySituationsResource;
-  readonly policyPeriodsChangeStatus: PayrollPolicyPeriodsChangeStatusResource;
+  readonly policyPeriods: PayrollPolicyPeriodsResource;
   readonly supplements: PayrollSupplementsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.familySituations = new PayrollFamilySituationsResource(client);
-    this.policyPeriodsChangeStatus = new PayrollPolicyPeriodsChangeStatusResource(client);
+    this.policyPeriods = new PayrollPolicyPeriodsResource(client);
     this.supplements = new PayrollSupplementsResource(client);
   }
 }
-/** Namespace for all PayrollEmployees resources */
+/** Namespace for all payroll_employees resources */
 export class PayrollEmployeesNamespace {
   readonly identifiers: PayrollEmployeesIdentifiersResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.identifiers = new PayrollEmployeesIdentifiersResource(client);
   }
 }
-/** Namespace for all PayrollIntegrationsBase resources */
+/** Namespace for all payroll_integrations_base resources */
 export class PayrollIntegrationsBaseNamespace {
   readonly codes: PayrollIntegrationsBaseCodesResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.codes = new PayrollIntegrationsBaseCodesResource(client);
   }
 }
-/** Namespace for all Performance resources */
+/** Namespace for all performance resources */
 export class PerformanceNamespace {
   readonly agreements: PerformanceAgreementsResource;
   readonly companyEmployeeScoreScales: PerformanceCompanyEmployeeScoreScalesResource;
   readonly employeeScoreScales: PerformanceEmployeeScoreScalesResource;
-  readonly reviewEvaluations: PerformanceReviewEvaluationsResource;
   readonly reviewEvaluationAnswers: PerformanceReviewEvaluationAnswersResource;
   readonly reviewEvaluationScores: PerformanceReviewEvaluationScoresResource;
+  readonly reviewEvaluations: PerformanceReviewEvaluationsResource;
   readonly reviewOwners: PerformanceReviewOwnersResource;
-  readonly reviewProcesses: PerformanceReviewProcessesResource;
   readonly reviewProcessCustomTemplates: PerformanceReviewProcessCustomTemplatesResource;
   readonly reviewProcessEstimatedTargets: PerformanceReviewProcessEstimatedTargetsResource;
   readonly reviewProcessTargets: PerformanceReviewProcessTargetsResource;
+  readonly reviewProcesses: PerformanceReviewProcessesResource;
   readonly reviewQuestionnaireByStrategies: PerformanceReviewQuestionnaireByStrategiesResource;
   readonly reviewVisibilitySettings: PerformanceReviewVisibilitySettingsResource;
   readonly targetManagers: PerformanceTargetManagersResource;
@@ -6613,20 +6310,20 @@ export class PerformanceNamespace {
     this.agreements = new PerformanceAgreementsResource(client);
     this.companyEmployeeScoreScales = new PerformanceCompanyEmployeeScoreScalesResource(client);
     this.employeeScoreScales = new PerformanceEmployeeScoreScalesResource(client);
-    this.reviewEvaluations = new PerformanceReviewEvaluationsResource(client);
     this.reviewEvaluationAnswers = new PerformanceReviewEvaluationAnswersResource(client);
     this.reviewEvaluationScores = new PerformanceReviewEvaluationScoresResource(client);
+    this.reviewEvaluations = new PerformanceReviewEvaluationsResource(client);
     this.reviewOwners = new PerformanceReviewOwnersResource(client);
-    this.reviewProcesses = new PerformanceReviewProcessesResource(client);
     this.reviewProcessCustomTemplates = new PerformanceReviewProcessCustomTemplatesResource(client);
     this.reviewProcessEstimatedTargets = new PerformanceReviewProcessEstimatedTargetsResource(client);
     this.reviewProcessTargets = new PerformanceReviewProcessTargetsResource(client);
+    this.reviewProcesses = new PerformanceReviewProcessesResource(client);
     this.reviewQuestionnaireByStrategies = new PerformanceReviewQuestionnaireByStrategiesResource(client);
     this.reviewVisibilitySettings = new PerformanceReviewVisibilitySettingsResource(client);
     this.targetManagers = new PerformanceTargetManagersResource(client);
   }
 }
-/** Namespace for all Posts resources */
+/** Namespace for all posts resources */
 export class PostsNamespace {
   readonly comments: PostsCommentsResource;
   readonly groups: PostsGroupsResource;
@@ -6637,7 +6334,7 @@ export class PostsNamespace {
     this.posts = new PostsPostsResource(client);
   }
 }
-/** Namespace for all Procurement resources */
+/** Namespace for all procurement resources */
 export class ProcurementNamespace {
   readonly purchaseOrders: ProcurementPurchaseOrdersResource;
   readonly purchaseRequests: ProcurementPurchaseRequestsResource;
@@ -6648,50 +6345,50 @@ export class ProcurementNamespace {
     this.types = new ProcurementTypesResource(client);
   }
 }
-/** Namespace for all ProjectManagement resources */
+/** Namespace for all project_management resources */
 export class ProjectManagementNamespace {
   readonly budgetStrategies: ProjectManagementBudgetStrategiesResource;
   readonly expenseRecords: ProjectManagementExpenseRecordsResource;
   readonly exportableExpenses: ProjectManagementExportableExpensesResource;
-  readonly flexibleTimeRecords: ProjectManagementFlexibleTimeRecordsResource;
   readonly flexibleTimeRecordComments: ProjectManagementFlexibleTimeRecordCommentsResource;
+  readonly flexibleTimeRecords: ProjectManagementFlexibleTimeRecordsResource;
   readonly plannedRecords: ProjectManagementPlannedRecordsResource;
-  readonly projects: ProjectManagementProjectsResource;
   readonly projectTasks: ProjectManagementProjectTasksResource;
   readonly projectWorkers: ProjectManagementProjectWorkersResource;
+  readonly projects: ProjectManagementProjectsResource;
   readonly subprojects: ProjectManagementSubprojectsResource;
   readonly timeRecords: ProjectManagementTimeRecordsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.budgetStrategies = new ProjectManagementBudgetStrategiesResource(client);
     this.expenseRecords = new ProjectManagementExpenseRecordsResource(client);
     this.exportableExpenses = new ProjectManagementExportableExpensesResource(client);
-    this.flexibleTimeRecords = new ProjectManagementFlexibleTimeRecordsResource(client);
     this.flexibleTimeRecordComments = new ProjectManagementFlexibleTimeRecordCommentsResource(client);
+    this.flexibleTimeRecords = new ProjectManagementFlexibleTimeRecordsResource(client);
     this.plannedRecords = new ProjectManagementPlannedRecordsResource(client);
-    this.projects = new ProjectManagementProjectsResource(client);
     this.projectTasks = new ProjectManagementProjectTasksResource(client);
     this.projectWorkers = new ProjectManagementProjectWorkersResource(client);
+    this.projects = new ProjectManagementProjectsResource(client);
     this.subprojects = new ProjectManagementSubprojectsResource(client);
     this.timeRecords = new ProjectManagementTimeRecordsResource(client);
   }
 }
-/** Namespace for all ShiftManagement resources */
+/** Namespace for all shift_management resources */
 export class ShiftManagementNamespace {
   readonly shifts: ShiftManagementShiftsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.shifts = new ShiftManagementShiftsResource(client);
   }
 }
-/** Namespace for all Tasks resources */
+/** Namespace for all tasks resources */
 export class TasksNamespace {
-  readonly tasks: TasksTasksResource;
   readonly taskFiles: TasksTaskFilesResource;
+  readonly tasks: TasksTasksResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.tasks = new TasksTasksResource(client);
     this.taskFiles = new TasksTaskFilesResource(client);
+    this.tasks = new TasksTasksResource(client);
   }
 }
-/** Namespace for all Teams resources */
+/** Namespace for all teams resources */
 export class TeamsNamespace {
   readonly memberships: TeamsMembershipsResource;
   readonly teams: TeamsTeamsResource;
@@ -6700,7 +6397,7 @@ export class TeamsNamespace {
     this.teams = new TeamsTeamsResource(client);
   }
 }
-/** Namespace for all TimePlanning resources */
+/** Namespace for all time_planning resources */
 export class TimePlanningNamespace {
   readonly plannedBreaks: TimePlanningPlannedBreaksResource;
   readonly planningVersions: TimePlanningPlanningVersionsResource;
@@ -6709,56 +6406,56 @@ export class TimePlanningNamespace {
     this.planningVersions = new TimePlanningPlanningVersionsResource(client);
   }
 }
-/** Namespace for all TimeSettings resources */
+/** Namespace for all time_settings resources */
 export class TimeSettingsNamespace {
   readonly breakConfigurations: TimeSettingsBreakConfigurationsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.breakConfigurations = new TimeSettingsBreakConfigurationsResource(client);
   }
 }
-/** Namespace for all Timeoff resources */
+/** Namespace for all timeoff resources */
 export class TimeoffNamespace {
-  readonly allowances: TimeoffAllowancesResource;
   readonly allowanceIncidences: TimeoffAllowanceIncidencesResource;
   readonly allowanceStats: TimeoffAllowanceStatsResource;
+  readonly allowances: TimeoffAllowancesResource;
   readonly blockedPeriods: TimeoffBlockedPeriodsResource;
-  readonly leaves: TimeoffLeavesResource;
   readonly leaveTypes: TimeoffLeaveTypesResource;
+  readonly leaves: TimeoffLeavesResource;
   readonly policies: TimeoffPoliciesResource;
   readonly policyAssignments: TimeoffPolicyAssignmentsResource;
   readonly policyTimelines: TimeoffPolicyTimelinesResource;
   constructor(client: ReturnType<typeof createClient>) {
-    this.allowances = new TimeoffAllowancesResource(client);
     this.allowanceIncidences = new TimeoffAllowanceIncidencesResource(client);
     this.allowanceStats = new TimeoffAllowanceStatsResource(client);
+    this.allowances = new TimeoffAllowancesResource(client);
     this.blockedPeriods = new TimeoffBlockedPeriodsResource(client);
-    this.leaves = new TimeoffLeavesResource(client);
     this.leaveTypes = new TimeoffLeaveTypesResource(client);
+    this.leaves = new TimeoffLeavesResource(client);
     this.policies = new TimeoffPoliciesResource(client);
     this.policyAssignments = new TimeoffPolicyAssignmentsResource(client);
     this.policyTimelines = new TimeoffPolicyTimelinesResource(client);
   }
 }
-/** Namespace for all Trainings resources */
+/** Namespace for all trainings resources */
 export class TrainingsNamespace {
   readonly categories: TrainingsCategoriesResource;
-  readonly sessions: TrainingsSessionsResource;
   readonly sessionAccessMemberships: TrainingsSessionAccessMembershipsResource;
   readonly sessionAttendances: TrainingsSessionAttendancesResource;
-  readonly trainings: TrainingsTrainingsResource;
+  readonly sessions: TrainingsSessionsResource;
   readonly trainingClasses: TrainingsTrainingClassesResource;
   readonly trainingMemberships: TrainingsTrainingMembershipsResource;
+  readonly trainings: TrainingsTrainingsResource;
   constructor(client: ReturnType<typeof createClient>) {
     this.categories = new TrainingsCategoriesResource(client);
-    this.sessions = new TrainingsSessionsResource(client);
     this.sessionAccessMemberships = new TrainingsSessionAccessMembershipsResource(client);
     this.sessionAttendances = new TrainingsSessionAttendancesResource(client);
-    this.trainings = new TrainingsTrainingsResource(client);
+    this.sessions = new TrainingsSessionsResource(client);
     this.trainingClasses = new TrainingsTrainingClassesResource(client);
     this.trainingMemberships = new TrainingsTrainingMembershipsResource(client);
+    this.trainings = new TrainingsTrainingsResource(client);
   }
 }
-/** Namespace for all WorkSchedule resources */
+/** Namespace for all work_schedule resources */
 export class WorkScheduleNamespace {
   readonly dayConfigurations: WorkScheduleDayConfigurationsResource;
   readonly overlapPeriods: WorkScheduleOverlapPeriodsResource;
@@ -6793,79 +6490,79 @@ export class WorkScheduleNamespace {
  * ```
  */
 export class FactorialClient {
-  /** ApiPublic resources */
+  /** api_public resources */
   readonly apiPublic: ApiPublicNamespace;
-  /** Approvals resources */
+  /** approvals resources */
   readonly approvals: ApprovalsNamespace;
-  /** Ats resources */
+  /** ats resources */
   readonly ats: AtsNamespace;
-  /** Attendance resources */
+  /** attendance resources */
   readonly attendance: AttendanceNamespace;
-  /** Banking resources */
+  /** banking resources */
   readonly banking: BankingNamespace;
-  /** BookkeepersManagement resources */
+  /** bookkeepers_management resources */
   readonly bookkeepersManagement: BookkeepersManagementNamespace;
-  /** Companies resources */
+  /** companies resources */
   readonly companies: CompaniesNamespace;
-  /** Compensations resources */
+  /** compensations resources */
   readonly compensations: CompensationsNamespace;
-  /** Contracts resources */
+  /** contracts resources */
   readonly contracts: ContractsNamespace;
-  /** CustomFields resources */
+  /** custom_fields resources */
   readonly customFields: CustomFieldsNamespace;
-  /** CustomResources resources */
+  /** custom_resources resources */
   readonly customResources: CustomResourcesNamespace;
-  /** Documents resources */
+  /** documents resources */
   readonly documents: DocumentsNamespace;
-  /** EmployeeUpdates resources */
+  /** employee_updates resources */
   readonly employeeUpdates: EmployeeUpdatesNamespace;
-  /** Employees resources */
+  /** employees resources */
   readonly employees: EmployeesNamespace;
-  /** Expenses resources */
+  /** expenses resources */
   readonly expenses: ExpensesNamespace;
-  /** Finance resources */
+  /** finance resources */
   readonly finance: FinanceNamespace;
-  /** Holidays resources */
+  /** holidays resources */
   readonly holidays: HolidaysNamespace;
-  /** Integrations resources */
+  /** integrations resources */
   readonly integrations: IntegrationsNamespace;
-  /** ItManagement resources */
+  /** it_management resources */
   readonly itManagement: ItManagementNamespace;
-  /** JobCatalog resources */
+  /** job_catalog resources */
   readonly jobCatalog: JobCatalogNamespace;
-  /** Locations resources */
+  /** locations resources */
   readonly locations: LocationsNamespace;
-  /** Marketplace resources */
+  /** marketplace resources */
   readonly marketplace: MarketplaceNamespace;
-  /** Payroll resources */
+  /** payroll resources */
   readonly payroll: PayrollNamespace;
-  /** PayrollEmployees resources */
+  /** payroll_employees resources */
   readonly payrollEmployees: PayrollEmployeesNamespace;
-  /** PayrollIntegrationsBase resources */
+  /** payroll_integrations_base resources */
   readonly payrollIntegrationsBase: PayrollIntegrationsBaseNamespace;
-  /** Performance resources */
+  /** performance resources */
   readonly performance: PerformanceNamespace;
-  /** Posts resources */
+  /** posts resources */
   readonly posts: PostsNamespace;
-  /** Procurement resources */
+  /** procurement resources */
   readonly procurement: ProcurementNamespace;
-  /** ProjectManagement resources */
+  /** project_management resources */
   readonly projectManagement: ProjectManagementNamespace;
-  /** ShiftManagement resources */
+  /** shift_management resources */
   readonly shiftManagement: ShiftManagementNamespace;
-  /** Tasks resources */
+  /** tasks resources */
   readonly tasks: TasksNamespace;
-  /** Teams resources */
+  /** teams resources */
   readonly teams: TeamsNamespace;
-  /** TimePlanning resources */
+  /** time_planning resources */
   readonly timePlanning: TimePlanningNamespace;
-  /** TimeSettings resources */
+  /** time_settings resources */
   readonly timeSettings: TimeSettingsNamespace;
-  /** Timeoff resources */
+  /** timeoff resources */
   readonly timeoff: TimeoffNamespace;
-  /** Trainings resources */
+  /** trainings resources */
   readonly trainings: TrainingsNamespace;
-  /** WorkSchedule resources */
+  /** work_schedule resources */
   readonly workSchedule: WorkScheduleNamespace;
 
   constructor(config: FactorialClientConfig = {}) {

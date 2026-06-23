@@ -10,7 +10,7 @@ Steps:
   3. Bump SDK semver (--bump major|minor|patch, default: patch).
   4. Regenerate the generated layer:
        - openapi-python-client generate → factorial_api_client/generated/
-       - Re-run /tmp/generate_python_sdk.py → factorial_api_client/client.py
+       - Re-run scripts/generate_python_sdk.py → factorial_api_client/client.py
   5. Bump version in pyproject.toml.
   6. Build and publish: uv build && uv publish (requires PyPI token in env).
 
@@ -36,7 +36,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 PYTHON_DIR = Path(__file__).resolve().parent.parent
 PYPROJECT_PATH = PYTHON_DIR / "pyproject.toml"
 GENERATED_DIR = PYTHON_DIR / "factorial_api_client" / "generated"
-GENERATE_SCRIPT = Path("/tmp/generate_python_sdk.py")
+GENERATE_SCRIPT = Path(__file__).resolve().parent / "generate_python_sdk.py"
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
@@ -237,6 +237,13 @@ def main() -> None:
     parser.add_argument("--spec-path", help="Local spec file instead of fetching")
     parser.add_argument("--bump", choices=["major", "minor", "patch"], default="patch",
                         help="Semver bump type (default: patch)")
+    # CI/beta mode (used by the daily beta-publish workflow):
+    parser.add_argument("--set-version",
+                        help="Use this exact version instead of bumping semver "
+                             "(e.g. a prerelease like 2.0.0b2026070100)")
+    parser.add_argument("--no-publish", action="store_true",
+                        help="Regenerate + write the version, then stop (no build, "
+                             "no publish, no prompt). CI publishes separately.")
     args = parser.parse_args()
 
     print("=== Factorial Python SDK Release ===\n")
@@ -261,11 +268,15 @@ def main() -> None:
     print("Step 2: Patch spec (type: unknown → string)")
     patched_spec = patch_spec(new_spec)
 
-    # 3. Bump SDK semver
+    # 3. Bump SDK semver (or use an explicit --set-version)
     print("Step 3: Bump SDK version")
     current_version = get_current_version()
-    new_version = bump_version(current_version, args.bump)
-    print(f"  Version: {current_version} → {new_version}  ({args.bump} bump)")
+    if args.set_version:
+        new_version = args.set_version
+        print(f"  Version: {current_version} → {new_version}  (explicit --set-version)")
+    else:
+        new_version = bump_version(current_version, args.bump)
+        print(f"  Version: {current_version} → {new_version}  ({args.bump} bump)")
 
     if args.dry_run:
         print("\n[DRY RUN] Stopping before making changes.")
@@ -321,6 +332,11 @@ def main() -> None:
     # 5. Bump version
     print(f"\nStep 5: Bump version to {new_version}")
     set_version(new_version)
+
+    if args.no_publish:
+        print(f"\n⏭  --no-publish: regenerated and set version to {new_version}; "
+              "stopping before build/publish.")
+        return
 
     # 6. Build & publish
     print("\nStep 6: Build and publish")

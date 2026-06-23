@@ -2,18 +2,23 @@
 /**
  * Stage-2 generator for src/sdk.ts  (the FactorialClient wrapper).
  *
- * Reads all exported function names from src/generated/sdk.gen.ts (stage-1
- * output) and produces a fully-typed, domain-namespaced FactorialClient with
- * resource classes, namespace classes, and pagination helpers.
+ * Structure is derived from the REST URL of each generated function
+ * (`/api/<ver>/resources/<namespace>/<resource>/[<id>|<action>]`), which is the
+ * single source of truth shared with the Python generator — so both SDKs expose
+ * the same namespaces, resources and methods, differing only in case convention
+ * (camelCase here, snake_case in Python).
+ *
+ * Method naming:
+ *   - collection            GET → list, POST → create
+ *   - by-id (/{id})         GET → get, PUT → update, DELETE → delete
+ *   - custom action (/foo)  → the action verb, camelCase (e.g. approveResource,
+ *                             clockIn, bulkCreateUpdate)
  *
  * Run manually after updating src/generated/:
- *   npx tsx scripts/generate-sdk.ts
  *   npm run generate-sdk
  *
- * Also called automatically by scripts/release.ts (step 4b) after
- * regenerating src/generated/.
- *
- * Output: src/sdk.ts  (fully overwritten — never edit that file by hand)
+ * Also called automatically by scripts/release.ts after regenerating
+ * src/generated/. Output: src/sdk.ts  (fully overwritten — never edit by hand).
  */
 
 import { readFileSync, writeFileSync } from "fs";
@@ -25,301 +30,108 @@ const ROOT = join(__dirname, "..");
 const SDK_GEN = join(ROOT, "src/generated/sdk.gen.ts");
 const OUT = join(ROOT, "src/sdk.ts");
 
-// ─── Parse all exported function names from sdk.gen.ts ──────────────────────
+// ─── Parse functions (name + HTTP method + url) from sdk.gen.ts ──────────────
+
+type Verb = "get" | "post" | "put" | "delete";
+type Kind = "list" | "get" | "create" | "update" | "delete" | "custom";
+
+type Endpoint = {
+  fnName: string;
+  verb: Verb;
+  ns: string;
+  resource: string;
+  kind: Kind;
+  method: string;
+};
 
 const genSource = readFileSync(SDK_GEN, "utf-8");
-const fnNames: string[] = [];
-for (const m of genSource.matchAll(/^export const (\w+) = /gm)) {
-  fnNames.push(m[1]);
+
+// Each function is `export const <name> = ... (client).<verb><...>({ ... url: '<url>' ... })`.
+// Split on the export boundary and read name/verb from the head and url from the body.
+const rawBlocks = genSource.split(/^export const /m).slice(1);
+
+const COLLECTION: Record<Verb, Kind> = { get: "list", post: "create", put: "update", delete: "delete" };
+const BY_ID: Record<Verb, Kind> = { get: "get", put: "update", delete: "delete", post: "create" };
+
+function capitalize(s: string): string {
+  return s ? s[0].toUpperCase() + s.slice(1) : s;
 }
-console.log(`Found ${fnNames.length} generated functions.`);
-
-// ─── Parse each function name into its parts ────────────────────────────────
-
-// Naming pattern: {verb}Api{Version}Resources{Namespace}{Resource}[{Action}]
-// verb: get | post | put | delete
-// version: e.g. 20260401
-// namespace + resource + optional action are PascalCase segments
-
-type ParsedFn = {
-  fnName: string;
-  verb: "get" | "post" | "put" | "delete";
-  version: string;
-  /** e.g. "Ats" */
-  namespace: string;
-  /** e.g. "Applications" */
-  resource: string;
-  /** e.g. "Apply", "ById", "" */
-  action: string;
-};
-
-/**
- * Split a PascalCase string into its component words.
- * e.g. "AtsJobPostings" → ["Ats", "Job", "Postings"]
- */
-function splitPascal(s: string): string[] {
-  return s.match(/[A-Z][a-z0-9]*/g) ?? [];
+/** snake_case → camelCase */
+function camel(snake: string): string {
+  const [first, ...rest] = snake.split("_");
+  return first + rest.map(capitalize).join("");
+}
+/** snake_case → PascalCase */
+function pascal(snake: string): string {
+  return snake.split("_").map(capitalize).join("");
 }
 
-/**
- * Try to split "NamespaceResource[Action]" into namespace, resource, action.
- *
- * Strategy: try every 1..N prefix lengths as namespace, then try matching the
- * remaining words against known resource patterns. We pick the split where the
- * namespace is the shortest prefix that, when we remove it, leaves a non-empty
- * resource. Because namespaces are always 1-3 PascalCase words, this is safe.
- *
- * Edge cases handled:
- *  - Single-word namespace ("Ats", "Attendance", "Finance" …)
- *  - Multi-word namespace ("ApiPublic", "BookkeepersManagement",
- *    "PayrollEmployees", "PayrollIntegrationsBase", "ProjectManagement", …)
- *  - "ById" suffix always becomes the action
- *  - A trailing sequence of words that doesn't repeat the namespace/resource
- *    prefix is treated as the action
- */
-function parseResourcePath(
-  body: string
-): { namespace: string; resource: string; action: string } | null {
-  // body = everything after "Api{Version}Resources" — e.g. "AtsApplicationsApply"
-  const words = splitPascal(body);
-  if (words.length === 0) return null;
+const endpoints: Endpoint[] = [];
+for (const block of rawBlocks) {
+  const nameMatch = block.match(/^(\w+) =/);
+  const verbMatch = block.match(/\)\.(get|post|put|delete)</);
+  const urlMatch = block.match(/url: '(\/api\/[^']+)'/);
+  if (!nameMatch || !verbMatch || !urlMatch) continue;
 
-  // Known multi-word namespaces (order matters — longer first)
-  const KNOWN_NAMESPACES = [
-    ["Bookkeepers", "Management"],
-    ["Api", "Public"],
-    ["Employee", "Updates"],
-    ["Custom", "Fields"],
-    ["Custom", "Resources"],
-    ["It", "Management"],
-    ["Job", "Catalog"],
-    ["Payroll", "Employees"],
-    ["Payroll", "Integrations", "Base"],
-    ["Project", "Management"],
-    ["Shift", "Management"],
-    ["Time", "Planning"],
-    ["Time", "Settings"],
-    ["Work", "Schedule"],
-  ];
+  const fnName = nameMatch[1];
+  const verb = verbMatch[1] as Verb;
+  // /api/<ver>/resources/<ns>/<resource>/<rest...>
+  const parts = urlMatch[1].split("/api/")[1].split("/");
+  const ns = parts[2];
+  const resource = parts[3];
+  const rest = parts.slice(4);
 
-  // Try to match a known multi-word namespace prefix
-  for (const ns of KNOWN_NAMESPACES) {
-    if (
-      words.length > ns.length &&
-      ns.every((w, i) => words[i] === w)
-    ) {
-      const namespace = ns.join("");
-      const remaining = words.slice(ns.length);
-      // The resource is the next word(s). Try to find where the resource ends
-      // and the action begins by looking for "ById" or resource-boundary heuristic.
-      const { resource, action } = splitResourceAction(namespace, remaining);
-      return { namespace, resource, action };
-    }
+  let kind: Kind;
+  let method: string;
+  if (rest.length === 0) {
+    kind = COLLECTION[verb];
+    method = kind;
+  } else if (rest[0].startsWith("{")) {
+    kind = BY_ID[verb];
+    method = kind;
+  } else {
+    kind = "custom";
+    method = camel(rest[0]);
   }
-
-  // Single-word namespace: first word
-  const namespace = words[0];
-  const remaining = words.slice(1);
-  const { resource, action } = splitResourceAction(namespace, remaining);
-  return { namespace, resource, action };
+  endpoints.push({ fnName, verb, ns, resource, kind, method });
 }
 
-/**
- * Given remaining words after the namespace, split into resource name and action.
- *
- * Heuristic: the resource is the longest prefix of words that, when PascalCased,
- * does NOT include known action words. "ById" is always an action.
- *
- * We try all prefix lengths from longest to shortest, stopping when the remaining
- * suffix (action words) is either empty or starts with an action indicator.
- */
-function splitResourceAction(
-  _namespace: string,
-  words: string[]
-): { resource: string; action: string } {
-  if (words.length === 0) return { resource: "", action: "" };
+console.log(`Parsed ${endpoints.length} endpoints from sdk.gen.ts.`);
 
-  // "ById" is always appended at the end as an action
-  if (words[words.length - 1] === "Id" && words[words.length - 2] === "By") {
-    const resourceWords = words.slice(0, -2);
-    return {
-      resource: resourceWords.join(""),
-      action: "ById",
-    };
-  }
+// ─── Group by namespace → resource ───────────────────────────────────────────
 
-  // Everything else: resource is the whole thing, action is empty.
-  // We'll separate action suffixes in a second pass after we know all resources.
-  // For now just return the full word set as resource.
-  return { resource: words.join(""), action: "" };
-}
-
-const parsed: ParsedFn[] = fnNames.map((fnName) => {
-  // e.g. "getApi20260401ResourcesAtsApplicationsApply"
-  const m = fnName.match(
-    /^(get|post|put|delete)Api(\d+)Resources([A-Z].*)$/
-  );
-  if (!m) throw new Error(`Cannot parse function name: ${fnName}`);
-  const [, verb, version, body] = m as [string, string, string, string];
-
-  const parsed = parseResourcePath(body);
-  if (!parsed) throw new Error(`Cannot parse body: ${body}`);
-
-  return {
-    fnName,
-    verb: verb as ParsedFn["verb"],
-    version,
-    ...parsed,
-  };
-});
-
-// ─── Collect all known resource names per namespace ──────────────────────────
-
-// After initial parse, some functions have an action embedded in the "resource"
-// field (e.g. "ApplicationsApply", "ShiftsClockIn"). We need to separate them.
-// Strategy: collect all base resources (those with no action, i.e. the bare
-// GET collection or POST/PUT/DELETE without suffix). Then for any parsed entry
-// whose "resource" starts with a known base resource name but has extra words,
-// split those extra words off as the action.
-
-// First pass: collect definite base resources (GET collection = no ById, no action)
-const baseResources = new Map<string, Set<string>>(); // namespace → Set<resourceName>
-for (const p of parsed) {
-  if (p.verb === "get" && p.action === "" && p.resource !== "") {
-    if (!baseResources.has(p.namespace)) baseResources.set(p.namespace, new Set());
-    baseResources.get(p.namespace)!.add(p.resource);
-  }
-}
-
-// Second pass: for entries without a detected action, check if their resource
-// starts with a known base resource and has trailing words → those are the action.
-for (const p of parsed) {
-  if (p.action !== "") continue; // already has an action (ById)
-  const bases = baseResources.get(p.namespace);
-  if (!bases) continue;
-
-  // Sort bases by length descending so we match longest prefix first
-  const sortedBases = [...bases].sort((a, b) => b.length - a.length);
-  for (const base of sortedBases) {
-    if (p.resource.startsWith(base) && p.resource.length > base.length) {
-      const actionPart = p.resource.slice(base.length); // e.g. "Apply", "ClockIn"
-      p.resource = base;
-      p.action = actionPart;
-      break;
-    }
-  }
-}
-
-// Third pass: if we have a resource with no GET collection (action-only resources
-// like ApprovalsMaterializedApprovalsFlows), treat the whole thing as resource="" action=resource
-// and use the resource name directly. Actually keep them as-is — they just won't get list/paginate.
-
-// ─── Group by namespace → resource ──────────────────────────────────────────
-
-type ResourceEntry = {
-  fnName: string;
-  verb: ParsedFn["verb"];
-  action: string; // "" | "ById" | "Apply" | "ClockIn" | …
-};
-
-type ResourceMap = Map<string, Map<string, ResourceEntry[]>>; // namespace → resource → entries[]
-
+type ResourceMap = Map<string, Map<string, Endpoint[]>>; // ns → resource → endpoints[]
 const resourceMap: ResourceMap = new Map();
-
-for (const p of parsed) {
-  if (!resourceMap.has(p.namespace)) resourceMap.set(p.namespace, new Map());
-  const nsMap = resourceMap.get(p.namespace)!;
-  if (!nsMap.has(p.resource)) nsMap.set(p.resource, []);
-  nsMap.get(p.resource)!.push({ fnName: p.fnName, verb: p.verb, action: p.action });
+for (const e of endpoints) {
+  if (!resourceMap.has(e.ns)) resourceMap.set(e.ns, new Map());
+  const nsMap = resourceMap.get(e.ns)!;
+  if (!nsMap.has(e.resource)) nsMap.set(e.resource, []);
+  nsMap.get(e.resource)!.push(e);
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-/** PascalCase → camelCase */
-function toCamel(s: string): string {
-  if (!s) return s;
-  return s[0].toLowerCase() + s.slice(1);
-}
-
-/**
- * Convert a PascalCase namespace name to camelCase property name.
- * e.g. "ApiPublic" → "apiPublic", "Ats" → "ats"
- */
-function namespaceProp(ns: string): string {
-  return toCamel(ns);
-}
-
-/**
- * Convert a PascalCase resource name to camelCase property name on the namespace.
- * e.g. "Applications" → "applications", "JobPostings" → "jobPostings"
- * Special: strip the namespace prefix if resource starts with it.
- */
-function resourceProp(ns: string, resource: string): string {
-  // Strip namespace prefix if resource name starts with namespace
-  // e.g. namespace="Ats", resource="AtsApplications" — shouldn't happen after parsing
-  // but just in case.
-  let name = resource;
-  if (name.startsWith(ns) && name.length > ns.length) {
-    name = name.slice(ns.length);
+// Deduplicate method names within a resource (rare — only when two endpoints map
+// to the same name, e.g. a custom action colliding with a CRUD verb).
+for (const nsMap of resourceMap.values()) {
+  for (const entries of nsMap.values()) {
+    const seen = new Map<string, number>();
+    for (const e of entries.sort((a, b) => a.fnName.localeCompare(b.fnName))) {
+      const n = seen.get(e.method) ?? 0;
+      seen.set(e.method, n + 1);
+      if (n > 0) e.method = `${e.method}${n}`;
+    }
   }
-  return toCamel(name);
-}
-
-/** Convert PascalCase action to camelCase method name */
-function actionMethod(action: string): string {
-  return toCamel(action);
-}
-
-/** Derive a human-readable singular label from PascalCase resource name */
-function resourceLabel(resource: string): string {
-  // Split by capital letters, lower-case, join with spaces
-  const words = splitPascal(resource);
-  if (words.length === 0) return resource;
-  // Simple singular: if ends in "s" and not "ss", remove trailing "s"
-  const last = words[words.length - 1];
-  const singular =
-    last.endsWith("sses") ? last :
-    last.endsWith("ses") ? last.slice(0, -2) :
-    last.endsWith("ies") ? last.slice(0, -3) + "y" :
-    last.endsWith("s") && !last.endsWith("ss") ? last.slice(0, -1) :
-    last;
-  words[words.length - 1] = singular;
-  return words.join(" ");
 }
 
 // ─── Code generators ─────────────────────────────────────────────────────────
 
-function generateResourceClass(
-  ns: string,
-  resource: string,
-  entries: ResourceEntry[]
-): string {
-  const className = `${ns}${resource}Resource`;
-  const prop = resourceProp(ns, resource);
-  const label = resourceLabel(resource);
-
-  // Identify standard CRUD methods
-  const getList = entries.find((e) => e.verb === "get" && e.action === "");
-  const getById = entries.find((e) => e.verb === "get" && e.action === "ById");
-  const postCreate = entries.find(
-    (e) => e.verb === "post" && e.action === ""
-  );
-  const putUpdate = entries.find(
-    (e) => (e.verb === "put") && e.action === "ById"
-  );
-  const deleteItem = entries.find(
-    (e) => e.verb === "delete" && e.action === "ById"
-  );
-
-  // Custom actions = everything else
-  const customActions = entries.filter(
-    (e) =>
-      e !== getList &&
-      e !== getById &&
-      e !== postCreate &&
-      e !== putUpdate &&
-      e !== deleteItem
-  );
+function generateResourceClass(ns: string, resource: string, entries: Endpoint[]): string {
+  const className = `${pascal(ns)}${pascal(resource)}Resource`;
+  const list = entries.find((e) => e.kind === "list");
+  const getOne = entries.find((e) => e.kind === "get");
+  const create = entries.find((e) => e.kind === "create");
+  const update = entries.find((e) => e.kind === "update");
+  const del = entries.find((e) => e.kind === "delete");
+  const custom = entries.filter((e) => e.kind === "custom");
 
   const lines: string[] = [];
   lines.push(`/** Methods for the ${ns} > ${resource} resource */`);
@@ -327,92 +139,55 @@ function generateResourceClass(
   lines.push(`  constructor(private readonly _client: ReturnType<typeof createClient>) {}`);
   lines.push("");
 
-  if (getList) {
-    lines.push(`  /** Reads all ${label}s */`);
-    lines.push(
-      `  list: typeof ${getList.fnName} = (options?: any) => ${getList.fnName}({ client: this._client, ...options });`
-    );
+  if (list) {
+    lines.push(`  /** Lists all ${resource} */`);
+    lines.push(`  list: typeof ${list.fnName} = (options?: any) => ${list.fnName}({ client: this._client, ...options });`);
     lines.push("");
-    // paginate
     lines.push(`  /**`);
-    lines.push(
-      `   * Auto-paginate through all ${resource} records, yielding one item at a time.`
-    );
-    lines.push(`   * Uses cursor-based pagination with \`after_id\` / \`before_id\`.`);
-    lines.push(
-      `   * @example for await (const item of client.${namespaceProp(ns)}.${prop}.paginate()) { ... }`
-    );
+    lines.push(`   * Auto-paginate through all ${resource}, yielding one item at a time.`);
+    lines.push(`   * @example for await (const item of client.${camel(ns)}.${camel(resource)}.paginate()) { ... }`);
     lines.push(`   */`);
-    lines.push(
-      `  paginate(options?: Parameters<typeof ${getList.fnName}>[0] & { limit?: number; maxItems?: number }) {`
-    );
+    lines.push(`  paginate(options?: Parameters<typeof ${list.fnName}>[0] & { limit?: number; maxItems?: number }) {`);
     lines.push(`    const { maxItems, ...rest } = options ?? {};`);
     lines.push(`    return paginate(`);
-    lines.push(
-      `      (params) => ${getList.fnName}({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),`
-    );
+    lines.push(`      (params) => ${list.fnName}({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),`);
     lines.push(`      { maxItems },`);
     lines.push(`    );`);
     lines.push(`  }`);
     lines.push("");
-    // all
     lines.push(`  /**`);
-    lines.push(
-      `   * Fetch all ${resource} records across all pages into a single array.`
-    );
-    lines.push(
-      `   * @param options.maxItems - Safety cap on total items fetched (default: no limit)`
-    );
-    lines.push(
-      `   * @example const all = await client.${namespaceProp(ns)}.${prop}.all()`
-    );
+    lines.push(`   * Fetch all ${resource} across all pages into a single array.`);
+    lines.push(`   * @example const all = await client.${camel(ns)}.${camel(resource)}.all()`);
     lines.push(`   */`);
-    lines.push(
-      `  all(options?: Parameters<typeof ${getList.fnName}>[0] & { limit?: number; maxItems?: number }) {`
-    );
+    lines.push(`  all(options?: Parameters<typeof ${list.fnName}>[0] & { limit?: number; maxItems?: number }) {`);
     lines.push(`    return collectAll(this.paginate(options));`);
     lines.push(`  }`);
     lines.push("");
   }
 
-  if (postCreate) {
-    lines.push(`  /** Creates a ${resourceLabel(resource)} */`);
-    lines.push(
-      `  create: typeof ${postCreate.fnName} = (options?: any) => ${postCreate.fnName}({ client: this._client, ...options });`
-    );
+  if (create) {
+    lines.push(`  /** Creates a ${resource} record */`);
+    lines.push(`  create: typeof ${create.fnName} = (options?: any) => ${create.fnName}({ client: this._client, ...options });`);
     lines.push("");
   }
-
-  if (getById) {
-    lines.push(`  /** Reads a single ${resourceLabel(resource)} */`);
-    lines.push(
-      `  get: typeof ${getById.fnName} = (options?: any) => ${getById.fnName}({ client: this._client, ...options });`
-    );
+  if (getOne) {
+    lines.push(`  /** Reads a single ${resource} record */`);
+    lines.push(`  get: typeof ${getOne.fnName} = (options?: any) => ${getOne.fnName}({ client: this._client, ...options });`);
     lines.push("");
   }
-
-  if (putUpdate) {
-    lines.push(`  /** Updates a ${resourceLabel(resource)} */`);
-    lines.push(
-      `  update: typeof ${putUpdate.fnName} = (options?: any) => ${putUpdate.fnName}({ client: this._client, ...options });`
-    );
+  if (update) {
+    lines.push(`  /** Updates a ${resource} record */`);
+    lines.push(`  update: typeof ${update.fnName} = (options?: any) => ${update.fnName}({ client: this._client, ...options });`);
     lines.push("");
   }
-
-  if (deleteItem) {
-    lines.push(`  /** Deletes a ${resourceLabel(resource)} */`);
-    lines.push(
-      `  delete: typeof ${deleteItem.fnName} = (options?: any) => ${deleteItem.fnName}({ client: this._client, ...options });`
-    );
+  if (del) {
+    lines.push(`  /** Deletes a ${resource} record */`);
+    lines.push(`  delete: typeof ${del.fnName} = (options?: any) => ${del.fnName}({ client: this._client, ...options });`);
     lines.push("");
   }
-
-  for (const ca of customActions) {
-    const methodName = actionMethod(ca.action);
-    lines.push(`  /** ${pascalToSentence(ca.action)} ${resourceLabel(resource)} */`);
-    lines.push(
-      `  ${methodName}: typeof ${ca.fnName} = (options?: any) => ${ca.fnName}({ client: this._client, ...options });`
-    );
+  for (const ca of custom) {
+    lines.push(`  /** ${ca.method} */`);
+    lines.push(`  ${ca.method}: typeof ${ca.fnName} = (options?: any) => ${ca.fnName}({ client: this._client, ...options });`);
     lines.push("");
   }
 
@@ -421,30 +196,18 @@ function generateResourceClass(
   return lines.join("\n");
 }
 
-function pascalToSentence(s: string): string {
-  const words = splitPascal(s);
-  if (!words.length) return s;
-  return words[0] + (words.length > 1 ? " " + words.slice(1).join(" ").toLowerCase() : "");
-}
-
-function generateNamespaceClass(
-  ns: string,
-  resources: Map<string, ResourceEntry[]>
-): string {
-  const className = `${ns}Namespace`;
-  const entries = [...resources.entries()].filter(([r]) => r !== "");
-
+function generateNamespaceClass(ns: string, resources: Map<string, Endpoint[]>): string {
+  const className = `${pascal(ns)}Namespace`;
+  const names = [...resources.keys()].sort();
   const lines: string[] = [];
   lines.push(`/** Namespace for all ${ns} resources */`);
   lines.push(`export class ${className} {`);
-  for (const [resource] of entries) {
-    lines.push(`  readonly ${resourceProp(ns, resource)}: ${ns}${resource}Resource;`);
+  for (const resource of names) {
+    lines.push(`  readonly ${camel(resource)}: ${pascal(ns)}${pascal(resource)}Resource;`);
   }
   lines.push(`  constructor(client: ReturnType<typeof createClient>) {`);
-  for (const [resource] of entries) {
-    lines.push(
-      `    this.${resourceProp(ns, resource)} = new ${ns}${resource}Resource(client);`
-    );
+  for (const resource of names) {
+    lines.push(`    this.${camel(resource)} = new ${pascal(ns)}${pascal(resource)}Resource(client);`);
   }
   lines.push(`  }`);
   lines.push(`}`);
@@ -452,17 +215,12 @@ function generateNamespaceClass(
   return lines.join("\n");
 }
 
-// ─── Collect all imports ─────────────────────────────────────────────────────
-
-const allFnNames = fnNames.slice().sort();
-
 // ─── Build the file ──────────────────────────────────────────────────────────
 
+const allFnNames = endpoints.map((e) => e.fnName).sort();
 const namespaces = [...resourceMap.keys()].sort();
-
 const parts: string[] = [];
 
-// Header
 parts.push(`// This file is auto-generated by scripts/generate-sdk.ts
 // DO NOT edit manually — run \`npm run generate-sdk\` to regenerate.
 // Generated from src/generated/sdk.gen.ts
@@ -507,22 +265,17 @@ export type FactorialClientConfig = Omit<Partial<Config<ClientOptions>>, "baseUr
 
 `);
 
-// Resource classes
 for (const ns of namespaces) {
   const nsMap = resourceMap.get(ns)!;
-  const resources = [...nsMap.keys()].filter((r) => r !== "").sort();
-  for (const resource of resources) {
+  for (const resource of [...nsMap.keys()].sort()) {
     parts.push(generateResourceClass(ns, resource, nsMap.get(resource)!));
   }
 }
 
-// Namespace classes
 for (const ns of namespaces) {
-  const nsMap = resourceMap.get(ns)!;
-  parts.push(generateNamespaceClass(ns, nsMap));
+  parts.push(generateNamespaceClass(ns, resourceMap.get(ns)!));
 }
 
-// FactorialClient class
 parts.push(`/**
  * Official Factorial API client.
  *
@@ -551,12 +304,9 @@ export class FactorialClient {
 
 for (const ns of namespaces) {
   parts.push(`  /** ${ns} resources */\n`);
-  parts.push(`  readonly ${namespaceProp(ns)}: ${ns}Namespace;\n`);
+  parts.push(`  readonly ${camel(ns)}: ${pascal(ns)}Namespace;\n`);
 }
 
-// The emitted constructor sets `throwOnError: true` so hey-api throws on non-2xx
-// responses (bad/expired token, wrong base URL, server errors) instead of silently
-// resolving to { data: undefined, error }. Overridable per-client via config.throwOnError.
 parts.push(`
   constructor(config: FactorialClientConfig = {}) {
     const { apiKey, token, baseUrl, ...rest } = config;
@@ -606,7 +356,7 @@ parts.push(`
 `);
 
 for (const ns of namespaces) {
-  parts.push(`    this.${namespaceProp(ns)} = new ${ns}Namespace(client);\n`);
+  parts.push(`    this.${camel(ns)} = new ${pascal(ns)}Namespace(client);\n`);
 }
 
 parts.push(`  }
