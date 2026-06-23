@@ -22,6 +22,7 @@ import { execSync } from "child_process";
 import { readFileSync, writeFileSync } from "fs";
 import { createInterface } from "readline";
 import { join, dirname } from "path";
+import { tmpdir } from "os";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -163,6 +164,20 @@ log(`    Done.`);
 
 log(`\n⚙️   Regenerating src/sdk.ts …`);
 run(`npx tsx scripts/generate-sdk.ts`);
+log(`    Done.`);
+
+// ─── Step 3c: Regenerate src/webhooks.ts from the spec ──────────────────────
+
+log(`\n⚙️   Regenerating src/webhooks.ts …`);
+const specTmpPath = join(tmpdir(), `factorial-spec-${specVersion}.json`);
+writeFileSync(specTmpPath, JSON.stringify(newSpec));
+run(`npx tsx scripts/generate-webhooks.ts "${specTmpPath}"`);
+log(`    Done.`);
+
+// ─── Step 3d: Refresh the factorial-api-sdks skill (repo-root) ──────────────
+
+log(`\n⚙️   Refreshing the factorial-api-sdks skill …`);
+run(`python3 ../scripts/generate_skill.py "${specTmpPath}"`);
 log(`    Done.`);
 
 // ─── Step 4: Update package.json version ────────────────────────────────────

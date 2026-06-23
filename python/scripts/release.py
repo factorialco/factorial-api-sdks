@@ -311,6 +311,18 @@ def main() -> None:
     else:
         print(f"  WARNING: {GENERATE_SCRIPT} not found — skipping client.py regeneration")
 
+    # Stage 3: regenerate the typed webhook catalog (factorial_api_client/webhooks.py)
+    # and refresh the factorial-api-sdks skill reference content.
+    print("  Regenerating webhooks.py and the factorial-api-sdks skill...")
+    with tempfile.NamedTemporaryFile(suffix=".json", mode="w", delete=False) as wf:
+        json.dump(patched_spec, wf)
+        webhook_spec_path = wf.name
+    try:
+        run(["python3", str(PYTHON_DIR / "scripts" / "generate_webhooks.py"), webhook_spec_path])
+        run(["python3", str(REPO_ROOT / "scripts" / "generate_skill.py"), webhook_spec_path])
+    finally:
+        os.unlink(webhook_spec_path)
+
     # Make the high-level client fail loudly on undocumented HTTP statuses.
     _patch_raise_on_unexpected_status(PYTHON_DIR / "factorial_api_client" / "client.py")
 

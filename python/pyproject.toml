@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "factorial-api-client"
-version = "1.1.1"
+version = "1.2.0"
 description = "Official Python SDK for the Factorial API"
 readme = "README.md"
 license = { text = "MIT" }
@@ -45,6 +45,9 @@ include = ["factorial_api_client/"]
 
 [tool.ruff]
 line-length = 100
+# Generated code is not hand-maintained and is exempt from linting, mirroring the
+# mypy exclude below. client.py is stage-2 output built by string-patching.
+extend-exclude = ["factorial_api_client/generated/", "factorial_api_client/client.py"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]

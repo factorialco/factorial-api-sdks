@@ -1,6 +1,6 @@
 {
   "name": "@factorialco/api-client",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Official TypeScript SDK for the Factorial API",
   "type": "module",
   "main": "./dist/cjs/index.js",
@@ -25,6 +25,7 @@
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "generate": "openapi-ts",
     "generate-sdk": "tsx scripts/generate-sdk.ts",
+    "generate-webhooks": "tsx scripts/generate-webhooks.ts",
     "release": "tsx scripts/release.ts",
     "release:dry-run": "tsx scripts/release.ts --dry-run",
     "test:api": "tsx scripts/test-api.ts"
