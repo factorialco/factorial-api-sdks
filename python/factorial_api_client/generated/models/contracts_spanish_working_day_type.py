@@ -13,13 +13,13 @@ T = TypeVar("T", bound="ContractsSpanishWorkingDayType")
 
 @_attrs_define
 class ContractsSpanishWorkingDayType:
-    id: int
+    id: str
     """ Working day type identifier """
     name: str
     """ Working day type name """
     default: bool | Unset = UNSET
     """ Whether the Working day type is a predefined value """
-    contracts_contract_template_id: int | Unset = UNSET
+    contracts_contract_template_id: str | Unset = UNSET
     """ Contract template identifier, refers to contracts/contract_templates """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

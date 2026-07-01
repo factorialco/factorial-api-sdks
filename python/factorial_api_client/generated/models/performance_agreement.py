@@ -20,7 +20,7 @@ T = TypeVar("T", bound="PerformanceAgreement")
 class PerformanceAgreement:
     id: str
     """ Action plan ID """
-    process_id: int
+    process_id: str
     """ Review process ID """
     target_id: str
     """ Review process target ID """
@@ -32,9 +32,9 @@ class PerformanceAgreement:
     """ Self comments by question """
     manager_comments: list[Any]
     """ Manager comments by question """
-    signer_id: int | Unset = UNSET
+    signer_id: str | Unset = UNSET
     """ Manager access ID who signed the action plan """
-    reviewer_id: int | Unset = UNSET
+    reviewer_id: str | Unset = UNSET
     """ Manager employee ID """
     manager_signed_at: str | Unset = UNSET
     """ Date when the manager signed the action plan """
@@ -46,9 +46,9 @@ class PerformanceAgreement:
     """ Date when the action plan was last modified """
     conclusions: PerformanceAgreementConclusions | Unset = UNSET
     """ Conclusions of the action plan """
-    self_evaluation_id: int | Unset = UNSET
+    self_evaluation_id: str | Unset = UNSET
     """ Self review evaluation ID """
-    manager_evaluation_id: int | Unset = UNSET
+    manager_evaluation_id: str | Unset = UNSET
     """ Manager review evaluation ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

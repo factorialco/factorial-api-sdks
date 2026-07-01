@@ -164,6 +164,8 @@ EmployeesEmployeeUnterminateWebhook: TypeAlias = EmployeesEmployee
 EmployeesEmployeeUpdateWebhook: TypeAlias = EmployeesEmployee
 # Payload for `expenses/expensable/bulk_set_to_paid` (Expenses > Expensable > Bulk set to paids).
 ExpensesExpensableBulkSetToPaidWebhook: TypeAlias = ExpensesExpensable
+# Payload for `expenses/expensable/update_reimbursable_amount` (Expenses > Expensable > Update reimbursable amounts).
+ExpensesExpensableUpdateReimbursableAmountWebhook: TypeAlias = ExpensesExpensable
 # Payload for `finance/cost_center/create` (Finance > CostCenter > Creates).
 FinanceCostCenterCreateWebhook: TypeAlias = FinanceCostCenter
 # Payload for `finance/cost_center/delete` (Finance > CostCenter > Deletes).
@@ -375,6 +377,7 @@ WebhookSubscriptionType = Literal[
     "employees/employee/unterminate",
     "employees/employee/update",
     "expenses/expensable/bulk_set_to_paid",
+    "expenses/expensable/update_reimbursable_amount",
     "finance/cost_center/create",
     "finance/cost_center/delete",
     "finance/cost_center/edit",
@@ -507,6 +510,7 @@ WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {
     "employees/employee/unterminate": EmployeesEmployee,
     "employees/employee/update": EmployeesEmployee,
     "expenses/expensable/bulk_set_to_paid": ExpensesExpensable,
+    "expenses/expensable/update_reimbursable_amount": ExpensesExpensable,
     "finance/cost_center/create": FinanceCostCenter,
     "finance/cost_center/delete": FinanceCostCenter,
     "finance/cost_center/edit": FinanceCostCenter,
@@ -1006,6 +1010,14 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         resource="Expensable",
         event="Bulk set to paids",
         summary="Expenses > Expensable > Bulk set to paids",
+        payload_schema="expenses_expensable",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="expenses/expensable/update_reimbursable_amount",
+        namespace="Expenses",
+        resource="Expensable",
+        event="Update reimbursable amounts",
+        summary="Expenses > Expensable > Update reimbursable amounts",
         payload_schema="expenses_expensable",
     ),
     WebhookCatalogEntry(
@@ -1675,6 +1687,7 @@ __all__ = [
     "EmployeesEmployeeUnterminateWebhook",
     "EmployeesEmployeeUpdateWebhook",
     "ExpensesExpensableBulkSetToPaidWebhook",
+    "ExpensesExpensableUpdateReimbursableAmountWebhook",
     "FinanceCostCenterCreateWebhook",
     "FinanceCostCenterDeleteWebhook",
     "FinanceCostCenterEditWebhook",

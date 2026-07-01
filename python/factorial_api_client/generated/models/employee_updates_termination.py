@@ -13,11 +13,11 @@ T = TypeVar("T", bound="EmployeeUpdatesTermination")
 
 @_attrs_define
 class EmployeeUpdatesTermination:
-    id: int
+    id: str
     """ ID of the termination """
     status: str
     """ Status of the termination """
-    employee_id: int
+    employee_id: str
     """ Employee ID """
     remaining_holidays: list[Any]
     """ Remaining holidays """
@@ -30,7 +30,7 @@ class EmployeeUpdatesTermination:
     """ Reason for the termination """
     termination_observations: str | Unset = UNSET
     """ Observations about the termination """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Legal entity ID """
     termination_reason_type: str | Unset = UNSET
     """ Termination reason type """

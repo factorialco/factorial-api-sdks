@@ -13,15 +13,15 @@ T = TypeVar("T", bound="IntegrationsSyncableSyncRun")
 
 @_attrs_define
 class IntegrationsSyncableSyncRun:
-    id: int
+    id: str
     """ Identifier of the syncable sync run """
     status: IntegrationsSyncableSyncRunStatus
     """ Status of the syncable sync run """
     error_messages: list[Any]
     """ Error or validation messages of the syncable sync run """
-    sync_run_id: int
+    sync_run_id: str
     """ Identifier of the sync run """
-    company_id: int
+    company_id: str
     """ Identifier of the company """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

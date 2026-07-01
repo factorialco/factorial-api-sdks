@@ -13,17 +13,17 @@ T = TypeVar("T", bound="ProcurementType")
 
 @_attrs_define
 class ProcurementType:
-    company_id: int
+    company_id: str
     """ Identifier of the company that owns this type """
     created_at: str
     """ Time the procurement type was created """
-    id: int
+    id: str
     """ The id of the type """
     name: str
     """ Name of the procurement type """
     updated_at: str
     """ Time the procurement type was last updated """
-    author_id: int | Unset = UNSET
+    author_id: str | Unset = UNSET
     """ Employee ID who created this type (null for system types) """
     description: str | Unset = UNSET
     """ Description of the procurement type """

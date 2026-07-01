@@ -13,9 +13,9 @@ T = TypeVar("T", bound="LocationsLocation")
 
 @_attrs_define
 class LocationsLocation:
-    id: int
+    id: str
     """ identifier of the location """
-    company_id: int
+    company_id: str
     """ company identifier """
     name: str
     """ name of the location """

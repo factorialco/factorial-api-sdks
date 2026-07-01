@@ -13,7 +13,7 @@ T = TypeVar("T", bound="TimeoffLeaveType")
 
 @_attrs_define
 class TimeoffLeaveType:
-    id: int
+    id: str
     """ Identifier of the leave type """
     name: str
     """ Name of the leave type """
@@ -27,9 +27,9 @@ class TimeoffLeaveType:
     """ Whether the leave type is visible to employees """
     workable: bool
     """ Whether the leave type is workable """
-    company_id: int
+    company_id: str
     """ Identifier of the company associated with this leave type """
-    allowance_ids: list[int]
+    allowance_ids: list[str]
     """ List of allowance identifiers associated with this leave type """
     details_required: bool
     """ Whether additional details are required for the leave type """
@@ -172,7 +172,7 @@ class TimeoffLeaveType:
 
         company_id = d.pop("company_id")
 
-        allowance_ids = cast(list[int], d.pop("allowance_ids"))
+        allowance_ids = cast(list[str], d.pop("allowance_ids"))
 
         details_required = d.pop("details_required")
 

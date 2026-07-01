@@ -14,11 +14,11 @@ T = TypeVar("T", bound="TimePlanningPlannedBreak")
 
 @_attrs_define
 class TimePlanningPlannedBreak:
-    id: int
+    id: str
     """ Planned break identifier """
     break_type: TimePlanningPlannedBreakBreakType
     """ Type of the break """
-    break_configuration_id: int
+    break_configuration_id: str
     """ Break configuration identifier """
     break_configuration_name: str
     """ Name of the break configuration """
@@ -30,13 +30,13 @@ class TimePlanningPlannedBreak:
     """ Break end time """
     duration: int | Unset = UNSET
     """ Duration of the break in minutes """
-    default_shift_id: int | Unset = UNSET
+    default_shift_id: str | Unset = UNSET
     """ Default shift identifier """
-    shift_configuration_id: int | Unset = UNSET
+    shift_configuration_id: str | Unset = UNSET
     """ Shift configuration identifier """
-    shift_id: int | Unset = UNSET
+    shift_id: str | Unset = UNSET
     """ Shift identifier """
-    day_configuration_id: int | Unset = UNSET
+    day_configuration_id: str | Unset = UNSET
     """ Day configuration identifier """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

@@ -11,9 +11,9 @@ T = TypeVar("T", bound="PerformanceCompanyEmployeeScoreScale")
 
 @_attrs_define
 class PerformanceCompanyEmployeeScoreScale:
-    id: int
+    id: str
     """ Company ID """
-    scale_id: int
+    scale_id: str
     """ Employee score scale ID """
     is_default: bool
     """ Default employee score scale """

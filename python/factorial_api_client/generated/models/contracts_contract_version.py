@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,14 +14,18 @@ from ..models.contracts_contract_version_bank_holiday_treatment import (
 )
 from ..types import UNSET, Unset
 
+if TYPE_CHECKING:
+    from ..models.contracts_contract_version_version_data import ContractsContractVersionVersionData
+
+
 T = TypeVar("T", bound="ContractsContractVersion")
 
 
 @_attrs_define
 class ContractsContractVersion:
-    company_id: int
+    company_id: str
     """ identifier for company. """
-    employee_id: int
+    employee_id: str
     """ employee identifier, refers to /employees/employees endpoint. """
     effective_on: str
     """ the day the specific contract starts, in case of hiring the same than starts_on. """
@@ -35,13 +39,13 @@ class ContractsContractVersion:
     """ the date of the last contract version updated. """
     fr_forfait_jours: bool
     """ flag that indicates if the employee is allowed to work within the framework of a fixed number of days. """
-    id: int | Unset = UNSET
+    id: str | Unset = UNSET
     """ identifier for the contract version. """
     country: str | Unset = UNSET
     """ nationality country code of the employee (Spain ES, United Kingdom GB). """
     job_title: str | Unset = UNSET
     """ job title of the employee. """
-    job_catalog_level_id: int | Unset = UNSET
+    job_catalog_level_id: str | Unset = UNSET
     """ job catalog level identifier, refers to /job_catalog/levels endpoint. """
     job_catalog_tree_node_uuid: str | Unset = UNSET
     """ the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job
@@ -79,6 +83,8 @@ class ContractsContractVersion:
     ) = UNSET
     """ Allows companies to define how annual working hours are spread across the year to ensure compliance with
     legal limits. """
+    version_data: ContractsContractVersionVersionData | Unset = UNSET
+    """ Country-specific contract data (template fragments and fields). """
     min_rest_minutes_between_days: int | Unset = UNSET
     """ the minimum amount of minutes the employee must rest between working periods. """
     max_work_minutes_per_day: int | Unset = UNSET
@@ -91,19 +97,19 @@ class ContractsContractVersion:
     """ flag that indicates if the contract has teleworking. """
     es_cotization_group: int | Unset = UNSET
     """ the group of cotization of the employee. """
-    contracts_es_tariff_group_id: int | Unset = UNSET
+    contracts_es_tariff_group_id: str | Unset = UNSET
     """ the group of cotization of the employee. """
     es_contract_observations: str | Unset = UNSET
     """ observations of the contract. """
     es_job_description: str | Unset = UNSET
     """ the job description of the employee. """
-    es_contract_type_id: int | Unset = UNSET
+    es_contract_type_id: str | Unset = UNSET
     """ contract type identifier. """
-    es_working_day_type_id: int | Unset = UNSET
+    es_working_day_type_id: str | Unset = UNSET
     """ working day type identifier. """
-    es_education_level_id: int | Unset = UNSET
+    es_education_level_id: str | Unset = UNSET
     """ education level identifier. """
-    es_professional_category_id: int | Unset = UNSET
+    es_professional_category_id: str | Unset = UNSET
     """ professional category identifier. """
     fr_employee_type: str | Unset = UNSET
     """ employee type. """
@@ -111,24 +117,24 @@ class ContractsContractVersion:
     """ the number of days the employee is allowed to work. """
     fr_coefficient: str | Unset = UNSET
     """ coefficient for france contracts. """
-    fr_contract_type_id: int | Unset = UNSET
+    fr_contract_type_id: str | Unset = UNSET
     """ contract type identifier. """
-    fr_level_id: int | Unset = UNSET
+    fr_level_id: str | Unset = UNSET
     """ level identifier. """
-    fr_step_id: int | Unset = UNSET
+    fr_step_id: str | Unset = UNSET
     """ step identifier. """
-    fr_mutual_id: int | Unset = UNSET
+    fr_mutual_id: str | Unset = UNSET
     """ mutual identifier. """
-    fr_professional_category_id: int | Unset = UNSET
+    fr_professional_category_id: str | Unset = UNSET
     """ professional category identifier. """
-    fr_work_type_id: int | Unset = UNSET
+    fr_work_type_id: str | Unset = UNSET
     """ work type identifier. """
-    de_contract_type_id: int | Unset = UNSET
+    de_contract_type_id: str | Unset = UNSET
     """ contract type identifier. """
-    de_base_salary_type_id: int | Unset = UNSET
+    de_base_salary_type_id: str | Unset = UNSET
     """ Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts
     endpoint. """
-    pt_contract_type_id: int | Unset = UNSET
+    pt_contract_type_id: str | Unset = UNSET
     """ contract type identifier. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -186,6 +192,10 @@ class ContractsContractVersion:
         annual_working_time_distribution: str | Unset = UNSET
         if not isinstance(self.annual_working_time_distribution, Unset):
             annual_working_time_distribution = self.annual_working_time_distribution.value
+
+        version_data: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.version_data, Unset):
+            version_data = self.version_data.to_dict()
 
         min_rest_minutes_between_days = self.min_rest_minutes_between_days
 
@@ -287,6 +297,8 @@ class ContractsContractVersion:
             field_dict["working_time_percentage_in_cents"] = working_time_percentage_in_cents
         if annual_working_time_distribution is not UNSET:
             field_dict["annual_working_time_distribution"] = annual_working_time_distribution
+        if version_data is not UNSET:
+            field_dict["version_data"] = version_data
         if min_rest_minutes_between_days is not UNSET:
             field_dict["min_rest_minutes_between_days"] = min_rest_minutes_between_days
         if max_work_minutes_per_day is not UNSET:
@@ -342,6 +354,10 @@ class ContractsContractVersion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.contracts_contract_version_version_data import (
+            ContractsContractVersionVersionData,
+        )
+
         d = dict(src_dict)
         company_id = d.pop("company_id")
 
@@ -407,6 +423,13 @@ class ContractsContractVersion:
                     _annual_working_time_distribution
                 )
             )
+
+        _version_data = d.pop("version_data", UNSET)
+        version_data: ContractsContractVersionVersionData | Unset
+        if isinstance(_version_data, Unset):
+            version_data = UNSET
+        else:
+            version_data = ContractsContractVersionVersionData.from_dict(_version_data)
 
         min_rest_minutes_between_days = d.pop("min_rest_minutes_between_days", UNSET)
 
@@ -485,6 +508,7 @@ class ContractsContractVersion:
             maximum_weekly_hours=maximum_weekly_hours,
             working_time_percentage_in_cents=working_time_percentage_in_cents,
             annual_working_time_distribution=annual_working_time_distribution,
+            version_data=version_data,
             min_rest_minutes_between_days=min_rest_minutes_between_days,
             max_work_minutes_per_day=max_work_minutes_per_day,
             max_work_days_in_row=max_work_days_in_row,

@@ -13,13 +13,13 @@ T = TypeVar("T", bound="AtsHiringStage")
 
 @_attrs_define
 class AtsHiringStage:
-    id: int
+    id: str
     """ Identifier of the hiring stage """
     name: AtsHiringStageName
     """ Name of the hiring stage """
     label: str
     """ Label of the hiring stage """
-    company_id: int
+    company_id: str
     """ Company identifier of the hiring stage """
     position: int
     """ Position of the hiring stage """

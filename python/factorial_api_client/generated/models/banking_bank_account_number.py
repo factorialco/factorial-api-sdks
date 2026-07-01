@@ -16,7 +16,7 @@ T = TypeVar("T", bound="BankingBankAccountNumber")
 class BankingBankAccountNumber:
     id: str
     """ Employee id. """
-    company_id: int
+    company_id: str
     """ Company identifier """
     account_number: str
     """ Account number """

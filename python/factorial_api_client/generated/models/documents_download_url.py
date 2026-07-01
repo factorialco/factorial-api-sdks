@@ -11,7 +11,7 @@ T = TypeVar("T", bound="DocumentsDownloadUrl")
 
 @_attrs_define
 class DocumentsDownloadUrl:
-    id: int
+    id: str
     """ document identifier. """
     url: str
     """ temporal document url. """

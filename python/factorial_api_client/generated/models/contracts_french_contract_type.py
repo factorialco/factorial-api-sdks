@@ -11,7 +11,7 @@ T = TypeVar("T", bound="ContractsFrenchContractType")
 
 @_attrs_define
 class ContractsFrenchContractType:
-    id: int
+    id: str
     """ identifier for the contract type """
     name: str
     """ Contract type name """

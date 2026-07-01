@@ -13,11 +13,11 @@ T = TypeVar("T", bound="FinanceCostCenterMembership")
 
 @_attrs_define
 class FinanceCostCenterMembership:
-    id: int
+    id: str
     """ The unique identifier of the cost center membership """
-    employee_id: int
+    employee_id: str
     """ The identifier of the associated employee """
-    cost_center_id: int
+    cost_center_id: str
     """ The identifier of the associated cost center """
     start_date: str
     """ The date the employee started being assigned to the cost center """

@@ -13,13 +13,13 @@ T = TypeVar("T", bound="ContractsSpanishEducationLevel")
 
 @_attrs_define
 class ContractsSpanishEducationLevel:
-    id: int
+    id: str
     """ Education level identifier """
     name: str
     """ education level name """
     default: bool | Unset = UNSET
     """ Whether the education level is a predefined value """
-    contracts_contract_template_id: int | Unset = UNSET
+    contracts_contract_template_id: str | Unset = UNSET
     """ Contract template identifier, refers to contracts/contract_templates """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

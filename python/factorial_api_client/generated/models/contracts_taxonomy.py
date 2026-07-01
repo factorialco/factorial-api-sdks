@@ -11,11 +11,11 @@ T = TypeVar("T", bound="ContractsTaxonomy")
 
 @_attrs_define
 class ContractsTaxonomy:
-    id: int
+    id: str
     name: str
     archived: bool
     default: bool
-    legal_entity_id: int
+    legal_entity_id: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

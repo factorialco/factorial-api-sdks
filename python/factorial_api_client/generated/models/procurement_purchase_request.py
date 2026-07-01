@@ -18,23 +18,23 @@ T = TypeVar("T", bound="ProcurementPurchaseRequest")
 
 @_attrs_define
 class ProcurementPurchaseRequest:
-    id: int
+    id: str
     """ Unique identifier of the purchase request """
     description: str
     """ Description or notes about the purchase request """
-    type_id: int
+    type_id: str
     """ The id of the referred type """
     cost: ProcurementPurchaseRequestCost
     """ Total cost of the purchase request """
     date: str
     """ Date when the purchase request was created """
-    requester_employee_id: int
+    requester_employee_id: str
     """ Identifier of the employee who requested this purchase """
     status: ProcurementPurchaseRequestStatus
     """ Current status of the purchase request """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ Identifier of the company that owns this purchase request """
-    vendor_id: int | Unset = UNSET
+    vendor_id: str | Unset = UNSET
     """ Identifier of the vendor (contact) associated with this purchase request """
     url: str | Unset = UNSET
     """ URL related to the purchase request (e.g., product link) """

@@ -13,11 +13,11 @@ T = TypeVar("T", bound="FinanceTaxRate")
 
 @_attrs_define
 class FinanceTaxRate:
-    id: int
+    id: str
     """ Factorial id """
     rate: float
     """ Specifies the numerical percentage for the tax rate between -1 and 1. """
-    tax_type_id: int
+    tax_type_id: str
     """ The identifier of the related TaxType record. """
     updated_at: str
     """ Last update date of the tax rate. """

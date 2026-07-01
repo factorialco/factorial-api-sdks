@@ -13,13 +13,13 @@ T = TypeVar("T", bound="ContractsSpanishContractType")
 
 @_attrs_define
 class ContractsSpanishContractType:
-    id: int
+    id: str
     """ identifier for the contract type """
     name: str
     """ The name of the contract type """
     default: bool | Unset = UNSET
     """ This contract type is a predefined one """
-    contracts_contract_template_id: int | Unset = UNSET
+    contracts_contract_template_id: str | Unset = UNSET
     """ The contract template identifier. Refers to contracts/contract_templates. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

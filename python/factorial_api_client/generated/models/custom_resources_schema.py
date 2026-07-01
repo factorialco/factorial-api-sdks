@@ -13,11 +13,11 @@ T = TypeVar("T", bound="CustomResourcesSchema")
 
 @_attrs_define
 class CustomResourcesSchema:
-    id: int
+    id: str
     """ Schema identifier """
     name: str
     """ Schema name """
-    company_id: int
+    company_id: str
     """ Company identifier where this schema belongs """
     hidden: bool
     """ Manages visibility of the schema """

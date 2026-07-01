@@ -13,11 +13,11 @@ T = TypeVar("T", bound="EmployeeUpdatesNewHire")
 
 @_attrs_define
 class EmployeeUpdatesNewHire:
-    id: int
+    id: str
     """ The id of the new hire incidence """
     status: str
     """ The status of the new hire incidence """
-    employee_id: int
+    employee_id: str
     """ The employee id of the new hire """
     first_name: str
     """ name of the employee. """
@@ -65,12 +65,12 @@ class EmployeeUpdatesNewHire:
     working_hours_frequency: str | Unset = UNSET
     social_security_number: str | Unset = UNSET
     """ social security number of the employee. """
-    manager_id: int | Unset = UNSET
+    manager_id: str | Unset = UNSET
     """ manager id of the employee, you can get the manager id from employees endpoint. """
     tax_id: str | Unset = UNSET
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ The legal entity id of the new hire """
-    workplace_id: int | Unset = UNSET
+    workplace_id: str | Unset = UNSET
     """ workplace id of the employee. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

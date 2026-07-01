@@ -15,9 +15,9 @@ T = TypeVar("T", bound="AttendanceShift")
 
 @_attrs_define
 class AttendanceShift:
-    id: int
+    id: str
     """ Unique identifier for the shift """
-    employee_id: int
+    employee_id: str
     """ Identifier for the employee assigned to the shift """
     date: str
     """ Date of the shift """
@@ -25,7 +25,7 @@ class AttendanceShift:
     """ Reference date for the shift """
     created_at: str
     """ Timestamp when the shift record was created """
-    company_id: int
+    company_id: str
     """ Identifier for the company """
     updated_at: str
     """ Timestamp when the shift record was updated """
@@ -59,9 +59,9 @@ class AttendanceShift:
     """ Accuracy of the clock-out location """
     workable: bool | Unset = UNSET
     """ Indicates if the shift is workable """
-    workplace_id: int | Unset = UNSET
+    workplace_id: str | Unset = UNSET
     """ Identifier for the location """
-    time_settings_break_configuration_id: int | Unset = UNSET
+    time_settings_break_configuration_id: str | Unset = UNSET
     """ Identifier for the break configuration """
     clock_in_with_seconds: str | Unset = UNSET
     """ Clock in time with seconds """

@@ -13,12 +13,12 @@ T = TypeVar("T", bound="WorkScheduleSchedule")
 
 @_attrs_define
 class WorkScheduleSchedule:
-    id: int
+    id: str
     name: str
-    company_id: int
+    company_id: str
     created_at: str
     updated_at: str
-    employee_ids: list[int]
+    employee_ids: list[str]
     periods: list[Any]
     archived_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -71,7 +71,7 @@ class WorkScheduleSchedule:
 
         updated_at = d.pop("updated_at")
 
-        employee_ids = cast(list[int], d.pop("employee_ids"))
+        employee_ids = cast(list[str], d.pop("employee_ids"))
 
         periods = cast(list[Any], d.pop("periods"))
 

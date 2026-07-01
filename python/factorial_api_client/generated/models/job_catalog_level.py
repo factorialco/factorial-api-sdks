@@ -11,9 +11,9 @@ T = TypeVar("T", bound="JobCatalogLevel")
 
 @_attrs_define
 class JobCatalogLevel:
-    id: int
+    id: str
     """ identifier for the job catalog level. """
-    role_id: int
+    role_id: str
     """ identifier for the job catalog role. """
     name: str
     """ Level name. """

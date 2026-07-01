@@ -16,15 +16,15 @@ T = TypeVar("T", bound="PerformanceReviewEvaluationScore")
 
 @_attrs_define
 class PerformanceReviewEvaluationScore:
-    id: int
+    id: str
     """ Review evaluation score ID """
-    review_process_id: int
+    review_process_id: str
     """ Review process ID """
-    review_evaluation_id: int
+    review_evaluation_id: str
     """ Review evaluation ID """
-    target_access_id: int
+    target_access_id: str
     """ Employee access ID """
-    company_id: int
+    company_id: str
     """ Company identifier of the review evaluation score """
     reviewer_strategy: PerformanceReviewEvaluationScoreReviewerStrategy
     """ Who scored the employee """

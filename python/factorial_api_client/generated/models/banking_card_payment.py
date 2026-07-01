@@ -16,9 +16,9 @@ T = TypeVar("T", bound="BankingCardPayment")
 
 @_attrs_define
 class BankingCardPayment:
-    id: int
+    id: str
     """ The ID of the card payment. """
-    card_id: int
+    card_id: str
     """ The ID of the card. """
     amount_cents: int
     """ The amount of the card payment. """

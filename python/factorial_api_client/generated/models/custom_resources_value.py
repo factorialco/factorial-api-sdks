@@ -13,11 +13,11 @@ T = TypeVar("T", bound="CustomResourcesValue")
 
 @_attrs_define
 class CustomResourcesValue:
-    id: int
+    id: str
     """ Value identifier """
-    resource_id: int
+    resource_id: str
     """ The identifier of the resource that owns the resource value """
-    attachable_id: int | Unset = UNSET
+    attachable_id: str | Unset = UNSET
     """ The id of the attached resource like an employee """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

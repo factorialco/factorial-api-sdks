@@ -13,15 +13,15 @@ T = TypeVar("T", bound="ContractsContractVersionHistory")
 
 @_attrs_define
 class ContractsContractVersionHistory:
-    id: int
+    id: str
     """ identifier for the contract version history. """
-    employee_id: int
+    employee_id: str
     """ employee identifier, refers to /employees/employees endpoint. """
     effective_on: str
     """ the day the specific contract starts, in case of hiring the same than starts_on. """
     has_payroll: bool
     """ boolean that indicates if the employee asociated to this contract belongs to a payroll policy. """
-    original_contract_version_id: int
+    original_contract_version_id: str
     """ identifier for the original contract version. """
     changed_at: str
     """ the date the contract version was changed. """
@@ -36,7 +36,7 @@ class ContractsContractVersionHistory:
     """ nationality country code of the employee. """
     job_title: str | Unset = UNSET
     """ job title of the employee. """
-    job_catalog_level_id: int | Unset = UNSET
+    job_catalog_level_id: str | Unset = UNSET
     """ job catalog level identifier, refers to /job_catalog/levels endpoint. """
     job_catalog_tree_node_uuid: str | Unset = UNSET
     """ the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job
@@ -60,7 +60,7 @@ class ContractsContractVersionHistory:
     """ the maximum amount of hours the employee can work in a year. """
     maximum_weekly_hours: int | Unset = UNSET
     """ the maximum amount of hours the employee can work in a week. """
-    contracts_contract_version_id: int | Unset = UNSET
+    contracts_contract_version_id: str | Unset = UNSET
     """ identifier for the current contract version. """
     trial_period_ends_on: str | Unset = UNSET
     """ when the trial period ends. """
@@ -80,25 +80,25 @@ class ContractsContractVersionHistory:
     """ spanish observations of the contract. """
     es_job_description: str | Unset = UNSET
     """ spanish job description of the contract. """
-    es_contract_type_id: int | Unset = UNSET
+    es_contract_type_id: str | Unset = UNSET
     """ spanish contract type identifier. """
-    es_working_day_type_id: int | Unset = UNSET
+    es_working_day_type_id: str | Unset = UNSET
     """ spanish working day type identifier. """
-    es_education_level_id: int | Unset = UNSET
+    es_education_level_id: str | Unset = UNSET
     """ spanish education level identifier. """
-    es_professional_category_id: int | Unset = UNSET
+    es_professional_category_id: str | Unset = UNSET
     """ spanish professional category identifier. """
-    es_contribution_type_id: int | Unset = UNSET
+    es_contribution_type_id: str | Unset = UNSET
     """ spanish contribution type identifier. """
-    es_agreement_code_id: int | Unset = UNSET
+    es_agreement_code_id: str | Unset = UNSET
     """ spanish agreement code identifier. """
-    es_cno_occupation_id: int | Unset = UNSET
+    es_cno_occupation_id: str | Unset = UNSET
     """ spanish cno occupation identifier. """
-    es_tariff_group_id: int | Unset = UNSET
+    es_tariff_group_id: str | Unset = UNSET
     """ spanish tariff group identifier. """
-    es_occupation_code_id: int | Unset = UNSET
+    es_occupation_code_id: str | Unset = UNSET
     """ spanish occupation code identifier. """
-    es_classification_id: int | Unset = UNSET
+    es_classification_id: str | Unset = UNSET
     """ spanish classification identifier. """
     fr_employee_type: str | Unset = UNSET
     """ french employee type. """
@@ -108,24 +108,24 @@ class ContractsContractVersionHistory:
     """ french number of days the employee is allowed to work in cents. """
     fr_coefficient: str | Unset = UNSET
     """ french coefficient for france contracts. """
-    fr_contract_type_id: int | Unset = UNSET
+    fr_contract_type_id: str | Unset = UNSET
     """ french contract type identifier. """
-    fr_level_id: int | Unset = UNSET
+    fr_level_id: str | Unset = UNSET
     """ french level identifier. """
-    fr_step_id: int | Unset = UNSET
+    fr_step_id: str | Unset = UNSET
     """ french step identifier. """
-    fr_mutual_id: int | Unset = UNSET
+    fr_mutual_id: str | Unset = UNSET
     """ french mutual identifier. """
-    fr_professional_category_id: int | Unset = UNSET
+    fr_professional_category_id: str | Unset = UNSET
     """ french professional category identifier. """
-    fr_work_type_id: int | Unset = UNSET
+    fr_work_type_id: str | Unset = UNSET
     """ french work type identifier. """
-    de_contract_type_id: int | Unset = UNSET
+    de_contract_type_id: str | Unset = UNSET
     """ german contract type identifier. """
-    de_base_salary_type_id: int | Unset = UNSET
+    de_base_salary_type_id: str | Unset = UNSET
     """ Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts
     endpoint. """
-    pt_contract_type_id: int | Unset = UNSET
+    pt_contract_type_id: str | Unset = UNSET
     """ portuguese contract type identifier. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

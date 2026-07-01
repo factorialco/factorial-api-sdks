@@ -14,9 +14,9 @@ T = TypeVar("T", bound="AtsAnswer")
 
 @_attrs_define
 class AtsAnswer:
-    id: int
+    id: str
     """ Identifier of the answer """
-    ats_application_id: int
+    ats_application_id: str
     """ Identifier of the application """
     original_question_label: str
     """ Question label of the answer """
@@ -26,7 +26,7 @@ class AtsAnswer:
     """ Created date of the answer """
     updated_at: str
     """ Last updated date of the answer """
-    ats_question_id: int | Unset = UNSET
+    ats_question_id: str | Unset = UNSET
     """ Identifier of the question """
     value: str | Unset = UNSET
     """ Value of the answer """

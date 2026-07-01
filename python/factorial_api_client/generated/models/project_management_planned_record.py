@@ -13,7 +13,7 @@ T = TypeVar("T", bound="ProjectManagementPlannedRecord")
 
 @_attrs_define
 class ProjectManagementPlannedRecord:
-    id: int
+    id: str
     """ The id of the planned record """
     daily_minutes: int
     """ The daily minutes of the planned record """
@@ -21,11 +21,11 @@ class ProjectManagementPlannedRecord:
     """ The start date of the planned record """
     end_date: str
     """ The end date of the planned record """
-    project_worker_id: int
+    project_worker_id: str
     """ The project worker id of the planned record """
     week_days: list[int]
     """ The week days of the planned record, start in Sunday 0 and end in Saturday 6 """
-    subproject_id: int | Unset = UNSET
+    subproject_id: str | Unset = UNSET
     """ The subproject id of the planned record """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

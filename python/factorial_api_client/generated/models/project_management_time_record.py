@@ -13,13 +13,13 @@ T = TypeVar("T", bound="ProjectManagementTimeRecord")
 
 @_attrs_define
 class ProjectManagementTimeRecord:
-    id: int
+    id: str
     """ Id of the time record """
-    project_worker_id: int
+    project_worker_id: str
     """ Id of the project worker """
-    attendance_shift_id: int | Unset = UNSET
+    attendance_shift_id: str | Unset = UNSET
     """ Id of the attendance shift """
-    subproject_id: int | Unset = UNSET
+    subproject_id: str | Unset = UNSET
     """ Id of the subproject """
     date: str | Unset = UNSET
     """ Reference date of the shift """
@@ -29,6 +29,8 @@ class ProjectManagementTimeRecord:
     """ Clock in time """
     clock_out: str | Unset = UNSET
     """ Clock out time """
+    observations: str | Unset = UNSET
+    """ Comment for the time record """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -47,6 +49,8 @@ class ProjectManagementTimeRecord:
         clock_in = self.clock_in
 
         clock_out = self.clock_out
+
+        observations = self.observations
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -68,6 +72,8 @@ class ProjectManagementTimeRecord:
             field_dict["clock_in"] = clock_in
         if clock_out is not UNSET:
             field_dict["clock_out"] = clock_out
+        if observations is not UNSET:
+            field_dict["observations"] = observations
 
         return field_dict
 
@@ -90,6 +96,8 @@ class ProjectManagementTimeRecord:
 
         clock_out = d.pop("clock_out", UNSET)
 
+        observations = d.pop("observations", UNSET)
+
         project_management_time_record = cls(
             id=id,
             project_worker_id=project_worker_id,
@@ -99,6 +107,7 @@ class ProjectManagementTimeRecord:
             imputed_minutes=imputed_minutes,
             clock_in=clock_in,
             clock_out=clock_out,
+            observations=observations,
         )
 
         project_management_time_record.additional_properties = d

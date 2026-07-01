@@ -14,7 +14,7 @@ T = TypeVar("T", bound="CustomFieldsField")
 
 @_attrs_define
 class CustomFieldsField:
-    id: int
+    id: str
     """ Field identifier """
     field_type: CustomFieldsFieldFieldType
     """ The type of the field's value """
@@ -30,7 +30,7 @@ class CustomFieldsField:
     """ Maximum value in range field type """
     legal_entity_name: str | Unset = UNSET
     """ Legal entity name where this field belongs """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Legal entity id where this field belongs """
     slug: str | Unset = UNSET
     """ Custom field slug """

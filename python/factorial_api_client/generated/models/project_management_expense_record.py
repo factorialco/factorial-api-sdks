@@ -13,10 +13,10 @@ T = TypeVar("T", bound="ProjectManagementExpenseRecord")
 
 @_attrs_define
 class ProjectManagementExpenseRecord:
-    id: int
-    project_worker_id: int
-    expense_id: int
-    subproject_id: int | Unset = UNSET
+    id: str
+    project_worker_id: str
+    expense_id: str
+    subproject_id: str | Unset = UNSET
     original_amount_currency: str | Unset = UNSET
     original_amount_cents: int | Unset = UNSET
     legal_entity_amount_currency: str | Unset = UNSET

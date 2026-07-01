@@ -18,7 +18,7 @@ class DocumentsDocument:
     """ creation date of the document. """
     filename: str
     """ name of the document. """
-    id: int
+    id: str
     """ document identifier. """
     public: bool
     """ flag to indicate if the document is public. """
@@ -26,19 +26,19 @@ class DocumentsDocument:
     """ document space. """
     updated_at: str
     """ last update date of the document. """
-    author_id: int | Unset = UNSET
+    author_id: str | Unset = UNSET
     """ access identifier of the author, refers to /employees/employees endpoint. """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ company identifier, refers to /api/me endpoint. """
     content_type: str | Unset = UNSET
     """ document content type. """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ employee identifier associated to the document. """
     extension: str | Unset = UNSET
     """ document extension. """
     file_size: int | Unset = UNSET
     """ document file size in bytes. """
-    folder_id: int | Unset = UNSET
+    folder_id: str | Unset = UNSET
     """ folder identifier, references to documents/folders endpoint. """
     is_company_document: bool | Unset = UNSET
     """ flag that indicates if the document is a company document. """
@@ -46,11 +46,11 @@ class DocumentsDocument:
     """ flag that indicates if the document is a management document. """
     is_pending_assignment: bool | Unset = UNSET
     """ flag that indicates if the document is pending assignment. """
-    leave_id: int | Unset = UNSET
+    leave_id: str | Unset = UNSET
     """ leave identifier associated to the document, refers to /timeoff/leaves endpoint. """
     signature_status: DocumentsDocumentSignatureStatus | Unset = UNSET
     """ document signature status. """
-    signees: list[int] | Unset = UNSET
+    signees: list[str] | Unset = UNSET
     """ list of signee access identifiers associated to the document, refers to /employees/employees endpoint. """
     deleted_at: str | Unset = UNSET
     """ deletion date of the document. """
@@ -95,7 +95,7 @@ class DocumentsDocument:
         if not isinstance(self.signature_status, Unset):
             signature_status = self.signature_status.value
 
-        signees: list[int] | Unset = UNSET
+        signees: list[str] | Unset = UNSET
         if not isinstance(self.signees, Unset):
             signees = self.signees
 
@@ -188,7 +188,7 @@ class DocumentsDocument:
         else:
             signature_status = DocumentsDocumentSignatureStatus(_signature_status) if _signature_status is not None else None
 
-        signees = cast(list[int], d.pop("signees", UNSET))
+        signees = cast(list[str], d.pop("signees", UNSET))
 
         deleted_at = d.pop("deleted_at", UNSET)
 

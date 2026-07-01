@@ -14,17 +14,17 @@ T = TypeVar("T", bound="PayrollSupplement")
 
 @_attrs_define
 class PayrollSupplement:
-    id: int
+    id: str
     """ The identifier of the supplement """
-    employee_id: int
+    employee_id: str
     """ The identifier of the employee associated with the supplement """
-    company_id: int
+    company_id: str
     """ The identifier of the company associated with the supplement """
     unit: PayrollSupplementUnit
     """ The unit of the supplement """
-    contracts_compensation_id: int | Unset = UNSET
+    contracts_compensation_id: str | Unset = UNSET
     """ The contract compensation identifier associated with the supplement """
-    contracts_taxonomy_id: int | Unset = UNSET
+    contracts_taxonomy_id: str | Unset = UNSET
     """ The taxonomy identifier associated with the supplement """
     amount_in_cents: int | Unset = UNSET
     """ The amount of the supplement in cents """
@@ -36,7 +36,7 @@ class PayrollSupplement:
     """ The last updated at date when the supplement was last updated """
     description: str | Unset = UNSET
     """ The description of the supplement """
-    payroll_policy_period_id: int | Unset = UNSET
+    payroll_policy_period_id: str | Unset = UNSET
     """ The payroll policy period identifier associated with the supplement """
     employee_observations: list[str] | Unset = UNSET
     """ Observations on the employee made by the admin or manager """
@@ -48,7 +48,7 @@ class PayrollSupplement:
     """ The equivalent value of minutes in cents for payroll processing """
     currency: str | Unset = UNSET
     """ The currency used for the supplement, typically in ISO 4217 format """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ The legal entity identifier associated with the supplement """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

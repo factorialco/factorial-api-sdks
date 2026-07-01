@@ -15,15 +15,15 @@ T = TypeVar("T", bound="DocumentsFolder")
 class DocumentsFolder:
     active: bool
     """ Whether the folder is active or not """
-    id: int
+    id: str
     """ Folder ID """
     name: str
     """ Folder name """
     space: str
     """ The space of the folder is related to the place where the folder is displayed. """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ Company ID of the folder """
-    parent_folder_id: int | Unset = UNSET
+    parent_folder_id: str | Unset = UNSET
     """ Id of the parent folder """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

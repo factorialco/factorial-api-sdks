@@ -54,6 +54,7 @@ Both SDKs use standard semver (`MAJOR.MINOR.PATCH`), independent of the Factoria
 | SDK version | Factorial API version |
 |-------------|----------------------|
 | `1.x.y`     | `2026-04-01`         |
+| `2.x.y`     | `2026-07-01`         |
 
 Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
 

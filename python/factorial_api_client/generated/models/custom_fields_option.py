@@ -13,7 +13,7 @@ T = TypeVar("T", bound="CustomFieldsOption")
 
 @_attrs_define
 class CustomFieldsOption:
-    id: int
+    id: str
     """ Option identifier """
     label: str | Unset = UNSET
     """ Title for option """
@@ -21,7 +21,7 @@ class CustomFieldsOption:
     """ Option value """
     is_active: bool | Unset = UNSET
     """ Flag to make the option available """
-    field_id: int | Unset = UNSET
+    field_id: str | Unset = UNSET
     """ Custom Fields identifier """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

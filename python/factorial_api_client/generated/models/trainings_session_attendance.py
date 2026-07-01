@@ -14,15 +14,15 @@ T = TypeVar("T", bound="TrainingsSessionAttendance")
 
 @_attrs_define
 class TrainingsSessionAttendance:
-    id: int
+    id: str
     """ Unique identifier of the session attendance """
     status: TrainingsSessionAttendanceStatus
     """ Status of the session attendance """
-    session_access_membership_id: int
+    session_access_membership_id: str
     """ Identifier of the session access membership """
-    access_id: int
+    access_id: str
     """ Identifier of the access associated with the employee """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ Identifier of the employee """
     completed_duration: str | Unset = UNSET
     """ Completed duration in hours (decimal format, e.g. 1.5 means 1h 30m). Null when session attendance status is

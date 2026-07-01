@@ -4,17 +4,17 @@ export type ClientOptions = {
     baseUrl: 'https://api.factorialhr.com' | 'https://api.demo.factorial.dev' | 'https://api.eu2.demo.factorial.dev' | (string & {});
 };
 
-export type Webhooks = PostWebhooks__ApiPublic__WebhookSubscription__CreatesWebhookRequest | PostWebhooks__ApiPublic__WebhookSubscription__DeletesWebhookRequest | PostWebhooks__ApiPublic__WebhookSubscription__UpdatesWebhookRequest | PostWebhooks__Ats__Application__AppliesWebhookRequest | PostWebhooks__Ats__Application__CreatesWebhookRequest | PostWebhooks__Ats__Application__CreateFromEmployeesWebhookRequest | PostWebhooks__Ats__Application__DeletesWebhookRequest | PostWebhooks__Ats__Application__UpdatesWebhookRequest | PostWebhooks__Ats__Candidate__CreatesWebhookRequest | PostWebhooks__Ats__Candidate__DeletesWebhookRequest | PostWebhooks__Ats__Candidate__UpdatesWebhookRequest | PostWebhooks__Ats__EvaluationForm__SaveAsTemplatesWebhookRequest | PostWebhooks__Ats__JobPosting__CreatesWebhookRequest | PostWebhooks__Ats__JobPosting__DeletesWebhookRequest | PostWebhooks__Ats__JobPosting__DuplicatesWebhookRequest | PostWebhooks__Ats__JobPosting__UpdatesWebhookRequest | PostWebhooks__Attendance__Shift__AutofillsWebhookRequest | PostWebhooks__Attendance__Shift__BreakEndsWebhookRequest | PostWebhooks__Attendance__Shift__BreakStartsWebhookRequest | PostWebhooks__Attendance__Shift__ClockInsWebhookRequest | PostWebhooks__Attendance__Shift__ClockOutsWebhookRequest | PostWebhooks__Attendance__Shift__CreatesWebhookRequest | PostWebhooks__Attendance__Shift__DeletesWebhookRequest | PostWebhooks__Attendance__Shift__ToggleClocksWebhookRequest | PostWebhooks__Attendance__Shift__UpdatesWebhookRequest | PostWebhooks__Banking__BankAccountNumber__UpsertsWebhookRequest | PostWebhooks__BookkeepersManagement__Incidence__UpdatesWebhookRequest | PostWebhooks__Companies__LegalEntity__CreatesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__ApprovesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__CreatePromoteRequestsWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__DeletesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__RejectsWebhookRequest | PostWebhooks__Contracts__ContractVersion__CreatesWebhookRequest | PostWebhooks__Contracts__ContractVersion__DeletesWebhookRequest | PostWebhooks__Contracts__ContractVersion__UpdatesWebhookRequest | PostWebhooks__CustomResources__Schema__CreatesWebhookRequest | PostWebhooks__Documents__Document__BulkCreatesWebhookRequest | PostWebhooks__Documents__Document__CreatesWebhookRequest | PostWebhooks__Documents__Document__DeletesWebhookRequest | PostWebhooks__Documents__Document__MoveToTrashBinsWebhookRequest | PostWebhooks__Documents__Document__RestoreFromTrashBinsWebhookRequest | PostWebhooks__Documents__Document__UpdatesWebhookRequest | PostWebhooks__Documents__Folder__CreatesWebhookRequest | PostWebhooks__Documents__Folder__UpdatesWebhookRequest | PostWebhooks__Employees__Employee__CreateWithContractsWebhookRequest | PostWebhooks__Employees__Employee__InvitesWebhookRequest | PostWebhooks__Employees__Employee__SetRegularAccessStartDatesWebhookRequest | PostWebhooks__Employees__Employee__TerminatesWebhookRequest | PostWebhooks__Employees__Employee__UnterminatesWebhookRequest | PostWebhooks__Employees__Employee__UpdatesWebhookRequest | PostWebhooks__Expenses__Expensable__BulkSetToPaidsWebhookRequest | PostWebhooks__Finance__CostCenter__CreatesWebhookRequest | PostWebhooks__Finance__CostCenter__DeletesWebhookRequest | PostWebhooks__Finance__CostCenter__EditsWebhookRequest | PostWebhooks__Locations__Location__CreatesWebhookRequest | PostWebhooks__Locations__Location__DeletesWebhookRequest | PostWebhooks__Locations__Location__UpdatesWebhookRequest | PostWebhooks__Payroll__PolicyPeriod__ChangeStatusesWebhookRequest | PostWebhooks__Payroll__Supplement__CreatesWebhookRequest | PostWebhooks__Payroll__Supplement__DeletesWebhookRequest | PostWebhooks__Payroll__Supplement__UpdatesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__CreatesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__DeletesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__UpdatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__CreatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__CreateFromTemplatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__DeletesWebhookRequest | PostWebhooks__Performance__ReviewProcess__DuplicatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__RemindInBulksWebhookRequest | PostWebhooks__Performance__ReviewProcess__RemoveSchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__ReopensWebhookRequest | PostWebhooks__Performance__ReviewProcess__SchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__StartsWebhookRequest | PostWebhooks__Performance__ReviewProcess__StopsWebhookRequest | PostWebhooks__Performance__ReviewProcess__ToggleArchivesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateAgreementsConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateBasicInfosWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateCompetenciesAssessmentsConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateDeadlinesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateEmployeeScoreConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateReviewerStrategiesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateSchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateTargetStrategiesWebhookRequest | PostWebhooks__ShiftManagement__Shift__BulkCreatesWebhookRequest | PostWebhooks__ShiftManagement__Shift__BulkDeletesWebhookRequest | PostWebhooks__ShiftManagement__Shift__CreatesWebhookRequest | PostWebhooks__ShiftManagement__Shift__DeletesWebhookRequest | PostWebhooks__Tasks__Task__BulkCreatesWebhookRequest | PostWebhooks__Tasks__Task__BulkDeletesWebhookRequest | PostWebhooks__Tasks__Task__BulkUpdatesWebhookRequest | PostWebhooks__Tasks__Task__CopiesWebhookRequest | PostWebhooks__Tasks__Task__CreatesWebhookRequest | PostWebhooks__Tasks__Task__CreateCommentsWebhookRequest | PostWebhooks__Tasks__Task__DeletesWebhookRequest | PostWebhooks__Tasks__Task__UpdatesWebhookRequest | PostWebhooks__Teams__Membership__BulkUpsertsWebhookRequest | PostWebhooks__Teams__Membership__CreatesWebhookRequest | PostWebhooks__Teams__Membership__DeletesWebhookRequest | PostWebhooks__Teams__Membership__UpdatesWebhookRequest | PostWebhooks__Teams__Team__CreatesWebhookRequest | PostWebhooks__Teams__Team__DeletesWebhookRequest | PostWebhooks__Teams__Team__ProjectsWebhookRequest | PostWebhooks__Teams__Team__UpdatesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__CreatesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__DeletesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__UpdatesWebhookRequest | PostWebhooks__Timeoff__LeaveType__CreatesWebhookRequest | PostWebhooks__Timeoff__LeaveType__UpdatesWebhookRequest | PostWebhooks__Timeoff__Leave__ApprovesWebhookRequest | PostWebhooks__Timeoff__Leave__CreatesWebhookRequest | PostWebhooks__Timeoff__Leave__DeletesWebhookRequest | PostWebhooks__Timeoff__Leave__RejectsWebhookRequest | PostWebhooks__Timeoff__Leave__UpdatesWebhookRequest | PostWebhooks__Timeoff__Policy__CreatesWebhookRequest | PostWebhooks__Timeoff__Policy__DeletesWebhookRequest | PostWebhooks__Timeoff__Policy__UpdatesWebhookRequest | PostWebhooks__Trainings__Category__CreatesWebhookRequest | PostWebhooks__Trainings__Category__DeletesWebhookRequest | PostWebhooks__Trainings__Training__BulkDeletesWebhookRequest | PostWebhooks__Trainings__Training__BulkUpdateCatalogsWebhookRequest | PostWebhooks__Trainings__Training__CreatesWebhookRequest | PostWebhooks__Trainings__Training__DeletesWebhookRequest | PostWebhooks__Trainings__Training__UpdatesWebhookRequest | PostWebhooks__Trainings__Training__UpdateStatusesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__CreatesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__ToggleArchivesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__UpdatesWebhookRequest;
+export type Webhooks = PostWebhooks__ApiPublic__WebhookSubscription__CreatesWebhookRequest | PostWebhooks__ApiPublic__WebhookSubscription__DeletesWebhookRequest | PostWebhooks__ApiPublic__WebhookSubscription__UpdatesWebhookRequest | PostWebhooks__Ats__Application__AppliesWebhookRequest | PostWebhooks__Ats__Application__CreatesWebhookRequest | PostWebhooks__Ats__Application__CreateFromEmployeesWebhookRequest | PostWebhooks__Ats__Application__DeletesWebhookRequest | PostWebhooks__Ats__Application__UpdatesWebhookRequest | PostWebhooks__Ats__Candidate__CreatesWebhookRequest | PostWebhooks__Ats__Candidate__DeletesWebhookRequest | PostWebhooks__Ats__Candidate__UpdatesWebhookRequest | PostWebhooks__Ats__EvaluationForm__SaveAsTemplatesWebhookRequest | PostWebhooks__Ats__JobPosting__CreatesWebhookRequest | PostWebhooks__Ats__JobPosting__DeletesWebhookRequest | PostWebhooks__Ats__JobPosting__DuplicatesWebhookRequest | PostWebhooks__Ats__JobPosting__UpdatesWebhookRequest | PostWebhooks__Attendance__Shift__AutofillsWebhookRequest | PostWebhooks__Attendance__Shift__BreakEndsWebhookRequest | PostWebhooks__Attendance__Shift__BreakStartsWebhookRequest | PostWebhooks__Attendance__Shift__ClockInsWebhookRequest | PostWebhooks__Attendance__Shift__ClockOutsWebhookRequest | PostWebhooks__Attendance__Shift__CreatesWebhookRequest | PostWebhooks__Attendance__Shift__DeletesWebhookRequest | PostWebhooks__Attendance__Shift__ToggleClocksWebhookRequest | PostWebhooks__Attendance__Shift__UpdatesWebhookRequest | PostWebhooks__Banking__BankAccountNumber__UpsertsWebhookRequest | PostWebhooks__BookkeepersManagement__Incidence__UpdatesWebhookRequest | PostWebhooks__Companies__LegalEntity__CreatesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__ApprovesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__CreatePromoteRequestsWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__DeletesWebhookRequest | PostWebhooks__Contracts__ContractVersionRequest__RejectsWebhookRequest | PostWebhooks__Contracts__ContractVersion__CreatesWebhookRequest | PostWebhooks__Contracts__ContractVersion__DeletesWebhookRequest | PostWebhooks__Contracts__ContractVersion__UpdatesWebhookRequest | PostWebhooks__CustomResources__Schema__CreatesWebhookRequest | PostWebhooks__Documents__Document__BulkCreatesWebhookRequest | PostWebhooks__Documents__Document__CreatesWebhookRequest | PostWebhooks__Documents__Document__DeletesWebhookRequest | PostWebhooks__Documents__Document__MoveToTrashBinsWebhookRequest | PostWebhooks__Documents__Document__RestoreFromTrashBinsWebhookRequest | PostWebhooks__Documents__Document__UpdatesWebhookRequest | PostWebhooks__Documents__Folder__CreatesWebhookRequest | PostWebhooks__Documents__Folder__UpdatesWebhookRequest | PostWebhooks__Employees__Employee__CreateWithContractsWebhookRequest | PostWebhooks__Employees__Employee__InvitesWebhookRequest | PostWebhooks__Employees__Employee__SetRegularAccessStartDatesWebhookRequest | PostWebhooks__Employees__Employee__TerminatesWebhookRequest | PostWebhooks__Employees__Employee__UnterminatesWebhookRequest | PostWebhooks__Employees__Employee__UpdatesWebhookRequest | PostWebhooks__Expenses__Expensable__BulkSetToPaidsWebhookRequest | PostWebhooks__Expenses__Expensable__UpdateReimbursableAmountsWebhookRequest | PostWebhooks__Finance__CostCenter__CreatesWebhookRequest | PostWebhooks__Finance__CostCenter__DeletesWebhookRequest | PostWebhooks__Finance__CostCenter__EditsWebhookRequest | PostWebhooks__Locations__Location__CreatesWebhookRequest | PostWebhooks__Locations__Location__DeletesWebhookRequest | PostWebhooks__Locations__Location__UpdatesWebhookRequest | PostWebhooks__Payroll__PolicyPeriod__ChangeStatusesWebhookRequest | PostWebhooks__Payroll__Supplement__CreatesWebhookRequest | PostWebhooks__Payroll__Supplement__DeletesWebhookRequest | PostWebhooks__Payroll__Supplement__UpdatesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__CreatesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__DeletesWebhookRequest | PostWebhooks__PayrollIntegrationsBase__Code__UpdatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__CreatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__CreateFromTemplatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__DeletesWebhookRequest | PostWebhooks__Performance__ReviewProcess__DuplicatesWebhookRequest | PostWebhooks__Performance__ReviewProcess__RemindInBulksWebhookRequest | PostWebhooks__Performance__ReviewProcess__RemoveSchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__ReopensWebhookRequest | PostWebhooks__Performance__ReviewProcess__SchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__StartsWebhookRequest | PostWebhooks__Performance__ReviewProcess__StopsWebhookRequest | PostWebhooks__Performance__ReviewProcess__ToggleArchivesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateAgreementsConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateBasicInfosWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateCompetenciesAssessmentsConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateDeadlinesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateEmployeeScoreConfigurationsWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateReviewerStrategiesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateSchedulesWebhookRequest | PostWebhooks__Performance__ReviewProcess__UpdateTargetStrategiesWebhookRequest | PostWebhooks__ShiftManagement__Shift__BulkCreatesWebhookRequest | PostWebhooks__ShiftManagement__Shift__BulkDeletesWebhookRequest | PostWebhooks__ShiftManagement__Shift__CreatesWebhookRequest | PostWebhooks__ShiftManagement__Shift__DeletesWebhookRequest | PostWebhooks__Tasks__Task__BulkCreatesWebhookRequest | PostWebhooks__Tasks__Task__BulkDeletesWebhookRequest | PostWebhooks__Tasks__Task__BulkUpdatesWebhookRequest | PostWebhooks__Tasks__Task__CopiesWebhookRequest | PostWebhooks__Tasks__Task__CreatesWebhookRequest | PostWebhooks__Tasks__Task__CreateCommentsWebhookRequest | PostWebhooks__Tasks__Task__DeletesWebhookRequest | PostWebhooks__Tasks__Task__UpdatesWebhookRequest | PostWebhooks__Teams__Membership__BulkUpsertsWebhookRequest | PostWebhooks__Teams__Membership__CreatesWebhookRequest | PostWebhooks__Teams__Membership__DeletesWebhookRequest | PostWebhooks__Teams__Membership__UpdatesWebhookRequest | PostWebhooks__Teams__Team__CreatesWebhookRequest | PostWebhooks__Teams__Team__DeletesWebhookRequest | PostWebhooks__Teams__Team__ProjectsWebhookRequest | PostWebhooks__Teams__Team__UpdatesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__CreatesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__DeletesWebhookRequest | PostWebhooks__Timeoff__BlockedPeriod__UpdatesWebhookRequest | PostWebhooks__Timeoff__LeaveType__CreatesWebhookRequest | PostWebhooks__Timeoff__LeaveType__UpdatesWebhookRequest | PostWebhooks__Timeoff__Leave__ApprovesWebhookRequest | PostWebhooks__Timeoff__Leave__CreatesWebhookRequest | PostWebhooks__Timeoff__Leave__DeletesWebhookRequest | PostWebhooks__Timeoff__Leave__RejectsWebhookRequest | PostWebhooks__Timeoff__Leave__UpdatesWebhookRequest | PostWebhooks__Timeoff__Policy__CreatesWebhookRequest | PostWebhooks__Timeoff__Policy__DeletesWebhookRequest | PostWebhooks__Timeoff__Policy__UpdatesWebhookRequest | PostWebhooks__Trainings__Category__CreatesWebhookRequest | PostWebhooks__Trainings__Category__DeletesWebhookRequest | PostWebhooks__Trainings__Training__BulkDeletesWebhookRequest | PostWebhooks__Trainings__Training__BulkUpdateCatalogsWebhookRequest | PostWebhooks__Trainings__Training__CreatesWebhookRequest | PostWebhooks__Trainings__Training__DeletesWebhookRequest | PostWebhooks__Trainings__Training__UpdatesWebhookRequest | PostWebhooks__Trainings__Training__UpdateStatusesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__CreatesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__ToggleArchivesWebhookRequest | PostWebhooks__WorkSchedule__Schedule__UpdatesWebhookRequest;
 
 export type ApiPublicCredential = {
     /**
      * company id for all kind of accesses
      */
-    company_id: number;
+    company_id: string;
     /**
      * id of the credential prefixed by the type of credential
      */
-    id: number;
+    id: string;
     /**
      * Only for Access Oauth token
      */
@@ -35,7 +35,7 @@ export type ApiPublicCredential = {
     /**
      * Id for hte employee related. Only for Access Oauth token
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Employee role in the Company. Only for Access Oauth token
      */
@@ -86,7 +86,7 @@ export type ApiPublicWebhookSubscription = {
     /**
      * Identifier of the webhook subscription
      */
-    id: number;
+    id: string;
     /**
      * URL where the webhook payload will be sent
      */
@@ -98,7 +98,7 @@ export type ApiPublicWebhookSubscription = {
     /**
      * Company identifier of the webhook subscription
      */
-    company_id: number;
+    company_id: string;
     /**
      * Name of the webhook subscription
      */
@@ -118,22 +118,22 @@ export type ApiPublicWebhookSubscription = {
 };
 
 export type ApprovalsMaterializedApprovalsFlow = {
-    id: number;
-    author_id: number;
-    author_employee_id?: number;
-    owner_id: number;
-    owner_employee_id?: number;
+    id: string;
+    author_id: string;
+    author_employee_id?: string;
+    owner_id: string;
+    owner_employee_id?: string;
     resource_type: string;
-    resource_id: number;
+    resource_id: string;
     resource_url: string;
     status: 'running' | 'requestedinformation' | 'changes_requested' | 'stopped' | 'approved' | 'rejected';
     expires_at: string;
     final_decision_at?: string;
-    approval_flow_id: number;
+    approval_flow_id: string;
     approvers: Array<unknown>;
     email_detail_blocks: Array<string>;
-    override_approver_id?: number;
-    override_approver_employee_id?: number;
+    override_approver_id?: string;
+    override_approver_employee_id?: string;
     rules_decision?: string;
     auto_approval_description?: string;
     action_type?: string;
@@ -144,15 +144,15 @@ export type AtsAnswer = {
     /**
      * Identifier of the answer
      */
-    id: number;
+    id: string;
     /**
      * Identifier of the question
      */
-    ats_question_id?: number;
+    ats_question_id?: string;
     /**
      * Identifier of the application
      */
-    ats_application_id: number;
+    ats_application_id: string;
     /**
      * Question label of the answer
      */
@@ -179,23 +179,23 @@ export type AtsApplication = {
     /**
      * Id of the application
      */
-    id: number;
+    id: string;
     /**
      * Company id of the application
      */
-    company_id: number;
+    company_id: string;
     /**
      * Job posting id of the application
      */
-    ats_job_posting_id: number;
+    ats_job_posting_id: string;
     /**
      * Candidate id of the application
      */
-    ats_candidate_id: number;
+    ats_candidate_id: string;
     /**
      * Employee id of the application
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * Candidate phone of the application
      */
@@ -207,7 +207,7 @@ export type AtsApplication = {
     /**
      * Application phase id
      */
-    ats_application_phase_id?: number;
+    ats_application_phase_id?: string;
     /**
      * Application created at date
      */
@@ -217,9 +217,15 @@ export type AtsApplication = {
      */
     cover_letter?: string;
     /**
+     * CV file attachment of the application (includes filename, url, byte_size, content_type, created_at)
+     */
+    cv?: {
+        [key: string]: unknown;
+    };
+    /**
      * Application conversation id
      */
-    ats_conversation_id?: number;
+    ats_conversation_id?: string;
     /**
      * Application medium
      */
@@ -231,22 +237,22 @@ export type AtsApplication = {
     /**
      * Application rejection reason id
      */
-    ats_rejection_reason_id?: number;
+    ats_rejection_reason_id?: string;
     /**
      * Application source id
      */
-    source_id?: number;
+    source_id?: string;
 };
 
 export type AtsApplicationPhase = {
     /**
      * Identifier of the application Phase
      */
-    id: number;
+    id: string;
     /**
      * Job posting of the application phase
      */
-    ats_job_posting_id: number;
+    ats_job_posting_id: string;
     /**
      * Name of the application phase
      */
@@ -271,18 +277,18 @@ export type AtsApplicationPhase = {
     /**
      * Hiring stage identifier
      */
-    ats_hiring_stage_id?: number;
+    ats_hiring_stage_id?: string;
 };
 
 export type AtsCandidate = {
     /**
      * identifier of the candidate.
      */
-    id: number;
+    id: string;
     /**
      * company identifier.
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * name of the candidate.
      */
@@ -326,7 +332,7 @@ export type AtsCandidate = {
     /**
      * list of job posting identifiers.
      */
-    ats_job_posting_ids?: Array<number>;
+    ats_job_posting_ids?: Array<string>;
     /**
      * personal web resource from the candidate.
      */
@@ -346,7 +352,7 @@ export type AtsCandidate = {
     /**
      * candidate source identifier, refers to ats/candidate_sources endpoint.
      */
-    source_id?: number;
+    source_id?: string;
     /**
      * gender of the candidate.
      */
@@ -361,11 +367,11 @@ export type AtsCandidateSource = {
     /**
      * identifier of the source.
      */
-    id: number;
+    id: string;
     /**
      * identifier of the company.
      */
-    company_id: number;
+    company_id: string;
     /**
      * category of the source.
      */
@@ -384,15 +390,15 @@ export type AtsEvaluationForm = {
     /**
      * Id of the evaluation form.
      */
-    id: number;
+    id: string;
     /**
      * Id of the company that the evaluation form belongs to.
      */
-    company_id: number;
+    company_id: string;
     /**
      * Id of the job posting that the evaluation form is associated with.
      */
-    ats_job_posting_id?: number;
+    ats_job_posting_id?: string;
     /**
      * Name of the evaluation form.
      */
@@ -400,7 +406,7 @@ export type AtsEvaluationForm = {
     /**
      * Id of the evaluation form that this evaluation form is related.
      */
-    based_on_id?: number;
+    based_on_id?: string;
     /**
      * List of questions in the evaluation form.
      */
@@ -419,7 +425,7 @@ export type AtsFeedback = {
     /**
      * the ID of the feedback entry.
      */
-    id: number;
+    id: string;
     /**
      * the overall rating from 1 to 5 for the candidate's application.
      */
@@ -431,11 +437,11 @@ export type AtsFeedback = {
     /**
      * the ID of the application related to the feedback.
      */
-    ats_application_id?: number;
+    ats_application_id?: string;
     /**
      * the ID of the phase within the application related to the feedback.
      */
-    ats_application_phase_id?: number;
+    ats_application_phase_id?: string;
     /**
      * the date and time when the feedback entry was created.
      */
@@ -443,11 +449,11 @@ export type AtsFeedback = {
     /**
      * the ID of the candidate to whom the feedback is associated.
      */
-    ats_candidate_id: number;
+    ats_candidate_id: string;
     /**
      * the ID of the evaluation form to which the feedback belongs if the evaluation forms feature is active.
      */
-    ats_evaluation_forms_id?: number;
+    ats_evaluation_forms_id?: string;
     /**
      * the answers from the evaluation form, if this feedback is related to an evaluation form.
      */
@@ -458,7 +464,7 @@ export type AtsHiringStage = {
     /**
      * Identifier of the hiring stage
      */
-    id: number;
+    id: string;
     /**
      * Name of the hiring stage
      */
@@ -470,7 +476,7 @@ export type AtsHiringStage = {
     /**
      * Company identifier of the hiring stage
      */
-    company_id: number;
+    company_id: string;
     /**
      * Position of the hiring stage
      */
@@ -481,15 +487,15 @@ export type AtsJobPosting = {
     /**
      * Unique identifier for the job posting
      */
-    id: number;
+    id: string;
     /**
      * Identifier of the company associated with the job posting
      */
-    company_id: number;
+    company_id: string;
     /**
      * Identifier of the ATS company associated with the job posting
      */
-    ats_company_id: number;
+    ats_company_id: string;
     /**
      * Title of the job posting
      */
@@ -499,6 +505,7 @@ export type AtsJobPosting = {
      */
     description?: string;
     contract_type?: 'indefinite' | 'temporary' | 'intern' | 'training' | 'freelance' | 'vendor_contractor' | 'volunteer' | 'per_hour' | 'other' | 'alternant' | 'interim' | 'minijob' | 'werkstudent' | 'apprenticeship' | 'pj' | 'clt' | 'jovem_aprendiz' | 'a_termo_incerto' | 'a_termo_certo' | 'de_curta_duracao' | 'de_muita_curta_duracao' | 'promessa_de_trabalho' | 'a_tempo_parcial' | 'com_pluralidade_de_empregadores' | 'teletrabalho' | 'pre_reforma' | 'recibos_verdes' | 'estagio' | 'sem_termo' | 'apprentissage' | 'fixed_discontinued' | 'apprendistato';
+    category?: 'administration_and_secretariat' | 'design_and_architecture' | 'education_and_social_policy' | 'engineering' | 'finance' | 'hr' | 'it' | 'legal' | 'management_and_consulting' | 'marketing_and_communication' | 'nursing_and_therapy' | 'physicians' | 'public_sector' | 'purchasing_materials_administration_and_logistics' | 'sales' | 'sciences_and_research' | 'service_industry_and_manufacturing' | 'sports_art_and_creative_jobs' | 'other';
     workplace_type?: 'onsite' | 'remote' | 'hybrid';
     /**
      * Indicates if the job posting is remote
@@ -515,15 +522,15 @@ export type AtsJobPosting = {
     /**
      * Identifier of the team associated with the job posting
      */
-    team_id?: number;
+    team_id?: string;
     /**
      * Identifier of the location associated with the job posting
      */
-    location_id?: number;
+    location_id?: string;
     /**
      * Identifier of the legal entity associated with the job posting
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * The format of the salary (e.g., range, fixed_amount)
      */
@@ -579,10 +586,10 @@ export type AtsJobPosting = {
 };
 
 export type AtsMessage = {
-    id: number;
+    id: string;
     content: string;
-    ats_conversation_id: number;
-    sent_by_id: number;
+    ats_conversation_id: string;
+    sent_by_id: string;
     sent_by_type: string;
     created_at: string;
     attachments: Array<unknown>;
@@ -598,11 +605,11 @@ export type AtsQuestion = {
     /**
      * question identifier
      */
-    id: number;
+    id: string;
     /**
      * job posting identifier.
      */
-    ats_job_posting_id: number;
+    ats_job_posting_id: string;
     /**
      * text of the question.
      */
@@ -641,11 +648,11 @@ export type AtsRejectionReason = {
     /**
      * Rejection reason identifier
      */
-    id: number;
+    id: string;
     /**
      * Company identifier of the rejection reason
      */
-    company_id: number;
+    company_id: string;
     /**
      * Decision maker of the rejection reason
      */
@@ -665,15 +672,15 @@ export type AtsRejectionReason = {
 };
 
 export type AttendanceBreakConfiguration = {
-    id: number;
+    id: string;
     /**
      * Id of the attendance employee setting
      */
-    attendance_employees_setting_id: number;
+    attendance_employees_setting_id: string;
     /**
      * Id of the time settings break configuration
      */
-    time_settings_break_configuration_id: number;
+    time_settings_break_configuration_id: string;
     /**
      * Status of the break configuration if enabled or not
      */
@@ -692,7 +699,7 @@ export type AttendanceEditTimesheetRequest = {
     /**
      * Unique identifier for the edit timesheet request
      */
-    id: number;
+    id: string;
     /**
      * Status of the edit timesheet request
      */
@@ -704,7 +711,7 @@ export type AttendanceEditTimesheetRequest = {
     /**
      * Id of the shift's employee
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Indicates if the shift is workable or a break
      */
@@ -728,11 +735,11 @@ export type AttendanceEditTimesheetRequest = {
     /**
      * Id of the shift for the request
      */
-    attendance_shift_id?: number;
+    attendance_shift_id?: string;
     /**
      * Id of the type of break for the request
      */
-    time_settings_break_configuration_id?: number;
+    time_settings_break_configuration_id?: string;
     /**
      * Additional observations for the shift
      */
@@ -749,8 +756,8 @@ export type AttendanceEditTimesheetRequest = {
 
 export type AttendanceEstimatedTime = {
     date: string;
-    company_id: number;
-    employee_id: number;
+    company_id: string;
+    employee_id: string;
     /**
      * Amount of minutes the employee has to work without taking into consideration time off leaves and bank holidays.
      */
@@ -785,11 +792,11 @@ export type AttendanceOpenShift = {
     /**
      * Open Shift identifier.
      */
-    id: number;
+    id: string;
     /**
      * Employee identifier from the open shift.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Date of the open shift.
      */
@@ -825,18 +832,18 @@ export type AttendanceOpenShift = {
     /**
      * Identifier for the workplace assinged to the shift.
      */
-    workplace_id?: number;
+    workplace_id?: string;
     /**
      * If the shift is a break, this field will have the break configuration id.
      */
-    time_settings_break_configuration_id?: number;
+    time_settings_break_configuration_id?: string;
 };
 
 export type AttendanceOvertimeRequest = {
-    id: number;
-    employee_id: number;
-    approver_id?: number;
-    author_id: number;
+    id: string;
+    employee_id: string;
+    approver_id?: string;
+    author_id: string;
     status: 'pending' | 'approved' | 'rejected' | 'none';
     description?: string;
     reason?: string;
@@ -852,11 +859,11 @@ export type AttendanceOvertimeRequest = {
 };
 
 export type AttendanceReview = {
-    id: number;
+    id: string;
     /**
      * Employee identifier
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Date reviewed
      */
@@ -868,18 +875,18 @@ export type AttendanceReview = {
     /**
      * Author of the review
      */
-    author_id: number;
+    author_id: string;
 };
 
 export type AttendanceShift = {
     /**
      * Unique identifier for the shift
      */
-    id: number;
+    id: string;
     /**
      * Identifier for the employee assigned to the shift
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Date of the shift
      */
@@ -951,15 +958,15 @@ export type AttendanceShift = {
     /**
      * Identifier for the location
      */
-    workplace_id?: number;
+    workplace_id?: string;
     /**
      * Identifier for the break configuration
      */
-    time_settings_break_configuration_id?: number;
+    time_settings_break_configuration_id?: string;
     /**
      * Identifier for the company
      */
-    company_id: number;
+    company_id: string;
     /**
      * Timestamp when the shift record was updated
      */
@@ -975,9 +982,9 @@ export type AttendanceShift = {
 };
 
 export type AttendanceWorkedTime = {
-    employee_id: number;
+    employee_id: string;
     date: string;
-    company_id: number;
+    company_id: string;
     tracked_minutes: number;
     multiplied_minutes: number;
     pending_minutes: number;
@@ -995,7 +1002,7 @@ export type BankingBankAccount = {
     /**
      * Factorial unique identifier.
      */
-    id: number;
+    id: string;
     /**
      * External ID for the bank account.
      */
@@ -1063,18 +1070,18 @@ export type BankingBankAccount = {
     /**
      * Factorial unique identifier of the legal entity.
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
 };
 
 export type BankingCardPayment = {
     /**
      * The ID of the card payment.
      */
-    id: number;
+    id: string;
     /**
      * The ID of the card.
      */
-    card_id: number;
+    card_id: string;
     /**
      * The amount of the card payment.
      */
@@ -1129,11 +1136,11 @@ export type BankingTransaction = {
     /**
      * Factorial unique identifier.
      */
-    id: number;
+    id: string;
     /**
      * Factorial Banking Bank Account unique identifier.
      */
-    bank_account_id: number;
+    bank_account_id: string;
     /**
      * Amount in cents.
      */
@@ -1165,7 +1172,7 @@ export type BankingTransaction = {
     /**
      * Factorial unique identifier of the card payment.
      */
-    card_payment_id: number;
+    card_payment_id: string;
     /**
      * Date when the transaction was last updated.
      */
@@ -1176,15 +1183,15 @@ export type BookkeepersManagementIncidence = {
     /**
      * identifier of the incidence (aka employee update).
      */
-    id: number;
+    id: string;
     /**
      * identifier of employee related.
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * identifier of legal entity related.
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * name of the incidence (aka employee update). It also represent the incidence type. For example a new hire incidence will be
      */
@@ -1193,7 +1200,7 @@ export type BookkeepersManagementIncidence = {
     /**
      * The incidence (aka employee update) is also related to a another resource, for example for a leave target, the target identifier will be the leave id.
      */
-    target_id: number;
+    target_id: string;
     /**
      * The incidence (aka employee update) is also related to a another resource, for example a leave. This is the target type. The other types are Employee, Contracts::ContractVersion, BookkeepersManagement::ManualIncidence, Finance::CostCenterMembership.
      */
@@ -1214,7 +1221,7 @@ export type BookkeepersManagementIncidence = {
     /**
      * identifier of company related.
      */
-    company_id: number;
+    company_id: string;
     /**
      * Indicate the message sender on the incidence (aka employee update). It can be any of 'bookkeeper', 'admin'
      */
@@ -1240,13 +1247,13 @@ export type CompaniesLegalEntity = {
     /**
      * identifier of the legal entity
      */
-    id: number;
+    id: string;
     /**
      * company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
-     * country code of the legal entity
+     * Country code of the jurisdiction the legal entity is registered in (lowercase two-letter code, e.g. "es").
      */
     country: string;
     /**
@@ -1287,7 +1294,7 @@ export type CompensationsConcept = {
     /**
      * The identifier of the concept
      */
-    id: number;
+    id: string;
     /**
      * The category of the concept
      */
@@ -1295,7 +1302,7 @@ export type CompensationsConcept = {
     /**
      * The company identifier of the concept
      */
-    company_id: number;
+    company_id: string;
     /**
      * Whether the concept is a default or a custom concept
      */
@@ -1327,9 +1334,9 @@ export type CompensationsConcept = {
 };
 
 export type ContractsCompensation = {
-    id: number;
-    contract_version_id: number;
-    contracts_taxonomy_id: number;
+    id: string;
+    contract_version_id: string;
+    contracts_taxonomy_id: string;
     description?: string;
     /**
      * Required field. You can only use the following options: fixed, undefined, up_to, per_worked_day, per_worked_hour
@@ -1344,7 +1351,7 @@ export type ContractsCompensation = {
      */
     unit: string;
     sync_with_supplements?: boolean;
-    payroll_policy_id?: number;
+    payroll_policy_id?: string;
     /**
      * How much time will pass between payments. If recurrence is empty, assume months. For example, 12 here means compensation is paid yearly
      */
@@ -1375,11 +1382,11 @@ export type ContractsContractTemplate = {
     /**
      * Unique identifier for the contract template
      */
-    id: number;
+    id: string;
     /**
      * ID of the company this template belongs to
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * Type of contract version (e.g., es for Spain, fr for France)
      */
@@ -1390,15 +1397,15 @@ export type ContractsContractVersion = {
     /**
      * identifier for the contract version.
      */
-    id?: number;
+    id?: string;
     /**
      * identifier for company.
      */
-    company_id: number;
+    company_id: string;
     /**
      * employee identifier, refers to /employees/employees endpoint.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * the day the specific contract starts, in case of hiring the same than starts_on.
      */
@@ -1414,7 +1421,7 @@ export type ContractsContractVersion = {
     /**
      * job catalog level identifier, refers to /job_catalog/levels endpoint.
      */
-    job_catalog_level_id?: number;
+    job_catalog_level_id?: string;
     /**
      * the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job catalog tree you can get the full ancestor path to the root node including the role. Refer to job_catalog/tree_nodes endpoint.
      */
@@ -1480,6 +1487,12 @@ export type ContractsContractVersion = {
      */
     annual_working_time_distribution?: 'limit_workdays' | 'limit_daily_hours';
     /**
+     * Country-specific contract data (template fragments and fields).
+     */
+    version_data?: {
+        [key: string]: unknown;
+    };
+    /**
      * the minimum amount of minutes the employee must rest between working periods.
      */
     min_rest_minutes_between_days?: number;
@@ -1514,7 +1527,7 @@ export type ContractsContractVersion = {
     /**
      * the group of cotization of the employee.
      */
-    contracts_es_tariff_group_id?: number;
+    contracts_es_tariff_group_id?: string;
     /**
      * observations of the contract.
      */
@@ -1526,19 +1539,19 @@ export type ContractsContractVersion = {
     /**
      * contract type identifier.
      */
-    es_contract_type_id?: number;
+    es_contract_type_id?: string;
     /**
      * working day type identifier.
      */
-    es_working_day_type_id?: number;
+    es_working_day_type_id?: string;
     /**
      * education level identifier.
      */
-    es_education_level_id?: number;
+    es_education_level_id?: string;
     /**
      * professional category identifier.
      */
-    es_professional_category_id?: number;
+    es_professional_category_id?: string;
     /**
      * employee type.
      */
@@ -1558,50 +1571,50 @@ export type ContractsContractVersion = {
     /**
      * contract type identifier.
      */
-    fr_contract_type_id?: number;
+    fr_contract_type_id?: string;
     /**
      * level identifier.
      */
-    fr_level_id?: number;
+    fr_level_id?: string;
     /**
      * step identifier.
      */
-    fr_step_id?: number;
+    fr_step_id?: string;
     /**
      * mutual identifier.
      */
-    fr_mutual_id?: number;
+    fr_mutual_id?: string;
     /**
      * professional category identifier.
      */
-    fr_professional_category_id?: number;
+    fr_professional_category_id?: string;
     /**
      * work type identifier.
      */
-    fr_work_type_id?: number;
+    fr_work_type_id?: string;
     /**
      * contract type identifier.
      */
-    de_contract_type_id?: number;
+    de_contract_type_id?: string;
     /**
      * Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts endpoint.
      */
-    de_base_salary_type_id?: number;
+    de_base_salary_type_id?: string;
     /**
      * contract type identifier.
      */
-    pt_contract_type_id?: number;
+    pt_contract_type_id?: string;
 };
 
 export type ContractsContractVersionHistory = {
     /**
      * identifier for the contract version history.
      */
-    id: number;
+    id: string;
     /**
      * employee identifier, refers to /employees/employees endpoint.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * the day the specific contract starts, in case of hiring the same than starts_on.
      */
@@ -1617,7 +1630,7 @@ export type ContractsContractVersionHistory = {
     /**
      * job catalog level identifier, refers to /job_catalog/levels endpoint.
      */
-    job_catalog_level_id?: number;
+    job_catalog_level_id?: string;
     /**
      * the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job catalog tree you can get the full ancestor path to the root node including the role. Refer to job_catalog/tree_nodes endpoint.
      */
@@ -1665,11 +1678,11 @@ export type ContractsContractVersionHistory = {
     /**
      * identifier for the original contract version.
      */
-    original_contract_version_id: number;
+    original_contract_version_id: string;
     /**
      * identifier for the current contract version.
      */
-    contracts_contract_version_id?: number;
+    contracts_contract_version_id?: string;
     /**
      * the date the contract version was changed.
      */
@@ -1721,43 +1734,43 @@ export type ContractsContractVersionHistory = {
     /**
      * spanish contract type identifier.
      */
-    es_contract_type_id?: number;
+    es_contract_type_id?: string;
     /**
      * spanish working day type identifier.
      */
-    es_working_day_type_id?: number;
+    es_working_day_type_id?: string;
     /**
      * spanish education level identifier.
      */
-    es_education_level_id?: number;
+    es_education_level_id?: string;
     /**
      * spanish professional category identifier.
      */
-    es_professional_category_id?: number;
+    es_professional_category_id?: string;
     /**
      * spanish contribution type identifier.
      */
-    es_contribution_type_id?: number;
+    es_contribution_type_id?: string;
     /**
      * spanish agreement code identifier.
      */
-    es_agreement_code_id?: number;
+    es_agreement_code_id?: string;
     /**
      * spanish cno occupation identifier.
      */
-    es_cno_occupation_id?: number;
+    es_cno_occupation_id?: string;
     /**
      * spanish tariff group identifier.
      */
-    es_tariff_group_id?: number;
+    es_tariff_group_id?: string;
     /**
      * spanish occupation code identifier.
      */
-    es_occupation_code_id?: number;
+    es_occupation_code_id?: string;
     /**
      * spanish classification identifier.
      */
-    es_classification_id?: number;
+    es_classification_id?: string;
     /**
      * french employee type.
      */
@@ -1781,46 +1794,46 @@ export type ContractsContractVersionHistory = {
     /**
      * french contract type identifier.
      */
-    fr_contract_type_id?: number;
+    fr_contract_type_id?: string;
     /**
      * french level identifier.
      */
-    fr_level_id?: number;
+    fr_level_id?: string;
     /**
      * french step identifier.
      */
-    fr_step_id?: number;
+    fr_step_id?: string;
     /**
      * french mutual identifier.
      */
-    fr_mutual_id?: number;
+    fr_mutual_id?: string;
     /**
      * french professional category identifier.
      */
-    fr_professional_category_id?: number;
+    fr_professional_category_id?: string;
     /**
      * french work type identifier.
      */
-    fr_work_type_id?: number;
+    fr_work_type_id?: string;
     /**
      * german contract type identifier.
      */
-    de_contract_type_id?: number;
+    de_contract_type_id?: string;
     /**
      * Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts endpoint.
      */
-    de_base_salary_type_id?: number;
+    de_base_salary_type_id?: string;
     /**
      * portuguese contract type identifier.
      */
-    pt_contract_type_id?: number;
+    pt_contract_type_id?: string;
 };
 
 export type ContractsContractVersionMetaData = {
     /**
      * identifier for the contract version.
      */
-    contract_version_id: number;
+    contract_version_id: string;
     /**
      * the action that has been performed on the contract version ex:promotion / evolution / null.
      */
@@ -1831,7 +1844,7 @@ export type ContractsFrenchContractType = {
     /**
      * identifier for the contract type
      */
-    id: number;
+    id: string;
     /**
      * Contract type name
      */
@@ -1842,18 +1855,51 @@ export type ContractsGermanContractType = {
     /**
      * identifier for the contract type
      */
-    id: number;
+    id: string;
     /**
      * Contract type name
      */
     name: string;
 };
 
+export type ContractsMaterializedTemplate = {
+    /**
+     * Synthetic identifier for this materialized template, composed as {company_id}-{template_type}-{legal_entity_id}-{country_code}. Used as a stable cursor reference for pagination.
+     *
+     */
+    id: string;
+    /**
+     * Identifier of the company that owns this template. All templates are scoped to a company; use this to correlate templates across different levels (company, country, legal entity) for the same organization.
+     *
+     */
+    company_id: string;
+    /**
+     * Identifier of the legal entity this template has been materialized for. Present only when template_type is legal_entity. Legal entity templates represent the final merged view of fields applicable to employees hired under that legal entity, combining company-level defaults with country-specific and legal-entity-specific overrides.
+     *
+     */
+    legal_entity_id?: string;
+    /**
+     * ISO 3166-1 alpha-2 country code identifying the country this template applies to. Present for country and legal_entity template types. Determines which country-specific fields and options are included (e.g. fields required by Spanish or French labor law).
+     *
+     */
+    country_code?: string;
+    /**
+     * The level at which this template has been materialized. Templates follow a three-tier inheritance hierarchy: company (base defaults for the whole organization), country (overrides per country labor law), and legal_entity (final merged view per legal entity, combining all three levels). Use legal_entity when you need the definitive set of fields for a specific hiring context.
+     *
+     */
+    template_type: 'company' | 'country' | 'legal_entity' | 'contract_type';
+    /**
+     * The ordered list of contract fields defined in this template after merging all inheritance levels and removing hidden fields. Each entry is a FragmentField describing a single configurable attribute of a contract (e.g. contract type, job title, salary). The list reflects the final effective set of fields an employee contract under this template will contain.
+     *
+     */
+    template: Array<unknown>;
+};
+
 export type ContractsPortugueseContractType = {
     /**
      * identifier for the contract type
      */
-    id: number;
+    id: string;
     /**
      * Contract type name
      */
@@ -1864,7 +1910,7 @@ export type ContractsSpanishContractType = {
     /**
      * identifier for the contract type
      */
-    id: number;
+    id: string;
     /**
      * The name of the contract type
      */
@@ -1876,14 +1922,14 @@ export type ContractsSpanishContractType = {
     /**
      * The contract template identifier. Refers to contracts/contract_templates.
      */
-    contracts_contract_template_id?: number;
+    contracts_contract_template_id?: string;
 };
 
 export type ContractsSpanishEducationLevel = {
     /**
      * Education level identifier
      */
-    id: number;
+    id: string;
     /**
      * education level name
      */
@@ -1895,14 +1941,14 @@ export type ContractsSpanishEducationLevel = {
     /**
      * Contract template identifier, refers to contracts/contract_templates
      */
-    contracts_contract_template_id?: number;
+    contracts_contract_template_id?: string;
 };
 
 export type ContractsSpanishProfessionalCategory = {
     /**
      * Professional category identifier
      */
-    id: number;
+    id: string;
     /**
      * Professional category name
      */
@@ -1914,14 +1960,14 @@ export type ContractsSpanishProfessionalCategory = {
     /**
      * Contract template identifier, refers to contracts/contract_templates
      */
-    contracts_contract_template_id?: number;
+    contracts_contract_template_id?: string;
 };
 
 export type ContractsSpanishWorkingDayType = {
     /**
      * Working day type identifier
      */
-    id: number;
+    id: string;
     /**
      * Working day type name
      */
@@ -1933,22 +1979,22 @@ export type ContractsSpanishWorkingDayType = {
     /**
      * Contract template identifier, refers to contracts/contract_templates
      */
-    contracts_contract_template_id?: number;
+    contracts_contract_template_id?: string;
 };
 
 export type ContractsTaxonomy = {
-    id: number;
+    id: string;
     name: string;
     archived: boolean;
     default: boolean;
-    legal_entity_id: number;
+    legal_entity_id: string;
 };
 
 export type CustomFieldsField = {
     /**
      * Field identifier
      */
-    id: number;
+    id: string;
     /**
      * The type of the field's value
      */
@@ -1980,7 +2026,7 @@ export type CustomFieldsField = {
     /**
      * Legal entity id where this field belongs
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * Custom field slug
      */
@@ -1991,7 +2037,7 @@ export type CustomFieldsOption = {
     /**
      * Option identifier
      */
-    id: number;
+    id: string;
     /**
      * Title for option
      */
@@ -2007,25 +2053,25 @@ export type CustomFieldsOption = {
     /**
      * Custom Fields identifier
      */
-    field_id?: number;
+    field_id?: string;
 };
 
 export type CustomFieldsResourceField = {
     /**
      * Resource field identifier
      */
-    id: number;
+    id: string;
     /**
      * Custom Field identifier
      */
-    field_id?: number;
+    field_id?: string;
 };
 
 export type CustomFieldsValue = {
     /**
      * Unique identifier for the custom field value
      */
-    id: number;
+    id: string;
     /**
      * Custom Fields value
      */
@@ -2053,11 +2099,11 @@ export type CustomFieldsValue = {
     /**
      * The identifier of the object that owns this custom field value
      */
-    valuable_id: number;
+    valuable_id: string;
     /**
      * The identifier of the custom field
      */
-    field_id: number;
+    field_id: string;
     /**
      * The type of the object that owns this custom field value
      */
@@ -2073,7 +2119,7 @@ export type CustomFieldsValue = {
     /**
      * The identifier of the usage group
      */
-    usage_group_id?: number;
+    usage_group_id?: string;
     /**
      * The slug of the usage group
      */
@@ -2088,11 +2134,11 @@ export type CustomResourcesResource = {
     /**
      * The id of the Resource
      */
-    id: number;
+    id: string;
     /**
      * The id of the Schema this resource belongs to
      */
-    schema_id: number;
+    schema_id: string;
     /**
      * Attachable type (the type of the attachable)
      */
@@ -2100,14 +2146,14 @@ export type CustomResourcesResource = {
     /**
      * The id of the Attachable
      */
-    attachable_id: number;
+    attachable_id: string;
 };
 
 export type CustomResourcesSchema = {
     /**
      * Schema identifier
      */
-    id: number;
+    id: string;
     /**
      * Schema name
      */
@@ -2115,7 +2161,7 @@ export type CustomResourcesSchema = {
     /**
      * Company identifier where this schema belongs
      */
-    company_id: number;
+    company_id: string;
     /**
      * Manages visibility of the schema
      */
@@ -2130,26 +2176,26 @@ export type CustomResourcesValue = {
     /**
      * Value identifier
      */
-    id: number;
+    id: string;
     /**
      * The identifier of the resource that owns the resource value
      */
-    resource_id: number;
+    resource_id: string;
     /**
      * The id of the attached resource like an employee
      */
-    attachable_id?: number;
+    attachable_id?: string;
 };
 
 export type DocumentsDocument = {
     /**
      * access identifier of the author, refers to /employees/employees endpoint.
      */
-    author_id?: number;
+    author_id?: string;
     /**
      * company identifier, refers to /api/me endpoint.
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * document content type.
      */
@@ -2161,7 +2207,7 @@ export type DocumentsDocument = {
     /**
      * employee identifier associated to the document.
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * document extension.
      */
@@ -2177,11 +2223,11 @@ export type DocumentsDocument = {
     /**
      * folder identifier, references to documents/folders endpoint.
      */
-    folder_id?: number;
+    folder_id?: string;
     /**
      * document identifier.
      */
-    id: number;
+    id: string;
     /**
      * flag that indicates if the document is a company document.
      */
@@ -2197,7 +2243,7 @@ export type DocumentsDocument = {
     /**
      * leave identifier associated to the document, refers to /timeoff/leaves endpoint.
      */
-    leave_id?: number;
+    leave_id?: string;
     /**
      * flag to indicate if the document is public.
      */
@@ -2209,7 +2255,7 @@ export type DocumentsDocument = {
     /**
      * list of signee access identifiers associated to the document, refers to /employees/employees endpoint.
      */
-    signees?: Array<number>;
+    signees?: Array<string>;
     /**
      * document space.
      */
@@ -2228,7 +2274,7 @@ export type DocumentsDownloadUrl = {
     /**
      * document identifier.
      */
-    id: number;
+    id: string;
     /**
      * temporal document url.
      */
@@ -2243,11 +2289,11 @@ export type DocumentsFolder = {
     /**
      * Company ID of the folder
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * Folder ID
      */
-    id: number;
+    id: string;
     /**
      * Folder name
      */
@@ -2255,7 +2301,7 @@ export type DocumentsFolder = {
     /**
      * Id of the parent folder
      */
-    parent_folder_id?: number;
+    parent_folder_id?: string;
     /**
      * The space of the folder is related to the place where the folder is displayed.
      */
@@ -2266,11 +2312,11 @@ export type EmployeesEmployee = {
     /**
      * id of the employee.
      */
-    id: number;
+    id: string;
     /**
      * access_id associated to the employee.
      */
-    access_id: number;
+    access_id: string;
     /**
      * name of the employee.
      */
@@ -2358,19 +2404,19 @@ export type EmployeesEmployee = {
     /**
      * id of the company to which the employee belongs (not editable).
      */
-    company_id: number;
+    company_id: string;
     /**
      * legal entity of the employee, references to companies/legal_entities.
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * location id of the employee, references to locations/locations.
      */
-    location_id: number;
+    location_id: string;
     /**
      * Default work area ID for the employee at the default workplace. References locations/work_areas.
      */
-    default_work_area_id?: number;
+    default_work_area_id?: string;
     /**
      * creation date of the employee.
      */
@@ -2406,11 +2452,11 @@ export type EmployeesEmployee = {
     /**
      * manager id of the employee, you can get the manager id from employees endpoint.
      */
-    manager_id?: number;
+    manager_id?: string;
     /**
      * Timeoff manager id of the employee.
      */
-    timeoff_manager_id?: number;
+    timeoff_manager_id?: string;
     /**
      * phone number of the employee.
      */
@@ -2443,6 +2489,14 @@ export type EmployeesEmployee = {
      * date since when the employee is working in the company.
      */
     seniority_calculation_date?: string;
+    /**
+     * Confirmed email address for company communications and notifications. Separate from login email, used for internal company announcements.
+     */
+    communications_email?: string;
+    /**
+     * unconfirmed communications email address for the employee.
+     */
+    unconfirmed_communications_email?: string;
     /**
      * pronouns that an employee uses to define themselves.
      */
@@ -2477,7 +2531,7 @@ export type EmployeeUpdatesAbsence = {
     /**
      * Identifier of the absence employee update
      */
-    id: number;
+    id: string;
     /**
      * The status of the employee update.
      */
@@ -2485,7 +2539,7 @@ export type EmployeeUpdatesAbsence = {
     /**
      * Employee id of the absence
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * Full name of the employee
      */
@@ -2525,7 +2579,7 @@ export type EmployeeUpdatesAbsence = {
     /**
      * The id of the leave type
      */
-    leave_type_id?: number;
+    leave_type_id?: string;
     /**
      * The name of the leave type
      */
@@ -2536,7 +2590,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The id of the contract change incidence
      */
-    id: number;
+    id: string;
     /**
      * The status of the contract change incidence
      */
@@ -2556,7 +2610,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The employee id
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * The job title on the contract change
      */
@@ -2616,7 +2670,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The contract type id on the contract change
      */
-    es_contract_type_id?: number;
+    es_contract_type_id?: string;
     /**
      * The contract type name on the contract change
      */
@@ -2628,15 +2682,15 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The working day type id on the contract change
      */
-    es_working_day_type_id?: number;
+    es_working_day_type_id?: string;
     /**
      * The education level id on the contract change
      */
-    es_education_level_id?: number;
+    es_education_level_id?: string;
     /**
      * The professional category id on the contract change
      */
-    es_professional_category_id?: number;
+    es_professional_category_id?: string;
     /**
      * The employee type on the contract change
      */
@@ -2656,7 +2710,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The level id on the contract change
      */
-    fr_level_id?: number;
+    fr_level_id?: string;
     /**
      * The level name on the contract change
      */
@@ -2664,7 +2718,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The step id on the contract change
      */
-    fr_step_id?: number;
+    fr_step_id?: string;
     /**
      * The step name on the contract change
      */
@@ -2672,7 +2726,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The mutual id on the contract change
      */
-    fr_mutual_id?: number;
+    fr_mutual_id?: string;
     /**
      * The mutual name on the contract change
      */
@@ -2680,7 +2734,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The professional category id on the contract change
      */
-    fr_professional_category_id?: number;
+    fr_professional_category_id?: string;
     /**
      * The professional category name on the contract change
      */
@@ -2688,16 +2742,16 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The work type id on the contract change
      */
-    fr_work_type_id?: number;
+    fr_work_type_id?: string;
     /**
      * The work type name on the contract change
      */
     fr_work_type_name?: string;
-    compensation_ids?: Array<number>;
+    compensation_ids?: Array<string>;
     /**
      * The contract type id on the contract change
      */
-    fr_contract_type_id?: number;
+    fr_contract_type_id?: string;
     /**
      * The contract type name on the contract change
      */
@@ -2705,7 +2759,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The contract type id on the contract change
      */
-    de_contract_type_id?: number;
+    de_contract_type_id?: string;
     /**
      * The contract type name on the contract change
      */
@@ -2713,7 +2767,7 @@ export type EmployeeUpdatesContractChange = {
     /**
      * The contract type id on the contract change
      */
-    pt_contract_type_id?: number;
+    pt_contract_type_id?: string;
     /**
      * The contract type name on the contract change
      */
@@ -2726,7 +2780,7 @@ export type EmployeeUpdatesNewHire = {
     /**
      * The id of the new hire incidence
      */
-    id: number;
+    id: string;
     /**
      * The status of the new hire incidence
      */
@@ -2734,7 +2788,7 @@ export type EmployeeUpdatesNewHire = {
     /**
      * The employee id of the new hire
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * name of the employee.
      */
@@ -2824,23 +2878,23 @@ export type EmployeeUpdatesNewHire = {
     /**
      * manager id of the employee, you can get the manager id from employees endpoint.
      */
-    manager_id?: number;
+    manager_id?: string;
     tax_id?: string;
     /**
      * The legal entity id of the new hire
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * workplace id of the employee.
      */
-    workplace_id?: number;
+    workplace_id?: string;
 };
 
 export type EmployeeUpdatesPersonalChange = {
     /**
      * The id of the new hire incidence
      */
-    id: number;
+    id: string;
     /**
      * The status of the new hire incidence
      */
@@ -2848,7 +2902,7 @@ export type EmployeeUpdatesPersonalChange = {
     /**
      * The employee id of the new hire
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * personal email of the employee.
      */
@@ -2925,13 +2979,13 @@ export type EmployeeUpdatesPersonalChange = {
     /**
      * workplace id of the employee.
      */
-    workplace_id?: number;
+    workplace_id?: string;
 };
 
 export type EmployeeUpdatesSummary = {
-    id: number;
-    employee_id?: number;
-    legal_entity_id: number;
+    id: string;
+    employee_id?: string;
+    legal_entity_id: string;
     status: string;
     type: string;
     starts_on?: string;
@@ -2943,7 +2997,7 @@ export type EmployeeUpdatesTermination = {
     /**
      * ID of the termination
      */
-    id: number;
+    id: string;
     /**
      * Status of the termination
      */
@@ -2951,7 +3005,7 @@ export type EmployeeUpdatesTermination = {
     /**
      * Employee ID
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Date terminated on
      */
@@ -2971,7 +3025,7 @@ export type EmployeeUpdatesTermination = {
     /**
      * Legal entity ID
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * Remaining holidays
      */
@@ -2990,7 +3044,7 @@ export type ExpensesExpensable = {
     /**
      * Unique identifier for the expensable
      */
-    id: number;
+    id: string;
     /**
      * Type of the expensable. Can be either "expense" or "mileage" or "perdiem"
      */
@@ -2998,19 +3052,19 @@ export type ExpensesExpensable = {
     /**
      * The ID of the company that owns the expensable
      */
-    company_id: number;
+    company_id: string;
     /**
      * The ID of the employee that owns the expensable
      */
-    employee_id: number;
+    employee_id: string;
     /**
-     * The optional ID of the group that the expensable belongs to
+     * The ID of the expense report (group of expensables submitted together) this expensable was submitted in, if any
      */
-    group_id?: number;
+    group_id?: string;
     /**
      * The optional ID of the legal entity that the expensable belongs to
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * The date and time when the expensable was created
      */
@@ -3024,7 +3078,7 @@ export type ExpensesExpensable = {
      */
     currency: string;
     /**
-     * The status of the expensable. Can be pending, approved, paid, archived, in_review, rejected, reversed, draft, or in_payroll
+     * The lifecycle status of the expensable in the review/payment flow
      */
     status: 'pending' | 'changes_requested' | 'approved' | 'paid' | 'rejected' | 'reversed' | 'draft' | 'in_payroll' | 'sent_to_pay';
     /**
@@ -3034,7 +3088,7 @@ export type ExpensesExpensable = {
     /**
      * The optional ID of the employee that reported the expensable
      */
-    reporter_id?: number;
+    reporter_id?: string;
     /**
      * The optional date and time when the status was last updated
      */
@@ -3072,62 +3126,62 @@ export type ExpensesExpensable = {
      */
     internal_reference?: string;
     /**
-     * The optional ID of the expense that the expensable belongs to
+     * The ID of the receipt-backed expense detail record; set only when `type` is "expense"
      */
-    expense_id?: number;
+    expense_id?: string;
     /**
-     * The optional ID of the mileage that the expensable belongs to
+     * The ID of the mileage claim detail record; set only when `type` is "mileage"
      */
-    mileage_id?: number;
+    mileage_id?: string;
     /**
-     * The optional ID of the per_diem that the expensable belongs to
+     * The ID of the per-diem allowance detail record; set only when `type` is "perdiem"
      */
-    per_diem_id?: number;
+    per_diem_id?: string;
     /**
-     * The id of the budget
+     * The ID of the budget this expensable draws from, when one is linked
      */
-    budget_id?: number;
+    budget_id?: string;
     /**
-     * The id of the project
+     * The ID of the project this expensable is charged to, when one is linked
      */
-    project_id?: number;
+    project_id?: string;
     /**
-     * The ids of the cost centers
+     * The IDs of the cost centers the expensable's cost is allocated to
      */
-    cost_center_ids: Array<number>;
+    cost_center_ids: Array<string>;
 };
 
 export type ExpensesExpense = {
     /**
      * The id of the expense
      */
-    id?: number;
+    id?: string;
     /**
      * The id of the expense's owner
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * The id of the expense's company
      */
-    company_id: number;
+    company_id: string;
     /**
      * The id of the card payment
      */
-    card_payment_id?: number;
+    card_payment_id?: string;
     /**
      * The id of the dispute
      */
-    dispute_id?: number;
+    dispute_id?: string;
     /**
      * The id of the expensable
      */
-    expenses_expensable_id?: number;
+    expenses_expensable_id?: string;
     /**
      * The name of the merchant
      */
     merchant_name?: string;
     /**
-     * The user merchant of the expense
+     * The merchant name as typed by the employee, when they corrected or filled it manually (takes precedence over the extracted `merchant_name`)
      */
     user_merchant?: string;
     /**
@@ -3153,7 +3207,7 @@ export type ExpensesExpense = {
      */
     reference?: string;
     /**
-     * The optional amount in cents
+     * The total amount in cents
      */
     amount?: number;
     /**
@@ -3161,7 +3215,7 @@ export type ExpensesExpense = {
      */
     currency: string;
     /**
-     * The status of the expense
+     * The lifecycle status of the expense in the review/payment flow
      */
     status: 'pending' | 'changes_requested' | 'approved' | 'paid' | 'rejected' | 'reversed' | 'draft' | 'in_payroll' | 'sent_to_pay';
     /**
@@ -3191,7 +3245,7 @@ export type ExpensesExpense = {
     /**
      * The id of the card
      */
-    expenses_card_id?: number;
+    expenses_card_id?: string;
     /**
      * The card of the expense
      */
@@ -3201,7 +3255,7 @@ export type ExpensesExpense = {
     /**
      * The id of the document
      */
-    document_id?: number;
+    document_id?: string;
     /**
      * The signed document of the expense
      */
@@ -3249,44 +3303,44 @@ export type ExpensesExpense = {
      */
     taxes: Array<unknown>;
     /**
-     * The id of the category
+     * The id of the expense category the expense is classified under (company-configurable catalogue)
      */
-    category_id?: number;
+    category_id?: string;
     /**
      * The id of the ledger account
      */
-    ledger_account_id?: number;
+    ledger_account_id?: string;
     /**
      * The id of the budget associated with this expense
      */
-    budget_id?: number;
+    budget_id?: string;
     /**
      * The id of the project associated with this expense
      */
-    project_id?: number;
+    project_id?: string;
     /**
      * Array of cost center IDs associated with this expense
      */
-    cost_center_ids: Array<number>;
+    cost_center_ids: Array<string>;
 };
 
 export type ExpensesMileage = {
     /**
      * Unique identifier for the mileage
      */
-    id: number;
+    id: string;
     /**
      * The ID of the employee that owns the mileage
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * The ID of the company that owns the mileage
      */
-    company_id: number;
+    company_id: string;
     /**
      * The ID of the expensable associated with this mileage
      */
-    expenses_expensable_id?: number;
+    expenses_expensable_id?: string;
     /**
      * The category of the mileage
      */
@@ -3300,7 +3354,7 @@ export type ExpensesMileage = {
     /**
      * The ID of the category
      */
-    category_id?: number;
+    category_id?: string;
     /**
      * The amount in cents
      */
@@ -3322,15 +3376,15 @@ export type ExpensesMileage = {
      */
     status: string;
     /**
-     * The mileage distance
+     * The distance travelled, expressed in `units`
      */
     mileage?: number;
     /**
-     * The units for the mileage
+     * The distance unit `mileage` is expressed in (e.g. km)
      */
     units?: string;
     /**
-     * The rate per unit
+     * The reimbursement rate per distance unit, in `currency`
      */
     rate?: string;
     /**
@@ -3368,7 +3422,7 @@ export type ExpensesMileage = {
     /**
      * The ID of the ledger account
      */
-    ledger_account_id?: number;
+    ledger_account_id?: string;
     /**
      * Indicates if the mileage is a round trip
      */
@@ -3396,40 +3450,40 @@ export type ExpensesMileage = {
     /**
      * The id of the budget associated with this mileage
      */
-    budget_id?: number;
+    budget_id?: string;
     /**
      * The id of the project associated with this mileage
      */
-    project_id?: number;
+    project_id?: string;
     /**
      * Array of cost center IDs associated with this mileage
      */
-    cost_center_ids: Array<number>;
+    cost_center_ids: Array<string>;
 };
 
 export type ExpensesPerDiem = {
     /**
      * The ID of the per diem.
      */
-    id: number;
+    id: string;
     /**
      * The ID of the employee the per diem is for.
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * The ID of the company the per diem is for.
      */
-    company_id: number;
+    company_id: string;
     /**
      * The ID of the expensable the per diem is for.
      */
-    expenses_expensable_id?: number;
+    expenses_expensable_id?: string;
     /**
-     * The end date of the per diem.
+     * The last day of the trip the allowance covers.
      */
     end_date?: string;
     /**
-     * The start date of the per diem.
+     * The first day of the trip the allowance covers.
      */
     start_date?: string;
     /**
@@ -3447,13 +3501,13 @@ export type ExpensesPerDiem = {
     /**
      * The ID of the ledger account the per diem is for.
      */
-    ledger_account_id?: number;
+    ledger_account_id?: string;
     /**
-     * The amount of the per diem.
+     * The total allowance amount in cents.
      */
     amount?: number;
     /**
-     * The currency for the reimbursable amount.
+     * The currency code in ISO 4217 format.
      */
     currency: string;
     /**
@@ -3505,15 +3559,15 @@ export type ExpensesPerDiem = {
     /**
      * The id of the budget associated with this per diem
      */
-    budget_id?: number;
+    budget_id?: string;
     /**
      * The id of the project associated with this per diem
      */
-    project_id?: number;
+    project_id?: string;
     /**
      * Array of cost center IDs associated with this per diem
      */
-    cost_center_ids: Array<number>;
+    cost_center_ids: Array<string>;
     /**
      * The rates for the per diem.
      */
@@ -3524,7 +3578,7 @@ export type FinanceAccount = {
     /**
      * Unique identifier in factorial for the ledger account
      */
-    id: number;
+    id: string;
     /**
      * Name of the ledger account
      */
@@ -3532,7 +3586,7 @@ export type FinanceAccount = {
     /**
      * Legal entity ID of the ledger account
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * Number of the ledger account
      */
@@ -3559,7 +3613,7 @@ export type FinanceAccountingSetting = {
     /**
      * Identifier for the AccountingSetting.
      */
-    id: number;
+    id: string;
     /**
      * External ID for the accounting setting.
      */
@@ -3567,11 +3621,11 @@ export type FinanceAccountingSetting = {
     /**
      * ID of the associated Company.
      */
-    company_id: number;
+    company_id: string;
     /**
      * ID of the associated Legal Entity.
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * Timestamp when the accounting setting was last updated.
      */
@@ -3579,46 +3633,46 @@ export type FinanceAccountingSetting = {
     /**
      * Default account for purchase invoices.
      */
-    default_account_for_purchase_invoices_id?: number;
+    default_account_for_purchase_invoices_id?: string;
     /**
      * Default account for vendors.
      */
-    default_account_for_vendors_id?: number;
+    default_account_for_vendors_id?: string;
     /**
      * Default account for banks.
      */
-    default_account_for_banks_id?: number;
+    default_account_for_banks_id?: string;
     /**
      * Default suspense account.
      */
-    default_account_for_suspense_id?: number;
+    default_account_for_suspense_id?: string;
     /**
      * Default account for expenses.
      */
-    default_account_for_expenses_id?: number;
+    default_account_for_expenses_id?: string;
     /**
      * Default account for employees.
      */
-    default_account_for_employees_id?: number;
+    default_account_for_employees_id?: string;
     /**
      * Default account for sale invoices.
      */
-    default_account_for_sale_invoices_id?: number;
+    default_account_for_sale_invoices_id?: string;
     /**
      * Default account for clients.
      */
-    default_account_for_clients_id?: number;
+    default_account_for_clients_id?: string;
     /**
      * Default account for benefits.
      */
-    default_account_for_benefits_id?: number;
+    default_account_for_benefits_id?: string;
 };
 
 export type FinanceBudgetOption = {
     /**
      * Unique identifier for the budget option
      */
-    id: number;
+    id: string;
     /**
      * Name of the budget option
      */
@@ -3634,14 +3688,14 @@ export type FinanceBudgetOption = {
     /**
      * Legal entity ID of the budget option
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
 };
 
 export type FinanceCategory = {
     /**
      * Unique identifier for the category
      */
-    id: number;
+    id: string;
     /**
      * Custom label for the category
      */
@@ -3653,7 +3707,7 @@ export type FinanceCategory = {
     /**
      * Parent category ID (null for main categories)
      */
-    parent_category_id?: number;
+    parent_category_id?: string;
     /**
      * System identifier for the category
      */
@@ -3676,7 +3730,7 @@ export type FinanceContact = {
     /**
      * Unique identifier for the Contact.
      */
-    id: number;
+    id: string;
     /**
      * The commercial name of the Contact.
      */
@@ -3730,10 +3784,10 @@ export type FinanceContact = {
 };
 
 export type FinanceCostCenter = {
-    id: number;
+    id: string;
     name: string;
-    company_id: number;
-    legal_entity_id?: number;
+    company_id: string;
+    legal_entity_id?: string;
     code?: string;
     description?: string;
     active_employees_count: number;
@@ -3746,15 +3800,15 @@ export type FinanceCostCenterMembership = {
     /**
      * The unique identifier of the cost center membership
      */
-    id: number;
+    id: string;
     /**
      * The identifier of the associated employee
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * The identifier of the associated cost center
      */
-    cost_center_id: number;
+    cost_center_id: string;
     /**
      * The date the employee started being assigned to the cost center
      */
@@ -3773,7 +3827,7 @@ export type FinanceFinancialDocument = {
     /**
      * Factorial unique identifier.
      */
-    id: number;
+    id: string;
     /**
      * Net amount in cents.
      */
@@ -3805,11 +3859,11 @@ export type FinanceFinancialDocument = {
     /**
      * Factorial unique identifier for the legal entity of the financial document.
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
     /**
      * Factorial unique identifier for the vendor of the financial document.
      */
-    vendor_id?: number;
+    vendor_id?: string;
     /**
      * File attached.
      */
@@ -3835,7 +3889,7 @@ export type FinanceFinancialDocument = {
     /**
      * Factorial unique identifier for the duplicate financial document.
      */
-    duplicate_financial_document_id?: number;
+    duplicate_financial_document_id?: string;
     /**
      * Date when was validated.
      */
@@ -3843,7 +3897,7 @@ export type FinanceFinancialDocument = {
     /**
      * Factorial unique identifier for the user who validated the financial document.
      */
-    validated_by_id?: number;
+    validated_by_id?: string;
     /**
      * Type of the financial document. Using "invoice" as default.
      */
@@ -3851,7 +3905,7 @@ export type FinanceFinancialDocument = {
     /**
      * Factorial unique identifier for the parent financial document of the financial document.
      */
-    parent_financial_document_id?: number;
+    parent_financial_document_id?: string;
     /**
      * Taxes total amount in cents.
      */
@@ -3926,7 +3980,7 @@ export type FinanceJournalEntry = {
     /**
      * Journal entry ID
      */
-    id: number;
+    id: string;
     /**
      * Incremental number assigned to the journal entry
      */
@@ -3942,7 +3996,7 @@ export type FinanceJournalEntry = {
     /**
      * Source id related with this journal entry
      */
-    source_id?: number;
+    source_id?: string;
     /**
      * Source type related with this journal entry
      */
@@ -3958,7 +4012,7 @@ export type FinanceJournalEntry = {
     /**
      * The associated Legal Entity ID
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * External identifier for the journal entry
      */
@@ -3977,7 +4031,7 @@ export type FinanceJournalLine = {
     /**
      * Factorial id
      */
-    id: number;
+    id: string;
     /**
      * Sequential number assigned to the line
      */
@@ -3993,11 +4047,11 @@ export type FinanceJournalLine = {
     /**
      * ID of the parent journal entry
      */
-    journal_entry_id: number;
+    journal_entry_id: string;
     /**
      * ID of the associated account
      */
-    account_id: number;
+    account_id: string;
     /**
      * Timestamp when the journal line was reconciled
      */
@@ -4016,7 +4070,7 @@ export type FinanceLedgerAccountResource = {
     /**
      * Factorial unique identifier.
      */
-    id: number;
+    id: string;
     /**
      * Ledger account resource type.
      */
@@ -4024,11 +4078,11 @@ export type FinanceLedgerAccountResource = {
     /**
      * Factorial unique identifier of the resource associated to the ledger account resource.
      */
-    resource_id: number;
+    resource_id: string;
     /**
      * Factorial Ledger Account identifier.
      */
-    account_id: number;
+    account_id: string;
     /**
      * Ledger account balance type.
      */
@@ -4044,14 +4098,14 @@ export type FinanceLedgerAccountResource = {
     /**
      * Factorial unique identifier of the Legal entity.
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
 };
 
 export type FinanceTaxRate = {
     /**
      * Factorial id
      */
-    id: number;
+    id: string;
     /**
      * Specifies the numerical percentage for the tax rate between -1 and 1.
      */
@@ -4063,7 +4117,7 @@ export type FinanceTaxRate = {
     /**
      * The identifier of the related TaxType record.
      */
-    tax_type_id: number;
+    tax_type_id: string;
     /**
      * The external id of the tax rate.
      */
@@ -4078,7 +4132,7 @@ export type FinanceTaxType = {
     /**
      * Factorial id
      */
-    id: number;
+    id: string;
     /**
      * The name assigned to the tax type.
      */
@@ -4105,11 +4159,11 @@ export type HolidaysCompanyHoliday = {
     /**
      * Company holiday id
      */
-    id: number;
+    id: string;
     /**
      * Related location id
      */
-    location_id: number;
+    location_id: string;
     /**
      * Company holiday summary
      */
@@ -4128,11 +4182,30 @@ export type HolidaysCompanyHoliday = {
     half_day?: 'beginning_of_day' | 'end_of_day';
 };
 
+export type IntegrationsSyncRunOutput = {
+    /**
+     * Identifier of the sync run output
+     */
+    id: string;
+    /**
+     * Identifier of the sync run this output belongs to
+     */
+    sync_run_id: string;
+    /**
+     * Name of the uploaded file
+     */
+    file_name: string;
+    /**
+     * Timestamp when the sync run output was created
+     */
+    created_at: string;
+};
+
 export type IntegrationsSyncableItem = {
     /**
      * identifier of a syncable item within the sync run. Refers to the integrations/syncable_sync_run resource
      */
-    syncable_sync_run_id: number;
+    syncable_sync_run_id: string;
     /**
      * data of the item to be synced
      */
@@ -4142,14 +4215,14 @@ export type IntegrationsSyncableItem = {
     /**
      * Type of the syncable item
      */
-    syncable_type: 'compensations/compensation' | 'expenses/expense';
+    syncable_type: 'compensations/compensation' | 'expenses/expense' | 'employee_updates/leave' | 'finance/vendor';
 };
 
 export type IntegrationsSyncableSyncRun = {
     /**
      * Identifier of the syncable sync run
      */
-    id: number;
+    id: string;
     /**
      * Status of the syncable sync run
      */
@@ -4161,11 +4234,11 @@ export type IntegrationsSyncableSyncRun = {
     /**
      * Identifier of the sync run
      */
-    sync_run_id: number;
+    sync_run_id: string;
     /**
      * Identifier of the company
      */
-    company_id: number;
+    company_id: string;
 };
 
 export type ItManagementItAsset = {
@@ -4176,7 +4249,7 @@ export type ItManagementItAsset = {
     /**
      * Company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
      * IT Asset Model identifier
      */
@@ -4199,19 +4272,19 @@ export type ItManagementItAsset = {
     /**
      * Owner (employee) identifier
      */
-    owner_id?: number;
+    owner_id?: string;
     /**
      * Location identifier
      */
-    location_id?: number;
+    location_id?: string;
     /**
      * Workplace identifier
      */
-    workplace_id?: number;
+    workplace_id?: string;
     /**
      * Team identifier
      */
-    team_id?: number;
+    team_id?: string;
     /**
      * Purchase date of the IT asset
      */
@@ -4262,7 +4335,7 @@ export type ItManagementItAssetModel = {
     /**
      * Company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
      * Brand of the IT asset model
      */
@@ -4285,11 +4358,11 @@ export type JobCatalogLevel = {
     /**
      * identifier for the job catalog level.
      */
-    id: number;
+    id: string;
     /**
      * identifier for the job catalog role.
      */
-    role_id: number;
+    role_id: string;
     /**
      * Level name.
      */
@@ -4316,7 +4389,7 @@ export type JobCatalogNodeAttribute = {
     /**
      * Unique identifier of the node attribute
      */
-    id: number;
+    id: string;
     /**
      * Type of the attribute (e.g., competency, salary_range, working_conditions, it_management_asset)
      */
@@ -4355,11 +4428,11 @@ export type JobCatalogRole = {
     /**
      * identifier for the job catalog role.
      */
-    id: number;
+    id: string;
     /**
      * Identifier for the company.
      */
-    company_id: number;
+    company_id: string;
     /**
      * Role name.
      */
@@ -4371,15 +4444,15 @@ export type JobCatalogRole = {
     /**
      * List of legal entities.
      */
-    legal_entities_ids: Array<number>;
+    legal_entities_ids: Array<string>;
     /**
      * List of supervisors.
      */
-    supervisors_ids?: Array<number>;
+    supervisors_ids?: Array<string>;
     /**
      * List of competencies.
      */
-    competencies_ids?: Array<number>;
+    competencies_ids?: Array<string>;
     /**
      * Shows if the role is archived.
      */
@@ -4429,11 +4502,11 @@ export type LocationsLocation = {
     /**
      * identifier of the location
      */
-    id: number;
+    id: string;
     /**
      * company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
      * name of the location
      */
@@ -4493,14 +4566,14 @@ export type LocationsLocation = {
 };
 
 export type LocationsWorkArea = {
-    id: number;
-    location_id: number;
+    id: string;
+    location_id: string;
     name: string;
     archived_at?: string;
 };
 
 export type MarketplaceInstallation = {
-    id: number;
+    id: string;
     /**
      * UUID of the integration
      */
@@ -4508,7 +4581,7 @@ export type MarketplaceInstallation = {
     /**
      * Identifier of the company
      */
-    company_id: number;
+    company_id: string;
     created_at: string;
 };
 
@@ -4535,11 +4608,11 @@ export type PayrollFamilySituation = {
     /**
      * ID of the family situation.
      */
-    id: number;
+    id: string;
     /**
      * Employee id of the family situation.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Civil status of the employee.
      */
@@ -4554,7 +4627,7 @@ export type PayrollPolicyPeriod = {
     /**
      * Policy period id
      */
-    id: number;
+    id: string;
     /**
      * Policy name with start and end date
      */
@@ -4566,11 +4639,11 @@ export type PayrollPolicyPeriod = {
     /**
      * The id of the policy associated with the policy period
      */
-    policy_id: number;
+    policy_id: string;
     /**
      * The id of the company
      */
-    company_id: number;
+    company_id: string;
     /**
      * The start date of the policy period
      */
@@ -4597,23 +4670,23 @@ export type PayrollSupplement = {
     /**
      * The identifier of the supplement
      */
-    id: number;
+    id: string;
     /**
      * The identifier of the employee associated with the supplement
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * The identifier of the company associated with the supplement
      */
-    company_id: number;
+    company_id: string;
     /**
      * The contract compensation identifier associated with the supplement
      */
-    contracts_compensation_id?: number;
+    contracts_compensation_id?: string;
     /**
      * The taxonomy identifier associated with the supplement
      */
-    contracts_taxonomy_id?: number;
+    contracts_taxonomy_id?: string;
     /**
      * The amount of the supplement in cents
      */
@@ -4641,7 +4714,7 @@ export type PayrollSupplement = {
     /**
      * The payroll policy period identifier associated with the supplement
      */
-    payroll_policy_period_id?: number;
+    payroll_policy_period_id?: string;
     /**
      * Observations on the employee made by the admin or manager
      */
@@ -4665,18 +4738,18 @@ export type PayrollSupplement = {
     /**
      * The legal entity identifier associated with the supplement
      */
-    legal_entity_id?: number;
+    legal_entity_id?: string;
 };
 
 export type PayrollEmployeesIdentifier = {
     /**
      * payroll employee identifier
      */
-    id: number;
+    id: string;
     /**
      * identifier of the employee
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * social security number of the employee
      */
@@ -4695,11 +4768,11 @@ export type PayrollIntegrationsBaseCode = {
     /**
      * Code identifier
      */
-    id: number;
+    id: string;
     /**
      * Company ID where the code belongs to
      */
-    company_id: number;
+    company_id: string;
     /**
      * Code value
      */
@@ -4707,7 +4780,7 @@ export type PayrollIntegrationsBaseCode = {
     /**
      * Related object ID. Used together with codeable_type
      */
-    codeable_id: number;
+    codeable_id: string;
     /**
      * Related object type. Used together with codeable_id
      */
@@ -4726,7 +4799,7 @@ export type PerformanceAgreement = {
     /**
      * Review process ID
      */
-    process_id: number;
+    process_id: string;
     /**
      * Review process target ID
      */
@@ -4734,11 +4807,11 @@ export type PerformanceAgreement = {
     /**
      * Manager access ID who signed the action plan
      */
-    signer_id?: number;
+    signer_id?: string;
     /**
      * Manager employee ID
      */
-    reviewer_id?: number;
+    reviewer_id?: string;
     /**
      * Date when the manager signed the action plan
      */
@@ -4772,11 +4845,11 @@ export type PerformanceAgreement = {
     /**
      * Self review evaluation ID
      */
-    self_evaluation_id?: number;
+    self_evaluation_id?: string;
     /**
      * Manager review evaluation ID
      */
-    manager_evaluation_id?: number;
+    manager_evaluation_id?: string;
     /**
      * Self comments by question
      */
@@ -4791,11 +4864,11 @@ export type PerformanceCompanyEmployeeScoreScale = {
     /**
      * Company ID
      */
-    id: number;
+    id: string;
     /**
      * Employee score scale ID
      */
-    scale_id: number;
+    scale_id: string;
     /**
      * Default employee score scale
      */
@@ -4806,7 +4879,7 @@ export type PerformanceEmployeeScoreScale = {
     /**
      * Employee score scale ID
      */
-    id: number;
+    id: string;
     /**
      * Scale to be used when scoring the employee performance
      */
@@ -4818,23 +4891,23 @@ export type PerformanceReviewEmployeeScore = {
     /**
      * Review emploee score ID
      */
-    id: number;
+    id: string;
     /**
      * Review process ID
      */
-    review_process_id: number;
+    review_process_id: string;
     /**
      * Review evaluation ID
      */
-    review_evaluation_id: number;
+    review_evaluation_id: string;
     /**
      * Employee access ID
      */
-    target_access_id: number;
+    target_access_id: string;
     /**
      * Company identifier of the review employee score
      */
-    company_id: number;
+    company_id: string;
     /**
      * Who scored the employee
      */
@@ -4878,19 +4951,19 @@ export type PerformanceReviewEvaluation = {
     /**
      * Evaluation ID
      */
-    id: number;
+    id: string;
     /**
      * Review process ID
      */
-    performance_review_process_id?: number;
+    performance_review_process_id?: string;
     /**
      * Participant access ID
      */
-    target_access_id?: number;
+    target_access_id?: string;
     /**
      * Reviewer access ID
      */
-    reviewer_access_id?: number;
+    reviewer_access_id?: string;
     /**
      * Evaluation type
      */
@@ -4914,11 +4987,11 @@ export type PerformanceReviewEvaluationAnswer = {
     /**
      * Review evaluation ID
      */
-    id: number;
+    id: string;
     /**
      * Review evaluation ID
      */
-    performance_review_evaluation_id: number;
+    performance_review_evaluation_id: string;
     /**
      * List of questions and their respective answers grouped by section.
      */
@@ -4943,23 +5016,23 @@ export type PerformanceReviewEvaluationScore = {
     /**
      * Review evaluation score ID
      */
-    id: number;
+    id: string;
     /**
      * Review process ID
      */
-    review_process_id: number;
+    review_process_id: string;
     /**
      * Review evaluation ID
      */
-    review_evaluation_id: number;
+    review_evaluation_id: string;
     /**
      * Employee access ID
      */
-    target_access_id: number;
+    target_access_id: string;
     /**
      * Company identifier of the review evaluation score
      */
-    company_id: number;
+    company_id: string;
     /**
      * Who scored the employee
      */
@@ -5002,26 +5075,26 @@ export type PerformanceReviewOwner = {
     /**
      * Review owner ID
      */
-    id: number;
+    id: string;
     /**
      * Review owner access ID
      */
-    access_id: number;
+    access_id: string;
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
 };
 
 export type PerformanceReviewProcess = {
     /**
      * Review process ID
      */
-    id: number;
+    id: string;
     /**
      * Company ID
      */
-    company_id: number;
+    company_id: string;
     /**
      * Review process name
      */
@@ -5086,15 +5159,15 @@ export type PerformanceReviewProcessCustomTemplate = {
     /**
      * Review process template ID
      */
-    id: number;
+    id: string;
     /**
      * Author of the custom template.
      */
-    author_id?: number;
+    author_id?: string;
     /**
      * Company ID
      */
-    company_id: number;
+    company_id: string;
     /**
      * Review process name
      */
@@ -5149,15 +5222,15 @@ export type PerformanceReviewProcessEstimatedTarget = {
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
     /**
      * Access ID
      */
-    access_id: number;
+    access_id: string;
     /**
      * Employee ID
      */
-    employee_id: number;
+    employee_id: string;
 };
 
 export type PerformanceReviewProcessTarget = {
@@ -5168,26 +5241,26 @@ export type PerformanceReviewProcessTarget = {
     /**
      * Participant access ID
      */
-    access_id: number;
+    access_id: string;
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
     /**
      * Materialized review process target ID
      */
-    materialized_process_target_id: number;
+    materialized_process_target_id: string;
 };
 
 export type PerformanceReviewQuestionnairesByStrategy = {
     /**
      * Review process ID
      */
-    id: number;
+    id: string;
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
     /**
      * Scoring range used in rating questions
      */
@@ -5240,11 +5313,11 @@ export type PerformanceReviewVisibilitySetting = {
     /**
      * Review process ID
      */
-    id: number;
+    id: string;
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
     /**
      * Employees don't have access to their results when enabled
      */
@@ -5267,11 +5340,11 @@ export type PerformanceTargetManager = {
     /**
      * Review process ID
      */
-    performance_review_process_id: number;
+    performance_review_process_id: string;
     /**
      * Manager access ID
      */
-    manager_access_id: number;
+    manager_access_id: string;
     /**
      * Manager full name
      */
@@ -5282,15 +5355,15 @@ export type PostsComment = {
     /**
      * identifier of the comment
      */
-    id: number;
+    id: string;
     /**
      * identifier of the post
      */
-    post_id: number;
+    post_id: string;
     /**
      * author identifier refers to the employee access, you can get the employee from the employee endpoint
      */
-    author_id: number;
+    author_id: string;
     /**
      * text of the comment
      */
@@ -5305,7 +5378,7 @@ export type PostsGroup = {
     /**
      * identifier of the group.
      */
-    id: number;
+    id: string;
     /**
      * title of the group.
      */
@@ -5320,7 +5393,7 @@ export type PostsPost = {
     /**
      * identifiers of the post
      */
-    id: number;
+    id: string;
     /**
      * title of the post
      */
@@ -5356,7 +5429,7 @@ export type PostsPost = {
     /**
      * group identifier of the post, references to posts/groups endpoint
      */
-    posts_group_id?: number;
+    posts_group_id?: string;
     comments_count: number;
 };
 
@@ -5364,7 +5437,7 @@ export type ProcurementPurchaseOrder = {
     /**
      * Unique identifier of the purchase order
      */
-    id: number;
+    id: string;
     /**
      * Purchase order number assigned to this order
      */
@@ -5376,7 +5449,7 @@ export type ProcurementPurchaseOrder = {
     /**
      * Current status of the purchase order
      */
-    status: 'draft' | 'pending' | 'ordered' | 'partial' | 'received' | 'closed';
+    status: 'processing' | 'draft' | 'pending' | 'ordered' | 'partial' | 'received' | 'closed';
     /**
      * Total cost of the purchase order
      */
@@ -5390,19 +5463,19 @@ export type ProcurementPurchaseOrder = {
     /**
      * Identifier of the vendor (contact) associated with this purchase order
      */
-    vendor_id?: number;
+    vendor_id?: string;
     /**
      * Identifier of the purchase request that generated this purchase order
      */
-    purchase_request_id: number;
+    purchase_request_id: string;
     /**
      * Identifier of the legal entity that owns this purchase order
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * Identifier of the company that owns this purchase order
      */
-    company_id: number;
+    company_id: string;
     /**
      * Formatted purchase order number with prefix (e.g., PO-00001)
      */
@@ -5413,7 +5486,7 @@ export type ProcurementPurchaseRequest = {
     /**
      * Unique identifier of the purchase request
      */
-    id: number;
+    id: string;
     /**
      * Description or notes about the purchase request
      */
@@ -5421,11 +5494,11 @@ export type ProcurementPurchaseRequest = {
     /**
      * The id of the referred type
      */
-    type_id: number;
+    type_id: string;
     /**
      * Identifier of the company that owns this purchase request
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * Total cost of the purchase request
      */
@@ -5439,11 +5512,11 @@ export type ProcurementPurchaseRequest = {
     /**
      * Identifier of the employee who requested this purchase
      */
-    requester_employee_id: number;
+    requester_employee_id: string;
     /**
      * Identifier of the vendor (contact) associated with this purchase request
      */
-    vendor_id?: number;
+    vendor_id?: string;
     /**
      * Current status of the purchase request
      */
@@ -5466,11 +5539,11 @@ export type ProcurementType = {
     /**
      * Employee ID who created this type (null for system types)
      */
-    author_id?: number;
+    author_id?: string;
     /**
      * Identifier of the company that owns this type
      */
-    company_id: number;
+    company_id: string;
     /**
      * Time the procurement type was created
      */
@@ -5486,7 +5559,7 @@ export type ProcurementType = {
     /**
      * The id of the type
      */
-    id: number;
+    id: string;
     /**
      * System identifier for default types
      */
@@ -5505,7 +5578,7 @@ export type ProjectManagementBudgetStrategy = {
     /**
      * Factorial id of the budget strategy
      */
-    id: number;
+    id: string;
     /**
      * Type of budget strategy. One of project_fixed_cost => ProjectFixedCost, total_budget => TimeAndMaterials, without_budget => WithoutBudget
      */
@@ -5525,11 +5598,11 @@ export type ProjectManagementBudgetStrategy = {
     /**
      * Id of the project this budget strategy belongs to
      */
-    project_id: number;
+    project_id: string;
     /**
      * Id of the subproject this budget strategy belongs to, if any
      */
-    subproject_id?: number;
+    subproject_id?: string;
     /**
      * Whether the budget strategy is delegated
      */
@@ -5537,10 +5610,10 @@ export type ProjectManagementBudgetStrategy = {
 };
 
 export type ProjectManagementExpenseRecord = {
-    id: number;
-    project_worker_id: number;
-    expense_id: number;
-    subproject_id?: number;
+    id: string;
+    project_worker_id: string;
+    expense_id: string;
+    subproject_id?: string;
     original_amount_currency?: string;
     original_amount_cents?: number;
     legal_entity_amount_currency?: string;
@@ -5604,7 +5677,7 @@ export type ProjectManagementExportableProject = {
     /**
      * The id of the employee
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * The time imputed by the employee
      */
@@ -5612,28 +5685,84 @@ export type ProjectManagementExportableProject = {
     /**
      * The client id of the project
      */
-    client_id?: number;
+    client_id?: string;
 };
 
 export type ProjectManagementFlexibleTimeRecord = {
-    id: number;
+    /**
+     * The unique identifier of the flexible time record.
+     */
+    id: string;
+    /**
+     * The date on which the time was imputed.
+     */
     date: string;
+    /**
+     * The amount of time imputed to the project, in minutes.
+     */
     imputed_minutes: number;
-    project_worker_id: number;
-    subproject_id?: number;
+    /**
+     * The ID of the project worker associated with this flexible time record.
+     */
+    project_worker_id: string;
+    /**
+     * The ID of the subproject worked on, if any.
+     */
+    subproject_id?: string;
 };
 
 export type ProjectManagementFlexibleTimeRecordComment = {
-    id: number;
+    /**
+     * The unique identifier of the flexible time record comment.
+     */
+    id: string;
+    /**
+     * The text content of the comment.
+     */
     content: string;
-    flexible_time_record_id: number;
+    /**
+     * The ID of the flexible time record this comment belongs to.
+     */
+    flexible_time_record_id: string;
+};
+
+export type ProjectManagementImputableProject = {
+    /**
+     * The id of the imputable project
+     */
+    id: string;
+    /**
+     * The name of the imputable project
+     */
+    name: string;
+    /**
+     * The code of the imputable project
+     */
+    code?: string;
+    /**
+     * The start date of the imputable project
+     */
+    start_date?: string;
+    /**
+     * The due date of the imputable project
+     */
+    due_date?: string;
+    /**
+     * The status of the imputable project
+     */
+    status: 'active' | 'closed' | 'draft' | 'processing';
+    /**
+     * The currency of the imputable project
+     */
+    currency: string;
+    client_id?: string;
 };
 
 export type ProjectManagementPlannedRecord = {
     /**
      * The id of the planned record
      */
-    id: number;
+    id: string;
     /**
      * The daily minutes of the planned record
      */
@@ -5649,11 +5778,11 @@ export type ProjectManagementPlannedRecord = {
     /**
      * The project worker id of the planned record
      */
-    project_worker_id: number;
+    project_worker_id: string;
     /**
      * The subproject id of the planned record
      */
-    subproject_id?: number;
+    subproject_id?: string;
     /**
      * The week days of the planned record, start in Sunday 0 and end in Saturday 6
      */
@@ -5664,7 +5793,7 @@ export type ProjectManagementProject = {
     /**
      * The id of the project
      */
-    id: number;
+    id: string;
     /**
      * The name of the project
      */
@@ -5686,11 +5815,11 @@ export type ProjectManagementProject = {
      */
     due_date?: string;
     /**
-     * The status of the project
+     * The lifecycle status of the project (whether it is still running and can take new charges)
      */
     status: 'active' | 'closed' | 'draft' | 'processing';
     /**
-     * The employees assigment of the project
+     * How employees get access to the project — `manual` (hand-picked members) or `company` (everyone in the company)
      */
     employees_assignment: 'manual' | 'company';
     /**
@@ -5698,7 +5827,7 @@ export type ProjectManagementProject = {
      */
     inputed_minutes?: number;
     /**
-     * Check if the projects is billable
+     * Whether the project's costs can be billed (recharged) to a client
      */
     is_billable: boolean;
     /**
@@ -5712,7 +5841,7 @@ export type ProjectManagementProject = {
     /**
      * The legal entity id of the project
      */
-    legal_entity_id: number;
+    legal_entity_id: string;
     /**
      * Total spending costs in cents
      */
@@ -5720,7 +5849,7 @@ export type ProjectManagementProject = {
     /**
      * The client of the project, refers to finance/contacts.
      */
-    client_id?: number;
+    client_id?: string;
     /**
      * Total Cost in cents
      */
@@ -5728,19 +5857,19 @@ export type ProjectManagementProject = {
 };
 
 export type ProjectManagementProjectTask = {
-    id: number;
+    id: string;
     /**
      * The ID of the project linked to the project task
      */
-    project_id: number;
+    project_id: string;
     /**
      * The ID of the subproject linked to the project task
      */
-    subproject_id?: number;
+    subproject_id?: string;
     /**
      * The ID of the task linked to the project task
      */
-    task_id: number;
+    task_id: string;
     /**
      * If true, status changes related to the project will notify the author
      */
@@ -5751,15 +5880,15 @@ export type ProjectManagementProjectWorker = {
     /**
      * id of the project worker.
      */
-    id: number;
+    id: string;
     /**
      * id of the project.
      */
-    project_id: number;
+    project_id: string;
     /**
      * id of the employee.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * true if the employee is assigned to the project, false otherwise.
      */
@@ -5786,7 +5915,7 @@ export type ProjectManagementSubproject = {
     /**
      * The id of the subproject
      */
-    id?: number;
+    id?: string;
     /**
      * The name of the subproject
      */
@@ -5794,7 +5923,7 @@ export type ProjectManagementSubproject = {
     /**
      * The id of the project
      */
-    project_id: number;
+    project_id: string;
     /**
      * The total minutes tracked in the subproject (if requested)
      */
@@ -5833,19 +5962,19 @@ export type ProjectManagementTimeRecord = {
     /**
      * Id of the time record
      */
-    id: number;
+    id: string;
     /**
      * Id of the project worker
      */
-    project_worker_id: number;
+    project_worker_id: string;
     /**
      * Id of the attendance shift
      */
-    attendance_shift_id?: number;
+    attendance_shift_id?: string;
     /**
      * Id of the subproject
      */
-    subproject_id?: number;
+    subproject_id?: string;
     /**
      * Reference date of the shift
      */
@@ -5862,17 +5991,21 @@ export type ProjectManagementTimeRecord = {
      * Clock out time
      */
     clock_out?: string;
+    /**
+     * Comment for the time record
+     */
+    observations?: string;
 };
 
 export type ShiftManagementShift = {
     /**
      * Unique identifier for the shift
      */
-    id: number;
+    id: string;
     /**
      * Identifier of the company that owns this shift
      */
-    company_id: number;
+    company_id: string;
     /**
      * Display name of the shift. If not explicitly set, falls back to the default shift title or template week name
      */
@@ -5884,15 +6017,15 @@ export type ShiftManagementShift = {
     /**
      * Identifier of the location where the shift takes place. Can be null if the shift uses the employee's default location
      */
-    location_id?: number;
+    location_id?: string;
     /**
      * Identifier of the specific work area within the location where the shift occurs. Work areas allow further subdivision of locations
      */
-    locations_work_area_id?: number;
+    locations_work_area_id?: string;
     /**
      * Identifier of the employee assigned to this shift
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Timestamp indicating when the shift starts
      */
@@ -5931,7 +6064,7 @@ export type TasksTask = {
     /**
      * Identifier of the task
      */
-    id: number;
+    id: string;
     /**
      * Name of the task
      */
@@ -5939,7 +6072,7 @@ export type TasksTask = {
     /**
      * Company identifier of the author of the task
      */
-    company_id: number;
+    company_id: string;
     /**
      * Content of the task
      */
@@ -5951,11 +6084,11 @@ export type TasksTask = {
     /**
      * Employees assigned to the task, assignee_id references to access_id
      */
-    assignee_ids: Array<number>;
+    assignee_ids: Array<string>;
     /**
      * Employee id of the author of the task
      */
-    author_employee_id?: number;
+    author_employee_id?: string;
     /**
      * Completed at date of the task
      */
@@ -5963,7 +6096,7 @@ export type TasksTask = {
     /**
      * Completed by identifier
      */
-    completed_by_id?: number;
+    completed_by_id?: string;
     created_at: string;
     /**
      * Updated at date of the task
@@ -5979,11 +6112,11 @@ export type TasksTaskFile = {
     /**
      * identifier of the file.
      */
-    id: number;
+    id: string;
     /**
      * identifier of the task.
      */
-    task_id: number;
+    task_id: string;
     /**
      * name of the file.
      */
@@ -6006,19 +6139,19 @@ export type TeamsMembership = {
     /**
      * Membership ID
      */
-    id: number;
+    id: string;
     /**
      * Company ID of the membership
      */
-    company_id?: number;
+    company_id?: string;
     /**
      * Employee ID of the membership
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Team ID of the membership
      */
-    team_id: number;
+    team_id: string;
     /**
      * Whether the employee is a lead of the team or not
      */
@@ -6026,20 +6159,20 @@ export type TeamsMembership = {
 };
 
 export type TeamsTeam = {
-    id: number;
+    id: string;
     name: string;
     description?: string;
     avatar?: string;
-    employee_ids?: Array<number>;
-    lead_ids?: Array<number>;
-    company_id: number;
+    employee_ids?: Array<string>;
+    lead_ids?: Array<string>;
+    company_id: string;
 };
 
 export type TimeoffAllowance = {
     /**
      * Unique identifier of the allowance
      */
-    id: number;
+    id: string;
     /**
      * Only for Allowances based on worked time. It represents how many units you need to work to be granted allowance units
      */
@@ -6103,7 +6236,7 @@ export type TimeoffAllowance = {
     /**
      * An array of leave type ids associated with that allowance
      */
-    leave_type_ids: Array<number>;
+    leave_type_ids: Array<string>;
     /**
      * Maximum the allowance can reach on accrued
      */
@@ -6160,7 +6293,7 @@ export type TimeoffAllowance = {
     /**
      * The Id of the policy to which the allowance belongs to
      */
-    timeoff_policy_id: number;
+    timeoff_policy_id: string;
     /**
      * Flag to indicate if there is unlimited accrual.
      */
@@ -6183,11 +6316,11 @@ export type TimeoffAllowanceIncidence = {
     /**
      * Unique identifier of the allowance incidence
      */
-    id: number;
+    id: string;
     /**
      * Employee id of the affected employee
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Optional comment regarding the incidence
      */
@@ -6199,7 +6332,7 @@ export type TimeoffAllowanceIncidence = {
     /**
      * To what allowance does the incidence affect. It will dictate if its days or hours
      */
-    timeoff_allowance_id: number;
+    timeoff_allowance_id: string;
     /**
      * When does the incidence take effect; this is for time off cycles calculations.
      */
@@ -6226,33 +6359,33 @@ export type TimeoffAllowanceStatsNew = {
     /**
      * ID of the allowance these stats belong to.
      */
-    allowance_id: number;
+    allowance_id: string;
     /**
      * ID of the employee these stats belong to.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Calendar year used to scope cycle calculations.
      */
     year: number;
     /**
-     * Array with cycle details (legacy hash structure, may change to a typed entity in the future).
+     * Array of cycle objects describing each accrual period for the allowance.
      */
-    cycles: string;
+    cycles: Array<unknown>;
     /**
-     * Carry over entries between cycles (serialized array of CycleCarryOver objects). Returned as string in GraphQL.
+     * Carry over entries between cycles, typed as an array of CycleCarryOver value objects.
      */
-    carry_overs: Array<string>;
+    cycle_carry_overs: Array<unknown>;
     /**
      * Total carried over units accumulated from previous cycles.
      */
     accumulated_carry_over: string;
     /**
-     * Remaining days available (after usage and considering carry overs).
+     * Remaining usable allowance units at the reference date, after usage, carry-over, and incidence adjustments.
      */
     available_days: string;
     /**
-     * Total units accrued up to the reference date.
+     * Total accrued/generated allowance units up to the reference date.
      */
     total_accrued_units: string;
     /**
@@ -6276,7 +6409,7 @@ export type TimeoffAllowanceStatsNew = {
      */
     max_balance_cap?: string;
     /**
-     * Base allowance units defined by the policy (before proration and adjustments).
+     * Base policy entitlement for the cycle in allowance units (days or hours depending on allowance setup), before proration and adjustments.
      */
     policy_allowance: string;
     /**
@@ -6309,11 +6442,11 @@ export type TimeoffBlockedPeriodsPolicy = {
     /**
      * Unique identifier of the blocked period
      */
-    id: number;
+    id: string;
     /**
      * Company id of the blocked period
      */
-    company_id: number;
+    company_id: string;
     /**
      * Name of the blocked period.
      */
@@ -6321,7 +6454,7 @@ export type TimeoffBlockedPeriodsPolicy = {
     /**
      * Leave types for which absence request has been blocked
      */
-    leave_type_ids: Array<number>;
+    leave_type_ids: Array<string>;
     /**
      * The tenure periods associated with the allowance.
      */
@@ -6333,34 +6466,34 @@ export type TimeoffBlockedPeriodsPolicy = {
     /**
      * Employees whose timeoff will be affected
      */
-    members: Array<number>;
+    members: Array<string>;
     /**
      * List of locations workplace identifiers where the employees are located
      */
-    location_ids?: Array<number>;
+    location_ids?: Array<string>;
     /**
      * List of team identifiers which the selected employees belong to
      */
-    team_ids?: Array<number>;
+    team_ids?: Array<string>;
     /**
      * List of legal entity identifiers which the selected employees belong to
      */
-    legal_entity_ids?: Array<number>;
+    legal_entity_ids?: Array<string>;
 };
 
 export type TimeoffLeave = {
     /**
      * Identifier of the Leave
      */
-    id: number;
+    id: string;
     /**
      * Company identifier of the employee of the leave
      */
-    company_id: number;
+    company_id: string;
     /**
      * Employee identifier of the leave
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * The start date of the leave
      */
@@ -6384,7 +6517,7 @@ export type TimeoffLeave = {
     /**
      * The identifier for the type of leave
      */
-    leave_type_id?: number;
+    leave_type_id?: string;
     /**
      * The name of the leave type
      */
@@ -6431,7 +6564,7 @@ export type TimeoffLeaveType = {
     /**
      * Identifier of the leave type
      */
-    id: number;
+    id: string;
     /**
      * Name of the leave type
      */
@@ -6491,7 +6624,7 @@ export type TimeoffLeaveType = {
     /**
      * Identifier of the company associated with this leave type
      */
-    company_id: number;
+    company_id: string;
     /**
      * Whether the attachment is mandatory
      */
@@ -6499,7 +6632,7 @@ export type TimeoffLeaveType = {
     /**
      * List of allowance identifiers associated with this leave type
      */
-    allowance_ids: Array<number>;
+    allowance_ids: Array<string>;
     /**
      * Whether half-day units are enabled for this leave type
      */
@@ -6526,7 +6659,7 @@ export type TimeoffPolicy = {
     /**
      * The policy id.
      */
-    id: number;
+    id: string;
     /**
      * Policy name.
      */
@@ -6538,7 +6671,7 @@ export type TimeoffPolicy = {
     /**
      * The company id.
      */
-    company_id: number;
+    company_id: string;
     /**
      * The policy description.
      */
@@ -6549,15 +6682,15 @@ export type TimeoffPolicyAssignment = {
     /**
      * Unique identifier of the policy assignment
      */
-    id?: number;
+    id?: string;
     /**
      * The time off policy id
      */
-    timeoff_policy_id: number;
+    timeoff_policy_id: string;
     /**
      * The employee id
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * The effective date of the policy assignment
      */
@@ -6565,21 +6698,21 @@ export type TimeoffPolicyAssignment = {
 };
 
 export type TimeoffPolicyTimeline = {
-    employee_id: number;
+    employee_id: string;
     start_limit_date: string;
     end_limit_date: string;
     items: Array<unknown>;
     /**
      * This is the employee id since it's a virtual entity
      */
-    id: number;
+    id: string;
 };
 
 export type TimePlanningPlannedBreak = {
     /**
      * Planned break identifier
      */
-    id: number;
+    id: string;
     /**
      * Break start time
      */
@@ -6599,7 +6732,7 @@ export type TimePlanningPlannedBreak = {
     /**
      * Break configuration identifier
      */
-    break_configuration_id: number;
+    break_configuration_id: string;
     /**
      * Name of the break configuration
      */
@@ -6611,26 +6744,26 @@ export type TimePlanningPlannedBreak = {
     /**
      * Default shift identifier
      */
-    default_shift_id?: number;
+    default_shift_id?: string;
     /**
      * Shift configuration identifier
      */
-    shift_configuration_id?: number;
+    shift_configuration_id?: string;
     /**
      * Shift identifier
      */
-    shift_id?: number;
+    shift_id?: string;
     /**
      * Day configuration identifier
      */
-    day_configuration_id?: number;
+    day_configuration_id?: string;
 };
 
 export type TimePlanningPlanningVersion = {
     /**
      * Planning version identifier
      */
-    id?: number;
+    id?: string;
     /**
      * Planning version start date
      */
@@ -6646,24 +6779,24 @@ export type TimePlanningPlanningVersion = {
     /**
      * Employee identifier
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * Work schedule identifier to include if applicable
      */
-    work_schedule_schedule_id?: number;
+    work_schedule_schedule_id?: string;
 };
 
 export type TimeSettingsBreakConfiguration = {
-    id: number;
+    id: string;
     name: string;
     paid: boolean;
     archived: boolean;
 };
 
 export type TrainingsCategory = {
-    id: number;
+    id: string;
     name: string;
-    company_id: number;
+    company_id: string;
     created_at?: string;
     updated_at?: string;
 };
@@ -6672,12 +6805,12 @@ export type TrainingsSession = {
     /**
      * id of the session
      */
-    id: number;
+    id: string;
     name: string;
     /**
      * Identifier of the course
      */
-    training_id: number;
+    training_id: string;
     /**
      * Session description
      */
@@ -6718,8 +6851,8 @@ export type TrainingsSession = {
      * The place where the session takes place
      */
     location?: string;
-    session_attendance_ids?: Array<number>;
-    session_feedback_id?: number;
+    session_attendance_ids?: Array<string>;
+    session_feedback_id?: string;
     /**
      * if the session is subsidized
      */
@@ -6731,26 +6864,26 @@ export type TrainingsSession = {
     /**
      * Id of the recurrent session that is parent of the current one
      */
-    parent_id?: number;
+    parent_id?: string;
 };
 
 export type TrainingsSessionAccessMembership = {
     /**
      * ID of this membership
      */
-    id: number;
+    id: string;
     /**
      * ID of the access associated with this membership
      */
-    access_id: number;
+    access_id: string;
     /**
      * ID of the employee associated with this membership
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * ID of the session associated with this membership
      */
-    session_id: number;
+    session_id: string;
     /**
      * First name of the user associated with this membership
      */
@@ -6769,7 +6902,7 @@ export type TrainingsSessionAttendance = {
     /**
      * Unique identifier of the session attendance
      */
-    id: number;
+    id: string;
     /**
      * Status of the session attendance
      */
@@ -6777,15 +6910,15 @@ export type TrainingsSessionAttendance = {
     /**
      * Identifier of the session access membership
      */
-    session_access_membership_id: number;
+    session_access_membership_id: string;
     /**
      * Identifier of the access associated with the employee
      */
-    access_id: number;
+    access_id: string;
     /**
      * Identifier of the employee
      */
-    employee_id?: number;
+    employee_id?: string;
     /**
      * Completed duration in hours (decimal format, e.g. 1.5 means 1h 30m). Null when session attendance status is not completed.
      */
@@ -6796,15 +6929,19 @@ export type TrainingsTraining = {
     /**
      * Identifier of the course
      */
-    id: number;
+    id: string;
     /**
      * Company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
      * The person that creates the training
      */
-    author_id: number;
+    author_id: string;
+    /**
+     * Employee identifier of the training author
+     */
+    author_employee_id?: string;
     /**
      * Name of the training
      */
@@ -6850,7 +6987,7 @@ export type TrainingsTraining = {
     /**
      * List of ids of training categories
      */
-    category_ids?: Array<number>;
+    category_ids?: Array<string>;
     /**
      * Training status. Can be one of the following values
      */
@@ -6866,7 +7003,7 @@ export type TrainingsTraining = {
     /**
      * List of ids of training competencies
      */
-    competency_ids: Array<number>;
+    competency_ids: Array<string>;
     /**
      * The total direct cost of all course's groups
      */
@@ -6918,7 +7055,7 @@ export type TrainingsTrainingClass = {
     /**
      * Identifier of the course
      */
-    training_id: number;
+    training_id: string;
     /**
      * Class name
      */
@@ -6985,19 +7122,19 @@ export type TrainingsTrainingMembership = {
     /**
      * Unique identifier for the training membership.
      */
-    id: number;
+    id: string;
     /**
      * Access_id associated to the employee, refers to employees/employees endpoint.
      */
-    access_id: number;
+    access_id: string;
     /**
      * Employee_id associated to the employee, refers to employees/employees endpoint.
      */
-    employee_id: number;
+    employee_id: string;
     /**
      * This field is used to filter those trainings memberships that belongs to this training.
      */
-    training_id: number;
+    training_id: string;
     /**
      * This field is used to filter those trainings memberships whose attendance status is the given.
      */
@@ -7013,17 +7150,17 @@ export type TrainingsTrainingMembership = {
 };
 
 export type WorkScheduleDayConfiguration = {
-    id: number;
-    overlap_period_id: number;
+    id: string;
+    overlap_period_id: string;
     weekday: string;
     start_at?: string;
     duration_in_seconds: number;
 };
 
 export type WorkScheduleOverlapPeriod = {
-    id: number;
+    id: string;
     default: boolean;
-    schedule_id: number;
+    schedule_id: string;
     start_month: number;
     start_day: number;
     end_month: number;
@@ -7032,13 +7169,13 @@ export type WorkScheduleOverlapPeriod = {
 };
 
 export type WorkScheduleSchedule = {
-    id: number;
+    id: string;
     name: string;
     archived_at?: string;
-    company_id: number;
+    company_id: string;
     created_at: string;
     updated_at: string;
-    employee_ids: Array<number>;
+    employee_ids: Array<string>;
     periods: Array<unknown>;
 };
 
@@ -7050,7 +7187,7 @@ export type BankingBankAccountNumber = {
     /**
      * Company identifier
      */
-    company_id: number;
+    company_id: string;
     /**
      * Account number
      */
@@ -7066,17 +7203,17 @@ export type BankingBankAccountNumber = {
 };
 
 export type ContractsContractVersionRequest = {
-    id?: number;
-    company_id?: number;
-    employee_id: number;
+    id?: string;
+    company_id?: string;
+    employee_id: string;
     effective_on: string;
     country?: string;
     job_title?: string;
-    job_catalog_level_id?: number;
+    job_catalog_level_id?: string;
     job_catalog_level_name?: string;
     job_catalog_level?: string;
     job_catalog_role?: string;
-    job_catalog_role_id?: number;
+    job_catalog_role_id?: string;
     job_catalog_tree_node_uuid?: string;
     starts_on?: string;
     ends_on?: string;
@@ -7098,66 +7235,66 @@ export type ContractsContractVersionRequest = {
     created_by_avatar?: string;
     action_type?: string;
     request_details?: string;
-    approvers_ids?: Array<number>;
+    approvers_ids?: Array<string>;
     status: '' | 'pending' | 'approved' | 'rejected';
-    approval_author_id?: number;
+    approval_author_id?: string;
     approval_request_created_at?: string;
     approval_action_type?: string;
     es_has_teleworking_contract?: boolean;
     es_cotization_group?: number;
     es_contract_observations?: string;
     es_job_description?: string;
-    es_contract_type_id?: number;
+    es_contract_type_id?: string;
     es_contract_type_name?: string;
-    es_working_day_type_id?: number;
+    es_working_day_type_id?: string;
     es_working_day_type_name?: string;
-    es_education_level_id?: number;
+    es_education_level_id?: string;
     es_education_level_name?: string;
-    es_professional_category_id?: number;
+    es_professional_category_id?: string;
     es_professional_category_name?: string;
-    es_contribution_type_id?: number;
+    es_contribution_type_id?: string;
     es_contribution_type_name?: string;
-    es_agreement_code_id?: number;
+    es_agreement_code_id?: string;
     es_agreement_code_name?: string;
-    es_cno_occupation_id?: number;
+    es_cno_occupation_id?: string;
     es_cno_occupation_name?: string;
-    es_regime_id?: number;
+    es_regime_id?: string;
     es_regime_name?: string;
-    es_tariff_group_id?: number;
+    es_tariff_group_id?: string;
     es_tariff_group_name?: string;
-    es_occupation_code_id?: number;
+    es_occupation_code_id?: string;
     es_occupation_code_name?: string;
-    es_classification_id?: number;
+    es_classification_id?: string;
     es_classification_name?: string;
-    es_a3innuva_job_position_id?: number;
+    es_a3innuva_job_position_id?: string;
     es_a3innuva_job_position_name?: string;
     fr_employee_type?: string;
     fr_forfait_jours: boolean;
     fr_jours_par_an?: number;
     fr_jours_par_an_cents?: number;
     fr_coefficient?: string;
-    fr_contract_type_id?: number;
-    fr_level_id?: number;
-    fr_step_id?: number;
-    fr_mutual_id?: number;
-    fr_professional_category_id?: number;
-    fr_work_type_id?: number;
+    fr_contract_type_id?: string;
+    fr_level_id?: string;
+    fr_step_id?: string;
+    fr_mutual_id?: string;
+    fr_professional_category_id?: string;
+    fr_work_type_id?: string;
     fr_contract_type_name?: string;
     fr_mutual_name?: string;
     fr_professional_category_name?: string;
     fr_work_type_name?: string;
     fr_level_name?: string;
     fr_step_name?: string;
-    de_contract_type_id?: number;
+    de_contract_type_id?: string;
     de_contract_type_name?: string;
     de_employment_type?: number;
     de_flat_rate_tax?: number;
     de_activity_type?: number;
-    de_personal_key_group_id?: number;
+    de_personal_key_group_id?: string;
     de_personal_key_group_name?: string;
-    de_base_salary_type_id?: number;
+    de_base_salary_type_id?: string;
     de_base_salary_type_name?: string;
-    pt_contract_type_id?: number;
+    pt_contract_type_id?: string;
     pt_contract_type_name?: string;
 };
 
@@ -7170,14 +7307,14 @@ export type PagedIndexMeta = {
     total: number;
 };
 
-export type GetApi20260401ResourcesApiPublicCredentialsData = {
+export type GetApi20260701ResourcesApiPublicCredentialsData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/api_public/credentials';
+    url: '/api/2026-07-01/resources/api_public/credentials';
 };
 
-export type GetApi20260401ResourcesApiPublicCredentialsResponses = {
+export type GetApi20260701ResourcesApiPublicCredentialsResponses = {
     /**
      * OK
      */
@@ -7187,20 +7324,20 @@ export type GetApi20260401ResourcesApiPublicCredentialsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesApiPublicCredentialsResponse = GetApi20260401ResourcesApiPublicCredentialsResponses[keyof GetApi20260401ResourcesApiPublicCredentialsResponses];
+export type GetApi20260701ResourcesApiPublicCredentialsResponse = GetApi20260701ResourcesApiPublicCredentialsResponses[keyof GetApi20260701ResourcesApiPublicCredentialsResponses];
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsData = {
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Identifier of the webhook subscription
          */
-        id?: number;
+        id?: string;
         /**
          * Company identifier of the webhook subscription
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * Type of the webhook subscription
          */
@@ -7210,10 +7347,10 @@ export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsData = {
          */
         enabled?: boolean;
     };
-    url: '/api/2026-04-01/resources/api_public/webhook_subscriptions';
+    url: '/api/2026-07-01/resources/api_public/webhook_subscriptions';
 };
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsResponses = {
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsResponses = {
     /**
      * OK
      */
@@ -7223,9 +7360,9 @@ export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsResponse = GetApi20260401ResourcesApiPublicWebhookSubscriptionsResponses[keyof GetApi20260401ResourcesApiPublicWebhookSubscriptionsResponses];
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsResponse = GetApi20260701ResourcesApiPublicWebhookSubscriptionsResponses[keyof GetApi20260701ResourcesApiPublicWebhookSubscriptionsResponses];
 
-export type PostApi20260401ResourcesApiPublicWebhookSubscriptionsData = {
+export type PostApi20260701ResourcesApiPublicWebhookSubscriptionsData = {
     body?: {
         /**
          * Type of the webhook subscription
@@ -7246,7 +7383,7 @@ export type PostApi20260401ResourcesApiPublicWebhookSubscriptionsData = {
         /**
          * Company identifier of the webhook subscription
          */
-        company_id: number;
+        company_id: string;
         /**
          * Boolean to enable/disable the subscription
          */
@@ -7254,41 +7391,41 @@ export type PostApi20260401ResourcesApiPublicWebhookSubscriptionsData = {
         /**
          * API version of the webhook subscription that determines the schema of the payload
          */
-        api_version?: '2025-04-01' | '2025-07-01' | '2025-10-01' | '2026-01-01' | '2026-04-01';
+        api_version?: '2025-07-01' | '2025-10-01' | '2026-01-01' | '2026-04-01' | '2026-07-01';
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/api_public/webhook_subscriptions';
+    url: '/api/2026-07-01/resources/api_public/webhook_subscriptions';
 };
 
-export type PostApi20260401ResourcesApiPublicWebhookSubscriptionsResponses = {
+export type PostApi20260701ResourcesApiPublicWebhookSubscriptionsResponses = {
     /**
      * CREATED
      */
     201: ApiPublicWebhookSubscription;
 };
 
-export type PostApi20260401ResourcesApiPublicWebhookSubscriptionsResponse = PostApi20260401ResourcesApiPublicWebhookSubscriptionsResponses[keyof PostApi20260401ResourcesApiPublicWebhookSubscriptionsResponses];
+export type PostApi20260701ResourcesApiPublicWebhookSubscriptionsResponse = PostApi20260701ResourcesApiPublicWebhookSubscriptionsResponses[keyof PostApi20260701ResourcesApiPublicWebhookSubscriptionsResponses];
 
-export type DeleteApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
+export type DeleteApi20260701ResourcesApiPublicWebhookSubscriptionsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/api_public/webhook_subscriptions/{id}';
+    url: '/api/2026-07-01/resources/api_public/webhook_subscriptions/{id}';
 };
 
-export type DeleteApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
+export type DeleteApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
     /**
      * OK
      */
     200: ApiPublicWebhookSubscription;
 };
 
-export type DeleteApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponse = DeleteApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof DeleteApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses];
+export type DeleteApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponse = DeleteApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof DeleteApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses];
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsByIdData = {
     body?: never;
     path: {
         /**
@@ -7297,24 +7434,24 @@ export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/api_public/webhook_subscriptions/{id}';
+    url: '/api/2026-07-01/resources/api_public/webhook_subscriptions/{id}';
 };
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
     /**
      * OK
      */
     200: ApiPublicWebhookSubscription;
 };
 
-export type GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponse = GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof GetApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses];
+export type GetApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponse = GetApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof GetApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses];
 
-export type PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
+export type PutApi20260701ResourcesApiPublicWebhookSubscriptionsByIdData = {
     body?: {
         /**
          * Identifier of the webhook subscription
          */
-        id: number;
+        id: string;
         /**
          * URL where the webhook payload will be sent
          */
@@ -7338,7 +7475,7 @@ export type PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
         /**
          * API version of the webhook subscription that determines the schema of the payload
          */
-        api_version?: '2025-04-01' | '2025-07-01' | '2025-10-01' | '2026-01-01' | '2026-04-01';
+        api_version?: '2025-07-01' | '2025-10-01' | '2026-01-01' | '2026-04-01' | '2026-07-01';
     };
     path: {
         /**
@@ -7347,24 +7484,24 @@ export type PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/api_public/webhook_subscriptions/{id}';
+    url: '/api/2026-07-01/resources/api_public/webhook_subscriptions/{id}';
 };
 
-export type PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
+export type PutApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses = {
     /**
      * OK
      */
     200: ApiPublicWebhookSubscription;
 };
 
-export type PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponse = PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof PutApi20260401ResourcesApiPublicWebhookSubscriptionsByIdResponses];
+export type PutApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponse = PutApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses[keyof PutApi20260701ResourcesApiPublicWebhookSubscriptionsByIdResponses];
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceData = {
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceData = {
     body?: {
         /**
          * Id of the resource to approve.
          */
-        resource_id: number;
+        resource_id: string;
         /**
          * Type of the resource to approve (e.g. Timeoff::Leave).
          */
@@ -7372,24 +7509,24 @@ export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveRe
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/approvals/materialized_approvals_flows/approve_resource';
+    url: '/api/2026-07-01/resources/approvals/materialized_approvals_flows/approve_resource';
 };
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses = {
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses = {
     /**
      * OK
      */
     200: ApprovalsMaterializedApprovalsFlow;
 };
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponse = PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses[keyof PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses];
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponse = PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses[keyof PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResourceResponses];
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceData = {
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceData = {
     body?: {
         /**
          * Id of the resource to reject.
          */
-        resource_id: number;
+        resource_id: string;
         /**
          * Type of the resource to reject (e.g. Timeoff::Leave).
          */
@@ -7401,35 +7538,35 @@ export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectRes
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/approvals/materialized_approvals_flows/reject_resource';
+    url: '/api/2026-07-01/resources/approvals/materialized_approvals_flows/reject_resource';
 };
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses = {
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses = {
     /**
      * OK
      */
     200: ApprovalsMaterializedApprovalsFlow;
 };
 
-export type PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponse = PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses[keyof PostApi20260401ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses];
+export type PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponse = PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses[keyof PostApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResourceResponses];
 
-export type GetApi20260401ResourcesAtsAnswersData = {
+export type GetApi20260701ResourcesAtsAnswersData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Identifier of the answers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Identifier of the apllications
          */
-        'ats_application_ids[]'?: Array<number>;
+        'ats_application_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/answers';
+    url: '/api/2026-07-01/resources/ats/answers';
 };
 
-export type GetApi20260401ResourcesAtsAnswersResponses = {
+export type GetApi20260701ResourcesAtsAnswersResponses = {
     /**
      * OK
      */
@@ -7439,18 +7576,18 @@ export type GetApi20260401ResourcesAtsAnswersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsAnswersResponse = GetApi20260401ResourcesAtsAnswersResponses[keyof GetApi20260401ResourcesAtsAnswersResponses];
+export type GetApi20260701ResourcesAtsAnswersResponse = GetApi20260701ResourcesAtsAnswersResponses[keyof GetApi20260701ResourcesAtsAnswersResponses];
 
-export type PostApi20260401ResourcesAtsAnswersData = {
+export type PostApi20260701ResourcesAtsAnswersData = {
     body?: {
         /**
          * Identifier of the question
          */
-        ats_question_id: number;
+        ats_question_id: string;
         /**
          * Identifier of the application
          */
-        ats_application_id: number;
+        ats_application_id: string;
         /**
          * Value of the answer
          */
@@ -7466,19 +7603,19 @@ export type PostApi20260401ResourcesAtsAnswersData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/answers';
+    url: '/api/2026-07-01/resources/ats/answers';
 };
 
-export type PostApi20260401ResourcesAtsAnswersResponses = {
+export type PostApi20260701ResourcesAtsAnswersResponses = {
     /**
      * CREATED
      */
     201: AtsAnswer;
 };
 
-export type PostApi20260401ResourcesAtsAnswersResponse = PostApi20260401ResourcesAtsAnswersResponses[keyof PostApi20260401ResourcesAtsAnswersResponses];
+export type PostApi20260701ResourcesAtsAnswersResponse = PostApi20260701ResourcesAtsAnswersResponses[keyof PostApi20260701ResourcesAtsAnswersResponses];
 
-export type GetApi20260401ResourcesAtsAnswersByIdData = {
+export type GetApi20260701ResourcesAtsAnswersByIdData = {
     body?: never;
     path: {
         /**
@@ -7487,30 +7624,30 @@ export type GetApi20260401ResourcesAtsAnswersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/answers/{id}';
+    url: '/api/2026-07-01/resources/ats/answers/{id}';
 };
 
-export type GetApi20260401ResourcesAtsAnswersByIdResponses = {
+export type GetApi20260701ResourcesAtsAnswersByIdResponses = {
     /**
      * OK
      */
     200: AtsAnswer;
 };
 
-export type GetApi20260401ResourcesAtsAnswersByIdResponse = GetApi20260401ResourcesAtsAnswersByIdResponses[keyof GetApi20260401ResourcesAtsAnswersByIdResponses];
+export type GetApi20260701ResourcesAtsAnswersByIdResponse = GetApi20260701ResourcesAtsAnswersByIdResponses[keyof GetApi20260701ResourcesAtsAnswersByIdResponses];
 
-export type GetApi20260401ResourcesAtsApplicationsData = {
+export type GetApi20260701ResourcesAtsApplicationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Application ids to retrieve
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Application job posting id to retrieve
          */
-        ats_job_posting_id?: number;
+        ats_job_posting_id?: string;
         /**
          * Retrieve applications by their qualified status
          */
@@ -7518,15 +7655,15 @@ export type GetApi20260401ResourcesAtsApplicationsData = {
         /**
          * Application phase id
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
         /**
          * Application candidates ids
          */
-        'ats_candidate_ids[]'?: Array<number>;
+        'ats_candidate_ids[]'?: Array<string>;
         /**
          * Application rejection reason ids
          */
-        'ats_rejection_reason_ids[]'?: Array<number>;
+        'ats_rejection_reason_ids[]'?: Array<string>;
         /**
          * Application search
          */
@@ -7534,12 +7671,12 @@ export type GetApi20260401ResourcesAtsApplicationsData = {
         /**
          * Application tag ids
          */
-        'ats_tags_ids[]'?: Array<number>;
+        'ats_tags_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/applications';
+    url: '/api/2026-07-01/resources/ats/applications';
 };
 
-export type GetApi20260401ResourcesAtsApplicationsResponses = {
+export type GetApi20260701ResourcesAtsApplicationsResponses = {
     /**
      * OK
      */
@@ -7549,14 +7686,14 @@ export type GetApi20260401ResourcesAtsApplicationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsApplicationsResponse = GetApi20260401ResourcesAtsApplicationsResponses[keyof GetApi20260401ResourcesAtsApplicationsResponses];
+export type GetApi20260701ResourcesAtsApplicationsResponse = GetApi20260701ResourcesAtsApplicationsResponses[keyof GetApi20260701ResourcesAtsApplicationsResponses];
 
-export type PostApi20260401ResourcesAtsApplicationsData = {
+export type PostApi20260701ResourcesAtsApplicationsData = {
     body?: {
         /**
          * Application author id
          */
-        author_id?: number;
+        author_id?: string;
         /**
          * Application author type
          */
@@ -7568,15 +7705,15 @@ export type PostApi20260401ResourcesAtsApplicationsData = {
         /**
          * Application candidate id
          */
-        ats_candidate_id?: number;
+        ats_candidate_id?: string;
         /**
          * Application job posting id
          */
-        ats_job_posting_id: number;
+        ats_job_posting_id: string;
         /**
          * Application phase id
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
         /**
          * Whether or not the candidate has given consent to be added to the talent pool
          */
@@ -7600,37 +7737,37 @@ export type PostApi20260401ResourcesAtsApplicationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/applications';
+    url: '/api/2026-07-01/resources/ats/applications';
 };
 
-export type PostApi20260401ResourcesAtsApplicationsResponses = {
+export type PostApi20260701ResourcesAtsApplicationsResponses = {
     /**
      * CREATED
      */
     201: AtsApplication;
 };
 
-export type PostApi20260401ResourcesAtsApplicationsResponse = PostApi20260401ResourcesAtsApplicationsResponses[keyof PostApi20260401ResourcesAtsApplicationsResponses];
+export type PostApi20260701ResourcesAtsApplicationsResponse = PostApi20260701ResourcesAtsApplicationsResponses[keyof PostApi20260701ResourcesAtsApplicationsResponses];
 
-export type DeleteApi20260401ResourcesAtsApplicationsByIdData = {
+export type DeleteApi20260701ResourcesAtsApplicationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/applications/{id}';
+    url: '/api/2026-07-01/resources/ats/applications/{id}';
 };
 
-export type DeleteApi20260401ResourcesAtsApplicationsByIdResponses = {
+export type DeleteApi20260701ResourcesAtsApplicationsByIdResponses = {
     /**
      * OK
      */
     200: AtsApplication;
 };
 
-export type DeleteApi20260401ResourcesAtsApplicationsByIdResponse = DeleteApi20260401ResourcesAtsApplicationsByIdResponses[keyof DeleteApi20260401ResourcesAtsApplicationsByIdResponses];
+export type DeleteApi20260701ResourcesAtsApplicationsByIdResponse = DeleteApi20260701ResourcesAtsApplicationsByIdResponses[keyof DeleteApi20260701ResourcesAtsApplicationsByIdResponses];
 
-export type GetApi20260401ResourcesAtsApplicationsByIdData = {
+export type GetApi20260701ResourcesAtsApplicationsByIdData = {
     body?: never;
     path: {
         /**
@@ -7639,24 +7776,24 @@ export type GetApi20260401ResourcesAtsApplicationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/applications/{id}';
+    url: '/api/2026-07-01/resources/ats/applications/{id}';
 };
 
-export type GetApi20260401ResourcesAtsApplicationsByIdResponses = {
+export type GetApi20260701ResourcesAtsApplicationsByIdResponses = {
     /**
      * OK
      */
     200: AtsApplication;
 };
 
-export type GetApi20260401ResourcesAtsApplicationsByIdResponse = GetApi20260401ResourcesAtsApplicationsByIdResponses[keyof GetApi20260401ResourcesAtsApplicationsByIdResponses];
+export type GetApi20260701ResourcesAtsApplicationsByIdResponse = GetApi20260701ResourcesAtsApplicationsByIdResponses[keyof GetApi20260701ResourcesAtsApplicationsByIdResponses];
 
-export type PutApi20260401ResourcesAtsApplicationsByIdData = {
+export type PutApi20260701ResourcesAtsApplicationsByIdData = {
     body?: {
         /**
          * Application author id
          */
-        author_id?: number;
+        author_id?: string;
         /**
          * Application author type
          */
@@ -7664,7 +7801,7 @@ export type PutApi20260401ResourcesAtsApplicationsByIdData = {
         /**
          * Application id
          */
-        id: number;
+        id: string;
         /**
          * Application is qualified
          */
@@ -7672,7 +7809,7 @@ export type PutApi20260401ResourcesAtsApplicationsByIdData = {
         /**
          * Application phase id
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
         /**
          * Application disqualified reason
          */
@@ -7684,7 +7821,7 @@ export type PutApi20260401ResourcesAtsApplicationsByIdData = {
         /**
          * Application rejection reason id
          */
-        ats_rejection_reason_id?: number;
+        ats_rejection_reason_id?: string;
         /**
          * Application source
          */
@@ -7692,7 +7829,7 @@ export type PutApi20260401ResourcesAtsApplicationsByIdData = {
         /**
          * Application source id
          */
-        source_id?: number;
+        source_id?: string;
     };
     path: {
         /**
@@ -7701,24 +7838,24 @@ export type PutApi20260401ResourcesAtsApplicationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/applications/{id}';
+    url: '/api/2026-07-01/resources/ats/applications/{id}';
 };
 
-export type PutApi20260401ResourcesAtsApplicationsByIdResponses = {
+export type PutApi20260701ResourcesAtsApplicationsByIdResponses = {
     /**
      * OK
      */
     200: AtsApplication;
 };
 
-export type PutApi20260401ResourcesAtsApplicationsByIdResponse = PutApi20260401ResourcesAtsApplicationsByIdResponses[keyof PutApi20260401ResourcesAtsApplicationsByIdResponses];
+export type PutApi20260701ResourcesAtsApplicationsByIdResponse = PutApi20260701ResourcesAtsApplicationsByIdResponses[keyof PutApi20260701ResourcesAtsApplicationsByIdResponses];
 
-export type PostApi20260401ResourcesAtsApplicationsApplyData = {
+export type PostApi20260701ResourcesAtsApplicationsApplyData = {
     body?: {
         /**
          * Company id of the application
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * Application first name
          */
@@ -7730,7 +7867,7 @@ export type PostApi20260401ResourcesAtsApplicationsApplyData = {
         /**
          * Application job posting id
          */
-        ats_job_posting_id: number;
+        ats_job_posting_id: string;
         /**
          * Application candidate email
          */
@@ -7766,35 +7903,60 @@ export type PostApi20260401ResourcesAtsApplicationsApplyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/applications/apply';
+    url: '/api/2026-07-01/resources/ats/applications/apply';
 };
 
-export type PostApi20260401ResourcesAtsApplicationsApplyResponses = {
+export type PostApi20260701ResourcesAtsApplicationsApplyResponses = {
     /**
      * OK
      */
     200: AtsApplication;
 };
 
-export type PostApi20260401ResourcesAtsApplicationsApplyResponse = PostApi20260401ResourcesAtsApplicationsApplyResponses[keyof PostApi20260401ResourcesAtsApplicationsApplyResponses];
+export type PostApi20260701ResourcesAtsApplicationsApplyResponse = PostApi20260701ResourcesAtsApplicationsApplyResponses[keyof PostApi20260701ResourcesAtsApplicationsApplyResponses];
 
-export type GetApi20260401ResourcesAtsApplicationPhasesData = {
+export type PostApi20260701ResourcesAtsApplicationsMoveToPhaseData = {
+    body?: {
+        /**
+         * Application id to move
+         */
+        id: string;
+        /**
+         * Target application phase id. Must belong to the same job posting as the application. Refers to ats/application_phases.
+         */
+        ats_application_phase_id: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/2026-07-01/resources/ats/applications/move_to_phase';
+};
+
+export type PostApi20260701ResourcesAtsApplicationsMoveToPhaseResponses = {
+    /**
+     * OK
+     */
+    200: AtsApplication;
+};
+
+export type PostApi20260701ResourcesAtsApplicationsMoveToPhaseResponse = PostApi20260701ResourcesAtsApplicationsMoveToPhaseResponses[keyof PostApi20260701ResourcesAtsApplicationsMoveToPhaseResponses];
+
+export type GetApi20260701ResourcesAtsApplicationPhasesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Application phases identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Job posting of application phases identifiers
          */
-        'ats_job_posting_ids[]'?: Array<number>;
+        'ats_job_posting_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/application_phases';
+    url: '/api/2026-07-01/resources/ats/application_phases';
 };
 
-export type GetApi20260401ResourcesAtsApplicationPhasesResponses = {
+export type GetApi20260701ResourcesAtsApplicationPhasesResponses = {
     /**
      * OK
      */
@@ -7804,9 +7966,9 @@ export type GetApi20260401ResourcesAtsApplicationPhasesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsApplicationPhasesResponse = GetApi20260401ResourcesAtsApplicationPhasesResponses[keyof GetApi20260401ResourcesAtsApplicationPhasesResponses];
+export type GetApi20260701ResourcesAtsApplicationPhasesResponse = GetApi20260701ResourcesAtsApplicationPhasesResponses[keyof GetApi20260701ResourcesAtsApplicationPhasesResponses];
 
-export type GetApi20260401ResourcesAtsApplicationPhasesByIdData = {
+export type GetApi20260701ResourcesAtsApplicationPhasesByIdData = {
     body?: never;
     path: {
         /**
@@ -7815,26 +7977,26 @@ export type GetApi20260401ResourcesAtsApplicationPhasesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/application_phases/{id}';
+    url: '/api/2026-07-01/resources/ats/application_phases/{id}';
 };
 
-export type GetApi20260401ResourcesAtsApplicationPhasesByIdResponses = {
+export type GetApi20260701ResourcesAtsApplicationPhasesByIdResponses = {
     /**
      * OK
      */
     200: AtsApplicationPhase;
 };
 
-export type GetApi20260401ResourcesAtsApplicationPhasesByIdResponse = GetApi20260401ResourcesAtsApplicationPhasesByIdResponses[keyof GetApi20260401ResourcesAtsApplicationPhasesByIdResponses];
+export type GetApi20260701ResourcesAtsApplicationPhasesByIdResponse = GetApi20260701ResourcesAtsApplicationPhasesByIdResponses[keyof GetApi20260701ResourcesAtsApplicationPhasesByIdResponses];
 
-export type GetApi20260401ResourcesAtsCandidatesData = {
+export type GetApi20260701ResourcesAtsCandidatesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * list of candidate identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * list of candidate emails.
          */
@@ -7842,11 +8004,11 @@ export type GetApi20260401ResourcesAtsCandidatesData = {
         /**
          * list of team identifiers, refers to teams/teams endpoint.
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
         /**
          * list of location identifiers, refers to locations/locations endpoint.
          */
-        'location_ids[]'?: Array<number>;
+        'location_ids[]'?: Array<string>;
         /**
          * source of the candidate.
          */
@@ -7858,7 +8020,7 @@ export type GetApi20260401ResourcesAtsCandidatesData = {
         /**
          * list of job posting identifiers, refers to ats/job_postings endpoint.
          */
-        'job_posting_ids[]'?: Array<number>;
+        'job_posting_ids[]'?: Array<string>;
         /**
          * minimum average rating of the candidate.
          */
@@ -7876,10 +8038,10 @@ export type GetApi20260401ResourcesAtsCandidatesData = {
          */
         archived?: boolean;
     };
-    url: '/api/2026-04-01/resources/ats/candidates';
+    url: '/api/2026-07-01/resources/ats/candidates';
 };
 
-export type GetApi20260401ResourcesAtsCandidatesResponses = {
+export type GetApi20260701ResourcesAtsCandidatesResponses = {
     /**
      * OK
      */
@@ -7889,9 +8051,9 @@ export type GetApi20260401ResourcesAtsCandidatesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsCandidatesResponse = GetApi20260401ResourcesAtsCandidatesResponses[keyof GetApi20260401ResourcesAtsCandidatesResponses];
+export type GetApi20260701ResourcesAtsCandidatesResponse = GetApi20260701ResourcesAtsCandidatesResponses[keyof GetApi20260701ResourcesAtsCandidatesResponses];
 
-export type PostApi20260401ResourcesAtsCandidatesData = {
+export type PostApi20260701ResourcesAtsCandidatesData = {
     body?: {
         /**
          * first name of the candidate.
@@ -7908,7 +8070,7 @@ export type PostApi20260401ResourcesAtsCandidatesData = {
         /**
          * company identifier, refers to /core/me endpoint.
          */
-        company_id: number;
+        company_id: string;
         /**
          * is the candidate part of talent pool?
          */
@@ -7940,19 +8102,19 @@ export type PostApi20260401ResourcesAtsCandidatesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/candidates';
+    url: '/api/2026-07-01/resources/ats/candidates';
 };
 
-export type PostApi20260401ResourcesAtsCandidatesResponses = {
+export type PostApi20260701ResourcesAtsCandidatesResponses = {
     /**
      * CREATED
      */
     201: AtsCandidate;
 };
 
-export type PostApi20260401ResourcesAtsCandidatesResponse = PostApi20260401ResourcesAtsCandidatesResponses[keyof PostApi20260401ResourcesAtsCandidatesResponses];
+export type PostApi20260701ResourcesAtsCandidatesResponse = PostApi20260701ResourcesAtsCandidatesResponses[keyof PostApi20260701ResourcesAtsCandidatesResponses];
 
-export type DeleteApi20260401ResourcesAtsCandidatesByIdData = {
+export type DeleteApi20260701ResourcesAtsCandidatesByIdData = {
     body?: never;
     path: {
         /**
@@ -7961,19 +8123,19 @@ export type DeleteApi20260401ResourcesAtsCandidatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/candidates/{id}';
+    url: '/api/2026-07-01/resources/ats/candidates/{id}';
 };
 
-export type DeleteApi20260401ResourcesAtsCandidatesByIdResponses = {
+export type DeleteApi20260701ResourcesAtsCandidatesByIdResponses = {
     /**
      * OK
      */
     200: AtsCandidate;
 };
 
-export type DeleteApi20260401ResourcesAtsCandidatesByIdResponse = DeleteApi20260401ResourcesAtsCandidatesByIdResponses[keyof DeleteApi20260401ResourcesAtsCandidatesByIdResponses];
+export type DeleteApi20260701ResourcesAtsCandidatesByIdResponse = DeleteApi20260701ResourcesAtsCandidatesByIdResponses[keyof DeleteApi20260701ResourcesAtsCandidatesByIdResponses];
 
-export type GetApi20260401ResourcesAtsCandidatesByIdData = {
+export type GetApi20260701ResourcesAtsCandidatesByIdData = {
     body?: never;
     path: {
         /**
@@ -7982,24 +8144,24 @@ export type GetApi20260401ResourcesAtsCandidatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/candidates/{id}';
+    url: '/api/2026-07-01/resources/ats/candidates/{id}';
 };
 
-export type GetApi20260401ResourcesAtsCandidatesByIdResponses = {
+export type GetApi20260701ResourcesAtsCandidatesByIdResponses = {
     /**
      * OK
      */
     200: AtsCandidate;
 };
 
-export type GetApi20260401ResourcesAtsCandidatesByIdResponse = GetApi20260401ResourcesAtsCandidatesByIdResponses[keyof GetApi20260401ResourcesAtsCandidatesByIdResponses];
+export type GetApi20260701ResourcesAtsCandidatesByIdResponse = GetApi20260701ResourcesAtsCandidatesByIdResponses[keyof GetApi20260701ResourcesAtsCandidatesByIdResponses];
 
-export type PutApi20260401ResourcesAtsCandidatesByIdData = {
+export type PutApi20260701ResourcesAtsCandidatesByIdData = {
     body?: {
         /**
          * identifier of the candidate.
          */
-        id: number;
+        id: string;
         /**
          * email of the candidate.
          */
@@ -8036,31 +8198,31 @@ export type PutApi20260401ResourcesAtsCandidatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/candidates/{id}';
+    url: '/api/2026-07-01/resources/ats/candidates/{id}';
 };
 
-export type PutApi20260401ResourcesAtsCandidatesByIdResponses = {
+export type PutApi20260701ResourcesAtsCandidatesByIdResponses = {
     /**
      * OK
      */
     200: AtsCandidate;
 };
 
-export type PutApi20260401ResourcesAtsCandidatesByIdResponse = PutApi20260401ResourcesAtsCandidatesByIdResponses[keyof PutApi20260401ResourcesAtsCandidatesByIdResponses];
+export type PutApi20260701ResourcesAtsCandidatesByIdResponse = PutApi20260701ResourcesAtsCandidatesByIdResponses[keyof PutApi20260701ResourcesAtsCandidatesByIdResponses];
 
-export type GetApi20260401ResourcesAtsCandidateSourcesData = {
+export type GetApi20260701ResourcesAtsCandidateSourcesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * a list of source identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/candidate_sources';
+    url: '/api/2026-07-01/resources/ats/candidate_sources';
 };
 
-export type GetApi20260401ResourcesAtsCandidateSourcesResponses = {
+export type GetApi20260701ResourcesAtsCandidateSourcesResponses = {
     /**
      * OK
      */
@@ -8070,9 +8232,9 @@ export type GetApi20260401ResourcesAtsCandidateSourcesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsCandidateSourcesResponse = GetApi20260401ResourcesAtsCandidateSourcesResponses[keyof GetApi20260401ResourcesAtsCandidateSourcesResponses];
+export type GetApi20260701ResourcesAtsCandidateSourcesResponse = GetApi20260701ResourcesAtsCandidateSourcesResponses[keyof GetApi20260701ResourcesAtsCandidateSourcesResponses];
 
-export type GetApi20260401ResourcesAtsCandidateSourcesByIdData = {
+export type GetApi20260701ResourcesAtsCandidateSourcesByIdData = {
     body?: never;
     path: {
         /**
@@ -8081,39 +8243,39 @@ export type GetApi20260401ResourcesAtsCandidateSourcesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/candidate_sources/{id}';
+    url: '/api/2026-07-01/resources/ats/candidate_sources/{id}';
 };
 
-export type GetApi20260401ResourcesAtsCandidateSourcesByIdResponses = {
+export type GetApi20260701ResourcesAtsCandidateSourcesByIdResponses = {
     /**
      * OK
      */
     200: AtsCandidateSource;
 };
 
-export type GetApi20260401ResourcesAtsCandidateSourcesByIdResponse = GetApi20260401ResourcesAtsCandidateSourcesByIdResponses[keyof GetApi20260401ResourcesAtsCandidateSourcesByIdResponses];
+export type GetApi20260701ResourcesAtsCandidateSourcesByIdResponse = GetApi20260701ResourcesAtsCandidateSourcesByIdResponses[keyof GetApi20260701ResourcesAtsCandidateSourcesByIdResponses];
 
-export type GetApi20260401ResourcesAtsEvaluationFormsData = {
+export type GetApi20260701ResourcesAtsEvaluationFormsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of IDs of the evaluation forms to be fetched.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * List of IDs of the job postings to filter the evaluation forms by.
          */
-        'ats_job_posting_ids[]'?: Array<number>;
+        'ats_job_posting_ids[]'?: Array<string>;
         /**
          * If true, only the evaluation forms that are templates will be fetched.
          */
         template?: boolean;
     };
-    url: '/api/2026-04-01/resources/ats/evaluation_forms';
+    url: '/api/2026-07-01/resources/ats/evaluation_forms';
 };
 
-export type GetApi20260401ResourcesAtsEvaluationFormsResponses = {
+export type GetApi20260701ResourcesAtsEvaluationFormsResponses = {
     /**
      * OK
      */
@@ -8123,9 +8285,9 @@ export type GetApi20260401ResourcesAtsEvaluationFormsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsEvaluationFormsResponse = GetApi20260401ResourcesAtsEvaluationFormsResponses[keyof GetApi20260401ResourcesAtsEvaluationFormsResponses];
+export type GetApi20260701ResourcesAtsEvaluationFormsResponse = GetApi20260701ResourcesAtsEvaluationFormsResponses[keyof GetApi20260701ResourcesAtsEvaluationFormsResponses];
 
-export type GetApi20260401ResourcesAtsEvaluationFormsByIdData = {
+export type GetApi20260701ResourcesAtsEvaluationFormsByIdData = {
     body?: never;
     path: {
         /**
@@ -8134,60 +8296,60 @@ export type GetApi20260401ResourcesAtsEvaluationFormsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/evaluation_forms/{id}';
+    url: '/api/2026-07-01/resources/ats/evaluation_forms/{id}';
 };
 
-export type GetApi20260401ResourcesAtsEvaluationFormsByIdResponses = {
+export type GetApi20260701ResourcesAtsEvaluationFormsByIdResponses = {
     /**
      * OK
      */
     200: AtsEvaluationForm;
 };
 
-export type GetApi20260401ResourcesAtsEvaluationFormsByIdResponse = GetApi20260401ResourcesAtsEvaluationFormsByIdResponses[keyof GetApi20260401ResourcesAtsEvaluationFormsByIdResponses];
+export type GetApi20260701ResourcesAtsEvaluationFormsByIdResponse = GetApi20260701ResourcesAtsEvaluationFormsByIdResponses[keyof GetApi20260701ResourcesAtsEvaluationFormsByIdResponses];
 
-export type PostApi20260401ResourcesAtsEvaluationFormsSaveAsTemplateData = {
+export type PostApi20260701ResourcesAtsEvaluationFormsSaveAsTemplateData = {
     body?: {
         /**
          * Id of the evaluation form to be saved as a template.
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/evaluation_forms/save_as_template';
+    url: '/api/2026-07-01/resources/ats/evaluation_forms/save_as_template';
 };
 
-export type PostApi20260401ResourcesAtsEvaluationFormsSaveAsTemplateResponses = {
+export type PostApi20260701ResourcesAtsEvaluationFormsSaveAsTemplateResponses = {
     /**
      * OK
      */
     200: AtsEvaluationForm;
 };
 
-export type PostApi20260401ResourcesAtsEvaluationFormsSaveAsTemplateResponse = PostApi20260401ResourcesAtsEvaluationFormsSaveAsTemplateResponses[keyof PostApi20260401ResourcesAtsEvaluationFormsSaveAsTemplateResponses];
+export type PostApi20260701ResourcesAtsEvaluationFormsSaveAsTemplateResponse = PostApi20260701ResourcesAtsEvaluationFormsSaveAsTemplateResponses[keyof PostApi20260701ResourcesAtsEvaluationFormsSaveAsTemplateResponses];
 
-export type GetApi20260401ResourcesAtsFeedbacksData = {
+export type GetApi20260701ResourcesAtsFeedbacksData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * retrieve only the feedbacks that match the IDs passed in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * filter feedbacks based on multiple application IDs.
          */
-        'ats_application_ids[]'?: Array<number>;
+        'ats_application_ids[]'?: Array<string>;
         /**
          * fetch feedbacks related to a specific candidate.
          */
-        ats_candidate_id?: number;
+        ats_candidate_id?: string;
     };
-    url: '/api/2026-04-01/resources/ats/feedbacks';
+    url: '/api/2026-07-01/resources/ats/feedbacks';
 };
 
-export type GetApi20260401ResourcesAtsFeedbacksResponses = {
+export type GetApi20260701ResourcesAtsFeedbacksResponses = {
     /**
      * OK
      */
@@ -8197,14 +8359,14 @@ export type GetApi20260401ResourcesAtsFeedbacksResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsFeedbacksResponse = GetApi20260401ResourcesAtsFeedbacksResponses[keyof GetApi20260401ResourcesAtsFeedbacksResponses];
+export type GetApi20260701ResourcesAtsFeedbacksResponse = GetApi20260701ResourcesAtsFeedbacksResponses[keyof GetApi20260701ResourcesAtsFeedbacksResponses];
 
-export type PostApi20260401ResourcesAtsFeedbacksData = {
+export type PostApi20260701ResourcesAtsFeedbacksData = {
     body?: {
         /**
          * the ID of the candidate to whom the new feedback will be associated.
          */
-        ats_candidate_id: number;
+        ats_candidate_id: string;
         /**
          * the overall rating from 1 to 5 to be given to the candidate's application.
          */
@@ -8212,11 +8374,11 @@ export type PostApi20260401ResourcesAtsFeedbacksData = {
         /**
          * the ID of the application related to the feedback.
          */
-        ats_application_id?: number;
+        ats_application_id?: string;
         /**
          * the ID of the phase within the application related to the feedback.
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
         /**
          * a string describing the feedback provided.
          */
@@ -8224,45 +8386,45 @@ export type PostApi20260401ResourcesAtsFeedbacksData = {
         /**
          * the IDs of the accesses for sending notifications if they have it enabled. They must have permissions to see the assosiated application.
          */
-        mention_ids?: Array<number>;
+        mention_ids?: Array<string>;
         /**
          * IDs of the form to which the feedback belongs if the evaluation forms feature is active.
          */
-        ats_evaluation_forms_id?: number;
+        ats_evaluation_forms_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/feedbacks';
+    url: '/api/2026-07-01/resources/ats/feedbacks';
 };
 
-export type PostApi20260401ResourcesAtsFeedbacksResponses = {
+export type PostApi20260701ResourcesAtsFeedbacksResponses = {
     /**
      * CREATED
      */
     201: AtsFeedback;
 };
 
-export type PostApi20260401ResourcesAtsFeedbacksResponse = PostApi20260401ResourcesAtsFeedbacksResponses[keyof PostApi20260401ResourcesAtsFeedbacksResponses];
+export type PostApi20260701ResourcesAtsFeedbacksResponse = PostApi20260701ResourcesAtsFeedbacksResponses[keyof PostApi20260701ResourcesAtsFeedbacksResponses];
 
-export type DeleteApi20260401ResourcesAtsFeedbacksByIdData = {
+export type DeleteApi20260701ResourcesAtsFeedbacksByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/feedbacks/{id}';
+    url: '/api/2026-07-01/resources/ats/feedbacks/{id}';
 };
 
-export type DeleteApi20260401ResourcesAtsFeedbacksByIdResponses = {
+export type DeleteApi20260701ResourcesAtsFeedbacksByIdResponses = {
     /**
      * OK
      */
     200: AtsFeedback;
 };
 
-export type DeleteApi20260401ResourcesAtsFeedbacksByIdResponse = DeleteApi20260401ResourcesAtsFeedbacksByIdResponses[keyof DeleteApi20260401ResourcesAtsFeedbacksByIdResponses];
+export type DeleteApi20260701ResourcesAtsFeedbacksByIdResponse = DeleteApi20260701ResourcesAtsFeedbacksByIdResponses[keyof DeleteApi20260701ResourcesAtsFeedbacksByIdResponses];
 
-export type GetApi20260401ResourcesAtsFeedbacksByIdData = {
+export type GetApi20260701ResourcesAtsFeedbacksByIdData = {
     body?: never;
     path: {
         /**
@@ -8271,24 +8433,24 @@ export type GetApi20260401ResourcesAtsFeedbacksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/feedbacks/{id}';
+    url: '/api/2026-07-01/resources/ats/feedbacks/{id}';
 };
 
-export type GetApi20260401ResourcesAtsFeedbacksByIdResponses = {
+export type GetApi20260701ResourcesAtsFeedbacksByIdResponses = {
     /**
      * OK
      */
     200: AtsFeedback;
 };
 
-export type GetApi20260401ResourcesAtsFeedbacksByIdResponse = GetApi20260401ResourcesAtsFeedbacksByIdResponses[keyof GetApi20260401ResourcesAtsFeedbacksByIdResponses];
+export type GetApi20260701ResourcesAtsFeedbacksByIdResponse = GetApi20260701ResourcesAtsFeedbacksByIdResponses[keyof GetApi20260701ResourcesAtsFeedbacksByIdResponses];
 
-export type PutApi20260401ResourcesAtsFeedbacksByIdData = {
+export type PutApi20260701ResourcesAtsFeedbacksByIdData = {
     body?: {
         /**
          * the ID of the feedback entry to be updated.
          */
-        id?: number;
+        id?: string;
         /**
          * the overall rating from 1 to 5 for the candidate's application.
          */
@@ -8300,7 +8462,7 @@ export type PutApi20260401ResourcesAtsFeedbacksByIdData = {
         /**
          * the ID of the phase within the application related to the feedback.
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
     };
     path: {
         /**
@@ -8309,35 +8471,35 @@ export type PutApi20260401ResourcesAtsFeedbacksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/feedbacks/{id}';
+    url: '/api/2026-07-01/resources/ats/feedbacks/{id}';
 };
 
-export type PutApi20260401ResourcesAtsFeedbacksByIdResponses = {
+export type PutApi20260701ResourcesAtsFeedbacksByIdResponses = {
     /**
      * OK
      */
     200: AtsFeedback;
 };
 
-export type PutApi20260401ResourcesAtsFeedbacksByIdResponse = PutApi20260401ResourcesAtsFeedbacksByIdResponses[keyof PutApi20260401ResourcesAtsFeedbacksByIdResponses];
+export type PutApi20260701ResourcesAtsFeedbacksByIdResponse = PutApi20260701ResourcesAtsFeedbacksByIdResponses[keyof PutApi20260701ResourcesAtsFeedbacksByIdResponses];
 
-export type GetApi20260401ResourcesAtsHiringStagesData = {
+export type GetApi20260701ResourcesAtsHiringStagesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Identifiers of the hiring stages
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Identifier of the application phase that belongs to a hiring stage
          */
-        ats_application_phase_id?: number;
+        ats_application_phase_id?: string;
     };
-    url: '/api/2026-04-01/resources/ats/hiring_stages';
+    url: '/api/2026-07-01/resources/ats/hiring_stages';
 };
 
-export type GetApi20260401ResourcesAtsHiringStagesResponses = {
+export type GetApi20260701ResourcesAtsHiringStagesResponses = {
     /**
      * OK
      */
@@ -8347,9 +8509,9 @@ export type GetApi20260401ResourcesAtsHiringStagesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsHiringStagesResponse = GetApi20260401ResourcesAtsHiringStagesResponses[keyof GetApi20260401ResourcesAtsHiringStagesResponses];
+export type GetApi20260701ResourcesAtsHiringStagesResponse = GetApi20260701ResourcesAtsHiringStagesResponses[keyof GetApi20260701ResourcesAtsHiringStagesResponses];
 
-export type GetApi20260401ResourcesAtsHiringStagesByIdData = {
+export type GetApi20260701ResourcesAtsHiringStagesByIdData = {
     body?: never;
     path: {
         /**
@@ -8358,32 +8520,32 @@ export type GetApi20260401ResourcesAtsHiringStagesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/hiring_stages/{id}';
+    url: '/api/2026-07-01/resources/ats/hiring_stages/{id}';
 };
 
-export type GetApi20260401ResourcesAtsHiringStagesByIdResponses = {
+export type GetApi20260701ResourcesAtsHiringStagesByIdResponses = {
     /**
      * OK
      */
     200: AtsHiringStage;
 };
 
-export type GetApi20260401ResourcesAtsHiringStagesByIdResponse = GetApi20260401ResourcesAtsHiringStagesByIdResponses[keyof GetApi20260401ResourcesAtsHiringStagesByIdResponses];
+export type GetApi20260701ResourcesAtsHiringStagesByIdResponse = GetApi20260701ResourcesAtsHiringStagesByIdResponses[keyof GetApi20260701ResourcesAtsHiringStagesByIdResponses];
 
-export type GetApi20260401ResourcesAtsJobPostingsData = {
+export type GetApi20260701ResourcesAtsJobPostingsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         status?: 'draft' | 'published' | 'unlisted' | 'archived' | 'cancelled' | 'deleted';
-        team_id?: number;
-        location_id?: number;
-        legal_entity_id?: number;
+        team_id?: string;
+        location_id?: string;
+        legal_entity_id?: string;
     };
-    url: '/api/2026-04-01/resources/ats/job_postings';
+    url: '/api/2026-07-01/resources/ats/job_postings';
 };
 
-export type GetApi20260401ResourcesAtsJobPostingsResponses = {
+export type GetApi20260701ResourcesAtsJobPostingsResponses = {
     /**
      * OK
      */
@@ -8393,18 +8555,19 @@ export type GetApi20260401ResourcesAtsJobPostingsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsJobPostingsResponse = GetApi20260401ResourcesAtsJobPostingsResponses[keyof GetApi20260401ResourcesAtsJobPostingsResponses];
+export type GetApi20260701ResourcesAtsJobPostingsResponse = GetApi20260701ResourcesAtsJobPostingsResponses[keyof GetApi20260701ResourcesAtsJobPostingsResponses];
 
-export type PostApi20260401ResourcesAtsJobPostingsData = {
+export type PostApi20260701ResourcesAtsJobPostingsData = {
     body?: {
         title: string;
         description?: string;
         contract_type?: 'indefinite' | 'temporary' | 'intern' | 'training' | 'freelance' | 'vendor_contractor' | 'volunteer' | 'per_hour' | 'other' | 'alternant' | 'interim' | 'minijob' | 'werkstudent' | 'apprenticeship' | 'pj' | 'clt' | 'jovem_aprendiz' | 'a_termo_incerto' | 'a_termo_certo' | 'de_curta_duracao' | 'de_muita_curta_duracao' | 'promessa_de_trabalho' | 'a_tempo_parcial' | 'com_pluralidade_de_empregadores' | 'teletrabalho' | 'pre_reforma' | 'recibos_verdes' | 'estagio' | 'sem_termo' | 'apprentissage' | 'fixed_discontinued' | 'apprendistato';
+        category?: 'administration_and_secretariat' | 'design_and_architecture' | 'education_and_social_policy' | 'engineering' | 'finance' | 'hr' | 'it' | 'legal' | 'management_and_consulting' | 'marketing_and_communication' | 'nursing_and_therapy' | 'physicians' | 'public_sector' | 'purchasing_materials_administration_and_logistics' | 'sales' | 'sciences_and_research' | 'service_industry_and_manufacturing' | 'sports_art_and_creative_jobs' | 'other';
         workplace_type?: 'onsite' | 'remote' | 'hybrid';
         status: 'draft' | 'published' | 'unlisted' | 'archived' | 'cancelled' | 'deleted';
         schedule_type?: 'full_time' | 'part_time';
-        team_id?: number;
-        location_id?: number;
+        team_id?: string;
+        location_id?: string;
         salary_format?: 'fixed_amount' | 'range';
         salary_from_amount_in_cents?: number;
         salary_to_amount_in_cents?: number;
@@ -8417,65 +8580,66 @@ export type PostApi20260401ResourcesAtsJobPostingsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/job_postings';
+    url: '/api/2026-07-01/resources/ats/job_postings';
 };
 
-export type PostApi20260401ResourcesAtsJobPostingsResponses = {
+export type PostApi20260701ResourcesAtsJobPostingsResponses = {
     /**
      * CREATED
      */
     201: AtsJobPosting;
 };
 
-export type PostApi20260401ResourcesAtsJobPostingsResponse = PostApi20260401ResourcesAtsJobPostingsResponses[keyof PostApi20260401ResourcesAtsJobPostingsResponses];
+export type PostApi20260701ResourcesAtsJobPostingsResponse = PostApi20260701ResourcesAtsJobPostingsResponses[keyof PostApi20260701ResourcesAtsJobPostingsResponses];
 
-export type DeleteApi20260401ResourcesAtsJobPostingsByIdData = {
+export type DeleteApi20260701ResourcesAtsJobPostingsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/job_postings/{id}';
+    url: '/api/2026-07-01/resources/ats/job_postings/{id}';
 };
 
-export type DeleteApi20260401ResourcesAtsJobPostingsByIdResponses = {
+export type DeleteApi20260701ResourcesAtsJobPostingsByIdResponses = {
     /**
      * OK
      */
     200: AtsJobPosting;
 };
 
-export type DeleteApi20260401ResourcesAtsJobPostingsByIdResponse = DeleteApi20260401ResourcesAtsJobPostingsByIdResponses[keyof DeleteApi20260401ResourcesAtsJobPostingsByIdResponses];
+export type DeleteApi20260701ResourcesAtsJobPostingsByIdResponse = DeleteApi20260701ResourcesAtsJobPostingsByIdResponses[keyof DeleteApi20260701ResourcesAtsJobPostingsByIdResponses];
 
-export type GetApi20260401ResourcesAtsJobPostingsByIdData = {
+export type GetApi20260701ResourcesAtsJobPostingsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/job_postings/{id}';
+    url: '/api/2026-07-01/resources/ats/job_postings/{id}';
 };
 
-export type GetApi20260401ResourcesAtsJobPostingsByIdResponses = {
+export type GetApi20260701ResourcesAtsJobPostingsByIdResponses = {
     /**
      * OK
      */
     200: AtsJobPosting;
 };
 
-export type GetApi20260401ResourcesAtsJobPostingsByIdResponse = GetApi20260401ResourcesAtsJobPostingsByIdResponses[keyof GetApi20260401ResourcesAtsJobPostingsByIdResponses];
+export type GetApi20260701ResourcesAtsJobPostingsByIdResponse = GetApi20260701ResourcesAtsJobPostingsByIdResponses[keyof GetApi20260701ResourcesAtsJobPostingsByIdResponses];
 
-export type PutApi20260401ResourcesAtsJobPostingsByIdData = {
+export type PutApi20260701ResourcesAtsJobPostingsByIdData = {
     body?: {
-        id: number;
+        id: string;
         title?: string;
         description?: string;
         contract_type?: 'indefinite' | 'temporary' | 'intern' | 'training' | 'freelance' | 'vendor_contractor' | 'volunteer' | 'per_hour' | 'other' | 'alternant' | 'interim' | 'minijob' | 'werkstudent' | 'apprenticeship' | 'pj' | 'clt' | 'jovem_aprendiz' | 'a_termo_incerto' | 'a_termo_certo' | 'de_curta_duracao' | 'de_muita_curta_duracao' | 'promessa_de_trabalho' | 'a_tempo_parcial' | 'com_pluralidade_de_empregadores' | 'teletrabalho' | 'pre_reforma' | 'recibos_verdes' | 'estagio' | 'sem_termo' | 'apprentissage' | 'fixed_discontinued' | 'apprendistato';
+        category?: 'administration_and_secretariat' | 'design_and_architecture' | 'education_and_social_policy' | 'engineering' | 'finance' | 'hr' | 'it' | 'legal' | 'management_and_consulting' | 'marketing_and_communication' | 'nursing_and_therapy' | 'physicians' | 'public_sector' | 'purchasing_materials_administration_and_logistics' | 'sales' | 'sciences_and_research' | 'service_industry_and_manufacturing' | 'sports_art_and_creative_jobs' | 'other';
         workplace_type?: 'onsite' | 'remote' | 'hybrid';
         status?: 'draft' | 'published' | 'unlisted' | 'archived' | 'cancelled' | 'deleted';
         schedule_type?: 'full_time' | 'part_time';
-        team_id?: number;
-        location_id?: number;
+        team_id?: string;
+        location_id?: string;
         salary_format?: 'fixed_amount' | 'range';
         salary_from_amount_in_cents?: number;
         salary_to_amount_in_cents?: number;
@@ -8490,53 +8654,53 @@ export type PutApi20260401ResourcesAtsJobPostingsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/job_postings/{id}';
+    url: '/api/2026-07-01/resources/ats/job_postings/{id}';
 };
 
-export type PutApi20260401ResourcesAtsJobPostingsByIdResponses = {
+export type PutApi20260701ResourcesAtsJobPostingsByIdResponses = {
     /**
      * OK
      */
     200: AtsJobPosting;
 };
 
-export type PutApi20260401ResourcesAtsJobPostingsByIdResponse = PutApi20260401ResourcesAtsJobPostingsByIdResponses[keyof PutApi20260401ResourcesAtsJobPostingsByIdResponses];
+export type PutApi20260701ResourcesAtsJobPostingsByIdResponse = PutApi20260701ResourcesAtsJobPostingsByIdResponses[keyof PutApi20260701ResourcesAtsJobPostingsByIdResponses];
 
-export type PostApi20260401ResourcesAtsJobPostingsDuplicateData = {
+export type PostApi20260701ResourcesAtsJobPostingsDuplicateData = {
     body?: {
         /**
          * The Job ID of the job posting that you want to duplicate.
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/job_postings/duplicate';
+    url: '/api/2026-07-01/resources/ats/job_postings/duplicate';
 };
 
-export type PostApi20260401ResourcesAtsJobPostingsDuplicateResponses = {
+export type PostApi20260701ResourcesAtsJobPostingsDuplicateResponses = {
     /**
      * OK
      */
     200: AtsJobPosting;
 };
 
-export type PostApi20260401ResourcesAtsJobPostingsDuplicateResponse = PostApi20260401ResourcesAtsJobPostingsDuplicateResponses[keyof PostApi20260401ResourcesAtsJobPostingsDuplicateResponses];
+export type PostApi20260701ResourcesAtsJobPostingsDuplicateResponse = PostApi20260701ResourcesAtsJobPostingsDuplicateResponses[keyof PostApi20260701ResourcesAtsJobPostingsDuplicateResponses];
 
-export type GetApi20260401ResourcesAtsMessagesData = {
+export type GetApi20260701ResourcesAtsMessagesData = {
     body?: never;
     path?: never;
     query: {
-        id?: number;
-        'ids[]'?: Array<number>;
-        ats_conversation_id?: number;
-        'ats_conversation_ids[]'?: Array<number>;
+        id?: string;
+        'ids[]'?: Array<string>;
+        ats_conversation_id?: string;
+        'ats_conversation_ids[]'?: Array<string>;
         last_per_conversation: boolean;
     };
-    url: '/api/2026-04-01/resources/ats/messages';
+    url: '/api/2026-07-01/resources/ats/messages';
 };
 
-export type GetApi20260401ResourcesAtsMessagesResponses = {
+export type GetApi20260701ResourcesAtsMessagesResponses = {
     /**
      * OK
      */
@@ -8546,14 +8710,14 @@ export type GetApi20260401ResourcesAtsMessagesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsMessagesResponse = GetApi20260401ResourcesAtsMessagesResponses[keyof GetApi20260401ResourcesAtsMessagesResponses];
+export type GetApi20260701ResourcesAtsMessagesResponse = GetApi20260701ResourcesAtsMessagesResponses[keyof GetApi20260701ResourcesAtsMessagesResponses];
 
-export type PostApi20260401ResourcesAtsMessagesData = {
+export type PostApi20260701ResourcesAtsMessagesData = {
     body?: {
         content: string;
-        sent_by_id: number;
+        sent_by_id: string;
         sent_by_type: 'candidate' | 'user';
-        ats_application_id: number;
+        ats_application_id: string;
         'attachments[]': Array<Blob | File>;
         topic: string;
         send_as_corporate_email: boolean;
@@ -8561,53 +8725,53 @@ export type PostApi20260401ResourcesAtsMessagesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/messages';
+    url: '/api/2026-07-01/resources/ats/messages';
 };
 
-export type PostApi20260401ResourcesAtsMessagesResponses = {
+export type PostApi20260701ResourcesAtsMessagesResponses = {
     /**
      * CREATED
      */
     201: AtsMessage;
 };
 
-export type PostApi20260401ResourcesAtsMessagesResponse = PostApi20260401ResourcesAtsMessagesResponses[keyof PostApi20260401ResourcesAtsMessagesResponses];
+export type PostApi20260701ResourcesAtsMessagesResponse = PostApi20260701ResourcesAtsMessagesResponses[keyof PostApi20260701ResourcesAtsMessagesResponses];
 
-export type GetApi20260401ResourcesAtsMessagesByIdData = {
+export type GetApi20260701ResourcesAtsMessagesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/messages/{id}';
+    url: '/api/2026-07-01/resources/ats/messages/{id}';
 };
 
-export type GetApi20260401ResourcesAtsMessagesByIdResponses = {
+export type GetApi20260701ResourcesAtsMessagesByIdResponses = {
     /**
      * OK
      */
     200: AtsMessage;
 };
 
-export type GetApi20260401ResourcesAtsMessagesByIdResponse = GetApi20260401ResourcesAtsMessagesByIdResponses[keyof GetApi20260401ResourcesAtsMessagesByIdResponses];
+export type GetApi20260701ResourcesAtsMessagesByIdResponse = GetApi20260701ResourcesAtsMessagesByIdResponses[keyof GetApi20260701ResourcesAtsMessagesByIdResponses];
 
-export type GetApi20260401ResourcesAtsQuestionsData = {
+export type GetApi20260701ResourcesAtsQuestionsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * identifiers of the questions
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * identifiers of the related job postings
          */
-        'ats_job_posting_ids[]'?: Array<number>;
+        'ats_job_posting_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/questions';
+    url: '/api/2026-07-01/resources/ats/questions';
 };
 
-export type GetApi20260401ResourcesAtsQuestionsResponses = {
+export type GetApi20260701ResourcesAtsQuestionsResponses = {
     /**
      * OK
      */
@@ -8617,18 +8781,18 @@ export type GetApi20260401ResourcesAtsQuestionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsQuestionsResponse = GetApi20260401ResourcesAtsQuestionsResponses[keyof GetApi20260401ResourcesAtsQuestionsResponses];
+export type GetApi20260701ResourcesAtsQuestionsResponse = GetApi20260701ResourcesAtsQuestionsResponses[keyof GetApi20260701ResourcesAtsQuestionsResponses];
 
-export type PostApi20260401ResourcesAtsQuestionsData = {
+export type PostApi20260701ResourcesAtsQuestionsData = {
     body?: {
         /**
          * job posting identifier.
          */
-        ats_job_posting_id: number;
+        ats_job_posting_id: string;
         /**
          * company identifier, refers to /core/me endpoint.
          */
-        company_id: number;
+        company_id: string;
         /**
          * text of the question.
          */
@@ -8656,19 +8820,19 @@ export type PostApi20260401ResourcesAtsQuestionsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/ats/questions';
+    url: '/api/2026-07-01/resources/ats/questions';
 };
 
-export type PostApi20260401ResourcesAtsQuestionsResponses = {
+export type PostApi20260701ResourcesAtsQuestionsResponses = {
     /**
      * CREATED
      */
     201: AtsQuestion;
 };
 
-export type PostApi20260401ResourcesAtsQuestionsResponse = PostApi20260401ResourcesAtsQuestionsResponses[keyof PostApi20260401ResourcesAtsQuestionsResponses];
+export type PostApi20260701ResourcesAtsQuestionsResponse = PostApi20260701ResourcesAtsQuestionsResponses[keyof PostApi20260701ResourcesAtsQuestionsResponses];
 
-export type DeleteApi20260401ResourcesAtsQuestionsByIdData = {
+export type DeleteApi20260701ResourcesAtsQuestionsByIdData = {
     body?: never;
     path: {
         /**
@@ -8677,19 +8841,19 @@ export type DeleteApi20260401ResourcesAtsQuestionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/questions/{id}';
+    url: '/api/2026-07-01/resources/ats/questions/{id}';
 };
 
-export type DeleteApi20260401ResourcesAtsQuestionsByIdResponses = {
+export type DeleteApi20260701ResourcesAtsQuestionsByIdResponses = {
     /**
      * OK
      */
     200: AtsQuestion;
 };
 
-export type DeleteApi20260401ResourcesAtsQuestionsByIdResponse = DeleteApi20260401ResourcesAtsQuestionsByIdResponses[keyof DeleteApi20260401ResourcesAtsQuestionsByIdResponses];
+export type DeleteApi20260701ResourcesAtsQuestionsByIdResponse = DeleteApi20260701ResourcesAtsQuestionsByIdResponses[keyof DeleteApi20260701ResourcesAtsQuestionsByIdResponses];
 
-export type GetApi20260401ResourcesAtsQuestionsByIdData = {
+export type GetApi20260701ResourcesAtsQuestionsByIdData = {
     body?: never;
     path: {
         /**
@@ -8698,24 +8862,24 @@ export type GetApi20260401ResourcesAtsQuestionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/questions/{id}';
+    url: '/api/2026-07-01/resources/ats/questions/{id}';
 };
 
-export type GetApi20260401ResourcesAtsQuestionsByIdResponses = {
+export type GetApi20260701ResourcesAtsQuestionsByIdResponses = {
     /**
      * OK
      */
     200: AtsQuestion;
 };
 
-export type GetApi20260401ResourcesAtsQuestionsByIdResponse = GetApi20260401ResourcesAtsQuestionsByIdResponses[keyof GetApi20260401ResourcesAtsQuestionsByIdResponses];
+export type GetApi20260701ResourcesAtsQuestionsByIdResponse = GetApi20260701ResourcesAtsQuestionsByIdResponses[keyof GetApi20260701ResourcesAtsQuestionsByIdResponses];
 
-export type PutApi20260401ResourcesAtsQuestionsByIdData = {
+export type PutApi20260701ResourcesAtsQuestionsByIdData = {
     body?: {
         /**
          * identifier of the question
          */
-        id: number;
+        id: string;
         /**
          * text of the question
          */
@@ -8744,35 +8908,35 @@ export type PutApi20260401ResourcesAtsQuestionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/questions/{id}';
+    url: '/api/2026-07-01/resources/ats/questions/{id}';
 };
 
-export type PutApi20260401ResourcesAtsQuestionsByIdResponses = {
+export type PutApi20260701ResourcesAtsQuestionsByIdResponses = {
     /**
      * OK
      */
     200: AtsQuestion;
 };
 
-export type PutApi20260401ResourcesAtsQuestionsByIdResponse = PutApi20260401ResourcesAtsQuestionsByIdResponses[keyof PutApi20260401ResourcesAtsQuestionsByIdResponses];
+export type PutApi20260701ResourcesAtsQuestionsByIdResponse = PutApi20260701ResourcesAtsQuestionsByIdResponses[keyof PutApi20260701ResourcesAtsQuestionsByIdResponses];
 
-export type GetApi20260401ResourcesAtsRejectionReasonsData = {
+export type GetApi20260701ResourcesAtsRejectionReasonsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Rejection reasons identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Rejected application identifiers
          */
-        'ats_application_ids[]'?: Array<number>;
+        'ats_application_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/ats/rejection_reasons';
+    url: '/api/2026-07-01/resources/ats/rejection_reasons';
 };
 
-export type GetApi20260401ResourcesAtsRejectionReasonsResponses = {
+export type GetApi20260701ResourcesAtsRejectionReasonsResponses = {
     /**
      * OK
      */
@@ -8782,9 +8946,9 @@ export type GetApi20260401ResourcesAtsRejectionReasonsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAtsRejectionReasonsResponse = GetApi20260401ResourcesAtsRejectionReasonsResponses[keyof GetApi20260401ResourcesAtsRejectionReasonsResponses];
+export type GetApi20260701ResourcesAtsRejectionReasonsResponse = GetApi20260701ResourcesAtsRejectionReasonsResponses[keyof GetApi20260701ResourcesAtsRejectionReasonsResponses];
 
-export type GetApi20260401ResourcesAtsRejectionReasonsByIdData = {
+export type GetApi20260701ResourcesAtsRejectionReasonsByIdData = {
     body?: never;
     path: {
         /**
@@ -8793,43 +8957,43 @@ export type GetApi20260401ResourcesAtsRejectionReasonsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/ats/rejection_reasons/{id}';
+    url: '/api/2026-07-01/resources/ats/rejection_reasons/{id}';
 };
 
-export type GetApi20260401ResourcesAtsRejectionReasonsByIdResponses = {
+export type GetApi20260701ResourcesAtsRejectionReasonsByIdResponses = {
     /**
      * OK
      */
     200: AtsRejectionReason;
 };
 
-export type GetApi20260401ResourcesAtsRejectionReasonsByIdResponse = GetApi20260401ResourcesAtsRejectionReasonsByIdResponses[keyof GetApi20260401ResourcesAtsRejectionReasonsByIdResponses];
+export type GetApi20260701ResourcesAtsRejectionReasonsByIdResponse = GetApi20260701ResourcesAtsRejectionReasonsByIdResponses[keyof GetApi20260701ResourcesAtsRejectionReasonsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsData = {
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * The break configuration ids to retrieve
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Ids of the time settings break configuration
          */
-        'time_settings_break_configuration_ids[]'?: Array<number>;
+        'time_settings_break_configuration_ids[]'?: Array<string>;
         /**
          * Id of the attendance employee setting
          */
-        attendance_employees_setting_id?: number;
+        attendance_employees_setting_id?: string;
         /**
          * Status of the break configuration if enabled or not
          */
         enabled?: boolean;
     };
-    url: '/api/2026-04-01/resources/attendance/break_configurations';
+    url: '/api/2026-07-01/resources/attendance/break_configurations';
 };
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsResponses = {
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsResponses = {
     /**
      * OK
      */
@@ -8839,18 +9003,18 @@ export type GetApi20260401ResourcesAttendanceBreakConfigurationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsResponse = GetApi20260401ResourcesAttendanceBreakConfigurationsResponses[keyof GetApi20260401ResourcesAttendanceBreakConfigurationsResponses];
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsResponse = GetApi20260701ResourcesAttendanceBreakConfigurationsResponses[keyof GetApi20260701ResourcesAttendanceBreakConfigurationsResponses];
 
-export type PostApi20260401ResourcesAttendanceBreakConfigurationsData = {
+export type PostApi20260701ResourcesAttendanceBreakConfigurationsData = {
     body?: {
         /**
          * Id of the time settings break configuration
          */
-        time_settings_break_configuration_id: number;
+        time_settings_break_configuration_id: string;
         /**
          * Id of the attendance employee setting
          */
-        attendance_employees_setting_id: number;
+        attendance_employees_setting_id: string;
         /**
          * Status of the break configuration if enabled or not
          */
@@ -8858,19 +9022,19 @@ export type PostApi20260401ResourcesAttendanceBreakConfigurationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/break_configurations';
+    url: '/api/2026-07-01/resources/attendance/break_configurations';
 };
 
-export type PostApi20260401ResourcesAttendanceBreakConfigurationsResponses = {
+export type PostApi20260701ResourcesAttendanceBreakConfigurationsResponses = {
     /**
      * CREATED
      */
     201: AttendanceBreakConfiguration;
 };
 
-export type PostApi20260401ResourcesAttendanceBreakConfigurationsResponse = PostApi20260401ResourcesAttendanceBreakConfigurationsResponses[keyof PostApi20260401ResourcesAttendanceBreakConfigurationsResponses];
+export type PostApi20260701ResourcesAttendanceBreakConfigurationsResponse = PostApi20260701ResourcesAttendanceBreakConfigurationsResponses[keyof PostApi20260701ResourcesAttendanceBreakConfigurationsResponses];
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsByIdData = {
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsByIdData = {
     body?: never;
     path: {
         /**
@@ -8879,24 +9043,24 @@ export type GetApi20260401ResourcesAttendanceBreakConfigurationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/break_configurations/{id}';
+    url: '/api/2026-07-01/resources/attendance/break_configurations/{id}';
 };
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses = {
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceBreakConfiguration;
 };
 
-export type GetApi20260401ResourcesAttendanceBreakConfigurationsByIdResponse = GetApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses[keyof GetApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses];
+export type GetApi20260701ResourcesAttendanceBreakConfigurationsByIdResponse = GetApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses[keyof GetApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses];
 
-export type PutApi20260401ResourcesAttendanceBreakConfigurationsByIdData = {
+export type PutApi20260701ResourcesAttendanceBreakConfigurationsByIdData = {
     body?: {
         /**
          * Id of the break configuration
          */
-        id: number;
+        id: string;
         /**
          * Status of the break configuration if enabled or not
          */
@@ -8909,34 +9073,34 @@ export type PutApi20260401ResourcesAttendanceBreakConfigurationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/break_configurations/{id}';
+    url: '/api/2026-07-01/resources/attendance/break_configurations/{id}';
 };
 
-export type PutApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses = {
+export type PutApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceBreakConfiguration;
 };
 
-export type PutApi20260401ResourcesAttendanceBreakConfigurationsByIdResponse = PutApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses[keyof PutApi20260401ResourcesAttendanceBreakConfigurationsByIdResponses];
+export type PutApi20260701ResourcesAttendanceBreakConfigurationsByIdResponse = PutApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses[keyof PutApi20260701ResourcesAttendanceBreakConfigurationsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsData = {
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * filter by employee ids.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * filter by shift id.
          */
-        shift_id?: number;
+        shift_id?: string;
         /**
          * filter by edit timesheet request status.
          */
@@ -8950,10 +9114,10 @@ export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsData = {
          */
         end_on?: string;
     };
-    url: '/api/2026-04-01/resources/attendance/edit_timesheet_requests';
+    url: '/api/2026-07-01/resources/attendance/edit_timesheet_requests';
 };
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsResponses = {
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsResponses = {
     /**
      * OK
      */
@@ -8963,56 +9127,56 @@ export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsResponse = GetApi20260401ResourcesAttendanceEditTimesheetRequestsResponses[keyof GetApi20260401ResourcesAttendanceEditTimesheetRequestsResponses];
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsResponse = GetApi20260701ResourcesAttendanceEditTimesheetRequestsResponses[keyof GetApi20260701ResourcesAttendanceEditTimesheetRequestsResponses];
 
-export type PostApi20260401ResourcesAttendanceEditTimesheetRequestsData = {
+export type PostApi20260701ResourcesAttendanceEditTimesheetRequestsData = {
     body?: {
-        employee_id: number;
+        employee_id: string;
         request_type: 'create_shift' | 'delete_shift' | 'update_shift';
         reason?: string;
         date?: string;
         clock_in?: string;
         clock_out?: string;
         workable?: boolean;
-        attendance_shift_id?: number;
+        attendance_shift_id?: string;
         reference_date?: string;
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
         location_type?: 'office' | 'business_trip' | 'work_from_home';
         observations?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/edit_timesheet_requests';
+    url: '/api/2026-07-01/resources/attendance/edit_timesheet_requests';
 };
 
-export type PostApi20260401ResourcesAttendanceEditTimesheetRequestsResponses = {
+export type PostApi20260701ResourcesAttendanceEditTimesheetRequestsResponses = {
     /**
      * CREATED
      */
     201: AttendanceEditTimesheetRequest;
 };
 
-export type PostApi20260401ResourcesAttendanceEditTimesheetRequestsResponse = PostApi20260401ResourcesAttendanceEditTimesheetRequestsResponses[keyof PostApi20260401ResourcesAttendanceEditTimesheetRequestsResponses];
+export type PostApi20260701ResourcesAttendanceEditTimesheetRequestsResponse = PostApi20260701ResourcesAttendanceEditTimesheetRequestsResponses[keyof PostApi20260701ResourcesAttendanceEditTimesheetRequestsResponses];
 
-export type DeleteApi20260401ResourcesAttendanceEditTimesheetRequestsByIdData = {
+export type DeleteApi20260701ResourcesAttendanceEditTimesheetRequestsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/edit_timesheet_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/edit_timesheet_requests/{id}';
 };
 
-export type DeleteApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
+export type DeleteApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceEditTimesheetRequest;
 };
 
-export type DeleteApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponse = DeleteApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof DeleteApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses];
+export type DeleteApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponse = DeleteApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof DeleteApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdData = {
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsByIdData = {
     body?: never;
     path: {
         /**
@@ -9021,60 +9185,60 @@ export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/edit_timesheet_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/edit_timesheet_requests/{id}';
 };
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceEditTimesheetRequest;
 };
 
-export type GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponse = GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof GetApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses];
+export type GetApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponse = GetApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof GetApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses];
 
-export type PutApi20260401ResourcesAttendanceEditTimesheetRequestsByIdData = {
+export type PutApi20260701ResourcesAttendanceEditTimesheetRequestsByIdData = {
     body?: {
-        attendance_shift_id?: number;
+        attendance_shift_id?: string;
         clock_in?: string;
         clock_out?: string;
         date?: string;
         reference_date?: string;
-        employee_id: number;
-        id: number;
+        employee_id: string;
+        id: string;
         location_type?: 'office' | 'business_trip' | 'work_from_home';
         observations?: string;
         reason?: string;
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/edit_timesheet_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/edit_timesheet_requests/{id}';
 };
 
-export type PutApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
+export type PutApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceEditTimesheetRequest;
 };
 
-export type PutApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponse = PutApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof PutApi20260401ResourcesAttendanceEditTimesheetRequestsByIdResponses];
+export type PutApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponse = PutApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses[keyof PutApi20260701ResourcesAttendanceEditTimesheetRequestsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceEstimatedTimesData = {
+export type GetApi20260701ResourcesAttendanceEstimatedTimesData = {
     body?: never;
     path?: never;
     query: {
         start_on: string;
         end_on: string;
-        'employee_ids[]': Array<number>;
+        'employee_ids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/attendance/estimated_times';
+    url: '/api/2026-07-01/resources/attendance/estimated_times';
 };
 
-export type GetApi20260401ResourcesAttendanceEstimatedTimesResponses = {
+export type GetApi20260701ResourcesAttendanceEstimatedTimesResponses = {
     /**
      * OK
      */
@@ -9084,21 +9248,21 @@ export type GetApi20260401ResourcesAttendanceEstimatedTimesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceEstimatedTimesResponse = GetApi20260401ResourcesAttendanceEstimatedTimesResponses[keyof GetApi20260401ResourcesAttendanceEstimatedTimesResponses];
+export type GetApi20260701ResourcesAttendanceEstimatedTimesResponse = GetApi20260701ResourcesAttendanceEstimatedTimesResponses[keyof GetApi20260701ResourcesAttendanceEstimatedTimesResponses];
 
-export type GetApi20260401ResourcesAttendanceOpenShiftsData = {
+export type GetApi20260701ResourcesAttendanceOpenShiftsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Employee ids to filter the open shifts by.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/attendance/open_shifts';
+    url: '/api/2026-07-01/resources/attendance/open_shifts';
 };
 
-export type GetApi20260401ResourcesAttendanceOpenShiftsResponses = {
+export type GetApi20260701ResourcesAttendanceOpenShiftsResponses = {
     /**
      * OK
      */
@@ -9108,23 +9272,23 @@ export type GetApi20260401ResourcesAttendanceOpenShiftsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceOpenShiftsResponse = GetApi20260401ResourcesAttendanceOpenShiftsResponses[keyof GetApi20260401ResourcesAttendanceOpenShiftsResponses];
+export type GetApi20260701ResourcesAttendanceOpenShiftsResponse = GetApi20260701ResourcesAttendanceOpenShiftsResponses[keyof GetApi20260701ResourcesAttendanceOpenShiftsResponses];
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsData = {
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
-        'employee_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'employee_ids[]'?: Array<string>;
         start_on?: string;
         end_on?: string;
         status?: 'pending' | 'approved' | 'rejected' | 'none';
         include_approval_flow: boolean;
     };
-    url: '/api/2026-04-01/resources/attendance/overtime_requests';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests';
 };
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsResponses = {
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsResponses = {
     /**
      * OK
      */
@@ -9134,69 +9298,69 @@ export type GetApi20260401ResourcesAttendanceOvertimeRequestsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsResponse = GetApi20260401ResourcesAttendanceOvertimeRequestsResponses[keyof GetApi20260401ResourcesAttendanceOvertimeRequestsResponses];
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsResponse = GetApi20260701ResourcesAttendanceOvertimeRequestsResponses[keyof GetApi20260701ResourcesAttendanceOvertimeRequestsResponses];
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsData = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsData = {
     body?: {
         date: string;
         description?: string;
         hours_amount?: number;
-        employee_id: number;
-        author_id: number;
+        employee_id: string;
+        author_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests';
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsResponses = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsResponses = {
     /**
      * CREATED
      */
     201: AttendanceOvertimeRequest;
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsResponse = PostApi20260401ResourcesAttendanceOvertimeRequestsResponses[keyof PostApi20260401ResourcesAttendanceOvertimeRequestsResponses];
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsResponse = PostApi20260701ResourcesAttendanceOvertimeRequestsResponses[keyof PostApi20260701ResourcesAttendanceOvertimeRequestsResponses];
 
-export type DeleteApi20260401ResourcesAttendanceOvertimeRequestsByIdData = {
+export type DeleteApi20260701ResourcesAttendanceOvertimeRequestsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests/{id}';
 };
 
-export type DeleteApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses = {
+export type DeleteApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceOvertimeRequest;
 };
 
-export type DeleteApi20260401ResourcesAttendanceOvertimeRequestsByIdResponse = DeleteApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses[keyof DeleteApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses];
+export type DeleteApi20260701ResourcesAttendanceOvertimeRequestsByIdResponse = DeleteApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses[keyof DeleteApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsByIdData = {
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests/{id}';
 };
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses = {
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceOvertimeRequest;
 };
 
-export type GetApi20260401ResourcesAttendanceOvertimeRequestsByIdResponse = GetApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses[keyof GetApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses];
+export type GetApi20260701ResourcesAttendanceOvertimeRequestsByIdResponse = GetApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses[keyof GetApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses];
 
-export type PutApi20260401ResourcesAttendanceOvertimeRequestsByIdData = {
+export type PutApi20260701ResourcesAttendanceOvertimeRequestsByIdData = {
     body?: {
-        id: number;
+        id: string;
         date?: string;
         description?: string;
         hours_amount?: number;
@@ -9206,66 +9370,66 @@ export type PutApi20260401ResourcesAttendanceOvertimeRequestsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests/{id}';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests/{id}';
 };
 
-export type PutApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses = {
+export type PutApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceOvertimeRequest;
 };
 
-export type PutApi20260401ResourcesAttendanceOvertimeRequestsByIdResponse = PutApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses[keyof PutApi20260401ResourcesAttendanceOvertimeRequestsByIdResponses];
+export type PutApi20260701ResourcesAttendanceOvertimeRequestsByIdResponse = PutApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses[keyof PutApi20260701ResourcesAttendanceOvertimeRequestsByIdResponses];
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsApproveData = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsApproveData = {
     body?: {
-        id: number;
+        id: string;
         reason?: string;
-        approver_id?: number;
+        approver_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests/approve';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests/approve';
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsApproveResponses = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsApproveResponses = {
     /**
      * OK
      */
     200: AttendanceOvertimeRequest;
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsApproveResponse = PostApi20260401ResourcesAttendanceOvertimeRequestsApproveResponses[keyof PostApi20260401ResourcesAttendanceOvertimeRequestsApproveResponses];
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsApproveResponse = PostApi20260701ResourcesAttendanceOvertimeRequestsApproveResponses[keyof PostApi20260701ResourcesAttendanceOvertimeRequestsApproveResponses];
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsRejectData = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsRejectData = {
     body?: {
-        id: number;
+        id: string;
         reason: string;
-        approver_id?: number;
+        approver_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/overtime_requests/reject';
+    url: '/api/2026-07-01/resources/attendance/overtime_requests/reject';
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsRejectResponses = {
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsRejectResponses = {
     /**
      * OK
      */
     200: AttendanceOvertimeRequest;
 };
 
-export type PostApi20260401ResourcesAttendanceOvertimeRequestsRejectResponse = PostApi20260401ResourcesAttendanceOvertimeRequestsRejectResponses[keyof PostApi20260401ResourcesAttendanceOvertimeRequestsRejectResponses];
+export type PostApi20260701ResourcesAttendanceOvertimeRequestsRejectResponse = PostApi20260701ResourcesAttendanceOvertimeRequestsRejectResponses[keyof PostApi20260701ResourcesAttendanceOvertimeRequestsRejectResponses];
 
-export type GetApi20260401ResourcesAttendanceReviewsData = {
+export type GetApi20260701ResourcesAttendanceReviewsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Employee identifiers
          */
-        'employee_ids[]': Array<number>;
+        'employee_ids[]': Array<string>;
         /**
          * Start date of the reviews
          */
@@ -9279,10 +9443,10 @@ export type GetApi20260401ResourcesAttendanceReviewsData = {
          */
         reviewed_at: string;
     };
-    url: '/api/2026-04-01/resources/attendance/reviews';
+    url: '/api/2026-07-01/resources/attendance/reviews';
 };
 
-export type GetApi20260401ResourcesAttendanceReviewsResponses = {
+export type GetApi20260701ResourcesAttendanceReviewsResponses = {
     /**
      * OK
      */
@@ -9292,14 +9456,14 @@ export type GetApi20260401ResourcesAttendanceReviewsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceReviewsResponse = GetApi20260401ResourcesAttendanceReviewsResponses[keyof GetApi20260401ResourcesAttendanceReviewsResponses];
+export type GetApi20260701ResourcesAttendanceReviewsResponse = GetApi20260701ResourcesAttendanceReviewsResponses[keyof GetApi20260701ResourcesAttendanceReviewsResponses];
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkCreateData = {
+export type PostApi20260701ResourcesAttendanceReviewsBulkCreateData = {
     body?: {
         /**
          * Employee identifiers to review
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
         /**
          * Start date of the reviews
          */
@@ -9315,24 +9479,24 @@ export type PostApi20260401ResourcesAttendanceReviewsBulkCreateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/reviews/bulk_create';
+    url: '/api/2026-07-01/resources/attendance/reviews/bulk_create';
 };
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkCreateResponses = {
+export type PostApi20260701ResourcesAttendanceReviewsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<AttendanceReview>;
 };
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkCreateResponse = PostApi20260401ResourcesAttendanceReviewsBulkCreateResponses[keyof PostApi20260401ResourcesAttendanceReviewsBulkCreateResponses];
+export type PostApi20260701ResourcesAttendanceReviewsBulkCreateResponse = PostApi20260701ResourcesAttendanceReviewsBulkCreateResponses[keyof PostApi20260701ResourcesAttendanceReviewsBulkCreateResponses];
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkDestroyData = {
+export type PostApi20260701ResourcesAttendanceReviewsBulkDestroyData = {
     body?: {
         /**
          * Employee identifiers
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
         /**
          * Start date of the reviews to delete
          */
@@ -9344,26 +9508,26 @@ export type PostApi20260401ResourcesAttendanceReviewsBulkDestroyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/reviews/bulk_destroy';
+    url: '/api/2026-07-01/resources/attendance/reviews/bulk_destroy';
 };
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkDestroyResponses = {
+export type PostApi20260701ResourcesAttendanceReviewsBulkDestroyResponses = {
     /**
      * OK
      */
     200: Array<AttendanceReview>;
 };
 
-export type PostApi20260401ResourcesAttendanceReviewsBulkDestroyResponse = PostApi20260401ResourcesAttendanceReviewsBulkDestroyResponses[keyof PostApi20260401ResourcesAttendanceReviewsBulkDestroyResponses];
+export type PostApi20260701ResourcesAttendanceReviewsBulkDestroyResponse = PostApi20260701ResourcesAttendanceReviewsBulkDestroyResponses[keyof PostApi20260701ResourcesAttendanceReviewsBulkDestroyResponses];
 
-export type GetApi20260401ResourcesAttendanceShiftsData = {
+export type GetApi20260701ResourcesAttendanceShiftsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * filter by employee ids.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * filter by shift that starts after or including this date.
          */
@@ -9375,7 +9539,7 @@ export type GetApi20260401ResourcesAttendanceShiftsData = {
         /**
          * filter by ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Flag to filter half day shifts
          */
@@ -9405,10 +9569,10 @@ export type GetApi20260401ResourcesAttendanceShiftsData = {
          */
         updated_at?: string;
     };
-    url: '/api/2026-04-01/resources/attendance/shifts';
+    url: '/api/2026-07-01/resources/attendance/shifts';
 };
 
-export type GetApi20260401ResourcesAttendanceShiftsResponses = {
+export type GetApi20260701ResourcesAttendanceShiftsResponses = {
     /**
      * OK
      */
@@ -9418,14 +9582,14 @@ export type GetApi20260401ResourcesAttendanceShiftsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceShiftsResponse = GetApi20260401ResourcesAttendanceShiftsResponses[keyof GetApi20260401ResourcesAttendanceShiftsResponses];
+export type GetApi20260701ResourcesAttendanceShiftsResponse = GetApi20260701ResourcesAttendanceShiftsResponses[keyof GetApi20260701ResourcesAttendanceShiftsResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsData = {
+export type PostApi20260701ResourcesAttendanceShiftsData = {
     body?: {
         /**
          * Id of the employee related
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * Date of the shift
          */
@@ -9469,41 +9633,41 @@ export type PostApi20260401ResourcesAttendanceShiftsData = {
         /**
          * Id of the break configuration
          */
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts';
+    url: '/api/2026-07-01/resources/attendance/shifts';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsResponses = {
     /**
      * CREATED
      */
     201: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsResponse = PostApi20260401ResourcesAttendanceShiftsResponses[keyof PostApi20260401ResourcesAttendanceShiftsResponses];
+export type PostApi20260701ResourcesAttendanceShiftsResponse = PostApi20260701ResourcesAttendanceShiftsResponses[keyof PostApi20260701ResourcesAttendanceShiftsResponses];
 
-export type DeleteApi20260401ResourcesAttendanceShiftsByIdData = {
+export type DeleteApi20260701ResourcesAttendanceShiftsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/{id}';
+    url: '/api/2026-07-01/resources/attendance/shifts/{id}';
 };
 
-export type DeleteApi20260401ResourcesAttendanceShiftsByIdResponses = {
+export type DeleteApi20260701ResourcesAttendanceShiftsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type DeleteApi20260401ResourcesAttendanceShiftsByIdResponse = DeleteApi20260401ResourcesAttendanceShiftsByIdResponses[keyof DeleteApi20260401ResourcesAttendanceShiftsByIdResponses];
+export type DeleteApi20260701ResourcesAttendanceShiftsByIdResponse = DeleteApi20260701ResourcesAttendanceShiftsByIdResponses[keyof DeleteApi20260701ResourcesAttendanceShiftsByIdResponses];
 
-export type GetApi20260401ResourcesAttendanceShiftsByIdData = {
+export type GetApi20260701ResourcesAttendanceShiftsByIdData = {
     body?: never;
     path: {
         /**
@@ -9512,24 +9676,24 @@ export type GetApi20260401ResourcesAttendanceShiftsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/{id}';
+    url: '/api/2026-07-01/resources/attendance/shifts/{id}';
 };
 
-export type GetApi20260401ResourcesAttendanceShiftsByIdResponses = {
+export type GetApi20260701ResourcesAttendanceShiftsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type GetApi20260401ResourcesAttendanceShiftsByIdResponse = GetApi20260401ResourcesAttendanceShiftsByIdResponses[keyof GetApi20260401ResourcesAttendanceShiftsByIdResponses];
+export type GetApi20260701ResourcesAttendanceShiftsByIdResponse = GetApi20260701ResourcesAttendanceShiftsByIdResponses[keyof GetApi20260701ResourcesAttendanceShiftsByIdResponses];
 
-export type PutApi20260401ResourcesAttendanceShiftsByIdData = {
+export type PutApi20260701ResourcesAttendanceShiftsByIdData = {
     body?: {
         /**
          * Id of the shift
          */
-        id: number;
+        id: string;
         /**
          * Time of the clock in
          */
@@ -9557,11 +9721,11 @@ export type PutApi20260401ResourcesAttendanceShiftsByIdData = {
         /**
          * Id of the location related
          */
-        workplace_id?: number;
+        workplace_id?: string;
         /**
          * Id of the break configuration
          */
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
     };
     path: {
         /**
@@ -9570,24 +9734,24 @@ export type PutApi20260401ResourcesAttendanceShiftsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/{id}';
+    url: '/api/2026-07-01/resources/attendance/shifts/{id}';
 };
 
-export type PutApi20260401ResourcesAttendanceShiftsByIdResponses = {
+export type PutApi20260701ResourcesAttendanceShiftsByIdResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PutApi20260401ResourcesAttendanceShiftsByIdResponse = PutApi20260401ResourcesAttendanceShiftsByIdResponses[keyof PutApi20260401ResourcesAttendanceShiftsByIdResponses];
+export type PutApi20260701ResourcesAttendanceShiftsByIdResponse = PutApi20260701ResourcesAttendanceShiftsByIdResponses[keyof PutApi20260701ResourcesAttendanceShiftsByIdResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsAutofillData = {
+export type PostApi20260701ResourcesAttendanceShiftsAutofillData = {
     body?: {
         /**
          * Ids of the employees to be autofilled
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
         /**
          * Date to start autofilling
          */
@@ -9603,24 +9767,24 @@ export type PostApi20260401ResourcesAttendanceShiftsAutofillData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/autofill';
+    url: '/api/2026-07-01/resources/attendance/shifts/autofill';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsAutofillResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsAutofillResponses = {
     /**
      * OK
      */
     200: Array<AttendanceShift>;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsAutofillResponse = PostApi20260401ResourcesAttendanceShiftsAutofillResponses[keyof PostApi20260401ResourcesAttendanceShiftsAutofillResponses];
+export type PostApi20260701ResourcesAttendanceShiftsAutofillResponse = PostApi20260701ResourcesAttendanceShiftsAutofillResponses[keyof PostApi20260701ResourcesAttendanceShiftsAutofillResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakEndData = {
+export type PostApi20260701ResourcesAttendanceShiftsBreakEndData = {
     body?: {
         /**
          * Employee id of the break
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * Current time of the break
          */
@@ -9629,29 +9793,29 @@ export type PostApi20260401ResourcesAttendanceShiftsBreakEndData = {
          * Observations of the break
          */
         observations?: string;
-        project_worker_id?: number;
-        subproject_id?: number;
+        project_worker_id?: string;
+        subproject_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/break_end';
+    url: '/api/2026-07-01/resources/attendance/shifts/break_end';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakEndResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsBreakEndResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakEndResponse = PostApi20260401ResourcesAttendanceShiftsBreakEndResponses[keyof PostApi20260401ResourcesAttendanceShiftsBreakEndResponses];
+export type PostApi20260701ResourcesAttendanceShiftsBreakEndResponse = PostApi20260701ResourcesAttendanceShiftsBreakEndResponses[keyof PostApi20260701ResourcesAttendanceShiftsBreakEndResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakStartData = {
+export type PostApi20260701ResourcesAttendanceShiftsBreakStartData = {
     body?: {
         /**
          * Employee id of the break
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * Current time of the break
          */
@@ -9663,28 +9827,28 @@ export type PostApi20260401ResourcesAttendanceShiftsBreakStartData = {
         /**
          * Time settings configuration id of the break
          */
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/break_start';
+    url: '/api/2026-07-01/resources/attendance/shifts/break_start';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakStartResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsBreakStartResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsBreakStartResponse = PostApi20260401ResourcesAttendanceShiftsBreakStartResponses[keyof PostApi20260401ResourcesAttendanceShiftsBreakStartResponses];
+export type PostApi20260701ResourcesAttendanceShiftsBreakStartResponse = PostApi20260701ResourcesAttendanceShiftsBreakStartResponses[keyof PostApi20260701ResourcesAttendanceShiftsBreakStartResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsClockInData = {
+export type PostApi20260701ResourcesAttendanceShiftsClockInData = {
     body?: {
         /**
          * Employee identifier
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * Clock in time
          */
@@ -9712,40 +9876,40 @@ export type PostApi20260401ResourcesAttendanceShiftsClockInData = {
         /**
          * Location identifier
          */
-        workplace_id?: number;
+        workplace_id?: string;
         /**
          * Break configuration identifier
          */
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
         /**
          * Project worker identifier
          */
-        project_worker_id?: number;
+        project_worker_id?: string;
         /**
          * Subproject identifier
          */
-        subproject_id?: number;
+        subproject_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/clock_in';
+    url: '/api/2026-07-01/resources/attendance/shifts/clock_in';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsClockInResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsClockInResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsClockInResponse = PostApi20260401ResourcesAttendanceShiftsClockInResponses[keyof PostApi20260401ResourcesAttendanceShiftsClockInResponses];
+export type PostApi20260701ResourcesAttendanceShiftsClockInResponse = PostApi20260701ResourcesAttendanceShiftsClockInResponses[keyof PostApi20260701ResourcesAttendanceShiftsClockInResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsClockOutData = {
+export type PostApi20260701ResourcesAttendanceShiftsClockOutData = {
     body?: {
         /**
          * Employee identifier
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * Clock out time
          */
@@ -9769,24 +9933,24 @@ export type PostApi20260401ResourcesAttendanceShiftsClockOutData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/clock_out';
+    url: '/api/2026-07-01/resources/attendance/shifts/clock_out';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsClockOutResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsClockOutResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsClockOutResponse = PostApi20260401ResourcesAttendanceShiftsClockOutResponses[keyof PostApi20260401ResourcesAttendanceShiftsClockOutResponses];
+export type PostApi20260701ResourcesAttendanceShiftsClockOutResponse = PostApi20260701ResourcesAttendanceShiftsClockOutResponses[keyof PostApi20260701ResourcesAttendanceShiftsClockOutResponses];
 
-export type PostApi20260401ResourcesAttendanceShiftsToggleClockData = {
+export type PostApi20260701ResourcesAttendanceShiftsToggleClockData = {
     body?: {
         /**
          * Employee identifier
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Clock in or out Timestamp
          */
@@ -9802,40 +9966,40 @@ export type PostApi20260401ResourcesAttendanceShiftsToggleClockData = {
         /**
          * Specific break configuration id when toggling the shift into a break and out of a break
          */
-        time_settings_break_configuration_id?: number;
+        time_settings_break_configuration_id?: string;
         /**
          * Project identifier to associate the shift with a project. The employee must be assigned to the project, otherwise a 404 error is returned. Only used on clock-in; on clock-out this field is ignored, but the project association is preserved on the shift. Breaks are not associated with any project.
          */
-        project_id?: number;
+        project_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/attendance/shifts/toggle_clock';
+    url: '/api/2026-07-01/resources/attendance/shifts/toggle_clock';
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsToggleClockResponses = {
+export type PostApi20260701ResourcesAttendanceShiftsToggleClockResponses = {
     /**
      * OK
      */
     200: AttendanceShift;
 };
 
-export type PostApi20260401ResourcesAttendanceShiftsToggleClockResponse = PostApi20260401ResourcesAttendanceShiftsToggleClockResponses[keyof PostApi20260401ResourcesAttendanceShiftsToggleClockResponses];
+export type PostApi20260701ResourcesAttendanceShiftsToggleClockResponse = PostApi20260701ResourcesAttendanceShiftsToggleClockResponses[keyof PostApi20260701ResourcesAttendanceShiftsToggleClockResponses];
 
-export type GetApi20260401ResourcesAttendanceWorkedTimesData = {
+export type GetApi20260701ResourcesAttendanceWorkedTimesData = {
     body?: never;
     path?: never;
     query: {
         start_on?: string;
         end_on?: string;
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         include_time_range_category: boolean;
         include_non_attendable_employees: boolean;
     };
-    url: '/api/2026-04-01/resources/attendance/worked_times';
+    url: '/api/2026-07-01/resources/attendance/worked_times';
 };
 
-export type GetApi20260401ResourcesAttendanceWorkedTimesResponses = {
+export type GetApi20260701ResourcesAttendanceWorkedTimesResponses = {
     /**
      * OK
      */
@@ -9845,16 +10009,16 @@ export type GetApi20260401ResourcesAttendanceWorkedTimesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesAttendanceWorkedTimesResponse = GetApi20260401ResourcesAttendanceWorkedTimesResponses[keyof GetApi20260401ResourcesAttendanceWorkedTimesResponses];
+export type GetApi20260701ResourcesAttendanceWorkedTimesResponse = GetApi20260701ResourcesAttendanceWorkedTimesResponses[keyof GetApi20260701ResourcesAttendanceWorkedTimesResponses];
 
-export type GetApi20260401ResourcesBankingBankAccountsData = {
+export type GetApi20260701ResourcesBankingBankAccountsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of bank account IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * A currency to filter by.
          */
@@ -9862,16 +10026,16 @@ export type GetApi20260401ResourcesBankingBankAccountsData = {
         /**
          * An array of legal entity IDs to filter by.
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Filter by accounts updated from a specific date.
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/banking/bank_accounts';
+    url: '/api/2026-07-01/resources/banking/bank_accounts';
 };
 
-export type GetApi20260401ResourcesBankingBankAccountsResponses = {
+export type GetApi20260701ResourcesBankingBankAccountsResponses = {
     /**
      * OK
      */
@@ -9881,9 +10045,9 @@ export type GetApi20260401ResourcesBankingBankAccountsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesBankingBankAccountsResponse = GetApi20260401ResourcesBankingBankAccountsResponses[keyof GetApi20260401ResourcesBankingBankAccountsResponses];
+export type GetApi20260701ResourcesBankingBankAccountsResponse = GetApi20260701ResourcesBankingBankAccountsResponses[keyof GetApi20260701ResourcesBankingBankAccountsResponses];
 
-export type GetApi20260401ResourcesBankingBankAccountsByIdData = {
+export type GetApi20260701ResourcesBankingBankAccountsByIdData = {
     body?: never;
     path: {
         /**
@@ -9892,19 +10056,19 @@ export type GetApi20260401ResourcesBankingBankAccountsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/banking/bank_accounts/{id}';
+    url: '/api/2026-07-01/resources/banking/bank_accounts/{id}';
 };
 
-export type GetApi20260401ResourcesBankingBankAccountsByIdResponses = {
+export type GetApi20260701ResourcesBankingBankAccountsByIdResponses = {
     /**
      * OK
      */
     200: BankingBankAccount;
 };
 
-export type GetApi20260401ResourcesBankingBankAccountsByIdResponse = GetApi20260401ResourcesBankingBankAccountsByIdResponses[keyof GetApi20260401ResourcesBankingBankAccountsByIdResponses];
+export type GetApi20260701ResourcesBankingBankAccountsByIdResponse = GetApi20260701ResourcesBankingBankAccountsByIdResponses[keyof GetApi20260701ResourcesBankingBankAccountsByIdResponses];
 
-export type PostApi20260401ResourcesBankingBankAccountsCreateManualData = {
+export type PostApi20260701ResourcesBankingBankAccountsCreateManualData = {
     body?: {
         /**
          * Factorial unique identifier of the legal entity.
@@ -9929,11 +10093,11 @@ export type PostApi20260401ResourcesBankingBankAccountsCreateManualData = {
         /**
          * Factorial unique identifier of the ledger account.
          */
-        ledger_account_id?: number;
+        ledger_account_id?: string;
         /**
          * An array of bank account membership employee IDs.
          */
-        bank_account_membership_employee_ids?: Array<number>;
+        bank_account_membership_employee_ids?: Array<string>;
         /**
          * External ID for the bank account.
          */
@@ -9941,30 +10105,30 @@ export type PostApi20260401ResourcesBankingBankAccountsCreateManualData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/banking/bank_accounts/create_manual';
+    url: '/api/2026-07-01/resources/banking/bank_accounts/create_manual';
 };
 
-export type PostApi20260401ResourcesBankingBankAccountsCreateManualResponses = {
+export type PostApi20260701ResourcesBankingBankAccountsCreateManualResponses = {
     /**
      * OK
      */
     200: BankingBankAccount;
 };
 
-export type PostApi20260401ResourcesBankingBankAccountsCreateManualResponse = PostApi20260401ResourcesBankingBankAccountsCreateManualResponses[keyof PostApi20260401ResourcesBankingBankAccountsCreateManualResponses];
+export type PostApi20260701ResourcesBankingBankAccountsCreateManualResponse = PostApi20260701ResourcesBankingBankAccountsCreateManualResponses[keyof PostApi20260701ResourcesBankingBankAccountsCreateManualResponses];
 
-export type GetApi20260401ResourcesBankingCardPaymentsData = {
+export type GetApi20260701ResourcesBankingCardPaymentsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of card payment IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * An array of banking accounts ID to filter
          */
-        'account_ids[]'?: Array<number>;
+        'account_ids[]'?: Array<string>;
         /**
          * The status of the card payment.
          */
@@ -9978,10 +10142,10 @@ export type GetApi20260401ResourcesBankingCardPaymentsData = {
          */
         to?: string;
     };
-    url: '/api/2026-04-01/resources/banking/card_payments';
+    url: '/api/2026-07-01/resources/banking/card_payments';
 };
 
-export type GetApi20260401ResourcesBankingCardPaymentsResponses = {
+export type GetApi20260701ResourcesBankingCardPaymentsResponses = {
     /**
      * OK
      */
@@ -9991,9 +10155,9 @@ export type GetApi20260401ResourcesBankingCardPaymentsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesBankingCardPaymentsResponse = GetApi20260401ResourcesBankingCardPaymentsResponses[keyof GetApi20260401ResourcesBankingCardPaymentsResponses];
+export type GetApi20260701ResourcesBankingCardPaymentsResponse = GetApi20260701ResourcesBankingCardPaymentsResponses[keyof GetApi20260701ResourcesBankingCardPaymentsResponses];
 
-export type GetApi20260401ResourcesBankingCardPaymentsByIdData = {
+export type GetApi20260701ResourcesBankingCardPaymentsByIdData = {
     body?: never;
     path: {
         /**
@@ -10002,34 +10166,34 @@ export type GetApi20260401ResourcesBankingCardPaymentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/banking/card_payments/{id}';
+    url: '/api/2026-07-01/resources/banking/card_payments/{id}';
 };
 
-export type GetApi20260401ResourcesBankingCardPaymentsByIdResponses = {
+export type GetApi20260701ResourcesBankingCardPaymentsByIdResponses = {
     /**
      * OK
      */
     200: BankingCardPayment;
 };
 
-export type GetApi20260401ResourcesBankingCardPaymentsByIdResponse = GetApi20260401ResourcesBankingCardPaymentsByIdResponses[keyof GetApi20260401ResourcesBankingCardPaymentsByIdResponses];
+export type GetApi20260701ResourcesBankingCardPaymentsByIdResponse = GetApi20260701ResourcesBankingCardPaymentsByIdResponses[keyof GetApi20260701ResourcesBankingCardPaymentsByIdResponses];
 
-export type GetApi20260401ResourcesBankingTransactionsData = {
+export type GetApi20260701ResourcesBankingTransactionsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of transaction IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * An array of Factorial Banking Bank Account IDs to filter by.
          */
-        'account_ids[]'?: Array<number>;
+        'bank_account_ids[]'?: Array<string>;
         /**
          * An array of Factorial Card Payment IDs to filter by.
          */
-        'card_payment_ids[]'?: Array<number>;
+        'card_payment_ids[]'?: Array<string>;
         /**
          * Date from which the transactions should be fetched.
          */
@@ -10043,10 +10207,10 @@ export type GetApi20260401ResourcesBankingTransactionsData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/banking/transactions';
+    url: '/api/2026-07-01/resources/banking/transactions';
 };
 
-export type GetApi20260401ResourcesBankingTransactionsResponses = {
+export type GetApi20260701ResourcesBankingTransactionsResponses = {
     /**
      * OK
      */
@@ -10056,9 +10220,9 @@ export type GetApi20260401ResourcesBankingTransactionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesBankingTransactionsResponse = GetApi20260401ResourcesBankingTransactionsResponses[keyof GetApi20260401ResourcesBankingTransactionsResponses];
+export type GetApi20260701ResourcesBankingTransactionsResponse = GetApi20260701ResourcesBankingTransactionsResponses[keyof GetApi20260701ResourcesBankingTransactionsResponses];
 
-export type GetApi20260401ResourcesBankingTransactionsByIdData = {
+export type GetApi20260701ResourcesBankingTransactionsByIdData = {
     body?: never;
     path: {
         /**
@@ -10067,30 +10231,30 @@ export type GetApi20260401ResourcesBankingTransactionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/banking/transactions/{id}';
+    url: '/api/2026-07-01/resources/banking/transactions/{id}';
 };
 
-export type GetApi20260401ResourcesBankingTransactionsByIdResponses = {
+export type GetApi20260701ResourcesBankingTransactionsByIdResponses = {
     /**
      * OK
      */
     200: BankingTransaction;
 };
 
-export type GetApi20260401ResourcesBankingTransactionsByIdResponse = GetApi20260401ResourcesBankingTransactionsByIdResponses[keyof GetApi20260401ResourcesBankingTransactionsByIdResponses];
+export type GetApi20260701ResourcesBankingTransactionsByIdResponse = GetApi20260701ResourcesBankingTransactionsByIdResponses[keyof GetApi20260701ResourcesBankingTransactionsByIdResponses];
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesData = {
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * A list of incidence identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * A list of legal entities identifiers.
          */
-        'legal_entities_ids[]'?: Array<number>;
+        'legal_entities_ids[]'?: Array<string>;
         /**
          * A list of statuses.
          */
@@ -10122,7 +10286,7 @@ export type GetApi20260401ResourcesBookkeepersManagementIncidencesData = {
         /**
          * A list of employee identifiers.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Boolean that filters incidences that does or does not contains messages.
          */
@@ -10136,10 +10300,10 @@ export type GetApi20260401ResourcesBookkeepersManagementIncidencesData = {
          */
         'custom_leave_name[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/bookkeepers_management/incidences';
+    url: '/api/2026-07-01/resources/bookkeepers_management/incidences';
 };
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesResponses = {
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesResponses = {
     /**
      * OK
      */
@@ -10149,9 +10313,9 @@ export type GetApi20260401ResourcesBookkeepersManagementIncidencesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesResponse = GetApi20260401ResourcesBookkeepersManagementIncidencesResponses[keyof GetApi20260401ResourcesBookkeepersManagementIncidencesResponses];
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesResponse = GetApi20260701ResourcesBookkeepersManagementIncidencesResponses[keyof GetApi20260701ResourcesBookkeepersManagementIncidencesResponses];
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesByIdData = {
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesByIdData = {
     body?: never;
     path: {
         /**
@@ -10160,24 +10324,24 @@ export type GetApi20260401ResourcesBookkeepersManagementIncidencesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/bookkeepers_management/incidences/{id}';
+    url: '/api/2026-07-01/resources/bookkeepers_management/incidences/{id}';
 };
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses = {
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses = {
     /**
      * OK
      */
     200: BookkeepersManagementIncidence;
 };
 
-export type GetApi20260401ResourcesBookkeepersManagementIncidencesByIdResponse = GetApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses[keyof GetApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses];
+export type GetApi20260701ResourcesBookkeepersManagementIncidencesByIdResponse = GetApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses[keyof GetApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses];
 
-export type PutApi20260401ResourcesBookkeepersManagementIncidencesByIdData = {
+export type PutApi20260701ResourcesBookkeepersManagementIncidencesByIdData = {
     body?: {
         /**
          * incidence (aka employee update) identifier to update.
          */
-        id: number;
+        id: string;
         /**
          * status of the incidence (aka employee update). It can be any of 'in-preparation', 'to-do', 'doing', 'done', 'discarded'
          */
@@ -10203,43 +10367,43 @@ export type PutApi20260401ResourcesBookkeepersManagementIncidencesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/bookkeepers_management/incidences/{id}';
+    url: '/api/2026-07-01/resources/bookkeepers_management/incidences/{id}';
 };
 
-export type PutApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses = {
+export type PutApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses = {
     /**
      * OK
      */
     200: BookkeepersManagementIncidence;
 };
 
-export type PutApi20260401ResourcesBookkeepersManagementIncidencesByIdResponse = PutApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses[keyof PutApi20260401ResourcesBookkeepersManagementIncidencesByIdResponses];
+export type PutApi20260701ResourcesBookkeepersManagementIncidencesByIdResponse = PutApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses[keyof PutApi20260701ResourcesBookkeepersManagementIncidencesByIdResponses];
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesData = {
+export type GetApi20260701ResourcesCompaniesLegalEntitiesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * identifier of the legal entity
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * identifier of the employees asigned to the legal entity
          */
-        'employees_ids[]'?: Array<number>;
+        'employees_ids[]'?: Array<string>;
         /**
          * identifier of the companies to which the legal entity belongs
          */
-        'companies_ids[]'?: Array<number>;
+        'companies_ids[]'?: Array<string>;
         /**
          * country code of the legal entity
          */
         'country_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/companies/legal_entities';
+    url: '/api/2026-07-01/resources/companies/legal_entities';
 };
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesResponses = {
+export type GetApi20260701ResourcesCompaniesLegalEntitiesResponses = {
     /**
      * OK
      */
@@ -10249,14 +10413,14 @@ export type GetApi20260401ResourcesCompaniesLegalEntitiesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesResponse = GetApi20260401ResourcesCompaniesLegalEntitiesResponses[keyof GetApi20260401ResourcesCompaniesLegalEntitiesResponses];
+export type GetApi20260701ResourcesCompaniesLegalEntitiesResponse = GetApi20260701ResourcesCompaniesLegalEntitiesResponses[keyof GetApi20260701ResourcesCompaniesLegalEntitiesResponses];
 
-export type PostApi20260401ResourcesCompaniesLegalEntitiesData = {
+export type PostApi20260701ResourcesCompaniesLegalEntitiesData = {
     body?: {
         /**
          * company identifier
          */
-        company_id: number;
+        company_id: string;
         /**
          * country code of the legal entity
          */
@@ -10296,19 +10460,19 @@ export type PostApi20260401ResourcesCompaniesLegalEntitiesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/companies/legal_entities';
+    url: '/api/2026-07-01/resources/companies/legal_entities';
 };
 
-export type PostApi20260401ResourcesCompaniesLegalEntitiesResponses = {
+export type PostApi20260701ResourcesCompaniesLegalEntitiesResponses = {
     /**
      * CREATED
      */
     201: CompaniesLegalEntity;
 };
 
-export type PostApi20260401ResourcesCompaniesLegalEntitiesResponse = PostApi20260401ResourcesCompaniesLegalEntitiesResponses[keyof PostApi20260401ResourcesCompaniesLegalEntitiesResponses];
+export type PostApi20260701ResourcesCompaniesLegalEntitiesResponse = PostApi20260701ResourcesCompaniesLegalEntitiesResponses[keyof PostApi20260701ResourcesCompaniesLegalEntitiesResponses];
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesByIdData = {
+export type GetApi20260701ResourcesCompaniesLegalEntitiesByIdData = {
     body?: never;
     path: {
         /**
@@ -10317,26 +10481,26 @@ export type GetApi20260401ResourcesCompaniesLegalEntitiesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/companies/legal_entities/{id}';
+    url: '/api/2026-07-01/resources/companies/legal_entities/{id}';
 };
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesByIdResponses = {
+export type GetApi20260701ResourcesCompaniesLegalEntitiesByIdResponses = {
     /**
      * OK
      */
     200: CompaniesLegalEntity;
 };
 
-export type GetApi20260401ResourcesCompaniesLegalEntitiesByIdResponse = GetApi20260401ResourcesCompaniesLegalEntitiesByIdResponses[keyof GetApi20260401ResourcesCompaniesLegalEntitiesByIdResponses];
+export type GetApi20260701ResourcesCompaniesLegalEntitiesByIdResponse = GetApi20260701ResourcesCompaniesLegalEntitiesByIdResponses[keyof GetApi20260701ResourcesCompaniesLegalEntitiesByIdResponses];
 
-export type GetApi20260401ResourcesCompensationsConceptsData = {
+export type GetApi20260701ResourcesCompensationsConceptsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * The ids of the concepts
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The categories of the concept
          */
@@ -10346,10 +10510,10 @@ export type GetApi20260401ResourcesCompensationsConceptsData = {
          */
         with_active_status?: boolean;
     };
-    url: '/api/2026-04-01/resources/compensations/concepts';
+    url: '/api/2026-07-01/resources/compensations/concepts';
 };
 
-export type GetApi20260401ResourcesCompensationsConceptsResponses = {
+export type GetApi20260701ResourcesCompensationsConceptsResponses = {
     /**
      * OK
      */
@@ -10359,9 +10523,9 @@ export type GetApi20260401ResourcesCompensationsConceptsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCompensationsConceptsResponse = GetApi20260401ResourcesCompensationsConceptsResponses[keyof GetApi20260401ResourcesCompensationsConceptsResponses];
+export type GetApi20260701ResourcesCompensationsConceptsResponse = GetApi20260701ResourcesCompensationsConceptsResponses[keyof GetApi20260701ResourcesCompensationsConceptsResponses];
 
-export type GetApi20260401ResourcesCompensationsConceptsByIdData = {
+export type GetApi20260701ResourcesCompensationsConceptsByIdData = {
     body?: never;
     path: {
         /**
@@ -10370,29 +10534,29 @@ export type GetApi20260401ResourcesCompensationsConceptsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/compensations/concepts/{id}';
+    url: '/api/2026-07-01/resources/compensations/concepts/{id}';
 };
 
-export type GetApi20260401ResourcesCompensationsConceptsByIdResponses = {
+export type GetApi20260701ResourcesCompensationsConceptsByIdResponses = {
     /**
      * OK
      */
     200: CompensationsConcept;
 };
 
-export type GetApi20260401ResourcesCompensationsConceptsByIdResponse = GetApi20260401ResourcesCompensationsConceptsByIdResponses[keyof GetApi20260401ResourcesCompensationsConceptsByIdResponses];
+export type GetApi20260701ResourcesCompensationsConceptsByIdResponse = GetApi20260701ResourcesCompensationsConceptsByIdResponses[keyof GetApi20260701ResourcesCompensationsConceptsByIdResponses];
 
-export type GetApi20260401ResourcesContractsCompensationsData = {
+export type GetApi20260701ResourcesContractsCompensationsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        'contract_version_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'contract_version_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/contracts/compensations';
+    url: '/api/2026-07-01/resources/contracts/compensations';
 };
 
-export type GetApi20260401ResourcesContractsCompensationsResponses = {
+export type GetApi20260701ResourcesContractsCompensationsResponses = {
     /**
      * OK
      */
@@ -10402,18 +10566,18 @@ export type GetApi20260401ResourcesContractsCompensationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsCompensationsResponse = GetApi20260401ResourcesContractsCompensationsResponses[keyof GetApi20260401ResourcesContractsCompensationsResponses];
+export type GetApi20260701ResourcesContractsCompensationsResponse = GetApi20260701ResourcesContractsCompensationsResponses[keyof GetApi20260701ResourcesContractsCompensationsResponses];
 
-export type PostApi20260401ResourcesContractsCompensationsData = {
+export type PostApi20260701ResourcesContractsCompensationsData = {
     body?: {
-        contract_version_id: number;
-        contracts_taxonomy_id: number;
+        contract_version_id: string;
+        contracts_taxonomy_id: string;
         description?: string;
         compensation_type?: string;
         amount?: number;
         unit?: string;
         sync_with_supplements?: boolean;
-        payroll_policy_id?: number;
+        payroll_policy_id?: string;
         recurrence_count?: number;
         starts_on?: string;
         recurrence?: string;
@@ -10425,64 +10589,64 @@ export type PostApi20260401ResourcesContractsCompensationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/compensations';
+    url: '/api/2026-07-01/resources/contracts/compensations';
 };
 
-export type PostApi20260401ResourcesContractsCompensationsResponses = {
+export type PostApi20260701ResourcesContractsCompensationsResponses = {
     /**
      * CREATED
      */
     201: ContractsCompensation;
 };
 
-export type PostApi20260401ResourcesContractsCompensationsResponse = PostApi20260401ResourcesContractsCompensationsResponses[keyof PostApi20260401ResourcesContractsCompensationsResponses];
+export type PostApi20260701ResourcesContractsCompensationsResponse = PostApi20260701ResourcesContractsCompensationsResponses[keyof PostApi20260701ResourcesContractsCompensationsResponses];
 
-export type DeleteApi20260401ResourcesContractsCompensationsByIdData = {
+export type DeleteApi20260701ResourcesContractsCompensationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/compensations/{id}';
+    url: '/api/2026-07-01/resources/contracts/compensations/{id}';
 };
 
-export type DeleteApi20260401ResourcesContractsCompensationsByIdResponses = {
+export type DeleteApi20260701ResourcesContractsCompensationsByIdResponses = {
     /**
      * OK
      */
     200: ContractsCompensation;
 };
 
-export type DeleteApi20260401ResourcesContractsCompensationsByIdResponse = DeleteApi20260401ResourcesContractsCompensationsByIdResponses[keyof DeleteApi20260401ResourcesContractsCompensationsByIdResponses];
+export type DeleteApi20260701ResourcesContractsCompensationsByIdResponse = DeleteApi20260701ResourcesContractsCompensationsByIdResponses[keyof DeleteApi20260701ResourcesContractsCompensationsByIdResponses];
 
-export type GetApi20260401ResourcesContractsCompensationsByIdData = {
+export type GetApi20260701ResourcesContractsCompensationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/compensations/{id}';
+    url: '/api/2026-07-01/resources/contracts/compensations/{id}';
 };
 
-export type GetApi20260401ResourcesContractsCompensationsByIdResponses = {
+export type GetApi20260701ResourcesContractsCompensationsByIdResponses = {
     /**
      * OK
      */
     200: ContractsCompensation;
 };
 
-export type GetApi20260401ResourcesContractsCompensationsByIdResponse = GetApi20260401ResourcesContractsCompensationsByIdResponses[keyof GetApi20260401ResourcesContractsCompensationsByIdResponses];
+export type GetApi20260701ResourcesContractsCompensationsByIdResponse = GetApi20260701ResourcesContractsCompensationsByIdResponses[keyof GetApi20260701ResourcesContractsCompensationsByIdResponses];
 
-export type PutApi20260401ResourcesContractsCompensationsByIdData = {
+export type PutApi20260701ResourcesContractsCompensationsByIdData = {
     body?: {
-        id?: number;
-        contracts_taxonomy_id: number;
+        id?: string;
+        contracts_taxonomy_id: string;
         description?: string;
         compensation_type?: string;
         amount?: number;
         unit?: string;
         sync_with_supplements?: boolean;
-        payroll_policy_id?: number;
+        payroll_policy_id?: string;
         recurrence_count?: number;
         starts_on?: string;
         recurrence?: string;
@@ -10496,39 +10660,39 @@ export type PutApi20260401ResourcesContractsCompensationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/compensations/{id}';
+    url: '/api/2026-07-01/resources/contracts/compensations/{id}';
 };
 
-export type PutApi20260401ResourcesContractsCompensationsByIdResponses = {
+export type PutApi20260701ResourcesContractsCompensationsByIdResponses = {
     /**
      * OK
      */
     200: ContractsCompensation;
 };
 
-export type PutApi20260401ResourcesContractsCompensationsByIdResponse = PutApi20260401ResourcesContractsCompensationsByIdResponses[keyof PutApi20260401ResourcesContractsCompensationsByIdResponses];
+export type PutApi20260701ResourcesContractsCompensationsByIdResponse = PutApi20260701ResourcesContractsCompensationsByIdResponses[keyof PutApi20260701ResourcesContractsCompensationsByIdResponses];
 
-export type GetApi20260401ResourcesContractsContractTemplatesData = {
+export type GetApi20260701ResourcesContractsContractTemplatesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by contract template IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by company ID
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * Filter by contract version type (e.g., es for Spain, fr for France)
          */
         contract_version_type?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/contract_templates';
+    url: '/api/2026-07-01/resources/contracts/contract_templates';
 };
 
-export type GetApi20260401ResourcesContractsContractTemplatesResponses = {
+export type GetApi20260701ResourcesContractsContractTemplatesResponses = {
     /**
      * OK
      */
@@ -10538,9 +10702,9 @@ export type GetApi20260401ResourcesContractsContractTemplatesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsContractTemplatesResponse = GetApi20260401ResourcesContractsContractTemplatesResponses[keyof GetApi20260401ResourcesContractsContractTemplatesResponses];
+export type GetApi20260701ResourcesContractsContractTemplatesResponse = GetApi20260701ResourcesContractsContractTemplatesResponses[keyof GetApi20260701ResourcesContractsContractTemplatesResponses];
 
-export type GetApi20260401ResourcesContractsContractTemplatesByIdData = {
+export type GetApi20260701ResourcesContractsContractTemplatesByIdData = {
     body?: never;
     path: {
         /**
@@ -10549,30 +10713,30 @@ export type GetApi20260401ResourcesContractsContractTemplatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_templates/{id}';
+    url: '/api/2026-07-01/resources/contracts/contract_templates/{id}';
 };
 
-export type GetApi20260401ResourcesContractsContractTemplatesByIdResponses = {
+export type GetApi20260701ResourcesContractsContractTemplatesByIdResponses = {
     /**
      * OK
      */
     200: ContractsContractTemplate;
 };
 
-export type GetApi20260401ResourcesContractsContractTemplatesByIdResponse = GetApi20260401ResourcesContractsContractTemplatesByIdResponses[keyof GetApi20260401ResourcesContractsContractTemplatesByIdResponses];
+export type GetApi20260701ResourcesContractsContractTemplatesByIdResponse = GetApi20260701ResourcesContractsContractTemplatesByIdResponses[keyof GetApi20260701ResourcesContractsContractTemplatesByIdResponses];
 
-export type GetApi20260401ResourcesContractsContractVersionsData = {
+export type GetApi20260701ResourcesContractsContractVersionsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * list of contract version identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * list of employee identifiers, refers to /employees/employees endpoint.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * filters contracts of employees with effective_on date less or equal than the given date.
          */
@@ -10592,10 +10756,10 @@ export type GetApi20260401ResourcesContractsContractVersionsData = {
          */
         updated_at_lteq?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/contract_versions';
+    url: '/api/2026-07-01/resources/contracts/contract_versions';
 };
 
-export type GetApi20260401ResourcesContractsContractVersionsResponses = {
+export type GetApi20260701ResourcesContractsContractVersionsResponses = {
     /**
      * OK
      */
@@ -10605,14 +10769,14 @@ export type GetApi20260401ResourcesContractsContractVersionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsContractVersionsResponse = GetApi20260401ResourcesContractsContractVersionsResponses[keyof GetApi20260401ResourcesContractsContractVersionsResponses];
+export type GetApi20260701ResourcesContractsContractVersionsResponse = GetApi20260701ResourcesContractsContractVersionsResponses[keyof GetApi20260701ResourcesContractsContractVersionsResponses];
 
-export type PostApi20260401ResourcesContractsContractVersionsData = {
+export type PostApi20260701ResourcesContractsContractVersionsData = {
     body?: {
         /**
          * employee identifier, refers to /employees/employees endpoint.
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * the day the specific contract starts, in case of hiring the same than starts_on.
          */
@@ -10704,23 +10868,23 @@ export type PostApi20260401ResourcesContractsContractVersionsData = {
         /**
          * Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts endpoint.
          */
-        de_base_salary_type_id?: number;
+        de_base_salary_type_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_versions';
+    url: '/api/2026-07-01/resources/contracts/contract_versions';
 };
 
-export type PostApi20260401ResourcesContractsContractVersionsResponses = {
+export type PostApi20260701ResourcesContractsContractVersionsResponses = {
     /**
      * CREATED
      */
     201: ContractsContractVersion;
 };
 
-export type PostApi20260401ResourcesContractsContractVersionsResponse = PostApi20260401ResourcesContractsContractVersionsResponses[keyof PostApi20260401ResourcesContractsContractVersionsResponses];
+export type PostApi20260701ResourcesContractsContractVersionsResponse = PostApi20260701ResourcesContractsContractVersionsResponses[keyof PostApi20260701ResourcesContractsContractVersionsResponses];
 
-export type DeleteApi20260401ResourcesContractsContractVersionsByIdData = {
+export type DeleteApi20260701ResourcesContractsContractVersionsByIdData = {
     body?: never;
     path: {
         /**
@@ -10729,19 +10893,19 @@ export type DeleteApi20260401ResourcesContractsContractVersionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_versions/{id}';
+    url: '/api/2026-07-01/resources/contracts/contract_versions/{id}';
 };
 
-export type DeleteApi20260401ResourcesContractsContractVersionsByIdResponses = {
+export type DeleteApi20260701ResourcesContractsContractVersionsByIdResponses = {
     /**
      * OK
      */
     200: ContractsContractVersion;
 };
 
-export type DeleteApi20260401ResourcesContractsContractVersionsByIdResponse = DeleteApi20260401ResourcesContractsContractVersionsByIdResponses[keyof DeleteApi20260401ResourcesContractsContractVersionsByIdResponses];
+export type DeleteApi20260701ResourcesContractsContractVersionsByIdResponse = DeleteApi20260701ResourcesContractsContractVersionsByIdResponses[keyof DeleteApi20260701ResourcesContractsContractVersionsByIdResponses];
 
-export type GetApi20260401ResourcesContractsContractVersionsByIdData = {
+export type GetApi20260701ResourcesContractsContractVersionsByIdData = {
     body?: never;
     path: {
         /**
@@ -10750,28 +10914,28 @@ export type GetApi20260401ResourcesContractsContractVersionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_versions/{id}';
+    url: '/api/2026-07-01/resources/contracts/contract_versions/{id}';
 };
 
-export type GetApi20260401ResourcesContractsContractVersionsByIdResponses = {
+export type GetApi20260701ResourcesContractsContractVersionsByIdResponses = {
     /**
      * OK
      */
     200: ContractsContractVersion;
 };
 
-export type GetApi20260401ResourcesContractsContractVersionsByIdResponse = GetApi20260401ResourcesContractsContractVersionsByIdResponses[keyof GetApi20260401ResourcesContractsContractVersionsByIdResponses];
+export type GetApi20260701ResourcesContractsContractVersionsByIdResponse = GetApi20260701ResourcesContractsContractVersionsByIdResponses[keyof GetApi20260701ResourcesContractsContractVersionsByIdResponses];
 
-export type PutApi20260401ResourcesContractsContractVersionsByIdData = {
+export type PutApi20260701ResourcesContractsContractVersionsByIdData = {
     body?: {
         /**
          * contract version identifier.
          */
-        id: number;
+        id: string;
         /**
          * employee identifier, refers to /employees/employees endpoint.
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * the day the specific contract starts, in case of hiring the same than starts_on.
          */
@@ -10819,19 +10983,19 @@ export type PutApi20260401ResourcesContractsContractVersionsByIdData = {
         /**
          * professional category identifier.
          */
-        es_professional_category_id?: number;
+        es_professional_category_id?: string;
         /**
          * education level identifier.
          */
-        es_education_level_id?: number;
+        es_education_level_id?: string;
         /**
          * contract type identifier.
          */
-        es_contract_type_id?: number;
+        es_contract_type_id?: string;
         /**
          * working day type identifier.
          */
-        es_working_day_type_id?: number;
+        es_working_day_type_id?: string;
         /**
          * a flag that indicates if the employee has a trial period.
          */
@@ -10855,7 +11019,7 @@ export type PutApi20260401ResourcesContractsContractVersionsByIdData = {
         /**
          * Identifier for the German base salary type. References a payroll concept available via the /payroll/concepts endpoint.
          */
-        de_base_salary_type_id?: number;
+        de_base_salary_type_id?: string;
     };
     path: {
         /**
@@ -10864,34 +11028,34 @@ export type PutApi20260401ResourcesContractsContractVersionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_versions/{id}';
+    url: '/api/2026-07-01/resources/contracts/contract_versions/{id}';
 };
 
-export type PutApi20260401ResourcesContractsContractVersionsByIdResponses = {
+export type PutApi20260701ResourcesContractsContractVersionsByIdResponses = {
     /**
      * OK
      */
     200: ContractsContractVersion;
 };
 
-export type PutApi20260401ResourcesContractsContractVersionsByIdResponse = PutApi20260401ResourcesContractsContractVersionsByIdResponses[keyof PutApi20260401ResourcesContractsContractVersionsByIdResponses];
+export type PutApi20260701ResourcesContractsContractVersionsByIdResponse = PutApi20260701ResourcesContractsContractVersionsByIdResponses[keyof PutApi20260701ResourcesContractsContractVersionsByIdResponses];
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesData = {
+export type GetApi20260701ResourcesContractsContractVersionHistoriesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * the ids of the contract versions.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * the ids of the contract versions.
          */
-        'contract_version_ids[]'?: Array<number>;
+        'contract_version_ids[]'?: Array<string>;
         /**
          * the ids of the employees.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * the date to filter the contract version histories.
          */
@@ -10905,10 +11069,10 @@ export type GetApi20260401ResourcesContractsContractVersionHistoriesData = {
          */
         changes_gteq?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/contract_version_histories';
+    url: '/api/2026-07-01/resources/contracts/contract_version_histories';
 };
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesResponses = {
+export type GetApi20260701ResourcesContractsContractVersionHistoriesResponses = {
     /**
      * OK
      */
@@ -10918,9 +11082,9 @@ export type GetApi20260401ResourcesContractsContractVersionHistoriesResponses = 
     };
 };
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesResponse = GetApi20260401ResourcesContractsContractVersionHistoriesResponses[keyof GetApi20260401ResourcesContractsContractVersionHistoriesResponses];
+export type GetApi20260701ResourcesContractsContractVersionHistoriesResponse = GetApi20260701ResourcesContractsContractVersionHistoriesResponses[keyof GetApi20260701ResourcesContractsContractVersionHistoriesResponses];
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesByIdData = {
+export type GetApi20260701ResourcesContractsContractVersionHistoriesByIdData = {
     body?: never;
     path: {
         /**
@@ -10929,31 +11093,31 @@ export type GetApi20260401ResourcesContractsContractVersionHistoriesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/contract_version_histories/{id}';
+    url: '/api/2026-07-01/resources/contracts/contract_version_histories/{id}';
 };
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesByIdResponses = {
+export type GetApi20260701ResourcesContractsContractVersionHistoriesByIdResponses = {
     /**
      * OK
      */
     200: ContractsContractVersionHistory;
 };
 
-export type GetApi20260401ResourcesContractsContractVersionHistoriesByIdResponse = GetApi20260401ResourcesContractsContractVersionHistoriesByIdResponses[keyof GetApi20260401ResourcesContractsContractVersionHistoriesByIdResponses];
+export type GetApi20260701ResourcesContractsContractVersionHistoriesByIdResponse = GetApi20260701ResourcesContractsContractVersionHistoriesByIdResponses[keyof GetApi20260701ResourcesContractsContractVersionHistoriesByIdResponses];
 
-export type GetApi20260401ResourcesContractsContractVersionMetaDataData = {
+export type GetApi20260701ResourcesContractsContractVersionMetaDataData = {
     body?: never;
     path?: never;
     query: {
         /**
          * list of contract version ids identifiers.
          */
-        'contract_version_ids[]': Array<number>;
+        'contract_version_ids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/contracts/contract_version_meta_data';
+    url: '/api/2026-07-01/resources/contracts/contract_version_meta_data';
 };
 
-export type GetApi20260401ResourcesContractsContractVersionMetaDataResponses = {
+export type GetApi20260701ResourcesContractsContractVersionMetaDataResponses = {
     /**
      * OK
      */
@@ -10963,25 +11127,25 @@ export type GetApi20260401ResourcesContractsContractVersionMetaDataResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsContractVersionMetaDataResponse = GetApi20260401ResourcesContractsContractVersionMetaDataResponses[keyof GetApi20260401ResourcesContractsContractVersionMetaDataResponses];
+export type GetApi20260701ResourcesContractsContractVersionMetaDataResponse = GetApi20260701ResourcesContractsContractVersionMetaDataResponses[keyof GetApi20260701ResourcesContractsContractVersionMetaDataResponses];
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesData = {
+export type GetApi20260701ResourcesContractsFrenchContractTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * list of contract type identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * whether to show archived types or not.
          */
         archived?: boolean;
     };
-    url: '/api/2026-04-01/resources/contracts/french_contract_types';
+    url: '/api/2026-07-01/resources/contracts/french_contract_types';
 };
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesResponses = {
+export type GetApi20260701ResourcesContractsFrenchContractTypesResponses = {
     /**
      * OK
      */
@@ -10991,9 +11155,9 @@ export type GetApi20260401ResourcesContractsFrenchContractTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesResponse = GetApi20260401ResourcesContractsFrenchContractTypesResponses[keyof GetApi20260401ResourcesContractsFrenchContractTypesResponses];
+export type GetApi20260701ResourcesContractsFrenchContractTypesResponse = GetApi20260701ResourcesContractsFrenchContractTypesResponses[keyof GetApi20260701ResourcesContractsFrenchContractTypesResponses];
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesByIdData = {
+export type GetApi20260701ResourcesContractsFrenchContractTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -11002,35 +11166,35 @@ export type GetApi20260401ResourcesContractsFrenchContractTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/french_contract_types/{id}';
+    url: '/api/2026-07-01/resources/contracts/french_contract_types/{id}';
 };
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesByIdResponses = {
+export type GetApi20260701ResourcesContractsFrenchContractTypesByIdResponses = {
     /**
      * OK
      */
     200: ContractsFrenchContractType;
 };
 
-export type GetApi20260401ResourcesContractsFrenchContractTypesByIdResponse = GetApi20260401ResourcesContractsFrenchContractTypesByIdResponses[keyof GetApi20260401ResourcesContractsFrenchContractTypesByIdResponses];
+export type GetApi20260701ResourcesContractsFrenchContractTypesByIdResponse = GetApi20260701ResourcesContractsFrenchContractTypesByIdResponses[keyof GetApi20260701ResourcesContractsFrenchContractTypesByIdResponses];
 
-export type GetApi20260401ResourcesContractsGermanContractTypesData = {
+export type GetApi20260701ResourcesContractsGermanContractTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * list of contract type identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * whether to show archived types or not.
          */
         archived?: boolean;
     };
-    url: '/api/2026-04-01/resources/contracts/german_contract_types';
+    url: '/api/2026-07-01/resources/contracts/german_contract_types';
 };
 
-export type GetApi20260401ResourcesContractsGermanContractTypesResponses = {
+export type GetApi20260701ResourcesContractsGermanContractTypesResponses = {
     /**
      * OK
      */
@@ -11040,9 +11204,9 @@ export type GetApi20260401ResourcesContractsGermanContractTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsGermanContractTypesResponse = GetApi20260401ResourcesContractsGermanContractTypesResponses[keyof GetApi20260401ResourcesContractsGermanContractTypesResponses];
+export type GetApi20260701ResourcesContractsGermanContractTypesResponse = GetApi20260701ResourcesContractsGermanContractTypesResponses[keyof GetApi20260701ResourcesContractsGermanContractTypesResponses];
 
-export type GetApi20260401ResourcesContractsGermanContractTypesByIdData = {
+export type GetApi20260701ResourcesContractsGermanContractTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -11051,35 +11215,85 @@ export type GetApi20260401ResourcesContractsGermanContractTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/german_contract_types/{id}';
+    url: '/api/2026-07-01/resources/contracts/german_contract_types/{id}';
 };
 
-export type GetApi20260401ResourcesContractsGermanContractTypesByIdResponses = {
+export type GetApi20260701ResourcesContractsGermanContractTypesByIdResponses = {
     /**
      * OK
      */
     200: ContractsGermanContractType;
 };
 
-export type GetApi20260401ResourcesContractsGermanContractTypesByIdResponse = GetApi20260401ResourcesContractsGermanContractTypesByIdResponses[keyof GetApi20260401ResourcesContractsGermanContractTypesByIdResponses];
+export type GetApi20260701ResourcesContractsGermanContractTypesByIdResponse = GetApi20260701ResourcesContractsGermanContractTypesByIdResponses[keyof GetApi20260701ResourcesContractsGermanContractTypesByIdResponses];
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesData = {
+export type GetApi20260701ResourcesContractsMaterializedTemplatesData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The identifier of the company whose templates you want to retrieve. All results are scoped to this company.
+         *
+         */
+        company_id: string;
+        /**
+         * Optional list of legal entity identifiers to filter results. When provided alongside template_type: legal_entity, returns only the materialized templates for those legal entities. Ignored for company and country template types.
+         *
+         */
+        'legal_entity_ids[]'?: Array<string>;
+        /**
+         * Optional list of ISO 3166-1 alpha-2 country codes to filter results. When provided alongside template_type: country, returns only templates for those countries. When used with template_type: legal_entity, narrows results to legal entities operating in those countries.
+         *
+         */
+        'countries[]'?: Array<string>;
+        /**
+         * The template level to retrieve. Use company to get the organization-wide base field definitions. Use country to get country-specific overrides merged with company defaults. Use legal_entity to get the final effective template for a specific legal entity, which is the most common use case when building contract creation or editing flows.
+         *
+         */
+        template_type: 'company' | 'country' | 'legal_entity' | 'contract_type';
+        /**
+         * Optional list of field identifiers to filter the template fields returned. When provided, each materialized template will only include fields whose field_id matches one of the values in this list. Use this to retrieve a specific subset of fields (e.g. ["contract_type"]) without fetching the full template structure.
+         *
+         */
+        'field_ids[]'?: Array<string>;
+        /**
+         * When true, archived options are included in the response alongside active ones. Defaults to false, which returns only active options. Set to true when you need to display contracts that reference options that have since been archived.
+         *
+         */
+        include_archived: boolean;
+    };
+    url: '/api/2026-07-01/resources/contracts/materialized_templates';
+};
+
+export type GetApi20260701ResourcesContractsMaterializedTemplatesResponses = {
+    /**
+     * OK
+     */
+    200: {
+        data?: Array<ContractsMaterializedTemplate>;
+        meta?: PagedIndexMeta;
+    };
+};
+
+export type GetApi20260701ResourcesContractsMaterializedTemplatesResponse = GetApi20260701ResourcesContractsMaterializedTemplatesResponses[keyof GetApi20260701ResourcesContractsMaterializedTemplatesResponses];
+
+export type GetApi20260701ResourcesContractsPortugueseContractTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * list of contract type identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * whether to show archived types or not.
          */
         archived?: boolean;
     };
-    url: '/api/2026-04-01/resources/contracts/portuguese_contract_types';
+    url: '/api/2026-07-01/resources/contracts/portuguese_contract_types';
 };
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesResponses = {
+export type GetApi20260701ResourcesContractsPortugueseContractTypesResponses = {
     /**
      * OK
      */
@@ -11089,9 +11303,9 @@ export type GetApi20260401ResourcesContractsPortugueseContractTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesResponse = GetApi20260401ResourcesContractsPortugueseContractTypesResponses[keyof GetApi20260401ResourcesContractsPortugueseContractTypesResponses];
+export type GetApi20260701ResourcesContractsPortugueseContractTypesResponse = GetApi20260701ResourcesContractsPortugueseContractTypesResponses[keyof GetApi20260701ResourcesContractsPortugueseContractTypesResponses];
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesByIdData = {
+export type GetApi20260701ResourcesContractsPortugueseContractTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -11100,35 +11314,35 @@ export type GetApi20260401ResourcesContractsPortugueseContractTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/portuguese_contract_types/{id}';
+    url: '/api/2026-07-01/resources/contracts/portuguese_contract_types/{id}';
 };
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesByIdResponses = {
+export type GetApi20260701ResourcesContractsPortugueseContractTypesByIdResponses = {
     /**
      * OK
      */
     200: ContractsPortugueseContractType;
 };
 
-export type GetApi20260401ResourcesContractsPortugueseContractTypesByIdResponse = GetApi20260401ResourcesContractsPortugueseContractTypesByIdResponses[keyof GetApi20260401ResourcesContractsPortugueseContractTypesByIdResponses];
+export type GetApi20260701ResourcesContractsPortugueseContractTypesByIdResponse = GetApi20260701ResourcesContractsPortugueseContractTypesByIdResponses[keyof GetApi20260701ResourcesContractsPortugueseContractTypesByIdResponses];
 
-export type GetApi20260401ResourcesContractsReferenceContractsData = {
+export type GetApi20260701ResourcesContractsReferenceContractsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * filter by employee ids.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * the uuid of nodes in the job catalog tree.
          */
         'job_catalog_tree_node_uuids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/contracts/reference_contracts';
+    url: '/api/2026-07-01/resources/contracts/reference_contracts';
 };
 
-export type GetApi20260401ResourcesContractsReferenceContractsResponses = {
+export type GetApi20260701ResourcesContractsReferenceContractsResponses = {
     /**
      * OK
      */
@@ -11138,16 +11352,16 @@ export type GetApi20260401ResourcesContractsReferenceContractsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsReferenceContractsResponse = GetApi20260401ResourcesContractsReferenceContractsResponses[keyof GetApi20260401ResourcesContractsReferenceContractsResponses];
+export type GetApi20260701ResourcesContractsReferenceContractsResponse = GetApi20260701ResourcesContractsReferenceContractsResponses[keyof GetApi20260701ResourcesContractsReferenceContractsResponses];
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesData = {
+export type GetApi20260701ResourcesContractsSpanishContractTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * list of contract type identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * whether to show archived types or not.
          */
@@ -11155,12 +11369,12 @@ export type GetApi20260401ResourcesContractsSpanishContractTypesData = {
         /**
          * Contract template identifier. Refers to contracts/contract_templates.
          */
-        contract_template_id?: number;
+        contract_template_id?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/spanish_contract_types';
+    url: '/api/2026-07-01/resources/contracts/spanish_contract_types';
 };
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesResponses = {
+export type GetApi20260701ResourcesContractsSpanishContractTypesResponses = {
     /**
      * OK
      */
@@ -11170,9 +11384,9 @@ export type GetApi20260401ResourcesContractsSpanishContractTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesResponse = GetApi20260401ResourcesContractsSpanishContractTypesResponses[keyof GetApi20260401ResourcesContractsSpanishContractTypesResponses];
+export type GetApi20260701ResourcesContractsSpanishContractTypesResponse = GetApi20260701ResourcesContractsSpanishContractTypesResponses[keyof GetApi20260701ResourcesContractsSpanishContractTypesResponses];
 
-export type PostApi20260401ResourcesContractsSpanishContractTypesData = {
+export type PostApi20260701ResourcesContractsSpanishContractTypesData = {
     body?: {
         /**
          * Contract type name
@@ -11181,23 +11395,23 @@ export type PostApi20260401ResourcesContractsSpanishContractTypesData = {
         /**
          * Contract template identifier. Refers to contracts/contract_templates.
          */
-        contracts_contract_template_id: number;
+        contracts_contract_template_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_contract_types';
+    url: '/api/2026-07-01/resources/contracts/spanish_contract_types';
 };
 
-export type PostApi20260401ResourcesContractsSpanishContractTypesResponses = {
+export type PostApi20260701ResourcesContractsSpanishContractTypesResponses = {
     /**
      * CREATED
      */
     201: ContractsSpanishContractType;
 };
 
-export type PostApi20260401ResourcesContractsSpanishContractTypesResponse = PostApi20260401ResourcesContractsSpanishContractTypesResponses[keyof PostApi20260401ResourcesContractsSpanishContractTypesResponses];
+export type PostApi20260701ResourcesContractsSpanishContractTypesResponse = PostApi20260701ResourcesContractsSpanishContractTypesResponses[keyof PostApi20260701ResourcesContractsSpanishContractTypesResponses];
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesByIdData = {
+export type GetApi20260701ResourcesContractsSpanishContractTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -11206,35 +11420,35 @@ export type GetApi20260401ResourcesContractsSpanishContractTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_contract_types/{id}';
+    url: '/api/2026-07-01/resources/contracts/spanish_contract_types/{id}';
 };
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesByIdResponses = {
+export type GetApi20260701ResourcesContractsSpanishContractTypesByIdResponses = {
     /**
      * OK
      */
     200: ContractsSpanishContractType;
 };
 
-export type GetApi20260401ResourcesContractsSpanishContractTypesByIdResponse = GetApi20260401ResourcesContractsSpanishContractTypesByIdResponses[keyof GetApi20260401ResourcesContractsSpanishContractTypesByIdResponses];
+export type GetApi20260701ResourcesContractsSpanishContractTypesByIdResponse = GetApi20260701ResourcesContractsSpanishContractTypesByIdResponses[keyof GetApi20260701ResourcesContractsSpanishContractTypesByIdResponses];
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsData = {
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Education level ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contract_template_id?: number;
+        contract_template_id?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/spanish_education_levels';
+    url: '/api/2026-07-01/resources/contracts/spanish_education_levels';
 };
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsResponses = {
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsResponses = {
     /**
      * OK
      */
@@ -11244,9 +11458,9 @@ export type GetApi20260401ResourcesContractsSpanishEducationLevelsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsResponse = GetApi20260401ResourcesContractsSpanishEducationLevelsResponses[keyof GetApi20260401ResourcesContractsSpanishEducationLevelsResponses];
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsResponse = GetApi20260701ResourcesContractsSpanishEducationLevelsResponses[keyof GetApi20260701ResourcesContractsSpanishEducationLevelsResponses];
 
-export type PostApi20260401ResourcesContractsSpanishEducationLevelsData = {
+export type PostApi20260701ResourcesContractsSpanishEducationLevelsData = {
     body?: {
         /**
          * Education level name
@@ -11255,23 +11469,23 @@ export type PostApi20260401ResourcesContractsSpanishEducationLevelsData = {
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contracts_contract_template_id: number;
+        contracts_contract_template_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_education_levels';
+    url: '/api/2026-07-01/resources/contracts/spanish_education_levels';
 };
 
-export type PostApi20260401ResourcesContractsSpanishEducationLevelsResponses = {
+export type PostApi20260701ResourcesContractsSpanishEducationLevelsResponses = {
     /**
      * CREATED
      */
     201: ContractsSpanishEducationLevel;
 };
 
-export type PostApi20260401ResourcesContractsSpanishEducationLevelsResponse = PostApi20260401ResourcesContractsSpanishEducationLevelsResponses[keyof PostApi20260401ResourcesContractsSpanishEducationLevelsResponses];
+export type PostApi20260701ResourcesContractsSpanishEducationLevelsResponse = PostApi20260701ResourcesContractsSpanishEducationLevelsResponses[keyof PostApi20260701ResourcesContractsSpanishEducationLevelsResponses];
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsByIdData = {
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsByIdData = {
     body?: never;
     path: {
         /**
@@ -11280,35 +11494,35 @@ export type GetApi20260401ResourcesContractsSpanishEducationLevelsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_education_levels/{id}';
+    url: '/api/2026-07-01/resources/contracts/spanish_education_levels/{id}';
 };
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsByIdResponses = {
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsByIdResponses = {
     /**
      * OK
      */
     200: ContractsSpanishEducationLevel;
 };
 
-export type GetApi20260401ResourcesContractsSpanishEducationLevelsByIdResponse = GetApi20260401ResourcesContractsSpanishEducationLevelsByIdResponses[keyof GetApi20260401ResourcesContractsSpanishEducationLevelsByIdResponses];
+export type GetApi20260701ResourcesContractsSpanishEducationLevelsByIdResponse = GetApi20260701ResourcesContractsSpanishEducationLevelsByIdResponses[keyof GetApi20260701ResourcesContractsSpanishEducationLevelsByIdResponses];
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesData = {
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Professional category ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contract_template_id?: number;
+        contract_template_id?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/spanish_professional_categories';
+    url: '/api/2026-07-01/resources/contracts/spanish_professional_categories';
 };
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses = {
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses = {
     /**
      * OK
      */
@@ -11318,9 +11532,9 @@ export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesRespons
     };
 };
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesResponse = GetApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses[keyof GetApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses];
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesResponse = GetApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses[keyof GetApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses];
 
-export type PostApi20260401ResourcesContractsSpanishProfessionalCategoriesData = {
+export type PostApi20260701ResourcesContractsSpanishProfessionalCategoriesData = {
     body?: {
         /**
          * Professional category name
@@ -11329,23 +11543,23 @@ export type PostApi20260401ResourcesContractsSpanishProfessionalCategoriesData =
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contracts_contract_template_id: number;
+        contracts_contract_template_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_professional_categories';
+    url: '/api/2026-07-01/resources/contracts/spanish_professional_categories';
 };
 
-export type PostApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses = {
+export type PostApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses = {
     /**
      * CREATED
      */
     201: ContractsSpanishProfessionalCategory;
 };
 
-export type PostApi20260401ResourcesContractsSpanishProfessionalCategoriesResponse = PostApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses[keyof PostApi20260401ResourcesContractsSpanishProfessionalCategoriesResponses];
+export type PostApi20260701ResourcesContractsSpanishProfessionalCategoriesResponse = PostApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses[keyof PostApi20260701ResourcesContractsSpanishProfessionalCategoriesResponses];
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdData = {
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesByIdData = {
     body?: never;
     path: {
         /**
@@ -11354,35 +11568,35 @@ export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdDat
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_professional_categories/{id}';
+    url: '/api/2026-07-01/resources/contracts/spanish_professional_categories/{id}';
 };
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdResponses = {
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesByIdResponses = {
     /**
      * OK
      */
     200: ContractsSpanishProfessionalCategory;
 };
 
-export type GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdResponse = GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdResponses[keyof GetApi20260401ResourcesContractsSpanishProfessionalCategoriesByIdResponses];
+export type GetApi20260701ResourcesContractsSpanishProfessionalCategoriesByIdResponse = GetApi20260701ResourcesContractsSpanishProfessionalCategoriesByIdResponses[keyof GetApi20260701ResourcesContractsSpanishProfessionalCategoriesByIdResponses];
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesData = {
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Working day type ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contract_template_id?: number;
+        contract_template_id?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/spanish_working_day_types';
+    url: '/api/2026-07-01/resources/contracts/spanish_working_day_types';
 };
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesResponses = {
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesResponses = {
     /**
      * OK
      */
@@ -11392,9 +11606,9 @@ export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesResponse = GetApi20260401ResourcesContractsSpanishWorkingDayTypesResponses[keyof GetApi20260401ResourcesContractsSpanishWorkingDayTypesResponses];
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesResponse = GetApi20260701ResourcesContractsSpanishWorkingDayTypesResponses[keyof GetApi20260701ResourcesContractsSpanishWorkingDayTypesResponses];
 
-export type PostApi20260401ResourcesContractsSpanishWorkingDayTypesData = {
+export type PostApi20260701ResourcesContractsSpanishWorkingDayTypesData = {
     body?: {
         /**
          * Working day type name
@@ -11403,23 +11617,23 @@ export type PostApi20260401ResourcesContractsSpanishWorkingDayTypesData = {
         /**
          * Contract template identifier, refers to contracts/contract_templates
          */
-        contracts_contract_template_id?: number;
+        contracts_contract_template_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_working_day_types';
+    url: '/api/2026-07-01/resources/contracts/spanish_working_day_types';
 };
 
-export type PostApi20260401ResourcesContractsSpanishWorkingDayTypesResponses = {
+export type PostApi20260701ResourcesContractsSpanishWorkingDayTypesResponses = {
     /**
      * CREATED
      */
     201: ContractsSpanishWorkingDayType;
 };
 
-export type PostApi20260401ResourcesContractsSpanishWorkingDayTypesResponse = PostApi20260401ResourcesContractsSpanishWorkingDayTypesResponses[keyof PostApi20260401ResourcesContractsSpanishWorkingDayTypesResponses];
+export type PostApi20260701ResourcesContractsSpanishWorkingDayTypesResponse = PostApi20260701ResourcesContractsSpanishWorkingDayTypesResponses[keyof PostApi20260701ResourcesContractsSpanishWorkingDayTypesResponses];
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdData = {
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -11428,30 +11642,30 @@ export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/spanish_working_day_types/{id}';
+    url: '/api/2026-07-01/resources/contracts/spanish_working_day_types/{id}';
 };
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdResponses = {
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesByIdResponses = {
     /**
      * OK
      */
     200: ContractsSpanishWorkingDayType;
 };
 
-export type GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdResponse = GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdResponses[keyof GetApi20260401ResourcesContractsSpanishWorkingDayTypesByIdResponses];
+export type GetApi20260701ResourcesContractsSpanishWorkingDayTypesByIdResponse = GetApi20260701ResourcesContractsSpanishWorkingDayTypesByIdResponses[keyof GetApi20260701ResourcesContractsSpanishWorkingDayTypesByIdResponses];
 
-export type GetApi20260401ResourcesContractsTaxonomiesData = {
+export type GetApi20260701ResourcesContractsTaxonomiesData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        'legal_entity_ids[]'?: Array<number>;
-        legal_entity_id?: number;
+        'ids[]'?: Array<string>;
+        'legal_entity_ids[]'?: Array<string>;
+        legal_entity_id?: string;
     };
-    url: '/api/2026-04-01/resources/contracts/taxonomies';
+    url: '/api/2026-07-01/resources/contracts/taxonomies';
 };
 
-export type GetApi20260401ResourcesContractsTaxonomiesResponses = {
+export type GetApi20260701ResourcesContractsTaxonomiesResponses = {
     /**
      * OK
      */
@@ -11461,34 +11675,37 @@ export type GetApi20260401ResourcesContractsTaxonomiesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesContractsTaxonomiesResponse = GetApi20260401ResourcesContractsTaxonomiesResponses[keyof GetApi20260401ResourcesContractsTaxonomiesResponses];
+export type GetApi20260701ResourcesContractsTaxonomiesResponse = GetApi20260701ResourcesContractsTaxonomiesResponses[keyof GetApi20260701ResourcesContractsTaxonomiesResponses];
 
-export type GetApi20260401ResourcesContractsTaxonomiesByIdData = {
+export type GetApi20260701ResourcesContractsTaxonomiesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/contracts/taxonomies/{id}';
+    url: '/api/2026-07-01/resources/contracts/taxonomies/{id}';
 };
 
-export type GetApi20260401ResourcesContractsTaxonomiesByIdResponses = {
+export type GetApi20260701ResourcesContractsTaxonomiesByIdResponses = {
     /**
      * OK
      */
     200: ContractsTaxonomy;
 };
 
-export type GetApi20260401ResourcesContractsTaxonomiesByIdResponse = GetApi20260401ResourcesContractsTaxonomiesByIdResponses[keyof GetApi20260401ResourcesContractsTaxonomiesByIdResponses];
+export type GetApi20260701ResourcesContractsTaxonomiesByIdResponse = GetApi20260701ResourcesContractsTaxonomiesByIdResponses[keyof GetApi20260701ResourcesContractsTaxonomiesByIdResponses];
 
-export type GetApi20260401ResourcesCustomFieldsFieldsData = {
+export type GetApi20260701ResourcesCustomFieldsFieldsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Field identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        /**
+         * Filter fields by type
+         */
         field_type?: 'text' | 'long_text' | 'date' | 'rating' | 'checkbox' | 'single_choice' | 'multiple_choice' | 'money' | 'cents';
         /**
          * Field label
@@ -11501,12 +11718,12 @@ export type GetApi20260401ResourcesCustomFieldsFieldsData = {
         /**
          * Company identifier where this field belongs
          */
-        company_id?: number;
+        company_id?: string;
     };
-    url: '/api/2026-04-01/resources/custom_fields/fields';
+    url: '/api/2026-07-01/resources/custom_fields/fields';
 };
 
-export type GetApi20260401ResourcesCustomFieldsFieldsResponses = {
+export type GetApi20260701ResourcesCustomFieldsFieldsResponses = {
     /**
      * OK
      */
@@ -11516,14 +11733,14 @@ export type GetApi20260401ResourcesCustomFieldsFieldsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomFieldsFieldsResponse = GetApi20260401ResourcesCustomFieldsFieldsResponses[keyof GetApi20260401ResourcesCustomFieldsFieldsResponses];
+export type GetApi20260701ResourcesCustomFieldsFieldsResponse = GetApi20260701ResourcesCustomFieldsFieldsResponses[keyof GetApi20260701ResourcesCustomFieldsFieldsResponses];
 
-export type PostApi20260401ResourcesCustomFieldsFieldsData = {
+export type PostApi20260701ResourcesCustomFieldsFieldsData = {
     body?: {
         /**
          * Company identifier where this field belongs
          */
-        company_id: number;
+        company_id: string;
         /**
          * Group of employees that can edit the field
          */
@@ -11557,37 +11774,37 @@ export type PostApi20260401ResourcesCustomFieldsFieldsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/fields';
+    url: '/api/2026-07-01/resources/custom_fields/fields';
 };
 
-export type PostApi20260401ResourcesCustomFieldsFieldsResponses = {
+export type PostApi20260701ResourcesCustomFieldsFieldsResponses = {
     /**
      * CREATED
      */
     201: CustomFieldsField;
 };
 
-export type PostApi20260401ResourcesCustomFieldsFieldsResponse = PostApi20260401ResourcesCustomFieldsFieldsResponses[keyof PostApi20260401ResourcesCustomFieldsFieldsResponses];
+export type PostApi20260701ResourcesCustomFieldsFieldsResponse = PostApi20260701ResourcesCustomFieldsFieldsResponses[keyof PostApi20260701ResourcesCustomFieldsFieldsResponses];
 
-export type DeleteApi20260401ResourcesCustomFieldsFieldsByIdData = {
+export type DeleteApi20260701ResourcesCustomFieldsFieldsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/fields/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/fields/{id}';
 };
 
-export type DeleteApi20260401ResourcesCustomFieldsFieldsByIdResponses = {
+export type DeleteApi20260701ResourcesCustomFieldsFieldsByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsField;
 };
 
-export type DeleteApi20260401ResourcesCustomFieldsFieldsByIdResponse = DeleteApi20260401ResourcesCustomFieldsFieldsByIdResponses[keyof DeleteApi20260401ResourcesCustomFieldsFieldsByIdResponses];
+export type DeleteApi20260701ResourcesCustomFieldsFieldsByIdResponse = DeleteApi20260701ResourcesCustomFieldsFieldsByIdResponses[keyof DeleteApi20260701ResourcesCustomFieldsFieldsByIdResponses];
 
-export type GetApi20260401ResourcesCustomFieldsFieldsByIdData = {
+export type GetApi20260701ResourcesCustomFieldsFieldsByIdData = {
     body?: never;
     path: {
         /**
@@ -11596,35 +11813,35 @@ export type GetApi20260401ResourcesCustomFieldsFieldsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/fields/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/fields/{id}';
 };
 
-export type GetApi20260401ResourcesCustomFieldsFieldsByIdResponses = {
+export type GetApi20260701ResourcesCustomFieldsFieldsByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsField;
 };
 
-export type GetApi20260401ResourcesCustomFieldsFieldsByIdResponse = GetApi20260401ResourcesCustomFieldsFieldsByIdResponses[keyof GetApi20260401ResourcesCustomFieldsFieldsByIdResponses];
+export type GetApi20260701ResourcesCustomFieldsFieldsByIdResponse = GetApi20260701ResourcesCustomFieldsFieldsByIdResponses[keyof GetApi20260701ResourcesCustomFieldsFieldsByIdResponses];
 
-export type GetApi20260401ResourcesCustomFieldsOptionsData = {
+export type GetApi20260701ResourcesCustomFieldsOptionsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Options identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Identifiers for the fields where the options belong to
          */
-        'field_ids[]'?: Array<number>;
+        'field_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/custom_fields/options';
+    url: '/api/2026-07-01/resources/custom_fields/options';
 };
 
-export type GetApi20260401ResourcesCustomFieldsOptionsResponses = {
+export type GetApi20260701ResourcesCustomFieldsOptionsResponses = {
     /**
      * OK
      */
@@ -11634,9 +11851,9 @@ export type GetApi20260401ResourcesCustomFieldsOptionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomFieldsOptionsResponse = GetApi20260401ResourcesCustomFieldsOptionsResponses[keyof GetApi20260401ResourcesCustomFieldsOptionsResponses];
+export type GetApi20260701ResourcesCustomFieldsOptionsResponse = GetApi20260701ResourcesCustomFieldsOptionsResponses[keyof GetApi20260701ResourcesCustomFieldsOptionsResponses];
 
-export type PostApi20260401ResourcesCustomFieldsOptionsData = {
+export type PostApi20260701ResourcesCustomFieldsOptionsData = {
     body?: {
         /**
          * Title for option
@@ -11649,23 +11866,23 @@ export type PostApi20260401ResourcesCustomFieldsOptionsData = {
         /**
          * Custom Fields identifier
          */
-        field_id: number;
+        field_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/options';
+    url: '/api/2026-07-01/resources/custom_fields/options';
 };
 
-export type PostApi20260401ResourcesCustomFieldsOptionsResponses = {
+export type PostApi20260701ResourcesCustomFieldsOptionsResponses = {
     /**
      * CREATED
      */
     201: CustomFieldsOption;
 };
 
-export type PostApi20260401ResourcesCustomFieldsOptionsResponse = PostApi20260401ResourcesCustomFieldsOptionsResponses[keyof PostApi20260401ResourcesCustomFieldsOptionsResponses];
+export type PostApi20260701ResourcesCustomFieldsOptionsResponse = PostApi20260701ResourcesCustomFieldsOptionsResponses[keyof PostApi20260701ResourcesCustomFieldsOptionsResponses];
 
-export type GetApi20260401ResourcesCustomFieldsOptionsByIdData = {
+export type GetApi20260701ResourcesCustomFieldsOptionsByIdData = {
     body?: never;
     path: {
         /**
@@ -11674,39 +11891,39 @@ export type GetApi20260401ResourcesCustomFieldsOptionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/options/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/options/{id}';
 };
 
-export type GetApi20260401ResourcesCustomFieldsOptionsByIdResponses = {
+export type GetApi20260701ResourcesCustomFieldsOptionsByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsOption;
 };
 
-export type GetApi20260401ResourcesCustomFieldsOptionsByIdResponse = GetApi20260401ResourcesCustomFieldsOptionsByIdResponses[keyof GetApi20260401ResourcesCustomFieldsOptionsByIdResponses];
+export type GetApi20260701ResourcesCustomFieldsOptionsByIdResponse = GetApi20260701ResourcesCustomFieldsOptionsByIdResponses[keyof GetApi20260701ResourcesCustomFieldsOptionsByIdResponses];
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsData = {
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Resource field identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Custom Field identifiers
          */
-        'field_ids[]'?: Array<number>;
+        'field_ids[]'?: Array<string>;
         /**
          * Custom Resources Schema identifiers
          */
-        'schema_ids[]'?: Array<number>;
+        'schema_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/custom_fields/resource_fields';
+    url: '/api/2026-07-01/resources/custom_fields/resource_fields';
 };
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsResponses = {
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsResponses = {
     /**
      * OK
      */
@@ -11716,18 +11933,18 @@ export type GetApi20260401ResourcesCustomFieldsResourceFieldsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsResponse = GetApi20260401ResourcesCustomFieldsResourceFieldsResponses[keyof GetApi20260401ResourcesCustomFieldsResourceFieldsResponses];
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsResponse = GetApi20260701ResourcesCustomFieldsResourceFieldsResponses[keyof GetApi20260701ResourcesCustomFieldsResourceFieldsResponses];
 
-export type PostApi20260401ResourcesCustomFieldsResourceFieldsData = {
+export type PostApi20260701ResourcesCustomFieldsResourceFieldsData = {
     body?: {
         /**
          * Schema identifier
          */
-        schema_id: number;
+        schema_id: string;
         /**
          * Company identifier
          */
-        company_id: number;
+        company_id: string;
         /**
          * Resource field label
          */
@@ -11767,19 +11984,19 @@ export type PostApi20260401ResourcesCustomFieldsResourceFieldsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/resource_fields';
+    url: '/api/2026-07-01/resources/custom_fields/resource_fields';
 };
 
-export type PostApi20260401ResourcesCustomFieldsResourceFieldsResponses = {
+export type PostApi20260701ResourcesCustomFieldsResourceFieldsResponses = {
     /**
      * CREATED
      */
     201: CustomFieldsResourceField;
 };
 
-export type PostApi20260401ResourcesCustomFieldsResourceFieldsResponse = PostApi20260401ResourcesCustomFieldsResourceFieldsResponses[keyof PostApi20260401ResourcesCustomFieldsResourceFieldsResponses];
+export type PostApi20260701ResourcesCustomFieldsResourceFieldsResponse = PostApi20260701ResourcesCustomFieldsResourceFieldsResponses[keyof PostApi20260701ResourcesCustomFieldsResourceFieldsResponses];
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsByIdData = {
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsByIdData = {
     body?: never;
     path: {
         /**
@@ -11788,26 +12005,26 @@ export type GetApi20260401ResourcesCustomFieldsResourceFieldsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/resource_fields/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/resource_fields/{id}';
 };
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsByIdResponses = {
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsResourceField;
 };
 
-export type GetApi20260401ResourcesCustomFieldsResourceFieldsByIdResponse = GetApi20260401ResourcesCustomFieldsResourceFieldsByIdResponses[keyof GetApi20260401ResourcesCustomFieldsResourceFieldsByIdResponses];
+export type GetApi20260701ResourcesCustomFieldsResourceFieldsByIdResponse = GetApi20260701ResourcesCustomFieldsResourceFieldsByIdResponses[keyof GetApi20260701ResourcesCustomFieldsResourceFieldsByIdResponses];
 
-export type GetApi20260401ResourcesCustomFieldsValuesData = {
+export type GetApi20260701ResourcesCustomFieldsValuesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Employee identifiers to filter custom field values by
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Custom field to filter by identifier
          */
@@ -11815,11 +12032,11 @@ export type GetApi20260401ResourcesCustomFieldsValuesData = {
         /**
          * Custom field value identifiers to filter by
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Identifier of the instance that the custom field value is attached to
          */
-        instance_id?: number;
+        instance_id?: string;
         /**
          * Custom field value to filter by
          */
@@ -11831,16 +12048,16 @@ export type GetApi20260401ResourcesCustomFieldsValuesData = {
         /**
          * Custom field identifier to filter by
          */
-        field_id?: number;
+        field_id?: string;
         /**
          * Filter values updated on or after this date (ISO 8601 format).
          */
         updated_at_gteq?: string;
     };
-    url: '/api/2026-04-01/resources/custom_fields/values';
+    url: '/api/2026-07-01/resources/custom_fields/values';
 };
 
-export type GetApi20260401ResourcesCustomFieldsValuesResponses = {
+export type GetApi20260701ResourcesCustomFieldsValuesResponses = {
     /**
      * OK
      */
@@ -11850,14 +12067,14 @@ export type GetApi20260401ResourcesCustomFieldsValuesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomFieldsValuesResponse = GetApi20260401ResourcesCustomFieldsValuesResponses[keyof GetApi20260401ResourcesCustomFieldsValuesResponses];
+export type GetApi20260701ResourcesCustomFieldsValuesResponse = GetApi20260701ResourcesCustomFieldsValuesResponses[keyof GetApi20260701ResourcesCustomFieldsValuesResponses];
 
-export type PostApi20260401ResourcesCustomFieldsValuesData = {
+export type PostApi20260701ResourcesCustomFieldsValuesData = {
     body?: {
         /**
          * Custom Fields identifier
          */
-        field_id: number;
+        field_id: string;
         /**
          * Type of the object that the custom field is attached to: 'Document' | 'Employee' | 'Contracts::ContractVersion' | 'CustomResources::Value'
          */
@@ -11865,7 +12082,7 @@ export type PostApi20260401ResourcesCustomFieldsValuesData = {
         /**
          * Identifier of the object that the custom field is attached to
          */
-        valuable_id: number;
+        valuable_id: string;
         /**
          * Custom Fields value
          */
@@ -11873,19 +12090,19 @@ export type PostApi20260401ResourcesCustomFieldsValuesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/values';
+    url: '/api/2026-07-01/resources/custom_fields/values';
 };
 
-export type PostApi20260401ResourcesCustomFieldsValuesResponses = {
+export type PostApi20260701ResourcesCustomFieldsValuesResponses = {
     /**
      * CREATED
      */
     201: CustomFieldsValue;
 };
 
-export type PostApi20260401ResourcesCustomFieldsValuesResponse = PostApi20260401ResourcesCustomFieldsValuesResponses[keyof PostApi20260401ResourcesCustomFieldsValuesResponses];
+export type PostApi20260701ResourcesCustomFieldsValuesResponse = PostApi20260701ResourcesCustomFieldsValuesResponses[keyof PostApi20260701ResourcesCustomFieldsValuesResponses];
 
-export type GetApi20260401ResourcesCustomFieldsValuesByIdData = {
+export type GetApi20260701ResourcesCustomFieldsValuesByIdData = {
     body?: never;
     path: {
         /**
@@ -11894,56 +12111,56 @@ export type GetApi20260401ResourcesCustomFieldsValuesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/values/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/values/{id}';
 };
 
-export type GetApi20260401ResourcesCustomFieldsValuesByIdResponses = {
+export type GetApi20260701ResourcesCustomFieldsValuesByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsValue;
 };
 
-export type GetApi20260401ResourcesCustomFieldsValuesByIdResponse = GetApi20260401ResourcesCustomFieldsValuesByIdResponses[keyof GetApi20260401ResourcesCustomFieldsValuesByIdResponses];
+export type GetApi20260701ResourcesCustomFieldsValuesByIdResponse = GetApi20260701ResourcesCustomFieldsValuesByIdResponses[keyof GetApi20260701ResourcesCustomFieldsValuesByIdResponses];
 
-export type PutApi20260401ResourcesCustomFieldsValuesByIdData = {
+export type PutApi20260701ResourcesCustomFieldsValuesByIdData = {
     body?: {
-        id?: number;
+        id?: string;
         value?: string;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_fields/values/{id}';
+    url: '/api/2026-07-01/resources/custom_fields/values/{id}';
 };
 
-export type PutApi20260401ResourcesCustomFieldsValuesByIdResponses = {
+export type PutApi20260701ResourcesCustomFieldsValuesByIdResponses = {
     /**
      * OK
      */
     200: CustomFieldsValue;
 };
 
-export type PutApi20260401ResourcesCustomFieldsValuesByIdResponse = PutApi20260401ResourcesCustomFieldsValuesByIdResponses[keyof PutApi20260401ResourcesCustomFieldsValuesByIdResponses];
+export type PutApi20260701ResourcesCustomFieldsValuesByIdResponse = PutApi20260701ResourcesCustomFieldsValuesByIdResponses[keyof PutApi20260701ResourcesCustomFieldsValuesByIdResponses];
 
-export type GetApi20260401ResourcesCustomResourcesResourcesData = {
+export type GetApi20260701ResourcesCustomResourcesResourcesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Resource identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Employee identifiers
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/custom_resources/resources';
+    url: '/api/2026-07-01/resources/custom_resources/resources';
 };
 
-export type GetApi20260401ResourcesCustomResourcesResourcesResponses = {
+export type GetApi20260701ResourcesCustomResourcesResourcesResponses = {
     /**
      * OK
      */
@@ -11953,9 +12170,9 @@ export type GetApi20260401ResourcesCustomResourcesResourcesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomResourcesResourcesResponse = GetApi20260401ResourcesCustomResourcesResourcesResponses[keyof GetApi20260401ResourcesCustomResourcesResourcesResponses];
+export type GetApi20260701ResourcesCustomResourcesResourcesResponse = GetApi20260701ResourcesCustomResourcesResourcesResponses[keyof GetApi20260701ResourcesCustomResourcesResourcesResponses];
 
-export type GetApi20260401ResourcesCustomResourcesResourcesByIdData = {
+export type GetApi20260701ResourcesCustomResourcesResourcesByIdData = {
     body?: never;
     path: {
         /**
@@ -11964,31 +12181,31 @@ export type GetApi20260401ResourcesCustomResourcesResourcesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_resources/resources/{id}';
+    url: '/api/2026-07-01/resources/custom_resources/resources/{id}';
 };
 
-export type GetApi20260401ResourcesCustomResourcesResourcesByIdResponses = {
+export type GetApi20260701ResourcesCustomResourcesResourcesByIdResponses = {
     /**
      * OK
      */
     200: CustomResourcesResource;
 };
 
-export type GetApi20260401ResourcesCustomResourcesResourcesByIdResponse = GetApi20260401ResourcesCustomResourcesResourcesByIdResponses[keyof GetApi20260401ResourcesCustomResourcesResourcesByIdResponses];
+export type GetApi20260701ResourcesCustomResourcesResourcesByIdResponse = GetApi20260701ResourcesCustomResourcesResourcesByIdResponses[keyof GetApi20260701ResourcesCustomResourcesResourcesByIdResponses];
 
-export type GetApi20260401ResourcesCustomResourcesSchemasData = {
+export type GetApi20260701ResourcesCustomResourcesSchemasData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Schemas identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/custom_resources/schemas';
+    url: '/api/2026-07-01/resources/custom_resources/schemas';
 };
 
-export type GetApi20260401ResourcesCustomResourcesSchemasResponses = {
+export type GetApi20260701ResourcesCustomResourcesSchemasResponses = {
     /**
      * OK
      */
@@ -11998,9 +12215,9 @@ export type GetApi20260401ResourcesCustomResourcesSchemasResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomResourcesSchemasResponse = GetApi20260401ResourcesCustomResourcesSchemasResponses[keyof GetApi20260401ResourcesCustomResourcesSchemasResponses];
+export type GetApi20260701ResourcesCustomResourcesSchemasResponse = GetApi20260701ResourcesCustomResourcesSchemasResponses[keyof GetApi20260701ResourcesCustomResourcesSchemasResponses];
 
-export type PostApi20260401ResourcesCustomResourcesSchemasData = {
+export type PostApi20260701ResourcesCustomResourcesSchemasData = {
     body?: {
         /**
          * Schema name
@@ -12009,11 +12226,11 @@ export type PostApi20260401ResourcesCustomResourcesSchemasData = {
         /**
          * Company identifier where this schema belongs
          */
-        company_id: number;
+        company_id: string;
         /**
          * Custom field identifier
          */
-        effective_at_id?: number;
+        effective_at_id?: string;
         /**
          * Manages visibility of the schema
          */
@@ -12029,19 +12246,19 @@ export type PostApi20260401ResourcesCustomResourcesSchemasData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_resources/schemas';
+    url: '/api/2026-07-01/resources/custom_resources/schemas';
 };
 
-export type PostApi20260401ResourcesCustomResourcesSchemasResponses = {
+export type PostApi20260701ResourcesCustomResourcesSchemasResponses = {
     /**
      * CREATED
      */
     201: CustomResourcesSchema;
 };
 
-export type PostApi20260401ResourcesCustomResourcesSchemasResponse = PostApi20260401ResourcesCustomResourcesSchemasResponses[keyof PostApi20260401ResourcesCustomResourcesSchemasResponses];
+export type PostApi20260701ResourcesCustomResourcesSchemasResponse = PostApi20260701ResourcesCustomResourcesSchemasResponses[keyof PostApi20260701ResourcesCustomResourcesSchemasResponses];
 
-export type GetApi20260401ResourcesCustomResourcesSchemasByIdData = {
+export type GetApi20260701ResourcesCustomResourcesSchemasByIdData = {
     body?: never;
     path: {
         /**
@@ -12050,35 +12267,35 @@ export type GetApi20260401ResourcesCustomResourcesSchemasByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_resources/schemas/{id}';
+    url: '/api/2026-07-01/resources/custom_resources/schemas/{id}';
 };
 
-export type GetApi20260401ResourcesCustomResourcesSchemasByIdResponses = {
+export type GetApi20260701ResourcesCustomResourcesSchemasByIdResponses = {
     /**
      * OK
      */
     200: CustomResourcesSchema;
 };
 
-export type GetApi20260401ResourcesCustomResourcesSchemasByIdResponse = GetApi20260401ResourcesCustomResourcesSchemasByIdResponses[keyof GetApi20260401ResourcesCustomResourcesSchemasByIdResponses];
+export type GetApi20260701ResourcesCustomResourcesSchemasByIdResponse = GetApi20260701ResourcesCustomResourcesSchemasByIdResponses[keyof GetApi20260701ResourcesCustomResourcesSchemasByIdResponses];
 
-export type GetApi20260401ResourcesCustomResourcesValuesData = {
+export type GetApi20260701ResourcesCustomResourcesValuesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Values identifiers
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Employee identifiers
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/custom_resources/values';
+    url: '/api/2026-07-01/resources/custom_resources/values';
 };
 
-export type GetApi20260401ResourcesCustomResourcesValuesResponses = {
+export type GetApi20260701ResourcesCustomResourcesValuesResponses = {
     /**
      * OK
      */
@@ -12088,26 +12305,26 @@ export type GetApi20260401ResourcesCustomResourcesValuesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesCustomResourcesValuesResponse = GetApi20260401ResourcesCustomResourcesValuesResponses[keyof GetApi20260401ResourcesCustomResourcesValuesResponses];
+export type GetApi20260701ResourcesCustomResourcesValuesResponse = GetApi20260701ResourcesCustomResourcesValuesResponses[keyof GetApi20260701ResourcesCustomResourcesValuesResponses];
 
-export type PostApi20260401ResourcesCustomResourcesValuesData = {
+export type PostApi20260701ResourcesCustomResourcesValuesData = {
     body?: {
         /**
          * Identifier of the schema this value belongs to
          */
-        schema_id: number;
+        schema_id: string;
         /**
          * The identifier of the employee that owns the resource value
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * The identifier of the resource that owns the resource value
          */
-        custom_resource_id?: number;
+        custom_resource_id?: string;
         /**
          * Identifier of the field this value belongs to
          */
-        field_id: number;
+        field_id: string;
         /**
          * Value for schema custom field
          */
@@ -12115,19 +12332,19 @@ export type PostApi20260401ResourcesCustomResourcesValuesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/custom_resources/values';
+    url: '/api/2026-07-01/resources/custom_resources/values';
 };
 
-export type PostApi20260401ResourcesCustomResourcesValuesResponses = {
+export type PostApi20260701ResourcesCustomResourcesValuesResponses = {
     /**
      * CREATED
      */
     201: CustomResourcesValue;
 };
 
-export type PostApi20260401ResourcesCustomResourcesValuesResponse = PostApi20260401ResourcesCustomResourcesValuesResponses[keyof PostApi20260401ResourcesCustomResourcesValuesResponses];
+export type PostApi20260701ResourcesCustomResourcesValuesResponse = PostApi20260701ResourcesCustomResourcesValuesResponses[keyof PostApi20260701ResourcesCustomResourcesValuesResponses];
 
-export type GetApi20260401ResourcesCustomResourcesValuesByIdData = {
+export type GetApi20260701ResourcesCustomResourcesValuesByIdData = {
     body?: never;
     path: {
         /**
@@ -12136,19 +12353,19 @@ export type GetApi20260401ResourcesCustomResourcesValuesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/custom_resources/values/{id}';
+    url: '/api/2026-07-01/resources/custom_resources/values/{id}';
 };
 
-export type GetApi20260401ResourcesCustomResourcesValuesByIdResponses = {
+export type GetApi20260701ResourcesCustomResourcesValuesByIdResponses = {
     /**
      * OK
      */
     200: CustomResourcesValue;
 };
 
-export type GetApi20260401ResourcesCustomResourcesValuesByIdResponse = GetApi20260401ResourcesCustomResourcesValuesByIdResponses[keyof GetApi20260401ResourcesCustomResourcesValuesByIdResponses];
+export type GetApi20260701ResourcesCustomResourcesValuesByIdResponse = GetApi20260701ResourcesCustomResourcesValuesByIdResponses[keyof GetApi20260701ResourcesCustomResourcesValuesByIdResponses];
 
-export type GetApi20260401ResourcesDocumentsDocumentsData = {
+export type GetApi20260701ResourcesDocumentsDocumentsData = {
     body?: never;
     path?: never;
     query: {
@@ -12171,24 +12388,24 @@ export type GetApi20260401ResourcesDocumentsDocumentsData = {
         /**
          * list of employee identifiers.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * folder identifier.
          */
-        folder_id?: number;
+        folder_id?: string;
         /**
          * list of document identifiers.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * leave identifier associated to the document, refers to /timeoff/leaves endpoint.
          */
-        leave_id?: number;
+        leave_id?: string;
     };
-    url: '/api/2026-04-01/resources/documents/documents';
+    url: '/api/2026-07-01/resources/documents/documents';
 };
 
-export type GetApi20260401ResourcesDocumentsDocumentsResponses = {
+export type GetApi20260701ResourcesDocumentsDocumentsResponses = {
     /**
      * OK
      */
@@ -12198,9 +12415,9 @@ export type GetApi20260401ResourcesDocumentsDocumentsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesDocumentsDocumentsResponse = GetApi20260401ResourcesDocumentsDocumentsResponses[keyof GetApi20260401ResourcesDocumentsDocumentsResponses];
+export type GetApi20260701ResourcesDocumentsDocumentsResponse = GetApi20260701ResourcesDocumentsDocumentsResponses[keyof GetApi20260701ResourcesDocumentsDocumentsResponses];
 
-export type PostApi20260401ResourcesDocumentsDocumentsData = {
+export type PostApi20260701ResourcesDocumentsDocumentsData = {
     body?: {
         /**
          * flag to indicate if the document is public.
@@ -12213,7 +12430,7 @@ export type PostApi20260401ResourcesDocumentsDocumentsData = {
         /**
          * folder identifier, references to documents/folders endpoint.
          */
-        folder_id?: number;
+        folder_id?: string;
         /**
          * final name of the file, even if the file has been uploaded with a different name.
          */
@@ -12225,7 +12442,7 @@ export type PostApi20260401ResourcesDocumentsDocumentsData = {
         /**
          * leave identifier associated to the document, refers to /timeoff/leaves endpoint.
          */
-        leave_id?: number;
+        leave_id?: string;
         /**
          * file to upload, the binary file.
          */
@@ -12233,19 +12450,19 @@ export type PostApi20260401ResourcesDocumentsDocumentsData = {
         /**
          * employee identifier associated to the document.
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * access identifier of the author, refers to /employees/employees endpoint.
          */
-        author_id: number;
+        author_id: string;
         /**
          * company identifier, refers to /api/me endpoint.
          */
-        company_id: number;
+        company_id: string;
         /**
          * list of user access identifiers associated to the document, refers to /employees/employees endpoint.
          */
-        'signee_ids[]': Array<number>;
+        'signee_ids[]': Array<string>;
         /**
          * flag to indicate if the document requires an electronic signature.
          */
@@ -12253,37 +12470,37 @@ export type PostApi20260401ResourcesDocumentsDocumentsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents';
+    url: '/api/2026-07-01/resources/documents/documents';
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsResponses = {
+export type PostApi20260701ResourcesDocumentsDocumentsResponses = {
     /**
      * CREATED
      */
     201: DocumentsDocument;
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsResponse = PostApi20260401ResourcesDocumentsDocumentsResponses[keyof PostApi20260401ResourcesDocumentsDocumentsResponses];
+export type PostApi20260701ResourcesDocumentsDocumentsResponse = PostApi20260701ResourcesDocumentsDocumentsResponses[keyof PostApi20260701ResourcesDocumentsDocumentsResponses];
 
-export type DeleteApi20260401ResourcesDocumentsDocumentsByIdData = {
+export type DeleteApi20260701ResourcesDocumentsDocumentsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents/{id}';
+    url: '/api/2026-07-01/resources/documents/documents/{id}';
 };
 
-export type DeleteApi20260401ResourcesDocumentsDocumentsByIdResponses = {
+export type DeleteApi20260701ResourcesDocumentsDocumentsByIdResponses = {
     /**
      * OK
      */
     200: DocumentsDocument;
 };
 
-export type DeleteApi20260401ResourcesDocumentsDocumentsByIdResponse = DeleteApi20260401ResourcesDocumentsDocumentsByIdResponses[keyof DeleteApi20260401ResourcesDocumentsDocumentsByIdResponses];
+export type DeleteApi20260701ResourcesDocumentsDocumentsByIdResponse = DeleteApi20260701ResourcesDocumentsDocumentsByIdResponses[keyof DeleteApi20260701ResourcesDocumentsDocumentsByIdResponses];
 
-export type GetApi20260401ResourcesDocumentsDocumentsByIdData = {
+export type GetApi20260701ResourcesDocumentsDocumentsByIdData = {
     body?: never;
     path: {
         /**
@@ -12292,24 +12509,24 @@ export type GetApi20260401ResourcesDocumentsDocumentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents/{id}';
+    url: '/api/2026-07-01/resources/documents/documents/{id}';
 };
 
-export type GetApi20260401ResourcesDocumentsDocumentsByIdResponses = {
+export type GetApi20260701ResourcesDocumentsDocumentsByIdResponses = {
     /**
      * OK
      */
     200: DocumentsDocument;
 };
 
-export type GetApi20260401ResourcesDocumentsDocumentsByIdResponse = GetApi20260401ResourcesDocumentsDocumentsByIdResponses[keyof GetApi20260401ResourcesDocumentsDocumentsByIdResponses];
+export type GetApi20260701ResourcesDocumentsDocumentsByIdResponse = GetApi20260701ResourcesDocumentsDocumentsByIdResponses[keyof GetApi20260701ResourcesDocumentsDocumentsByIdResponses];
 
-export type PutApi20260401ResourcesDocumentsDocumentsByIdData = {
+export type PutApi20260701ResourcesDocumentsDocumentsByIdData = {
     body?: {
         /**
          * document identifiers.
          */
-        id: number;
+        id: string;
         /**
          * flag to indicate if the document is public.
          */
@@ -12317,11 +12534,11 @@ export type PutApi20260401ResourcesDocumentsDocumentsByIdData = {
         /**
          * employee identifier associated to the document.
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * folder identifier, references to documents/folders endpoint.
          */
-        folder_id?: number;
+        folder_id?: string;
         /**
          * flag to indicate if the document requires an electronic signature.
          */
@@ -12329,7 +12546,7 @@ export type PutApi20260401ResourcesDocumentsDocumentsByIdData = {
         /**
          * list of user access identifiers associated to the document, refers to /employees/employees endpoint.
          */
-        signee_ids: Array<number>;
+        signee_ids: Array<string>;
     };
     path: {
         /**
@@ -12338,82 +12555,82 @@ export type PutApi20260401ResourcesDocumentsDocumentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents/{id}';
+    url: '/api/2026-07-01/resources/documents/documents/{id}';
 };
 
-export type PutApi20260401ResourcesDocumentsDocumentsByIdResponses = {
+export type PutApi20260701ResourcesDocumentsDocumentsByIdResponses = {
     /**
      * OK
      */
     200: DocumentsDocument;
 };
 
-export type PutApi20260401ResourcesDocumentsDocumentsByIdResponse = PutApi20260401ResourcesDocumentsDocumentsByIdResponses[keyof PutApi20260401ResourcesDocumentsDocumentsByIdResponses];
+export type PutApi20260701ResourcesDocumentsDocumentsByIdResponse = PutApi20260701ResourcesDocumentsDocumentsByIdResponses[keyof PutApi20260701ResourcesDocumentsDocumentsByIdResponses];
 
-export type PostApi20260401ResourcesDocumentsDocumentsMoveToTrashBinData = {
+export type PostApi20260701ResourcesDocumentsDocumentsMoveToTrashBinData = {
     body?: {
         /**
          * list of document identifiers.
          */
-        document_ids: Array<number>;
+        document_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents/move_to_trash_bin';
+    url: '/api/2026-07-01/resources/documents/documents/move_to_trash_bin';
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsMoveToTrashBinResponses = {
+export type PostApi20260701ResourcesDocumentsDocumentsMoveToTrashBinResponses = {
     /**
      * OK
      */
     200: Array<DocumentsDocument>;
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsMoveToTrashBinResponse = PostApi20260401ResourcesDocumentsDocumentsMoveToTrashBinResponses[keyof PostApi20260401ResourcesDocumentsDocumentsMoveToTrashBinResponses];
+export type PostApi20260701ResourcesDocumentsDocumentsMoveToTrashBinResponse = PostApi20260701ResourcesDocumentsDocumentsMoveToTrashBinResponses[keyof PostApi20260701ResourcesDocumentsDocumentsMoveToTrashBinResponses];
 
-export type PostApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBinData = {
+export type PostApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBinData = {
     body?: {
         /**
          * list of document identifiers.
          */
-        document_ids: Array<number>;
+        document_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/documents/documents/restore_from_trash_bin';
+    url: '/api/2026-07-01/resources/documents/documents/restore_from_trash_bin';
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBinResponses = {
+export type PostApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBinResponses = {
     /**
      * OK
      */
     200: Array<DocumentsDocument>;
 };
 
-export type PostApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBinResponse = PostApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBinResponses[keyof PostApi20260401ResourcesDocumentsDocumentsRestoreFromTrashBinResponses];
+export type PostApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBinResponse = PostApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBinResponses[keyof PostApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBinResponses];
 
-export type PostApi20260401ResourcesDocumentsDownloadUrlsBulkCreateData = {
+export type PostApi20260701ResourcesDocumentsDownloadUrlsBulkCreateData = {
     body?: {
         /**
          * list of document identifiers.
          */
-        ids?: Array<number>;
+        ids?: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/documents/download_urls/bulk_create';
+    url: '/api/2026-07-01/resources/documents/download_urls/bulk_create';
 };
 
-export type PostApi20260401ResourcesDocumentsDownloadUrlsBulkCreateResponses = {
+export type PostApi20260701ResourcesDocumentsDownloadUrlsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<DocumentsDownloadUrl>;
 };
 
-export type PostApi20260401ResourcesDocumentsDownloadUrlsBulkCreateResponse = PostApi20260401ResourcesDocumentsDownloadUrlsBulkCreateResponses[keyof PostApi20260401ResourcesDocumentsDownloadUrlsBulkCreateResponses];
+export type PostApi20260701ResourcesDocumentsDownloadUrlsBulkCreateResponse = PostApi20260701ResourcesDocumentsDownloadUrlsBulkCreateResponses[keyof PostApi20260701ResourcesDocumentsDownloadUrlsBulkCreateResponses];
 
-export type GetApi20260401ResourcesDocumentsFoldersData = {
+export type GetApi20260701ResourcesDocumentsFoldersData = {
     body?: never;
     path?: never;
     query?: {
@@ -12424,20 +12641,20 @@ export type GetApi20260401ResourcesDocumentsFoldersData = {
         /**
          * Employee id
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * ids of the folders.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Name of the folder.
          */
         name?: string;
     };
-    url: '/api/2026-04-01/resources/documents/folders';
+    url: '/api/2026-07-01/resources/documents/folders';
 };
 
-export type GetApi20260401ResourcesDocumentsFoldersResponses = {
+export type GetApi20260701ResourcesDocumentsFoldersResponses = {
     /**
      * OK
      */
@@ -12447,14 +12664,14 @@ export type GetApi20260401ResourcesDocumentsFoldersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesDocumentsFoldersResponse = GetApi20260401ResourcesDocumentsFoldersResponses[keyof GetApi20260401ResourcesDocumentsFoldersResponses];
+export type GetApi20260701ResourcesDocumentsFoldersResponse = GetApi20260701ResourcesDocumentsFoldersResponses[keyof GetApi20260701ResourcesDocumentsFoldersResponses];
 
-export type PostApi20260401ResourcesDocumentsFoldersData = {
+export type PostApi20260701ResourcesDocumentsFoldersData = {
     body?: {
         /**
          * Company ID
          */
-        company_id: number;
+        company_id: string;
         /**
          * Folder name
          */
@@ -12466,19 +12683,19 @@ export type PostApi20260401ResourcesDocumentsFoldersData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/documents/folders';
+    url: '/api/2026-07-01/resources/documents/folders';
 };
 
-export type PostApi20260401ResourcesDocumentsFoldersResponses = {
+export type PostApi20260701ResourcesDocumentsFoldersResponses = {
     /**
      * CREATED
      */
     201: DocumentsFolder;
 };
 
-export type PostApi20260401ResourcesDocumentsFoldersResponse = PostApi20260401ResourcesDocumentsFoldersResponses[keyof PostApi20260401ResourcesDocumentsFoldersResponses];
+export type PostApi20260701ResourcesDocumentsFoldersResponse = PostApi20260701ResourcesDocumentsFoldersResponses[keyof PostApi20260701ResourcesDocumentsFoldersResponses];
 
-export type GetApi20260401ResourcesDocumentsFoldersByIdData = {
+export type GetApi20260701ResourcesDocumentsFoldersByIdData = {
     body?: never;
     path: {
         /**
@@ -12487,28 +12704,28 @@ export type GetApi20260401ResourcesDocumentsFoldersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/documents/folders/{id}';
+    url: '/api/2026-07-01/resources/documents/folders/{id}';
 };
 
-export type GetApi20260401ResourcesDocumentsFoldersByIdResponses = {
+export type GetApi20260701ResourcesDocumentsFoldersByIdResponses = {
     /**
      * OK
      */
     200: DocumentsFolder;
 };
 
-export type GetApi20260401ResourcesDocumentsFoldersByIdResponse = GetApi20260401ResourcesDocumentsFoldersByIdResponses[keyof GetApi20260401ResourcesDocumentsFoldersByIdResponses];
+export type GetApi20260701ResourcesDocumentsFoldersByIdResponse = GetApi20260701ResourcesDocumentsFoldersByIdResponses[keyof GetApi20260701ResourcesDocumentsFoldersByIdResponses];
 
-export type PutApi20260401ResourcesDocumentsFoldersByIdData = {
+export type PutApi20260701ResourcesDocumentsFoldersByIdData = {
     body?: {
         /**
          * Company ID
          */
-        company_id: number;
+        company_id: string;
         /**
          * Folder id
          */
-        id: number;
+        id: string;
         /**
          * Folder name
          */
@@ -12521,30 +12738,30 @@ export type PutApi20260401ResourcesDocumentsFoldersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/documents/folders/{id}';
+    url: '/api/2026-07-01/resources/documents/folders/{id}';
 };
 
-export type PutApi20260401ResourcesDocumentsFoldersByIdResponses = {
+export type PutApi20260701ResourcesDocumentsFoldersByIdResponses = {
     /**
      * OK
      */
     200: DocumentsFolder;
 };
 
-export type PutApi20260401ResourcesDocumentsFoldersByIdResponse = PutApi20260401ResourcesDocumentsFoldersByIdResponses[keyof PutApi20260401ResourcesDocumentsFoldersByIdResponses];
+export type PutApi20260701ResourcesDocumentsFoldersByIdResponse = PutApi20260701ResourcesDocumentsFoldersByIdResponses[keyof PutApi20260701ResourcesDocumentsFoldersByIdResponses];
 
-export type GetApi20260401ResourcesEmployeesEmployeesData = {
+export type GetApi20260701ResourcesEmployeesEmployeesData = {
     body?: never;
     path?: never;
     query: {
         /**
          * filter by employee ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * filter by employee access ids.
          */
-        'access_ids[]'?: Array<number>;
+        'access_ids[]'?: Array<string>;
         /**
          * filter by employee emails.
          */
@@ -12554,13 +12771,13 @@ export type GetApi20260401ResourcesEmployeesEmployeesData = {
          */
         full_text_name?: string;
         /**
-         * Filter employees updated on or after this timestamp (greater than or equal).
+         * Filter employees by their latest update timestamp (`updated_at`), on or after this date. Only the date is considered; any time component is ignored (matching starts at 00:00:00 of the given date). Note: `updated_at` only stores the most recent update, so an employee updated multiple times is matched solely by its latest update, not by earlier ones.
          */
         updated_at_gteq?: string;
         /**
          * filter by legal entity id (refereces to companies/legal_entities).
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * filter by employee company identifier.
          */
@@ -12572,11 +12789,11 @@ export type GetApi20260401ResourcesEmployeesEmployeesData = {
         /**
          * filter employees by team id (references to core/teams).
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
         /**
          * filter employees by location id (references to locations/location).
          */
-        'location_ids[]'?: Array<number>;
+        'location_ids[]'?: Array<string>;
         /**
          * get only manager employees.
          */
@@ -12586,10 +12803,10 @@ export type GetApi20260401ResourcesEmployeesEmployeesData = {
          */
         name_starts_with?: string;
     };
-    url: '/api/2026-04-01/resources/employees/employees';
+    url: '/api/2026-07-01/resources/employees/employees';
 };
 
-export type GetApi20260401ResourcesEmployeesEmployeesResponses = {
+export type GetApi20260701ResourcesEmployeesEmployeesResponses = {
     /**
      * OK
      */
@@ -12599,9 +12816,9 @@ export type GetApi20260401ResourcesEmployeesEmployeesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeesEmployeesResponse = GetApi20260401ResourcesEmployeesEmployeesResponses[keyof GetApi20260401ResourcesEmployeesEmployeesResponses];
+export type GetApi20260701ResourcesEmployeesEmployeesResponse = GetApi20260701ResourcesEmployeesEmployeesResponses[keyof GetApi20260701ResourcesEmployeesEmployeesResponses];
 
-export type GetApi20260401ResourcesEmployeesEmployeesByIdData = {
+export type GetApi20260701ResourcesEmployeesEmployeesByIdData = {
     body?: never;
     path: {
         /**
@@ -12610,28 +12827,28 @@ export type GetApi20260401ResourcesEmployeesEmployeesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/{id}';
+    url: '/api/2026-07-01/resources/employees/employees/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeesEmployeesByIdResponses = {
+export type GetApi20260701ResourcesEmployeesEmployeesByIdResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type GetApi20260401ResourcesEmployeesEmployeesByIdResponse = GetApi20260401ResourcesEmployeesEmployeesByIdResponses[keyof GetApi20260401ResourcesEmployeesEmployeesByIdResponses];
+export type GetApi20260701ResourcesEmployeesEmployeesByIdResponse = GetApi20260701ResourcesEmployeesEmployeesByIdResponses[keyof GetApi20260701ResourcesEmployeesEmployeesByIdResponses];
 
-export type PutApi20260401ResourcesEmployeesEmployeesByIdData = {
+export type PutApi20260701ResourcesEmployeesEmployeesByIdData = {
     body?: {
         /**
          * id of the employee.
          */
-        id: number;
+        id: string;
         /**
          * access_id of the creator.
          */
-        access_id?: number;
+        access_id?: string;
         /**
          * gender of the employee (male | female).
          */
@@ -12695,11 +12912,11 @@ export type PutApi20260401ResourcesEmployeesEmployeesByIdData = {
         /**
          * id of manager, you can get the manager_id from employees endpoint.
          */
-        manager_id?: number;
+        manager_id?: string;
         /**
          * id of manager, you can get the manager_id from employees endpoint.
          */
-        timeoff_manager_id?: number;
+        timeoff_manager_id?: string;
         /**
          * social security number of the employee.
          */
@@ -12723,11 +12940,11 @@ export type PutApi20260401ResourcesEmployeesEmployeesByIdData = {
         /**
          * legal entity of the employee, references to companies/legal_entities.
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
         /**
          * location id of the employee, references to locations/locations.
          */
-        location_id?: number;
+        location_id?: string;
         /**
          * nickname of the employee or a name that defines the employee better.
          */
@@ -12749,6 +12966,10 @@ export type PutApi20260401ResourcesEmployeesEmployeesByIdData = {
          */
         personal_email?: string;
         /**
+         * Email address for company communications and notifications. Separate from login email.
+         */
+        communications_email?: string;
+        /**
          * officially certified level of disability granted by public administration for individuals with physical or mental impairments, expressed in cents
          */
         disability_percentage_cents?: number;
@@ -12764,24 +12985,24 @@ export type PutApi20260401ResourcesEmployeesEmployeesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/{id}';
+    url: '/api/2026-07-01/resources/employees/employees/{id}';
 };
 
-export type PutApi20260401ResourcesEmployeesEmployeesByIdResponses = {
+export type PutApi20260701ResourcesEmployeesEmployeesByIdResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PutApi20260401ResourcesEmployeesEmployeesByIdResponse = PutApi20260401ResourcesEmployeesEmployeesByIdResponses[keyof PutApi20260401ResourcesEmployeesEmployeesByIdResponses];
+export type PutApi20260701ResourcesEmployeesEmployeesByIdResponse = PutApi20260701ResourcesEmployeesEmployeesByIdResponses[keyof PutApi20260701ResourcesEmployeesEmployeesByIdResponses];
 
-export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractData = {
+export type PostApi20260701ResourcesEmployeesEmployeesCreateWithContractData = {
     body?: {
         /**
          * company id of the employee, you can get it in companies/legal_entities endpoint.
          */
-        company_id: number;
+        company_id: string;
         /**
          * name of the employee.
          */
@@ -12865,15 +13086,15 @@ export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractData = {
         /**
          * id of manager, you can get the manager_id from employees endpoint.
          */
-        manager_id?: number;
+        manager_id?: string;
         /**
          * id of manager, you can get the manager_id from employees endpoint.
          */
-        timeoff_manager_id?: number;
+        timeoff_manager_id?: string;
         /**
          * legal entity of the employee, references to companies/legal_entities.
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
         /**
          * identity number or string used inside a company to internally identify the employee.
          */
@@ -12889,11 +13110,11 @@ export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractData = {
         /**
          * team id of the employee.
          */
-        team_id?: number;
+        team_id?: string;
         /**
          * location id of the employee, references to locations/locations.
          */
-        location_id?: number;
+        location_id?: string;
         /**
          * social security number of the employee.
          */
@@ -12949,49 +13170,49 @@ export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/create_with_contract';
+    url: '/api/2026-07-01/resources/employees/employees/create_with_contract';
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractResponses = {
+export type PostApi20260701ResourcesEmployeesEmployeesCreateWithContractResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesCreateWithContractResponse = PostApi20260401ResourcesEmployeesEmployeesCreateWithContractResponses[keyof PostApi20260401ResourcesEmployeesEmployeesCreateWithContractResponses];
+export type PostApi20260701ResourcesEmployeesEmployeesCreateWithContractResponse = PostApi20260701ResourcesEmployeesEmployeesCreateWithContractResponses[keyof PostApi20260701ResourcesEmployeesEmployeesCreateWithContractResponses];
 
-export type PostApi20260401ResourcesEmployeesEmployeesInviteData = {
+export type PostApi20260701ResourcesEmployeesEmployeesInviteData = {
     body?: {
         /**
          * id of the unconfirmed employee
          */
-        id: number;
+        id: string;
         /**
          * id of the company
          */
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/invite';
+    url: '/api/2026-07-01/resources/employees/employees/invite';
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesInviteResponses = {
+export type PostApi20260701ResourcesEmployeesEmployeesInviteResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesInviteResponse = PostApi20260401ResourcesEmployeesEmployeesInviteResponses[keyof PostApi20260401ResourcesEmployeesEmployeesInviteResponses];
+export type PostApi20260701ResourcesEmployeesEmployeesInviteResponse = PostApi20260701ResourcesEmployeesEmployeesInviteResponses[keyof PostApi20260701ResourcesEmployeesEmployeesInviteResponses];
 
-export type PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateData = {
+export type PostApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDateData = {
     body?: {
         /**
          * id of the employee.
          */
-        id: number;
+        id: string;
         /**
          * the date the employee will start working in the company.
          */
@@ -12999,24 +13220,24 @@ export type PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateD
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/set_regular_access_start_date';
+    url: '/api/2026-07-01/resources/employees/employees/set_regular_access_start_date';
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses = {
+export type PostApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateResponse = PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses[keyof PostApi20260401ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses];
+export type PostApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDateResponse = PostApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses[keyof PostApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDateResponses];
 
-export type PostApi20260401ResourcesEmployeesEmployeesTerminateData = {
+export type PostApi20260701ResourcesEmployeesEmployeesTerminateData = {
     body?: {
         /**
          * id of the employee.
          */
-        id: number;
+        id: string;
         /**
          * when the employee will be terminated.
          */
@@ -13028,56 +13249,60 @@ export type PostApi20260401ResourcesEmployeesEmployeesTerminateData = {
         /**
          * id of manager that terminates the employee, you can get the manager_id from employees endpoint.
          */
-        termination_assigned_manager_id?: number;
+        termination_assigned_manager_id?: string;
+        /**
+         * When true, automatically opens a backfill position (vacancy or requisition) for the terminated employee. Requires ATS to be enabled with an automatic backfill setting configured. When false or omitted, no backfill is created.
+         */
+        open_backfill?: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/terminate';
+    url: '/api/2026-07-01/resources/employees/employees/terminate';
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesTerminateResponses = {
+export type PostApi20260701ResourcesEmployeesEmployeesTerminateResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesTerminateResponse = PostApi20260401ResourcesEmployeesEmployeesTerminateResponses[keyof PostApi20260401ResourcesEmployeesEmployeesTerminateResponses];
+export type PostApi20260701ResourcesEmployeesEmployeesTerminateResponse = PostApi20260701ResourcesEmployeesEmployeesTerminateResponses[keyof PostApi20260701ResourcesEmployeesEmployeesTerminateResponses];
 
-export type PostApi20260401ResourcesEmployeesEmployeesUnterminateData = {
+export type PostApi20260701ResourcesEmployeesEmployeesUnterminateData = {
     body?: {
         /**
          * id of the employee.
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/employees/employees/unterminate';
+    url: '/api/2026-07-01/resources/employees/employees/unterminate';
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesUnterminateResponses = {
+export type PostApi20260701ResourcesEmployeesEmployeesUnterminateResponses = {
     /**
      * OK
      */
     200: EmployeesEmployee;
 };
 
-export type PostApi20260401ResourcesEmployeesEmployeesUnterminateResponse = PostApi20260401ResourcesEmployeesEmployeesUnterminateResponses[keyof PostApi20260401ResourcesEmployeesEmployeesUnterminateResponses];
+export type PostApi20260701ResourcesEmployeesEmployeesUnterminateResponse = PostApi20260701ResourcesEmployeesEmployeesUnterminateResponses[keyof PostApi20260701ResourcesEmployeesEmployeesUnterminateResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesData = {
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by absence incidence ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/employee_updates/absences';
+    url: '/api/2026-07-01/resources/employee_updates/absences';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesResponses = {
     /**
      * OK
      */
@@ -13087,9 +13312,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesAbsencesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesResponse = GetApi20260401ResourcesEmployeeUpdatesAbsencesResponses[keyof GetApi20260401ResourcesEmployeeUpdatesAbsencesResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesResponse = GetApi20260701ResourcesEmployeeUpdatesAbsencesResponses[keyof GetApi20260701ResourcesEmployeeUpdatesAbsencesResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesByIdData = {
     body?: never;
     path: {
         /**
@@ -13098,31 +13323,31 @@ export type GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/absences/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/absences/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesAbsence;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdResponse = GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesAbsencesByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesAbsencesByIdResponse = GetApi20260701ResourcesEmployeeUpdatesAbsencesByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesAbsencesByIdResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesData = {
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by contract change incidence ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/employee_updates/contract_changes';
+    url: '/api/2026-07-01/resources/employee_updates/contract_changes';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesResponses = {
     /**
      * OK
      */
@@ -13132,9 +13357,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesContractChangesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesResponse = GetApi20260401ResourcesEmployeeUpdatesContractChangesResponses[keyof GetApi20260401ResourcesEmployeeUpdatesContractChangesResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesResponse = GetApi20260701ResourcesEmployeeUpdatesContractChangesResponses[keyof GetApi20260701ResourcesEmployeeUpdatesContractChangesResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesByIdData = {
     body?: never;
     path: {
         /**
@@ -13143,31 +13368,31 @@ export type GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/contract_changes/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/contract_changes/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesContractChange;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdResponse = GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesContractChangesByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesContractChangesByIdResponse = GetApi20260701ResourcesEmployeeUpdatesContractChangesByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesContractChangesByIdResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresData = {
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by new hire incidence ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/employee_updates/new_hires';
+    url: '/api/2026-07-01/resources/employee_updates/new_hires';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresResponses = {
     /**
      * OK
      */
@@ -13177,9 +13402,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesNewHiresResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresResponse = GetApi20260401ResourcesEmployeeUpdatesNewHiresResponses[keyof GetApi20260401ResourcesEmployeeUpdatesNewHiresResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresResponse = GetApi20260701ResourcesEmployeeUpdatesNewHiresResponses[keyof GetApi20260701ResourcesEmployeeUpdatesNewHiresResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresByIdData = {
     body?: never;
     path: {
         /**
@@ -13188,31 +13413,31 @@ export type GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/new_hires/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/new_hires/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesNewHire;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdResponse = GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesNewHiresByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesNewHiresByIdResponse = GetApi20260701ResourcesEmployeeUpdatesNewHiresByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesNewHiresByIdResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesData = {
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by personal change incidence ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/employee_updates/personal_changes';
+    url: '/api/2026-07-01/resources/employee_updates/personal_changes';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesResponses = {
     /**
      * OK
      */
@@ -13222,9 +13447,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesResponse = GetApi20260401ResourcesEmployeeUpdatesPersonalChangesResponses[keyof GetApi20260401ResourcesEmployeeUpdatesPersonalChangesResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesResponse = GetApi20260701ResourcesEmployeeUpdatesPersonalChangesResponses[keyof GetApi20260701ResourcesEmployeeUpdatesPersonalChangesResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesByIdData = {
     body?: never;
     path: {
         /**
@@ -13233,34 +13458,34 @@ export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/personal_changes/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/personal_changes/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesPersonalChange;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdResponse = GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesPersonalChangesByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesPersonalChangesByIdResponse = GetApi20260701ResourcesEmployeeUpdatesPersonalChangesByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesPersonalChangesByIdResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesData = {
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * retrieve only the `employee updates` that matches the `ids` passed in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * retrieve only the `employee updates` assigned to any `employee` specified in the request.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * retrieve only the `employee updates` assigned to any `legal entity` specified in the request.
          */
-        'legal_entities_ids[]'?: Array<number>;
+        'legal_entities_ids[]'?: Array<string>;
         /**
          * filter `employee updates` that have the given type. The supported types are: sick, parental, name, id, address, irpf, bank, residence, nationality, gender, hiring, custom-leave, termination, contract, workplace, manual_incidence, legal_entity
          */
@@ -13274,10 +13499,10 @@ export type GetApi20260401ResourcesEmployeeUpdatesSummariesData = {
          */
         ends_on?: string;
     };
-    url: '/api/2026-04-01/resources/employee_updates/summaries';
+    url: '/api/2026-07-01/resources/employee_updates/summaries';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesResponses = {
     /**
      * OK
      */
@@ -13287,9 +13512,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesSummariesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesResponse = GetApi20260401ResourcesEmployeeUpdatesSummariesResponses[keyof GetApi20260401ResourcesEmployeeUpdatesSummariesResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesResponse = GetApi20260701ResourcesEmployeeUpdatesSummariesResponses[keyof GetApi20260701ResourcesEmployeeUpdatesSummariesResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesByIdData = {
     body?: never;
     path: {
         /**
@@ -13298,31 +13523,31 @@ export type GetApi20260401ResourcesEmployeeUpdatesSummariesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/summaries/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/summaries/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesSummary;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesSummariesByIdResponse = GetApi20260401ResourcesEmployeeUpdatesSummariesByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesSummariesByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesSummariesByIdResponse = GetApi20260701ResourcesEmployeeUpdatesSummariesByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesSummariesByIdResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsData = {
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by termination incidence ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/employee_updates/terminations';
+    url: '/api/2026-07-01/resources/employee_updates/terminations';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsResponses = {
     /**
      * OK
      */
@@ -13332,9 +13557,9 @@ export type GetApi20260401ResourcesEmployeeUpdatesTerminationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsResponse = GetApi20260401ResourcesEmployeeUpdatesTerminationsResponses[keyof GetApi20260401ResourcesEmployeeUpdatesTerminationsResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsResponse = GetApi20260701ResourcesEmployeeUpdatesTerminationsResponses[keyof GetApi20260701ResourcesEmployeeUpdatesTerminationsResponses];
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdData = {
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsByIdData = {
     body?: never;
     path: {
         /**
@@ -13343,28 +13568,28 @@ export type GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/employee_updates/terminations/{id}';
+    url: '/api/2026-07-01/resources/employee_updates/terminations/{id}';
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdResponses = {
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsByIdResponses = {
     /**
      * OK
      */
     200: EmployeeUpdatesTermination;
 };
 
-export type GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdResponse = GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdResponses[keyof GetApi20260401ResourcesEmployeeUpdatesTerminationsByIdResponses];
+export type GetApi20260701ResourcesEmployeeUpdatesTerminationsByIdResponse = GetApi20260701ResourcesEmployeeUpdatesTerminationsByIdResponses[keyof GetApi20260701ResourcesEmployeeUpdatesTerminationsByIdResponses];
 
-export type GetApi20260401ResourcesExpensesExpensablesData = {
+export type GetApi20260701ResourcesExpensesExpensablesData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
-        company_id?: number;
-        'group_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        company_id?: string;
+        'group_ids[]'?: Array<string>;
         'by_resources[]'?: Array<unknown>;
-        'employee_ids[]'?: Array<number>;
-        'reporter_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
+        'reporter_ids[]'?: Array<string>;
         'status[]'?: 'pending' | 'changes_requested' | 'approved' | 'paid' | 'rejected' | 'reversed' | 'draft' | 'in_payroll' | 'sent_to_pay';
         'creation_type[]'?: Array<string>;
         from?: string;
@@ -13374,10 +13599,10 @@ export type GetApi20260401ResourcesExpensesExpensablesData = {
         include_attachments: boolean;
         include_manual_drafts: boolean;
     };
-    url: '/api/2026-04-01/resources/expenses/expensables';
+    url: '/api/2026-07-01/resources/expenses/expensables';
 };
 
-export type GetApi20260401ResourcesExpensesExpensablesResponses = {
+export type GetApi20260701ResourcesExpensesExpensablesResponses = {
     /**
      * OK
      */
@@ -13387,59 +13612,84 @@ export type GetApi20260401ResourcesExpensesExpensablesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesExpensesExpensablesResponse = GetApi20260401ResourcesExpensesExpensablesResponses[keyof GetApi20260401ResourcesExpensesExpensablesResponses];
+export type GetApi20260701ResourcesExpensesExpensablesResponse = GetApi20260701ResourcesExpensesExpensablesResponses[keyof GetApi20260701ResourcesExpensesExpensablesResponses];
 
-export type GetApi20260401ResourcesExpensesExpensablesByIdData = {
+export type GetApi20260701ResourcesExpensesExpensablesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/expenses/expensables/{id}';
+    url: '/api/2026-07-01/resources/expenses/expensables/{id}';
 };
 
-export type GetApi20260401ResourcesExpensesExpensablesByIdResponses = {
+export type GetApi20260701ResourcesExpensesExpensablesByIdResponses = {
     /**
      * OK
      */
     200: ExpensesExpensable;
 };
 
-export type GetApi20260401ResourcesExpensesExpensablesByIdResponse = GetApi20260401ResourcesExpensesExpensablesByIdResponses[keyof GetApi20260401ResourcesExpensesExpensablesByIdResponses];
+export type GetApi20260701ResourcesExpensesExpensablesByIdResponse = GetApi20260701ResourcesExpensesExpensablesByIdResponses[keyof GetApi20260701ResourcesExpensesExpensablesByIdResponses];
 
-export type PostApi20260401ResourcesExpensesExpensablesBulkSetToPaidData = {
+export type PostApi20260701ResourcesExpensesExpensablesBulkSetToPaidData = {
     body?: {
         /**
          * The IDs of the expensables to set to paid
          */
-        ids: Array<number>;
+        ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/expenses/expensables/bulk_set_to_paid';
+    url: '/api/2026-07-01/resources/expenses/expensables/bulk_set_to_paid';
 };
 
-export type PostApi20260401ResourcesExpensesExpensablesBulkSetToPaidResponses = {
+export type PostApi20260701ResourcesExpensesExpensablesBulkSetToPaidResponses = {
     /**
      * OK
      */
     200: Array<ExpensesExpensable>;
 };
 
-export type PostApi20260401ResourcesExpensesExpensablesBulkSetToPaidResponse = PostApi20260401ResourcesExpensesExpensablesBulkSetToPaidResponses[keyof PostApi20260401ResourcesExpensesExpensablesBulkSetToPaidResponses];
+export type PostApi20260701ResourcesExpensesExpensablesBulkSetToPaidResponse = PostApi20260701ResourcesExpensesExpensablesBulkSetToPaidResponses[keyof PostApi20260701ResourcesExpensesExpensablesBulkSetToPaidResponses];
 
-export type GetApi20260401ResourcesExpensesExpensesData = {
+export type PostApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmountData = {
+    body?: {
+        /**
+         * The ID of the expensable
+         */
+        id: string;
+        /**
+         * The reimbursable amount in cents
+         */
+        reimbursable_amount: number;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/2026-07-01/resources/expenses/expensables/update_reimbursable_amount';
+};
+
+export type PostApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmountResponses = {
+    /**
+     * OK
+     */
+    200: ExpensesExpensable;
+};
+
+export type PostApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmountResponse = PostApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmountResponses[keyof PostApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmountResponses];
+
+export type GetApi20260701ResourcesExpensesExpensesData = {
     body?: never;
     path?: never;
     query: {
         /**
          * The ids of the expenses to filter by
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The ids of the expensables to filter by
          */
-        'expenses_expensable_ids[]'?: Array<number>;
+        'expenses_expensable_ids[]'?: Array<string>;
         /**
          * Whether to include manual drafts
          */
@@ -13447,7 +13697,7 @@ export type GetApi20260401ResourcesExpensesExpensesData = {
         /**
          * The ids of the employees to filter by
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * The ids of the external authorizations to filter by
          */
@@ -13455,11 +13705,11 @@ export type GetApi20260401ResourcesExpensesExpensesData = {
         /**
          * The ids of the cards to filter by
          */
-        'card_ids[]'?: Array<number>;
+        'card_ids[]'?: Array<string>;
         /**
          * The ids of the card payments to filter by
          */
-        'card_payment_ids[]'?: Array<number>;
+        'card_payment_ids[]'?: Array<string>;
         /**
          * Wether to include the attachments
          */
@@ -13475,12 +13725,12 @@ export type GetApi20260401ResourcesExpensesExpensesData = {
         /**
          * The ids of the disputes to filter by
          */
-        'dispute_ids[]'?: Array<number>;
+        'dispute_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/expenses/expenses';
+    url: '/api/2026-07-01/resources/expenses/expenses';
 };
 
-export type GetApi20260401ResourcesExpensesExpensesResponses = {
+export type GetApi20260701ResourcesExpensesExpensesResponses = {
     /**
      * OK
      */
@@ -13490,9 +13740,9 @@ export type GetApi20260401ResourcesExpensesExpensesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesExpensesExpensesResponse = GetApi20260401ResourcesExpensesExpensesResponses[keyof GetApi20260401ResourcesExpensesExpensesResponses];
+export type GetApi20260701ResourcesExpensesExpensesResponse = GetApi20260701ResourcesExpensesExpensesResponses[keyof GetApi20260701ResourcesExpensesExpensesResponses];
 
-export type GetApi20260401ResourcesExpensesExpensesByIdData = {
+export type GetApi20260701ResourcesExpensesExpensesByIdData = {
     body?: never;
     path: {
         /**
@@ -13501,38 +13751,38 @@ export type GetApi20260401ResourcesExpensesExpensesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/expenses/expenses/{id}';
+    url: '/api/2026-07-01/resources/expenses/expenses/{id}';
 };
 
-export type GetApi20260401ResourcesExpensesExpensesByIdResponses = {
+export type GetApi20260701ResourcesExpensesExpensesByIdResponses = {
     /**
      * OK
      */
     200: ExpensesExpense;
 };
 
-export type GetApi20260401ResourcesExpensesExpensesByIdResponse = GetApi20260401ResourcesExpensesExpensesByIdResponses[keyof GetApi20260401ResourcesExpensesExpensesByIdResponses];
+export type GetApi20260701ResourcesExpensesExpensesByIdResponse = GetApi20260701ResourcesExpensesExpensesByIdResponses[keyof GetApi20260701ResourcesExpensesExpensesByIdResponses];
 
-export type GetApi20260401ResourcesExpensesMileagesData = {
+export type GetApi20260701ResourcesExpensesMileagesData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
-        'expenses_expensable_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'expenses_expensable_ids[]'?: Array<string>;
         include_manual_drafts: boolean;
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         'external_authorization_ids[]'?: Array<string>;
-        'card_ids[]'?: Array<number>;
-        'card_payment_ids[]'?: Array<number>;
+        'card_ids[]'?: Array<string>;
+        'card_payment_ids[]'?: Array<string>;
         include_attachments: boolean;
         from?: string;
         to?: string;
-        'dispute_ids[]'?: Array<number>;
+        'dispute_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/expenses/mileages';
+    url: '/api/2026-07-01/resources/expenses/mileages';
 };
 
-export type GetApi20260401ResourcesExpensesMileagesResponses = {
+export type GetApi20260701ResourcesExpensesMileagesResponses = {
     /**
      * OK
      */
@@ -13542,47 +13792,47 @@ export type GetApi20260401ResourcesExpensesMileagesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesExpensesMileagesResponse = GetApi20260401ResourcesExpensesMileagesResponses[keyof GetApi20260401ResourcesExpensesMileagesResponses];
+export type GetApi20260701ResourcesExpensesMileagesResponse = GetApi20260701ResourcesExpensesMileagesResponses[keyof GetApi20260701ResourcesExpensesMileagesResponses];
 
-export type GetApi20260401ResourcesExpensesMileagesByIdData = {
+export type GetApi20260701ResourcesExpensesMileagesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/expenses/mileages/{id}';
+    url: '/api/2026-07-01/resources/expenses/mileages/{id}';
 };
 
-export type GetApi20260401ResourcesExpensesMileagesByIdResponses = {
+export type GetApi20260701ResourcesExpensesMileagesByIdResponses = {
     /**
      * OK
      */
     200: ExpensesMileage;
 };
 
-export type GetApi20260401ResourcesExpensesMileagesByIdResponse = GetApi20260401ResourcesExpensesMileagesByIdResponses[keyof GetApi20260401ResourcesExpensesMileagesByIdResponses];
+export type GetApi20260701ResourcesExpensesMileagesByIdResponse = GetApi20260701ResourcesExpensesMileagesByIdResponses[keyof GetApi20260701ResourcesExpensesMileagesByIdResponses];
 
-export type GetApi20260401ResourcesExpensesPerDiemsData = {
+export type GetApi20260701ResourcesExpensesPerDiemsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * The IDs of the per diem to read.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The IDs of the expensables to read per diems for.
          */
-        'expenses_expensable_ids[]'?: Array<number>;
+        'expenses_expensable_ids[]'?: Array<string>;
         /**
          * Whether to exclude drafts from the results.
          */
         exclude_drafts?: boolean;
     };
-    url: '/api/2026-04-01/resources/expenses/per_diems';
+    url: '/api/2026-07-01/resources/expenses/per_diems';
 };
 
-export type GetApi20260401ResourcesExpensesPerDiemsResponses = {
+export type GetApi20260701ResourcesExpensesPerDiemsResponses = {
     /**
      * OK
      */
@@ -13592,9 +13842,9 @@ export type GetApi20260401ResourcesExpensesPerDiemsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesExpensesPerDiemsResponse = GetApi20260401ResourcesExpensesPerDiemsResponses[keyof GetApi20260401ResourcesExpensesPerDiemsResponses];
+export type GetApi20260701ResourcesExpensesPerDiemsResponse = GetApi20260701ResourcesExpensesPerDiemsResponses[keyof GetApi20260701ResourcesExpensesPerDiemsResponses];
 
-export type GetApi20260401ResourcesExpensesPerDiemsByIdData = {
+export type GetApi20260701ResourcesExpensesPerDiemsByIdData = {
     body?: never;
     path: {
         /**
@@ -13603,30 +13853,30 @@ export type GetApi20260401ResourcesExpensesPerDiemsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/expenses/per_diems/{id}';
+    url: '/api/2026-07-01/resources/expenses/per_diems/{id}';
 };
 
-export type GetApi20260401ResourcesExpensesPerDiemsByIdResponses = {
+export type GetApi20260701ResourcesExpensesPerDiemsByIdResponses = {
     /**
      * OK
      */
     200: ExpensesPerDiem;
 };
 
-export type GetApi20260401ResourcesExpensesPerDiemsByIdResponse = GetApi20260401ResourcesExpensesPerDiemsByIdResponses[keyof GetApi20260401ResourcesExpensesPerDiemsByIdResponses];
+export type GetApi20260701ResourcesExpensesPerDiemsByIdResponse = GetApi20260701ResourcesExpensesPerDiemsByIdResponses[keyof GetApi20260701ResourcesExpensesPerDiemsByIdResponses];
 
-export type GetApi20260401ResourcesFinanceAccountsData = {
+export type GetApi20260701ResourcesFinanceAccountsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Search ledger accounts by ID
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Search ledger accounts by legal_entity_id
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Search ledger accounts by type
          */
@@ -13640,10 +13890,10 @@ export type GetApi20260401ResourcesFinanceAccountsData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/accounts';
+    url: '/api/2026-07-01/resources/finance/accounts';
 };
 
-export type GetApi20260401ResourcesFinanceAccountsResponses = {
+export type GetApi20260701ResourcesFinanceAccountsResponses = {
     /**
      * OK
      */
@@ -13653,9 +13903,9 @@ export type GetApi20260401ResourcesFinanceAccountsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceAccountsResponse = GetApi20260401ResourcesFinanceAccountsResponses[keyof GetApi20260401ResourcesFinanceAccountsResponses];
+export type GetApi20260701ResourcesFinanceAccountsResponse = GetApi20260701ResourcesFinanceAccountsResponses[keyof GetApi20260701ResourcesFinanceAccountsResponses];
 
-export type PostApi20260401ResourcesFinanceAccountsData = {
+export type PostApi20260701ResourcesFinanceAccountsData = {
     body?: {
         /**
          * Name of the ledger account
@@ -13676,7 +13926,7 @@ export type PostApi20260401ResourcesFinanceAccountsData = {
         /**
          * Legal entity ID of the ledger account
          */
-        legal_entity_id: number;
+        legal_entity_id: string;
         /**
          * Id of the ledger account on the external system. This field is important to avoid having duplicated ledger accounts
          */
@@ -13684,19 +13934,19 @@ export type PostApi20260401ResourcesFinanceAccountsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/accounts';
+    url: '/api/2026-07-01/resources/finance/accounts';
 };
 
-export type PostApi20260401ResourcesFinanceAccountsResponses = {
+export type PostApi20260701ResourcesFinanceAccountsResponses = {
     /**
      * CREATED
      */
     201: FinanceAccount;
 };
 
-export type PostApi20260401ResourcesFinanceAccountsResponse = PostApi20260401ResourcesFinanceAccountsResponses[keyof PostApi20260401ResourcesFinanceAccountsResponses];
+export type PostApi20260701ResourcesFinanceAccountsResponse = PostApi20260701ResourcesFinanceAccountsResponses[keyof PostApi20260701ResourcesFinanceAccountsResponses];
 
-export type GetApi20260401ResourcesFinanceAccountsByIdData = {
+export type GetApi20260701ResourcesFinanceAccountsByIdData = {
     body?: never;
     path: {
         /**
@@ -13705,24 +13955,24 @@ export type GetApi20260401ResourcesFinanceAccountsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/accounts/{id}';
+    url: '/api/2026-07-01/resources/finance/accounts/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceAccountsByIdResponses = {
+export type GetApi20260701ResourcesFinanceAccountsByIdResponses = {
     /**
      * OK
      */
     200: FinanceAccount;
 };
 
-export type GetApi20260401ResourcesFinanceAccountsByIdResponse = GetApi20260401ResourcesFinanceAccountsByIdResponses[keyof GetApi20260401ResourcesFinanceAccountsByIdResponses];
+export type GetApi20260701ResourcesFinanceAccountsByIdResponse = GetApi20260701ResourcesFinanceAccountsByIdResponses[keyof GetApi20260701ResourcesFinanceAccountsByIdResponses];
 
-export type PutApi20260401ResourcesFinanceAccountsByIdData = {
+export type PutApi20260701ResourcesFinanceAccountsByIdData = {
     body?: {
         /**
          * Unique identifier in factorial for the ledger account
          */
-        id: number;
+        id: string;
         /**
          * Name of the ledger account
          */
@@ -13742,7 +13992,7 @@ export type PutApi20260401ResourcesFinanceAccountsByIdData = {
         /**
          * Legal entity ID of the ledger account
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
         /**
          * Id of the ledger account on the external system
          */
@@ -13755,39 +14005,39 @@ export type PutApi20260401ResourcesFinanceAccountsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/accounts/{id}';
+    url: '/api/2026-07-01/resources/finance/accounts/{id}';
 };
 
-export type PutApi20260401ResourcesFinanceAccountsByIdResponses = {
+export type PutApi20260701ResourcesFinanceAccountsByIdResponses = {
     /**
      * OK
      */
     200: FinanceAccount;
 };
 
-export type PutApi20260401ResourcesFinanceAccountsByIdResponse = PutApi20260401ResourcesFinanceAccountsByIdResponses[keyof PutApi20260401ResourcesFinanceAccountsByIdResponses];
+export type PutApi20260701ResourcesFinanceAccountsByIdResponse = PutApi20260701ResourcesFinanceAccountsByIdResponses[keyof PutApi20260701ResourcesFinanceAccountsByIdResponses];
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsData = {
+export type GetApi20260701ResourcesFinanceAccountingSettingsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of AccountingSetting IDs to filter.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by an array of legal entity IDs.
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Start date for filtering accounting settings records based on their last update.
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/accounting_settings';
+    url: '/api/2026-07-01/resources/finance/accounting_settings';
 };
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsResponses = {
+export type GetApi20260701ResourcesFinanceAccountingSettingsResponses = {
     /**
      * OK
      */
@@ -13797,9 +14047,9 @@ export type GetApi20260401ResourcesFinanceAccountingSettingsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsResponse = GetApi20260401ResourcesFinanceAccountingSettingsResponses[keyof GetApi20260401ResourcesFinanceAccountingSettingsResponses];
+export type GetApi20260701ResourcesFinanceAccountingSettingsResponse = GetApi20260701ResourcesFinanceAccountingSettingsResponses[keyof GetApi20260701ResourcesFinanceAccountingSettingsResponses];
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsByIdData = {
+export type GetApi20260701ResourcesFinanceAccountingSettingsByIdData = {
     body?: never;
     path: {
         /**
@@ -13808,19 +14058,19 @@ export type GetApi20260401ResourcesFinanceAccountingSettingsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/accounting_settings/{id}';
+    url: '/api/2026-07-01/resources/finance/accounting_settings/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsByIdResponses = {
+export type GetApi20260701ResourcesFinanceAccountingSettingsByIdResponses = {
     /**
      * OK
      */
     200: FinanceAccountingSetting;
 };
 
-export type GetApi20260401ResourcesFinanceAccountingSettingsByIdResponse = GetApi20260401ResourcesFinanceAccountingSettingsByIdResponses[keyof GetApi20260401ResourcesFinanceAccountingSettingsByIdResponses];
+export type GetApi20260701ResourcesFinanceAccountingSettingsByIdResponse = GetApi20260701ResourcesFinanceAccountingSettingsByIdResponses[keyof GetApi20260701ResourcesFinanceAccountingSettingsByIdResponses];
 
-export type PostApi20260401ResourcesFinanceAccountingSettingsUpsertData = {
+export type PostApi20260701ResourcesFinanceAccountingSettingsUpsertData = {
     body?: {
         /**
          * External ID for the accounting setting.
@@ -13829,70 +14079,70 @@ export type PostApi20260401ResourcesFinanceAccountingSettingsUpsertData = {
         /**
          * ID of the associated Legal Entity.
          */
-        legal_entity_id: number;
+        legal_entity_id: string;
         /**
          * Default account for purchase invoices.
          */
-        default_account_for_purchase_invoices_id?: number;
+        default_account_for_purchase_invoices_id?: string;
         /**
          * Default account for vendors.
          */
-        default_account_for_vendors_id?: number;
+        default_account_for_vendors_id?: string;
         /**
          * Default account for banks.
          */
-        default_account_for_banks_id?: number;
+        default_account_for_banks_id?: string;
         /**
          * Default suspense account.
          */
-        default_account_for_suspense_id?: number;
+        default_account_for_suspense_id?: string;
         /**
          * Default account for expenses.
          */
-        default_account_for_expenses_id?: number;
+        default_account_for_expenses_id?: string;
         /**
          * Default account for employees.
          */
-        default_account_for_employees_id?: number;
+        default_account_for_employees_id?: string;
         /**
          * Default account for sale invoices.
          */
-        default_account_for_sale_invoices_id?: number;
+        default_account_for_sale_invoices_id?: string;
         /**
          * Default account for clients.
          */
-        default_account_for_clients_id?: number;
+        default_account_for_clients_id?: string;
         /**
          * Default account for benefits.
          */
-        default_account_for_benefits_id?: number;
+        default_account_for_benefits_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/accounting_settings/upsert';
+    url: '/api/2026-07-01/resources/finance/accounting_settings/upsert';
 };
 
-export type PostApi20260401ResourcesFinanceAccountingSettingsUpsertResponses = {
+export type PostApi20260701ResourcesFinanceAccountingSettingsUpsertResponses = {
     /**
      * OK
      */
     200: FinanceAccountingSetting;
 };
 
-export type PostApi20260401ResourcesFinanceAccountingSettingsUpsertResponse = PostApi20260401ResourcesFinanceAccountingSettingsUpsertResponses[keyof PostApi20260401ResourcesFinanceAccountingSettingsUpsertResponses];
+export type PostApi20260701ResourcesFinanceAccountingSettingsUpsertResponse = PostApi20260701ResourcesFinanceAccountingSettingsUpsertResponses[keyof PostApi20260701ResourcesFinanceAccountingSettingsUpsertResponses];
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsData = {
+export type GetApi20260701ResourcesFinanceBudgetOptionsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Search budget options by ID
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Search budget options by employee IDs
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Filter budget options effective at this date
          */
@@ -13906,10 +14156,10 @@ export type GetApi20260401ResourcesFinanceBudgetOptionsData = {
          */
         include_archived: boolean;
     };
-    url: '/api/2026-04-01/resources/finance/budget_options';
+    url: '/api/2026-07-01/resources/finance/budget_options';
 };
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsResponses = {
+export type GetApi20260701ResourcesFinanceBudgetOptionsResponses = {
     /**
      * OK
      */
@@ -13919,9 +14169,9 @@ export type GetApi20260401ResourcesFinanceBudgetOptionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsResponse = GetApi20260401ResourcesFinanceBudgetOptionsResponses[keyof GetApi20260401ResourcesFinanceBudgetOptionsResponses];
+export type GetApi20260701ResourcesFinanceBudgetOptionsResponse = GetApi20260701ResourcesFinanceBudgetOptionsResponses[keyof GetApi20260701ResourcesFinanceBudgetOptionsResponses];
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsByIdData = {
+export type GetApi20260701ResourcesFinanceBudgetOptionsByIdData = {
     body?: never;
     path: {
         /**
@@ -13930,34 +14180,34 @@ export type GetApi20260401ResourcesFinanceBudgetOptionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/budget_options/{id}';
+    url: '/api/2026-07-01/resources/finance/budget_options/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsByIdResponses = {
+export type GetApi20260701ResourcesFinanceBudgetOptionsByIdResponses = {
     /**
      * OK
      */
     200: FinanceBudgetOption;
 };
 
-export type GetApi20260401ResourcesFinanceBudgetOptionsByIdResponse = GetApi20260401ResourcesFinanceBudgetOptionsByIdResponses[keyof GetApi20260401ResourcesFinanceBudgetOptionsByIdResponses];
+export type GetApi20260701ResourcesFinanceBudgetOptionsByIdResponse = GetApi20260701ResourcesFinanceBudgetOptionsByIdResponses[keyof GetApi20260701ResourcesFinanceBudgetOptionsByIdResponses];
 
-export type GetApi20260401ResourcesFinanceCategoriesData = {
+export type GetApi20260701ResourcesFinanceCategoriesData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Search categories by ID
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Search categories by company IDs
          */
-        'company_ids[]'?: Array<number>;
+        'company_ids[]'?: Array<string>;
         /**
          * Search subcategories by parent category ID
          */
-        'parent_category_ids[]'?: Array<number>;
+        'parent_category_ids[]'?: Array<string>;
         /**
          * Filter by category level
          */
@@ -13975,10 +14225,10 @@ export type GetApi20260401ResourcesFinanceCategoriesData = {
          */
         search?: string;
     };
-    url: '/api/2026-04-01/resources/finance/categories';
+    url: '/api/2026-07-01/resources/finance/categories';
 };
 
-export type GetApi20260401ResourcesFinanceCategoriesResponses = {
+export type GetApi20260701ResourcesFinanceCategoriesResponses = {
     /**
      * OK
      */
@@ -13988,9 +14238,9 @@ export type GetApi20260401ResourcesFinanceCategoriesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceCategoriesResponse = GetApi20260401ResourcesFinanceCategoriesResponses[keyof GetApi20260401ResourcesFinanceCategoriesResponses];
+export type GetApi20260701ResourcesFinanceCategoriesResponse = GetApi20260701ResourcesFinanceCategoriesResponses[keyof GetApi20260701ResourcesFinanceCategoriesResponses];
 
-export type GetApi20260401ResourcesFinanceCategoriesByIdData = {
+export type GetApi20260701ResourcesFinanceCategoriesByIdData = {
     body?: never;
     path: {
         /**
@@ -13999,26 +14249,26 @@ export type GetApi20260401ResourcesFinanceCategoriesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/categories/{id}';
+    url: '/api/2026-07-01/resources/finance/categories/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceCategoriesByIdResponses = {
+export type GetApi20260701ResourcesFinanceCategoriesByIdResponses = {
     /**
      * OK
      */
     200: FinanceCategory;
 };
 
-export type GetApi20260401ResourcesFinanceCategoriesByIdResponse = GetApi20260401ResourcesFinanceCategoriesByIdResponses[keyof GetApi20260401ResourcesFinanceCategoriesByIdResponses];
+export type GetApi20260701ResourcesFinanceCategoriesByIdResponse = GetApi20260701ResourcesFinanceCategoriesByIdResponses[keyof GetApi20260701ResourcesFinanceCategoriesByIdResponses];
 
-export type GetApi20260401ResourcesFinanceContactsData = {
+export type GetApi20260701ResourcesFinanceContactsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of Contact IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * List of Tax IDs to filter by.
          */
@@ -14052,10 +14302,10 @@ export type GetApi20260401ResourcesFinanceContactsData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/contacts';
+    url: '/api/2026-07-01/resources/finance/contacts';
 };
 
-export type GetApi20260401ResourcesFinanceContactsResponses = {
+export type GetApi20260701ResourcesFinanceContactsResponses = {
     /**
      * OK
      */
@@ -14065,9 +14315,9 @@ export type GetApi20260401ResourcesFinanceContactsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceContactsResponse = GetApi20260401ResourcesFinanceContactsResponses[keyof GetApi20260401ResourcesFinanceContactsResponses];
+export type GetApi20260701ResourcesFinanceContactsResponse = GetApi20260701ResourcesFinanceContactsResponses[keyof GetApi20260701ResourcesFinanceContactsResponses];
 
-export type PostApi20260401ResourcesFinanceContactsData = {
+export type PostApi20260701ResourcesFinanceContactsData = {
     body?: {
         /**
          * The commercial name of the Contact.
@@ -14102,7 +14352,7 @@ export type PostApi20260401ResourcesFinanceContactsData = {
         /**
          * List of project IDs associated with the Contact.
          */
-        project_ids?: Array<number>;
+        project_ids?: Array<string>;
         /**
          * The website of the Contact.
          */
@@ -14118,19 +14368,19 @@ export type PostApi20260401ResourcesFinanceContactsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/contacts';
+    url: '/api/2026-07-01/resources/finance/contacts';
 };
 
-export type PostApi20260401ResourcesFinanceContactsResponses = {
+export type PostApi20260701ResourcesFinanceContactsResponses = {
     /**
      * CREATED
      */
     201: FinanceContact;
 };
 
-export type PostApi20260401ResourcesFinanceContactsResponse = PostApi20260401ResourcesFinanceContactsResponses[keyof PostApi20260401ResourcesFinanceContactsResponses];
+export type PostApi20260701ResourcesFinanceContactsResponse = PostApi20260701ResourcesFinanceContactsResponses[keyof PostApi20260701ResourcesFinanceContactsResponses];
 
-export type GetApi20260401ResourcesFinanceContactsByIdData = {
+export type GetApi20260701ResourcesFinanceContactsByIdData = {
     body?: never;
     path: {
         /**
@@ -14139,24 +14389,24 @@ export type GetApi20260401ResourcesFinanceContactsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/contacts/{id}';
+    url: '/api/2026-07-01/resources/finance/contacts/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceContactsByIdResponses = {
+export type GetApi20260701ResourcesFinanceContactsByIdResponses = {
     /**
      * OK
      */
     200: FinanceContact;
 };
 
-export type GetApi20260401ResourcesFinanceContactsByIdResponse = GetApi20260401ResourcesFinanceContactsByIdResponses[keyof GetApi20260401ResourcesFinanceContactsByIdResponses];
+export type GetApi20260701ResourcesFinanceContactsByIdResponse = GetApi20260701ResourcesFinanceContactsByIdResponses[keyof GetApi20260701ResourcesFinanceContactsByIdResponses];
 
-export type PutApi20260401ResourcesFinanceContactsByIdData = {
+export type PutApi20260701ResourcesFinanceContactsByIdData = {
     body?: {
         /**
          * ID of the Contact to update.
          */
-        id: number;
+        id: string;
         /**
          * Tax identification number assigned to the Contact.
          */
@@ -14195,32 +14445,32 @@ export type PutApi20260401ResourcesFinanceContactsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/contacts/{id}';
+    url: '/api/2026-07-01/resources/finance/contacts/{id}';
 };
 
-export type PutApi20260401ResourcesFinanceContactsByIdResponses = {
+export type PutApi20260701ResourcesFinanceContactsByIdResponses = {
     /**
      * OK
      */
     200: FinanceContact;
 };
 
-export type PutApi20260401ResourcesFinanceContactsByIdResponse = PutApi20260401ResourcesFinanceContactsByIdResponses[keyof PutApi20260401ResourcesFinanceContactsByIdResponses];
+export type PutApi20260701ResourcesFinanceContactsByIdResponse = PutApi20260701ResourcesFinanceContactsByIdResponses[keyof PutApi20260701ResourcesFinanceContactsByIdResponses];
 
-export type GetApi20260401ResourcesFinanceCostCentersData = {
+export type GetApi20260701ResourcesFinanceCostCentersData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        company_id?: number;
-        'legal_entity_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        company_id?: string;
+        'legal_entity_ids[]'?: Array<string>;
         include_actives_on_date?: string;
         search?: string;
     };
-    url: '/api/2026-04-01/resources/finance/cost_centers';
+    url: '/api/2026-07-01/resources/finance/cost_centers';
 };
 
-export type GetApi20260401ResourcesFinanceCostCentersResponses = {
+export type GetApi20260701ResourcesFinanceCostCentersResponses = {
     /**
      * OK
      */
@@ -14230,100 +14480,100 @@ export type GetApi20260401ResourcesFinanceCostCentersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceCostCentersResponse = GetApi20260401ResourcesFinanceCostCentersResponses[keyof GetApi20260401ResourcesFinanceCostCentersResponses];
+export type GetApi20260701ResourcesFinanceCostCentersResponse = GetApi20260701ResourcesFinanceCostCentersResponses[keyof GetApi20260701ResourcesFinanceCostCentersResponses];
 
-export type PostApi20260401ResourcesFinanceCostCentersData = {
+export type PostApi20260701ResourcesFinanceCostCentersData = {
     body?: {
         name: string;
-        company_id: number;
-        legal_entity_id?: number;
+        company_id: string;
+        legal_entity_id?: string;
         code?: string;
         description?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/cost_centers';
+    url: '/api/2026-07-01/resources/finance/cost_centers';
 };
 
-export type PostApi20260401ResourcesFinanceCostCentersResponses = {
+export type PostApi20260701ResourcesFinanceCostCentersResponses = {
     /**
      * CREATED
      */
     201: FinanceCostCenter;
 };
 
-export type PostApi20260401ResourcesFinanceCostCentersResponse = PostApi20260401ResourcesFinanceCostCentersResponses[keyof PostApi20260401ResourcesFinanceCostCentersResponses];
+export type PostApi20260701ResourcesFinanceCostCentersResponse = PostApi20260701ResourcesFinanceCostCentersResponses[keyof PostApi20260701ResourcesFinanceCostCentersResponses];
 
-export type DeleteApi20260401ResourcesFinanceCostCentersByIdData = {
+export type DeleteApi20260701ResourcesFinanceCostCentersByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/cost_centers/{id}';
+    url: '/api/2026-07-01/resources/finance/cost_centers/{id}';
 };
 
-export type DeleteApi20260401ResourcesFinanceCostCentersByIdResponses = {
+export type DeleteApi20260701ResourcesFinanceCostCentersByIdResponses = {
     /**
      * OK
      */
     200: FinanceCostCenter;
 };
 
-export type DeleteApi20260401ResourcesFinanceCostCentersByIdResponse = DeleteApi20260401ResourcesFinanceCostCentersByIdResponses[keyof DeleteApi20260401ResourcesFinanceCostCentersByIdResponses];
+export type DeleteApi20260701ResourcesFinanceCostCentersByIdResponse = DeleteApi20260701ResourcesFinanceCostCentersByIdResponses[keyof DeleteApi20260701ResourcesFinanceCostCentersByIdResponses];
 
-export type GetApi20260401ResourcesFinanceCostCentersByIdData = {
+export type GetApi20260701ResourcesFinanceCostCentersByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/cost_centers/{id}';
+    url: '/api/2026-07-01/resources/finance/cost_centers/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceCostCentersByIdResponses = {
+export type GetApi20260701ResourcesFinanceCostCentersByIdResponses = {
     /**
      * OK
      */
     200: FinanceCostCenter;
 };
 
-export type GetApi20260401ResourcesFinanceCostCentersByIdResponse = GetApi20260401ResourcesFinanceCostCentersByIdResponses[keyof GetApi20260401ResourcesFinanceCostCentersByIdResponses];
+export type GetApi20260701ResourcesFinanceCostCentersByIdResponse = GetApi20260701ResourcesFinanceCostCentersByIdResponses[keyof GetApi20260701ResourcesFinanceCostCentersByIdResponses];
 
-export type PostApi20260401ResourcesFinanceCostCentersEditData = {
+export type PostApi20260701ResourcesFinanceCostCentersEditData = {
     body?: {
-        id: number;
+        id: string;
         name?: string;
         code?: string;
         description?: string;
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/cost_centers/edit';
+    url: '/api/2026-07-01/resources/finance/cost_centers/edit';
 };
 
-export type PostApi20260401ResourcesFinanceCostCentersEditResponses = {
+export type PostApi20260701ResourcesFinanceCostCentersEditResponses = {
     /**
      * OK
      */
     200: FinanceCostCenter;
 };
 
-export type PostApi20260401ResourcesFinanceCostCentersEditResponse = PostApi20260401ResourcesFinanceCostCentersEditResponses[keyof PostApi20260401ResourcesFinanceCostCentersEditResponses];
+export type PostApi20260701ResourcesFinanceCostCentersEditResponse = PostApi20260701ResourcesFinanceCostCentersEditResponses[keyof PostApi20260701ResourcesFinanceCostCentersEditResponses];
 
-export type GetApi20260401ResourcesFinanceCostCenterMembershipsData = {
+export type GetApi20260701ResourcesFinanceCostCenterMembershipsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * To retreive active cost center memberships for a specific cost center
          */
-        cost_center_id?: number;
+        cost_center_id?: string;
         /**
          * To retreive active cost center memberships for a specific employee
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * To retreive active cost center memberships for a specific date
          */
@@ -14339,16 +14589,16 @@ export type GetApi20260401ResourcesFinanceCostCenterMembershipsData = {
         /**
          * retrieve the cost center memberships for a specific company
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * retrieve the cost center memberships for a list of cost centers
          */
-        'cost_center_ids[]'?: Array<number>;
+        'cost_center_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/finance/cost_center_memberships';
+    url: '/api/2026-07-01/resources/finance/cost_center_memberships';
 };
 
-export type GetApi20260401ResourcesFinanceCostCenterMembershipsResponses = {
+export type GetApi20260701ResourcesFinanceCostCenterMembershipsResponses = {
     /**
      * OK
      */
@@ -14358,44 +14608,44 @@ export type GetApi20260401ResourcesFinanceCostCenterMembershipsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceCostCenterMembershipsResponse = GetApi20260401ResourcesFinanceCostCenterMembershipsResponses[keyof GetApi20260401ResourcesFinanceCostCenterMembershipsResponses];
+export type GetApi20260701ResourcesFinanceCostCenterMembershipsResponse = GetApi20260701ResourcesFinanceCostCenterMembershipsResponses[keyof GetApi20260701ResourcesFinanceCostCenterMembershipsResponses];
 
-export type PostApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdateData = {
+export type PostApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdateData = {
     body?: {
-        employee_id: number;
+        employee_id: string;
         memberships: Array<unknown>;
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/cost_center_memberships/bulk_create_update';
+    url: '/api/2026-07-01/resources/finance/cost_center_memberships/bulk_create_update';
 };
 
-export type PostApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses = {
+export type PostApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses = {
     /**
      * OK
      */
     200: Array<FinanceCostCenterMembership>;
 };
 
-export type PostApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponse = PostApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses[keyof PostApi20260401ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses];
+export type PostApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponse = PostApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses[keyof PostApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdateResponses];
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsData = {
+export type GetApi20260701ResourcesFinanceFinancialDocumentsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Search financial documents by company_id
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * Search financial documents by ID
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Search financial documents by vendor_id
          */
-        vendor_id?: number;
+        vendor_id?: string;
         /**
          * Search financial documents by currency
          */
@@ -14407,7 +14657,7 @@ export type GetApi20260401ResourcesFinanceFinancialDocumentsData = {
         /**
          * Search financial documents by legal_entity_id
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Search financial documents by document_type
          */
@@ -14417,10 +14667,10 @@ export type GetApi20260401ResourcesFinanceFinancialDocumentsData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/financial_documents';
+    url: '/api/2026-07-01/resources/finance/financial_documents';
 };
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsResponses = {
+export type GetApi20260701ResourcesFinanceFinancialDocumentsResponses = {
     /**
      * OK
      */
@@ -14430,9 +14680,9 @@ export type GetApi20260401ResourcesFinanceFinancialDocumentsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsResponse = GetApi20260401ResourcesFinanceFinancialDocumentsResponses[keyof GetApi20260401ResourcesFinanceFinancialDocumentsResponses];
+export type GetApi20260701ResourcesFinanceFinancialDocumentsResponse = GetApi20260701ResourcesFinanceFinancialDocumentsResponses[keyof GetApi20260701ResourcesFinanceFinancialDocumentsResponses];
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsByIdData = {
+export type GetApi20260701ResourcesFinanceFinancialDocumentsByIdData = {
     body?: never;
     path: {
         /**
@@ -14441,34 +14691,34 @@ export type GetApi20260401ResourcesFinanceFinancialDocumentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/financial_documents/{id}';
+    url: '/api/2026-07-01/resources/finance/financial_documents/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsByIdResponses = {
+export type GetApi20260701ResourcesFinanceFinancialDocumentsByIdResponses = {
     /**
      * OK
      */
     200: FinanceFinancialDocument;
 };
 
-export type GetApi20260401ResourcesFinanceFinancialDocumentsByIdResponse = GetApi20260401ResourcesFinanceFinancialDocumentsByIdResponses[keyof GetApi20260401ResourcesFinanceFinancialDocumentsByIdResponses];
+export type GetApi20260701ResourcesFinanceFinancialDocumentsByIdResponse = GetApi20260701ResourcesFinanceFinancialDocumentsByIdResponses[keyof GetApi20260701ResourcesFinanceFinancialDocumentsByIdResponses];
 
-export type GetApi20260401ResourcesFinanceJournalEntriesData = {
+export type GetApi20260701ResourcesFinanceJournalEntriesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by JournalEntry IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by Legal Entity IDs
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Filter by Source IDs
          */
-        'source_ids[]'?: Array<number>;
+        'source_ids[]'?: Array<string>;
         /**
          * Filter by related source type
          */
@@ -14486,10 +14736,10 @@ export type GetApi20260401ResourcesFinanceJournalEntriesData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/journal_entries';
+    url: '/api/2026-07-01/resources/finance/journal_entries';
 };
 
-export type GetApi20260401ResourcesFinanceJournalEntriesResponses = {
+export type GetApi20260701ResourcesFinanceJournalEntriesResponses = {
     /**
      * OK
      */
@@ -14499,9 +14749,9 @@ export type GetApi20260401ResourcesFinanceJournalEntriesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceJournalEntriesResponse = GetApi20260401ResourcesFinanceJournalEntriesResponses[keyof GetApi20260401ResourcesFinanceJournalEntriesResponses];
+export type GetApi20260701ResourcesFinanceJournalEntriesResponse = GetApi20260701ResourcesFinanceJournalEntriesResponses[keyof GetApi20260701ResourcesFinanceJournalEntriesResponses];
 
-export type PostApi20260401ResourcesFinanceJournalEntriesData = {
+export type PostApi20260701ResourcesFinanceJournalEntriesData = {
     body?: {
         /**
          * External identifier for the journal entry
@@ -14510,7 +14760,7 @@ export type PostApi20260401ResourcesFinanceJournalEntriesData = {
         /**
          * The associated Legal Entity ID
          */
-        legal_entity_id: number;
+        legal_entity_id: string;
         /**
          * Journal entry type (e.g. bank, invoice, tax)
          */
@@ -14534,19 +14784,19 @@ export type PostApi20260401ResourcesFinanceJournalEntriesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/journal_entries';
+    url: '/api/2026-07-01/resources/finance/journal_entries';
 };
 
-export type PostApi20260401ResourcesFinanceJournalEntriesResponses = {
+export type PostApi20260701ResourcesFinanceJournalEntriesResponses = {
     /**
      * CREATED
      */
     201: FinanceJournalEntry;
 };
 
-export type PostApi20260401ResourcesFinanceJournalEntriesResponse = PostApi20260401ResourcesFinanceJournalEntriesResponses[keyof PostApi20260401ResourcesFinanceJournalEntriesResponses];
+export type PostApi20260701ResourcesFinanceJournalEntriesResponse = PostApi20260701ResourcesFinanceJournalEntriesResponses[keyof PostApi20260701ResourcesFinanceJournalEntriesResponses];
 
-export type GetApi20260401ResourcesFinanceJournalEntriesByIdData = {
+export type GetApi20260701ResourcesFinanceJournalEntriesByIdData = {
     body?: never;
     path: {
         /**
@@ -14555,34 +14805,34 @@ export type GetApi20260401ResourcesFinanceJournalEntriesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/journal_entries/{id}';
+    url: '/api/2026-07-01/resources/finance/journal_entries/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceJournalEntriesByIdResponses = {
+export type GetApi20260701ResourcesFinanceJournalEntriesByIdResponses = {
     /**
      * OK
      */
     200: FinanceJournalEntry;
 };
 
-export type GetApi20260401ResourcesFinanceJournalEntriesByIdResponse = GetApi20260401ResourcesFinanceJournalEntriesByIdResponses[keyof GetApi20260401ResourcesFinanceJournalEntriesByIdResponses];
+export type GetApi20260701ResourcesFinanceJournalEntriesByIdResponse = GetApi20260701ResourcesFinanceJournalEntriesByIdResponses[keyof GetApi20260701ResourcesFinanceJournalEntriesByIdResponses];
 
-export type GetApi20260401ResourcesFinanceJournalLinesData = {
+export type GetApi20260701ResourcesFinanceJournalLinesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by specific JournalLine IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by specific JournalEntry IDs
          */
-        'journal_entry_ids[]'?: Array<number>;
+        'journal_entry_ids[]'?: Array<string>;
         /**
          * Filter by specific Account IDs
          */
-        'account_ids[]'?: Array<number>;
+        'account_ids[]'?: Array<string>;
         /**
          * Filter by JournalEntry types, accepted values: bank, bill, invoice, credit_note, merged_ledger_account, reconciliation, tax, receipt, payroll_result, external
          */
@@ -14597,10 +14847,10 @@ export type GetApi20260401ResourcesFinanceJournalLinesData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/journal_lines';
+    url: '/api/2026-07-01/resources/finance/journal_lines';
 };
 
-export type GetApi20260401ResourcesFinanceJournalLinesResponses = {
+export type GetApi20260701ResourcesFinanceJournalLinesResponses = {
     /**
      * OK
      */
@@ -14610,9 +14860,9 @@ export type GetApi20260401ResourcesFinanceJournalLinesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceJournalLinesResponse = GetApi20260401ResourcesFinanceJournalLinesResponses[keyof GetApi20260401ResourcesFinanceJournalLinesResponses];
+export type GetApi20260701ResourcesFinanceJournalLinesResponse = GetApi20260701ResourcesFinanceJournalLinesResponses[keyof GetApi20260701ResourcesFinanceJournalLinesResponses];
 
-export type GetApi20260401ResourcesFinanceJournalLinesByIdData = {
+export type GetApi20260701ResourcesFinanceJournalLinesByIdData = {
     body?: never;
     path: {
         /**
@@ -14621,30 +14871,30 @@ export type GetApi20260401ResourcesFinanceJournalLinesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/journal_lines/{id}';
+    url: '/api/2026-07-01/resources/finance/journal_lines/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceJournalLinesByIdResponses = {
+export type GetApi20260701ResourcesFinanceJournalLinesByIdResponses = {
     /**
      * OK
      */
     200: FinanceJournalLine;
 };
 
-export type GetApi20260401ResourcesFinanceJournalLinesByIdResponse = GetApi20260401ResourcesFinanceJournalLinesByIdResponses[keyof GetApi20260401ResourcesFinanceJournalLinesByIdResponses];
+export type GetApi20260701ResourcesFinanceJournalLinesByIdResponse = GetApi20260701ResourcesFinanceJournalLinesByIdResponses[keyof GetApi20260701ResourcesFinanceJournalLinesByIdResponses];
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesData = {
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Search ledger account resources by ID
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter ledger account resources by resource ID
          */
-        'resource_ids[]'?: Array<number>;
+        'resource_ids[]'?: Array<string>;
         /**
          * Filter ledger account resources by resource type
          */
@@ -14652,7 +14902,7 @@ export type GetApi20260401ResourcesFinanceLedgerAccountResourcesData = {
         /**
          * Filter ledger account resources by legal entity ID
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
         /**
          * Filter ledger account resources by updated at
          */
@@ -14660,12 +14910,12 @@ export type GetApi20260401ResourcesFinanceLedgerAccountResourcesData = {
         /**
          * Filter ledger account resources by finance account ID
          */
-        'finance_account_ids[]'?: Array<number>;
+        'finance_account_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/finance/ledger_account_resources';
+    url: '/api/2026-07-01/resources/finance/ledger_account_resources';
 };
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesResponses = {
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesResponses = {
     /**
      * OK
      */
@@ -14675,9 +14925,9 @@ export type GetApi20260401ResourcesFinanceLedgerAccountResourcesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesResponse = GetApi20260401ResourcesFinanceLedgerAccountResourcesResponses[keyof GetApi20260401ResourcesFinanceLedgerAccountResourcesResponses];
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesResponse = GetApi20260701ResourcesFinanceLedgerAccountResourcesResponses[keyof GetApi20260701ResourcesFinanceLedgerAccountResourcesResponses];
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdData = {
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesByIdData = {
     body?: never;
     path: {
         /**
@@ -14686,24 +14936,24 @@ export type GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/ledger_account_resources/{id}';
+    url: '/api/2026-07-01/resources/finance/ledger_account_resources/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdResponses = {
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesByIdResponses = {
     /**
      * OK
      */
     200: FinanceLedgerAccountResource;
 };
 
-export type GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdResponse = GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdResponses[keyof GetApi20260401ResourcesFinanceLedgerAccountResourcesByIdResponses];
+export type GetApi20260701ResourcesFinanceLedgerAccountResourcesByIdResponse = GetApi20260701ResourcesFinanceLedgerAccountResourcesByIdResponses[keyof GetApi20260701ResourcesFinanceLedgerAccountResourcesByIdResponses];
 
-export type PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertData = {
+export type PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertData = {
     body?: {
         /**
          * Factorial unique identifier.
          */
-        id?: number;
+        id?: string;
         /**
          * Name of the ledger account resource.
          */
@@ -14719,15 +14969,15 @@ export type PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertData = {
         /**
          * Legal entity identifier.
          */
-        legal_entity_id: number;
+        legal_entity_id: string;
         /**
          * Finance account identifier.
          */
-        account_id?: number;
+        account_id?: string;
         /**
          * Factorial unique identifier of the resource associated to the ledger account resource.
          */
-        resource_id?: number;
+        resource_id?: string;
         /**
          * Ledger account resource type.
          */
@@ -14743,39 +14993,39 @@ export type PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/ledger_account_resources/upsert';
+    url: '/api/2026-07-01/resources/finance/ledger_account_resources/upsert';
 };
 
-export type PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertResponses = {
+export type PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertResponses = {
     /**
      * OK
      */
     200: FinanceLedgerAccountResource;
 };
 
-export type PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertResponse = PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertResponses[keyof PostApi20260401ResourcesFinanceLedgerAccountResourcesUpsertResponses];
+export type PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertResponse = PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertResponses[keyof PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertResponses];
 
-export type GetApi20260401ResourcesFinanceTaxRatesData = {
+export type GetApi20260701ResourcesFinanceTaxRatesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of TaxRate IDs to filter.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * List of TaxType IDs to filter TaxRate records.
          */
-        'tax_type_ids[]'?: Array<number>;
+        'tax_type_ids[]'?: Array<string>;
         /**
          * Start date for filtering TaxRate records based on their last update.
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/tax_rates';
+    url: '/api/2026-07-01/resources/finance/tax_rates';
 };
 
-export type GetApi20260401ResourcesFinanceTaxRatesResponses = {
+export type GetApi20260701ResourcesFinanceTaxRatesResponses = {
     /**
      * OK
      */
@@ -14785,9 +15035,9 @@ export type GetApi20260401ResourcesFinanceTaxRatesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceTaxRatesResponse = GetApi20260401ResourcesFinanceTaxRatesResponses[keyof GetApi20260401ResourcesFinanceTaxRatesResponses];
+export type GetApi20260701ResourcesFinanceTaxRatesResponse = GetApi20260701ResourcesFinanceTaxRatesResponses[keyof GetApi20260701ResourcesFinanceTaxRatesResponses];
 
-export type PostApi20260401ResourcesFinanceTaxRatesData = {
+export type PostApi20260701ResourcesFinanceTaxRatesData = {
     body?: {
         /**
          * An optional text describing the tax rate's purpose or context.
@@ -14800,7 +15050,7 @@ export type PostApi20260401ResourcesFinanceTaxRatesData = {
         /**
          * The identifier of the related TaxType record.
          */
-        tax_type_id?: number;
+        tax_type_id?: string;
         /**
          * The external id of the tax rate.
          */
@@ -14808,19 +15058,19 @@ export type PostApi20260401ResourcesFinanceTaxRatesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_rates';
+    url: '/api/2026-07-01/resources/finance/tax_rates';
 };
 
-export type PostApi20260401ResourcesFinanceTaxRatesResponses = {
+export type PostApi20260701ResourcesFinanceTaxRatesResponses = {
     /**
      * CREATED
      */
     201: FinanceTaxRate;
 };
 
-export type PostApi20260401ResourcesFinanceTaxRatesResponse = PostApi20260401ResourcesFinanceTaxRatesResponses[keyof PostApi20260401ResourcesFinanceTaxRatesResponses];
+export type PostApi20260701ResourcesFinanceTaxRatesResponse = PostApi20260701ResourcesFinanceTaxRatesResponses[keyof PostApi20260701ResourcesFinanceTaxRatesResponses];
 
-export type GetApi20260401ResourcesFinanceTaxRatesByIdData = {
+export type GetApi20260701ResourcesFinanceTaxRatesByIdData = {
     body?: never;
     path: {
         /**
@@ -14829,24 +15079,24 @@ export type GetApi20260401ResourcesFinanceTaxRatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_rates/{id}';
+    url: '/api/2026-07-01/resources/finance/tax_rates/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceTaxRatesByIdResponses = {
+export type GetApi20260701ResourcesFinanceTaxRatesByIdResponses = {
     /**
      * OK
      */
     200: FinanceTaxRate;
 };
 
-export type GetApi20260401ResourcesFinanceTaxRatesByIdResponse = GetApi20260401ResourcesFinanceTaxRatesByIdResponses[keyof GetApi20260401ResourcesFinanceTaxRatesByIdResponses];
+export type GetApi20260701ResourcesFinanceTaxRatesByIdResponse = GetApi20260701ResourcesFinanceTaxRatesByIdResponses[keyof GetApi20260701ResourcesFinanceTaxRatesByIdResponses];
 
-export type PutApi20260401ResourcesFinanceTaxRatesByIdData = {
+export type PutApi20260701ResourcesFinanceTaxRatesByIdData = {
     body?: {
         /**
          * The id of the tax rate.
          */
-        id: number;
+        id: string;
         /**
          * An optional text describing the tax rate's purpose or context.
          */
@@ -14859,26 +15109,26 @@ export type PutApi20260401ResourcesFinanceTaxRatesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_rates/{id}';
+    url: '/api/2026-07-01/resources/finance/tax_rates/{id}';
 };
 
-export type PutApi20260401ResourcesFinanceTaxRatesByIdResponses = {
+export type PutApi20260701ResourcesFinanceTaxRatesByIdResponses = {
     /**
      * OK
      */
     200: FinanceTaxRate;
 };
 
-export type PutApi20260401ResourcesFinanceTaxRatesByIdResponse = PutApi20260401ResourcesFinanceTaxRatesByIdResponses[keyof PutApi20260401ResourcesFinanceTaxRatesByIdResponses];
+export type PutApi20260701ResourcesFinanceTaxRatesByIdResponse = PutApi20260701ResourcesFinanceTaxRatesByIdResponses[keyof PutApi20260701ResourcesFinanceTaxRatesByIdResponses];
 
-export type GetApi20260401ResourcesFinanceTaxTypesData = {
+export type GetApi20260701ResourcesFinanceTaxTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of TaxType IDs to filter.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filters TaxTypes by a specified country code or includes those without any country code if set to nil.
          */
@@ -14892,10 +15142,10 @@ export type GetApi20260401ResourcesFinanceTaxTypesData = {
          */
         updated_from?: string;
     };
-    url: '/api/2026-04-01/resources/finance/tax_types';
+    url: '/api/2026-07-01/resources/finance/tax_types';
 };
 
-export type GetApi20260401ResourcesFinanceTaxTypesResponses = {
+export type GetApi20260701ResourcesFinanceTaxTypesResponses = {
     /**
      * OK
      */
@@ -14905,9 +15155,9 @@ export type GetApi20260401ResourcesFinanceTaxTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesFinanceTaxTypesResponse = GetApi20260401ResourcesFinanceTaxTypesResponses[keyof GetApi20260401ResourcesFinanceTaxTypesResponses];
+export type GetApi20260701ResourcesFinanceTaxTypesResponse = GetApi20260701ResourcesFinanceTaxTypesResponses[keyof GetApi20260701ResourcesFinanceTaxTypesResponses];
 
-export type PostApi20260401ResourcesFinanceTaxTypesData = {
+export type PostApi20260701ResourcesFinanceTaxTypesData = {
     body?: {
         /**
          * The name assigned to the tax type.
@@ -14928,19 +15178,19 @@ export type PostApi20260401ResourcesFinanceTaxTypesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_types';
+    url: '/api/2026-07-01/resources/finance/tax_types';
 };
 
-export type PostApi20260401ResourcesFinanceTaxTypesResponses = {
+export type PostApi20260701ResourcesFinanceTaxTypesResponses = {
     /**
      * CREATED
      */
     201: FinanceTaxType;
 };
 
-export type PostApi20260401ResourcesFinanceTaxTypesResponse = PostApi20260401ResourcesFinanceTaxTypesResponses[keyof PostApi20260401ResourcesFinanceTaxTypesResponses];
+export type PostApi20260701ResourcesFinanceTaxTypesResponse = PostApi20260701ResourcesFinanceTaxTypesResponses[keyof PostApi20260701ResourcesFinanceTaxTypesResponses];
 
-export type GetApi20260401ResourcesFinanceTaxTypesByIdData = {
+export type GetApi20260701ResourcesFinanceTaxTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -14949,24 +15199,24 @@ export type GetApi20260401ResourcesFinanceTaxTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_types/{id}';
+    url: '/api/2026-07-01/resources/finance/tax_types/{id}';
 };
 
-export type GetApi20260401ResourcesFinanceTaxTypesByIdResponses = {
+export type GetApi20260701ResourcesFinanceTaxTypesByIdResponses = {
     /**
      * OK
      */
     200: FinanceTaxType;
 };
 
-export type GetApi20260401ResourcesFinanceTaxTypesByIdResponse = GetApi20260401ResourcesFinanceTaxTypesByIdResponses[keyof GetApi20260401ResourcesFinanceTaxTypesByIdResponses];
+export type GetApi20260701ResourcesFinanceTaxTypesByIdResponse = GetApi20260701ResourcesFinanceTaxTypesByIdResponses[keyof GetApi20260701ResourcesFinanceTaxTypesByIdResponses];
 
-export type PutApi20260401ResourcesFinanceTaxTypesByIdData = {
+export type PutApi20260701ResourcesFinanceTaxTypesByIdData = {
     body?: {
         /**
          * The id of the tax type.
          */
-        id: number;
+        id: string;
         /**
          * The name assigned to the tax type.
          */
@@ -14987,38 +15237,38 @@ export type PutApi20260401ResourcesFinanceTaxTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/finance/tax_types/{id}';
+    url: '/api/2026-07-01/resources/finance/tax_types/{id}';
 };
 
-export type PutApi20260401ResourcesFinanceTaxTypesByIdResponses = {
+export type PutApi20260701ResourcesFinanceTaxTypesByIdResponses = {
     /**
      * OK
      */
     200: FinanceTaxType;
 };
 
-export type PutApi20260401ResourcesFinanceTaxTypesByIdResponse = PutApi20260401ResourcesFinanceTaxTypesByIdResponses[keyof PutApi20260401ResourcesFinanceTaxTypesByIdResponses];
+export type PutApi20260701ResourcesFinanceTaxTypesByIdResponse = PutApi20260701ResourcesFinanceTaxTypesByIdResponses[keyof PutApi20260701ResourcesFinanceTaxTypesByIdResponses];
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysData = {
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Company holiday ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Location ids
          */
-        'location_ids[]'?: Array<number>;
+        'location_ids[]'?: Array<string>;
         /**
          * Team ids
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
         /**
          * Filter by the default location of these employees
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Start date
          */
@@ -15028,10 +15278,10 @@ export type GetApi20260401ResourcesHolidaysCompanyHolidaysData = {
          */
         end_at?: string;
     };
-    url: '/api/2026-04-01/resources/holidays/company_holidays';
+    url: '/api/2026-07-01/resources/holidays/company_holidays';
 };
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysResponses = {
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysResponses = {
     /**
      * OK
      */
@@ -15041,9 +15291,9 @@ export type GetApi20260401ResourcesHolidaysCompanyHolidaysResponses = {
     };
 };
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysResponse = GetApi20260401ResourcesHolidaysCompanyHolidaysResponses[keyof GetApi20260401ResourcesHolidaysCompanyHolidaysResponses];
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysResponse = GetApi20260701ResourcesHolidaysCompanyHolidaysResponses[keyof GetApi20260701ResourcesHolidaysCompanyHolidaysResponses];
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysByIdData = {
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysByIdData = {
     body?: never;
     path: {
         /**
@@ -15052,31 +15302,56 @@ export type GetApi20260401ResourcesHolidaysCompanyHolidaysByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/holidays/company_holidays/{id}';
+    url: '/api/2026-07-01/resources/holidays/company_holidays/{id}';
 };
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysByIdResponses = {
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysByIdResponses = {
     /**
      * OK
      */
     200: HolidaysCompanyHoliday;
 };
 
-export type GetApi20260401ResourcesHolidaysCompanyHolidaysByIdResponse = GetApi20260401ResourcesHolidaysCompanyHolidaysByIdResponses[keyof GetApi20260401ResourcesHolidaysCompanyHolidaysByIdResponses];
+export type GetApi20260701ResourcesHolidaysCompanyHolidaysByIdResponse = GetApi20260701ResourcesHolidaysCompanyHolidaysByIdResponses[keyof GetApi20260701ResourcesHolidaysCompanyHolidaysByIdResponses];
 
-export type GetApi20260401ResourcesIntegrationsSyncableItemsData = {
+export type PostApi20260701ResourcesIntegrationsSyncRunOutputsData = {
+    body?: {
+        /**
+         * Identifier of the sync run this output belongs to
+         */
+        sync_run_id: string;
+        /**
+         * The CSV file to upload as the sync run output
+         */
+        file: Blob | File;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/2026-07-01/resources/integrations/sync_run_outputs';
+};
+
+export type PostApi20260701ResourcesIntegrationsSyncRunOutputsResponses = {
+    /**
+     * CREATED
+     */
+    201: IntegrationsSyncRunOutput;
+};
+
+export type PostApi20260701ResourcesIntegrationsSyncRunOutputsResponse = PostApi20260701ResourcesIntegrationsSyncRunOutputsResponses[keyof PostApi20260701ResourcesIntegrationsSyncRunOutputsResponses];
+
+export type GetApi20260701ResourcesIntegrationsSyncableItemsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Identifier of the sync run
          */
-        sync_run_id: number;
+        sync_run_id: string;
     };
-    url: '/api/2026-04-01/resources/integrations/syncable_items';
+    url: '/api/2026-07-01/resources/integrations/syncable_items';
 };
 
-export type GetApi20260401ResourcesIntegrationsSyncableItemsResponses = {
+export type GetApi20260701ResourcesIntegrationsSyncableItemsResponses = {
     /**
      * OK
      */
@@ -15086,14 +15361,14 @@ export type GetApi20260401ResourcesIntegrationsSyncableItemsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesIntegrationsSyncableItemsResponse = GetApi20260401ResourcesIntegrationsSyncableItemsResponses[keyof GetApi20260401ResourcesIntegrationsSyncableItemsResponses];
+export type GetApi20260701ResourcesIntegrationsSyncableItemsResponse = GetApi20260701ResourcesIntegrationsSyncableItemsResponses[keyof GetApi20260701ResourcesIntegrationsSyncableItemsResponses];
 
-export type PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdData = {
+export type PutApi20260701ResourcesIntegrationsSyncableSyncRunsByIdData = {
     body?: {
         /**
          * Identifier of the syncable sync run
          */
-        id: number;
+        id: string;
         /**
          * Status of the syncable sync run
          */
@@ -15112,19 +15387,19 @@ export type PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/integrations/syncable_sync_runs/{id}';
+    url: '/api/2026-07-01/resources/integrations/syncable_sync_runs/{id}';
 };
 
-export type PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdResponses = {
+export type PutApi20260701ResourcesIntegrationsSyncableSyncRunsByIdResponses = {
     /**
      * OK
      */
     200: IntegrationsSyncableSyncRun;
 };
 
-export type PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdResponse = PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdResponses[keyof PutApi20260401ResourcesIntegrationsSyncableSyncRunsByIdResponses];
+export type PutApi20260701ResourcesIntegrationsSyncableSyncRunsByIdResponse = PutApi20260701ResourcesIntegrationsSyncableSyncRunsByIdResponses[keyof PutApi20260701ResourcesIntegrationsSyncableSyncRunsByIdResponses];
 
-export type GetApi20260401ResourcesItManagementItAssetsData = {
+export type GetApi20260701ResourcesItManagementItAssetsData = {
     body?: never;
     path?: never;
     query?: {
@@ -15143,24 +15418,24 @@ export type GetApi20260401ResourcesItManagementItAssetsData = {
         /**
          * Owner (employee) identifiers to filter assets
          */
-        'owner_ids[]'?: Array<number>;
+        'owner_ids[]'?: Array<string>;
         /**
          * Location identifiers to filter assets
          */
-        'location_ids[]'?: Array<number>;
+        'location_ids[]'?: Array<string>;
         /**
          * Workplace identifiers to filter assets
          */
-        'workplace_ids[]'?: Array<number>;
+        'workplace_ids[]'?: Array<string>;
         /**
          * Team identifiers to filter assets
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/it_management/it_assets';
+    url: '/api/2026-07-01/resources/it_management/it_assets';
 };
 
-export type GetApi20260401ResourcesItManagementItAssetsResponses = {
+export type GetApi20260701ResourcesItManagementItAssetsResponses = {
     /**
      * OK
      */
@@ -15170,9 +15445,9 @@ export type GetApi20260401ResourcesItManagementItAssetsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesItManagementItAssetsResponse = GetApi20260401ResourcesItManagementItAssetsResponses[keyof GetApi20260401ResourcesItManagementItAssetsResponses];
+export type GetApi20260701ResourcesItManagementItAssetsResponse = GetApi20260701ResourcesItManagementItAssetsResponses[keyof GetApi20260701ResourcesItManagementItAssetsResponses];
 
-export type PostApi20260401ResourcesItManagementItAssetsData = {
+export type PostApi20260701ResourcesItManagementItAssetsData = {
     body?: {
         /**
          * IT Asset Model identifier
@@ -15185,19 +15460,19 @@ export type PostApi20260401ResourcesItManagementItAssetsData = {
         /**
          * Owner (employee) identifier
          */
-        owner_id?: number;
+        owner_id?: string;
         /**
          * Space identifier
          */
-        location_id?: number;
+        location_id?: string;
         /**
          * Workplace identifier
          */
-        workplace_id?: number;
+        workplace_id?: string;
         /**
          * Team identifier
          */
-        team_id?: number;
+        team_id?: string;
         /**
          * Purchase date of the IT asset (YYYY-MM-DD)
          */
@@ -15225,23 +15500,23 @@ export type PostApi20260401ResourcesItManagementItAssetsData = {
         /**
          * Company identifier
          */
-        company_id?: number;
+        company_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_assets';
+    url: '/api/2026-07-01/resources/it_management/it_assets';
 };
 
-export type PostApi20260401ResourcesItManagementItAssetsResponses = {
+export type PostApi20260701ResourcesItManagementItAssetsResponses = {
     /**
      * CREATED
      */
     201: ItManagementItAsset;
 };
 
-export type PostApi20260401ResourcesItManagementItAssetsResponse = PostApi20260401ResourcesItManagementItAssetsResponses[keyof PostApi20260401ResourcesItManagementItAssetsResponses];
+export type PostApi20260701ResourcesItManagementItAssetsResponse = PostApi20260701ResourcesItManagementItAssetsResponses[keyof PostApi20260701ResourcesItManagementItAssetsResponses];
 
-export type DeleteApi20260401ResourcesItManagementItAssetsByIdData = {
+export type DeleteApi20260701ResourcesItManagementItAssetsByIdData = {
     body?: never;
     path: {
         /**
@@ -15250,19 +15525,19 @@ export type DeleteApi20260401ResourcesItManagementItAssetsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_assets/{id}';
+    url: '/api/2026-07-01/resources/it_management/it_assets/{id}';
 };
 
-export type DeleteApi20260401ResourcesItManagementItAssetsByIdResponses = {
+export type DeleteApi20260701ResourcesItManagementItAssetsByIdResponses = {
     /**
      * OK
      */
     200: ItManagementItAsset;
 };
 
-export type DeleteApi20260401ResourcesItManagementItAssetsByIdResponse = DeleteApi20260401ResourcesItManagementItAssetsByIdResponses[keyof DeleteApi20260401ResourcesItManagementItAssetsByIdResponses];
+export type DeleteApi20260701ResourcesItManagementItAssetsByIdResponse = DeleteApi20260701ResourcesItManagementItAssetsByIdResponses[keyof DeleteApi20260701ResourcesItManagementItAssetsByIdResponses];
 
-export type GetApi20260401ResourcesItManagementItAssetsByIdData = {
+export type GetApi20260701ResourcesItManagementItAssetsByIdData = {
     body?: never;
     path: {
         /**
@@ -15271,19 +15546,19 @@ export type GetApi20260401ResourcesItManagementItAssetsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_assets/{id}';
+    url: '/api/2026-07-01/resources/it_management/it_assets/{id}';
 };
 
-export type GetApi20260401ResourcesItManagementItAssetsByIdResponses = {
+export type GetApi20260701ResourcesItManagementItAssetsByIdResponses = {
     /**
      * OK
      */
     200: ItManagementItAsset;
 };
 
-export type GetApi20260401ResourcesItManagementItAssetsByIdResponse = GetApi20260401ResourcesItManagementItAssetsByIdResponses[keyof GetApi20260401ResourcesItManagementItAssetsByIdResponses];
+export type GetApi20260701ResourcesItManagementItAssetsByIdResponse = GetApi20260701ResourcesItManagementItAssetsByIdResponses[keyof GetApi20260701ResourcesItManagementItAssetsByIdResponses];
 
-export type PutApi20260401ResourcesItManagementItAssetsByIdData = {
+export type PutApi20260701ResourcesItManagementItAssetsByIdData = {
     body?: {
         /**
          * IT Asset identifier
@@ -15311,19 +15586,19 @@ export type PutApi20260401ResourcesItManagementItAssetsByIdData = {
         /**
          * Owner (employee) identifier
          */
-        owner_id?: number;
+        owner_id?: string;
         /**
          * Space identifier
          */
-        location_id?: number;
+        location_id?: string;
         /**
          * Workplace identifier
          */
-        workplace_id?: number;
+        workplace_id?: string;
         /**
          * Team identifier
          */
-        team_id?: number;
+        team_id?: string;
         /**
          * Purchase date of the IT asset (YYYY-MM-DD)
          */
@@ -15351,7 +15626,7 @@ export type PutApi20260401ResourcesItManagementItAssetsByIdData = {
         /**
          * Company identifier
          */
-        company_id?: number;
+        company_id?: string;
     };
     path: {
         /**
@@ -15360,19 +15635,19 @@ export type PutApi20260401ResourcesItManagementItAssetsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_assets/{id}';
+    url: '/api/2026-07-01/resources/it_management/it_assets/{id}';
 };
 
-export type PutApi20260401ResourcesItManagementItAssetsByIdResponses = {
+export type PutApi20260701ResourcesItManagementItAssetsByIdResponses = {
     /**
      * OK
      */
     200: ItManagementItAsset;
 };
 
-export type PutApi20260401ResourcesItManagementItAssetsByIdResponse = PutApi20260401ResourcesItManagementItAssetsByIdResponses[keyof PutApi20260401ResourcesItManagementItAssetsByIdResponses];
+export type PutApi20260701ResourcesItManagementItAssetsByIdResponse = PutApi20260701ResourcesItManagementItAssetsByIdResponses[keyof PutApi20260701ResourcesItManagementItAssetsByIdResponses];
 
-export type GetApi20260401ResourcesItManagementItAssetModelsData = {
+export type GetApi20260701ResourcesItManagementItAssetModelsData = {
     body?: never;
     path?: never;
     query?: {
@@ -15381,10 +15656,10 @@ export type GetApi20260401ResourcesItManagementItAssetModelsData = {
          */
         'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/it_management/it_asset_models';
+    url: '/api/2026-07-01/resources/it_management/it_asset_models';
 };
 
-export type GetApi20260401ResourcesItManagementItAssetModelsResponses = {
+export type GetApi20260701ResourcesItManagementItAssetModelsResponses = {
     /**
      * OK
      */
@@ -15394,9 +15669,9 @@ export type GetApi20260401ResourcesItManagementItAssetModelsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesItManagementItAssetModelsResponse = GetApi20260401ResourcesItManagementItAssetModelsResponses[keyof GetApi20260401ResourcesItManagementItAssetModelsResponses];
+export type GetApi20260701ResourcesItManagementItAssetModelsResponse = GetApi20260701ResourcesItManagementItAssetModelsResponses[keyof GetApi20260701ResourcesItManagementItAssetModelsResponses];
 
-export type PostApi20260401ResourcesItManagementItAssetModelsData = {
+export type PostApi20260701ResourcesItManagementItAssetModelsData = {
     body?: {
         /**
          * Type name of the IT asset model. Possible values are 'laptop', 'desktop', 'tablet', 'phone', 'screen', 'mouse', 'keyboard', 'headset', 'other'
@@ -15413,23 +15688,23 @@ export type PostApi20260401ResourcesItManagementItAssetModelsData = {
         /**
          * Company identifier
          */
-        company_id?: number;
+        company_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_asset_models';
+    url: '/api/2026-07-01/resources/it_management/it_asset_models';
 };
 
-export type PostApi20260401ResourcesItManagementItAssetModelsResponses = {
+export type PostApi20260701ResourcesItManagementItAssetModelsResponses = {
     /**
      * CREATED
      */
     201: ItManagementItAssetModel;
 };
 
-export type PostApi20260401ResourcesItManagementItAssetModelsResponse = PostApi20260401ResourcesItManagementItAssetModelsResponses[keyof PostApi20260401ResourcesItManagementItAssetModelsResponses];
+export type PostApi20260701ResourcesItManagementItAssetModelsResponse = PostApi20260701ResourcesItManagementItAssetModelsResponses[keyof PostApi20260701ResourcesItManagementItAssetModelsResponses];
 
-export type GetApi20260401ResourcesItManagementItAssetModelsByIdData = {
+export type GetApi20260701ResourcesItManagementItAssetModelsByIdData = {
     body?: never;
     path: {
         /**
@@ -15438,19 +15713,19 @@ export type GetApi20260401ResourcesItManagementItAssetModelsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_asset_models/{id}';
+    url: '/api/2026-07-01/resources/it_management/it_asset_models/{id}';
 };
 
-export type GetApi20260401ResourcesItManagementItAssetModelsByIdResponses = {
+export type GetApi20260701ResourcesItManagementItAssetModelsByIdResponses = {
     /**
      * OK
      */
     200: ItManagementItAssetModel;
 };
 
-export type GetApi20260401ResourcesItManagementItAssetModelsByIdResponse = GetApi20260401ResourcesItManagementItAssetModelsByIdResponses[keyof GetApi20260401ResourcesItManagementItAssetModelsByIdResponses];
+export type GetApi20260701ResourcesItManagementItAssetModelsByIdResponse = GetApi20260701ResourcesItManagementItAssetModelsByIdResponses[keyof GetApi20260701ResourcesItManagementItAssetModelsByIdResponses];
 
-export type PutApi20260401ResourcesItManagementItAssetModelsByIdData = {
+export type PutApi20260701ResourcesItManagementItAssetModelsByIdData = {
     body?: {
         /**
          * IT Asset Model identifier
@@ -15471,7 +15746,7 @@ export type PutApi20260401ResourcesItManagementItAssetModelsByIdData = {
         /**
          * Company identifier
          */
-        company_id?: number;
+        company_id?: string;
     };
     path: {
         /**
@@ -15480,35 +15755,35 @@ export type PutApi20260401ResourcesItManagementItAssetModelsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/it_management/it_asset_models/{id}';
+    url: '/api/2026-07-01/resources/it_management/it_asset_models/{id}';
 };
 
-export type PutApi20260401ResourcesItManagementItAssetModelsByIdResponses = {
+export type PutApi20260701ResourcesItManagementItAssetModelsByIdResponses = {
     /**
      * OK
      */
     200: ItManagementItAssetModel;
 };
 
-export type PutApi20260401ResourcesItManagementItAssetModelsByIdResponse = PutApi20260401ResourcesItManagementItAssetModelsByIdResponses[keyof PutApi20260401ResourcesItManagementItAssetModelsByIdResponses];
+export type PutApi20260701ResourcesItManagementItAssetModelsByIdResponse = PutApi20260701ResourcesItManagementItAssetModelsByIdResponses[keyof PutApi20260701ResourcesItManagementItAssetModelsByIdResponses];
 
-export type GetApi20260401ResourcesJobCatalogLevelsData = {
+export type GetApi20260701ResourcesJobCatalogLevelsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * filter by level ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * filter by role ids.
          */
-        'role_ids[]'?: Array<number>;
+        'role_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/job_catalog/levels';
+    url: '/api/2026-07-01/resources/job_catalog/levels';
 };
 
-export type GetApi20260401ResourcesJobCatalogLevelsResponses = {
+export type GetApi20260701ResourcesJobCatalogLevelsResponses = {
     /**
      * OK
      */
@@ -15518,9 +15793,9 @@ export type GetApi20260401ResourcesJobCatalogLevelsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesJobCatalogLevelsResponse = GetApi20260401ResourcesJobCatalogLevelsResponses[keyof GetApi20260401ResourcesJobCatalogLevelsResponses];
+export type GetApi20260701ResourcesJobCatalogLevelsResponse = GetApi20260701ResourcesJobCatalogLevelsResponses[keyof GetApi20260701ResourcesJobCatalogLevelsResponses];
 
-export type GetApi20260401ResourcesJobCatalogLevelsByIdData = {
+export type GetApi20260701ResourcesJobCatalogLevelsByIdData = {
     body?: never;
     path: {
         /**
@@ -15529,19 +15804,19 @@ export type GetApi20260401ResourcesJobCatalogLevelsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/job_catalog/levels/{id}';
+    url: '/api/2026-07-01/resources/job_catalog/levels/{id}';
 };
 
-export type GetApi20260401ResourcesJobCatalogLevelsByIdResponses = {
+export type GetApi20260701ResourcesJobCatalogLevelsByIdResponses = {
     /**
      * OK
      */
     200: JobCatalogLevel;
 };
 
-export type GetApi20260401ResourcesJobCatalogLevelsByIdResponse = GetApi20260401ResourcesJobCatalogLevelsByIdResponses[keyof GetApi20260401ResourcesJobCatalogLevelsByIdResponses];
+export type GetApi20260701ResourcesJobCatalogLevelsByIdResponse = GetApi20260701ResourcesJobCatalogLevelsByIdResponses[keyof GetApi20260701ResourcesJobCatalogLevelsByIdResponses];
 
-export type GetApi20260401ResourcesJobCatalogNodeAttributesData = {
+export type GetApi20260701ResourcesJobCatalogNodeAttributesData = {
     body?: never;
     path?: never;
     query: {
@@ -15554,10 +15829,10 @@ export type GetApi20260401ResourcesJobCatalogNodeAttributesData = {
          */
         'attribute_types[]': 'working_conditions' | 'competency' | 'salary_range' | 'it_management';
     };
-    url: '/api/2026-04-01/resources/job_catalog/node_attributes';
+    url: '/api/2026-07-01/resources/job_catalog/node_attributes';
 };
 
-export type GetApi20260401ResourcesJobCatalogNodeAttributesResponses = {
+export type GetApi20260701ResourcesJobCatalogNodeAttributesResponses = {
     /**
      * OK
      */
@@ -15567,18 +15842,18 @@ export type GetApi20260401ResourcesJobCatalogNodeAttributesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesJobCatalogNodeAttributesResponse = GetApi20260401ResourcesJobCatalogNodeAttributesResponses[keyof GetApi20260401ResourcesJobCatalogNodeAttributesResponses];
+export type GetApi20260701ResourcesJobCatalogNodeAttributesResponse = GetApi20260701ResourcesJobCatalogNodeAttributesResponses[keyof GetApi20260701ResourcesJobCatalogNodeAttributesResponses];
 
-export type GetApi20260401ResourcesJobCatalogRolesData = {
+export type GetApi20260701ResourcesJobCatalogRolesData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/job_catalog/roles';
+    url: '/api/2026-07-01/resources/job_catalog/roles';
 };
 
-export type GetApi20260401ResourcesJobCatalogRolesResponses = {
+export type GetApi20260701ResourcesJobCatalogRolesResponses = {
     /**
      * OK
      */
@@ -15588,27 +15863,27 @@ export type GetApi20260401ResourcesJobCatalogRolesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesJobCatalogRolesResponse = GetApi20260401ResourcesJobCatalogRolesResponses[keyof GetApi20260401ResourcesJobCatalogRolesResponses];
+export type GetApi20260701ResourcesJobCatalogRolesResponse = GetApi20260701ResourcesJobCatalogRolesResponses[keyof GetApi20260701ResourcesJobCatalogRolesResponses];
 
-export type GetApi20260401ResourcesJobCatalogRolesByIdData = {
+export type GetApi20260701ResourcesJobCatalogRolesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/job_catalog/roles/{id}';
+    url: '/api/2026-07-01/resources/job_catalog/roles/{id}';
 };
 
-export type GetApi20260401ResourcesJobCatalogRolesByIdResponses = {
+export type GetApi20260701ResourcesJobCatalogRolesByIdResponses = {
     /**
      * OK
      */
     200: JobCatalogRole;
 };
 
-export type GetApi20260401ResourcesJobCatalogRolesByIdResponse = GetApi20260401ResourcesJobCatalogRolesByIdResponses[keyof GetApi20260401ResourcesJobCatalogRolesByIdResponses];
+export type GetApi20260701ResourcesJobCatalogRolesByIdResponse = GetApi20260701ResourcesJobCatalogRolesByIdResponses[keyof GetApi20260701ResourcesJobCatalogRolesByIdResponses];
 
-export type GetApi20260401ResourcesJobCatalogTreeNodesData = {
+export type GetApi20260701ResourcesJobCatalogTreeNodesData = {
     body?: never;
     path?: never;
     query: {
@@ -15629,10 +15904,10 @@ export type GetApi20260401ResourcesJobCatalogTreeNodesData = {
          */
         include_full_path?: boolean;
     };
-    url: '/api/2026-04-01/resources/job_catalog/tree_nodes';
+    url: '/api/2026-07-01/resources/job_catalog/tree_nodes';
 };
 
-export type GetApi20260401ResourcesJobCatalogTreeNodesResponses = {
+export type GetApi20260701ResourcesJobCatalogTreeNodesResponses = {
     /**
      * OK
      */
@@ -15642,29 +15917,29 @@ export type GetApi20260401ResourcesJobCatalogTreeNodesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesJobCatalogTreeNodesResponse = GetApi20260401ResourcesJobCatalogTreeNodesResponses[keyof GetApi20260401ResourcesJobCatalogTreeNodesResponses];
+export type GetApi20260701ResourcesJobCatalogTreeNodesResponse = GetApi20260701ResourcesJobCatalogTreeNodesResponses[keyof GetApi20260701ResourcesJobCatalogTreeNodesResponses];
 
-export type GetApi20260401ResourcesLocationsLocationsData = {
+export type GetApi20260701ResourcesLocationsLocationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * The location IDs to filter the results.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Return only the locations assigned to these employees.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Wether to filter only the main location.
          */
         main?: boolean;
     };
-    url: '/api/2026-04-01/resources/locations/locations';
+    url: '/api/2026-07-01/resources/locations/locations';
 };
 
-export type GetApi20260401ResourcesLocationsLocationsResponses = {
+export type GetApi20260701ResourcesLocationsLocationsResponses = {
     /**
      * OK
      */
@@ -15674,9 +15949,9 @@ export type GetApi20260401ResourcesLocationsLocationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesLocationsLocationsResponse = GetApi20260401ResourcesLocationsLocationsResponses[keyof GetApi20260401ResourcesLocationsLocationsResponses];
+export type GetApi20260701ResourcesLocationsLocationsResponse = GetApi20260701ResourcesLocationsLocationsResponses[keyof GetApi20260701ResourcesLocationsLocationsResponses];
 
-export type PostApi20260401ResourcesLocationsLocationsData = {
+export type PostApi20260701ResourcesLocationsLocationsData = {
     body?: {
         /**
          * name of the location
@@ -15733,7 +16008,7 @@ export type PostApi20260401ResourcesLocationsLocationsData = {
         /**
          * company identifier
          */
-        company_id: number;
+        company_id: string;
         /**
          * siret of the location (only for France)
          */
@@ -15741,37 +16016,37 @@ export type PostApi20260401ResourcesLocationsLocationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/locations/locations';
+    url: '/api/2026-07-01/resources/locations/locations';
 };
 
-export type PostApi20260401ResourcesLocationsLocationsResponses = {
+export type PostApi20260701ResourcesLocationsLocationsResponses = {
     /**
      * CREATED
      */
     201: LocationsLocation;
 };
 
-export type PostApi20260401ResourcesLocationsLocationsResponse = PostApi20260401ResourcesLocationsLocationsResponses[keyof PostApi20260401ResourcesLocationsLocationsResponses];
+export type PostApi20260701ResourcesLocationsLocationsResponse = PostApi20260701ResourcesLocationsLocationsResponses[keyof PostApi20260701ResourcesLocationsLocationsResponses];
 
-export type DeleteApi20260401ResourcesLocationsLocationsByIdData = {
+export type DeleteApi20260701ResourcesLocationsLocationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/locations/locations/{id}';
+    url: '/api/2026-07-01/resources/locations/locations/{id}';
 };
 
-export type DeleteApi20260401ResourcesLocationsLocationsByIdResponses = {
+export type DeleteApi20260701ResourcesLocationsLocationsByIdResponses = {
     /**
      * OK
      */
     200: LocationsLocation;
 };
 
-export type DeleteApi20260401ResourcesLocationsLocationsByIdResponse = DeleteApi20260401ResourcesLocationsLocationsByIdResponses[keyof DeleteApi20260401ResourcesLocationsLocationsByIdResponses];
+export type DeleteApi20260701ResourcesLocationsLocationsByIdResponse = DeleteApi20260701ResourcesLocationsLocationsByIdResponses[keyof DeleteApi20260701ResourcesLocationsLocationsByIdResponses];
 
-export type GetApi20260401ResourcesLocationsLocationsByIdData = {
+export type GetApi20260701ResourcesLocationsLocationsByIdData = {
     body?: never;
     path: {
         /**
@@ -15780,24 +16055,24 @@ export type GetApi20260401ResourcesLocationsLocationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/locations/locations/{id}';
+    url: '/api/2026-07-01/resources/locations/locations/{id}';
 };
 
-export type GetApi20260401ResourcesLocationsLocationsByIdResponses = {
+export type GetApi20260701ResourcesLocationsLocationsByIdResponses = {
     /**
      * OK
      */
     200: LocationsLocation;
 };
 
-export type GetApi20260401ResourcesLocationsLocationsByIdResponse = GetApi20260401ResourcesLocationsLocationsByIdResponses[keyof GetApi20260401ResourcesLocationsLocationsByIdResponses];
+export type GetApi20260701ResourcesLocationsLocationsByIdResponse = GetApi20260701ResourcesLocationsLocationsByIdResponses[keyof GetApi20260701ResourcesLocationsLocationsByIdResponses];
 
-export type PutApi20260401ResourcesLocationsLocationsByIdData = {
+export type PutApi20260701ResourcesLocationsLocationsByIdData = {
     body?: {
         /**
          * identifier of the location
          */
-        id: number;
+        id: string;
         /**
          * name of the location
          */
@@ -15862,30 +16137,30 @@ export type PutApi20260401ResourcesLocationsLocationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/locations/locations/{id}';
+    url: '/api/2026-07-01/resources/locations/locations/{id}';
 };
 
-export type PutApi20260401ResourcesLocationsLocationsByIdResponses = {
+export type PutApi20260701ResourcesLocationsLocationsByIdResponses = {
     /**
      * OK
      */
     200: LocationsLocation;
 };
 
-export type PutApi20260401ResourcesLocationsLocationsByIdResponse = PutApi20260401ResourcesLocationsLocationsByIdResponses[keyof PutApi20260401ResourcesLocationsLocationsByIdResponses];
+export type PutApi20260701ResourcesLocationsLocationsByIdResponse = PutApi20260701ResourcesLocationsLocationsByIdResponses[keyof PutApi20260701ResourcesLocationsLocationsByIdResponses];
 
-export type GetApi20260401ResourcesLocationsWorkAreasData = {
+export type GetApi20260701ResourcesLocationsWorkAreasData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
-        'location_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'location_ids[]'?: Array<string>;
         only_non_archived: boolean;
     };
-    url: '/api/2026-04-01/resources/locations/work_areas';
+    url: '/api/2026-07-01/resources/locations/work_areas';
 };
 
-export type GetApi20260401ResourcesLocationsWorkAreasResponses = {
+export type GetApi20260701ResourcesLocationsWorkAreasResponses = {
     /**
      * OK
      */
@@ -15895,108 +16170,108 @@ export type GetApi20260401ResourcesLocationsWorkAreasResponses = {
     };
 };
 
-export type GetApi20260401ResourcesLocationsWorkAreasResponse = GetApi20260401ResourcesLocationsWorkAreasResponses[keyof GetApi20260401ResourcesLocationsWorkAreasResponses];
+export type GetApi20260701ResourcesLocationsWorkAreasResponse = GetApi20260701ResourcesLocationsWorkAreasResponses[keyof GetApi20260701ResourcesLocationsWorkAreasResponses];
 
-export type PostApi20260401ResourcesLocationsWorkAreasData = {
+export type PostApi20260701ResourcesLocationsWorkAreasData = {
     body?: {
         name: string;
-        location_id: number;
+        location_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/locations/work_areas';
+    url: '/api/2026-07-01/resources/locations/work_areas';
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasResponses = {
+export type PostApi20260701ResourcesLocationsWorkAreasResponses = {
     /**
      * CREATED
      */
     201: LocationsWorkArea;
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasResponse = PostApi20260401ResourcesLocationsWorkAreasResponses[keyof PostApi20260401ResourcesLocationsWorkAreasResponses];
+export type PostApi20260701ResourcesLocationsWorkAreasResponse = PostApi20260701ResourcesLocationsWorkAreasResponses[keyof PostApi20260701ResourcesLocationsWorkAreasResponses];
 
-export type GetApi20260401ResourcesLocationsWorkAreasByIdData = {
+export type GetApi20260701ResourcesLocationsWorkAreasByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/locations/work_areas/{id}';
+    url: '/api/2026-07-01/resources/locations/work_areas/{id}';
 };
 
-export type GetApi20260401ResourcesLocationsWorkAreasByIdResponses = {
+export type GetApi20260701ResourcesLocationsWorkAreasByIdResponses = {
     /**
      * OK
      */
     200: LocationsWorkArea;
 };
 
-export type GetApi20260401ResourcesLocationsWorkAreasByIdResponse = GetApi20260401ResourcesLocationsWorkAreasByIdResponses[keyof GetApi20260401ResourcesLocationsWorkAreasByIdResponses];
+export type GetApi20260701ResourcesLocationsWorkAreasByIdResponse = GetApi20260701ResourcesLocationsWorkAreasByIdResponses[keyof GetApi20260701ResourcesLocationsWorkAreasByIdResponses];
 
-export type PutApi20260401ResourcesLocationsWorkAreasByIdData = {
+export type PutApi20260701ResourcesLocationsWorkAreasByIdData = {
     body?: {
-        id: number;
+        id: string;
         name: string;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/locations/work_areas/{id}';
+    url: '/api/2026-07-01/resources/locations/work_areas/{id}';
 };
 
-export type PutApi20260401ResourcesLocationsWorkAreasByIdResponses = {
+export type PutApi20260701ResourcesLocationsWorkAreasByIdResponses = {
     /**
      * OK
      */
     200: LocationsWorkArea;
 };
 
-export type PutApi20260401ResourcesLocationsWorkAreasByIdResponse = PutApi20260401ResourcesLocationsWorkAreasByIdResponses[keyof PutApi20260401ResourcesLocationsWorkAreasByIdResponses];
+export type PutApi20260701ResourcesLocationsWorkAreasByIdResponse = PutApi20260701ResourcesLocationsWorkAreasByIdResponses[keyof PutApi20260701ResourcesLocationsWorkAreasByIdResponses];
 
-export type PostApi20260401ResourcesLocationsWorkAreasArchiveData = {
+export type PostApi20260701ResourcesLocationsWorkAreasArchiveData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/locations/work_areas/archive';
+    url: '/api/2026-07-01/resources/locations/work_areas/archive';
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasArchiveResponses = {
+export type PostApi20260701ResourcesLocationsWorkAreasArchiveResponses = {
     /**
      * OK
      */
     200: LocationsWorkArea;
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasArchiveResponse = PostApi20260401ResourcesLocationsWorkAreasArchiveResponses[keyof PostApi20260401ResourcesLocationsWorkAreasArchiveResponses];
+export type PostApi20260701ResourcesLocationsWorkAreasArchiveResponse = PostApi20260701ResourcesLocationsWorkAreasArchiveResponses[keyof PostApi20260701ResourcesLocationsWorkAreasArchiveResponses];
 
-export type PostApi20260401ResourcesLocationsWorkAreasUnarchiveData = {
+export type PostApi20260701ResourcesLocationsWorkAreasUnarchiveData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/locations/work_areas/unarchive';
+    url: '/api/2026-07-01/resources/locations/work_areas/unarchive';
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasUnarchiveResponses = {
+export type PostApi20260701ResourcesLocationsWorkAreasUnarchiveResponses = {
     /**
      * OK
      */
     200: LocationsWorkArea;
 };
 
-export type PostApi20260401ResourcesLocationsWorkAreasUnarchiveResponse = PostApi20260401ResourcesLocationsWorkAreasUnarchiveResponses[keyof PostApi20260401ResourcesLocationsWorkAreasUnarchiveResponses];
+export type PostApi20260701ResourcesLocationsWorkAreasUnarchiveResponse = PostApi20260701ResourcesLocationsWorkAreasUnarchiveResponses[keyof PostApi20260701ResourcesLocationsWorkAreasUnarchiveResponses];
 
-export type PostApi20260401ResourcesMarketplaceInstallationsData = {
+export type PostApi20260701ResourcesMarketplaceInstallationsData = {
     body?: {
         /**
          * Identifier of the company
          */
-        company_id: number;
+        company_id: string;
         /**
          * UUID of the integration
          */
@@ -16004,35 +16279,35 @@ export type PostApi20260401ResourcesMarketplaceInstallationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/marketplace/installations';
+    url: '/api/2026-07-01/resources/marketplace/installations';
 };
 
-export type PostApi20260401ResourcesMarketplaceInstallationsResponses = {
+export type PostApi20260701ResourcesMarketplaceInstallationsResponses = {
     /**
      * CREATED
      */
     201: MarketplaceInstallation;
 };
 
-export type PostApi20260401ResourcesMarketplaceInstallationsResponse = PostApi20260401ResourcesMarketplaceInstallationsResponses[keyof PostApi20260401ResourcesMarketplaceInstallationsResponses];
+export type PostApi20260701ResourcesMarketplaceInstallationsResponse = PostApi20260701ResourcesMarketplaceInstallationsResponses[keyof PostApi20260701ResourcesMarketplaceInstallationsResponses];
 
-export type GetApi20260401ResourcesMarketplaceInstallationSettingsData = {
+export type GetApi20260701ResourcesMarketplaceInstallationSettingsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Identifier of the company
          */
-        company_id: number;
+        company_id: string;
         /**
          * ID of the integration
          */
         integration_id: string;
     };
-    url: '/api/2026-04-01/resources/marketplace/installation_settings';
+    url: '/api/2026-07-01/resources/marketplace/installation_settings';
 };
 
-export type GetApi20260401ResourcesMarketplaceInstallationSettingsResponses = {
+export type GetApi20260701ResourcesMarketplaceInstallationSettingsResponses = {
     /**
      * OK
      */
@@ -16042,21 +16317,21 @@ export type GetApi20260401ResourcesMarketplaceInstallationSettingsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesMarketplaceInstallationSettingsResponse = GetApi20260401ResourcesMarketplaceInstallationSettingsResponses[keyof GetApi20260401ResourcesMarketplaceInstallationSettingsResponses];
+export type GetApi20260701ResourcesMarketplaceInstallationSettingsResponse = GetApi20260701ResourcesMarketplaceInstallationSettingsResponses[keyof GetApi20260701ResourcesMarketplaceInstallationSettingsResponses];
 
-export type GetApi20260401ResourcesPayrollFamilySituationsData = {
+export type GetApi20260701ResourcesPayrollFamilySituationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * employee ids.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/payroll/family_situations';
+    url: '/api/2026-07-01/resources/payroll/family_situations';
 };
 
-export type GetApi20260401ResourcesPayrollFamilySituationsResponses = {
+export type GetApi20260701ResourcesPayrollFamilySituationsResponses = {
     /**
      * OK
      */
@@ -16066,14 +16341,14 @@ export type GetApi20260401ResourcesPayrollFamilySituationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPayrollFamilySituationsResponse = GetApi20260401ResourcesPayrollFamilySituationsResponses[keyof GetApi20260401ResourcesPayrollFamilySituationsResponses];
+export type GetApi20260701ResourcesPayrollFamilySituationsResponse = GetApi20260701ResourcesPayrollFamilySituationsResponses[keyof GetApi20260701ResourcesPayrollFamilySituationsResponses];
 
-export type PostApi20260401ResourcesPayrollFamilySituationsData = {
+export type PostApi20260701ResourcesPayrollFamilySituationsData = {
     body?: {
         /**
          * Employee id.
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Civil status of the employee.
          */
@@ -16085,28 +16360,28 @@ export type PostApi20260401ResourcesPayrollFamilySituationsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/family_situations';
+    url: '/api/2026-07-01/resources/payroll/family_situations';
 };
 
-export type PostApi20260401ResourcesPayrollFamilySituationsResponses = {
+export type PostApi20260701ResourcesPayrollFamilySituationsResponses = {
     /**
      * CREATED
      */
     201: PayrollFamilySituation;
 };
 
-export type PostApi20260401ResourcesPayrollFamilySituationsResponse = PostApi20260401ResourcesPayrollFamilySituationsResponses[keyof PostApi20260401ResourcesPayrollFamilySituationsResponses];
+export type PostApi20260701ResourcesPayrollFamilySituationsResponse = PostApi20260701ResourcesPayrollFamilySituationsResponses[keyof PostApi20260701ResourcesPayrollFamilySituationsResponses];
 
-export type PutApi20260401ResourcesPayrollFamilySituationsByIdData = {
+export type PutApi20260701ResourcesPayrollFamilySituationsByIdData = {
     body?: {
         /**
          * Family situation id.
          */
-        id: number;
+        id: string;
         /**
          * Employee id.
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Civil status of the employee.
          */
@@ -16123,24 +16398,24 @@ export type PutApi20260401ResourcesPayrollFamilySituationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/family_situations/{id}';
+    url: '/api/2026-07-01/resources/payroll/family_situations/{id}';
 };
 
-export type PutApi20260401ResourcesPayrollFamilySituationsByIdResponses = {
+export type PutApi20260701ResourcesPayrollFamilySituationsByIdResponses = {
     /**
      * OK
      */
     200: PayrollFamilySituation;
 };
 
-export type PutApi20260401ResourcesPayrollFamilySituationsByIdResponse = PutApi20260401ResourcesPayrollFamilySituationsByIdResponses[keyof PutApi20260401ResourcesPayrollFamilySituationsByIdResponses];
+export type PutApi20260701ResourcesPayrollFamilySituationsByIdResponse = PutApi20260701ResourcesPayrollFamilySituationsByIdResponses[keyof PutApi20260701ResourcesPayrollFamilySituationsByIdResponses];
 
-export type PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusData = {
+export type PostApi20260701ResourcesPayrollPolicyPeriodsChangeStatusData = {
     body?: {
         /**
          * Policy period id
          */
-        id: number;
+        id: string;
         /**
          * Status of the policy period
          */
@@ -16152,23 +16427,23 @@ export type PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusData = {
         /**
          * Ids of the employees
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/policy_periods/change_status';
+    url: '/api/2026-07-01/resources/payroll/policy_periods/change_status';
 };
 
-export type PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusResponses = {
+export type PostApi20260701ResourcesPayrollPolicyPeriodsChangeStatusResponses = {
     /**
      * OK
      */
     200: PayrollPolicyPeriod;
 };
 
-export type PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusResponse = PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusResponses[keyof PostApi20260401ResourcesPayrollPolicyPeriodsChangeStatusResponses];
+export type PostApi20260701ResourcesPayrollPolicyPeriodsChangeStatusResponse = PostApi20260701ResourcesPayrollPolicyPeriodsChangeStatusResponses[keyof PostApi20260701ResourcesPayrollPolicyPeriodsChangeStatusResponses];
 
-export type GetApi20260401ResourcesPayrollSupplementsData = {
+export type GetApi20260701ResourcesPayrollSupplementsData = {
     body?: never;
     path?: never;
     query: {
@@ -16183,28 +16458,28 @@ export type GetApi20260401ResourcesPayrollSupplementsData = {
         /**
          * The employee ids to retrieve
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * The policy period ids to retrieve
          */
-        'policy_period_ids[]': Array<number>;
+        'policy_period_ids[]': Array<string>;
         /**
          * The compensation id to retrieve
          */
-        compensation_id?: number;
+        compensation_id?: string;
         /**
          * ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The legal entities id to retrieve
          */
-        'legal_entity_ids[]'?: Array<number>;
+        'legal_entity_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/payroll/supplements';
+    url: '/api/2026-07-01/resources/payroll/supplements';
 };
 
-export type GetApi20260401ResourcesPayrollSupplementsResponses = {
+export type GetApi20260701ResourcesPayrollSupplementsResponses = {
     /**
      * OK
      */
@@ -16214,9 +16489,9 @@ export type GetApi20260401ResourcesPayrollSupplementsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPayrollSupplementsResponse = GetApi20260401ResourcesPayrollSupplementsResponses[keyof GetApi20260401ResourcesPayrollSupplementsResponses];
+export type GetApi20260701ResourcesPayrollSupplementsResponse = GetApi20260701ResourcesPayrollSupplementsResponses[keyof GetApi20260701ResourcesPayrollSupplementsResponses];
 
-export type PostApi20260401ResourcesPayrollSupplementsData = {
+export type PostApi20260701ResourcesPayrollSupplementsData = {
     body?: {
         /**
          * Supplement amount in cents
@@ -16225,7 +16500,7 @@ export type PostApi20260401ResourcesPayrollSupplementsData = {
         /**
          * The employee id of the suplement
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Supplement effective on date following the format YYYY-MM-DD
          */
@@ -16233,15 +16508,15 @@ export type PostApi20260401ResourcesPayrollSupplementsData = {
         /**
          * Supplement contract taxonomy id
          */
-        contracts_taxonomy_id: number;
+        contracts_taxonomy_id: string;
         /**
          * Supplement contract compensation id
          */
-        contracts_compensation_id?: number;
+        contracts_compensation_id?: string;
         /**
          * Supplement payroll policy period id
          */
-        payroll_policy_period_id: number;
+        payroll_policy_period_id: string;
         /**
          * Supplement unit
          */
@@ -16253,37 +16528,37 @@ export type PostApi20260401ResourcesPayrollSupplementsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/supplements';
+    url: '/api/2026-07-01/resources/payroll/supplements';
 };
 
-export type PostApi20260401ResourcesPayrollSupplementsResponses = {
+export type PostApi20260701ResourcesPayrollSupplementsResponses = {
     /**
      * CREATED
      */
     201: PayrollSupplement;
 };
 
-export type PostApi20260401ResourcesPayrollSupplementsResponse = PostApi20260401ResourcesPayrollSupplementsResponses[keyof PostApi20260401ResourcesPayrollSupplementsResponses];
+export type PostApi20260701ResourcesPayrollSupplementsResponse = PostApi20260701ResourcesPayrollSupplementsResponses[keyof PostApi20260701ResourcesPayrollSupplementsResponses];
 
-export type DeleteApi20260401ResourcesPayrollSupplementsByIdData = {
+export type DeleteApi20260701ResourcesPayrollSupplementsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/supplements/{id}';
+    url: '/api/2026-07-01/resources/payroll/supplements/{id}';
 };
 
-export type DeleteApi20260401ResourcesPayrollSupplementsByIdResponses = {
+export type DeleteApi20260701ResourcesPayrollSupplementsByIdResponses = {
     /**
      * OK
      */
     200: PayrollSupplement;
 };
 
-export type DeleteApi20260401ResourcesPayrollSupplementsByIdResponse = DeleteApi20260401ResourcesPayrollSupplementsByIdResponses[keyof DeleteApi20260401ResourcesPayrollSupplementsByIdResponses];
+export type DeleteApi20260701ResourcesPayrollSupplementsByIdResponse = DeleteApi20260701ResourcesPayrollSupplementsByIdResponses[keyof DeleteApi20260701ResourcesPayrollSupplementsByIdResponses];
 
-export type GetApi20260401ResourcesPayrollSupplementsByIdData = {
+export type GetApi20260701ResourcesPayrollSupplementsByIdData = {
     body?: never;
     path: {
         /**
@@ -16292,36 +16567,36 @@ export type GetApi20260401ResourcesPayrollSupplementsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/supplements/{id}';
+    url: '/api/2026-07-01/resources/payroll/supplements/{id}';
 };
 
-export type GetApi20260401ResourcesPayrollSupplementsByIdResponses = {
+export type GetApi20260701ResourcesPayrollSupplementsByIdResponses = {
     /**
      * OK
      */
     200: PayrollSupplement;
 };
 
-export type GetApi20260401ResourcesPayrollSupplementsByIdResponse = GetApi20260401ResourcesPayrollSupplementsByIdResponses[keyof GetApi20260401ResourcesPayrollSupplementsByIdResponses];
+export type GetApi20260701ResourcesPayrollSupplementsByIdResponse = GetApi20260701ResourcesPayrollSupplementsByIdResponses[keyof GetApi20260701ResourcesPayrollSupplementsByIdResponses];
 
-export type PutApi20260401ResourcesPayrollSupplementsByIdData = {
+export type PutApi20260701ResourcesPayrollSupplementsByIdData = {
     body?: {
         /**
          * The supplement id
          */
-        id: number;
+        id: string;
         /**
          * The employee id of the supplement
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * The supplement contract compensation id
          */
-        contracts_compensation_id?: number;
+        contracts_compensation_id?: string;
         /**
          * The supplement contract taxonomy id
          */
-        contracts_taxonomy_id?: number;
+        contracts_taxonomy_id?: string;
         /**
          * Supplement amount in cents
          */
@@ -16337,7 +16612,7 @@ export type PutApi20260401ResourcesPayrollSupplementsByIdData = {
         /**
          * Supplement payroll policy period  id
          */
-        payroll_policy_period_id?: number;
+        payroll_policy_period_id?: string;
     };
     path: {
         /**
@@ -16346,37 +16621,37 @@ export type PutApi20260401ResourcesPayrollSupplementsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll/supplements/{id}';
+    url: '/api/2026-07-01/resources/payroll/supplements/{id}';
 };
 
-export type PutApi20260401ResourcesPayrollSupplementsByIdResponses = {
+export type PutApi20260701ResourcesPayrollSupplementsByIdResponses = {
     /**
      * OK
      */
     200: PayrollSupplement;
 };
 
-export type PutApi20260401ResourcesPayrollSupplementsByIdResponse = PutApi20260401ResourcesPayrollSupplementsByIdResponses[keyof PutApi20260401ResourcesPayrollSupplementsByIdResponses];
+export type PutApi20260701ResourcesPayrollSupplementsByIdResponse = PutApi20260701ResourcesPayrollSupplementsByIdResponses[keyof PutApi20260701ResourcesPayrollSupplementsByIdResponses];
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersData = {
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * filters by employee identifiers
          */
-        'employees_ids[]'?: Array<number>;
-        'legal_entities_ids[]'?: Array<number>;
+        'employees_ids[]'?: Array<string>;
+        'legal_entities_ids[]'?: Array<string>;
         /**
          * filters by country code pt | it | de
          */
         country: 'pt' | 'de' | 'it';
     };
-    url: '/api/2026-04-01/resources/payroll_employees/identifiers';
+    url: '/api/2026-07-01/resources/payroll_employees/identifiers';
 };
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersResponses = {
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersResponses = {
     /**
      * OK
      */
@@ -16386,14 +16661,14 @@ export type GetApi20260401ResourcesPayrollEmployeesIdentifiersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersResponse = GetApi20260401ResourcesPayrollEmployeesIdentifiersResponses[keyof GetApi20260401ResourcesPayrollEmployeesIdentifiersResponses];
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersResponse = GetApi20260701ResourcesPayrollEmployeesIdentifiersResponses[keyof GetApi20260701ResourcesPayrollEmployeesIdentifiersResponses];
 
-export type PostApi20260401ResourcesPayrollEmployeesIdentifiersData = {
+export type PostApi20260701ResourcesPayrollEmployeesIdentifiersData = {
     body?: {
         /**
          * identifier of the employee
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * social security number of the employee
          */
@@ -16409,19 +16684,19 @@ export type PostApi20260401ResourcesPayrollEmployeesIdentifiersData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_employees/identifiers';
+    url: '/api/2026-07-01/resources/payroll_employees/identifiers';
 };
 
-export type PostApi20260401ResourcesPayrollEmployeesIdentifiersResponses = {
+export type PostApi20260701ResourcesPayrollEmployeesIdentifiersResponses = {
     /**
      * CREATED
      */
     201: PayrollEmployeesIdentifier;
 };
 
-export type PostApi20260401ResourcesPayrollEmployeesIdentifiersResponse = PostApi20260401ResourcesPayrollEmployeesIdentifiersResponses[keyof PostApi20260401ResourcesPayrollEmployeesIdentifiersResponses];
+export type PostApi20260701ResourcesPayrollEmployeesIdentifiersResponse = PostApi20260701ResourcesPayrollEmployeesIdentifiersResponses[keyof PostApi20260701ResourcesPayrollEmployeesIdentifiersResponses];
 
-export type DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdData = {
+export type DeleteApi20260701ResourcesPayrollEmployeesIdentifiersByIdData = {
     body?: never;
     path: {
         /**
@@ -16430,42 +16705,42 @@ export type DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_employees/identifiers/{id}';
+    url: '/api/2026-07-01/resources/payroll_employees/identifiers/{id}';
 };
 
-export type DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses = {
+export type DeleteApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses = {
     /**
      * OK
      */
     200: PayrollEmployeesIdentifier;
 };
 
-export type DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponse = DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof DeleteApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses];
+export type DeleteApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponse = DeleteApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof DeleteApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses];
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersByIdData = {
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_employees/identifiers/{id}';
+    url: '/api/2026-07-01/resources/payroll_employees/identifiers/{id}';
 };
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses = {
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses = {
     /**
      * OK
      */
     200: PayrollEmployeesIdentifier;
 };
 
-export type GetApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponse = GetApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof GetApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses];
+export type GetApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponse = GetApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof GetApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses];
 
-export type PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdData = {
+export type PutApi20260701ResourcesPayrollEmployeesIdentifiersByIdData = {
     body?: {
         /**
          * payroll employee identifier
          */
-        id: number;
+        id: string;
         /**
          * social security number of the employee
          */
@@ -16486,19 +16761,19 @@ export type PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_employees/identifiers/{id}';
+    url: '/api/2026-07-01/resources/payroll_employees/identifiers/{id}';
 };
 
-export type PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses = {
+export type PutApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses = {
     /**
      * OK
      */
     200: PayrollEmployeesIdentifier;
 };
 
-export type PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponse = PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof PutApi20260401ResourcesPayrollEmployeesIdentifiersByIdResponses];
+export type PutApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponse = PutApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses[keyof PutApi20260701ResourcesPayrollEmployeesIdentifiersByIdResponses];
 
-export type GetApi20260401ResourcesPayrollIntegrationsBaseCodesData = {
+export type GetApi20260701ResourcesPayrollIntegrationsBaseCodesData = {
     body?: never;
     path?: never;
     query: {
@@ -16513,16 +16788,16 @@ export type GetApi20260401ResourcesPayrollIntegrationsBaseCodesData = {
         /**
          * Related object ID. Used together with codeable_type
          */
-        codeable_id?: number;
+        codeable_id?: string;
         /**
          * Related object type. Used together with codeable_id
          */
         codeable_type?: string;
     };
-    url: '/api/2026-04-01/resources/payroll_integrations_base/codes';
+    url: '/api/2026-07-01/resources/payroll_integrations_base/codes';
 };
 
-export type GetApi20260401ResourcesPayrollIntegrationsBaseCodesResponses = {
+export type GetApi20260701ResourcesPayrollIntegrationsBaseCodesResponses = {
     /**
      * OK
      */
@@ -16532,9 +16807,9 @@ export type GetApi20260401ResourcesPayrollIntegrationsBaseCodesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPayrollIntegrationsBaseCodesResponse = GetApi20260401ResourcesPayrollIntegrationsBaseCodesResponses[keyof GetApi20260401ResourcesPayrollIntegrationsBaseCodesResponses];
+export type GetApi20260701ResourcesPayrollIntegrationsBaseCodesResponse = GetApi20260701ResourcesPayrollIntegrationsBaseCodesResponses[keyof GetApi20260701ResourcesPayrollIntegrationsBaseCodesResponses];
 
-export type PostApi20260401ResourcesPayrollIntegrationsBaseCodesData = {
+export type PostApi20260701ResourcesPayrollIntegrationsBaseCodesData = {
     body?: {
         /**
          * Code Value
@@ -16543,7 +16818,7 @@ export type PostApi20260401ResourcesPayrollIntegrationsBaseCodesData = {
         /**
          * Related object ID. Used together with codeable_type
          */
-        codeable_id: number;
+        codeable_id: string;
         /**
          * Related object type. Used together with codeable_id
          */
@@ -16555,42 +16830,42 @@ export type PostApi20260401ResourcesPayrollIntegrationsBaseCodesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_integrations_base/codes';
+    url: '/api/2026-07-01/resources/payroll_integrations_base/codes';
 };
 
-export type PostApi20260401ResourcesPayrollIntegrationsBaseCodesResponses = {
+export type PostApi20260701ResourcesPayrollIntegrationsBaseCodesResponses = {
     /**
      * CREATED
      */
     201: PayrollIntegrationsBaseCode;
 };
 
-export type PostApi20260401ResourcesPayrollIntegrationsBaseCodesResponse = PostApi20260401ResourcesPayrollIntegrationsBaseCodesResponses[keyof PostApi20260401ResourcesPayrollIntegrationsBaseCodesResponses];
+export type PostApi20260701ResourcesPayrollIntegrationsBaseCodesResponse = PostApi20260701ResourcesPayrollIntegrationsBaseCodesResponses[keyof PostApi20260701ResourcesPayrollIntegrationsBaseCodesResponses];
 
-export type DeleteApi20260401ResourcesPayrollIntegrationsBaseCodesByIdData = {
+export type DeleteApi20260701ResourcesPayrollIntegrationsBaseCodesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_integrations_base/codes/{id}';
+    url: '/api/2026-07-01/resources/payroll_integrations_base/codes/{id}';
 };
 
-export type DeleteApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses = {
+export type DeleteApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses = {
     /**
      * OK
      */
     200: PayrollIntegrationsBaseCode;
 };
 
-export type DeleteApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponse = DeleteApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses[keyof DeleteApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses];
+export type DeleteApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponse = DeleteApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses[keyof DeleteApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses];
 
-export type PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdData = {
+export type PutApi20260701ResourcesPayrollIntegrationsBaseCodesByIdData = {
     body?: {
         /**
          * Code identifier
          */
-        id: number;
+        id: string;
         /**
          * Code Value
          */
@@ -16603,19 +16878,19 @@ export type PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/payroll_integrations_base/codes/{id}';
+    url: '/api/2026-07-01/resources/payroll_integrations_base/codes/{id}';
 };
 
-export type PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses = {
+export type PutApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses = {
     /**
      * OK
      */
     200: PayrollIntegrationsBaseCode;
 };
 
-export type PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponse = PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses[keyof PutApi20260401ResourcesPayrollIntegrationsBaseCodesByIdResponses];
+export type PutApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponse = PutApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses[keyof PutApi20260701ResourcesPayrollIntegrationsBaseCodesByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceAgreementsData = {
+export type GetApi20260701ResourcesPerformanceAgreementsData = {
     body?: never;
     path?: never;
     query?: {
@@ -16626,16 +16901,16 @@ export type GetApi20260401ResourcesPerformanceAgreementsData = {
         /**
          * Filter by review process IDs
          */
-        'process_ids[]'?: Array<number>;
+        'process_ids[]'?: Array<string>;
         /**
          * Filter by review process target IDs
          */
         'target_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/agreements';
+    url: '/api/2026-07-01/resources/performance/agreements';
 };
 
-export type GetApi20260401ResourcesPerformanceAgreementsResponses = {
+export type GetApi20260701ResourcesPerformanceAgreementsResponses = {
     /**
      * OK
      */
@@ -16645,9 +16920,9 @@ export type GetApi20260401ResourcesPerformanceAgreementsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceAgreementsResponse = GetApi20260401ResourcesPerformanceAgreementsResponses[keyof GetApi20260401ResourcesPerformanceAgreementsResponses];
+export type GetApi20260701ResourcesPerformanceAgreementsResponse = GetApi20260701ResourcesPerformanceAgreementsResponses[keyof GetApi20260701ResourcesPerformanceAgreementsResponses];
 
-export type GetApi20260401ResourcesPerformanceAgreementsByIdData = {
+export type GetApi20260701ResourcesPerformanceAgreementsByIdData = {
     body?: never;
     path: {
         /**
@@ -16656,45 +16931,45 @@ export type GetApi20260401ResourcesPerformanceAgreementsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/agreements/{id}';
+    url: '/api/2026-07-01/resources/performance/agreements/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceAgreementsByIdResponses = {
+export type GetApi20260701ResourcesPerformanceAgreementsByIdResponses = {
     /**
      * OK
      */
     200: PerformanceAgreement;
 };
 
-export type GetApi20260401ResourcesPerformanceAgreementsByIdResponse = GetApi20260401ResourcesPerformanceAgreementsByIdResponses[keyof GetApi20260401ResourcesPerformanceAgreementsByIdResponses];
+export type GetApi20260701ResourcesPerformanceAgreementsByIdResponse = GetApi20260701ResourcesPerformanceAgreementsByIdResponses[keyof GetApi20260701ResourcesPerformanceAgreementsByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceAgreementsBulkInitiateData = {
+export type PostApi20260701ResourcesPerformanceAgreementsBulkInitiateData = {
     body?: {
         /**
          * Review process ID
          */
-        process_id: number;
+        process_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/agreements/bulk_initiate';
+    url: '/api/2026-07-01/resources/performance/agreements/bulk_initiate';
 };
 
-export type PostApi20260401ResourcesPerformanceAgreementsBulkInitiateResponses = {
+export type PostApi20260701ResourcesPerformanceAgreementsBulkInitiateResponses = {
     /**
      * OK
      */
     200: Array<PerformanceAgreement>;
 };
 
-export type PostApi20260401ResourcesPerformanceAgreementsBulkInitiateResponse = PostApi20260401ResourcesPerformanceAgreementsBulkInitiateResponses[keyof PostApi20260401ResourcesPerformanceAgreementsBulkInitiateResponses];
+export type PostApi20260701ResourcesPerformanceAgreementsBulkInitiateResponse = PostApi20260701ResourcesPerformanceAgreementsBulkInitiateResponses[keyof PostApi20260701ResourcesPerformanceAgreementsBulkInitiateResponses];
 
-export type PostApi20260401ResourcesPerformanceAgreementsInitiateData = {
+export type PostApi20260701ResourcesPerformanceAgreementsInitiateData = {
     body?: {
         /**
          * Review process ID
          */
-        process_id: number;
+        process_id: string;
         /**
          * Review process target ID
          */
@@ -16702,31 +16977,31 @@ export type PostApi20260401ResourcesPerformanceAgreementsInitiateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/agreements/initiate';
+    url: '/api/2026-07-01/resources/performance/agreements/initiate';
 };
 
-export type PostApi20260401ResourcesPerformanceAgreementsInitiateResponses = {
+export type PostApi20260701ResourcesPerformanceAgreementsInitiateResponses = {
     /**
      * OK
      */
     200: PerformanceAgreement;
 };
 
-export type PostApi20260401ResourcesPerformanceAgreementsInitiateResponse = PostApi20260401ResourcesPerformanceAgreementsInitiateResponses[keyof PostApi20260401ResourcesPerformanceAgreementsInitiateResponses];
+export type PostApi20260701ResourcesPerformanceAgreementsInitiateResponse = PostApi20260701ResourcesPerformanceAgreementsInitiateResponses[keyof PostApi20260701ResourcesPerformanceAgreementsInitiateResponses];
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesData = {
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by company IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/company_employee_score_scales';
+    url: '/api/2026-07-01/resources/performance/company_employee_score_scales';
 };
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesResponses = {
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesResponses = {
     /**
      * OK
      */
@@ -16736,9 +17011,9 @@ export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesResponse
     };
 };
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesResponse = GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesResponses[keyof GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesResponses];
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesResponse = GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesResponses[keyof GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesResponses];
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdData = {
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesByIdData = {
     body?: never;
     path: {
         /**
@@ -16747,50 +17022,50 @@ export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdData
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/company_employee_score_scales/{id}';
+    url: '/api/2026-07-01/resources/performance/company_employee_score_scales/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses = {
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceCompanyEmployeeScoreScale;
 };
 
-export type GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponse = GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses[keyof GetApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses];
+export type GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponse = GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses[keyof GetApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSetData = {
+export type PostApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSetData = {
     body?: {
-        id: number;
-        scale_id: number;
+        id: string;
+        scale_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/company_employee_score_scales/set';
+    url: '/api/2026-07-01/resources/performance/company_employee_score_scales/set';
 };
 
-export type PostApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses = {
+export type PostApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses = {
     /**
      * OK
      */
     200: PerformanceCompanyEmployeeScoreScale;
 };
 
-export type PostApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSetResponse = PostApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses[keyof PostApi20260401ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses];
+export type PostApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSetResponse = PostApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses[keyof PostApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSetResponses];
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesData = {
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by employee score scale IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/employee_score_scales';
+    url: '/api/2026-07-01/resources/performance/employee_score_scales';
 };
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesResponses = {
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesResponses = {
     /**
      * OK
      */
@@ -16800,9 +17075,9 @@ export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesResponse = GetApi20260401ResourcesPerformanceEmployeeScoreScalesResponses[keyof GetApi20260401ResourcesPerformanceEmployeeScoreScalesResponses];
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesResponse = GetApi20260701ResourcesPerformanceEmployeeScoreScalesResponses[keyof GetApi20260701ResourcesPerformanceEmployeeScoreScalesResponses];
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdData = {
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesByIdData = {
     body?: never;
     path: {
         /**
@@ -16811,30 +17086,30 @@ export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/employee_score_scales/{id}';
+    url: '/api/2026-07-01/resources/performance/employee_score_scales/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdResponses = {
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceEmployeeScoreScale;
 };
 
-export type GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdResponse = GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdResponses[keyof GetApi20260401ResourcesPerformanceEmployeeScoreScalesByIdResponses];
+export type GetApi20260701ResourcesPerformanceEmployeeScoreScalesByIdResponse = GetApi20260701ResourcesPerformanceEmployeeScoreScalesByIdResponses[keyof GetApi20260701ResourcesPerformanceEmployeeScoreScalesByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsData = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by evaluation IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by review process IDs
          */
-        'performance_review_process_ids[]'?: Array<number>;
+        'performance_review_process_ids[]'?: Array<string>;
         /**
          * Only published or unpublished evaluations
          */
@@ -16842,7 +17117,7 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationsData = {
         /**
          * Filter by reviewer access IDs
          */
-        'reviewer_ids[]'?: Array<number>;
+        'reviewer_ids[]'?: Array<string>;
         /**
          * Filter by reviewer strategies
          */
@@ -16850,7 +17125,7 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationsData = {
         /**
          * Filter by participant access IDs
          */
-        'target_access_ids[]'?: Array<number>;
+        'target_access_ids[]'?: Array<string>;
         /**
          * Filter by review process target IDs. Composite key format: review_process_id-target_access_id
          */
@@ -16864,12 +17139,12 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationsData = {
         /**
          * Exclude evaluations by IDs
          */
-        'exclude_ids[]'?: Array<number>;
+        'exclude_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_evaluations';
+    url: '/api/2026-07-01/resources/performance/review_evaluations';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsResponses = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsResponses = {
     /**
      * OK
      */
@@ -16879,9 +17154,9 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsResponse = GetApi20260401ResourcesPerformanceReviewEvaluationsResponses[keyof GetApi20260401ResourcesPerformanceReviewEvaluationsResponses];
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsResponse = GetApi20260701ResourcesPerformanceReviewEvaluationsResponses[keyof GetApi20260701ResourcesPerformanceReviewEvaluationsResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsByIdData = {
     body?: never;
     path: {
         /**
@@ -16890,19 +17165,19 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_evaluations/{id}';
+    url: '/api/2026-07-01/resources/performance/review_evaluations/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewEvaluation;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationsByIdResponse = GetApi20260401ResourcesPerformanceReviewEvaluationsByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewEvaluationsByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewEvaluationsByIdResponse = GetApi20260701ResourcesPerformanceReviewEvaluationsByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewEvaluationsByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerData = {
+export type PostApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewerData = {
     body?: {
         /**
          * Evaluation ID
@@ -16915,31 +17190,31 @@ export type PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerD
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_evaluations/replace_reviewer';
+    url: '/api/2026-07-01/resources/performance/review_evaluations/replace_reviewer';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses = {
+export type PostApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses = {
     /**
      * OK
      */
     200: PerformanceReviewEvaluation;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerResponse = PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses[keyof PostApi20260401ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses];
+export type PostApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewerResponse = PostApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses[keyof PostApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewerResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationAnswersData = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationAnswersData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review evaluation IDs
          */
-        'performance_review_evaluation_ids[]'?: Array<number>;
+        'performance_review_evaluation_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_evaluation_answers';
+    url: '/api/2026-07-01/resources/performance/review_evaluation_answers';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationAnswersResponses = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationAnswersResponses = {
     /**
      * OK
      */
@@ -16949,28 +17224,28 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationAnswersResponses =
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationAnswersResponse = GetApi20260401ResourcesPerformanceReviewEvaluationAnswersResponses[keyof GetApi20260401ResourcesPerformanceReviewEvaluationAnswersResponses];
+export type GetApi20260701ResourcesPerformanceReviewEvaluationAnswersResponse = GetApi20260701ResourcesPerformanceReviewEvaluationAnswersResponses[keyof GetApi20260701ResourcesPerformanceReviewEvaluationAnswersResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresData = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by evaluation score IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by review process IDs
          */
-        'review_process_ids[]'?: Array<number>;
+        'review_process_ids[]'?: Array<string>;
         /**
          * Filter by evaluation IDs
          */
-        'review_evaluation_ids[]'?: Array<number>;
+        'review_evaluation_ids[]'?: Array<string>;
         /**
          * Filter by employee access IDs
          */
-        'target_access_ids[]'?: Array<number>;
+        'target_access_ids[]'?: Array<string>;
         /**
          * Filter by who scored the employee
          */
@@ -16980,10 +17255,10 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresData = {
          */
         'review_process_target_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_evaluation_scores';
+    url: '/api/2026-07-01/resources/performance/review_evaluation_scores';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresResponses = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresResponses = {
     /**
      * OK
      */
@@ -16993,9 +17268,9 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresResponses = 
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresResponse = GetApi20260401ResourcesPerformanceReviewEvaluationScoresResponses[keyof GetApi20260401ResourcesPerformanceReviewEvaluationScoresResponses];
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresResponse = GetApi20260701ResourcesPerformanceReviewEvaluationScoresResponses[keyof GetApi20260701ResourcesPerformanceReviewEvaluationScoresResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresByIdData = {
     body?: never;
     path: {
         /**
@@ -17004,31 +17279,31 @@ export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_evaluation_scores/{id}';
+    url: '/api/2026-07-01/resources/performance/review_evaluation_scores/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewEvaluationScore;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdResponse = GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewEvaluationScoresByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewEvaluationScoresByIdResponse = GetApi20260701ResourcesPerformanceReviewEvaluationScoresByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewEvaluationScoresByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewOwnersData = {
+export type GetApi20260701ResourcesPerformanceReviewOwnersData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review process IDs
          */
-        'performance_review_process_ids[]'?: Array<number>;
+        'performance_review_process_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_owners';
+    url: '/api/2026-07-01/resources/performance/review_owners';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewOwnersResponses = {
+export type GetApi20260701ResourcesPerformanceReviewOwnersResponses = {
     /**
      * OK
      */
@@ -17038,9 +17313,9 @@ export type GetApi20260401ResourcesPerformanceReviewOwnersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewOwnersResponse = GetApi20260401ResourcesPerformanceReviewOwnersResponses[keyof GetApi20260401ResourcesPerformanceReviewOwnersResponses];
+export type GetApi20260701ResourcesPerformanceReviewOwnersResponse = GetApi20260701ResourcesPerformanceReviewOwnersResponses[keyof GetApi20260701ResourcesPerformanceReviewOwnersResponses];
 
-export type DeleteApi20260401ResourcesPerformanceReviewOwnersByIdData = {
+export type DeleteApi20260701ResourcesPerformanceReviewOwnersByIdData = {
     body?: never;
     path: {
         /**
@@ -17049,60 +17324,60 @@ export type DeleteApi20260401ResourcesPerformanceReviewOwnersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_owners/{id}';
+    url: '/api/2026-07-01/resources/performance/review_owners/{id}';
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewOwnersByIdResponses = {
+export type DeleteApi20260701ResourcesPerformanceReviewOwnersByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewOwner;
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewOwnersByIdResponse = DeleteApi20260401ResourcesPerformanceReviewOwnersByIdResponses[keyof DeleteApi20260401ResourcesPerformanceReviewOwnersByIdResponses];
+export type DeleteApi20260701ResourcesPerformanceReviewOwnersByIdResponse = DeleteApi20260701ResourcesPerformanceReviewOwnersByIdResponses[keyof DeleteApi20260701ResourcesPerformanceReviewOwnersByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewOwnersBulkCreateData = {
+export type PostApi20260701ResourcesPerformanceReviewOwnersBulkCreateData = {
     body?: {
         /**
          * Review process ID
          */
-        review_process_id: number;
+        review_process_id: string;
         /**
          * List of access IDs to be added as owners
          */
-        owner_access_ids: Array<number>;
+        owner_access_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_owners/bulk_create';
+    url: '/api/2026-07-01/resources/performance/review_owners/bulk_create';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewOwnersBulkCreateResponses = {
+export type PostApi20260701ResourcesPerformanceReviewOwnersBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<PerformanceReviewOwner>;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewOwnersBulkCreateResponse = PostApi20260401ResourcesPerformanceReviewOwnersBulkCreateResponses[keyof PostApi20260401ResourcesPerformanceReviewOwnersBulkCreateResponses];
+export type PostApi20260701ResourcesPerformanceReviewOwnersBulkCreateResponse = PostApi20260701ResourcesPerformanceReviewOwnersBulkCreateResponses[keyof PostApi20260701ResourcesPerformanceReviewOwnersBulkCreateResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review process IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by review process name
          */
         search?: string;
     };
-    url: '/api/2026-04-01/resources/performance/review_processes';
+    url: '/api/2026-07-01/resources/performance/review_processes';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessesResponses = {
     /**
      * OK
      */
@@ -17112,14 +17387,14 @@ export type GetApi20260401ResourcesPerformanceReviewProcessesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesResponse = GetApi20260401ResourcesPerformanceReviewProcessesResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessesResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessesResponse = GetApi20260701ResourcesPerformanceReviewProcessesResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessesResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesData = {
     body?: {
         /**
          * Access identifier of the author of the review process
          */
-        author_access_id: number;
+        author_access_id: string;
         /**
          * Name of the review process
          */
@@ -17139,7 +17414,7 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesData = {
         /**
          * IDs of target strategy groups selected
          */
-        arguments?: Array<number>;
+        arguments?: Array<string>;
         /**
          * Date when the review process should end
          */
@@ -17167,19 +17442,19 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes';
+    url: '/api/2026-07-01/resources/performance/review_processes';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesResponses = {
     /**
      * CREATED
      */
     201: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesResponse = PostApi20260401ResourcesPerformanceReviewProcessesResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesResponse = PostApi20260701ResourcesPerformanceReviewProcessesResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesResponses];
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessesByIdData = {
+export type DeleteApi20260701ResourcesPerformanceReviewProcessesByIdData = {
     body?: never;
     path: {
         /**
@@ -17188,19 +17463,19 @@ export type DeleteApi20260401ResourcesPerformanceReviewProcessesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/{id}';
+    url: '/api/2026-07-01/resources/performance/review_processes/{id}';
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessesByIdResponses = {
+export type DeleteApi20260701ResourcesPerformanceReviewProcessesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessesByIdResponse = DeleteApi20260401ResourcesPerformanceReviewProcessesByIdResponses[keyof DeleteApi20260401ResourcesPerformanceReviewProcessesByIdResponses];
+export type DeleteApi20260701ResourcesPerformanceReviewProcessesByIdResponse = DeleteApi20260701ResourcesPerformanceReviewProcessesByIdResponses[keyof DeleteApi20260701ResourcesPerformanceReviewProcessesByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessesByIdData = {
     body?: never;
     path: {
         /**
@@ -17209,28 +17484,28 @@ export type GetApi20260401ResourcesPerformanceReviewProcessesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/{id}';
+    url: '/api/2026-07-01/resources/performance/review_processes/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessesByIdResponse = GetApi20260401ResourcesPerformanceReviewProcessesByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessesByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessesByIdResponse = GetApi20260701ResourcesPerformanceReviewProcessesByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessesByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplateData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplateData = {
     body?: {
         /**
          * Access ID to be set as author of the new review process
          */
-        author_access_id: number;
+        author_access_id: string;
         /**
          * Review process template ID
          */
-        template_id: number;
+        template_id: string;
         /**
          * Type of the template, custom or predefined
          */
@@ -17242,49 +17517,49 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplate
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/create_from_template';
+    url: '/api/2026-07-01/resources/performance/review_processes/create_from_template';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplateResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplateResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplateResponse = PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplateResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesCreateFromTemplateResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplateResponse = PostApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplateResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplateResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesDuplicateData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesDuplicateData = {
     body?: {
         /**
          * Review process ID to duplicate
          */
-        id: number;
+        id: string;
         /**
          * Access ID to be set as author of the new review process
          */
-        author_access_id: number;
+        author_access_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/duplicate';
+    url: '/api/2026-07-01/resources/performance/review_processes/duplicate';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesDuplicateResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesDuplicateResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesDuplicateResponse = PostApi20260401ResourcesPerformanceReviewProcessesDuplicateResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesDuplicateResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesDuplicateResponse = PostApi20260701ResourcesPerformanceReviewProcessesDuplicateResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesDuplicateResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * Reviewer strategies to remind about
          */
@@ -17292,45 +17567,45 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkData =
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/remind_in_bulk';
+    url: '/api/2026-07-01/resources/performance/review_processes/remind_in_bulk';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkResponse = PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesRemindInBulkResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkResponse = PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemoveScheduleData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemoveScheduleData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/remove_schedule';
+    url: '/api/2026-07-01/resources/performance/review_processes/remove_schedule';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemoveScheduleResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemoveScheduleResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesRemoveScheduleResponse = PostApi20260401ResourcesPerformanceReviewProcessesRemoveScheduleResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesRemoveScheduleResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesRemoveScheduleResponse = PostApi20260701ResourcesPerformanceReviewProcessesRemoveScheduleResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesRemoveScheduleResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesReopenData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesReopenData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * New deadline of the review process
          */
@@ -17338,24 +17613,24 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesReopenData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/reopen';
+    url: '/api/2026-07-01/resources/performance/review_processes/reopen';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesReopenResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesReopenResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesReopenResponse = PostApi20260401ResourcesPerformanceReviewProcessesReopenResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesReopenResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesReopenResponse = PostApi20260701ResourcesPerformanceReviewProcessesReopenResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesReopenResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesScheduleData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesScheduleData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * Date when the review process should start
          */
@@ -17363,109 +17638,109 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesScheduleData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/schedule';
+    url: '/api/2026-07-01/resources/performance/review_processes/schedule';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesScheduleResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesScheduleResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesScheduleResponse = PostApi20260401ResourcesPerformanceReviewProcessesScheduleResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesScheduleResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesScheduleResponse = PostApi20260701ResourcesPerformanceReviewProcessesScheduleResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesScheduleResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStartData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesStartData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/start';
+    url: '/api/2026-07-01/resources/performance/review_processes/start';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStartResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesStartResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStartResponse = PostApi20260401ResourcesPerformanceReviewProcessesStartResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesStartResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesStartResponse = PostApi20260701ResourcesPerformanceReviewProcessesStartResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesStartResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStopData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesStopData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/stop';
+    url: '/api/2026-07-01/resources/performance/review_processes/stop';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStopResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesStopResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesStopResponse = PostApi20260401ResourcesPerformanceReviewProcessesStopResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesStopResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesStopResponse = PostApi20260701ResourcesPerformanceReviewProcessesStopResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesStopResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesToggleArchiveData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesToggleArchiveData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/toggle_archive';
+    url: '/api/2026-07-01/resources/performance/review_processes/toggle_archive';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesToggleArchiveResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesToggleArchiveResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesToggleArchiveResponse = PostApi20260401ResourcesPerformanceReviewProcessesToggleArchiveResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesToggleArchiveResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesToggleArchiveResponse = PostApi20260701ResourcesPerformanceReviewProcessesToggleArchiveResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesToggleArchiveResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         enabled: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_agreements_configuration';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_agreements_configuration';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfigurationResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfoData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * New name of the review process
          */
@@ -17477,46 +17752,46 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoDat
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_basic_info';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_basic_info';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfoResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfoResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         enabled: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_competencies_assessments_configuration';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_competencies_assessments_configuration';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfigurationResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateDeadlineData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * New deadline of the review process
          */
@@ -17524,46 +17799,46 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineData
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_deadline';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_deadline';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateDeadlineResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateDeadlineResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateDeadlineResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateDeadlineResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateDeadlineResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         enabled: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_employee_score_configuration';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_employee_score_configuration';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfigurationResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * New review types to be applied
          */
@@ -17571,24 +17846,24 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStra
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_reviewer_strategies';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_reviewer_strategies';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategiesResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateScheduleData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * Date when the review process should start
          */
@@ -17596,24 +17871,24 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleData
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_schedule';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_schedule';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateScheduleResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateScheduleResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateScheduleResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateScheduleResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateScheduleResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategyData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyData = {
     body?: {
         /**
          * Review process ID
          */
-        id: number;
+        id: string;
         /**
          * Condition that defines the employees that will be evaluated (participants)
          */
@@ -17621,43 +17896,43 @@ export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrate
         /**
          * IDs of target strategy groups selected
          */
-        arguments?: Array<number>;
+        arguments?: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_processes/update_target_strategy';
+    url: '/api/2026-07-01/resources/performance/review_processes/update_target_strategy';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcess;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponse = PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponse = PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by template IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter by author IDs
          */
-        'author_ids[]'?: Array<number>;
+        'author_ids[]'?: Array<string>;
         /**
          * Filter by template name
          */
         search?: string;
     };
-    url: '/api/2026-04-01/resources/performance/review_process_custom_templates';
+    url: '/api/2026-07-01/resources/performance/review_process_custom_templates';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesResponses = {
     /**
      * OK
      */
@@ -17667,9 +17942,9 @@ export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesRespon
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesResponse = GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesResponse = GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesByIdData = {
     body?: never;
     path: {
         /**
@@ -17678,35 +17953,35 @@ export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdDa
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_custom_templates/{id}';
+    url: '/api/2026-07-01/resources/performance/review_process_custom_templates/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcessCustomTemplate;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdResponse = GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesByIdResponse = GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessCustomTemplatesByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessEstimatedTargetsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review process IDs
          */
-        'performance_review_process_ids[]'?: Array<number>;
+        'performance_review_process_ids[]'?: Array<string>;
         /**
          * Filter by access IDs
          */
-        'access_ids[]'?: Array<number>;
+        'access_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_process_estimated_targets';
+    url: '/api/2026-07-01/resources/performance/review_process_estimated_targets';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessEstimatedTargetsResponses = {
     /**
      * OK
      */
@@ -17716,9 +17991,9 @@ export type GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsRespo
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsResponse = GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessEstimatedTargetsResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessEstimatedTargetsResponse = GetApi20260701ResourcesPerformanceReviewProcessEstimatedTargetsResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessEstimatedTargetsResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsData = {
     body?: never;
     path?: never;
     query?: {
@@ -17729,7 +18004,7 @@ export type GetApi20260401ResourcesPerformanceReviewProcessTargetsData = {
         /**
          * Filter by access IDs
          */
-        'access_ids[]'?: Array<number>;
+        'access_ids[]'?: Array<string>;
         /**
          * Only participants for peer assignment
          */
@@ -17741,7 +18016,7 @@ export type GetApi20260401ResourcesPerformanceReviewProcessTargetsData = {
         /**
          * Filter by reviewer process IDs
          */
-        'performance_review_process_ids[]'?: Array<number>;
+        'performance_review_process_ids[]'?: Array<string>;
         /**
          * Filter by agreement status
          */
@@ -17757,10 +18032,10 @@ export type GetApi20260401ResourcesPerformanceReviewProcessTargetsData = {
             [key: string]: unknown;
         };
     };
-    url: '/api/2026-04-01/resources/performance/review_process_targets';
+    url: '/api/2026-07-01/resources/performance/review_process_targets';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsResponses = {
     /**
      * OK
      */
@@ -17770,9 +18045,9 @@ export type GetApi20260401ResourcesPerformanceReviewProcessTargetsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsResponse = GetApi20260401ResourcesPerformanceReviewProcessTargetsResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessTargetsResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsResponse = GetApi20260701ResourcesPerformanceReviewProcessTargetsResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessTargetsResponses];
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdData = {
+export type DeleteApi20260701ResourcesPerformanceReviewProcessTargetsByIdData = {
     body?: never;
     path: {
         /**
@@ -17781,19 +18056,19 @@ export type DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdData = 
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_targets/{id}';
+    url: '/api/2026-07-01/resources/performance/review_process_targets/{id}';
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses = {
+export type DeleteApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcessTarget;
 };
 
-export type DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponse = DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses[keyof DeleteApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses];
+export type DeleteApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponse = DeleteApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses[keyof DeleteApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsByIdData = {
     body?: never;
     path: {
         /**
@@ -17802,19 +18077,19 @@ export type GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_targets/{id}';
+    url: '/api/2026-07-01/resources/performance/review_process_targets/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcessTarget;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponse = GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewProcessTargetsByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponse = GetApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewProcessTargetsByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsAddPeersData = {
     body?: {
         /**
          * Review process target ID
@@ -17823,79 +18098,79 @@ export type PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersData 
         /**
          * List of access IDs to be added as peers for the participant
          */
-        peer_access_ids: Array<number>;
+        peer_access_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_targets/add_peers';
+    url: '/api/2026-07-01/resources/performance/review_process_targets/add_peers';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsAddPeersResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcessTarget;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersResponse = PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessTargetsAddPeersResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsAddPeersResponse = PostApi20260701ResourcesPerformanceReviewProcessTargetsAddPeersResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessTargetsAddPeersResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreateData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreateData = {
     body?: {
         /**
          * Review process ID
          */
-        performance_review_process_id: number;
+        performance_review_process_id: string;
         /**
          * List of access IDs to be added as participants
          */
-        targets_access_ids: Array<number>;
+        targets_access_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_targets/bulk_create';
+    url: '/api/2026-07-01/resources/performance/review_process_targets/bulk_create';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreateResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<PerformanceReviewProcessTarget>;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreateResponse = PostApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreateResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessTargetsBulkCreateResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreateResponse = PostApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreateResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreateResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsData = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsData = {
     body?: {
         id: string;
-        evaluation_ids: Array<number>;
+        evaluation_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_process_targets/remove_peer_evaluations';
+    url: '/api/2026-07-01/resources/performance/review_process_targets/remove_peer_evaluations';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses = {
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses = {
     /**
      * OK
      */
     200: PerformanceReviewProcessTarget;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponse = PostApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses[keyof PostApi20260401ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses];
+export type PostApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponse = PostApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses[keyof PostApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluationsResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesData = {
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review process IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_questionnaire_by_strategies';
+    url: '/api/2026-07-01/resources/performance/review_questionnaire_by_strategies';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesResponses = {
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesResponses = {
     /**
      * OK
      */
@@ -17905,9 +18180,9 @@ export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesRes
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesResponse = GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesResponses[keyof GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesResponses];
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesResponse = GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesResponses[keyof GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByIdData = {
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesByIdData = {
     body?: never;
     path: {
         /**
@@ -17916,24 +18191,24 @@ export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByI
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_questionnaire_by_strategies/{id}';
+    url: '/api/2026-07-01/resources/performance/review_questionnaire_by_strategies/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses = {
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewQuestionnairesByStrategy;
 };
 
-export type GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponse = GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses[keyof GetApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses];
+export type GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponse = GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses[keyof GetApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesByIdResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleData = {
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleData = {
     body?: {
         /**
          * Review process ID
          */
-        performance_review_process_id: number;
+        performance_review_process_id: string;
         /**
          * ###### **What should each range object look like?**
          *
@@ -17944,24 +18219,24 @@ export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUp
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_questionnaire_by_strategies/update_default_rating_scale';
+    url: '/api/2026-07-01/resources/performance/review_questionnaire_by_strategies/update_default_rating_scale';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses = {
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses = {
     /**
      * OK
      */
     200: PerformanceReviewQuestionnairesByStrategy;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponse = PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses[keyof PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses];
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponse = PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses[keyof PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScaleResponses];
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyData = {
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyData = {
     body?: {
         /**
          * Review process ID
          */
-        performance_review_process_id: number;
+        performance_review_process_id: string;
         /**
          * Reviewer strategy to update the questionnaire for
          */
@@ -17989,31 +18264,31 @@ export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUp
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_questionnaire_by_strategies/update_questionnaire_for_strategy';
+    url: '/api/2026-07-01/resources/performance/review_questionnaire_by_strategies/update_questionnaire_for_strategy';
 };
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses = {
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses = {
     /**
      * OK
      */
     200: PerformanceReviewQuestionnairesByStrategy;
 };
 
-export type PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponse = PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses[keyof PostApi20260401ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses];
+export type PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponse = PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses[keyof PostApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyResponses];
 
-export type GetApi20260401ResourcesPerformanceReviewVisibilitySettingsData = {
+export type GetApi20260701ResourcesPerformanceReviewVisibilitySettingsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter by review process IDs
          */
-        'performance_review_process_ids[]'?: Array<number>;
+        'performance_review_process_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/review_visibility_settings';
+    url: '/api/2026-07-01/resources/performance/review_visibility_settings';
 };
 
-export type GetApi20260401ResourcesPerformanceReviewVisibilitySettingsResponses = {
+export type GetApi20260701ResourcesPerformanceReviewVisibilitySettingsResponses = {
     /**
      * OK
      */
@@ -18023,18 +18298,18 @@ export type GetApi20260401ResourcesPerformanceReviewVisibilitySettingsResponses 
     };
 };
 
-export type GetApi20260401ResourcesPerformanceReviewVisibilitySettingsResponse = GetApi20260401ResourcesPerformanceReviewVisibilitySettingsResponses[keyof GetApi20260401ResourcesPerformanceReviewVisibilitySettingsResponses];
+export type GetApi20260701ResourcesPerformanceReviewVisibilitySettingsResponse = GetApi20260701ResourcesPerformanceReviewVisibilitySettingsResponses[keyof GetApi20260701ResourcesPerformanceReviewVisibilitySettingsResponses];
 
-export type PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdData = {
+export type PutApi20260701ResourcesPerformanceReviewVisibilitySettingsByIdData = {
     body?: {
         /**
          * Review process ID
          */
-        id?: number;
+        id?: string;
         /**
          * Review process ID
          */
-        performance_review_process_id?: number;
+        performance_review_process_id?: string;
         /**
          * When enabled, employees don't have access to their results
          */
@@ -18055,32 +18330,32 @@ export type PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdData =
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/review_visibility_settings/{id}';
+    url: '/api/2026-07-01/resources/performance/review_visibility_settings/{id}';
 };
 
-export type PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdResponses = {
+export type PutApi20260701ResourcesPerformanceReviewVisibilitySettingsByIdResponses = {
     /**
      * OK
      */
     200: PerformanceReviewVisibilitySetting;
 };
 
-export type PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdResponse = PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdResponses[keyof PutApi20260401ResourcesPerformanceReviewVisibilitySettingsByIdResponses];
+export type PutApi20260701ResourcesPerformanceReviewVisibilitySettingsByIdResponse = PutApi20260701ResourcesPerformanceReviewVisibilitySettingsByIdResponses[keyof PutApi20260701ResourcesPerformanceReviewVisibilitySettingsByIdResponses];
 
-export type GetApi20260401ResourcesPerformanceTargetManagersData = {
+export type GetApi20260701ResourcesPerformanceTargetManagersData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Review process ID (only one ID is allowed)
          */
-        'performance_review_process_ids[]': Array<number>;
+        'performance_review_process_ids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/performance/target_managers';
+    url: '/api/2026-07-01/resources/performance/target_managers';
 };
 
-export type GetApi20260401ResourcesPerformanceTargetManagersResponses = {
+export type GetApi20260701ResourcesPerformanceTargetManagersResponses = {
     /**
      * OK
      */
@@ -18090,43 +18365,43 @@ export type GetApi20260401ResourcesPerformanceTargetManagersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPerformanceTargetManagersResponse = GetApi20260401ResourcesPerformanceTargetManagersResponses[keyof GetApi20260401ResourcesPerformanceTargetManagersResponses];
+export type GetApi20260701ResourcesPerformanceTargetManagersResponse = GetApi20260701ResourcesPerformanceTargetManagersResponses[keyof GetApi20260701ResourcesPerformanceTargetManagersResponses];
 
-export type GetApi20260401ResourcesPerformanceTargetManagersByIdData = {
+export type GetApi20260701ResourcesPerformanceTargetManagersByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/performance/target_managers/{id}';
+    url: '/api/2026-07-01/resources/performance/target_managers/{id}';
 };
 
-export type GetApi20260401ResourcesPerformanceTargetManagersByIdResponses = {
+export type GetApi20260701ResourcesPerformanceTargetManagersByIdResponses = {
     /**
      * OK
      */
     200: PerformanceTargetManager;
 };
 
-export type GetApi20260401ResourcesPerformanceTargetManagersByIdResponse = GetApi20260401ResourcesPerformanceTargetManagersByIdResponses[keyof GetApi20260401ResourcesPerformanceTargetManagersByIdResponses];
+export type GetApi20260701ResourcesPerformanceTargetManagersByIdResponse = GetApi20260701ResourcesPerformanceTargetManagersByIdResponses[keyof GetApi20260701ResourcesPerformanceTargetManagersByIdResponses];
 
-export type GetApi20260401ResourcesPostsCommentsData = {
+export type GetApi20260701ResourcesPostsCommentsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * identifiers of the post
          */
-        'post_ids[]': Array<number>;
+        'post_ids[]': Array<string>;
         /**
          * identifiers of the comment
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/posts/comments';
+    url: '/api/2026-07-01/resources/posts/comments';
 };
 
-export type GetApi20260401ResourcesPostsCommentsResponses = {
+export type GetApi20260701ResourcesPostsCommentsResponses = {
     /**
      * OK
      */
@@ -18136,14 +18411,14 @@ export type GetApi20260401ResourcesPostsCommentsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPostsCommentsResponse = GetApi20260401ResourcesPostsCommentsResponses[keyof GetApi20260401ResourcesPostsCommentsResponses];
+export type GetApi20260701ResourcesPostsCommentsResponse = GetApi20260701ResourcesPostsCommentsResponses[keyof GetApi20260701ResourcesPostsCommentsResponses];
 
-export type PostApi20260401ResourcesPostsCommentsData = {
+export type PostApi20260701ResourcesPostsCommentsData = {
     body?: {
         /**
          * identifier of the post
          */
-        post_id: number;
+        post_id: string;
         /**
          * Text of the comment
          */
@@ -18151,19 +18426,19 @@ export type PostApi20260401ResourcesPostsCommentsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/posts/comments';
+    url: '/api/2026-07-01/resources/posts/comments';
 };
 
-export type PostApi20260401ResourcesPostsCommentsResponses = {
+export type PostApi20260701ResourcesPostsCommentsResponses = {
     /**
      * CREATED
      */
     201: PostsComment;
 };
 
-export type PostApi20260401ResourcesPostsCommentsResponse = PostApi20260401ResourcesPostsCommentsResponses[keyof PostApi20260401ResourcesPostsCommentsResponses];
+export type PostApi20260701ResourcesPostsCommentsResponse = PostApi20260701ResourcesPostsCommentsResponses[keyof PostApi20260701ResourcesPostsCommentsResponses];
 
-export type DeleteApi20260401ResourcesPostsCommentsByIdData = {
+export type DeleteApi20260701ResourcesPostsCommentsByIdData = {
     body?: never;
     path: {
         /**
@@ -18172,19 +18447,19 @@ export type DeleteApi20260401ResourcesPostsCommentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/comments/{id}';
+    url: '/api/2026-07-01/resources/posts/comments/{id}';
 };
 
-export type DeleteApi20260401ResourcesPostsCommentsByIdResponses = {
+export type DeleteApi20260701ResourcesPostsCommentsByIdResponses = {
     /**
      * OK
      */
     200: PostsComment;
 };
 
-export type DeleteApi20260401ResourcesPostsCommentsByIdResponse = DeleteApi20260401ResourcesPostsCommentsByIdResponses[keyof DeleteApi20260401ResourcesPostsCommentsByIdResponses];
+export type DeleteApi20260701ResourcesPostsCommentsByIdResponse = DeleteApi20260701ResourcesPostsCommentsByIdResponses[keyof DeleteApi20260701ResourcesPostsCommentsByIdResponses];
 
-export type GetApi20260401ResourcesPostsCommentsByIdData = {
+export type GetApi20260701ResourcesPostsCommentsByIdData = {
     body?: never;
     path: {
         /**
@@ -18193,28 +18468,28 @@ export type GetApi20260401ResourcesPostsCommentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/comments/{id}';
+    url: '/api/2026-07-01/resources/posts/comments/{id}';
 };
 
-export type GetApi20260401ResourcesPostsCommentsByIdResponses = {
+export type GetApi20260701ResourcesPostsCommentsByIdResponses = {
     /**
      * OK
      */
     200: PostsComment;
 };
 
-export type GetApi20260401ResourcesPostsCommentsByIdResponse = GetApi20260401ResourcesPostsCommentsByIdResponses[keyof GetApi20260401ResourcesPostsCommentsByIdResponses];
+export type GetApi20260701ResourcesPostsCommentsByIdResponse = GetApi20260701ResourcesPostsCommentsByIdResponses[keyof GetApi20260701ResourcesPostsCommentsByIdResponses];
 
-export type PutApi20260401ResourcesPostsCommentsByIdData = {
+export type PutApi20260701ResourcesPostsCommentsByIdData = {
     body?: {
         /**
          * identifier of the comment
          */
-        id: number;
+        id: string;
         /**
          * identifier of the post
          */
-        post_id: number;
+        post_id: string;
         /**
          * Text of the comment
          */
@@ -18227,35 +18502,35 @@ export type PutApi20260401ResourcesPostsCommentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/comments/{id}';
+    url: '/api/2026-07-01/resources/posts/comments/{id}';
 };
 
-export type PutApi20260401ResourcesPostsCommentsByIdResponses = {
+export type PutApi20260701ResourcesPostsCommentsByIdResponses = {
     /**
      * OK
      */
     200: PostsComment;
 };
 
-export type PutApi20260401ResourcesPostsCommentsByIdResponse = PutApi20260401ResourcesPostsCommentsByIdResponses[keyof PutApi20260401ResourcesPostsCommentsByIdResponses];
+export type PutApi20260701ResourcesPostsCommentsByIdResponse = PutApi20260701ResourcesPostsCommentsByIdResponses[keyof PutApi20260701ResourcesPostsCommentsByIdResponses];
 
-export type GetApi20260401ResourcesPostsGroupsData = {
+export type GetApi20260701ResourcesPostsGroupsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * identifier of the group.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * search term to filter groups by title or description.
          */
         search?: string;
     };
-    url: '/api/2026-04-01/resources/posts/groups';
+    url: '/api/2026-07-01/resources/posts/groups';
 };
 
-export type GetApi20260401ResourcesPostsGroupsResponses = {
+export type GetApi20260701ResourcesPostsGroupsResponses = {
     /**
      * OK
      */
@@ -18265,9 +18540,9 @@ export type GetApi20260401ResourcesPostsGroupsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPostsGroupsResponse = GetApi20260401ResourcesPostsGroupsResponses[keyof GetApi20260401ResourcesPostsGroupsResponses];
+export type GetApi20260701ResourcesPostsGroupsResponse = GetApi20260701ResourcesPostsGroupsResponses[keyof GetApi20260701ResourcesPostsGroupsResponses];
 
-export type PostApi20260401ResourcesPostsGroupsData = {
+export type PostApi20260701ResourcesPostsGroupsData = {
     body?: {
         /**
          * title of the group.
@@ -18280,23 +18555,23 @@ export type PostApi20260401ResourcesPostsGroupsData = {
         /**
          * Identifier of the company, this value can be retrieved from core/me endpoint
          */
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/posts/groups';
+    url: '/api/2026-07-01/resources/posts/groups';
 };
 
-export type PostApi20260401ResourcesPostsGroupsResponses = {
+export type PostApi20260701ResourcesPostsGroupsResponses = {
     /**
      * CREATED
      */
     201: PostsGroup;
 };
 
-export type PostApi20260401ResourcesPostsGroupsResponse = PostApi20260401ResourcesPostsGroupsResponses[keyof PostApi20260401ResourcesPostsGroupsResponses];
+export type PostApi20260701ResourcesPostsGroupsResponse = PostApi20260701ResourcesPostsGroupsResponses[keyof PostApi20260701ResourcesPostsGroupsResponses];
 
-export type DeleteApi20260401ResourcesPostsGroupsByIdData = {
+export type DeleteApi20260701ResourcesPostsGroupsByIdData = {
     body?: never;
     path: {
         /**
@@ -18305,19 +18580,19 @@ export type DeleteApi20260401ResourcesPostsGroupsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/groups/{id}';
+    url: '/api/2026-07-01/resources/posts/groups/{id}';
 };
 
-export type DeleteApi20260401ResourcesPostsGroupsByIdResponses = {
+export type DeleteApi20260701ResourcesPostsGroupsByIdResponses = {
     /**
      * OK
      */
     200: PostsGroup;
 };
 
-export type DeleteApi20260401ResourcesPostsGroupsByIdResponse = DeleteApi20260401ResourcesPostsGroupsByIdResponses[keyof DeleteApi20260401ResourcesPostsGroupsByIdResponses];
+export type DeleteApi20260701ResourcesPostsGroupsByIdResponse = DeleteApi20260701ResourcesPostsGroupsByIdResponses[keyof DeleteApi20260701ResourcesPostsGroupsByIdResponses];
 
-export type GetApi20260401ResourcesPostsGroupsByIdData = {
+export type GetApi20260701ResourcesPostsGroupsByIdData = {
     body?: never;
     path: {
         /**
@@ -18326,24 +18601,24 @@ export type GetApi20260401ResourcesPostsGroupsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/groups/{id}';
+    url: '/api/2026-07-01/resources/posts/groups/{id}';
 };
 
-export type GetApi20260401ResourcesPostsGroupsByIdResponses = {
+export type GetApi20260701ResourcesPostsGroupsByIdResponses = {
     /**
      * OK
      */
     200: PostsGroup;
 };
 
-export type GetApi20260401ResourcesPostsGroupsByIdResponse = GetApi20260401ResourcesPostsGroupsByIdResponses[keyof GetApi20260401ResourcesPostsGroupsByIdResponses];
+export type GetApi20260701ResourcesPostsGroupsByIdResponse = GetApi20260701ResourcesPostsGroupsByIdResponses[keyof GetApi20260701ResourcesPostsGroupsByIdResponses];
 
-export type PutApi20260401ResourcesPostsGroupsByIdData = {
+export type PutApi20260701ResourcesPostsGroupsByIdData = {
     body?: {
         /**
          * Identifier of the group.
          */
-        id: number;
+        id: string;
         /**
          * title of the group.
          */
@@ -18360,47 +18635,47 @@ export type PutApi20260401ResourcesPostsGroupsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/groups/{id}';
+    url: '/api/2026-07-01/resources/posts/groups/{id}';
 };
 
-export type PutApi20260401ResourcesPostsGroupsByIdResponses = {
+export type PutApi20260701ResourcesPostsGroupsByIdResponses = {
     /**
      * OK
      */
     200: PostsGroup;
 };
 
-export type PutApi20260401ResourcesPostsGroupsByIdResponse = PutApi20260401ResourcesPostsGroupsByIdResponses[keyof PutApi20260401ResourcesPostsGroupsByIdResponses];
+export type PutApi20260701ResourcesPostsGroupsByIdResponse = PutApi20260701ResourcesPostsGroupsByIdResponses[keyof PutApi20260701ResourcesPostsGroupsByIdResponses];
 
-export type PostApi20260401ResourcesPostsGroupsArchiveData = {
+export type PostApi20260701ResourcesPostsGroupsArchiveData = {
     body?: {
         /**
          * identifier of the group.
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/posts/groups/archive';
+    url: '/api/2026-07-01/resources/posts/groups/archive';
 };
 
-export type PostApi20260401ResourcesPostsGroupsArchiveResponses = {
+export type PostApi20260701ResourcesPostsGroupsArchiveResponses = {
     /**
      * OK
      */
     200: PostsGroup;
 };
 
-export type PostApi20260401ResourcesPostsGroupsArchiveResponse = PostApi20260401ResourcesPostsGroupsArchiveResponses[keyof PostApi20260401ResourcesPostsGroupsArchiveResponses];
+export type PostApi20260701ResourcesPostsGroupsArchiveResponse = PostApi20260701ResourcesPostsGroupsArchiveResponses[keyof PostApi20260701ResourcesPostsGroupsArchiveResponses];
 
-export type GetApi20260401ResourcesPostsPostsData = {
+export type GetApi20260701ResourcesPostsPostsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * group identifiers of the posts
          */
-        'groups[]'?: Array<number>;
+        'groups[]'?: Array<string>;
         /**
          * date from which posts will be retrieved
          */
@@ -18412,12 +18687,12 @@ export type GetApi20260401ResourcesPostsPostsData = {
         /**
          * identifiers of the post
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/posts/posts';
+    url: '/api/2026-07-01/resources/posts/posts';
 };
 
-export type GetApi20260401ResourcesPostsPostsResponses = {
+export type GetApi20260701ResourcesPostsPostsResponses = {
     /**
      * OK
      */
@@ -18427,9 +18702,9 @@ export type GetApi20260401ResourcesPostsPostsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesPostsPostsResponse = GetApi20260401ResourcesPostsPostsResponses[keyof GetApi20260401ResourcesPostsPostsResponses];
+export type GetApi20260701ResourcesPostsPostsResponse = GetApi20260701ResourcesPostsPostsResponses[keyof GetApi20260701ResourcesPostsPostsResponses];
 
-export type PostApi20260401ResourcesPostsPostsData = {
+export type PostApi20260701ResourcesPostsPostsData = {
     body?: {
         /**
          * title of the post
@@ -18442,7 +18717,7 @@ export type PostApi20260401ResourcesPostsPostsData = {
         /**
          * group identifier of the post, references to posts/groups endpoint
          */
-        post_group_id: number;
+        post_group_id: string;
         /**
          * allow comments and reactions on the post
          */
@@ -18450,19 +18725,19 @@ export type PostApi20260401ResourcesPostsPostsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/posts/posts';
+    url: '/api/2026-07-01/resources/posts/posts';
 };
 
-export type PostApi20260401ResourcesPostsPostsResponses = {
+export type PostApi20260701ResourcesPostsPostsResponses = {
     /**
      * CREATED
      */
     201: PostsPost;
 };
 
-export type PostApi20260401ResourcesPostsPostsResponse = PostApi20260401ResourcesPostsPostsResponses[keyof PostApi20260401ResourcesPostsPostsResponses];
+export type PostApi20260701ResourcesPostsPostsResponse = PostApi20260701ResourcesPostsPostsResponses[keyof PostApi20260701ResourcesPostsPostsResponses];
 
-export type DeleteApi20260401ResourcesPostsPostsByIdData = {
+export type DeleteApi20260701ResourcesPostsPostsByIdData = {
     body?: never;
     path: {
         /**
@@ -18471,19 +18746,19 @@ export type DeleteApi20260401ResourcesPostsPostsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/posts/{id}';
+    url: '/api/2026-07-01/resources/posts/posts/{id}';
 };
 
-export type DeleteApi20260401ResourcesPostsPostsByIdResponses = {
+export type DeleteApi20260701ResourcesPostsPostsByIdResponses = {
     /**
      * OK
      */
     200: PostsPost;
 };
 
-export type DeleteApi20260401ResourcesPostsPostsByIdResponse = DeleteApi20260401ResourcesPostsPostsByIdResponses[keyof DeleteApi20260401ResourcesPostsPostsByIdResponses];
+export type DeleteApi20260701ResourcesPostsPostsByIdResponse = DeleteApi20260701ResourcesPostsPostsByIdResponses[keyof DeleteApi20260701ResourcesPostsPostsByIdResponses];
 
-export type GetApi20260401ResourcesPostsPostsByIdData = {
+export type GetApi20260701ResourcesPostsPostsByIdData = {
     body?: never;
     path: {
         /**
@@ -18492,24 +18767,24 @@ export type GetApi20260401ResourcesPostsPostsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/posts/{id}';
+    url: '/api/2026-07-01/resources/posts/posts/{id}';
 };
 
-export type GetApi20260401ResourcesPostsPostsByIdResponses = {
+export type GetApi20260701ResourcesPostsPostsByIdResponses = {
     /**
      * OK
      */
     200: PostsPost;
 };
 
-export type GetApi20260401ResourcesPostsPostsByIdResponse = GetApi20260401ResourcesPostsPostsByIdResponses[keyof GetApi20260401ResourcesPostsPostsByIdResponses];
+export type GetApi20260701ResourcesPostsPostsByIdResponse = GetApi20260701ResourcesPostsPostsByIdResponses[keyof GetApi20260701ResourcesPostsPostsByIdResponses];
 
-export type PutApi20260401ResourcesPostsPostsByIdData = {
+export type PutApi20260701ResourcesPostsPostsByIdData = {
     body?: {
         /**
          * identifier of the post
          */
-        id: number;
+        id: string;
         /**
          * title of the post
          */
@@ -18521,7 +18796,7 @@ export type PutApi20260401ResourcesPostsPostsByIdData = {
         /**
          * group identifier of the post, references to posts/groups endpoint
          */
-        post_group_id?: number;
+        post_group_id?: string;
         /**
          * allow comments and reactions on the post
          */
@@ -18534,43 +18809,43 @@ export type PutApi20260401ResourcesPostsPostsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/posts/posts/{id}';
+    url: '/api/2026-07-01/resources/posts/posts/{id}';
 };
 
-export type PutApi20260401ResourcesPostsPostsByIdResponses = {
+export type PutApi20260701ResourcesPostsPostsByIdResponses = {
     /**
      * OK
      */
     200: PostsPost;
 };
 
-export type PutApi20260401ResourcesPostsPostsByIdResponse = PutApi20260401ResourcesPostsPostsByIdResponses[keyof PutApi20260401ResourcesPostsPostsByIdResponses];
+export type PutApi20260701ResourcesPostsPostsByIdResponse = PutApi20260701ResourcesPostsPostsByIdResponses[keyof PutApi20260701ResourcesPostsPostsByIdResponses];
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersData = {
+export type GetApi20260701ResourcesProcurementPurchaseOrdersData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of purchase order IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * An array of purchase request IDs to filter by.
          */
-        'purchase_request_ids[]'?: Array<number>;
+        'purchase_request_ids[]'?: Array<string>;
         /**
          * Status to filter by.
          */
-        status?: 'draft' | 'pending' | 'ordered' | 'partial' | 'received' | 'closed';
+        status?: 'processing' | 'draft' | 'pending' | 'ordered' | 'partial' | 'received' | 'closed';
         /**
          * Vendor IDs to filter by.
          */
-        vendor_id?: number;
+        'vendor_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/procurement/purchase_orders';
+    url: '/api/2026-07-01/resources/procurement/purchase_orders';
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersResponses = {
+export type GetApi20260701ResourcesProcurementPurchaseOrdersResponses = {
     /**
      * OK
      */
@@ -18580,9 +18855,9 @@ export type GetApi20260401ResourcesProcurementPurchaseOrdersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersResponse = GetApi20260401ResourcesProcurementPurchaseOrdersResponses[keyof GetApi20260401ResourcesProcurementPurchaseOrdersResponses];
+export type GetApi20260701ResourcesProcurementPurchaseOrdersResponse = GetApi20260701ResourcesProcurementPurchaseOrdersResponses[keyof GetApi20260701ResourcesProcurementPurchaseOrdersResponses];
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersByIdData = {
+export type GetApi20260701ResourcesProcurementPurchaseOrdersByIdData = {
     body?: never;
     path: {
         /**
@@ -18591,43 +18866,43 @@ export type GetApi20260401ResourcesProcurementPurchaseOrdersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/procurement/purchase_orders/{id}';
+    url: '/api/2026-07-01/resources/procurement/purchase_orders/{id}';
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersByIdResponses = {
+export type GetApi20260701ResourcesProcurementPurchaseOrdersByIdResponses = {
     /**
      * OK
      */
     200: ProcurementPurchaseOrder;
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseOrdersByIdResponse = GetApi20260401ResourcesProcurementPurchaseOrdersByIdResponses[keyof GetApi20260401ResourcesProcurementPurchaseOrdersByIdResponses];
+export type GetApi20260701ResourcesProcurementPurchaseOrdersByIdResponse = GetApi20260701ResourcesProcurementPurchaseOrdersByIdResponses[keyof GetApi20260701ResourcesProcurementPurchaseOrdersByIdResponses];
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsData = {
+export type GetApi20260701ResourcesProcurementPurchaseRequestsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of purchase request IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * An array of employee IDs to filter by as the purchase requester requesters.
          */
-        'requester_employee_ids[]'?: Array<number>;
+        'requester_employee_ids[]'?: Array<string>;
         /**
          * An array of purchase type IDs to filter by.
          */
-        'type_ids[]'?: Array<number>;
+        'type_ids[]'?: Array<string>;
         /**
          * Status to filter by.
          */
         status?: 'approved' | 'draft' | 'pending' | 'rejected' | 'changes_requested';
     };
-    url: '/api/2026-04-01/resources/procurement/purchase_requests';
+    url: '/api/2026-07-01/resources/procurement/purchase_requests';
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsResponses = {
+export type GetApi20260701ResourcesProcurementPurchaseRequestsResponses = {
     /**
      * OK
      */
@@ -18637,9 +18912,9 @@ export type GetApi20260401ResourcesProcurementPurchaseRequestsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsResponse = GetApi20260401ResourcesProcurementPurchaseRequestsResponses[keyof GetApi20260401ResourcesProcurementPurchaseRequestsResponses];
+export type GetApi20260701ResourcesProcurementPurchaseRequestsResponse = GetApi20260701ResourcesProcurementPurchaseRequestsResponses[keyof GetApi20260701ResourcesProcurementPurchaseRequestsResponses];
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsByIdData = {
+export type GetApi20260701ResourcesProcurementPurchaseRequestsByIdData = {
     body?: never;
     path: {
         /**
@@ -18648,31 +18923,31 @@ export type GetApi20260401ResourcesProcurementPurchaseRequestsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/procurement/purchase_requests/{id}';
+    url: '/api/2026-07-01/resources/procurement/purchase_requests/{id}';
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsByIdResponses = {
+export type GetApi20260701ResourcesProcurementPurchaseRequestsByIdResponses = {
     /**
      * OK
      */
     200: ProcurementPurchaseRequest;
 };
 
-export type GetApi20260401ResourcesProcurementPurchaseRequestsByIdResponse = GetApi20260401ResourcesProcurementPurchaseRequestsByIdResponses[keyof GetApi20260401ResourcesProcurementPurchaseRequestsByIdResponses];
+export type GetApi20260701ResourcesProcurementPurchaseRequestsByIdResponse = GetApi20260701ResourcesProcurementPurchaseRequestsByIdResponses[keyof GetApi20260701ResourcesProcurementPurchaseRequestsByIdResponses];
 
-export type GetApi20260401ResourcesProcurementTypesData = {
+export type GetApi20260701ResourcesProcurementTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of procurement type IDs to filter by.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/procurement/types';
+    url: '/api/2026-07-01/resources/procurement/types';
 };
 
-export type GetApi20260401ResourcesProcurementTypesResponses = {
+export type GetApi20260701ResourcesProcurementTypesResponses = {
     /**
      * OK
      */
@@ -18682,9 +18957,9 @@ export type GetApi20260401ResourcesProcurementTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProcurementTypesResponse = GetApi20260401ResourcesProcurementTypesResponses[keyof GetApi20260401ResourcesProcurementTypesResponses];
+export type GetApi20260701ResourcesProcurementTypesResponse = GetApi20260701ResourcesProcurementTypesResponses[keyof GetApi20260701ResourcesProcurementTypesResponses];
 
-export type GetApi20260401ResourcesProcurementTypesByIdData = {
+export type GetApi20260701ResourcesProcurementTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -18693,43 +18968,43 @@ export type GetApi20260401ResourcesProcurementTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/procurement/types/{id}';
+    url: '/api/2026-07-01/resources/procurement/types/{id}';
 };
 
-export type GetApi20260401ResourcesProcurementTypesByIdResponses = {
+export type GetApi20260701ResourcesProcurementTypesByIdResponses = {
     /**
      * OK
      */
     200: ProcurementType;
 };
 
-export type GetApi20260401ResourcesProcurementTypesByIdResponse = GetApi20260401ResourcesProcurementTypesByIdResponses[keyof GetApi20260401ResourcesProcurementTypesByIdResponses];
+export type GetApi20260701ResourcesProcurementTypesByIdResponse = GetApi20260701ResourcesProcurementTypesByIdResponses[keyof GetApi20260701ResourcesProcurementTypesByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesData = {
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter budget strategies by these ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter budget strategies by these project ids
          */
-        'project_ids[]'?: Array<number>;
+        'project_ids[]'?: Array<string>;
         /**
          * Filter budget strategies by these subproject ids
          */
-        'subproject_ids[]'?: Array<number>;
+        'subproject_ids[]'?: Array<string>;
         /**
          * When true, return only budget strategies without a subproject
          */
         without_subproject?: boolean;
     };
-    url: '/api/2026-04-01/resources/project_management/budget_strategies';
+    url: '/api/2026-07-01/resources/project_management/budget_strategies';
 };
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesResponses = {
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesResponses = {
     /**
      * OK
      */
@@ -18739,9 +19014,9 @@ export type GetApi20260401ResourcesProjectManagementBudgetStrategiesResponses = 
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesResponse = GetApi20260401ResourcesProjectManagementBudgetStrategiesResponses[keyof GetApi20260401ResourcesProjectManagementBudgetStrategiesResponses];
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesResponse = GetApi20260701ResourcesProjectManagementBudgetStrategiesResponses[keyof GetApi20260701ResourcesProjectManagementBudgetStrategiesResponses];
 
-export type PostApi20260401ResourcesProjectManagementBudgetStrategiesData = {
+export type PostApi20260701ResourcesProjectManagementBudgetStrategiesData = {
     body?: {
         /**
          * Type of budget strategy. One of project_fixed_cost => ProjectFixedCost, total_budget => TimeAndMaterials, without_budget => WithoutBudget
@@ -18762,11 +19037,11 @@ export type PostApi20260401ResourcesProjectManagementBudgetStrategiesData = {
         /**
          * Id of the project this budget strategy belongs to
          */
-        project_id: number;
+        project_id: string;
         /**
          * Id of the subproject, if any
          */
-        subproject_id?: number;
+        subproject_id?: string;
         /**
          * Whether the budget strategy is delegated
          */
@@ -18774,19 +19049,19 @@ export type PostApi20260401ResourcesProjectManagementBudgetStrategiesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/budget_strategies';
+    url: '/api/2026-07-01/resources/project_management/budget_strategies';
 };
 
-export type PostApi20260401ResourcesProjectManagementBudgetStrategiesResponses = {
+export type PostApi20260701ResourcesProjectManagementBudgetStrategiesResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementBudgetStrategy;
 };
 
-export type PostApi20260401ResourcesProjectManagementBudgetStrategiesResponse = PostApi20260401ResourcesProjectManagementBudgetStrategiesResponses[keyof PostApi20260401ResourcesProjectManagementBudgetStrategiesResponses];
+export type PostApi20260701ResourcesProjectManagementBudgetStrategiesResponse = PostApi20260701ResourcesProjectManagementBudgetStrategiesResponses[keyof PostApi20260701ResourcesProjectManagementBudgetStrategiesResponses];
 
-export type DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdData = {
+export type DeleteApi20260701ResourcesProjectManagementBudgetStrategiesByIdData = {
     body?: never;
     path: {
         /**
@@ -18795,19 +19070,19 @@ export type DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdData 
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/budget_strategies/{id}';
+    url: '/api/2026-07-01/resources/project_management/budget_strategies/{id}';
 };
 
-export type DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses = {
+export type DeleteApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementBudgetStrategy;
 };
 
-export type DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponse = DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof DeleteApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses];
+export type DeleteApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponse = DeleteApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof DeleteApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdData = {
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesByIdData = {
     body?: never;
     path: {
         /**
@@ -18816,24 +19091,24 @@ export type GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/budget_strategies/{id}';
+    url: '/api/2026-07-01/resources/project_management/budget_strategies/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementBudgetStrategy;
 };
 
-export type GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponse = GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof GetApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses];
+export type GetApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponse = GetApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof GetApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses];
 
-export type PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdData = {
+export type PutApi20260701ResourcesProjectManagementBudgetStrategiesByIdData = {
     body?: {
         /**
          * Id of the budget strategy to update
          */
-        id: number;
+        id: string;
         /**
          * Planned amount in cents (for project_fixed_cost / total_budget)
          */
@@ -18862,26 +19137,26 @@ export type PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/budget_strategies/{id}';
+    url: '/api/2026-07-01/resources/project_management/budget_strategies/{id}';
 };
 
-export type PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses = {
+export type PutApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementBudgetStrategy;
 };
 
-export type PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponse = PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof PutApi20260401ResourcesProjectManagementBudgetStrategiesByIdResponses];
+export type PutApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponse = PutApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses[keyof PutApi20260701ResourcesProjectManagementBudgetStrategiesByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsData = {
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Retrieve only the expense records that matches the project ids provided in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Retrieve only the expense records with end date greater than or equal to the start date provided in the request.
          */
@@ -18893,15 +19168,15 @@ export type GetApi20260401ResourcesProjectManagementExpenseRecordsData = {
         /**
          * Retrieve only the expense records that matches the expense ids provided in the request.
          */
-        'expense_ids[]'?: Array<number>;
+        'expense_ids[]'?: Array<string>;
         /**
          * Retrieve only the expense records that matches the project ids provided in the request.
          */
-        'project_ids[]'?: Array<number>;
+        'project_ids[]'?: Array<string>;
         /**
          * Retrieve only the expense records that matches the subproject ids provided in the request.
          */
-        'subproject_ids[]'?: Array<number>;
+        'subproject_ids[]'?: Array<string>;
         /**
          * Retrieve only the expense records that matches the updated after date provided in the request.
          */
@@ -18913,12 +19188,12 @@ export type GetApi20260401ResourcesProjectManagementExpenseRecordsData = {
         /**
          * Retrieve only the expense records that matches the project worker ids provided in the request.
          */
-        'project_worker_ids[]'?: Array<number>;
+        'project_worker_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/project_management/expense_records';
+    url: '/api/2026-07-01/resources/project_management/expense_records';
 };
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsResponses = {
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsResponses = {
     /**
      * OK
      */
@@ -18928,9 +19203,9 @@ export type GetApi20260401ResourcesProjectManagementExpenseRecordsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsResponse = GetApi20260401ResourcesProjectManagementExpenseRecordsResponses[keyof GetApi20260401ResourcesProjectManagementExpenseRecordsResponses];
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsResponse = GetApi20260701ResourcesProjectManagementExpenseRecordsResponses[keyof GetApi20260701ResourcesProjectManagementExpenseRecordsResponses];
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsByIdData = {
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsByIdData = {
     body?: never;
     path: {
         /**
@@ -18939,30 +19214,30 @@ export type GetApi20260401ResourcesProjectManagementExpenseRecordsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/expense_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/expense_records/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementExpenseRecord;
 };
 
-export type GetApi20260401ResourcesProjectManagementExpenseRecordsByIdResponse = GetApi20260401ResourcesProjectManagementExpenseRecordsByIdResponses[keyof GetApi20260401ResourcesProjectManagementExpenseRecordsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementExpenseRecordsByIdResponse = GetApi20260701ResourcesProjectManagementExpenseRecordsByIdResponses[keyof GetApi20260701ResourcesProjectManagementExpenseRecordsByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementExportableExpensesData = {
+export type GetApi20260701ResourcesProjectManagementExportableExpensesData = {
     body?: never;
     path?: never;
     query: {
         start_date: string;
         end_date: string;
-        'project_ids[]': Array<number>;
+        'project_ids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/project_management/exportable_expenses';
+    url: '/api/2026-07-01/resources/project_management/exportable_expenses';
 };
 
-export type GetApi20260401ResourcesProjectManagementExportableExpensesResponses = {
+export type GetApi20260701ResourcesProjectManagementExportableExpensesResponses = {
     /**
      * OK
      */
@@ -18972,219 +19247,81 @@ export type GetApi20260401ResourcesProjectManagementExportableExpensesResponses 
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementExportableExpensesResponse = GetApi20260401ResourcesProjectManagementExportableExpensesResponses[keyof GetApi20260401ResourcesProjectManagementExportableExpensesResponses];
+export type GetApi20260701ResourcesProjectManagementExportableExpensesResponse = GetApi20260701ResourcesProjectManagementExportableExpensesResponses[keyof GetApi20260701ResourcesProjectManagementExportableExpensesResponses];
 
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsData = {
-    body?: never;
-    path?: never;
-    query: {
-        'ids[]': Array<number>;
-        'project_worker_ids[]': Array<number>;
-        starts_on?: string;
-        ends_on?: string;
-        updated_after?: string;
-    };
-    url: '/api/2026-04-01/resources/project_management/flexible_time_records';
-};
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses = {
-    /**
-     * OK
-     */
-    200: {
-        data?: Array<ProjectManagementFlexibleTimeRecord>;
-        meta?: PagedIndexMeta;
-    };
-};
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponse = GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses[keyof GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses];
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordsData = {
-    body?: {
-        project_worker_id: number;
-        date: string;
-        imputed_minutes: number;
-        subproject_id?: number;
-    };
-    path?: never;
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_records';
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses = {
-    /**
-     * CREATED
-     */
-    201: ProjectManagementFlexibleTimeRecord;
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponse = PostApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses[keyof PostApi20260401ResourcesProjectManagementFlexibleTimeRecordsResponses];
-
-export type DeleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdData = {
-    body?: never;
-    path: {
-        id: string;
-    };
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_records/{id}';
-};
-
-export type DeleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses = {
-    /**
-     * OK
-     */
-    200: ProjectManagementFlexibleTimeRecord;
-};
-
-export type DeleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponse = DeleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses[keyof DeleteApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses];
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdData = {
-    body?: never;
-    path: {
-        id: string;
-    };
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_records/{id}';
-};
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses = {
-    /**
-     * OK
-     */
-    200: ProjectManagementFlexibleTimeRecord;
-};
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponse = GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses[keyof GetApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses];
-
-export type PutApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdData = {
-    body?: {
-        id: number;
-        imputed_minutes: number;
-    };
-    path: {
-        id: string;
-    };
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_records/{id}';
-};
-
-export type PutApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses = {
-    /**
-     * OK
-     */
-    200: ProjectManagementFlexibleTimeRecord;
-};
-
-export type PutApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponse = PutApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses[keyof PutApi20260401ResourcesProjectManagementFlexibleTimeRecordsByIdResponses];
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsData = {
+export type GetApi20260701ResourcesProjectManagementImputableProjectsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        flexible_time_record_id?: number;
+        /**
+         * Retrieve only the imputable projects that match the ids provided in the request.
+         */
+        'ids[]'?: Array<string>;
+        /**
+         * Retrieve only the imputable projects that match the name or code passed in the request.
+         */
+        name_or_code?: string;
+        /**
+         * If true, retrieve only active imputable projects.
+         */
+        only_active?: boolean;
+        /**
+         * If true, retrieve only imputable projects that have at least one assigned project worker.
+         */
+        assigned?: boolean;
+        /**
+         * Retrieve only the imputable projects in which the employees passed in the request are project workers.
+         */
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/project_management/flexible_time_record_comments';
+    url: '/api/2026-07-01/resources/project_management/imputable_projects';
 };
 
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses = {
+export type GetApi20260701ResourcesProjectManagementImputableProjectsResponses = {
     /**
      * OK
      */
     200: {
-        data?: Array<ProjectManagementFlexibleTimeRecordComment>;
+        data?: Array<ProjectManagementImputableProject>;
         meta?: PagedIndexMeta;
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponse = GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses[keyof GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses];
+export type GetApi20260701ResourcesProjectManagementImputableProjectsResponse = GetApi20260701ResourcesProjectManagementImputableProjectsResponses[keyof GetApi20260701ResourcesProjectManagementImputableProjectsResponses];
 
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsData = {
-    body?: {
-        content: string;
-        flexible_time_record_id: number;
-    };
-    path?: never;
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_record_comments';
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses = {
-    /**
-     * CREATED
-     */
-    201: ProjectManagementFlexibleTimeRecordComment;
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponse = PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses[keyof PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsResponses];
-
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsByIdData = {
+export type GetApi20260701ResourcesProjectManagementImputableProjectsByIdData = {
     body?: never;
     path: {
+        /**
+         * Retrieve only the imputable projects that match the ids provided in the request.
+         */
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_record_comments/{id}';
+    url: '/api/2026-07-01/resources/project_management/imputable_projects/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementImputableProjectsByIdResponses = {
     /**
      * OK
      */
-    200: ProjectManagementFlexibleTimeRecordComment;
+    200: ProjectManagementImputableProject;
 };
 
-export type GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsByIdResponse = GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsByIdResponses[keyof GetApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementImputableProjectsByIdResponse = GetApi20260701ResourcesProjectManagementImputableProjectsByIdResponses[keyof GetApi20260701ResourcesProjectManagementImputableProjectsByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordData = {
-    body?: {
-        flexible_time_record_id: number;
-    };
-    path?: never;
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_record_comments/delete_by_flexible_time_record';
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordResponses = {
-    /**
-     * OK
-     */
-    200: ProjectManagementFlexibleTimeRecordComment;
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordResponse = PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordResponses[keyof PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsDeleteByFlexibleTimeRecordResponses];
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordData = {
-    body?: {
-        flexible_time_record_id: number;
-        content: string;
-    };
-    path?: never;
-    query?: never;
-    url: '/api/2026-04-01/resources/project_management/flexible_time_record_comments/update_by_flexible_time_record';
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordResponses = {
-    /**
-     * OK
-     */
-    200: ProjectManagementFlexibleTimeRecordComment;
-};
-
-export type PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordResponse = PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordResponses[keyof PostApi20260401ResourcesProjectManagementFlexibleTimeRecordCommentsUpdateByFlexibleTimeRecordResponses];
-
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsData = {
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Retrieve only the planned records that matches the ids provided in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Retrieve only the planned records that matches the project worker ids provided in the request.
          */
-        'project_worker_ids[]'?: Array<number>;
+        'project_worker_ids[]'?: Array<string>;
         /**
          * Retrieve only the planned records that matches the start date provided in the request.
          */
@@ -19196,12 +19333,12 @@ export type GetApi20260401ResourcesProjectManagementPlannedRecordsData = {
         /**
          * Retrieve only the planned records that matches the subproject ids provided in the request.
          */
-        'subproject_ids[]'?: Array<number>;
+        'subproject_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/project_management/planned_records';
+    url: '/api/2026-07-01/resources/project_management/planned_records';
 };
 
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsResponses = {
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsResponses = {
     /**
      * OK
      */
@@ -19211,9 +19348,9 @@ export type GetApi20260401ResourcesProjectManagementPlannedRecordsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsResponse = GetApi20260401ResourcesProjectManagementPlannedRecordsResponses[keyof GetApi20260401ResourcesProjectManagementPlannedRecordsResponses];
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsResponse = GetApi20260701ResourcesProjectManagementPlannedRecordsResponses[keyof GetApi20260701ResourcesProjectManagementPlannedRecordsResponses];
 
-export type DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
+export type DeleteApi20260701ResourcesProjectManagementPlannedRecordsByIdData = {
     body?: never;
     path: {
         /**
@@ -19222,19 +19359,19 @@ export type DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdData = 
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/planned_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/planned_records/{id}';
 };
 
-export type DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses = {
+export type DeleteApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementPlannedRecord;
 };
 
-export type DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdResponse = DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses[keyof DeleteApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses];
+export type DeleteApi20260701ResourcesProjectManagementPlannedRecordsByIdResponse = DeleteApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses[keyof DeleteApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsByIdData = {
     body?: never;
     path: {
         /**
@@ -19243,24 +19380,24 @@ export type GetApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/planned_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/planned_records/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementPlannedRecord;
 };
 
-export type GetApi20260401ResourcesProjectManagementPlannedRecordsByIdResponse = GetApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses[keyof GetApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementPlannedRecordsByIdResponse = GetApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses[keyof GetApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses];
 
-export type PutApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
+export type PutApi20260701ResourcesProjectManagementPlannedRecordsByIdData = {
     body?: {
         /**
          * The id of the planned record to update
          */
-        id: number;
+        id: string;
         /**
          * The start date to update the planned record for
          */
@@ -19276,7 +19413,7 @@ export type PutApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
         /**
          * The project worker id to update the planned record for
          */
-        project_worker_id?: number;
+        project_worker_id?: string;
         /**
          * The week days to update the planned record for, start in Sunday 0 and end in Saturday 6
          */
@@ -19289,24 +19426,24 @@ export type PutApi20260401ResourcesProjectManagementPlannedRecordsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/planned_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/planned_records/{id}';
 };
 
-export type PutApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses = {
+export type PutApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementPlannedRecord;
 };
 
-export type PutApi20260401ResourcesProjectManagementPlannedRecordsByIdResponse = PutApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses[keyof PutApi20260401ResourcesProjectManagementPlannedRecordsByIdResponses];
+export type PutApi20260701ResourcesProjectManagementPlannedRecordsByIdResponse = PutApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses[keyof PutApi20260701ResourcesProjectManagementPlannedRecordsByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateData = {
+export type PostApi20260701ResourcesProjectManagementPlannedRecordsBulkCreateData = {
     body?: {
         /**
          * The project worker ids to create the planned records for
          */
-        project_worker_ids: Array<number>;
+        project_worker_ids: Array<string>;
         /**
          * The start date to create the planned records for
          */
@@ -19322,7 +19459,7 @@ export type PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateDat
         /**
          * The subproject id to create the planned records for
          */
-        subproject_id?: number;
+        subproject_id?: string;
         /**
          * The week days to create the planned records for, start in Sunday 0 and end in Saturday 6
          */
@@ -19330,26 +19467,26 @@ export type PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateDat
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/planned_records/bulk_create';
+    url: '/api/2026-07-01/resources/project_management/planned_records/bulk_create';
 };
 
-export type PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateResponses = {
+export type PostApi20260701ResourcesProjectManagementPlannedRecordsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementPlannedRecord>;
 };
 
-export type PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateResponse = PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateResponses[keyof PostApi20260401ResourcesProjectManagementPlannedRecordsBulkCreateResponses];
+export type PostApi20260701ResourcesProjectManagementPlannedRecordsBulkCreateResponse = PostApi20260701ResourcesProjectManagementPlannedRecordsBulkCreateResponses[keyof PostApi20260701ResourcesProjectManagementPlannedRecordsBulkCreateResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectsData = {
+export type GetApi20260701ResourcesProjectManagementProjectsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Retrieve only the projects that matches the ids provided in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Retrieve only the projects that match the name passed in the request. (deprecated)
          */
@@ -19373,11 +19510,11 @@ export type GetApi20260401ResourcesProjectManagementProjectsData = {
         /**
          * Retrieve only the projects that are related to the legal entity passed in the request.
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
         /**
          * Retrieve only the projects that are related to the clients passed in the request, refers to finance/contacts.
          */
-        'client_ids[]'?: Array<number>;
+        'client_ids[]'?: Array<string>;
         /**
          * Retrieve only the projects that are not related to any client, refers to finance/contacts.
          */
@@ -19387,10 +19524,10 @@ export type GetApi20260401ResourcesProjectManagementProjectsData = {
          */
         total_currency?: string;
     };
-    url: '/api/2026-04-01/resources/project_management/projects';
+    url: '/api/2026-07-01/resources/project_management/projects';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectsResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectsResponses = {
     /**
      * OK
      */
@@ -19400,9 +19537,9 @@ export type GetApi20260401ResourcesProjectManagementProjectsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectsResponse = GetApi20260401ResourcesProjectManagementProjectsResponses[keyof GetApi20260401ResourcesProjectManagementProjectsResponses];
+export type GetApi20260701ResourcesProjectManagementProjectsResponse = GetApi20260701ResourcesProjectManagementProjectsResponses[keyof GetApi20260701ResourcesProjectManagementProjectsResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsData = {
+export type PostApi20260701ResourcesProjectManagementProjectsData = {
     body?: {
         /**
          * Mandatory to pass a name of the project.
@@ -19435,11 +19572,11 @@ export type PostApi20260401ResourcesProjectManagementProjectsData = {
         /**
          * Array of employee IDs who are project administrators
          */
-        project_admins?: Array<number>;
+        project_admins?: Array<string>;
         /**
          * Array of employee IDs who are project managers
          */
-        project_managers?: Array<number>;
+        project_managers?: Array<string>;
         /**
          * Whether the project is billable to clients
          */
@@ -19455,7 +19592,7 @@ export type PostApi20260401ResourcesProjectManagementProjectsData = {
         /**
          * The legal entity ID associated with the project
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
         /**
          * Budget allocation amount in cents, it's exclusive of the budget_allocation
          */
@@ -19467,23 +19604,23 @@ export type PostApi20260401ResourcesProjectManagementProjectsData = {
         /**
          * Client associated to the project, refers to finance/contacts.
          */
-        client_id?: number;
+        client_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects';
+    url: '/api/2026-07-01/resources/project_management/projects';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsResponse = PostApi20260401ResourcesProjectManagementProjectsResponses[keyof PostApi20260401ResourcesProjectManagementProjectsResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsResponse = PostApi20260701ResourcesProjectManagementProjectsResponses[keyof PostApi20260701ResourcesProjectManagementProjectsResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectsByIdData = {
+export type GetApi20260701ResourcesProjectManagementProjectsByIdData = {
     body?: never;
     path: {
         /**
@@ -19492,24 +19629,24 @@ export type GetApi20260401ResourcesProjectManagementProjectsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/{id}';
+    url: '/api/2026-07-01/resources/project_management/projects/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectsByIdResponse = GetApi20260401ResourcesProjectManagementProjectsByIdResponses[keyof GetApi20260401ResourcesProjectManagementProjectsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementProjectsByIdResponse = GetApi20260701ResourcesProjectManagementProjectsByIdResponses[keyof GetApi20260701ResourcesProjectManagementProjectsByIdResponses];
 
-export type PutApi20260401ResourcesProjectManagementProjectsByIdData = {
+export type PutApi20260701ResourcesProjectManagementProjectsByIdData = {
     body?: {
         /**
          * Id project.
          */
-        id: number;
+        id: string;
         /**
          * Name of the project.
          */
@@ -19533,11 +19670,11 @@ export type PutApi20260401ResourcesProjectManagementProjectsByIdData = {
         /**
          * Client associated to the project, refers to finance/contacts.
          */
-        client_id?: number;
+        client_id?: string;
         /**
          * Id of the legal entity for the currency of the project
          */
-        legal_entity_id?: number;
+        legal_entity_id?: string;
     };
     path: {
         /**
@@ -19546,61 +19683,61 @@ export type PutApi20260401ResourcesProjectManagementProjectsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/{id}';
+    url: '/api/2026-07-01/resources/project_management/projects/{id}';
 };
 
-export type PutApi20260401ResourcesProjectManagementProjectsByIdResponses = {
+export type PutApi20260701ResourcesProjectManagementProjectsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PutApi20260401ResourcesProjectManagementProjectsByIdResponse = PutApi20260401ResourcesProjectManagementProjectsByIdResponses[keyof PutApi20260401ResourcesProjectManagementProjectsByIdResponses];
+export type PutApi20260701ResourcesProjectManagementProjectsByIdResponse = PutApi20260701ResourcesProjectManagementProjectsByIdResponses[keyof PutApi20260701ResourcesProjectManagementProjectsByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsActivateData = {
+export type PostApi20260701ResourcesProjectManagementProjectsActivateData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/activate';
+    url: '/api/2026-07-01/resources/project_management/projects/activate';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsActivateResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsActivateResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsActivateResponse = PostApi20260401ResourcesProjectManagementProjectsActivateResponses[keyof PostApi20260401ResourcesProjectManagementProjectsActivateResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsActivateResponse = PostApi20260701ResourcesProjectManagementProjectsActivateResponses[keyof PostApi20260701ResourcesProjectManagementProjectsActivateResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeAssignmentData = {
+export type PostApi20260701ResourcesProjectManagementProjectsChangeAssignmentData = {
     body?: {
-        id: number;
+        id: string;
         employees_assignment: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/change_assignment';
+    url: '/api/2026-07-01/resources/project_management/projects/change_assignment';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeAssignmentResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsChangeAssignmentResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeAssignmentResponse = PostApi20260401ResourcesProjectManagementProjectsChangeAssignmentResponses[keyof PostApi20260401ResourcesProjectManagementProjectsChangeAssignmentResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsChangeAssignmentResponse = PostApi20260701ResourcesProjectManagementProjectsChangeAssignmentResponses[keyof PostApi20260701ResourcesProjectManagementProjectsChangeAssignmentResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeStatusData = {
+export type PostApi20260701ResourcesProjectManagementProjectsChangeStatusData = {
     body?: {
         /**
          * Id project.
          */
-        id: number;
+        id: string;
         /**
          * new status of the projects
          */
@@ -19608,71 +19745,71 @@ export type PostApi20260401ResourcesProjectManagementProjectsChangeStatusData = 
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/change_status';
+    url: '/api/2026-07-01/resources/project_management/projects/change_status';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeStatusResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsChangeStatusResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsChangeStatusResponse = PostApi20260401ResourcesProjectManagementProjectsChangeStatusResponses[keyof PostApi20260401ResourcesProjectManagementProjectsChangeStatusResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsChangeStatusResponse = PostApi20260701ResourcesProjectManagementProjectsChangeStatusResponses[keyof PostApi20260701ResourcesProjectManagementProjectsChangeStatusResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsCloseData = {
+export type PostApi20260701ResourcesProjectManagementProjectsCloseData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/close';
+    url: '/api/2026-07-01/resources/project_management/projects/close';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsCloseResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsCloseResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsCloseResponse = PostApi20260401ResourcesProjectManagementProjectsCloseResponses[keyof PostApi20260401ResourcesProjectManagementProjectsCloseResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsCloseResponse = PostApi20260701ResourcesProjectManagementProjectsCloseResponses[keyof PostApi20260701ResourcesProjectManagementProjectsCloseResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectsSoftDeleteData = {
+export type PostApi20260701ResourcesProjectManagementProjectsSoftDeleteData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/projects/soft_delete';
+    url: '/api/2026-07-01/resources/project_management/projects/soft_delete';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsSoftDeleteResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectsSoftDeleteResponses = {
     /**
      * OK
      */
     200: ProjectManagementProject;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectsSoftDeleteResponse = PostApi20260401ResourcesProjectManagementProjectsSoftDeleteResponses[keyof PostApi20260401ResourcesProjectManagementProjectsSoftDeleteResponses];
+export type PostApi20260701ResourcesProjectManagementProjectsSoftDeleteResponse = PostApi20260701ResourcesProjectManagementProjectsSoftDeleteResponses[keyof PostApi20260701ResourcesProjectManagementProjectsSoftDeleteResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksData = {
+export type GetApi20260701ResourcesProjectManagementProjectTasksData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Retrieve only the projects tasks that matches the ids passed in the request.
          */
-        'ids[]': Array<number>;
+        'ids[]': Array<string>;
         /**
          * Retrieve only the projects tasks from the projects that matched the ids passed in the request.
          */
-        'project_ids[]': Array<number>;
+        'project_ids[]': Array<string>;
         /**
          * Retrieve only the projects tasks from the subprojects that matched the ids passed in the request.
          */
-        'subproject_ids[]': Array<number>;
-        'task_ids[]'?: Array<number>;
+        'subproject_ids[]': Array<string>;
+        'task_ids[]'?: Array<string>;
         /**
          * Retrieve only the projects tasks with the status completed.
          */
@@ -19692,12 +19829,12 @@ export type GetApi20260401ResourcesProjectManagementProjectTasksData = {
         /**
          * Retrieve only the projects tasks from the clients that matched the ids passed in the request.
          */
-        'client_ids[]': Array<number>;
+        'client_ids[]': Array<string>;
     };
-    url: '/api/2026-04-01/resources/project_management/project_tasks';
+    url: '/api/2026-07-01/resources/project_management/project_tasks';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectTasksResponses = {
     /**
      * OK
      */
@@ -19707,9 +19844,9 @@ export type GetApi20260401ResourcesProjectManagementProjectTasksResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksResponse = GetApi20260401ResourcesProjectManagementProjectTasksResponses[keyof GetApi20260401ResourcesProjectManagementProjectTasksResponses];
+export type GetApi20260701ResourcesProjectManagementProjectTasksResponse = GetApi20260701ResourcesProjectManagementProjectTasksResponses[keyof GetApi20260701ResourcesProjectManagementProjectTasksResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksData = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksData = {
     body?: {
         /**
          * The name of the project task
@@ -19734,15 +19871,15 @@ export type PostApi20260401ResourcesProjectManagementProjectTasksData = {
         /**
          * The value of the assignee employee ids of the project task
          */
-        'assignee_employee_ids[]'?: Array<number>;
+        'assignee_employee_ids[]'?: Array<string>;
         /**
          * The ID of the project where the task belongs
          */
-        project_id: number;
+        project_id: string;
         /**
          * The ID of the subproject where the project task belongs
          */
-        subproject_id?: number;
+        subproject_id?: string;
         /**
          * Array of files that will be attached to the project task
          */
@@ -19754,19 +19891,19 @@ export type PostApi20260401ResourcesProjectManagementProjectTasksData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_tasks';
+    url: '/api/2026-07-01/resources/project_management/project_tasks';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementProjectTask;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksResponse = PostApi20260401ResourcesProjectManagementProjectTasksResponses[keyof PostApi20260401ResourcesProjectManagementProjectTasksResponses];
+export type PostApi20260701ResourcesProjectManagementProjectTasksResponse = PostApi20260701ResourcesProjectManagementProjectTasksResponses[keyof PostApi20260701ResourcesProjectManagementProjectTasksResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksByIdData = {
+export type GetApi20260701ResourcesProjectManagementProjectTasksByIdData = {
     body?: never;
     path: {
         /**
@@ -19775,24 +19912,24 @@ export type GetApi20260401ResourcesProjectManagementProjectTasksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_tasks/{id}';
+    url: '/api/2026-07-01/resources/project_management/project_tasks/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectTasksByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementProjectTask;
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectTasksByIdResponse = GetApi20260401ResourcesProjectManagementProjectTasksByIdResponses[keyof GetApi20260401ResourcesProjectManagementProjectTasksByIdResponses];
+export type GetApi20260701ResourcesProjectManagementProjectTasksByIdResponse = GetApi20260701ResourcesProjectManagementProjectTasksByIdResponses[keyof GetApi20260701ResourcesProjectManagementProjectTasksByIdResponses];
 
-export type PutApi20260401ResourcesProjectManagementProjectTasksByIdData = {
+export type PutApi20260701ResourcesProjectManagementProjectTasksByIdData = {
     body?: {
         /**
          * The ID of the project task to update
          */
-        id: number;
+        id: string;
         /**
          * The name of the project task
          */
@@ -19816,15 +19953,15 @@ export type PutApi20260401ResourcesProjectManagementProjectTasksByIdData = {
         /**
          * The value of the assignee employee ids of the project task
          */
-        'assignee_employee_ids[]'?: Array<number>;
+        'assignee_employee_ids[]'?: Array<string>;
         /**
          * The ID of the project where the task belongs
          */
-        project_id: number;
+        project_id: string;
         /**
          * The ID of the subproject where the project task belongs
          */
-        subproject_id?: number;
+        subproject_id?: string;
         /**
          * Array of files to add to the project task
          */
@@ -19832,7 +19969,7 @@ export type PutApi20260401ResourcesProjectManagementProjectTasksByIdData = {
         /**
          * Array of files to remove from the project task
          */
-        'files_to_remove[]'?: Array<number>;
+        'files_to_remove[]'?: Array<string>;
         /**
          * The status of the project task
          */
@@ -19845,50 +19982,50 @@ export type PutApi20260401ResourcesProjectManagementProjectTasksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_tasks/{id}';
+    url: '/api/2026-07-01/resources/project_management/project_tasks/{id}';
 };
 
-export type PutApi20260401ResourcesProjectManagementProjectTasksByIdResponses = {
+export type PutApi20260701ResourcesProjectManagementProjectTasksByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementProjectTask;
 };
 
-export type PutApi20260401ResourcesProjectManagementProjectTasksByIdResponse = PutApi20260401ResourcesProjectManagementProjectTasksByIdResponses[keyof PutApi20260401ResourcesProjectManagementProjectTasksByIdResponses];
+export type PutApi20260701ResourcesProjectManagementProjectTasksByIdResponse = PutApi20260701ResourcesProjectManagementProjectTasksByIdResponses[keyof PutApi20260701ResourcesProjectManagementProjectTasksByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDestroyData = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDestroyData = {
     body?: {
-        ids: Array<number>;
+        ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_tasks/bulk_destroy';
+    url: '/api/2026-07-01/resources/project_management/project_tasks/bulk_destroy';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDestroyResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDestroyResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementProjectTask>;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDestroyResponse = PostApi20260401ResourcesProjectManagementProjectTasksBulkDestroyResponses[keyof PostApi20260401ResourcesProjectManagementProjectTasksBulkDestroyResponses];
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDestroyResponse = PostApi20260701ResourcesProjectManagementProjectTasksBulkDestroyResponses[keyof PostApi20260701ResourcesProjectManagementProjectTasksBulkDestroyResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateData = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDuplicateData = {
     body?: {
         /**
          * Project id where the tasks will be duplicated
          */
-        project_id?: number;
+        project_id?: string;
         /**
          * Subproject id where the tasks will be duplicated
          */
-        subproject_id?: number;
+        subproject_id?: string;
         /**
          * Task ids to be duplicated
          */
-        ids: Array<number>;
+        ids: Array<string>;
         /**
          * Set this to true if you want to exclude assignees from the duplicated tasks
          */
@@ -19896,34 +20033,34 @@ export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateDa
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_tasks/bulk_duplicate';
+    url: '/api/2026-07-01/resources/project_management/project_tasks/bulk_duplicate';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDuplicateResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementProjectTask>;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateResponse = PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateResponses[keyof PostApi20260401ResourcesProjectManagementProjectTasksBulkDuplicateResponses];
+export type PostApi20260701ResourcesProjectManagementProjectTasksBulkDuplicateResponse = PostApi20260701ResourcesProjectManagementProjectTasksBulkDuplicateResponses[keyof PostApi20260701ResourcesProjectManagementProjectTasksBulkDuplicateResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersData = {
+export type GetApi20260701ResourcesProjectManagementProjectWorkersData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Retrieve only the project workers that matches the ids provided in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Retrieve only the project workers that matches the project_ids provided in the request.
          */
-        'project_ids[]'?: Array<number>;
+        'project_ids[]'?: Array<string>;
         /**
          * Retrieve only the project workers that matches the subproject_ids provided in the request.
          */
-        'subproject_ids[]'?: Array<number>;
+        'subproject_ids[]'?: Array<string>;
         /**
          * Retrieve the project workers that are not assigned to any subproject (can be combined with subproject_ids).
          */
@@ -19931,7 +20068,7 @@ export type GetApi20260401ResourcesProjectManagementProjectWorkersData = {
         /**
          * Retrieve only the project workers that are related to the employee_ids provided in the request.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Retrieve project workers that are assigned if true or in not-assigned status if false.
          */
@@ -19958,10 +20095,10 @@ export type GetApi20260401ResourcesProjectManagementProjectWorkersData = {
         updated_after?: string;
         include_labor_cost?: boolean;
     };
-    url: '/api/2026-04-01/resources/project_management/project_workers';
+    url: '/api/2026-07-01/resources/project_management/project_workers';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectWorkersResponses = {
     /**
      * OK
      */
@@ -19971,34 +20108,34 @@ export type GetApi20260401ResourcesProjectManagementProjectWorkersResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersResponse = GetApi20260401ResourcesProjectManagementProjectWorkersResponses[keyof GetApi20260401ResourcesProjectManagementProjectWorkersResponses];
+export type GetApi20260701ResourcesProjectManagementProjectWorkersResponse = GetApi20260701ResourcesProjectManagementProjectWorkersResponses[keyof GetApi20260701ResourcesProjectManagementProjectWorkersResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersData = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersData = {
     body?: {
         /**
          * The id of the project to assign the employee project worker.
          */
-        project_id: number;
+        project_id: string;
         /**
          * The id of the employee to be assigned to the project.
          */
-        employee_id: number;
+        employee_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_workers';
+    url: '/api/2026-07-01/resources/project_management/project_workers';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementProjectWorker;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersResponse = PostApi20260401ResourcesProjectManagementProjectWorkersResponses[keyof PostApi20260401ResourcesProjectManagementProjectWorkersResponses];
+export type PostApi20260701ResourcesProjectManagementProjectWorkersResponse = PostApi20260701ResourcesProjectManagementProjectWorkersResponses[keyof PostApi20260701ResourcesProjectManagementProjectWorkersResponses];
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersByIdData = {
+export type GetApi20260701ResourcesProjectManagementProjectWorkersByIdData = {
     body?: never;
     path: {
         /**
@@ -20007,105 +20144,105 @@ export type GetApi20260401ResourcesProjectManagementProjectWorkersByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_workers/{id}';
+    url: '/api/2026-07-01/resources/project_management/project_workers/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementProjectWorkersByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementProjectWorker;
 };
 
-export type GetApi20260401ResourcesProjectManagementProjectWorkersByIdResponse = GetApi20260401ResourcesProjectManagementProjectWorkersByIdResponses[keyof GetApi20260401ResourcesProjectManagementProjectWorkersByIdResponses];
+export type GetApi20260701ResourcesProjectManagementProjectWorkersByIdResponse = GetApi20260701ResourcesProjectManagementProjectWorkersByIdResponses[keyof GetApi20260701ResourcesProjectManagementProjectWorkersByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkAssignData = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkAssignData = {
     body?: {
         /**
          * **DEPRECATED** in favor of `project_ids`. Please use `project_ids` instead
          */
-        project_id?: number;
+        project_id?: string;
         /**
          * Set of project_ids to assign to the employees specified in the next param.
          */
-        project_ids?: Array<number>;
+        project_ids?: Array<string>;
         /**
          * Set of a employee_ids that must be **assigned** after execution.
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_workers/bulk_assign';
+    url: '/api/2026-07-01/resources/project_management/project_workers/bulk_assign';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkAssignResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkAssignResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementProjectWorker>;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkAssignResponse = PostApi20260401ResourcesProjectManagementProjectWorkersBulkAssignResponses[keyof PostApi20260401ResourcesProjectManagementProjectWorkersBulkAssignResponses];
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkAssignResponse = PostApi20260701ResourcesProjectManagementProjectWorkersBulkAssignResponses[keyof PostApi20260701ResourcesProjectManagementProjectWorkersBulkAssignResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkCreateData = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkCreateData = {
     body?: {
         /**
          * The id of the project to assign the given employees.
          */
-        project_id: number;
+        project_id: string;
         /**
          * The id of the employee to be assigned to the projects.
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_workers/bulk_create';
+    url: '/api/2026-07-01/resources/project_management/project_workers/bulk_create';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkCreateResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementProjectWorker>;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersBulkCreateResponse = PostApi20260401ResourcesProjectManagementProjectWorkersBulkCreateResponses[keyof PostApi20260401ResourcesProjectManagementProjectWorkersBulkCreateResponses];
+export type PostApi20260701ResourcesProjectManagementProjectWorkersBulkCreateResponse = PostApi20260701ResourcesProjectManagementProjectWorkersBulkCreateResponses[keyof PostApi20260701ResourcesProjectManagementProjectWorkersBulkCreateResponses];
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersUnassignData = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersUnassignData = {
     body?: {
         /**
          * The id of the project worker to be unassigned.
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/project_workers/unassign';
+    url: '/api/2026-07-01/resources/project_management/project_workers/unassign';
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersUnassignResponses = {
+export type PostApi20260701ResourcesProjectManagementProjectWorkersUnassignResponses = {
     /**
      * OK
      */
     200: ProjectManagementProjectWorker;
 };
 
-export type PostApi20260401ResourcesProjectManagementProjectWorkersUnassignResponse = PostApi20260401ResourcesProjectManagementProjectWorkersUnassignResponses[keyof PostApi20260401ResourcesProjectManagementProjectWorkersUnassignResponses];
+export type PostApi20260701ResourcesProjectManagementProjectWorkersUnassignResponse = PostApi20260701ResourcesProjectManagementProjectWorkersUnassignResponses[keyof PostApi20260701ResourcesProjectManagementProjectWorkersUnassignResponses];
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsData = {
+export type GetApi20260701ResourcesProjectManagementSubprojectsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Retrieve only the subprojects that matches the ids passed in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Retrieve only the subprojects that belongs to the project ids passed in the request.
          */
-        'project_ids[]'?: Array<number>;
+        'project_ids[]'?: Array<string>;
         /**
          * Retrieve only the subprojects that matches the name passed in the request.
          */
@@ -20124,10 +20261,10 @@ export type GetApi20260401ResourcesProjectManagementSubprojectsData = {
          */
         updated_after?: string;
     };
-    url: '/api/2026-04-01/resources/project_management/subprojects';
+    url: '/api/2026-07-01/resources/project_management/subprojects';
 };
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsResponses = {
+export type GetApi20260701ResourcesProjectManagementSubprojectsResponses = {
     /**
      * OK
      */
@@ -20137,46 +20274,46 @@ export type GetApi20260401ResourcesProjectManagementSubprojectsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsResponse = GetApi20260401ResourcesProjectManagementSubprojectsResponses[keyof GetApi20260401ResourcesProjectManagementSubprojectsResponses];
+export type GetApi20260701ResourcesProjectManagementSubprojectsResponse = GetApi20260701ResourcesProjectManagementSubprojectsResponses[keyof GetApi20260701ResourcesProjectManagementSubprojectsResponses];
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsData = {
+export type PostApi20260701ResourcesProjectManagementSubprojectsData = {
     body?: {
         name: string;
-        project_id: number;
+        project_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/subprojects';
+    url: '/api/2026-07-01/resources/project_management/subprojects';
 };
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsResponses = {
+export type PostApi20260701ResourcesProjectManagementSubprojectsResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementSubproject;
 };
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsResponse = PostApi20260401ResourcesProjectManagementSubprojectsResponses[keyof PostApi20260401ResourcesProjectManagementSubprojectsResponses];
+export type PostApi20260701ResourcesProjectManagementSubprojectsResponse = PostApi20260701ResourcesProjectManagementSubprojectsResponses[keyof PostApi20260701ResourcesProjectManagementSubprojectsResponses];
 
-export type DeleteApi20260401ResourcesProjectManagementSubprojectsByIdData = {
+export type DeleteApi20260701ResourcesProjectManagementSubprojectsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/subprojects/{id}';
+    url: '/api/2026-07-01/resources/project_management/subprojects/{id}';
 };
 
-export type DeleteApi20260401ResourcesProjectManagementSubprojectsByIdResponses = {
+export type DeleteApi20260701ResourcesProjectManagementSubprojectsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementSubproject;
 };
 
-export type DeleteApi20260401ResourcesProjectManagementSubprojectsByIdResponse = DeleteApi20260401ResourcesProjectManagementSubprojectsByIdResponses[keyof DeleteApi20260401ResourcesProjectManagementSubprojectsByIdResponses];
+export type DeleteApi20260701ResourcesProjectManagementSubprojectsByIdResponse = DeleteApi20260701ResourcesProjectManagementSubprojectsByIdResponses[keyof DeleteApi20260701ResourcesProjectManagementSubprojectsByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsByIdData = {
+export type GetApi20260701ResourcesProjectManagementSubprojectsByIdData = {
     body?: never;
     path: {
         /**
@@ -20185,24 +20322,24 @@ export type GetApi20260401ResourcesProjectManagementSubprojectsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/subprojects/{id}';
+    url: '/api/2026-07-01/resources/project_management/subprojects/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementSubprojectsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementSubproject;
 };
 
-export type GetApi20260401ResourcesProjectManagementSubprojectsByIdResponse = GetApi20260401ResourcesProjectManagementSubprojectsByIdResponses[keyof GetApi20260401ResourcesProjectManagementSubprojectsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementSubprojectsByIdResponse = GetApi20260701ResourcesProjectManagementSubprojectsByIdResponses[keyof GetApi20260701ResourcesProjectManagementSubprojectsByIdResponses];
 
-export type PutApi20260401ResourcesProjectManagementSubprojectsByIdData = {
+export type PutApi20260701ResourcesProjectManagementSubprojectsByIdData = {
     body?: {
         /**
          * The id of the subproject.
          */
-        id: number;
+        id: string;
         /**
          * The name of the subproject.
          */
@@ -20235,61 +20372,61 @@ export type PutApi20260401ResourcesProjectManagementSubprojectsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/subprojects/{id}';
+    url: '/api/2026-07-01/resources/project_management/subprojects/{id}';
 };
 
-export type PutApi20260401ResourcesProjectManagementSubprojectsByIdResponses = {
+export type PutApi20260701ResourcesProjectManagementSubprojectsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementSubproject;
 };
 
-export type PutApi20260401ResourcesProjectManagementSubprojectsByIdResponse = PutApi20260401ResourcesProjectManagementSubprojectsByIdResponses[keyof PutApi20260401ResourcesProjectManagementSubprojectsByIdResponses];
+export type PutApi20260701ResourcesProjectManagementSubprojectsByIdResponse = PutApi20260701ResourcesProjectManagementSubprojectsByIdResponses[keyof PutApi20260701ResourcesProjectManagementSubprojectsByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsRenameData = {
+export type PostApi20260701ResourcesProjectManagementSubprojectsRenameData = {
     body?: {
-        id: number;
+        id: string;
         name: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/subprojects/rename';
+    url: '/api/2026-07-01/resources/project_management/subprojects/rename';
 };
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsRenameResponses = {
+export type PostApi20260701ResourcesProjectManagementSubprojectsRenameResponses = {
     /**
      * OK
      */
     200: ProjectManagementSubproject;
 };
 
-export type PostApi20260401ResourcesProjectManagementSubprojectsRenameResponse = PostApi20260401ResourcesProjectManagementSubprojectsRenameResponses[keyof PostApi20260401ResourcesProjectManagementSubprojectsRenameResponses];
+export type PostApi20260701ResourcesProjectManagementSubprojectsRenameResponse = PostApi20260701ResourcesProjectManagementSubprojectsRenameResponses[keyof PostApi20260701ResourcesProjectManagementSubprojectsRenameResponses];
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsData = {
+export type GetApi20260701ResourcesProjectManagementTimeRecordsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Time record ids to retrieve
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Project worker ids to retrieve
          */
-        'project_worker_ids[]'?: Array<number>;
+        'project_worker_ids[]'?: Array<string>;
         /**
          * Subproject ids to retrieve
          */
-        'subproject_ids[]'?: Array<number>;
+        'subproject_ids[]'?: Array<string>;
         /**
          * Attendance shift ids to retrieve
          */
-        'attendance_shift_ids[]'?: Array<number>;
+        'attendance_shift_ids[]'?: Array<string>;
         /**
          * Employee ids to retrieve
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Month to filter
          */
@@ -20300,10 +20437,10 @@ export type GetApi20260401ResourcesProjectManagementTimeRecordsData = {
         year?: number;
         updated_after?: string;
     };
-    url: '/api/2026-04-01/resources/project_management/time_records';
+    url: '/api/2026-07-01/resources/project_management/time_records';
 };
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsResponses = {
+export type GetApi20260701ResourcesProjectManagementTimeRecordsResponses = {
     /**
      * OK
      */
@@ -20313,47 +20450,47 @@ export type GetApi20260401ResourcesProjectManagementTimeRecordsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsResponse = GetApi20260401ResourcesProjectManagementTimeRecordsResponses[keyof GetApi20260401ResourcesProjectManagementTimeRecordsResponses];
+export type GetApi20260701ResourcesProjectManagementTimeRecordsResponse = GetApi20260701ResourcesProjectManagementTimeRecordsResponses[keyof GetApi20260701ResourcesProjectManagementTimeRecordsResponses];
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsData = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsData = {
     body?: {
-        project_worker_id: number;
-        attendance_shift_id?: number;
-        subproject_id?: number;
+        project_worker_id: string;
+        attendance_shift_id?: string;
+        subproject_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records';
+    url: '/api/2026-07-01/resources/project_management/time_records';
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsResponses = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsResponses = {
     /**
      * CREATED
      */
     201: ProjectManagementTimeRecord;
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsResponse = PostApi20260401ResourcesProjectManagementTimeRecordsResponses[keyof PostApi20260401ResourcesProjectManagementTimeRecordsResponses];
+export type PostApi20260701ResourcesProjectManagementTimeRecordsResponse = PostApi20260701ResourcesProjectManagementTimeRecordsResponses[keyof PostApi20260701ResourcesProjectManagementTimeRecordsResponses];
 
-export type DeleteApi20260401ResourcesProjectManagementTimeRecordsByIdData = {
+export type DeleteApi20260701ResourcesProjectManagementTimeRecordsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/time_records/{id}';
 };
 
-export type DeleteApi20260401ResourcesProjectManagementTimeRecordsByIdResponses = {
+export type DeleteApi20260701ResourcesProjectManagementTimeRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementTimeRecord;
 };
 
-export type DeleteApi20260401ResourcesProjectManagementTimeRecordsByIdResponse = DeleteApi20260401ResourcesProjectManagementTimeRecordsByIdResponses[keyof DeleteApi20260401ResourcesProjectManagementTimeRecordsByIdResponses];
+export type DeleteApi20260701ResourcesProjectManagementTimeRecordsByIdResponse = DeleteApi20260701ResourcesProjectManagementTimeRecordsByIdResponses[keyof DeleteApi20260701ResourcesProjectManagementTimeRecordsByIdResponses];
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsByIdData = {
+export type GetApi20260701ResourcesProjectManagementTimeRecordsByIdData = {
     body?: never;
     path: {
         /**
@@ -20362,96 +20499,96 @@ export type GetApi20260401ResourcesProjectManagementTimeRecordsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records/{id}';
+    url: '/api/2026-07-01/resources/project_management/time_records/{id}';
 };
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsByIdResponses = {
+export type GetApi20260701ResourcesProjectManagementTimeRecordsByIdResponses = {
     /**
      * OK
      */
     200: ProjectManagementTimeRecord;
 };
 
-export type GetApi20260401ResourcesProjectManagementTimeRecordsByIdResponse = GetApi20260401ResourcesProjectManagementTimeRecordsByIdResponses[keyof GetApi20260401ResourcesProjectManagementTimeRecordsByIdResponses];
+export type GetApi20260701ResourcesProjectManagementTimeRecordsByIdResponse = GetApi20260701ResourcesProjectManagementTimeRecordsByIdResponses[keyof GetApi20260701ResourcesProjectManagementTimeRecordsByIdResponses];
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkDeleteData = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkDeleteData = {
     body?: {
         date: string;
-        project_worker_id: number;
-        subproject_id?: number;
+        project_worker_id: string;
+        subproject_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records/bulk_delete';
+    url: '/api/2026-07-01/resources/project_management/time_records/bulk_delete';
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkDeleteResponses = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkDeleteResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementTimeRecord>;
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkDeleteResponse = PostApi20260401ResourcesProjectManagementTimeRecordsBulkDeleteResponses[keyof PostApi20260401ResourcesProjectManagementTimeRecordsBulkDeleteResponses];
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkDeleteResponse = PostApi20260701ResourcesProjectManagementTimeRecordsBulkDeleteResponses[keyof PostApi20260701ResourcesProjectManagementTimeRecordsBulkDeleteResponses];
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkProcessData = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkProcessData = {
     body?: {
         items: Array<unknown>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records/bulk_process';
+    url: '/api/2026-07-01/resources/project_management/time_records/bulk_process';
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkProcessResponses = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkProcessResponses = {
     /**
      * OK
      */
     200: Array<ProjectManagementTimeRecord>;
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsBulkProcessResponse = PostApi20260401ResourcesProjectManagementTimeRecordsBulkProcessResponses[keyof PostApi20260401ResourcesProjectManagementTimeRecordsBulkProcessResponses];
+export type PostApi20260701ResourcesProjectManagementTimeRecordsBulkProcessResponse = PostApi20260701ResourcesProjectManagementTimeRecordsBulkProcessResponses[keyof PostApi20260701ResourcesProjectManagementTimeRecordsBulkProcessResponses];
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorkerData = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorkerData = {
     body?: {
-        id: number;
-        project_worker_id: number;
-        subproject_id?: number;
+        id: string;
+        project_worker_id: string;
+        subproject_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/project_management/time_records/update_project_worker';
+    url: '/api/2026-07-01/resources/project_management/time_records/update_project_worker';
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses = {
+export type PostApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses = {
     /**
      * OK
      */
     200: ProjectManagementTimeRecord;
 };
 
-export type PostApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponse = PostApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses[keyof PostApi20260401ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses];
+export type PostApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponse = PostApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses[keyof PostApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorkerResponses];
 
-export type GetApi20260401ResourcesShiftManagementShiftsData = {
+export type GetApi20260701ResourcesShiftManagementShiftsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter shifts by their unique identifiers. Returns only shifts matching the provided IDs. If an empty array is provided, returns no results
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Exclude shifts with these identifiers from the results. Useful for filtering out specific shifts while keeping others
          */
-        'without_ids[]'?: Array<number>;
+        'without_ids[]'?: Array<string>;
         /**
          * Filter shifts by employee identifiers. Returns only shifts assigned to the specified employees. If not provided, returns shifts for all accessible employees
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Filter shifts by location identifiers. Returns shifts that occur at the specified locations. Can be combined with employee_ids for more precise filtering
          */
-        'location_ids[]'?: Array<number>;
+        'location_ids[]'?: Array<string>;
         /**
          * Filter shifts that end on or after this date. Only the date (calendar day) is used; the time part is ignored (treated as start of day, 00:00:00). Shifts are included if their end time is at or after the start of the specified day
          */
@@ -20473,10 +20610,10 @@ export type GetApi20260401ResourcesShiftManagementShiftsData = {
          */
         split_overnight_shifts?: boolean;
     };
-    url: '/api/2026-04-01/resources/shift_management/shifts';
+    url: '/api/2026-07-01/resources/shift_management/shifts';
 };
 
-export type GetApi20260401ResourcesShiftManagementShiftsResponses = {
+export type GetApi20260701ResourcesShiftManagementShiftsResponses = {
     /**
      * OK
      */
@@ -20486,9 +20623,9 @@ export type GetApi20260401ResourcesShiftManagementShiftsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesShiftManagementShiftsResponse = GetApi20260401ResourcesShiftManagementShiftsResponses[keyof GetApi20260401ResourcesShiftManagementShiftsResponses];
+export type GetApi20260701ResourcesShiftManagementShiftsResponse = GetApi20260701ResourcesShiftManagementShiftsResponses[keyof GetApi20260701ResourcesShiftManagementShiftsResponses];
 
-export type PostApi20260401ResourcesShiftManagementShiftsData = {
+export type PostApi20260701ResourcesShiftManagementShiftsData = {
     body?: {
         /**
          * Display name of the shift. If not explicitly set, falls back to the default shift title or template week name
@@ -20509,35 +20646,35 @@ export type PostApi20260401ResourcesShiftManagementShiftsData = {
         /**
          * Identifier of the employee assigned to this shift. Required parameter
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Identifier of the location where the shift takes place. Can be null if the shift uses the employee's default location
          */
-        location_id?: number;
+        location_id?: string;
         /**
          * Identifier of the specific work area within the location where the shift occurs. Work areas allow further subdivision of locations
          */
-        work_area_id?: number;
+        work_area_id?: string;
         /**
          * Identifier of the company that owns this shift. Required parameter
          */
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/shift_management/shifts';
+    url: '/api/2026-07-01/resources/shift_management/shifts';
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsResponses = {
+export type PostApi20260701ResourcesShiftManagementShiftsResponses = {
     /**
      * CREATED
      */
     201: ShiftManagementShift;
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsResponse = PostApi20260401ResourcesShiftManagementShiftsResponses[keyof PostApi20260401ResourcesShiftManagementShiftsResponses];
+export type PostApi20260701ResourcesShiftManagementShiftsResponse = PostApi20260701ResourcesShiftManagementShiftsResponses[keyof PostApi20260701ResourcesShiftManagementShiftsResponses];
 
-export type DeleteApi20260401ResourcesShiftManagementShiftsByIdData = {
+export type DeleteApi20260701ResourcesShiftManagementShiftsByIdData = {
     body?: never;
     path: {
         /**
@@ -20546,19 +20683,19 @@ export type DeleteApi20260401ResourcesShiftManagementShiftsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/shift_management/shifts/{id}';
+    url: '/api/2026-07-01/resources/shift_management/shifts/{id}';
 };
 
-export type DeleteApi20260401ResourcesShiftManagementShiftsByIdResponses = {
+export type DeleteApi20260701ResourcesShiftManagementShiftsByIdResponses = {
     /**
      * OK
      */
     200: ShiftManagementShift;
 };
 
-export type DeleteApi20260401ResourcesShiftManagementShiftsByIdResponse = DeleteApi20260401ResourcesShiftManagementShiftsByIdResponses[keyof DeleteApi20260401ResourcesShiftManagementShiftsByIdResponses];
+export type DeleteApi20260701ResourcesShiftManagementShiftsByIdResponse = DeleteApi20260701ResourcesShiftManagementShiftsByIdResponses[keyof DeleteApi20260701ResourcesShiftManagementShiftsByIdResponses];
 
-export type GetApi20260401ResourcesShiftManagementShiftsByIdData = {
+export type GetApi20260701ResourcesShiftManagementShiftsByIdData = {
     body?: never;
     path: {
         /**
@@ -20567,19 +20704,19 @@ export type GetApi20260401ResourcesShiftManagementShiftsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/shift_management/shifts/{id}';
+    url: '/api/2026-07-01/resources/shift_management/shifts/{id}';
 };
 
-export type GetApi20260401ResourcesShiftManagementShiftsByIdResponses = {
+export type GetApi20260701ResourcesShiftManagementShiftsByIdResponses = {
     /**
      * OK
      */
     200: ShiftManagementShift;
 };
 
-export type GetApi20260401ResourcesShiftManagementShiftsByIdResponse = GetApi20260401ResourcesShiftManagementShiftsByIdResponses[keyof GetApi20260401ResourcesShiftManagementShiftsByIdResponses];
+export type GetApi20260701ResourcesShiftManagementShiftsByIdResponse = GetApi20260701ResourcesShiftManagementShiftsByIdResponses[keyof GetApi20260701ResourcesShiftManagementShiftsByIdResponses];
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkCreateData = {
+export type PostApi20260701ResourcesShiftManagementShiftsBulkCreateData = {
     body?: {
         /**
          * Array of shift objects to create. Each shift object represents a scheduled work period for an employee
@@ -20592,24 +20729,24 @@ export type PostApi20260401ResourcesShiftManagementShiftsBulkCreateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/shift_management/shifts/bulk_create';
+    url: '/api/2026-07-01/resources/shift_management/shifts/bulk_create';
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkCreateResponses = {
+export type PostApi20260701ResourcesShiftManagementShiftsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<ShiftManagementShift>;
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkCreateResponse = PostApi20260401ResourcesShiftManagementShiftsBulkCreateResponses[keyof PostApi20260401ResourcesShiftManagementShiftsBulkCreateResponses];
+export type PostApi20260701ResourcesShiftManagementShiftsBulkCreateResponse = PostApi20260701ResourcesShiftManagementShiftsBulkCreateResponses[keyof PostApi20260701ResourcesShiftManagementShiftsBulkCreateResponses];
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkDeleteData = {
+export type PostApi20260701ResourcesShiftManagementShiftsBulkDeleteData = {
     body?: {
         /**
          * Filter shifts by their unique identifiers. Deletes only shifts matching the provided IDs. If not provided, uses other filters to determine which shifts to delete
          */
-        ids?: Array<number>;
+        ids?: Array<string>;
         /**
          * Filter shifts that end on or after this date. Only the date (calendar day) is used; the time part is ignored (treated as start of day, 00:00:00). Shifts are included if their end time is at or after the start of the specified day
          */
@@ -20621,42 +20758,46 @@ export type PostApi20260401ResourcesShiftManagementShiftsBulkDeleteData = {
         /**
          * Filter shifts by employee identifiers. Deletes only shifts assigned to the specified employees. Can be combined with start_at and end_at for precise bulk deletion
          */
-        employee_ids?: Array<number>;
+        employee_ids?: Array<string>;
+        /**
+         * Also destroys shifts with status backup when true, which by default are being kept
+         */
+        destroy_backup_shifts?: boolean;
         /**
          * Identifier of the user/access who is performing the bulk delete operation. Used for audit purposes and tracking who deleted the shifts
          */
-        author_id: number;
+        author_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/shift_management/shifts/bulk_delete';
+    url: '/api/2026-07-01/resources/shift_management/shifts/bulk_delete';
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkDeleteResponses = {
+export type PostApi20260701ResourcesShiftManagementShiftsBulkDeleteResponses = {
     /**
      * OK
      */
     200: Array<ShiftManagementShift>;
 };
 
-export type PostApi20260401ResourcesShiftManagementShiftsBulkDeleteResponse = PostApi20260401ResourcesShiftManagementShiftsBulkDeleteResponses[keyof PostApi20260401ResourcesShiftManagementShiftsBulkDeleteResponses];
+export type PostApi20260701ResourcesShiftManagementShiftsBulkDeleteResponse = PostApi20260701ResourcesShiftManagementShiftsBulkDeleteResponses[keyof PostApi20260701ResourcesShiftManagementShiftsBulkDeleteResponses];
 
-export type GetApi20260401ResourcesTasksTasksData = {
+export type GetApi20260701ResourcesTasksTasksData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * retrieve only the tasks that match the IDs passed in the request.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * retrieve the tasks that have a company_id associated
          */
-        company_id?: number;
+        company_id?: string;
         /**
-         * retrieve the tasks that have an assignee_id associated, assignee_id references to employee_id.
+         * retrieve the tasks that have an assignee_id associated, assignee_id references to access_id.
          */
-        assignee_id?: number;
+        assignee_id?: string;
         /**
          * filter by tasks that have a due date.
          */
@@ -20672,16 +20813,16 @@ export type GetApi20260401ResourcesTasksTasksData = {
         /**
          * retrieve tasks where the user is affectee or assignee
          */
-        involvee_id?: number;
+        involvee_id?: string;
         /**
          * filter by tasks that have a specific category
          */
         category?: 'benefits' | 'complaints' | 'compensation' | 'documents' | 'engagement' | 'finance' | 'organization' | 'performance' | 'policies' | 'recruitment' | 'software' | 'spending' | 'surveys' | 'timeoff' | 'time_planning' | 'time_tracking' | 'training';
     };
-    url: '/api/2026-04-01/resources/tasks/tasks';
+    url: '/api/2026-07-01/resources/tasks/tasks';
 };
 
-export type GetApi20260401ResourcesTasksTasksResponses = {
+export type GetApi20260701ResourcesTasksTasksResponses = {
     /**
      * OK
      */
@@ -20691,9 +20832,9 @@ export type GetApi20260401ResourcesTasksTasksResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTasksTasksResponse = GetApi20260401ResourcesTasksTasksResponses[keyof GetApi20260401ResourcesTasksTasksResponses];
+export type GetApi20260701ResourcesTasksTasksResponse = GetApi20260701ResourcesTasksTasksResponses[keyof GetApi20260701ResourcesTasksTasksResponses];
 
-export type PostApi20260401ResourcesTasksTasksData = {
+export type PostApi20260701ResourcesTasksTasksData = {
     body?: {
         /**
          * name of the task.
@@ -20710,7 +20851,7 @@ export type PostApi20260401ResourcesTasksTasksData = {
         /**
          * Employees assigned to the task, assignee_id references to access_id.
          */
-        assignee_ids?: Array<number>;
+        assignee_ids?: Array<string>;
         /**
          * status of the task (todo | in_progress | done | discarded).
          */
@@ -20718,19 +20859,19 @@ export type PostApi20260401ResourcesTasksTasksData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks';
+    url: '/api/2026-07-01/resources/tasks/tasks';
 };
 
-export type PostApi20260401ResourcesTasksTasksResponses = {
+export type PostApi20260701ResourcesTasksTasksResponses = {
     /**
      * CREATED
      */
     201: TasksTask;
 };
 
-export type PostApi20260401ResourcesTasksTasksResponse = PostApi20260401ResourcesTasksTasksResponses[keyof PostApi20260401ResourcesTasksTasksResponses];
+export type PostApi20260701ResourcesTasksTasksResponse = PostApi20260701ResourcesTasksTasksResponses[keyof PostApi20260701ResourcesTasksTasksResponses];
 
-export type DeleteApi20260401ResourcesTasksTasksByIdData = {
+export type DeleteApi20260701ResourcesTasksTasksByIdData = {
     body?: never;
     path: {
         /**
@@ -20739,19 +20880,19 @@ export type DeleteApi20260401ResourcesTasksTasksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/{id}';
+    url: '/api/2026-07-01/resources/tasks/tasks/{id}';
 };
 
-export type DeleteApi20260401ResourcesTasksTasksByIdResponses = {
+export type DeleteApi20260701ResourcesTasksTasksByIdResponses = {
     /**
      * OK
      */
     200: TasksTask;
 };
 
-export type DeleteApi20260401ResourcesTasksTasksByIdResponse = DeleteApi20260401ResourcesTasksTasksByIdResponses[keyof DeleteApi20260401ResourcesTasksTasksByIdResponses];
+export type DeleteApi20260701ResourcesTasksTasksByIdResponse = DeleteApi20260701ResourcesTasksTasksByIdResponses[keyof DeleteApi20260701ResourcesTasksTasksByIdResponses];
 
-export type GetApi20260401ResourcesTasksTasksByIdData = {
+export type GetApi20260701ResourcesTasksTasksByIdData = {
     body?: never;
     path: {
         /**
@@ -20760,24 +20901,24 @@ export type GetApi20260401ResourcesTasksTasksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/{id}';
+    url: '/api/2026-07-01/resources/tasks/tasks/{id}';
 };
 
-export type GetApi20260401ResourcesTasksTasksByIdResponses = {
+export type GetApi20260701ResourcesTasksTasksByIdResponses = {
     /**
      * OK
      */
     200: TasksTask;
 };
 
-export type GetApi20260401ResourcesTasksTasksByIdResponse = GetApi20260401ResourcesTasksTasksByIdResponses[keyof GetApi20260401ResourcesTasksTasksByIdResponses];
+export type GetApi20260701ResourcesTasksTasksByIdResponse = GetApi20260701ResourcesTasksTasksByIdResponses[keyof GetApi20260701ResourcesTasksTasksByIdResponses];
 
-export type PutApi20260401ResourcesTasksTasksByIdData = {
+export type PutApi20260701ResourcesTasksTasksByIdData = {
     body?: {
         /**
          * id of a task.
          */
-        id: number;
+        id: string;
         /**
          * name of  task.
          */
@@ -20793,7 +20934,7 @@ export type PutApi20260401ResourcesTasksTasksByIdData = {
         /**
          * employees assigned to the task, assignee_id references to access_id.
          */
-        assignee_ids?: Array<number>;
+        assignee_ids?: Array<string>;
         /**
          * status of the task (todo | in_progress | done | discarded).
          */
@@ -20806,19 +20947,19 @@ export type PutApi20260401ResourcesTasksTasksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/{id}';
+    url: '/api/2026-07-01/resources/tasks/tasks/{id}';
 };
 
-export type PutApi20260401ResourcesTasksTasksByIdResponses = {
+export type PutApi20260701ResourcesTasksTasksByIdResponses = {
     /**
      * OK
      */
     200: TasksTask;
 };
 
-export type PutApi20260401ResourcesTasksTasksByIdResponse = PutApi20260401ResourcesTasksTasksByIdResponses[keyof PutApi20260401ResourcesTasksTasksByIdResponses];
+export type PutApi20260701ResourcesTasksTasksByIdResponse = PutApi20260701ResourcesTasksTasksByIdResponses[keyof PutApi20260701ResourcesTasksTasksByIdResponses];
 
-export type PostApi20260401ResourcesTasksTasksBulkCreateData = {
+export type PostApi20260701ResourcesTasksTasksBulkCreateData = {
     body?: {
         /**
          * name of the task.
@@ -20835,7 +20976,7 @@ export type PostApi20260401ResourcesTasksTasksBulkCreateData = {
         /**
          * Employees assigned to the task, assignee_id references to access_id.
          */
-        assignee_ids?: Array<number>;
+        assignee_ids?: Array<string>;
         /**
          * status of the task (todo | in_progress | done | discarded).
          */
@@ -20843,40 +20984,40 @@ export type PostApi20260401ResourcesTasksTasksBulkCreateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/bulk_create';
+    url: '/api/2026-07-01/resources/tasks/tasks/bulk_create';
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkCreateResponses = {
+export type PostApi20260701ResourcesTasksTasksBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<TasksTask>;
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkCreateResponse = PostApi20260401ResourcesTasksTasksBulkCreateResponses[keyof PostApi20260401ResourcesTasksTasksBulkCreateResponses];
+export type PostApi20260701ResourcesTasksTasksBulkCreateResponse = PostApi20260701ResourcesTasksTasksBulkCreateResponses[keyof PostApi20260701ResourcesTasksTasksBulkCreateResponses];
 
-export type PostApi20260401ResourcesTasksTasksBulkDeleteData = {
+export type PostApi20260701ResourcesTasksTasksBulkDeleteData = {
     body?: {
         /**
          * a list of task ids.
          */
-        ids: Array<number>;
+        ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/bulk_delete';
+    url: '/api/2026-07-01/resources/tasks/tasks/bulk_delete';
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkDeleteResponses = {
+export type PostApi20260701ResourcesTasksTasksBulkDeleteResponses = {
     /**
      * OK
      */
     200: Array<TasksTask>;
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkDeleteResponse = PostApi20260401ResourcesTasksTasksBulkDeleteResponses[keyof PostApi20260401ResourcesTasksTasksBulkDeleteResponses];
+export type PostApi20260701ResourcesTasksTasksBulkDeleteResponse = PostApi20260701ResourcesTasksTasksBulkDeleteResponses[keyof PostApi20260701ResourcesTasksTasksBulkDeleteResponses];
 
-export type PostApi20260401ResourcesTasksTasksBulkUpdateData = {
+export type PostApi20260701ResourcesTasksTasksBulkUpdateData = {
     body?: {
         /**
          * a list of tasks to update.
@@ -20885,24 +21026,24 @@ export type PostApi20260401ResourcesTasksTasksBulkUpdateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/bulk_update';
+    url: '/api/2026-07-01/resources/tasks/tasks/bulk_update';
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkUpdateResponses = {
+export type PostApi20260701ResourcesTasksTasksBulkUpdateResponses = {
     /**
      * OK
      */
     200: Array<TasksTask>;
 };
 
-export type PostApi20260401ResourcesTasksTasksBulkUpdateResponse = PostApi20260401ResourcesTasksTasksBulkUpdateResponses[keyof PostApi20260401ResourcesTasksTasksBulkUpdateResponses];
+export type PostApi20260701ResourcesTasksTasksBulkUpdateResponse = PostApi20260701ResourcesTasksTasksBulkUpdateResponses[keyof PostApi20260701ResourcesTasksTasksBulkUpdateResponses];
 
-export type PostApi20260401ResourcesTasksTasksCopyData = {
+export type PostApi20260701ResourcesTasksTasksCopyData = {
     body?: {
         /**
          * id of the task.
          */
-        id: number;
+        id: string;
         /**
          * name of the task
          */
@@ -20910,57 +21051,57 @@ export type PostApi20260401ResourcesTasksTasksCopyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/copy';
+    url: '/api/2026-07-01/resources/tasks/tasks/copy';
 };
 
-export type PostApi20260401ResourcesTasksTasksCopyResponses = {
+export type PostApi20260701ResourcesTasksTasksCopyResponses = {
     /**
      * OK
      */
     200: TasksTask;
 };
 
-export type PostApi20260401ResourcesTasksTasksCopyResponse = PostApi20260401ResourcesTasksTasksCopyResponses[keyof PostApi20260401ResourcesTasksTasksCopyResponses];
+export type PostApi20260701ResourcesTasksTasksCopyResponse = PostApi20260701ResourcesTasksTasksCopyResponses[keyof PostApi20260701ResourcesTasksTasksCopyResponses];
 
-export type PostApi20260401ResourcesTasksTasksCreateCommentData = {
+export type PostApi20260701ResourcesTasksTasksCreateCommentData = {
     body?: {
         content: string;
-        author_id: number;
-        resource_id: number;
-        company_id: number;
-        mentioned_access_ids?: Array<number>;
+        author_id: string;
+        resource_id: string;
+        company_id: string;
+        mentioned_access_ids?: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/tasks/create_comment';
+    url: '/api/2026-07-01/resources/tasks/tasks/create_comment';
 };
 
-export type PostApi20260401ResourcesTasksTasksCreateCommentResponses = {
+export type PostApi20260701ResourcesTasksTasksCreateCommentResponses = {
     /**
      * OK
      */
     200: TasksTask;
 };
 
-export type PostApi20260401ResourcesTasksTasksCreateCommentResponse = PostApi20260401ResourcesTasksTasksCreateCommentResponses[keyof PostApi20260401ResourcesTasksTasksCreateCommentResponses];
+export type PostApi20260701ResourcesTasksTasksCreateCommentResponse = PostApi20260701ResourcesTasksTasksCreateCommentResponses[keyof PostApi20260701ResourcesTasksTasksCreateCommentResponses];
 
-export type GetApi20260401ResourcesTasksTaskFilesData = {
+export type GetApi20260701ResourcesTasksTaskFilesData = {
     body?: never;
     path?: never;
     query: {
         /**
          * identifier of the task
          */
-        task_id: number;
+        task_id: string;
         /**
          * identifiers of the files
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/tasks/task_files';
+    url: '/api/2026-07-01/resources/tasks/task_files';
 };
 
-export type GetApi20260401ResourcesTasksTaskFilesResponses = {
+export type GetApi20260701ResourcesTasksTaskFilesResponses = {
     /**
      * OK
      */
@@ -20970,14 +21111,14 @@ export type GetApi20260401ResourcesTasksTaskFilesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTasksTaskFilesResponse = GetApi20260401ResourcesTasksTaskFilesResponses[keyof GetApi20260401ResourcesTasksTaskFilesResponses];
+export type GetApi20260701ResourcesTasksTaskFilesResponse = GetApi20260701ResourcesTasksTaskFilesResponses[keyof GetApi20260701ResourcesTasksTaskFilesResponses];
 
-export type PostApi20260401ResourcesTasksTaskFilesData = {
+export type PostApi20260701ResourcesTasksTaskFilesData = {
     body?: {
         /**
          * identifier of the task
          */
-        task_id: number;
+        task_id: string;
         /**
          * file to attach to the task
          */
@@ -20985,19 +21126,19 @@ export type PostApi20260401ResourcesTasksTaskFilesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/task_files';
+    url: '/api/2026-07-01/resources/tasks/task_files';
 };
 
-export type PostApi20260401ResourcesTasksTaskFilesResponses = {
+export type PostApi20260701ResourcesTasksTaskFilesResponses = {
     /**
      * CREATED
      */
     201: TasksTaskFile;
 };
 
-export type PostApi20260401ResourcesTasksTaskFilesResponse = PostApi20260401ResourcesTasksTaskFilesResponses[keyof PostApi20260401ResourcesTasksTaskFilesResponses];
+export type PostApi20260701ResourcesTasksTaskFilesResponse = PostApi20260701ResourcesTasksTaskFilesResponses[keyof PostApi20260701ResourcesTasksTaskFilesResponses];
 
-export type DeleteApi20260401ResourcesTasksTaskFilesByIdData = {
+export type DeleteApi20260701ResourcesTasksTaskFilesByIdData = {
     body?: never;
     path: {
         /**
@@ -21006,19 +21147,19 @@ export type DeleteApi20260401ResourcesTasksTaskFilesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/task_files/{id}';
+    url: '/api/2026-07-01/resources/tasks/task_files/{id}';
 };
 
-export type DeleteApi20260401ResourcesTasksTaskFilesByIdResponses = {
+export type DeleteApi20260701ResourcesTasksTaskFilesByIdResponses = {
     /**
      * OK
      */
     200: TasksTaskFile;
 };
 
-export type DeleteApi20260401ResourcesTasksTaskFilesByIdResponse = DeleteApi20260401ResourcesTasksTaskFilesByIdResponses[keyof DeleteApi20260401ResourcesTasksTaskFilesByIdResponses];
+export type DeleteApi20260701ResourcesTasksTaskFilesByIdResponse = DeleteApi20260701ResourcesTasksTaskFilesByIdResponses[keyof DeleteApi20260701ResourcesTasksTaskFilesByIdResponses];
 
-export type GetApi20260401ResourcesTasksTaskFilesByIdData = {
+export type GetApi20260701ResourcesTasksTaskFilesByIdData = {
     body?: never;
     path: {
         /**
@@ -21027,26 +21168,26 @@ export type GetApi20260401ResourcesTasksTaskFilesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/tasks/task_files/{id}';
+    url: '/api/2026-07-01/resources/tasks/task_files/{id}';
 };
 
-export type GetApi20260401ResourcesTasksTaskFilesByIdResponses = {
+export type GetApi20260701ResourcesTasksTaskFilesByIdResponses = {
     /**
      * OK
      */
     200: TasksTaskFile;
 };
 
-export type GetApi20260401ResourcesTasksTaskFilesByIdResponse = GetApi20260401ResourcesTasksTaskFilesByIdResponses[keyof GetApi20260401ResourcesTasksTaskFilesByIdResponses];
+export type GetApi20260701ResourcesTasksTaskFilesByIdResponse = GetApi20260701ResourcesTasksTaskFilesByIdResponses[keyof GetApi20260701ResourcesTasksTaskFilesByIdResponses];
 
-export type GetApi20260401ResourcesTeamsMembershipsData = {
+export type GetApi20260701ResourcesTeamsMembershipsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Membership ids.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Whether the employee is a lead of the team or not
          */
@@ -21054,16 +21195,16 @@ export type GetApi20260401ResourcesTeamsMembershipsData = {
         /**
          * Team ids.
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
         /**
          * Employee ids.
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/teams/memberships';
+    url: '/api/2026-07-01/resources/teams/memberships';
 };
 
-export type GetApi20260401ResourcesTeamsMembershipsResponses = {
+export type GetApi20260701ResourcesTeamsMembershipsResponses = {
     /**
      * OK
      */
@@ -21073,18 +21214,18 @@ export type GetApi20260401ResourcesTeamsMembershipsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTeamsMembershipsResponse = GetApi20260401ResourcesTeamsMembershipsResponses[keyof GetApi20260401ResourcesTeamsMembershipsResponses];
+export type GetApi20260701ResourcesTeamsMembershipsResponse = GetApi20260701ResourcesTeamsMembershipsResponses[keyof GetApi20260701ResourcesTeamsMembershipsResponses];
 
-export type PostApi20260401ResourcesTeamsMembershipsData = {
+export type PostApi20260701ResourcesTeamsMembershipsData = {
     body?: {
         /**
          * Team id.
          */
-        team_id: number;
+        team_id: string;
         /**
          * Employee id.
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Makes the employee a lead of the team.
          */
@@ -21092,19 +21233,19 @@ export type PostApi20260401ResourcesTeamsMembershipsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/teams/memberships';
+    url: '/api/2026-07-01/resources/teams/memberships';
 };
 
-export type PostApi20260401ResourcesTeamsMembershipsResponses = {
+export type PostApi20260701ResourcesTeamsMembershipsResponses = {
     /**
      * CREATED
      */
     201: TeamsMembership;
 };
 
-export type PostApi20260401ResourcesTeamsMembershipsResponse = PostApi20260401ResourcesTeamsMembershipsResponses[keyof PostApi20260401ResourcesTeamsMembershipsResponses];
+export type PostApi20260701ResourcesTeamsMembershipsResponse = PostApi20260701ResourcesTeamsMembershipsResponses[keyof PostApi20260701ResourcesTeamsMembershipsResponses];
 
-export type DeleteApi20260401ResourcesTeamsMembershipsByIdData = {
+export type DeleteApi20260701ResourcesTeamsMembershipsByIdData = {
     body?: never;
     path: {
         /**
@@ -21113,19 +21254,19 @@ export type DeleteApi20260401ResourcesTeamsMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/memberships/{id}';
+    url: '/api/2026-07-01/resources/teams/memberships/{id}';
 };
 
-export type DeleteApi20260401ResourcesTeamsMembershipsByIdResponses = {
+export type DeleteApi20260701ResourcesTeamsMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TeamsMembership;
 };
 
-export type DeleteApi20260401ResourcesTeamsMembershipsByIdResponse = DeleteApi20260401ResourcesTeamsMembershipsByIdResponses[keyof DeleteApi20260401ResourcesTeamsMembershipsByIdResponses];
+export type DeleteApi20260701ResourcesTeamsMembershipsByIdResponse = DeleteApi20260701ResourcesTeamsMembershipsByIdResponses[keyof DeleteApi20260701ResourcesTeamsMembershipsByIdResponses];
 
-export type GetApi20260401ResourcesTeamsMembershipsByIdData = {
+export type GetApi20260701ResourcesTeamsMembershipsByIdData = {
     body?: never;
     path: {
         /**
@@ -21134,24 +21275,24 @@ export type GetApi20260401ResourcesTeamsMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/memberships/{id}';
+    url: '/api/2026-07-01/resources/teams/memberships/{id}';
 };
 
-export type GetApi20260401ResourcesTeamsMembershipsByIdResponses = {
+export type GetApi20260701ResourcesTeamsMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TeamsMembership;
 };
 
-export type GetApi20260401ResourcesTeamsMembershipsByIdResponse = GetApi20260401ResourcesTeamsMembershipsByIdResponses[keyof GetApi20260401ResourcesTeamsMembershipsByIdResponses];
+export type GetApi20260701ResourcesTeamsMembershipsByIdResponse = GetApi20260701ResourcesTeamsMembershipsByIdResponses[keyof GetApi20260701ResourcesTeamsMembershipsByIdResponses];
 
-export type PutApi20260401ResourcesTeamsMembershipsByIdData = {
+export type PutApi20260701ResourcesTeamsMembershipsByIdData = {
     body?: {
         /**
          * Membership id.
          */
-        id: number;
+        id: string;
         /**
          * Assign an employee as a lead for their respective team.
          */
@@ -21164,28 +21305,28 @@ export type PutApi20260401ResourcesTeamsMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/memberships/{id}';
+    url: '/api/2026-07-01/resources/teams/memberships/{id}';
 };
 
-export type PutApi20260401ResourcesTeamsMembershipsByIdResponses = {
+export type PutApi20260701ResourcesTeamsMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TeamsMembership;
 };
 
-export type PutApi20260401ResourcesTeamsMembershipsByIdResponse = PutApi20260401ResourcesTeamsMembershipsByIdResponses[keyof PutApi20260401ResourcesTeamsMembershipsByIdResponses];
+export type PutApi20260701ResourcesTeamsMembershipsByIdResponse = PutApi20260701ResourcesTeamsMembershipsByIdResponses[keyof PutApi20260701ResourcesTeamsMembershipsByIdResponses];
 
-export type GetApi20260401ResourcesTeamsTeamsData = {
+export type GetApi20260701ResourcesTeamsTeamsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/teams/teams';
+    url: '/api/2026-07-01/resources/teams/teams';
 };
 
-export type GetApi20260401ResourcesTeamsTeamsResponses = {
+export type GetApi20260701ResourcesTeamsTeamsResponses = {
     /**
      * OK
      */
@@ -21195,9 +21336,9 @@ export type GetApi20260401ResourcesTeamsTeamsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTeamsTeamsResponse = GetApi20260401ResourcesTeamsTeamsResponses[keyof GetApi20260401ResourcesTeamsTeamsResponses];
+export type GetApi20260701ResourcesTeamsTeamsResponse = GetApi20260701ResourcesTeamsTeamsResponses[keyof GetApi20260701ResourcesTeamsTeamsResponses];
 
-export type PostApi20260401ResourcesTeamsTeamsData = {
+export type PostApi20260701ResourcesTeamsTeamsData = {
     body?: {
         /**
          * Name of the team.
@@ -21210,19 +21351,19 @@ export type PostApi20260401ResourcesTeamsTeamsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/teams/teams';
+    url: '/api/2026-07-01/resources/teams/teams';
 };
 
-export type PostApi20260401ResourcesTeamsTeamsResponses = {
+export type PostApi20260701ResourcesTeamsTeamsResponses = {
     /**
      * CREATED
      */
     201: TeamsTeam;
 };
 
-export type PostApi20260401ResourcesTeamsTeamsResponse = PostApi20260401ResourcesTeamsTeamsResponses[keyof PostApi20260401ResourcesTeamsTeamsResponses];
+export type PostApi20260701ResourcesTeamsTeamsResponse = PostApi20260701ResourcesTeamsTeamsResponses[keyof PostApi20260701ResourcesTeamsTeamsResponses];
 
-export type DeleteApi20260401ResourcesTeamsTeamsByIdData = {
+export type DeleteApi20260701ResourcesTeamsTeamsByIdData = {
     body?: never;
     path: {
         /**
@@ -21231,42 +21372,42 @@ export type DeleteApi20260401ResourcesTeamsTeamsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/teams/{id}';
+    url: '/api/2026-07-01/resources/teams/teams/{id}';
 };
 
-export type DeleteApi20260401ResourcesTeamsTeamsByIdResponses = {
+export type DeleteApi20260701ResourcesTeamsTeamsByIdResponses = {
     /**
      * OK
      */
     200: TeamsTeam;
 };
 
-export type DeleteApi20260401ResourcesTeamsTeamsByIdResponse = DeleteApi20260401ResourcesTeamsTeamsByIdResponses[keyof DeleteApi20260401ResourcesTeamsTeamsByIdResponses];
+export type DeleteApi20260701ResourcesTeamsTeamsByIdResponse = DeleteApi20260701ResourcesTeamsTeamsByIdResponses[keyof DeleteApi20260701ResourcesTeamsTeamsByIdResponses];
 
-export type GetApi20260401ResourcesTeamsTeamsByIdData = {
+export type GetApi20260701ResourcesTeamsTeamsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/teams/{id}';
+    url: '/api/2026-07-01/resources/teams/teams/{id}';
 };
 
-export type GetApi20260401ResourcesTeamsTeamsByIdResponses = {
+export type GetApi20260701ResourcesTeamsTeamsByIdResponses = {
     /**
      * OK
      */
     200: TeamsTeam;
 };
 
-export type GetApi20260401ResourcesTeamsTeamsByIdResponse = GetApi20260401ResourcesTeamsTeamsByIdResponses[keyof GetApi20260401ResourcesTeamsTeamsByIdResponses];
+export type GetApi20260701ResourcesTeamsTeamsByIdResponse = GetApi20260701ResourcesTeamsTeamsByIdResponses[keyof GetApi20260701ResourcesTeamsTeamsByIdResponses];
 
-export type PutApi20260401ResourcesTeamsTeamsByIdData = {
+export type PutApi20260701ResourcesTeamsTeamsByIdData = {
     body?: {
         /**
          * id of the team
          */
-        id: number;
+        id: string;
         /**
          * name of the team
          */
@@ -21287,39 +21428,39 @@ export type PutApi20260401ResourcesTeamsTeamsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/teams/teams/{id}';
+    url: '/api/2026-07-01/resources/teams/teams/{id}';
 };
 
-export type PutApi20260401ResourcesTeamsTeamsByIdResponses = {
+export type PutApi20260701ResourcesTeamsTeamsByIdResponses = {
     /**
      * OK
      */
     200: TeamsTeam;
 };
 
-export type PutApi20260401ResourcesTeamsTeamsByIdResponse = PutApi20260401ResourcesTeamsTeamsByIdResponses[keyof PutApi20260401ResourcesTeamsTeamsByIdResponses];
+export type PutApi20260701ResourcesTeamsTeamsByIdResponse = PutApi20260701ResourcesTeamsTeamsByIdResponses[keyof PutApi20260701ResourcesTeamsTeamsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowancesData = {
+export type GetApi20260701ResourcesTimeoffAllowancesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of allowance ids to look for
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter allowances by Time off policy id
          */
-        timeoff_policy_id?: number;
+        timeoff_policy_id?: string;
         /**
          * Filter by only overtime allowances
          */
         by_overtime?: boolean;
     };
-    url: '/api/2026-04-01/resources/timeoff/allowances';
+    url: '/api/2026-07-01/resources/timeoff/allowances';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowancesResponses = {
+export type GetApi20260701ResourcesTimeoffAllowancesResponses = {
     /**
      * OK
      */
@@ -21329,9 +21470,9 @@ export type GetApi20260401ResourcesTimeoffAllowancesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffAllowancesResponse = GetApi20260401ResourcesTimeoffAllowancesResponses[keyof GetApi20260401ResourcesTimeoffAllowancesResponses];
+export type GetApi20260701ResourcesTimeoffAllowancesResponse = GetApi20260701ResourcesTimeoffAllowancesResponses[keyof GetApi20260701ResourcesTimeoffAllowancesResponses];
 
-export type PostApi20260401ResourcesTimeoffAllowancesData = {
+export type PostApi20260701ResourcesTimeoffAllowancesData = {
     body?: {
         /**
          * Only for Allowances based on worked time. It represents how many units you need to work to be granted allowance units
@@ -21388,7 +21529,7 @@ export type PostApi20260401ResourcesTimeoffAllowancesData = {
         /**
          * An array of leave type ids associated with that allowance
          */
-        leave_type_ids: Array<number>;
+        leave_type_ids: Array<string>;
         /**
          * Maximum the allowance can reach on accrued
          */
@@ -21440,7 +21581,7 @@ export type PostApi20260401ResourcesTimeoffAllowancesData = {
         /**
          * The Id of the policy to which the allowance belongs to
          */
-        timeoff_policy_id: number;
+        timeoff_policy_id: string;
         /**
          * Flag to indicate if there is unlimited accrual.
          */
@@ -21460,37 +21601,37 @@ export type PostApi20260401ResourcesTimeoffAllowancesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowances';
+    url: '/api/2026-07-01/resources/timeoff/allowances';
 };
 
-export type PostApi20260401ResourcesTimeoffAllowancesResponses = {
+export type PostApi20260701ResourcesTimeoffAllowancesResponses = {
     /**
      * CREATED
      */
     201: TimeoffAllowance;
 };
 
-export type PostApi20260401ResourcesTimeoffAllowancesResponse = PostApi20260401ResourcesTimeoffAllowancesResponses[keyof PostApi20260401ResourcesTimeoffAllowancesResponses];
+export type PostApi20260701ResourcesTimeoffAllowancesResponse = PostApi20260701ResourcesTimeoffAllowancesResponses[keyof PostApi20260701ResourcesTimeoffAllowancesResponses];
 
-export type DeleteApi20260401ResourcesTimeoffAllowancesByIdData = {
+export type DeleteApi20260701ResourcesTimeoffAllowancesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowances/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowances/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffAllowancesByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffAllowancesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowance;
 };
 
-export type DeleteApi20260401ResourcesTimeoffAllowancesByIdResponse = DeleteApi20260401ResourcesTimeoffAllowancesByIdResponses[keyof DeleteApi20260401ResourcesTimeoffAllowancesByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffAllowancesByIdResponse = DeleteApi20260701ResourcesTimeoffAllowancesByIdResponses[keyof DeleteApi20260701ResourcesTimeoffAllowancesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowancesByIdData = {
+export type GetApi20260701ResourcesTimeoffAllowancesByIdData = {
     body?: never;
     path: {
         /**
@@ -21499,21 +21640,21 @@ export type GetApi20260401ResourcesTimeoffAllowancesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowances/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowances/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowancesByIdResponses = {
+export type GetApi20260701ResourcesTimeoffAllowancesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowance;
 };
 
-export type GetApi20260401ResourcesTimeoffAllowancesByIdResponse = GetApi20260401ResourcesTimeoffAllowancesByIdResponses[keyof GetApi20260401ResourcesTimeoffAllowancesByIdResponses];
+export type GetApi20260701ResourcesTimeoffAllowancesByIdResponse = GetApi20260701ResourcesTimeoffAllowancesByIdResponses[keyof GetApi20260701ResourcesTimeoffAllowancesByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffAllowancesByIdData = {
+export type PutApi20260701ResourcesTimeoffAllowancesByIdData = {
     body?: {
-        id: number;
+        id: string;
         /**
          * Only for Allowances based on worked time. It represents how many units you need to work to be granted allowance units
          */
@@ -21553,7 +21694,7 @@ export type PutApi20260401ResourcesTimeoffAllowancesByIdData = {
         /**
          * An array of leave type ids associated with that allowance
          */
-        leave_type_ids?: Array<number>;
+        leave_type_ids?: Array<string>;
         /**
          * Maximum the allowance can reach on accrued
          */
@@ -21619,52 +21760,52 @@ export type PutApi20260401ResourcesTimeoffAllowancesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowances/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowances/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffAllowancesByIdResponses = {
+export type PutApi20260701ResourcesTimeoffAllowancesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowance;
 };
 
-export type PutApi20260401ResourcesTimeoffAllowancesByIdResponse = PutApi20260401ResourcesTimeoffAllowancesByIdResponses[keyof PutApi20260401ResourcesTimeoffAllowancesByIdResponses];
+export type PutApi20260701ResourcesTimeoffAllowancesByIdResponse = PutApi20260701ResourcesTimeoffAllowancesByIdResponses[keyof PutApi20260701ResourcesTimeoffAllowancesByIdResponses];
 
-export type PostApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowanceData = {
+export type PostApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowanceData = {
     body?: {
-        id: number;
+        id: string;
         /**
          * Allowance id sent to migrate existing incidences from the deleted allowance to the alternative allowance
          */
-        alt_allowance_id: number;
+        alt_allowance_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowances/delete_with_alt_allowance';
+    url: '/api/2026-07-01/resources/timeoff/allowances/delete_with_alt_allowance';
 };
 
-export type PostApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses = {
+export type PostApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses = {
     /**
      * OK
      */
     200: TimeoffAllowance;
 };
 
-export type PostApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponse = PostApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses[keyof PostApi20260401ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses];
+export type PostApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponse = PostApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses[keyof PostApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowanceResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesData = {
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        'employee_ids[]'?: Array<number>;
-        'timeoff_allowance_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'employee_ids[]'?: Array<string>;
+        'timeoff_allowance_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/timeoff/allowance_incidences';
+    url: '/api/2026-07-01/resources/timeoff/allowance_incidences';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesResponses = {
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesResponses = {
     /**
      * OK
      */
@@ -21674,18 +21815,18 @@ export type GetApi20260401ResourcesTimeoffAllowanceIncidencesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesResponse = GetApi20260401ResourcesTimeoffAllowanceIncidencesResponses[keyof GetApi20260401ResourcesTimeoffAllowanceIncidencesResponses];
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesResponse = GetApi20260701ResourcesTimeoffAllowanceIncidencesResponses[keyof GetApi20260701ResourcesTimeoffAllowanceIncidencesResponses];
 
-export type PostApi20260401ResourcesTimeoffAllowanceIncidencesData = {
+export type PostApi20260701ResourcesTimeoffAllowanceIncidencesData = {
     body?: {
         /**
          * Employee Id
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Allowance Id
          */
-        timeoff_allowance_id: number;
+        timeoff_allowance_id: string;
         /**
          * How many units multiplied by 100 do you want to add/substract. Can be positive or negative
          */
@@ -21709,57 +21850,57 @@ export type PostApi20260401ResourcesTimeoffAllowanceIncidencesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowance_incidences';
+    url: '/api/2026-07-01/resources/timeoff/allowance_incidences';
 };
 
-export type PostApi20260401ResourcesTimeoffAllowanceIncidencesResponses = {
+export type PostApi20260701ResourcesTimeoffAllowanceIncidencesResponses = {
     /**
      * CREATED
      */
     201: TimeoffAllowanceIncidence;
 };
 
-export type PostApi20260401ResourcesTimeoffAllowanceIncidencesResponse = PostApi20260401ResourcesTimeoffAllowanceIncidencesResponses[keyof PostApi20260401ResourcesTimeoffAllowanceIncidencesResponses];
+export type PostApi20260701ResourcesTimeoffAllowanceIncidencesResponse = PostApi20260701ResourcesTimeoffAllowanceIncidencesResponses[keyof PostApi20260701ResourcesTimeoffAllowanceIncidencesResponses];
 
-export type DeleteApi20260401ResourcesTimeoffAllowanceIncidencesByIdData = {
+export type DeleteApi20260701ResourcesTimeoffAllowanceIncidencesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowance_incidences/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowance_incidences/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowanceIncidence;
 };
 
-export type DeleteApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponse = DeleteApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof DeleteApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponse = DeleteApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof DeleteApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesByIdData = {
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowance_incidences/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowance_incidences/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses = {
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowanceIncidence;
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponse = GetApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof GetApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses];
+export type GetApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponse = GetApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof GetApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdData = {
+export type PutApi20260701ResourcesTimeoffAllowanceIncidencesByIdData = {
     body?: {
-        id: number;
+        id: string;
         /**
          * How many units multiplied by 100 do you want to add/substract. Can be positive or negative
          */
@@ -21767,7 +21908,7 @@ export type PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdData = {
         /**
          * Allowance Id
          */
-        timeoff_allowance_id?: number;
+        timeoff_allowance_id?: string;
         /**
          * A free text field to add a description to the incidence
          */
@@ -21785,19 +21926,19 @@ export type PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowance_incidences/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowance_incidences/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses = {
+export type PutApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowanceIncidence;
 };
 
-export type PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponse = PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof PutApi20260401ResourcesTimeoffAllowanceIncidencesByIdResponses];
+export type PutApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponse = PutApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses[keyof PutApi20260701ResourcesTimeoffAllowanceIncidencesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsData = {
+export type GetApi20260701ResourcesTimeoffAllowanceStatsData = {
     body?: never;
     path?: never;
     query?: {
@@ -21808,20 +21949,20 @@ export type GetApi20260401ResourcesTimeoffAllowanceStatsData = {
         /**
          * Get the allowance stats for specific employees
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Filter the stats by these allowance IDs
          */
-        'allowance_ids[]'?: Array<number>;
+        'allowance_ids[]'?: Array<string>;
         /**
          * The reference date to calculate the allowance stats. If not provided, it will use today's date.
          */
         reference_date?: string;
     };
-    url: '/api/2026-04-01/resources/timeoff/allowance_stats';
+    url: '/api/2026-07-01/resources/timeoff/allowance_stats';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsResponses = {
+export type GetApi20260701ResourcesTimeoffAllowanceStatsResponses = {
     /**
      * OK
      */
@@ -21831,9 +21972,9 @@ export type GetApi20260401ResourcesTimeoffAllowanceStatsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsResponse = GetApi20260401ResourcesTimeoffAllowanceStatsResponses[keyof GetApi20260401ResourcesTimeoffAllowanceStatsResponses];
+export type GetApi20260701ResourcesTimeoffAllowanceStatsResponse = GetApi20260701ResourcesTimeoffAllowanceStatsResponses[keyof GetApi20260701ResourcesTimeoffAllowanceStatsResponses];
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsByIdData = {
+export type GetApi20260701ResourcesTimeoffAllowanceStatsByIdData = {
     body?: never;
     path: {
         /**
@@ -21842,29 +21983,29 @@ export type GetApi20260401ResourcesTimeoffAllowanceStatsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/allowance_stats/{id}';
+    url: '/api/2026-07-01/resources/timeoff/allowance_stats/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsByIdResponses = {
+export type GetApi20260701ResourcesTimeoffAllowanceStatsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffAllowanceStatsNew;
 };
 
-export type GetApi20260401ResourcesTimeoffAllowanceStatsByIdResponse = GetApi20260401ResourcesTimeoffAllowanceStatsByIdResponses[keyof GetApi20260401ResourcesTimeoffAllowanceStatsByIdResponses];
+export type GetApi20260701ResourcesTimeoffAllowanceStatsByIdResponse = GetApi20260701ResourcesTimeoffAllowanceStatsByIdResponses[keyof GetApi20260701ResourcesTimeoffAllowanceStatsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsData = {
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        'company_ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
+        'company_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/timeoff/blocked_periods';
+    url: '/api/2026-07-01/resources/timeoff/blocked_periods';
 };
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsResponses = {
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsResponses = {
     /**
      * OK
      */
@@ -21874,14 +22015,14 @@ export type GetApi20260401ResourcesTimeoffBlockedPeriodsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsResponse = GetApi20260401ResourcesTimeoffBlockedPeriodsResponses[keyof GetApi20260401ResourcesTimeoffBlockedPeriodsResponses];
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsResponse = GetApi20260701ResourcesTimeoffBlockedPeriodsResponses[keyof GetApi20260701ResourcesTimeoffBlockedPeriodsResponses];
 
-export type PostApi20260401ResourcesTimeoffBlockedPeriodsData = {
+export type PostApi20260701ResourcesTimeoffBlockedPeriodsData = {
     body?: {
         /**
          * The company id
          */
-        company_id: number;
+        company_id: string;
         /**
          * Name of the blocked period.
          */
@@ -21889,61 +22030,61 @@ export type PostApi20260401ResourcesTimeoffBlockedPeriodsData = {
         /**
          * An array of leave type identifiers for which employees can not request timeoff
          */
-        leave_type_ids: Array<number>;
+        leave_type_ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/blocked_periods';
+    url: '/api/2026-07-01/resources/timeoff/blocked_periods';
 };
 
-export type PostApi20260401ResourcesTimeoffBlockedPeriodsResponses = {
+export type PostApi20260701ResourcesTimeoffBlockedPeriodsResponses = {
     /**
      * CREATED
      */
     201: TimeoffBlockedPeriodsPolicy;
 };
 
-export type PostApi20260401ResourcesTimeoffBlockedPeriodsResponse = PostApi20260401ResourcesTimeoffBlockedPeriodsResponses[keyof PostApi20260401ResourcesTimeoffBlockedPeriodsResponses];
+export type PostApi20260701ResourcesTimeoffBlockedPeriodsResponse = PostApi20260701ResourcesTimeoffBlockedPeriodsResponses[keyof PostApi20260701ResourcesTimeoffBlockedPeriodsResponses];
 
-export type DeleteApi20260401ResourcesTimeoffBlockedPeriodsByIdData = {
+export type DeleteApi20260701ResourcesTimeoffBlockedPeriodsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/blocked_periods/{id}';
+    url: '/api/2026-07-01/resources/timeoff/blocked_periods/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffBlockedPeriodsPolicy;
 };
 
-export type DeleteApi20260401ResourcesTimeoffBlockedPeriodsByIdResponse = DeleteApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses[keyof DeleteApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffBlockedPeriodsByIdResponse = DeleteApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses[keyof DeleteApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsByIdData = {
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/blocked_periods/{id}';
+    url: '/api/2026-07-01/resources/timeoff/blocked_periods/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses = {
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffBlockedPeriodsPolicy;
 };
 
-export type GetApi20260401ResourcesTimeoffBlockedPeriodsByIdResponse = GetApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses[keyof GetApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses];
+export type GetApi20260701ResourcesTimeoffBlockedPeriodsByIdResponse = GetApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses[keyof GetApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffBlockedPeriodsByIdData = {
+export type PutApi20260701ResourcesTimeoffBlockedPeriodsByIdData = {
     body?: {
-        id: number;
+        id: string;
         /**
          * Name of the blocked period.
          */
@@ -21951,7 +22092,7 @@ export type PutApi20260401ResourcesTimeoffBlockedPeriodsByIdData = {
         /**
          * List of leave type identifiers for which employees can not request timeoff edited
          */
-        leave_type_ids: Array<number>;
+        leave_type_ids: Array<string>;
         /**
          * The tenure periods associated with the allowance edited.
          */
@@ -21963,53 +22104,53 @@ export type PutApi20260401ResourcesTimeoffBlockedPeriodsByIdData = {
         /**
          * List of employees manually selected
          */
-        members?: Array<number>;
+        members?: Array<string>;
         query?: string;
         /**
          * List of team identifiers which the selected employees belong to
          */
-        team_ids?: Array<number>;
+        team_ids?: Array<string>;
         /**
          * List of locations workplace identifiers where the employees are located
          */
-        location_ids?: Array<number>;
+        location_ids?: Array<string>;
         /**
          * List of legal entity identifiers which the selected employees belong to
          */
-        legal_entity_ids?: Array<number>;
+        legal_entity_ids?: Array<string>;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/blocked_periods/{id}';
+    url: '/api/2026-07-01/resources/timeoff/blocked_periods/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses = {
+export type PutApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffBlockedPeriodsPolicy;
 };
 
-export type PutApi20260401ResourcesTimeoffBlockedPeriodsByIdResponse = PutApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses[keyof PutApi20260401ResourcesTimeoffBlockedPeriodsByIdResponses];
+export type PutApi20260701ResourcesTimeoffBlockedPeriodsByIdResponse = PutApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses[keyof PutApi20260701ResourcesTimeoffBlockedPeriodsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffLeavesData = {
+export type GetApi20260701ResourcesTimeoffLeavesData = {
     body?: never;
     path?: never;
     query: {
         /**
          * The leave ids to retrieve
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The employee ids to retrieve
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * The leave type id to retrieve
          */
-        'leave_type_id[]'?: Array<number>;
+        'leave_type_id[]'?: Array<string>;
         /**
          * Valid date following the format YYYY-MM-DD
          */
@@ -22051,10 +22192,10 @@ export type GetApi20260401ResourcesTimeoffLeavesData = {
          */
         type_is_payable?: boolean;
     };
-    url: '/api/2026-04-01/resources/timeoff/leaves';
+    url: '/api/2026-07-01/resources/timeoff/leaves';
 };
 
-export type GetApi20260401ResourcesTimeoffLeavesResponses = {
+export type GetApi20260701ResourcesTimeoffLeavesResponses = {
     /**
      * OK
      */
@@ -22064,18 +22205,18 @@ export type GetApi20260401ResourcesTimeoffLeavesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffLeavesResponse = GetApi20260401ResourcesTimeoffLeavesResponses[keyof GetApi20260401ResourcesTimeoffLeavesResponses];
+export type GetApi20260701ResourcesTimeoffLeavesResponse = GetApi20260701ResourcesTimeoffLeavesResponses[keyof GetApi20260701ResourcesTimeoffLeavesResponses];
 
-export type PostApi20260401ResourcesTimeoffLeavesData = {
+export type PostApi20260701ResourcesTimeoffLeavesData = {
     body?: {
         /**
          * The employee id of the leave
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * The leave type id
          */
-        leave_type_id?: number;
+        leave_type_id?: string;
         /**
          * The description of the leave
          */
@@ -22123,7 +22264,7 @@ export type PostApi20260401ResourcesTimeoffLeavesData = {
         /**
          * The leave relapse id
          */
-        relapse_leave_id?: number;
+        relapse_leave_id?: string;
         /**
          * The leave relapse on date following the format YYYY-MM-DD
          */
@@ -22139,37 +22280,37 @@ export type PostApi20260401ResourcesTimeoffLeavesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves';
+    url: '/api/2026-07-01/resources/timeoff/leaves';
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesResponses = {
+export type PostApi20260701ResourcesTimeoffLeavesResponses = {
     /**
      * CREATED
      */
     201: TimeoffLeave;
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesResponse = PostApi20260401ResourcesTimeoffLeavesResponses[keyof PostApi20260401ResourcesTimeoffLeavesResponses];
+export type PostApi20260701ResourcesTimeoffLeavesResponse = PostApi20260701ResourcesTimeoffLeavesResponses[keyof PostApi20260701ResourcesTimeoffLeavesResponses];
 
-export type DeleteApi20260401ResourcesTimeoffLeavesByIdData = {
+export type DeleteApi20260701ResourcesTimeoffLeavesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/{id}';
+    url: '/api/2026-07-01/resources/timeoff/leaves/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffLeavesByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffLeavesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type DeleteApi20260401ResourcesTimeoffLeavesByIdResponse = DeleteApi20260401ResourcesTimeoffLeavesByIdResponses[keyof DeleteApi20260401ResourcesTimeoffLeavesByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffLeavesByIdResponse = DeleteApi20260701ResourcesTimeoffLeavesByIdResponses[keyof DeleteApi20260701ResourcesTimeoffLeavesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffLeavesByIdData = {
+export type GetApi20260701ResourcesTimeoffLeavesByIdData = {
     body?: never;
     path: {
         /**
@@ -22178,32 +22319,32 @@ export type GetApi20260401ResourcesTimeoffLeavesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/{id}';
+    url: '/api/2026-07-01/resources/timeoff/leaves/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffLeavesByIdResponses = {
+export type GetApi20260701ResourcesTimeoffLeavesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type GetApi20260401ResourcesTimeoffLeavesByIdResponse = GetApi20260401ResourcesTimeoffLeavesByIdResponses[keyof GetApi20260401ResourcesTimeoffLeavesByIdResponses];
+export type GetApi20260701ResourcesTimeoffLeavesByIdResponse = GetApi20260701ResourcesTimeoffLeavesByIdResponses[keyof GetApi20260701ResourcesTimeoffLeavesByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffLeavesByIdData = {
+export type PutApi20260701ResourcesTimeoffLeavesByIdData = {
     body?: {
         /**
          * The leave id
          */
-        id: number;
+        id: string;
         /**
          * The employee id of the leave
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * The leave type id
          */
-        leave_type_id?: number;
+        leave_type_id?: string;
         /**
          * The description of the leave
          */
@@ -22252,66 +22393,66 @@ export type PutApi20260401ResourcesTimeoffLeavesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/{id}';
+    url: '/api/2026-07-01/resources/timeoff/leaves/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffLeavesByIdResponses = {
+export type PutApi20260701ResourcesTimeoffLeavesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type PutApi20260401ResourcesTimeoffLeavesByIdResponse = PutApi20260401ResourcesTimeoffLeavesByIdResponses[keyof PutApi20260401ResourcesTimeoffLeavesByIdResponses];
+export type PutApi20260701ResourcesTimeoffLeavesByIdResponse = PutApi20260701ResourcesTimeoffLeavesByIdResponses[keyof PutApi20260701ResourcesTimeoffLeavesByIdResponses];
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveData = {
+export type PostApi20260701ResourcesTimeoffLeavesApproveData = {
     body?: {
         /**
          * Identifier of the Leave
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/approve';
+    url: '/api/2026-07-01/resources/timeoff/leaves/approve';
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveResponses = {
+export type PostApi20260701ResourcesTimeoffLeavesApproveResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveResponse = PostApi20260401ResourcesTimeoffLeavesApproveResponses[keyof PostApi20260401ResourcesTimeoffLeavesApproveResponses];
+export type PostApi20260701ResourcesTimeoffLeavesApproveResponse = PostApi20260701ResourcesTimeoffLeavesApproveResponses[keyof PostApi20260701ResourcesTimeoffLeavesApproveResponses];
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveAllData = {
+export type PostApi20260701ResourcesTimeoffLeavesApproveAllData = {
     body?: {
         /**
          * Identifier of the Leave
          */
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/approve_all';
+    url: '/api/2026-07-01/resources/timeoff/leaves/approve_all';
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveAllResponses = {
+export type PostApi20260701ResourcesTimeoffLeavesApproveAllResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesApproveAllResponse = PostApi20260401ResourcesTimeoffLeavesApproveAllResponses[keyof PostApi20260401ResourcesTimeoffLeavesApproveAllResponses];
+export type PostApi20260701ResourcesTimeoffLeavesApproveAllResponse = PostApi20260701ResourcesTimeoffLeavesApproveAllResponses[keyof PostApi20260701ResourcesTimeoffLeavesApproveAllResponses];
 
-export type PostApi20260401ResourcesTimeoffLeavesRejectData = {
+export type PostApi20260701ResourcesTimeoffLeavesRejectData = {
     body?: {
         /**
          * Identifier of the Leave
          */
-        id: number;
+        id: string;
         /**
          * Reason for rejecting the leave
          */
@@ -22319,30 +22460,30 @@ export type PostApi20260401ResourcesTimeoffLeavesRejectData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leaves/reject';
+    url: '/api/2026-07-01/resources/timeoff/leaves/reject';
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesRejectResponses = {
+export type PostApi20260701ResourcesTimeoffLeavesRejectResponses = {
     /**
      * OK
      */
     200: TimeoffLeave;
 };
 
-export type PostApi20260401ResourcesTimeoffLeavesRejectResponse = PostApi20260401ResourcesTimeoffLeavesRejectResponses[keyof PostApi20260401ResourcesTimeoffLeavesRejectResponses];
+export type PostApi20260701ResourcesTimeoffLeavesRejectResponse = PostApi20260701ResourcesTimeoffLeavesRejectResponses[keyof PostApi20260701ResourcesTimeoffLeavesRejectResponses];
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesData = {
+export type GetApi20260701ResourcesTimeoffLeaveTypesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Identifiers of the leave types
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Identifiers of the companies
          */
-        'company_ids[]'?: Array<number>;
+        'company_ids[]'?: Array<string>;
         /**
          * Whether the leave type is active
          */
@@ -22358,7 +22499,7 @@ export type GetApi20260401ResourcesTimeoffLeaveTypesData = {
         /**
          * Identifier of the employee
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * A reference date for the leave type
          */
@@ -22366,16 +22507,16 @@ export type GetApi20260401ResourcesTimeoffLeaveTypesData = {
         /**
          * Identifier of a specific leave type
          */
-        leave_type_id?: number;
+        leave_type_id?: string;
         /**
          * Whether the leave type allows for no end date
          */
         allow_endless?: boolean;
     };
-    url: '/api/2026-04-01/resources/timeoff/leave_types';
+    url: '/api/2026-07-01/resources/timeoff/leave_types';
 };
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesResponses = {
+export type GetApi20260701ResourcesTimeoffLeaveTypesResponses = {
     /**
      * OK
      */
@@ -22385,9 +22526,9 @@ export type GetApi20260401ResourcesTimeoffLeaveTypesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesResponse = GetApi20260401ResourcesTimeoffLeaveTypesResponses[keyof GetApi20260401ResourcesTimeoffLeaveTypesResponses];
+export type GetApi20260701ResourcesTimeoffLeaveTypesResponse = GetApi20260701ResourcesTimeoffLeaveTypesResponses[keyof GetApi20260701ResourcesTimeoffLeaveTypesResponses];
 
-export type PostApi20260401ResourcesTimeoffLeaveTypesData = {
+export type PostApi20260701ResourcesTimeoffLeaveTypesData = {
     body?: {
         /**
          * Whether the leave type accrues over time
@@ -22444,7 +22585,7 @@ export type PostApi20260401ResourcesTimeoffLeaveTypesData = {
         /**
          * Identifier of the company associated with this leave type
          */
-        company_id: number;
+        company_id: string;
         /**
          * Whether the leave type is editable
          */
@@ -22468,19 +22609,19 @@ export type PostApi20260401ResourcesTimeoffLeaveTypesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leave_types';
+    url: '/api/2026-07-01/resources/timeoff/leave_types';
 };
 
-export type PostApi20260401ResourcesTimeoffLeaveTypesResponses = {
+export type PostApi20260701ResourcesTimeoffLeaveTypesResponses = {
     /**
      * CREATED
      */
     201: TimeoffLeaveType;
 };
 
-export type PostApi20260401ResourcesTimeoffLeaveTypesResponse = PostApi20260401ResourcesTimeoffLeaveTypesResponses[keyof PostApi20260401ResourcesTimeoffLeaveTypesResponses];
+export type PostApi20260701ResourcesTimeoffLeaveTypesResponse = PostApi20260701ResourcesTimeoffLeaveTypesResponses[keyof PostApi20260701ResourcesTimeoffLeaveTypesResponses];
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesByIdData = {
+export type GetApi20260701ResourcesTimeoffLeaveTypesByIdData = {
     body?: never;
     path: {
         /**
@@ -22489,24 +22630,24 @@ export type GetApi20260401ResourcesTimeoffLeaveTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leave_types/{id}';
+    url: '/api/2026-07-01/resources/timeoff/leave_types/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesByIdResponses = {
+export type GetApi20260701ResourcesTimeoffLeaveTypesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffLeaveType;
 };
 
-export type GetApi20260401ResourcesTimeoffLeaveTypesByIdResponse = GetApi20260401ResourcesTimeoffLeaveTypesByIdResponses[keyof GetApi20260401ResourcesTimeoffLeaveTypesByIdResponses];
+export type GetApi20260701ResourcesTimeoffLeaveTypesByIdResponse = GetApi20260701ResourcesTimeoffLeaveTypesByIdResponses[keyof GetApi20260701ResourcesTimeoffLeaveTypesByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffLeaveTypesByIdData = {
+export type PutApi20260701ResourcesTimeoffLeaveTypesByIdData = {
     body?: {
         /**
          * Identifier of the leave type to update
          */
-        id?: number;
+        id?: string;
         /**
          * Whether the leave type accrues over time
          */
@@ -22587,35 +22728,35 @@ export type PutApi20260401ResourcesTimeoffLeaveTypesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/leave_types/{id}';
+    url: '/api/2026-07-01/resources/timeoff/leave_types/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffLeaveTypesByIdResponses = {
+export type PutApi20260701ResourcesTimeoffLeaveTypesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffLeaveType;
 };
 
-export type PutApi20260401ResourcesTimeoffLeaveTypesByIdResponse = PutApi20260401ResourcesTimeoffLeaveTypesByIdResponses[keyof PutApi20260401ResourcesTimeoffLeaveTypesByIdResponses];
+export type PutApi20260701ResourcesTimeoffLeaveTypesByIdResponse = PutApi20260701ResourcesTimeoffLeaveTypesByIdResponses[keyof PutApi20260701ResourcesTimeoffLeaveTypesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffPoliciesData = {
+export type GetApi20260701ResourcesTimeoffPoliciesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * The policies ids to retrieve.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * The company ids to retrieve policies.
          */
-        'company_ids[]'?: Array<number>;
+        'company_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/timeoff/policies';
+    url: '/api/2026-07-01/resources/timeoff/policies';
 };
 
-export type GetApi20260401ResourcesTimeoffPoliciesResponses = {
+export type GetApi20260701ResourcesTimeoffPoliciesResponses = {
     /**
      * OK
      */
@@ -22625,9 +22766,9 @@ export type GetApi20260401ResourcesTimeoffPoliciesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffPoliciesResponse = GetApi20260401ResourcesTimeoffPoliciesResponses[keyof GetApi20260401ResourcesTimeoffPoliciesResponses];
+export type GetApi20260701ResourcesTimeoffPoliciesResponse = GetApi20260701ResourcesTimeoffPoliciesResponses[keyof GetApi20260701ResourcesTimeoffPoliciesResponses];
 
-export type PostApi20260401ResourcesTimeoffPoliciesData = {
+export type PostApi20260701ResourcesTimeoffPoliciesData = {
     body?: {
         /**
          * The name of the policy.
@@ -22644,23 +22785,23 @@ export type PostApi20260401ResourcesTimeoffPoliciesData = {
         /**
          * Company ID.
          */
-        company_id?: number;
+        company_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policies';
+    url: '/api/2026-07-01/resources/timeoff/policies';
 };
 
-export type PostApi20260401ResourcesTimeoffPoliciesResponses = {
+export type PostApi20260701ResourcesTimeoffPoliciesResponses = {
     /**
      * CREATED
      */
     201: TimeoffPolicy;
 };
 
-export type PostApi20260401ResourcesTimeoffPoliciesResponse = PostApi20260401ResourcesTimeoffPoliciesResponses[keyof PostApi20260401ResourcesTimeoffPoliciesResponses];
+export type PostApi20260701ResourcesTimeoffPoliciesResponse = PostApi20260701ResourcesTimeoffPoliciesResponses[keyof PostApi20260701ResourcesTimeoffPoliciesResponses];
 
-export type DeleteApi20260401ResourcesTimeoffPoliciesByIdData = {
+export type DeleteApi20260701ResourcesTimeoffPoliciesByIdData = {
     body?: never;
     path: {
         /**
@@ -22669,19 +22810,19 @@ export type DeleteApi20260401ResourcesTimeoffPoliciesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policies/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policies/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffPoliciesByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffPoliciesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicy;
 };
 
-export type DeleteApi20260401ResourcesTimeoffPoliciesByIdResponse = DeleteApi20260401ResourcesTimeoffPoliciesByIdResponses[keyof DeleteApi20260401ResourcesTimeoffPoliciesByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffPoliciesByIdResponse = DeleteApi20260701ResourcesTimeoffPoliciesByIdResponses[keyof DeleteApi20260701ResourcesTimeoffPoliciesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffPoliciesByIdData = {
+export type GetApi20260701ResourcesTimeoffPoliciesByIdData = {
     body?: never;
     path: {
         /**
@@ -22690,24 +22831,24 @@ export type GetApi20260401ResourcesTimeoffPoliciesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policies/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policies/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffPoliciesByIdResponses = {
+export type GetApi20260701ResourcesTimeoffPoliciesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicy;
 };
 
-export type GetApi20260401ResourcesTimeoffPoliciesByIdResponse = GetApi20260401ResourcesTimeoffPoliciesByIdResponses[keyof GetApi20260401ResourcesTimeoffPoliciesByIdResponses];
+export type GetApi20260701ResourcesTimeoffPoliciesByIdResponse = GetApi20260701ResourcesTimeoffPoliciesByIdResponses[keyof GetApi20260701ResourcesTimeoffPoliciesByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffPoliciesByIdData = {
+export type PutApi20260701ResourcesTimeoffPoliciesByIdData = {
     body?: {
         /**
          * Id of the policy to update.
          */
-        id: number;
+        id: string;
         /**
          * The name of the policy.
          */
@@ -22728,39 +22869,39 @@ export type PutApi20260401ResourcesTimeoffPoliciesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policies/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policies/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffPoliciesByIdResponses = {
+export type PutApi20260701ResourcesTimeoffPoliciesByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicy;
 };
 
-export type PutApi20260401ResourcesTimeoffPoliciesByIdResponse = PutApi20260401ResourcesTimeoffPoliciesByIdResponses[keyof PutApi20260401ResourcesTimeoffPoliciesByIdResponses];
+export type PutApi20260701ResourcesTimeoffPoliciesByIdResponse = PutApi20260701ResourcesTimeoffPoliciesByIdResponses[keyof PutApi20260701ResourcesTimeoffPoliciesByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsData = {
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * An array of time off policy assignment ids
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter policy assignments by employee ids
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Filter policy assignments by time off policy ids
          */
-        'timeoff_policy_ids[]'?: Array<number>;
+        'timeoff_policy_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/timeoff/policy_assignments';
+    url: '/api/2026-07-01/resources/timeoff/policy_assignments';
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsResponses = {
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsResponses = {
     /**
      * OK
      */
@@ -22770,18 +22911,18 @@ export type GetApi20260401ResourcesTimeoffPolicyAssignmentsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsResponse = GetApi20260401ResourcesTimeoffPolicyAssignmentsResponses[keyof GetApi20260401ResourcesTimeoffPolicyAssignmentsResponses];
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsResponse = GetApi20260701ResourcesTimeoffPolicyAssignmentsResponses[keyof GetApi20260701ResourcesTimeoffPolicyAssignmentsResponses];
 
-export type PostApi20260401ResourcesTimeoffPolicyAssignmentsData = {
+export type PostApi20260701ResourcesTimeoffPolicyAssignmentsData = {
     body?: {
         /**
          * The time off policy id
          */
-        timeoff_policy_id: number;
+        timeoff_policy_id: string;
         /**
          * The employee id
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * The effective date of the policy assignment
          */
@@ -22789,19 +22930,19 @@ export type PostApi20260401ResourcesTimeoffPolicyAssignmentsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policy_assignments';
+    url: '/api/2026-07-01/resources/timeoff/policy_assignments';
 };
 
-export type PostApi20260401ResourcesTimeoffPolicyAssignmentsResponses = {
+export type PostApi20260701ResourcesTimeoffPolicyAssignmentsResponses = {
     /**
      * CREATED
      */
     201: TimeoffPolicyAssignment;
 };
 
-export type PostApi20260401ResourcesTimeoffPolicyAssignmentsResponse = PostApi20260401ResourcesTimeoffPolicyAssignmentsResponses[keyof PostApi20260401ResourcesTimeoffPolicyAssignmentsResponses];
+export type PostApi20260701ResourcesTimeoffPolicyAssignmentsResponse = PostApi20260701ResourcesTimeoffPolicyAssignmentsResponses[keyof PostApi20260701ResourcesTimeoffPolicyAssignmentsResponses];
 
-export type DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
+export type DeleteApi20260701ResourcesTimeoffPolicyAssignmentsByIdData = {
     body?: never;
     path: {
         /**
@@ -22810,19 +22951,19 @@ export type DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policy_assignments/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policy_assignments/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses = {
+export type DeleteApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicyAssignment;
 };
 
-export type DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponse = DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof DeleteApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses];
+export type DeleteApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponse = DeleteApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof DeleteApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsByIdData = {
     body?: never;
     path: {
         /**
@@ -22831,28 +22972,28 @@ export type GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policy_assignments/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policy_assignments/{id}';
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses = {
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicyAssignment;
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponse = GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof GetApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses];
+export type GetApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponse = GetApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof GetApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses];
 
-export type PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
+export type PutApi20260701ResourcesTimeoffPolicyAssignmentsByIdData = {
     body?: {
         /**
          * Unique identifier of the policy assignment
          */
-        id: number;
+        id: string;
         /**
          * The time off policy id
          */
-        timeoff_policy_id: number;
+        timeoff_policy_id: string;
         /**
          * The effective date of the policy assignment
          */
@@ -22865,29 +23006,29 @@ export type PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/timeoff/policy_assignments/{id}';
+    url: '/api/2026-07-01/resources/timeoff/policy_assignments/{id}';
 };
 
-export type PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses = {
+export type PutApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses = {
     /**
      * OK
      */
     200: TimeoffPolicyAssignment;
 };
 
-export type PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponse = PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof PutApi20260401ResourcesTimeoffPolicyAssignmentsByIdResponses];
+export type PutApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponse = PutApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses[keyof PutApi20260701ResourcesTimeoffPolicyAssignmentsByIdResponses];
 
-export type GetApi20260401ResourcesTimeoffPolicyTimelinesData = {
+export type GetApi20260701ResourcesTimeoffPolicyTimelinesData = {
     body?: never;
     path?: never;
     query: {
-        employee_id: number;
+        employee_id: string;
         reference_date: string;
     };
-    url: '/api/2026-04-01/resources/timeoff/policy_timelines';
+    url: '/api/2026-07-01/resources/timeoff/policy_timelines';
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyTimelinesResponses = {
+export type GetApi20260701ResourcesTimeoffPolicyTimelinesResponses = {
     /**
      * OK
      */
@@ -22897,16 +23038,16 @@ export type GetApi20260401ResourcesTimeoffPolicyTimelinesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeoffPolicyTimelinesResponse = GetApi20260401ResourcesTimeoffPolicyTimelinesResponses[keyof GetApi20260401ResourcesTimeoffPolicyTimelinesResponses];
+export type GetApi20260701ResourcesTimeoffPolicyTimelinesResponse = GetApi20260701ResourcesTimeoffPolicyTimelinesResponses[keyof GetApi20260701ResourcesTimeoffPolicyTimelinesResponses];
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksData = {
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksData = {
     body?: never;
     path?: never;
     query: {
         /**
          * List of planned break identifiers
          */
-        'ids[]': Array<number>;
+        'ids[]': Array<string>;
         /**
          * Filter by paid or unpaid breaks
          */
@@ -22914,28 +23055,28 @@ export type GetApi20260401ResourcesTimePlanningPlannedBreaksData = {
         /**
          * List of default shift identifiers
          */
-        'default_shift_ids[]': Array<number>;
+        'default_shift_ids[]': Array<string>;
         /**
          * List of shift identifiers
          */
-        'shift_ids[]': Array<number>;
+        'shift_ids[]': Array<string>;
         /**
          * List of day configuration identifiers
          */
-        'day_configuration_ids[]': Array<number>;
+        'day_configuration_ids[]': Array<string>;
         /**
          * List of shift configuration identifiers
          */
-        'shift_configuration_ids[]': Array<number>;
+        'shift_configuration_ids[]': Array<string>;
         /**
          * Filter by active break configurations only
          */
         active_break_configuration: boolean;
     };
-    url: '/api/2026-04-01/resources/time_planning/planned_breaks';
+    url: '/api/2026-07-01/resources/time_planning/planned_breaks';
 };
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksResponses = {
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksResponses = {
     /**
      * OK
      */
@@ -22945,9 +23086,9 @@ export type GetApi20260401ResourcesTimePlanningPlannedBreaksResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksResponse = GetApi20260401ResourcesTimePlanningPlannedBreaksResponses[keyof GetApi20260401ResourcesTimePlanningPlannedBreaksResponses];
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksResponse = GetApi20260701ResourcesTimePlanningPlannedBreaksResponses[keyof GetApi20260701ResourcesTimePlanningPlannedBreaksResponses];
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksByIdData = {
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksByIdData = {
     body?: never;
     path: {
         /**
@@ -22956,19 +23097,19 @@ export type GetApi20260401ResourcesTimePlanningPlannedBreaksByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planned_breaks/{id}';
+    url: '/api/2026-07-01/resources/time_planning/planned_breaks/{id}';
 };
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksByIdResponses = {
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksByIdResponses = {
     /**
      * OK
      */
     200: TimePlanningPlannedBreak;
 };
 
-export type GetApi20260401ResourcesTimePlanningPlannedBreaksByIdResponse = GetApi20260401ResourcesTimePlanningPlannedBreaksByIdResponses[keyof GetApi20260401ResourcesTimePlanningPlannedBreaksByIdResponses];
+export type GetApi20260701ResourcesTimePlanningPlannedBreaksByIdResponse = GetApi20260701ResourcesTimePlanningPlannedBreaksByIdResponses[keyof GetApi20260701ResourcesTimePlanningPlannedBreaksByIdResponses];
 
-export type PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateData = {
+export type PostApi20260701ResourcesTimePlanningPlannedBreaksBulkCreateData = {
     body?: {
         /**
          * List of planned breaks to create
@@ -22977,26 +23118,26 @@ export type PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planned_breaks/bulk_create';
+    url: '/api/2026-07-01/resources/time_planning/planned_breaks/bulk_create';
 };
 
-export type PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateResponses = {
+export type PostApi20260701ResourcesTimePlanningPlannedBreaksBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<TimePlanningPlannedBreak>;
 };
 
-export type PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateResponse = PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateResponses[keyof PostApi20260401ResourcesTimePlanningPlannedBreaksBulkCreateResponses];
+export type PostApi20260701ResourcesTimePlanningPlannedBreaksBulkCreateResponse = PostApi20260701ResourcesTimePlanningPlannedBreaksBulkCreateResponses[keyof PostApi20260701ResourcesTimePlanningPlannedBreaksBulkCreateResponses];
 
-export type GetApi20260401ResourcesTimePlanningPlanningVersionsData = {
+export type GetApi20260701ResourcesTimePlanningPlanningVersionsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * List of employee identifiers
          */
-        'employee_ids[]'?: Array<number>;
+        'employee_ids[]'?: Array<string>;
         /**
          * Filter by shift management planning tool
          */
@@ -23012,12 +23153,12 @@ export type GetApi20260401ResourcesTimePlanningPlanningVersionsData = {
         /**
          * List of work schedule identifiers to include
          */
-        'schedule_ids[]'?: Array<number>;
+        'schedule_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/time_planning/planning_versions';
+    url: '/api/2026-07-01/resources/time_planning/planning_versions';
 };
 
-export type GetApi20260401ResourcesTimePlanningPlanningVersionsResponses = {
+export type GetApi20260701ResourcesTimePlanningPlanningVersionsResponses = {
     /**
      * OK
      */
@@ -23027,9 +23168,9 @@ export type GetApi20260401ResourcesTimePlanningPlanningVersionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimePlanningPlanningVersionsResponse = GetApi20260401ResourcesTimePlanningPlanningVersionsResponses[keyof GetApi20260401ResourcesTimePlanningPlanningVersionsResponses];
+export type GetApi20260701ResourcesTimePlanningPlanningVersionsResponse = GetApi20260701ResourcesTimePlanningPlanningVersionsResponses[keyof GetApi20260701ResourcesTimePlanningPlanningVersionsResponses];
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsData = {
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsData = {
     body?: {
         /**
          * Planning version start date
@@ -23046,50 +23187,50 @@ export type PostApi20260401ResourcesTimePlanningPlanningVersionsData = {
         /**
          * Employee identifier
          */
-        employee_id: number;
+        employee_id: string;
         /**
          * Work schedule identifier to include if applicable
          */
-        schedule_id?: number;
+        schedule_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planning_versions';
+    url: '/api/2026-07-01/resources/time_planning/planning_versions';
 };
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsResponses = {
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsResponses = {
     /**
      * CREATED
      */
     201: TimePlanningPlanningVersion;
 };
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsResponse = PostApi20260401ResourcesTimePlanningPlanningVersionsResponses[keyof PostApi20260401ResourcesTimePlanningPlanningVersionsResponses];
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsResponse = PostApi20260701ResourcesTimePlanningPlanningVersionsResponses[keyof PostApi20260701ResourcesTimePlanningPlanningVersionsResponses];
 
-export type DeleteApi20260401ResourcesTimePlanningPlanningVersionsByIdData = {
+export type DeleteApi20260701ResourcesTimePlanningPlanningVersionsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planning_versions/{id}';
+    url: '/api/2026-07-01/resources/time_planning/planning_versions/{id}';
 };
 
-export type DeleteApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses = {
+export type DeleteApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses = {
     /**
      * OK
      */
     200: TimePlanningPlanningVersion;
 };
 
-export type DeleteApi20260401ResourcesTimePlanningPlanningVersionsByIdResponse = DeleteApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses[keyof DeleteApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses];
+export type DeleteApi20260701ResourcesTimePlanningPlanningVersionsByIdResponse = DeleteApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses[keyof DeleteApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses];
 
-export type PutApi20260401ResourcesTimePlanningPlanningVersionsByIdData = {
+export type PutApi20260701ResourcesTimePlanningPlanningVersionsByIdData = {
     body?: {
         /**
          * Planning version identifier
          */
-        id: number;
+        id: string;
         /**
          * Planning version start date
          */
@@ -23105,7 +23246,7 @@ export type PutApi20260401ResourcesTimePlanningPlanningVersionsByIdData = {
         /**
          * Work schedule identifier to include if applicable
          */
-        schedule_id?: number;
+        schedule_id?: string;
     };
     path: {
         /**
@@ -23114,19 +23255,19 @@ export type PutApi20260401ResourcesTimePlanningPlanningVersionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planning_versions/{id}';
+    url: '/api/2026-07-01/resources/time_planning/planning_versions/{id}';
 };
 
-export type PutApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses = {
+export type PutApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses = {
     /**
      * OK
      */
     200: TimePlanningPlanningVersion;
 };
 
-export type PutApi20260401ResourcesTimePlanningPlanningVersionsByIdResponse = PutApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses[keyof PutApi20260401ResourcesTimePlanningPlanningVersionsByIdResponses];
+export type PutApi20260701ResourcesTimePlanningPlanningVersionsByIdResponse = PutApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses[keyof PutApi20260701ResourcesTimePlanningPlanningVersionsByIdResponses];
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateData = {
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsBulkCreateData = {
     body?: {
         /**
          * Start date of the planning version
@@ -23143,37 +23284,37 @@ export type PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateData =
         /**
          * List of employee identifiers
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
         /**
          * Work schedule identifier to include if applicable
          */
-        schedule_id?: number;
+        schedule_id?: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/time_planning/planning_versions/bulk_create';
+    url: '/api/2026-07-01/resources/time_planning/planning_versions/bulk_create';
 };
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateResponses = {
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<TimePlanningPlanningVersion>;
 };
 
-export type PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateResponse = PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateResponses[keyof PostApi20260401ResourcesTimePlanningPlanningVersionsBulkCreateResponses];
+export type PostApi20260701ResourcesTimePlanningPlanningVersionsBulkCreateResponse = PostApi20260701ResourcesTimePlanningPlanningVersionsBulkCreateResponses[keyof PostApi20260701ResourcesTimePlanningPlanningVersionsBulkCreateResponses];
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsData = {
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         active: boolean;
     };
-    url: '/api/2026-04-01/resources/time_settings/break_configurations';
+    url: '/api/2026-07-01/resources/time_settings/break_configurations';
 };
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsResponses = {
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsResponses = {
     /**
      * OK
      */
@@ -23183,48 +23324,48 @@ export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsResponse = GetApi20260401ResourcesTimeSettingsBreakConfigurationsResponses[keyof GetApi20260401ResourcesTimeSettingsBreakConfigurationsResponses];
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsResponse = GetApi20260701ResourcesTimeSettingsBreakConfigurationsResponses[keyof GetApi20260701ResourcesTimeSettingsBreakConfigurationsResponses];
 
-export type PostApi20260401ResourcesTimeSettingsBreakConfigurationsData = {
+export type PostApi20260701ResourcesTimeSettingsBreakConfigurationsData = {
     body?: {
         name: string;
         paid: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/time_settings/break_configurations';
+    url: '/api/2026-07-01/resources/time_settings/break_configurations';
 };
 
-export type PostApi20260401ResourcesTimeSettingsBreakConfigurationsResponses = {
+export type PostApi20260701ResourcesTimeSettingsBreakConfigurationsResponses = {
     /**
      * CREATED
      */
     201: TimeSettingsBreakConfiguration;
 };
 
-export type PostApi20260401ResourcesTimeSettingsBreakConfigurationsResponse = PostApi20260401ResourcesTimeSettingsBreakConfigurationsResponses[keyof PostApi20260401ResourcesTimeSettingsBreakConfigurationsResponses];
+export type PostApi20260701ResourcesTimeSettingsBreakConfigurationsResponse = PostApi20260701ResourcesTimeSettingsBreakConfigurationsResponses[keyof PostApi20260701ResourcesTimeSettingsBreakConfigurationsResponses];
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsByIdData = {
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/time_settings/break_configurations/{id}';
+    url: '/api/2026-07-01/resources/time_settings/break_configurations/{id}';
 };
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses = {
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses = {
     /**
      * OK
      */
     200: TimeSettingsBreakConfiguration;
 };
 
-export type GetApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponse = GetApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses[keyof GetApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses];
+export type GetApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponse = GetApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses[keyof GetApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses];
 
-export type PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdData = {
+export type PutApi20260701ResourcesTimeSettingsBreakConfigurationsByIdData = {
     body?: {
-        id: number;
+        id: string;
         name?: string;
         paid?: boolean;
         archived?: boolean;
@@ -23233,28 +23374,28 @@ export type PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/time_settings/break_configurations/{id}';
+    url: '/api/2026-07-01/resources/time_settings/break_configurations/{id}';
 };
 
-export type PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses = {
+export type PutApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses = {
     /**
      * OK
      */
     200: TimeSettingsBreakConfiguration;
 };
 
-export type PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponse = PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses[keyof PutApi20260401ResourcesTimeSettingsBreakConfigurationsByIdResponses];
+export type PutApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponse = PutApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses[keyof PutApi20260701ResourcesTimeSettingsBreakConfigurationsByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsCategoriesData = {
+export type GetApi20260701ResourcesTrainingsCategoriesData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/trainings/categories';
+    url: '/api/2026-07-01/resources/trainings/categories';
 };
 
-export type GetApi20260401ResourcesTrainingsCategoriesResponses = {
+export type GetApi20260701ResourcesTrainingsCategoriesResponses = {
     /**
      * OK
      */
@@ -23264,75 +23405,75 @@ export type GetApi20260401ResourcesTrainingsCategoriesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsCategoriesResponse = GetApi20260401ResourcesTrainingsCategoriesResponses[keyof GetApi20260401ResourcesTrainingsCategoriesResponses];
+export type GetApi20260701ResourcesTrainingsCategoriesResponse = GetApi20260701ResourcesTrainingsCategoriesResponses[keyof GetApi20260701ResourcesTrainingsCategoriesResponses];
 
-export type PostApi20260401ResourcesTrainingsCategoriesData = {
+export type PostApi20260701ResourcesTrainingsCategoriesData = {
     body?: {
         name: string;
-        company_id: number;
+        company_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/categories';
+    url: '/api/2026-07-01/resources/trainings/categories';
 };
 
-export type PostApi20260401ResourcesTrainingsCategoriesResponses = {
+export type PostApi20260701ResourcesTrainingsCategoriesResponses = {
     /**
      * CREATED
      */
     201: TrainingsCategory;
 };
 
-export type PostApi20260401ResourcesTrainingsCategoriesResponse = PostApi20260401ResourcesTrainingsCategoriesResponses[keyof PostApi20260401ResourcesTrainingsCategoriesResponses];
+export type PostApi20260701ResourcesTrainingsCategoriesResponse = PostApi20260701ResourcesTrainingsCategoriesResponses[keyof PostApi20260701ResourcesTrainingsCategoriesResponses];
 
-export type DeleteApi20260401ResourcesTrainingsCategoriesByIdData = {
+export type DeleteApi20260701ResourcesTrainingsCategoriesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/categories/{id}';
+    url: '/api/2026-07-01/resources/trainings/categories/{id}';
 };
 
-export type DeleteApi20260401ResourcesTrainingsCategoriesByIdResponses = {
+export type DeleteApi20260701ResourcesTrainingsCategoriesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsCategory;
 };
 
-export type DeleteApi20260401ResourcesTrainingsCategoriesByIdResponse = DeleteApi20260401ResourcesTrainingsCategoriesByIdResponses[keyof DeleteApi20260401ResourcesTrainingsCategoriesByIdResponses];
+export type DeleteApi20260701ResourcesTrainingsCategoriesByIdResponse = DeleteApi20260701ResourcesTrainingsCategoriesByIdResponses[keyof DeleteApi20260701ResourcesTrainingsCategoriesByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsCategoriesByIdData = {
+export type GetApi20260701ResourcesTrainingsCategoriesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/categories/{id}';
+    url: '/api/2026-07-01/resources/trainings/categories/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsCategoriesByIdResponses = {
+export type GetApi20260701ResourcesTrainingsCategoriesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsCategory;
 };
 
-export type GetApi20260401ResourcesTrainingsCategoriesByIdResponse = GetApi20260401ResourcesTrainingsCategoriesByIdResponses[keyof GetApi20260401ResourcesTrainingsCategoriesByIdResponses];
+export type GetApi20260701ResourcesTrainingsCategoriesByIdResponse = GetApi20260701ResourcesTrainingsCategoriesByIdResponses[keyof GetApi20260701ResourcesTrainingsCategoriesByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionsData = {
+export type GetApi20260701ResourcesTrainingsSessionsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * This field is used to filter those sessions whose id match with the given.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * This field is used to filter those sessions whose belong to these trainings.
          */
-        'training_ids[]'?: Array<number>;
+        'training_ids[]'?: Array<string>;
         /**
          * This field is used to filter those sessions whose name include some of the text written.
          */
@@ -23348,11 +23489,11 @@ export type GetApi20260401ResourcesTrainingsSessionsData = {
         /**
          * access_id associated to the employee, refers to employees/employees endpoint.
          */
-        access_id?: number;
+        access_id?: string;
         /**
          * employee_id associated to the employee, refers to employees/employees endpoint.
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * This field is used to filter those sessions whose belong to this training groups.
          */
@@ -23374,10 +23515,10 @@ export type GetApi20260401ResourcesTrainingsSessionsData = {
          */
         active?: boolean;
     };
-    url: '/api/2026-04-01/resources/trainings/sessions';
+    url: '/api/2026-07-01/resources/trainings/sessions';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionsResponses = {
+export type GetApi20260701ResourcesTrainingsSessionsResponses = {
     /**
      * OK
      */
@@ -23387,9 +23528,9 @@ export type GetApi20260401ResourcesTrainingsSessionsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsSessionsResponse = GetApi20260401ResourcesTrainingsSessionsResponses[keyof GetApi20260401ResourcesTrainingsSessionsResponses];
+export type GetApi20260701ResourcesTrainingsSessionsResponse = GetApi20260701ResourcesTrainingsSessionsResponses[keyof GetApi20260701ResourcesTrainingsSessionsResponses];
 
-export type PostApi20260401ResourcesTrainingsSessionsData = {
+export type PostApi20260701ResourcesTrainingsSessionsData = {
     body?: {
         /**
          * Session name
@@ -23398,7 +23539,7 @@ export type PostApi20260401ResourcesTrainingsSessionsData = {
         /**
          * Training this session belongs to
          */
-        training_id: number;
+        training_id: string;
         /**
          * Session specific description
          */
@@ -23406,7 +23547,7 @@ export type PostApi20260401ResourcesTrainingsSessionsData = {
         /**
          * Training class it belongs to
          */
-        training_class_id?: number;
+        training_class_id?: string;
         /**
          * Start date for the session, if scheduled, starts at and ends at needs to happen within the same day.
          */
@@ -23458,37 +23599,37 @@ export type PostApi20260401ResourcesTrainingsSessionsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/sessions';
+    url: '/api/2026-07-01/resources/trainings/sessions';
 };
 
-export type PostApi20260401ResourcesTrainingsSessionsResponses = {
+export type PostApi20260701ResourcesTrainingsSessionsResponses = {
     /**
      * CREATED
      */
     201: TrainingsSession;
 };
 
-export type PostApi20260401ResourcesTrainingsSessionsResponse = PostApi20260401ResourcesTrainingsSessionsResponses[keyof PostApi20260401ResourcesTrainingsSessionsResponses];
+export type PostApi20260701ResourcesTrainingsSessionsResponse = PostApi20260701ResourcesTrainingsSessionsResponses[keyof PostApi20260701ResourcesTrainingsSessionsResponses];
 
-export type DeleteApi20260401ResourcesTrainingsSessionsByIdData = {
+export type DeleteApi20260701ResourcesTrainingsSessionsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/sessions/{id}';
+    url: '/api/2026-07-01/resources/trainings/sessions/{id}';
 };
 
-export type DeleteApi20260401ResourcesTrainingsSessionsByIdResponses = {
+export type DeleteApi20260701ResourcesTrainingsSessionsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsSession;
 };
 
-export type DeleteApi20260401ResourcesTrainingsSessionsByIdResponse = DeleteApi20260401ResourcesTrainingsSessionsByIdResponses[keyof DeleteApi20260401ResourcesTrainingsSessionsByIdResponses];
+export type DeleteApi20260701ResourcesTrainingsSessionsByIdResponse = DeleteApi20260701ResourcesTrainingsSessionsByIdResponses[keyof DeleteApi20260701ResourcesTrainingsSessionsByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionsByIdData = {
+export type GetApi20260701ResourcesTrainingsSessionsByIdData = {
     body?: never;
     path: {
         /**
@@ -23497,24 +23638,24 @@ export type GetApi20260401ResourcesTrainingsSessionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/sessions/{id}';
+    url: '/api/2026-07-01/resources/trainings/sessions/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionsByIdResponses = {
+export type GetApi20260701ResourcesTrainingsSessionsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsSession;
 };
 
-export type GetApi20260401ResourcesTrainingsSessionsByIdResponse = GetApi20260401ResourcesTrainingsSessionsByIdResponses[keyof GetApi20260401ResourcesTrainingsSessionsByIdResponses];
+export type GetApi20260701ResourcesTrainingsSessionsByIdResponse = GetApi20260701ResourcesTrainingsSessionsByIdResponses[keyof GetApi20260701ResourcesTrainingsSessionsByIdResponses];
 
-export type PutApi20260401ResourcesTrainingsSessionsByIdData = {
+export type PutApi20260701ResourcesTrainingsSessionsByIdData = {
     body?: {
         /**
          * The session id you want to update
          */
-        id: number;
+        id: string;
         /**
          * Session name
          */
@@ -23571,30 +23712,30 @@ export type PutApi20260401ResourcesTrainingsSessionsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/sessions/{id}';
+    url: '/api/2026-07-01/resources/trainings/sessions/{id}';
 };
 
-export type PutApi20260401ResourcesTrainingsSessionsByIdResponses = {
+export type PutApi20260701ResourcesTrainingsSessionsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsSession;
 };
 
-export type PutApi20260401ResourcesTrainingsSessionsByIdResponse = PutApi20260401ResourcesTrainingsSessionsByIdResponses[keyof PutApi20260401ResourcesTrainingsSessionsByIdResponses];
+export type PutApi20260701ResourcesTrainingsSessionsByIdResponse = PutApi20260701ResourcesTrainingsSessionsByIdResponses[keyof PutApi20260701ResourcesTrainingsSessionsByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsData = {
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * Filter memberships by session ID
          */
-        session_id: number;
+        session_id: string;
         /**
          * Filter memberships by specific IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Filter memberships by user name
          */
@@ -23602,16 +23743,16 @@ export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsData = {
         /**
          * ID of the team associated with this membership
          */
-        'team_ids[]'?: Array<number>;
+        'team_ids[]'?: Array<string>;
         /**
          * Current status of the session attendance
          */
         'status[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/trainings/session_access_memberships';
+    url: '/api/2026-07-01/resources/trainings/session_access_memberships';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsResponses = {
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsResponses = {
     /**
      * OK
      */
@@ -23621,9 +23762,9 @@ export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsResponses = 
     };
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsResponse = GetApi20260401ResourcesTrainingsSessionAccessMembershipsResponses[keyof GetApi20260401ResourcesTrainingsSessionAccessMembershipsResponses];
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsResponse = GetApi20260701ResourcesTrainingsSessionAccessMembershipsResponses[keyof GetApi20260701ResourcesTrainingsSessionAccessMembershipsResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdData = {
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsByIdData = {
     body?: never;
     path: {
         /**
@@ -23632,72 +23773,72 @@ export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/session_access_memberships/{id}';
+    url: '/api/2026-07-01/resources/trainings/session_access_memberships/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdResponses = {
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsSessionAccessMembership;
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdResponse = GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdResponses[keyof GetApi20260401ResourcesTrainingsSessionAccessMembershipsByIdResponses];
+export type GetApi20260701ResourcesTrainingsSessionAccessMembershipsByIdResponse = GetApi20260701ResourcesTrainingsSessionAccessMembershipsByIdResponses[keyof GetApi20260701ResourcesTrainingsSessionAccessMembershipsByIdResponses];
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreateData = {
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreateData = {
     body?: {
-        access_ids?: Array<number>;
-        employee_ids?: Array<number>;
-        session_id: number;
+        access_ids?: Array<string>;
+        employee_ids?: Array<string>;
+        session_id: string;
         notify: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/session_access_memberships/bulk_create';
+    url: '/api/2026-07-01/resources/trainings/session_access_memberships/bulk_create';
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses = {
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<TrainingsSessionAccessMembership>;
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreateResponse = PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses[keyof PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses];
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreateResponse = PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses[keyof PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreateResponses];
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroyData = {
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroyData = {
     body?: {
-        ids: Array<number>;
+        ids: Array<string>;
         notify: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/session_access_memberships/bulk_destroy';
+    url: '/api/2026-07-01/resources/trainings/session_access_memberships/bulk_destroy';
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses = {
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses = {
     /**
      * OK
      */
     200: Array<TrainingsSessionAccessMembership>;
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponse = PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses[keyof PostApi20260401ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses];
+export type PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponse = PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses[keyof PostApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroyResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesData = {
+export type GetApi20260701ResourcesTrainingsSessionAttendancesData = {
     body?: never;
     path?: never;
     query?: {
-        session_id?: number;
-        id?: number;
-        'ids[]'?: Array<number>;
-        'session_access_membership_ids[]'?: Array<number>;
-        'access_ids[]'?: Array<number>;
+        session_id?: string;
+        id?: string;
+        'ids[]'?: Array<string>;
+        'session_access_membership_ids[]'?: Array<string>;
+        'access_ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/trainings/session_attendances';
+    url: '/api/2026-07-01/resources/trainings/session_attendances';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesResponses = {
+export type GetApi20260701ResourcesTrainingsSessionAttendancesResponses = {
     /**
      * OK
      */
@@ -23707,32 +23848,32 @@ export type GetApi20260401ResourcesTrainingsSessionAttendancesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesResponse = GetApi20260401ResourcesTrainingsSessionAttendancesResponses[keyof GetApi20260401ResourcesTrainingsSessionAttendancesResponses];
+export type GetApi20260701ResourcesTrainingsSessionAttendancesResponse = GetApi20260701ResourcesTrainingsSessionAttendancesResponses[keyof GetApi20260701ResourcesTrainingsSessionAttendancesResponses];
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesByIdData = {
+export type GetApi20260701ResourcesTrainingsSessionAttendancesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/session_attendances/{id}';
+    url: '/api/2026-07-01/resources/trainings/session_attendances/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesByIdResponses = {
+export type GetApi20260701ResourcesTrainingsSessionAttendancesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsSessionAttendance;
 };
 
-export type GetApi20260401ResourcesTrainingsSessionAttendancesByIdResponse = GetApi20260401ResourcesTrainingsSessionAttendancesByIdResponses[keyof GetApi20260401ResourcesTrainingsSessionAttendancesByIdResponses];
+export type GetApi20260701ResourcesTrainingsSessionAttendancesByIdResponse = GetApi20260701ResourcesTrainingsSessionAttendancesByIdResponses[keyof GetApi20260701ResourcesTrainingsSessionAttendancesByIdResponses];
 
-export type PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateData = {
+export type PostApi20260701ResourcesTrainingsSessionAttendancesBulkUpdateData = {
     body?: {
         /**
          * List of session attendance IDs to update
          */
-        ids: Array<number>;
+        ids: Array<string>;
         /**
          * New status for the session attendances
          */
@@ -23744,34 +23885,34 @@ export type PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateData = 
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/session_attendances/bulk_update';
+    url: '/api/2026-07-01/resources/trainings/session_attendances/bulk_update';
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateResponses = {
+export type PostApi20260701ResourcesTrainingsSessionAttendancesBulkUpdateResponses = {
     /**
      * OK
      */
     200: Array<TrainingsSessionAttendance>;
 };
 
-export type PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateResponse = PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateResponses[keyof PostApi20260401ResourcesTrainingsSessionAttendancesBulkUpdateResponses];
+export type PostApi20260701ResourcesTrainingsSessionAttendancesBulkUpdateResponse = PostApi20260701ResourcesTrainingsSessionAttendancesBulkUpdateResponses[keyof PostApi20260701ResourcesTrainingsSessionAttendancesBulkUpdateResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingsData = {
+export type GetApi20260701ResourcesTrainingsTrainingsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * This field is used to get a specific training.
          */
-        id?: number;
+        id?: string;
         /**
          * This field is used to filter those trainings whose id match with the given.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * @deprecated
          */
-        access_id?: number;
+        access_id?: string;
         /**
          * This field is used to search in the training name, training description or training category.
          */
@@ -23805,10 +23946,10 @@ export type GetApi20260401ResourcesTrainingsTrainingsData = {
          */
         with_current_training_classes?: boolean;
     };
-    url: '/api/2026-04-01/resources/trainings/trainings';
+    url: '/api/2026-07-01/resources/trainings/trainings';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingsResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingsResponses = {
     /**
      * OK
      */
@@ -23818,9 +23959,9 @@ export type GetApi20260401ResourcesTrainingsTrainingsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingsResponse = GetApi20260401ResourcesTrainingsTrainingsResponses[keyof GetApi20260401ResourcesTrainingsTrainingsResponses];
+export type GetApi20260701ResourcesTrainingsTrainingsResponse = GetApi20260701ResourcesTrainingsTrainingsResponses[keyof GetApi20260701ResourcesTrainingsTrainingsResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingsData = {
+export type PostApi20260701ResourcesTrainingsTrainingsData = {
     body?: {
         /**
          * Name of the training
@@ -23845,19 +23986,19 @@ export type PostApi20260401ResourcesTrainingsTrainingsData = {
         /**
          * List of ids of training categories
          */
-        category_ids?: Array<number>;
+        category_ids?: Array<string>;
         /**
          * Competency ids of the training
          */
-        competency_ids?: Array<number>;
+        competency_ids?: Array<string>;
         /**
          * The person that creates the training
          */
-        author_id?: number;
+        author_id?: string;
         /**
          * Employee identifier associated with the training
          */
-        employee_id?: number;
+        employee_id?: string;
         cost?: number;
         subsidized_cost?: number;
         cost_decimal?: string;
@@ -23869,7 +24010,7 @@ export type PostApi20260401ResourcesTrainingsTrainingsData = {
         /**
          * Company identifier of the training
          */
-        company_id?: number;
+        company_id?: string;
         /**
          * Attachments of the training
          */
@@ -23893,37 +24034,37 @@ export type PostApi20260401ResourcesTrainingsTrainingsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings';
+    url: '/api/2026-07-01/resources/trainings/trainings';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingsResponses = {
     /**
      * CREATED
      */
     201: TrainingsTraining;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsResponse = PostApi20260401ResourcesTrainingsTrainingsResponses[keyof PostApi20260401ResourcesTrainingsTrainingsResponses];
+export type PostApi20260701ResourcesTrainingsTrainingsResponse = PostApi20260701ResourcesTrainingsTrainingsResponses[keyof PostApi20260701ResourcesTrainingsTrainingsResponses];
 
-export type DeleteApi20260401ResourcesTrainingsTrainingsByIdData = {
+export type DeleteApi20260701ResourcesTrainingsTrainingsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/{id}';
+    url: '/api/2026-07-01/resources/trainings/trainings/{id}';
 };
 
-export type DeleteApi20260401ResourcesTrainingsTrainingsByIdResponses = {
+export type DeleteApi20260701ResourcesTrainingsTrainingsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTraining;
 };
 
-export type DeleteApi20260401ResourcesTrainingsTrainingsByIdResponse = DeleteApi20260401ResourcesTrainingsTrainingsByIdResponses[keyof DeleteApi20260401ResourcesTrainingsTrainingsByIdResponses];
+export type DeleteApi20260701ResourcesTrainingsTrainingsByIdResponse = DeleteApi20260701ResourcesTrainingsTrainingsByIdResponses[keyof DeleteApi20260701ResourcesTrainingsTrainingsByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingsByIdData = {
+export type GetApi20260701ResourcesTrainingsTrainingsByIdData = {
     body?: never;
     path: {
         /**
@@ -23932,28 +24073,28 @@ export type GetApi20260401ResourcesTrainingsTrainingsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/{id}';
+    url: '/api/2026-07-01/resources/trainings/trainings/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingsByIdResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTraining;
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingsByIdResponse = GetApi20260401ResourcesTrainingsTrainingsByIdResponses[keyof GetApi20260401ResourcesTrainingsTrainingsByIdResponses];
+export type GetApi20260701ResourcesTrainingsTrainingsByIdResponse = GetApi20260701ResourcesTrainingsTrainingsByIdResponses[keyof GetApi20260701ResourcesTrainingsTrainingsByIdResponses];
 
-export type PutApi20260401ResourcesTrainingsTrainingsByIdData = {
+export type PutApi20260701ResourcesTrainingsTrainingsByIdData = {
     body?: {
-        id: number;
+        id: string;
         name: string;
         code?: string;
         description: string;
         external_provider?: string;
         external: boolean;
-        category_ids?: Array<number>;
-        competency_ids?: Array<number>;
+        category_ids?: Array<string>;
+        competency_ids?: Array<string>;
         cost?: number;
         subsidized_cost?: number;
         cost_decimal?: string;
@@ -23965,91 +24106,91 @@ export type PutApi20260401ResourcesTrainingsTrainingsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/{id}';
+    url: '/api/2026-07-01/resources/trainings/trainings/{id}';
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingsByIdResponses = {
+export type PutApi20260701ResourcesTrainingsTrainingsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTraining;
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingsByIdResponse = PutApi20260401ResourcesTrainingsTrainingsByIdResponses[keyof PutApi20260401ResourcesTrainingsTrainingsByIdResponses];
+export type PutApi20260701ResourcesTrainingsTrainingsByIdResponse = PutApi20260701ResourcesTrainingsTrainingsByIdResponses[keyof PutApi20260701ResourcesTrainingsTrainingsByIdResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkDeleteData = {
+export type PostApi20260701ResourcesTrainingsTrainingsBulkDeleteData = {
     body?: {
-        ids: Array<number>;
+        ids: Array<string>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/bulk_delete';
+    url: '/api/2026-07-01/resources/trainings/trainings/bulk_delete';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkDeleteResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingsBulkDeleteResponses = {
     /**
      * OK
      */
     200: Array<TrainingsTraining>;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkDeleteResponse = PostApi20260401ResourcesTrainingsTrainingsBulkDeleteResponses[keyof PostApi20260401ResourcesTrainingsTrainingsBulkDeleteResponses];
+export type PostApi20260701ResourcesTrainingsTrainingsBulkDeleteResponse = PostApi20260701ResourcesTrainingsTrainingsBulkDeleteResponses[keyof PostApi20260701ResourcesTrainingsTrainingsBulkDeleteResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalogData = {
+export type PostApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalogData = {
     body?: {
-        ids: Array<number>;
+        ids: Array<string>;
         catalog: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/bulk_update_catalog';
+    url: '/api/2026-07-01/resources/trainings/trainings/bulk_update_catalog';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalogResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalogResponses = {
     /**
      * OK
      */
     200: Array<TrainingsTraining>;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalogResponse = PostApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalogResponses[keyof PostApi20260401ResourcesTrainingsTrainingsBulkUpdateCatalogResponses];
+export type PostApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalogResponse = PostApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalogResponses[keyof PostApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalogResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingsUpdateStatusData = {
+export type PostApi20260701ResourcesTrainingsTrainingsUpdateStatusData = {
     body?: {
-        id: number;
+        id: string;
         status: string;
         notify: boolean;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/trainings/update_status';
+    url: '/api/2026-07-01/resources/trainings/trainings/update_status';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsUpdateStatusResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingsUpdateStatusResponses = {
     /**
      * OK
      */
     200: TrainingsTraining;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingsUpdateStatusResponse = PostApi20260401ResourcesTrainingsTrainingsUpdateStatusResponses[keyof PostApi20260401ResourcesTrainingsTrainingsUpdateStatusResponses];
+export type PostApi20260701ResourcesTrainingsTrainingsUpdateStatusResponse = PostApi20260701ResourcesTrainingsTrainingsUpdateStatusResponses[keyof PostApi20260701ResourcesTrainingsTrainingsUpdateStatusResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesData = {
+export type GetApi20260701ResourcesTrainingsTrainingClassesData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * Filter those training classes whose id match with the given.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * Get a specific training class.
          */
-        id?: number;
+        id?: string;
         /**
          * Get training classes for the specified training.
          */
-        training_id?: number;
+        training_id?: string;
         /**
          * This field is used to search in the training class name.
          */
@@ -24063,10 +24204,10 @@ export type GetApi20260401ResourcesTrainingsTrainingClassesData = {
          */
         'end_date[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/trainings/training_classes';
+    url: '/api/2026-07-01/resources/trainings/training_classes';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingClassesResponses = {
     /**
      * OK
      */
@@ -24076,9 +24217,9 @@ export type GetApi20260401ResourcesTrainingsTrainingClassesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesResponse = GetApi20260401ResourcesTrainingsTrainingClassesResponses[keyof GetApi20260401ResourcesTrainingsTrainingClassesResponses];
+export type GetApi20260701ResourcesTrainingsTrainingClassesResponse = GetApi20260701ResourcesTrainingsTrainingClassesResponses[keyof GetApi20260701ResourcesTrainingsTrainingClassesResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingClassesData = {
+export type PostApi20260701ResourcesTrainingsTrainingClassesData = {
     body?: {
         /**
          * Class name
@@ -24099,15 +24240,15 @@ export type PostApi20260401ResourcesTrainingsTrainingClassesData = {
         /**
          * Training the class belongs to
          */
-        training_id: number;
+        training_id: string;
         /**
          * Company identifier the class belongs to
          */
-        company_id: number;
+        company_id: string;
         /**
          * access_id associated to the employee that creates the training class, refers to employees/employees endpoint.
          */
-        author_id: number;
+        author_id: string;
         /**
          * Training-related expenses, such as instructor fees, materials, venue, and logistics.
          */
@@ -24131,19 +24272,19 @@ export type PostApi20260401ResourcesTrainingsTrainingClassesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_classes';
+    url: '/api/2026-07-01/resources/trainings/training_classes';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingClassesResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingClassesResponses = {
     /**
      * CREATED
      */
     201: TrainingsTrainingClass;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingClassesResponse = PostApi20260401ResourcesTrainingsTrainingClassesResponses[keyof PostApi20260401ResourcesTrainingsTrainingClassesResponses];
+export type PostApi20260701ResourcesTrainingsTrainingClassesResponse = PostApi20260701ResourcesTrainingsTrainingClassesResponses[keyof PostApi20260701ResourcesTrainingsTrainingClassesResponses];
 
-export type DeleteApi20260401ResourcesTrainingsTrainingClassesByIdData = {
+export type DeleteApi20260701ResourcesTrainingsTrainingClassesByIdData = {
     body?: never;
     path: {
         /**
@@ -24152,19 +24293,19 @@ export type DeleteApi20260401ResourcesTrainingsTrainingClassesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_classes/{id}';
+    url: '/api/2026-07-01/resources/trainings/training_classes/{id}';
 };
 
-export type DeleteApi20260401ResourcesTrainingsTrainingClassesByIdResponses = {
+export type DeleteApi20260701ResourcesTrainingsTrainingClassesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTrainingClass;
 };
 
-export type DeleteApi20260401ResourcesTrainingsTrainingClassesByIdResponse = DeleteApi20260401ResourcesTrainingsTrainingClassesByIdResponses[keyof DeleteApi20260401ResourcesTrainingsTrainingClassesByIdResponses];
+export type DeleteApi20260701ResourcesTrainingsTrainingClassesByIdResponse = DeleteApi20260701ResourcesTrainingsTrainingClassesByIdResponses[keyof DeleteApi20260701ResourcesTrainingsTrainingClassesByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesByIdData = {
+export type GetApi20260701ResourcesTrainingsTrainingClassesByIdData = {
     body?: never;
     path: {
         /**
@@ -24173,19 +24314,19 @@ export type GetApi20260401ResourcesTrainingsTrainingClassesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_classes/{id}';
+    url: '/api/2026-07-01/resources/trainings/training_classes/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesByIdResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingClassesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTrainingClass;
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingClassesByIdResponse = GetApi20260401ResourcesTrainingsTrainingClassesByIdResponses[keyof GetApi20260401ResourcesTrainingsTrainingClassesByIdResponses];
+export type GetApi20260701ResourcesTrainingsTrainingClassesByIdResponse = GetApi20260701ResourcesTrainingsTrainingClassesByIdResponses[keyof GetApi20260701ResourcesTrainingsTrainingClassesByIdResponses];
 
-export type PutApi20260401ResourcesTrainingsTrainingClassesByIdData = {
+export type PutApi20260701ResourcesTrainingsTrainingClassesByIdData = {
     body?: {
         /**
          * Class name
@@ -24206,7 +24347,7 @@ export type PutApi20260401ResourcesTrainingsTrainingClassesByIdData = {
         /**
          * Identifier of the training class to update
          */
-        id: number;
+        id: string;
         /**
          * Training-related expenses, such as instructor fees, materials, venue, and logistics.
          */
@@ -24235,30 +24376,30 @@ export type PutApi20260401ResourcesTrainingsTrainingClassesByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_classes/{id}';
+    url: '/api/2026-07-01/resources/trainings/training_classes/{id}';
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingClassesByIdResponses = {
+export type PutApi20260701ResourcesTrainingsTrainingClassesByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTrainingClass;
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingClassesByIdResponse = PutApi20260401ResourcesTrainingsTrainingClassesByIdResponses[keyof PutApi20260401ResourcesTrainingsTrainingClassesByIdResponses];
+export type PutApi20260701ResourcesTrainingsTrainingClassesByIdResponse = PutApi20260701ResourcesTrainingsTrainingClassesByIdResponses[keyof PutApi20260701ResourcesTrainingsTrainingClassesByIdResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsData = {
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsData = {
     body?: never;
     path?: never;
     query: {
         /**
          * This field is used to filter those trainings memberships that belongs to this training.
          */
-        training_id?: number;
+        training_id?: string;
         /**
          * This field is used to filter those trainings memberships whose id match with the given.
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         /**
          * This field is used to filter those trainings memberships whose employee name include some of the text written.
          */
@@ -24266,7 +24407,7 @@ export type GetApi20260401ResourcesTrainingsTrainingMembershipsData = {
         /**
          * This field is used to filter those memberships whose employees belongs to this team.
          */
-        team_id?: number;
+        team_id?: string;
         /**
          * This field is used to filter those trainings memberships whose attendance status is the given.
          */
@@ -24274,20 +24415,20 @@ export type GetApi20260401ResourcesTrainingsTrainingMembershipsData = {
         /**
          * This field is used to filter those trainings memberships whose employees belongs to this group.
          */
-        class_id?: number;
+        class_id?: string;
         /**
          * Get the training memberships by passing the employee id
          */
-        employee_id?: number;
+        employee_id?: string;
         /**
          * This field is used to filter training memberships by due date. Values can be 'overdue', 'no_due_date', or a number of days (e.g., '7', '30', '90').
          */
         due_date: string;
     };
-    url: '/api/2026-04-01/resources/trainings/training_memberships';
+    url: '/api/2026-07-01/resources/trainings/training_memberships';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsResponses = {
     /**
      * OK
      */
@@ -24297,9 +24438,9 @@ export type GetApi20260401ResourcesTrainingsTrainingMembershipsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsResponse = GetApi20260401ResourcesTrainingsTrainingMembershipsResponses[keyof GetApi20260401ResourcesTrainingsTrainingMembershipsResponses];
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsResponse = GetApi20260701ResourcesTrainingsTrainingMembershipsResponses[keyof GetApi20260701ResourcesTrainingsTrainingMembershipsResponses];
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsByIdData = {
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsByIdData = {
     body?: never;
     path: {
         /**
@@ -24308,24 +24449,24 @@ export type GetApi20260401ResourcesTrainingsTrainingMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_memberships/{id}';
+    url: '/api/2026-07-01/resources/trainings/training_memberships/{id}';
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses = {
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTrainingMembership;
 };
 
-export type GetApi20260401ResourcesTrainingsTrainingMembershipsByIdResponse = GetApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses[keyof GetApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses];
+export type GetApi20260701ResourcesTrainingsTrainingMembershipsByIdResponse = GetApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses[keyof GetApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses];
 
-export type PutApi20260401ResourcesTrainingsTrainingMembershipsByIdData = {
+export type PutApi20260701ResourcesTrainingsTrainingMembershipsByIdData = {
     body?: {
         /**
          * Unique identifier for the training membership. Only used to identify the training membership to update.
          */
-        id: number;
+        id: string;
         /**
          * This field is used to record the date a training was completed for trainings that have an expiry date.
          */
@@ -24338,53 +24479,53 @@ export type PutApi20260401ResourcesTrainingsTrainingMembershipsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_memberships/{id}';
+    url: '/api/2026-07-01/resources/trainings/training_memberships/{id}';
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses = {
+export type PutApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses = {
     /**
      * OK
      */
     200: TrainingsTrainingMembership;
 };
 
-export type PutApi20260401ResourcesTrainingsTrainingMembershipsByIdResponse = PutApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses[keyof PutApi20260401ResourcesTrainingsTrainingMembershipsByIdResponses];
+export type PutApi20260701ResourcesTrainingsTrainingMembershipsByIdResponse = PutApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses[keyof PutApi20260701ResourcesTrainingsTrainingMembershipsByIdResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkCreateData = {
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkCreateData = {
     body?: {
         /**
          * ids for the accesses to be assigned in a training
          */
-        employee_ids: Array<number>;
+        employee_ids: Array<string>;
         /**
          * Training id to be assigned
          */
-        training_id: number;
+        training_id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_memberships/bulk_create';
+    url: '/api/2026-07-01/resources/trainings/training_memberships/bulk_create';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkCreateResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkCreateResponses = {
     /**
      * OK
      */
     200: Array<TrainingsTrainingMembership>;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkCreateResponse = PostApi20260401ResourcesTrainingsTrainingMembershipsBulkCreateResponses[keyof PostApi20260401ResourcesTrainingsTrainingMembershipsBulkCreateResponses];
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkCreateResponse = PostApi20260701ResourcesTrainingsTrainingMembershipsBulkCreateResponses[keyof PostApi20260701ResourcesTrainingsTrainingMembershipsBulkCreateResponses];
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyData = {
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroyData = {
     body?: {
         /**
          * IDs of training memberships to delete. When 'all' is true, these IDs are excluded from deletion.
          */
-        ids: Array<number>;
+        ids: Array<string>;
         /**
          * Training ID. Required when 'all' is true to identify which training's memberships to delete.
          */
-        training_id?: number;
+        training_id?: string;
         /**
          * When true, deletes all memberships for the given training_id, excluding those in the 'ids' array.
          */
@@ -24392,30 +24533,30 @@ export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyData 
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/trainings/training_memberships/bulk_destroy';
+    url: '/api/2026-07-01/resources/trainings/training_memberships/bulk_destroy';
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyResponses = {
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroyResponses = {
     /**
      * OK
      */
     200: Array<TrainingsTrainingMembership>;
 };
 
-export type PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyResponse = PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyResponses[keyof PostApi20260401ResourcesTrainingsTrainingMembershipsBulkDestroyResponses];
+export type PostApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroyResponse = PostApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroyResponses[keyof PostApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroyResponses];
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsData = {
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsData = {
     body?: never;
     path?: never;
     query?: {
-        'ids[]'?: Array<number>;
-        overlap_period_id?: number;
-        schedule_id?: number;
+        'ids[]'?: Array<string>;
+        overlap_period_id?: string;
+        schedule_id?: string;
     };
-    url: '/api/2026-04-01/resources/work_schedule/day_configurations';
+    url: '/api/2026-07-01/resources/work_schedule/day_configurations';
 };
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsResponses = {
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsResponses = {
     /**
      * OK
      */
@@ -24425,58 +24566,58 @@ export type GetApi20260401ResourcesWorkScheduleDayConfigurationsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsResponse = GetApi20260401ResourcesWorkScheduleDayConfigurationsResponses[keyof GetApi20260401ResourcesWorkScheduleDayConfigurationsResponses];
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsResponse = GetApi20260701ResourcesWorkScheduleDayConfigurationsResponses[keyof GetApi20260701ResourcesWorkScheduleDayConfigurationsResponses];
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsByIdData = {
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/day_configurations/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/day_configurations/{id}';
 };
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsByIdResponses = {
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleDayConfiguration;
 };
 
-export type GetApi20260401ResourcesWorkScheduleDayConfigurationsByIdResponse = GetApi20260401ResourcesWorkScheduleDayConfigurationsByIdResponses[keyof GetApi20260401ResourcesWorkScheduleDayConfigurationsByIdResponses];
+export type GetApi20260701ResourcesWorkScheduleDayConfigurationsByIdResponse = GetApi20260701ResourcesWorkScheduleDayConfigurationsByIdResponses[keyof GetApi20260701ResourcesWorkScheduleDayConfigurationsByIdResponses];
 
-export type PostApi20260401ResourcesWorkScheduleDayConfigurationsBulkCudData = {
+export type PostApi20260701ResourcesWorkScheduleDayConfigurationsBulkCudData = {
     body?: {
-        overlap_period_id: number;
+        overlap_period_id: string;
         day_configurations: Array<unknown>;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/day_configurations/bulk_cud';
+    url: '/api/2026-07-01/resources/work_schedule/day_configurations/bulk_cud';
 };
 
-export type PostApi20260401ResourcesWorkScheduleDayConfigurationsBulkCudResponses = {
+export type PostApi20260701ResourcesWorkScheduleDayConfigurationsBulkCudResponses = {
     /**
      * OK
      */
     200: WorkScheduleDayConfiguration;
 };
 
-export type PostApi20260401ResourcesWorkScheduleDayConfigurationsBulkCudResponse = PostApi20260401ResourcesWorkScheduleDayConfigurationsBulkCudResponses[keyof PostApi20260401ResourcesWorkScheduleDayConfigurationsBulkCudResponses];
+export type PostApi20260701ResourcesWorkScheduleDayConfigurationsBulkCudResponse = PostApi20260701ResourcesWorkScheduleDayConfigurationsBulkCudResponses[keyof PostApi20260701ResourcesWorkScheduleDayConfigurationsBulkCudResponses];
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsData = {
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsData = {
     body?: never;
     path?: never;
     query?: {
         /**
          * List of overlap period identifiers to retrieve. If provided, returns only overlap periods matching these IDs
          */
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
     };
-    url: '/api/2026-04-01/resources/work_schedule/overlap_periods';
+    url: '/api/2026-07-01/resources/work_schedule/overlap_periods';
 };
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsResponses = {
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsResponses = {
     /**
      * OK
      */
@@ -24486,47 +24627,47 @@ export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsResponses = {
     };
 };
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsResponse = GetApi20260401ResourcesWorkScheduleOverlapPeriodsResponses[keyof GetApi20260401ResourcesWorkScheduleOverlapPeriodsResponses];
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsResponse = GetApi20260701ResourcesWorkScheduleOverlapPeriodsResponses[keyof GetApi20260701ResourcesWorkScheduleOverlapPeriodsResponses];
 
-export type PostApi20260401ResourcesWorkScheduleOverlapPeriodsData = {
+export type PostApi20260701ResourcesWorkScheduleOverlapPeriodsData = {
     body?: {
         author: unknown;
-        schedule_id: number;
+        schedule_id: string;
         create_params: unknown;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/overlap_periods';
+    url: '/api/2026-07-01/resources/work_schedule/overlap_periods';
 };
 
-export type PostApi20260401ResourcesWorkScheduleOverlapPeriodsResponses = {
+export type PostApi20260701ResourcesWorkScheduleOverlapPeriodsResponses = {
     /**
      * CREATED
      */
     201: WorkScheduleOverlapPeriod;
 };
 
-export type PostApi20260401ResourcesWorkScheduleOverlapPeriodsResponse = PostApi20260401ResourcesWorkScheduleOverlapPeriodsResponses[keyof PostApi20260401ResourcesWorkScheduleOverlapPeriodsResponses];
+export type PostApi20260701ResourcesWorkScheduleOverlapPeriodsResponse = PostApi20260701ResourcesWorkScheduleOverlapPeriodsResponses[keyof PostApi20260701ResourcesWorkScheduleOverlapPeriodsResponses];
 
-export type DeleteApi20260401ResourcesWorkScheduleOverlapPeriodsByIdData = {
+export type DeleteApi20260701ResourcesWorkScheduleOverlapPeriodsByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/overlap_periods/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/overlap_periods/{id}';
 };
 
-export type DeleteApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
+export type DeleteApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleOverlapPeriod;
 };
 
-export type DeleteApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponse = DeleteApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof DeleteApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses];
+export type DeleteApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponse = DeleteApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof DeleteApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses];
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdData = {
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsByIdData = {
     body?: never;
     path: {
         /**
@@ -24535,52 +24676,52 @@ export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdData = {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/overlap_periods/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/overlap_periods/{id}';
 };
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleOverlapPeriod;
 };
 
-export type GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponse = GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof GetApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses];
+export type GetApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponse = GetApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof GetApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses];
 
-export type PutApi20260401ResourcesWorkScheduleOverlapPeriodsByIdData = {
+export type PutApi20260701ResourcesWorkScheduleOverlapPeriodsByIdData = {
     body?: {
         author: unknown;
-        id: number;
+        id: string;
         update_params: unknown;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/overlap_periods/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/overlap_periods/{id}';
 };
 
-export type PutApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
+export type PutApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleOverlapPeriod;
 };
 
-export type PutApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponse = PutApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof PutApi20260401ResourcesWorkScheduleOverlapPeriodsByIdResponses];
+export type PutApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponse = PutApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses[keyof PutApi20260701ResourcesWorkScheduleOverlapPeriodsByIdResponses];
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesData = {
+export type GetApi20260701ResourcesWorkScheduleSchedulesData = {
     body?: never;
     path?: never;
     query: {
-        'ids[]'?: Array<number>;
+        'ids[]'?: Array<string>;
         with_employee_ids: boolean;
         with_periods: boolean;
     };
-    url: '/api/2026-04-01/resources/work_schedule/schedules';
+    url: '/api/2026-07-01/resources/work_schedule/schedules';
 };
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesResponses = {
+export type GetApi20260701ResourcesWorkScheduleSchedulesResponses = {
     /**
      * OK
      */
@@ -24590,84 +24731,84 @@ export type GetApi20260401ResourcesWorkScheduleSchedulesResponses = {
     };
 };
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesResponse = GetApi20260401ResourcesWorkScheduleSchedulesResponses[keyof GetApi20260401ResourcesWorkScheduleSchedulesResponses];
+export type GetApi20260701ResourcesWorkScheduleSchedulesResponse = GetApi20260701ResourcesWorkScheduleSchedulesResponses[keyof GetApi20260701ResourcesWorkScheduleSchedulesResponses];
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesData = {
+export type PostApi20260701ResourcesWorkScheduleSchedulesData = {
     body?: {
         name: string;
         schedule_type: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/schedules';
+    url: '/api/2026-07-01/resources/work_schedule/schedules';
 };
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesResponses = {
+export type PostApi20260701ResourcesWorkScheduleSchedulesResponses = {
     /**
      * CREATED
      */
     201: WorkScheduleSchedule;
 };
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesResponse = PostApi20260401ResourcesWorkScheduleSchedulesResponses[keyof PostApi20260401ResourcesWorkScheduleSchedulesResponses];
+export type PostApi20260701ResourcesWorkScheduleSchedulesResponse = PostApi20260701ResourcesWorkScheduleSchedulesResponses[keyof PostApi20260701ResourcesWorkScheduleSchedulesResponses];
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesByIdData = {
+export type GetApi20260701ResourcesWorkScheduleSchedulesByIdData = {
     body?: never;
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/schedules/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/schedules/{id}';
 };
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesByIdResponses = {
+export type GetApi20260701ResourcesWorkScheduleSchedulesByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleSchedule;
 };
 
-export type GetApi20260401ResourcesWorkScheduleSchedulesByIdResponse = GetApi20260401ResourcesWorkScheduleSchedulesByIdResponses[keyof GetApi20260401ResourcesWorkScheduleSchedulesByIdResponses];
+export type GetApi20260701ResourcesWorkScheduleSchedulesByIdResponse = GetApi20260701ResourcesWorkScheduleSchedulesByIdResponses[keyof GetApi20260701ResourcesWorkScheduleSchedulesByIdResponses];
 
-export type PutApi20260401ResourcesWorkScheduleSchedulesByIdData = {
+export type PutApi20260701ResourcesWorkScheduleSchedulesByIdData = {
     body?: {
         name?: string;
-        id: number;
+        id: string;
         author: unknown;
     };
     path: {
         id: string;
     };
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/schedules/{id}';
+    url: '/api/2026-07-01/resources/work_schedule/schedules/{id}';
 };
 
-export type PutApi20260401ResourcesWorkScheduleSchedulesByIdResponses = {
+export type PutApi20260701ResourcesWorkScheduleSchedulesByIdResponses = {
     /**
      * OK
      */
     200: WorkScheduleSchedule;
 };
 
-export type PutApi20260401ResourcesWorkScheduleSchedulesByIdResponse = PutApi20260401ResourcesWorkScheduleSchedulesByIdResponses[keyof PutApi20260401ResourcesWorkScheduleSchedulesByIdResponses];
+export type PutApi20260701ResourcesWorkScheduleSchedulesByIdResponse = PutApi20260701ResourcesWorkScheduleSchedulesByIdResponses[keyof PutApi20260701ResourcesWorkScheduleSchedulesByIdResponses];
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesToggleArchiveData = {
+export type PostApi20260701ResourcesWorkScheduleSchedulesToggleArchiveData = {
     body?: {
-        id: number;
+        id: string;
     };
     path?: never;
     query?: never;
-    url: '/api/2026-04-01/resources/work_schedule/schedules/toggle_archive';
+    url: '/api/2026-07-01/resources/work_schedule/schedules/toggle_archive';
 };
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesToggleArchiveResponses = {
+export type PostApi20260701ResourcesWorkScheduleSchedulesToggleArchiveResponses = {
     /**
      * OK
      */
     200: WorkScheduleSchedule;
 };
 
-export type PostApi20260401ResourcesWorkScheduleSchedulesToggleArchiveResponse = PostApi20260401ResourcesWorkScheduleSchedulesToggleArchiveResponses[keyof PostApi20260401ResourcesWorkScheduleSchedulesToggleArchiveResponses];
+export type PostApi20260701ResourcesWorkScheduleSchedulesToggleArchiveResponse = PostApi20260701ResourcesWorkScheduleSchedulesToggleArchiveResponses[keyof PostApi20260701ResourcesWorkScheduleSchedulesToggleArchiveResponses];
 
 /**
  * Callback payload
@@ -25277,6 +25418,18 @@ export type PostWebhooks__Expenses__Expensable__BulkSetToPaidsWebhookPayload = E
 export type PostWebhooks__Expenses__Expensable__BulkSetToPaidsWebhookRequest = {
     body: PostWebhooks__Expenses__Expensable__BulkSetToPaidsWebhookPayload;
     key: 'Webhooks > Expenses > Expensable > Bulk set to paids';
+    path?: never;
+    query?: never;
+};
+
+/**
+ * Callback payload
+ */
+export type PostWebhooks__Expenses__Expensable__UpdateReimbursableAmountsWebhookPayload = ExpensesExpensable;
+
+export type PostWebhooks__Expenses__Expensable__UpdateReimbursableAmountsWebhookRequest = {
+    body: PostWebhooks__Expenses__Expensable__UpdateReimbursableAmountsWebhookPayload;
+    key: 'Webhooks > Expenses > Expensable > Update reimbursable amounts';
     path?: never;
     query?: never;
 };

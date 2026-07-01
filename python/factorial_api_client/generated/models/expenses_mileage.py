@@ -18,9 +18,9 @@ T = TypeVar("T", bound="ExpensesMileage")
 
 @_attrs_define
 class ExpensesMileage:
-    id: int
+    id: str
     """ Unique identifier for the mileage """
-    company_id: int
+    company_id: str
     """ The ID of the company that owns the mileage """
     currency: str
     """ The currency code in ISO 4217 format """
@@ -30,17 +30,17 @@ class ExpensesMileage:
     """ The files associated with the mileage """
     payment: ExpensesMileagePayment
     """ The payment method """
-    cost_center_ids: list[int]
+    cost_center_ids: list[str]
     """ Array of cost center IDs associated with this mileage """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ The ID of the employee that owns the mileage """
-    expenses_expensable_id: int | Unset = UNSET
+    expenses_expensable_id: str | Unset = UNSET
     """ The ID of the expensable associated with this mileage """
     category: ExpensesMileageCategory | Unset = UNSET
     """ The category of the mileage """
     subcategory: str | Unset = UNSET
     """ The subcategory of the mileage """
-    category_id: int | Unset = UNSET
+    category_id: str | Unset = UNSET
     """ The ID of the category """
     amount: int | Unset = UNSET
     """ The amount in cents """
@@ -49,11 +49,11 @@ class ExpensesMileage:
     reimbursable_currency: str | Unset = UNSET
     """ The currency for the reimbursable amount. """
     mileage: int | Unset = UNSET
-    """ The mileage distance """
+    """ The distance travelled, expressed in `units` """
     units: str | Unset = UNSET
-    """ The units for the mileage """
+    """ The distance unit `mileage` is expressed in (e.g. km) """
     rate: str | Unset = UNSET
-    """ The rate per unit """
+    """ The reimbursement rate per distance unit, in `currency` """
     from_: str | Unset = UNSET
     """ The origin location """
     to: str | Unset = UNSET
@@ -66,7 +66,7 @@ class ExpensesMileage:
     """ The date when the mileage was requested for review """
     paid_at: str | Unset = UNSET
     """ The date when the mileage was paid """
-    ledger_account_id: int | Unset = UNSET
+    ledger_account_id: str | Unset = UNSET
     """ The ID of the ledger account """
     round_trip: bool | Unset = UNSET
     """ Indicates if the mileage is a round trip """
@@ -80,9 +80,9 @@ class ExpensesMileage:
     """ The latitude of the destination of the mileage """
     calculated_mileage: int | Unset = UNSET
     """ The calculated mileage between origin and destination in decameters/10-milers """
-    budget_id: int | Unset = UNSET
+    budget_id: str | Unset = UNSET
     """ The id of the budget associated with this mileage """
-    project_id: int | Unset = UNSET
+    project_id: str | Unset = UNSET
     """ The id of the project associated with this mileage """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -240,7 +240,7 @@ class ExpensesMileage:
 
         payment = ExpensesMileagePayment(d.pop("payment"))
 
-        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
+        cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 
         employee_id = d.pop("employee_id", UNSET)
 

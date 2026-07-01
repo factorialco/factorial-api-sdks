@@ -15,9 +15,9 @@ T = TypeVar("T", bound="CompensationsConcept")
 
 @_attrs_define
 class CompensationsConcept:
-    id: int
+    id: str
     """ The identifier of the concept """
-    company_id: int
+    company_id: str
     """ The company identifier of the concept """
     default: bool
     """ Whether the concept is a default or a custom concept """

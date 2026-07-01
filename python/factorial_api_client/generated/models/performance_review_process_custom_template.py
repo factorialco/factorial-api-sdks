@@ -25,15 +25,15 @@ T = TypeVar("T", bound="PerformanceReviewProcessCustomTemplate")
 
 @_attrs_define
 class PerformanceReviewProcessCustomTemplate:
-    id: int
+    id: str
     """ Review process template ID """
-    company_id: int
+    company_id: str
     """ Company ID """
     name: str
     """ Review process name """
     created_at: str
     """ Creation date of the template """
-    author_id: int | Unset = UNSET
+    author_id: str | Unset = UNSET
     """ Author of the custom template. """
     description: str | Unset = UNSET
     """ A brief description of the review process """

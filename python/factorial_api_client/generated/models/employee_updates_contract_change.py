@@ -13,13 +13,13 @@ T = TypeVar("T", bound="EmployeeUpdatesContractChange")
 
 @_attrs_define
 class EmployeeUpdatesContractChange:
-    id: int
+    id: str
     """ The id of the contract change incidence """
     status: str
     """ The status of the contract change incidence """
     effective_on: str
     """ The effective date of the contract """
-    employee_id: int
+    employee_id: str
     """ The employee id """
     has_payroll: bool
     """ The payrollable status of the employee on the contract change """
@@ -57,17 +57,17 @@ class EmployeeUpdatesContractChange:
     """ The contract observations on the contract change """
     es_job_description: str | Unset = UNSET
     """ The job description on the contract change """
-    es_contract_type_id: int | Unset = UNSET
+    es_contract_type_id: str | Unset = UNSET
     """ The contract type id on the contract change """
     es_contract_type_name: str | Unset = UNSET
     """ The contract type name on the contract change """
     es_trial_period_ends_on: str | Unset = UNSET
     """ The trial period end date on the contract change """
-    es_working_day_type_id: int | Unset = UNSET
+    es_working_day_type_id: str | Unset = UNSET
     """ The working day type id on the contract change """
-    es_education_level_id: int | Unset = UNSET
+    es_education_level_id: str | Unset = UNSET
     """ The education level id on the contract change """
-    es_professional_category_id: int | Unset = UNSET
+    es_professional_category_id: str | Unset = UNSET
     """ The professional category id on the contract change """
     fr_employee_type: str | Unset = UNSET
     """ The employee type on the contract change """
@@ -75,36 +75,36 @@ class EmployeeUpdatesContractChange:
     """ The jours par an on the contract change """
     fr_coefficient: str | Unset = UNSET
     """ The coefficient on the contract change """
-    fr_level_id: int | Unset = UNSET
+    fr_level_id: str | Unset = UNSET
     """ The level id on the contract change """
     fr_level_name: str | Unset = UNSET
     """ The level name on the contract change """
-    fr_step_id: int | Unset = UNSET
+    fr_step_id: str | Unset = UNSET
     """ The step id on the contract change """
     fr_step_name: str | Unset = UNSET
     """ The step name on the contract change """
-    fr_mutual_id: int | Unset = UNSET
+    fr_mutual_id: str | Unset = UNSET
     """ The mutual id on the contract change """
     fr_mutual_name: str | Unset = UNSET
     """ The mutual name on the contract change """
-    fr_professional_category_id: int | Unset = UNSET
+    fr_professional_category_id: str | Unset = UNSET
     """ The professional category id on the contract change """
     fr_professional_category_name: str | Unset = UNSET
     """ The professional category name on the contract change """
-    fr_work_type_id: int | Unset = UNSET
+    fr_work_type_id: str | Unset = UNSET
     """ The work type id on the contract change """
     fr_work_type_name: str | Unset = UNSET
     """ The work type name on the contract change """
-    compensation_ids: list[int] | Unset = UNSET
-    fr_contract_type_id: int | Unset = UNSET
+    compensation_ids: list[str] | Unset = UNSET
+    fr_contract_type_id: str | Unset = UNSET
     """ The contract type id on the contract change """
     fr_contract_type_name: str | Unset = UNSET
     """ The contract type name on the contract change """
-    de_contract_type_id: int | Unset = UNSET
+    de_contract_type_id: str | Unset = UNSET
     """ The contract type id on the contract change """
     de_contract_type_name: str | Unset = UNSET
     """ The contract type name on the contract change """
-    pt_contract_type_id: int | Unset = UNSET
+    pt_contract_type_id: str | Unset = UNSET
     """ The contract type id on the contract change """
     pt_contract_type_name: str | Unset = UNSET
     """ The contract type name on the contract change """
@@ -195,7 +195,7 @@ class EmployeeUpdatesContractChange:
 
         fr_work_type_name = self.fr_work_type_name
 
-        compensation_ids: list[int] | Unset = UNSET
+        compensation_ids: list[str] | Unset = UNSET
         if not isinstance(self.compensation_ids, Unset):
             compensation_ids = self.compensation_ids
 
@@ -397,7 +397,7 @@ class EmployeeUpdatesContractChange:
 
         fr_work_type_name = d.pop("fr_work_type_name", UNSET)
 
-        compensation_ids = cast(list[int], d.pop("compensation_ids", UNSET))
+        compensation_ids = cast(list[str], d.pop("compensation_ids", UNSET))
 
         fr_contract_type_id = d.pop("fr_contract_type_id", UNSET)
 

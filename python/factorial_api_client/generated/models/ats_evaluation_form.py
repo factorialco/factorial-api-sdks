@@ -13,9 +13,9 @@ T = TypeVar("T", bound="AtsEvaluationForm")
 
 @_attrs_define
 class AtsEvaluationForm:
-    id: int
+    id: str
     """ Id of the evaluation form. """
-    company_id: int
+    company_id: str
     """ Id of the company that the evaluation form belongs to. """
     name: str
     """ Name of the evaluation form. """
@@ -25,9 +25,9 @@ class AtsEvaluationForm:
     """ date and time when the evaluation form was created. """
     updated_at: str
     """ date and time when the evaluation form was last updated. """
-    ats_job_posting_id: int | Unset = UNSET
+    ats_job_posting_id: str | Unset = UNSET
     """ Id of the job posting that the evaluation form is associated with. """
-    based_on_id: int | Unset = UNSET
+    based_on_id: str | Unset = UNSET
     """ Id of the evaluation form that this evaluation form is related. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

@@ -17,11 +17,11 @@ T = TypeVar("T", bound="TrainingsTraining")
 
 @_attrs_define
 class TrainingsTraining:
-    id: int
+    id: str
     """ Identifier of the course """
-    company_id: int
+    company_id: str
     """ Company identifier """
-    author_id: int
+    author_id: str
     """ The person that creates the training """
     name: str
     """ Name of the training """
@@ -41,7 +41,7 @@ class TrainingsTraining:
     """ Year of the training """
     catalog: bool
     """ Visible in catalog """
-    competency_ids: list[int]
+    competency_ids: list[str]
     """ List of ids of training competencies """
     total_training_cost: str
     """ The total direct cost of all course's groups """
@@ -58,6 +58,8 @@ class TrainingsTraining:
     """ The total duration in hours and minutes of the course """
     is_mandatory: bool
     """ This field is used to define if the training is mandatory or not """
+    author_employee_id: str | Unset = UNSET
+    """ Employee identifier of the training author """
     code: str | Unset = UNSET
     """ Code of the training """
     created_at: str | Unset = UNSET
@@ -68,7 +70,7 @@ class TrainingsTraining:
     """ The name of the provider if any """
     total_cost: int | Unset = UNSET
     total_cost_decimal: str | Unset = UNSET
-    category_ids: list[int] | Unset = UNSET
+    category_ids: list[str] | Unset = UNSET
     """ List of ids of training categories """
     status: TrainingsTrainingStatus | Unset = UNSET
     """ Training status. Can be one of the following values """
@@ -128,6 +130,8 @@ class TrainingsTraining:
 
         is_mandatory = self.is_mandatory
 
+        author_employee_id = self.author_employee_id
+
         code = self.code
 
         created_at = self.created_at
@@ -140,7 +144,7 @@ class TrainingsTraining:
 
         total_cost_decimal = self.total_cost_decimal
 
-        category_ids: list[int] | Unset = UNSET
+        category_ids: list[str] | Unset = UNSET
         if not isinstance(self.category_ids, Unset):
             category_ids = self.category_ids
 
@@ -183,6 +187,8 @@ class TrainingsTraining:
                 "is_mandatory": is_mandatory,
             }
         )
+        if author_employee_id is not UNSET:
+            field_dict["author_employee_id"] = author_employee_id
         if code is not UNSET:
             field_dict["code"] = code
         if created_at is not UNSET:
@@ -239,7 +245,7 @@ class TrainingsTraining:
 
         catalog = d.pop("catalog")
 
-        competency_ids = cast(list[int], d.pop("competency_ids"))
+        competency_ids = cast(list[str], d.pop("competency_ids"))
 
         total_training_cost = d.pop("total_training_cost")
 
@@ -259,6 +265,8 @@ class TrainingsTraining:
 
         is_mandatory = d.pop("is_mandatory")
 
+        author_employee_id = d.pop("author_employee_id", UNSET)
+
         code = d.pop("code", UNSET)
 
         created_at = d.pop("created_at", UNSET)
@@ -271,7 +279,7 @@ class TrainingsTraining:
 
         total_cost_decimal = d.pop("total_cost_decimal", UNSET)
 
-        category_ids = cast(list[int], d.pop("category_ids", UNSET))
+        category_ids = cast(list[str], d.pop("category_ids", UNSET))
 
         _status = d.pop("status", UNSET)
         status: TrainingsTrainingStatus | Unset
@@ -310,6 +318,7 @@ class TrainingsTraining:
             training_attendance_status=training_attendance_status,
             total_duration=total_duration,
             is_mandatory=is_mandatory,
+            author_employee_id=author_employee_id,
             code=code,
             created_at=created_at,
             updated_at=updated_at,

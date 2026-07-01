@@ -13,9 +13,9 @@ T = TypeVar("T", bound="AtsCandidateSource")
 
 @_attrs_define
 class AtsCandidateSource:
-    id: int
+    id: str
     """ identifier of the source. """
-    company_id: int
+    company_id: str
     """ identifier of the company. """
     category: AtsCandidateSourceCategory
     """ category of the source. """

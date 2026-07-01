@@ -13,14 +13,14 @@ T = TypeVar("T", bound="ProjectManagementProjectTask")
 
 @_attrs_define
 class ProjectManagementProjectTask:
-    id: int
-    project_id: int
+    id: str
+    project_id: str
     """ The ID of the project linked to the project task """
-    task_id: int
+    task_id: str
     """ The ID of the task linked to the project task """
     follow_up: bool
     """ If true, status changes related to the project will notify the author """
-    subproject_id: int | Unset = UNSET
+    subproject_id: str | Unset = UNSET
     """ The ID of the subproject linked to the project task """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

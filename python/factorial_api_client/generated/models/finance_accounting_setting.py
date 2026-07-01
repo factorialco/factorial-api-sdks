@@ -13,33 +13,33 @@ T = TypeVar("T", bound="FinanceAccountingSetting")
 
 @_attrs_define
 class FinanceAccountingSetting:
-    id: int
+    id: str
     """ Identifier for the AccountingSetting. """
-    company_id: int
+    company_id: str
     """ ID of the associated Company. """
-    legal_entity_id: int
+    legal_entity_id: str
     """ ID of the associated Legal Entity. """
     updated_at: str
     """ Timestamp when the accounting setting was last updated. """
     external_id: str | Unset = UNSET
     """ External ID for the accounting setting. """
-    default_account_for_purchase_invoices_id: int | Unset = UNSET
+    default_account_for_purchase_invoices_id: str | Unset = UNSET
     """ Default account for purchase invoices. """
-    default_account_for_vendors_id: int | Unset = UNSET
+    default_account_for_vendors_id: str | Unset = UNSET
     """ Default account for vendors. """
-    default_account_for_banks_id: int | Unset = UNSET
+    default_account_for_banks_id: str | Unset = UNSET
     """ Default account for banks. """
-    default_account_for_suspense_id: int | Unset = UNSET
+    default_account_for_suspense_id: str | Unset = UNSET
     """ Default suspense account. """
-    default_account_for_expenses_id: int | Unset = UNSET
+    default_account_for_expenses_id: str | Unset = UNSET
     """ Default account for expenses. """
-    default_account_for_employees_id: int | Unset = UNSET
+    default_account_for_employees_id: str | Unset = UNSET
     """ Default account for employees. """
-    default_account_for_sale_invoices_id: int | Unset = UNSET
+    default_account_for_sale_invoices_id: str | Unset = UNSET
     """ Default account for sale invoices. """
-    default_account_for_clients_id: int | Unset = UNSET
+    default_account_for_clients_id: str | Unset = UNSET
     """ Default account for clients. """
-    default_account_for_benefits_id: int | Unset = UNSET
+    default_account_for_benefits_id: str | Unset = UNSET
     """ Default account for benefits. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

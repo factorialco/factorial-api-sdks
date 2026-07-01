@@ -14,9 +14,9 @@ T = TypeVar("T", bound="ContractsCompensation")
 
 @_attrs_define
 class ContractsCompensation:
-    id: int
-    contract_version_id: int
-    contracts_taxonomy_id: int
+    id: str
+    contract_version_id: str
+    contracts_taxonomy_id: str
     unit: str
     """ In which unit compensation is paid """
     description: str | Unset = UNSET
@@ -27,7 +27,7 @@ class ContractsCompensation:
     """ Value paid on each recurrence, stored in the smallest currency unit (for example cents). Required unless the
     compensation type is `undefined` """
     sync_with_supplements: bool | Unset = UNSET
-    payroll_policy_id: int | Unset = UNSET
+    payroll_policy_id: str | Unset = UNSET
     recurrence_count: int | Unset = UNSET
     """ How much time will pass between payments. If recurrence is empty, assume months. For example, 12 here means
     compensation is paid yearly """

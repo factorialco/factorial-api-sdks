@@ -33,9 +33,9 @@ class ProjectManagementExportableProject:
     """ The name of the subproject """
     employee_name: str | Unset = UNSET
     """ The name of the employee """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ The id of the employee """
-    client_id: int | Unset = UNSET
+    client_id: str | Unset = UNSET
     """ The client id of the project """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

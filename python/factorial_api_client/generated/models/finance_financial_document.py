@@ -19,7 +19,7 @@ T = TypeVar("T", bound="FinanceFinancialDocument")
 
 @_attrs_define
 class FinanceFinancialDocument:
-    id: int
+    id: str
     """ Factorial unique identifier. """
     status: FinanceFinancialDocumentStatus
     """ Current status. """
@@ -41,9 +41,9 @@ class FinanceFinancialDocument:
     """ Due date. """
     document_date: str | Unset = UNSET
     """ Document date. """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Factorial unique identifier for the legal entity of the financial document. """
-    vendor_id: int | Unset = UNSET
+    vendor_id: str | Unset = UNSET
     """ Factorial unique identifier for the vendor of the financial document. """
     file: FinanceFinancialDocumentFile | Unset = UNSET
     """ File attached. """
@@ -51,13 +51,13 @@ class FinanceFinancialDocument:
     """ Date when was fully reconciled. """
     recorded_at: str | Unset = UNSET
     """ Date when was recorded. """
-    duplicate_financial_document_id: int | Unset = UNSET
+    duplicate_financial_document_id: str | Unset = UNSET
     """ Factorial unique identifier for the duplicate financial document. """
     validated_at: str | Unset = UNSET
     """ Date when was validated. """
-    validated_by_id: int | Unset = UNSET
+    validated_by_id: str | Unset = UNSET
     """ Factorial unique identifier for the user who validated the financial document. """
-    parent_financial_document_id: int | Unset = UNSET
+    parent_financial_document_id: str | Unset = UNSET
     """ Factorial unique identifier for the parent financial document of the financial document. """
     taxes_total_amount_cents: int | Unset = UNSET
     """ Taxes total amount in cents. """

@@ -13,11 +13,11 @@ T = TypeVar("T", bound="TimeoffLeave")
 
 @_attrs_define
 class TimeoffLeave:
-    id: int
+    id: str
     """ Identifier of the Leave """
-    company_id: int
+    company_id: str
     """ Company identifier of the employee of the leave """
-    employee_id: int
+    employee_id: str
     """ Employee identifier of the leave """
     start_on: str
     """ The start date of the leave """
@@ -33,7 +33,7 @@ class TimeoffLeave:
     """ A description of the leave """
     reason: str | Unset = UNSET
     """ The reason provided by the employee for taking the leave """
-    leave_type_id: int | Unset = UNSET
+    leave_type_id: str | Unset = UNSET
     """ The identifier for the type of leave """
     leave_type_name: str | Unset = UNSET
     """ The name of the leave type """

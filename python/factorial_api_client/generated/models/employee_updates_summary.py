@@ -13,12 +13,12 @@ T = TypeVar("T", bound="EmployeeUpdatesSummary")
 
 @_attrs_define
 class EmployeeUpdatesSummary:
-    id: int
-    legal_entity_id: int
+    id: str
+    legal_entity_id: str
     status: str
     type_: str
     created_at: str
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     starts_on: str | Unset = UNSET
     ends_on: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

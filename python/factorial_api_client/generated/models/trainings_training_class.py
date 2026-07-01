@@ -16,7 +16,7 @@ T = TypeVar("T", bound="TrainingsTrainingClass")
 class TrainingsTrainingClass:
     id: str
     """ Identifier of the training to which the class belongs to """
-    training_id: int
+    training_id: str
     """ Identifier of the course """
     name: str
     """ Class name """

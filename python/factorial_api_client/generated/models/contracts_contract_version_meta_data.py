@@ -13,7 +13,7 @@ T = TypeVar("T", bound="ContractsContractVersionMetaData")
 
 @_attrs_define
 class ContractsContractVersionMetaData:
-    contract_version_id: int
+    contract_version_id: str
     """ identifier for the contract version. """
     action_type: str | Unset = UNSET
     """ the action that has been performed on the contract version ex:promotion / evolution / null. """

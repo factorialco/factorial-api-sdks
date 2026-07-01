@@ -165,6 +165,8 @@ export type EmployeesEmployeeUnterminateWebhook = EmployeesEmployee;
 export type EmployeesEmployeeUpdateWebhook = EmployeesEmployee;
 /** Payload for `expenses/expensable/bulk_set_to_paid` (Expenses > Expensable > Bulk set to paids). */
 export type ExpensesExpensableBulkSetToPaidWebhook = ExpensesExpensable;
+/** Payload for `expenses/expensable/update_reimbursable_amount` (Expenses > Expensable > Update reimbursable amounts). */
+export type ExpensesExpensableUpdateReimbursableAmountWebhook = ExpensesExpensable;
 /** Payload for `finance/cost_center/create` (Finance > CostCenter > Creates). */
 export type FinanceCostCenterCreateWebhook = FinanceCostCenter;
 /** Payload for `finance/cost_center/delete` (Finance > CostCenter > Deletes). */
@@ -372,6 +374,7 @@ export type WebhookSubscriptionType =
   | "employees/employee/unterminate"
   | "employees/employee/update"
   | "expenses/expensable/bulk_set_to_paid"
+  | "expenses/expensable/update_reimbursable_amount"
   | "finance/cost_center/create"
   | "finance/cost_center/delete"
   | "finance/cost_center/edit"
@@ -503,6 +506,7 @@ export interface WebhookPayloadMap {
   "employees/employee/unterminate": EmployeesEmployee;
   "employees/employee/update": EmployeesEmployee;
   "expenses/expensable/bulk_set_to_paid": ExpensesExpensable;
+  "expenses/expensable/update_reimbursable_amount": ExpensesExpensable;
   "finance/cost_center/create": FinanceCostCenter;
   "finance/cost_center/delete": FinanceCostCenter;
   "finance/cost_center/edit": FinanceCostCenter;
@@ -650,6 +654,7 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "employees/employee/unterminate", namespace: "Employees", resource: "Employee", event: "Unterminates", summary: "Employees > Employee > Unterminates", payloadSchema: "employees_employee" },
   { subscriptionType: "employees/employee/update", namespace: "Employees", resource: "Employee", event: "Updates", summary: "Employees > Employee > Updates", payloadSchema: "employees_employee" },
   { subscriptionType: "expenses/expensable/bulk_set_to_paid", namespace: "Expenses", resource: "Expensable", event: "Bulk set to paids", summary: "Expenses > Expensable > Bulk set to paids", payloadSchema: "expenses_expensable" },
+  { subscriptionType: "expenses/expensable/update_reimbursable_amount", namespace: "Expenses", resource: "Expensable", event: "Update reimbursable amounts", summary: "Expenses > Expensable > Update reimbursable amounts", payloadSchema: "expenses_expensable" },
   { subscriptionType: "finance/cost_center/create", namespace: "Finance", resource: "CostCenter", event: "Creates", summary: "Finance > CostCenter > Creates", payloadSchema: "finance_cost_center" },
   { subscriptionType: "finance/cost_center/delete", namespace: "Finance", resource: "CostCenter", event: "Deletes", summary: "Finance > CostCenter > Deletes", payloadSchema: "finance_cost_center" },
   { subscriptionType: "finance/cost_center/edit", namespace: "Finance", resource: "CostCenter", event: "Edits", summary: "Finance > CostCenter > Edits", payloadSchema: "finance_cost_center" },

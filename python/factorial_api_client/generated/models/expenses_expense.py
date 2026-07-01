@@ -22,14 +22,14 @@ T = TypeVar("T", bound="ExpensesExpense")
 
 @_attrs_define
 class ExpensesExpense:
-    company_id: int
+    company_id: str
     """ The id of the expense's company """
     creation_type: ExpensesExpenseCreationType
     """ How the expense was created, one of 'manual', 'automatic' or 'travelperk' """
     currency: str
     """ The currency of the expense """
     status: ExpensesExpenseStatus
-    """ The status of the expense """
+    """ The lifecycle status of the expense in the review/payment flow """
     effective_on: str
     """ The date when the expense was made """
     status_updated_at: str
@@ -38,22 +38,23 @@ class ExpensesExpense:
     """ The files of the expense """
     taxes: list[Any]
     """ The taxes of the expense """
-    cost_center_ids: list[int]
+    cost_center_ids: list[str]
     """ Array of cost center IDs associated with this expense """
-    id: int | Unset = UNSET
+    id: str | Unset = UNSET
     """ The id of the expense """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ The id of the expense's owner """
-    card_payment_id: int | Unset = UNSET
+    card_payment_id: str | Unset = UNSET
     """ The id of the card payment """
-    dispute_id: int | Unset = UNSET
+    dispute_id: str | Unset = UNSET
     """ The id of the dispute """
-    expenses_expensable_id: int | Unset = UNSET
+    expenses_expensable_id: str | Unset = UNSET
     """ The id of the expensable """
     merchant_name: str | Unset = UNSET
     """ The name of the merchant """
     user_merchant: str | Unset = UNSET
-    """ The user merchant of the expense """
+    """ The merchant name as typed by the employee, when they corrected or filled it manually (takes precedence over
+    the extracted `merchant_name`) """
     merchant_tin: str | Unset = UNSET
     """ The tax identification number of the merchant """
     category: ExpensesExpenseCategory | Unset = UNSET
@@ -63,18 +64,18 @@ class ExpensesExpense:
     reference: str | Unset = UNSET
     """ The reference of the expense """
     amount: int | Unset = UNSET
-    """ The optional amount in cents """
+    """ The total amount in cents """
     description: str | Unset = UNSET
     """ The description of the expense """
     review_request_at: str | Unset = UNSET
     """ The date and time when the expense was reviewed """
     external_authorization_id: str | Unset = UNSET
     """ The id of the external authorization """
-    expenses_card_id: int | Unset = UNSET
+    expenses_card_id: str | Unset = UNSET
     """ The id of the card """
     card: ExpensesExpenseCard | Unset = UNSET
     """ The card of the expense """
-    document_id: int | Unset = UNSET
+    document_id: str | Unset = UNSET
     """ The id of the document """
     signed_document: ExpensesExpenseSignedDocument | Unset = UNSET
     """ The signed document of the expense """
@@ -96,13 +97,13 @@ class ExpensesExpense:
     """ The currency of the reimbursable amount """
     reimbursable_amount: int | Unset = UNSET
     """ The optional reimbursable amount in cents """
-    category_id: int | Unset = UNSET
-    """ The id of the category """
-    ledger_account_id: int | Unset = UNSET
+    category_id: str | Unset = UNSET
+    """ The id of the expense category the expense is classified under (company-configurable catalogue) """
+    ledger_account_id: str | Unset = UNSET
     """ The id of the ledger account """
-    budget_id: int | Unset = UNSET
+    budget_id: str | Unset = UNSET
     """ The id of the budget associated with this expense """
-    project_id: int | Unset = UNSET
+    project_id: str | Unset = UNSET
     """ The id of the project associated with this expense """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -302,7 +303,7 @@ class ExpensesExpense:
 
         taxes = cast(list[Any], d.pop("taxes"))
 
-        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
+        cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 
         id = d.pop("id", UNSET)
 

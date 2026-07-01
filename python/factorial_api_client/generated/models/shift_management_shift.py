@@ -14,14 +14,14 @@ T = TypeVar("T", bound="ShiftManagementShift")
 
 @_attrs_define
 class ShiftManagementShift:
-    id: int
+    id: str
     """ Unique identifier for the shift """
-    company_id: int
+    company_id: str
     """ Identifier of the company that owns this shift """
     state: ShiftManagementShiftState
     """ Current state of the shift. 'draft' means the shift is not yet visible to employees, 'published' means it's
     visible and confirmed, 'backup' indicates a backup shift that can be replaced """
-    employee_id: int
+    employee_id: str
     """ Identifier of the employee assigned to this shift """
     start_at: str
     """ Timestamp indicating when the shift starts """
@@ -40,10 +40,10 @@ class ShiftManagementShift:
     name: str | Unset = UNSET
     """ Display name of the shift. If not explicitly set, falls back to the default shift title or template week
     name """
-    location_id: int | Unset = UNSET
+    location_id: str | Unset = UNSET
     """ Identifier of the location where the shift takes place. Can be null if the shift uses the employee's default
     location """
-    locations_work_area_id: int | Unset = UNSET
+    locations_work_area_id: str | Unset = UNSET
     """ Identifier of the specific work area within the location where the shift occurs. Work areas allow further
     subdivision of locations """
     notes: str | Unset = UNSET

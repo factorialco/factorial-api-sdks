@@ -18,7 +18,7 @@ T = TypeVar("T", bound="ProcurementPurchaseOrder")
 
 @_attrs_define
 class ProcurementPurchaseOrder:
-    id: int
+    id: str
     """ Unique identifier of the purchase order """
     po_number: int
     """ Purchase order number assigned to this order """
@@ -30,15 +30,15 @@ class ProcurementPurchaseOrder:
     """ Total cost of the purchase order """
     date: str
     """ Date when the purchase order was created """
-    purchase_request_id: int
+    purchase_request_id: str
     """ Identifier of the purchase request that generated this purchase order """
-    legal_entity_id: int
+    legal_entity_id: str
     """ Identifier of the legal entity that owns this purchase order """
-    company_id: int
+    company_id: str
     """ Identifier of the company that owns this purchase order """
     formatted_po_number: str
     """ Formatted purchase order number with prefix (e.g., PO-00001) """
-    vendor_id: int | Unset = UNSET
+    vendor_id: str | Unset = UNSET
     """ Identifier of the vendor (contact) associated with this purchase order """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

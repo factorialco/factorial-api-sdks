@@ -6,6 +6,7 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.ats_job_posting_category import AtsJobPostingCategory
 from ..models.ats_job_posting_contract_type import AtsJobPostingContractType
 from ..models.ats_job_posting_cover_letter_requirement import AtsJobPostingCoverLetterRequirement
 from ..models.ats_job_posting_cv_requirement import AtsJobPostingCvRequirement
@@ -24,11 +25,11 @@ T = TypeVar("T", bound="AtsJobPosting")
 
 @_attrs_define
 class AtsJobPosting:
-    id: int
+    id: str
     """ Unique identifier for the job posting """
-    company_id: int
+    company_id: str
     """ Identifier of the company associated with the job posting """
-    ats_company_id: int
+    ats_company_id: str
     """ Identifier of the ATS company associated with the job posting """
     title: str
     """ Title of the job posting """
@@ -53,14 +54,15 @@ class AtsJobPosting:
     description: str | Unset = UNSET
     """ Description of the job posting """
     contract_type: AtsJobPostingContractType | Unset = UNSET
+    category: AtsJobPostingCategory | Unset = UNSET
     workplace_type: AtsJobPostingWorkplaceType | Unset = UNSET
     schedule_type: AtsJobPostingScheduleType | Unset = UNSET
     """ The schedule type of the job posting (e.g., full_time, part_time) """
-    team_id: int | Unset = UNSET
+    team_id: str | Unset = UNSET
     """ Identifier of the team associated with the job posting """
-    location_id: int | Unset = UNSET
+    location_id: str | Unset = UNSET
     """ Identifier of the location associated with the job posting """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Identifier of the legal entity associated with the job posting """
     salary_format: AtsJobPostingSalaryFormat | Unset = UNSET
     """ The format of the salary (e.g., range, fixed_amount) """
@@ -108,6 +110,10 @@ class AtsJobPosting:
         contract_type: str | Unset = UNSET
         if not isinstance(self.contract_type, Unset):
             contract_type = self.contract_type.value
+
+        category: str | Unset = UNSET
+        if not isinstance(self.category, Unset):
+            category = self.category.value
 
         workplace_type: str | Unset = UNSET
         if not isinstance(self.workplace_type, Unset):
@@ -160,6 +166,8 @@ class AtsJobPosting:
             field_dict["description"] = description
         if contract_type is not UNSET:
             field_dict["contract_type"] = contract_type
+        if category is not UNSET:
+            field_dict["category"] = category
         if workplace_type is not UNSET:
             field_dict["workplace_type"] = workplace_type
         if schedule_type is not UNSET:
@@ -227,6 +235,13 @@ class AtsJobPosting:
         else:
             contract_type = AtsJobPostingContractType(_contract_type) if _contract_type is not None else None
 
+        _category = d.pop("category", UNSET)
+        category: AtsJobPostingCategory | Unset
+        if isinstance(_category, Unset):
+            category = UNSET
+        else:
+            category = AtsJobPostingCategory(_category) if _category is not None else None
+
         _workplace_type = d.pop("workplace_type", UNSET)
         workplace_type: AtsJobPostingWorkplaceType | Unset
         if isinstance(_workplace_type, Unset):
@@ -280,6 +295,7 @@ class AtsJobPosting:
             created_at=created_at,
             description=description,
             contract_type=contract_type,
+            category=category,
             workplace_type=workplace_type,
             schedule_type=schedule_type,
             team_id=team_id,

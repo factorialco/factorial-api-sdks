@@ -17,17 +17,18 @@ T = TypeVar("T", bound="ProjectManagementProject")
 
 @_attrs_define
 class ProjectManagementProject:
-    id: int
+    id: str
     """ The id of the project """
     name: str
     """ The name of the project """
     status: ProjectManagementProjectStatus
-    """ The status of the project """
+    """ The lifecycle status of the project (whether it is still running and can take new charges) """
     employees_assignment: ProjectManagementProjectEmployeesAssignment
-    """ The employees assigment of the project """
+    """ How employees get access to the project — `manual` (hand-picked members) or `company` (everyone in the
+    company) """
     is_billable: bool
-    """ Check if the projects is billable """
-    legal_entity_id: int
+    """ Whether the project's costs can be billed (recharged) to a client """
+    legal_entity_id: str
     """ The legal entity id of the project """
     code: str | Unset = UNSET
     """ The code of the project """
@@ -45,7 +46,7 @@ class ProjectManagementProject:
     """ Total labor costs in cents """
     spending_cost_cents: int | Unset = UNSET
     """ Total spending costs in cents """
-    client_id: int | Unset = UNSET
+    client_id: str | Unset = UNSET
     """ The client of the project, refers to finance/contacts. """
     total_cost_cents: int | Unset = UNSET
     """ Total Cost in cents """

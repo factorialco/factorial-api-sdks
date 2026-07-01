@@ -13,14 +13,14 @@ T = TypeVar("T", bound="BookkeepersManagementIncidence")
 
 @_attrs_define
 class BookkeepersManagementIncidence:
-    id: int
+    id: str
     """ identifier of the incidence (aka employee update). """
-    legal_entity_id: int
+    legal_entity_id: str
     """ identifier of legal entity related. """
     name: str
     """ name of the incidence (aka employee update). It also represent the incidence type. For example a new hire
     incidence will be """
-    target_id: int
+    target_id: str
     """ The incidence (aka employee update) is also related to a another resource, for example for a leave target,
     the target identifier will be the leave id. """
     target_type: str
@@ -28,13 +28,13 @@ class BookkeepersManagementIncidence:
     target type. The other types are Employee, Contracts::ContractVersion, BookkeepersManagement::ManualIncidence,
     Finance::CostCenterMembership. """
     status: str
-    company_id: int
+    company_id: str
     """ identifier of company related. """
     created_at: str
     """ Date in which incidence (aka employee update) was created. """
     is_reopened: bool
     """ Boolean that indicates if the incidence (aka employee update) has been reopened. """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ identifier of employee related. """
     custom_name: str | Unset = UNSET
     starts_on: str | Unset = UNSET

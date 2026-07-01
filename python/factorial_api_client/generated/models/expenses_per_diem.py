@@ -19,40 +19,40 @@ T = TypeVar("T", bound="ExpensesPerDiem")
 
 @_attrs_define
 class ExpensesPerDiem:
-    id: int
+    id: str
     """ The ID of the per diem. """
-    company_id: int
+    company_id: str
     """ The ID of the company the per diem is for. """
     currency: str
-    """ The currency for the reimbursable amount. """
+    """ The currency code in ISO 4217 format. """
     payment: ExpensesPerDiemPayment
     """ The payment method for the per diem. """
     files: list[Any]
     """ The files attached to the per diem. """
     status: ExpensesPerDiemStatus
     """ The status of the per diem. """
-    cost_center_ids: list[int]
+    cost_center_ids: list[str]
     """ Array of cost center IDs associated with this per diem """
     rates: list[Any]
     """ The rates for the per diem. """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ The ID of the employee the per diem is for. """
-    expenses_expensable_id: int | Unset = UNSET
+    expenses_expensable_id: str | Unset = UNSET
     """ The ID of the expensable the per diem is for. """
     end_date: str | Unset = UNSET
-    """ The end date of the per diem. """
+    """ The last day of the trip the allowance covers. """
     start_date: str | Unset = UNSET
-    """ The start date of the per diem. """
+    """ The first day of the trip the allowance covers. """
     from_: str | Unset = UNSET
     """ The location the per diem is from. """
     to: str | Unset = UNSET
     """ The location the per diem is to. """
     trip_name: str | Unset = UNSET
     """ The name of the trip. """
-    ledger_account_id: int | Unset = UNSET
+    ledger_account_id: str | Unset = UNSET
     """ The ID of the ledger account the per diem is for. """
     amount: int | Unset = UNSET
-    """ The amount of the per diem. """
+    """ The total allowance amount in cents. """
     reimbursable_amount: int | Unset = UNSET
     """ The amount to be reimbursed by the per diem in cents. """
     reimbursable_currency: str | Unset = UNSET
@@ -69,9 +69,9 @@ class ExpensesPerDiem:
     """ The category of the per diem. """
     subcategory: str | Unset = UNSET
     """ The subcategory of the per diem. """
-    budget_id: int | Unset = UNSET
+    budget_id: str | Unset = UNSET
     """ The id of the budget associated with this per diem """
-    project_id: int | Unset = UNSET
+    project_id: str | Unset = UNSET
     """ The id of the project associated with this per diem """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -204,7 +204,7 @@ class ExpensesPerDiem:
 
         status = ExpensesPerDiemStatus(d.pop("status"))
 
-        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
+        cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 
         rates = cast(list[Any], d.pop("rates"))
 

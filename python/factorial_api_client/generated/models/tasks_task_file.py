@@ -13,9 +13,9 @@ T = TypeVar("T", bound="TasksTaskFile")
 
 @_attrs_define
 class TasksTaskFile:
-    id: int
+    id: str
     """ identifier of the file. """
-    task_id: int
+    task_id: str
     """ identifier of the task. """
     filename: str
     """ name of the file. """

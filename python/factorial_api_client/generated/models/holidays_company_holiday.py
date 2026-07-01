@@ -14,9 +14,9 @@ T = TypeVar("T", bound="HolidaysCompanyHoliday")
 
 @_attrs_define
 class HolidaysCompanyHoliday:
-    id: int
+    id: str
     """ Company holiday id """
-    location_id: int
+    location_id: str
     """ Related location id """
     date: str
     """ Company holiday date """

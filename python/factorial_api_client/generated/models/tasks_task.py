@@ -14,13 +14,13 @@ T = TypeVar("T", bound="TasksTask")
 
 @_attrs_define
 class TasksTask:
-    id: int
+    id: str
     """ Identifier of the task """
     name: str
     """ Name of the task """
-    company_id: int
+    company_id: str
     """ Company identifier of the author of the task """
-    assignee_ids: list[int]
+    assignee_ids: list[str]
     """ Employees assigned to the task, assignee_id references to access_id """
     created_at: str
     updated_at: str
@@ -29,11 +29,11 @@ class TasksTask:
     """ Content of the task """
     due_on: str | Unset = UNSET
     """ Due on date of the task """
-    author_employee_id: int | Unset = UNSET
+    author_employee_id: str | Unset = UNSET
     """ Employee id of the author of the task """
     completed_at: str | Unset = UNSET
     """ Completed at date of the task """
-    completed_by_id: int | Unset = UNSET
+    completed_by_id: str | Unset = UNSET
     """ Completed by identifier """
     status: TasksTaskStatus | Unset = UNSET
     """ Status of the task """
@@ -102,7 +102,7 @@ class TasksTask:
 
         company_id = d.pop("company_id")
 
-        assignee_ids = cast(list[int], d.pop("assignee_ids"))
+        assignee_ids = cast(list[str], d.pop("assignee_ids"))
 
         created_at = d.pop("created_at")
 

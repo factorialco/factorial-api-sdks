@@ -16,7 +16,7 @@ T = TypeVar("T", bound="FinanceJournalEntry")
 
 @_attrs_define
 class FinanceJournalEntry:
-    id: int
+    id: str
     """ Journal entry ID """
     number: int
     """ Incremental number assigned to the journal entry """
@@ -26,13 +26,13 @@ class FinanceJournalEntry:
     """ Journal entry type (e.g. bank, invoice, tax) """
     reference_date: str
     """ Date of the associate source """
-    legal_entity_id: int
+    legal_entity_id: str
     """ The associated Legal Entity ID """
     status: FinanceJournalEntryStatus
     """ The status of the journal entry (draft, published, etc.) """
     updated_at: str
     """ Timestamp when the journal entry was last updated. """
-    source_id: int | Unset = UNSET
+    source_id: str | Unset = UNSET
     """ Source id related with this journal entry """
     source_type: FinanceJournalEntrySourceType | Unset = UNSET
     """ Source type related with this journal entry """
