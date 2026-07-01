@@ -13,7 +13,7 @@ T = TypeVar("T", bound="PostsPost")
 
 @_attrs_define
 class PostsPost:
-    id: int
+    id: str
     """ identifiers of the post """
     allow_comments_and_reactions: bool
     """ allow comments and reactions on the post """
@@ -32,7 +32,7 @@ class PostsPost:
     """ date when the post has been published """
     cover_image_url: str | Unset = UNSET
     """ url of the cover image """
-    posts_group_id: int | Unset = UNSET
+    posts_group_id: str | Unset = UNSET
     """ group identifier of the post, references to posts/groups endpoint """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

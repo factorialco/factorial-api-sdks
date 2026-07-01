@@ -11,13 +11,13 @@ T = TypeVar("T", bound="CustomResourcesResource")
 
 @_attrs_define
 class CustomResourcesResource:
-    id: int
+    id: str
     """ The id of the Resource """
-    schema_id: int
+    schema_id: str
     """ The id of the Schema this resource belongs to """
     attachable_type: str
     """ Attachable type (the type of the attachable) """
-    attachable_id: int
+    attachable_id: str
     """ The id of the Attachable """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

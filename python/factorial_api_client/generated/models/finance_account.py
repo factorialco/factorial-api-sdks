@@ -14,9 +14,9 @@ T = TypeVar("T", bound="FinanceAccount")
 
 @_attrs_define
 class FinanceAccount:
-    id: int
+    id: str
     """ Unique identifier in factorial for the ledger account """
-    legal_entity_id: int
+    legal_entity_id: str
     """ Legal entity ID of the ledger account """
     number: str
     """ Number of the ledger account """

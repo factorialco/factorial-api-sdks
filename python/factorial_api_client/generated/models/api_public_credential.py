@@ -13,11 +13,11 @@ T = TypeVar("T", bound="ApiPublicCredential")
 
 @_attrs_define
 class ApiPublicCredential:
-    company_id: int
+    company_id: str
     """ company id for all kind of accesses """
-    id: int
+    id: str
     """ id of the credential prefixed by the type of credential """
-    employee_id: int
+    employee_id: str
     """ Id for hte employee related. Only for Access Oauth token """
     email: str | Unset = UNSET
     """ Only for Access Oauth token """

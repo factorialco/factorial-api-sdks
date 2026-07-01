@@ -13,15 +13,15 @@ T = TypeVar("T", bound="TeamsMembership")
 
 @_attrs_define
 class TeamsMembership:
-    id: int
+    id: str
     """ Membership ID """
-    employee_id: int
+    employee_id: str
     """ Employee ID of the membership """
-    team_id: int
+    team_id: str
     """ Team ID of the membership """
     lead: bool
     """ Whether the employee is a lead of the team or not """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ Company ID of the membership """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

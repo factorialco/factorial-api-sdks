@@ -13,13 +13,13 @@ T = TypeVar("T", bound="TimeoffAllowanceIncidence")
 
 @_attrs_define
 class TimeoffAllowanceIncidence:
-    id: int
+    id: str
     """ Unique identifier of the allowance incidence """
-    employee_id: int
+    employee_id: str
     """ Employee id of the affected employee """
     days_in_cents: int
     """ How many units * 100 does the incidence add/substract. Can be positive or negative. Example is one unit """
-    timeoff_allowance_id: int
+    timeoff_allowance_id: str
     """ To what allowance does the incidence affect. It will dictate if its days or hours """
     effective_on: str
     """ When does the incidence take effect; this is for time off cycles calculations. """

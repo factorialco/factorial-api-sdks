@@ -13,9 +13,9 @@ T = TypeVar("T", bound="PerformanceTargetManager")
 class PerformanceTargetManager:
     id: str
     """ Manager employee ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
-    manager_access_id: int
+    manager_access_id: str
     """ Manager access ID """
     manager_full_name: str
     """ Manager full name """

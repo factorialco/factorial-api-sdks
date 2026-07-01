@@ -14,7 +14,7 @@ T = TypeVar("T", bound="FinanceTaxType")
 
 @_attrs_define
 class FinanceTaxType:
-    id: int
+    id: str
     """ Factorial id """
     name: str
     """ The name assigned to the tax type. """

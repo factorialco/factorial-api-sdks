@@ -11,11 +11,11 @@ T = TypeVar("T", bound="TimeoffPolicyTimeline")
 
 @_attrs_define
 class TimeoffPolicyTimeline:
-    employee_id: int
+    employee_id: str
     start_limit_date: str
     end_limit_date: str
     items: list[Any]
-    id: int
+    id: str
     """ This is the employee id since it's a virtual entity """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

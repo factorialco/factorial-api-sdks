@@ -13,13 +13,13 @@ T = TypeVar("T", bound="TimeoffPolicyAssignment")
 
 @_attrs_define
 class TimeoffPolicyAssignment:
-    timeoff_policy_id: int
+    timeoff_policy_id: str
     """ The time off policy id """
-    employee_id: int
+    employee_id: str
     """ The employee id """
     effective_at: str
     """ The effective date of the policy assignment """
-    id: int | Unset = UNSET
+    id: str | Unset = UNSET
     """ Unique identifier of the policy assignment """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

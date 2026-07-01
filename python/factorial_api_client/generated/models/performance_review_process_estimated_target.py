@@ -13,11 +13,11 @@ T = TypeVar("T", bound="PerformanceReviewProcessEstimatedTarget")
 class PerformanceReviewProcessEstimatedTarget:
     id: str
     """ Process target ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
-    access_id: int
+    access_id: str
     """ Access ID """
-    employee_id: int
+    employee_id: str
     """ Employee ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

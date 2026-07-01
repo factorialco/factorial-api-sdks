@@ -11,14 +11,14 @@ T = TypeVar("T", bound="AttendanceReview")
 
 @_attrs_define
 class AttendanceReview:
-    id: int
-    employee_id: int
+    id: str
+    employee_id: str
     """ Employee identifier """
     date: str
     """ Date reviewed """
     reviewed_at: str
     """ Reviewed at (ISO 8601 format string) """
-    author_id: int
+    author_id: str
     """ Author of the review """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

@@ -15,7 +15,7 @@ T = TypeVar("T", bound="ItManagementItAsset")
 class ItManagementItAsset:
     id: str
     """ IT Asset identifier """
-    company_id: int
+    company_id: str
     """ Company identifier """
     it_asset_model_id: str
     """ IT Asset Model identifier """
@@ -35,13 +35,13 @@ class ItManagementItAsset:
     """ Creation date of the IT asset """
     updated_at: str
     """ Last update date of the IT asset """
-    owner_id: int | Unset = UNSET
+    owner_id: str | Unset = UNSET
     """ Owner (employee) identifier """
-    location_id: int | Unset = UNSET
+    location_id: str | Unset = UNSET
     """ Location identifier """
-    workplace_id: int | Unset = UNSET
+    workplace_id: str | Unset = UNSET
     """ Workplace identifier """
-    team_id: int | Unset = UNSET
+    team_id: str | Unset = UNSET
     """ Team identifier """
     purchase_date: str | Unset = UNSET
     """ Purchase date of the IT asset """

@@ -13,8 +13,8 @@ T = TypeVar("T", bound="WorkScheduleDayConfiguration")
 
 @_attrs_define
 class WorkScheduleDayConfiguration:
-    id: int
-    overlap_period_id: int
+    id: str
+    overlap_period_id: str
     weekday: str
     duration_in_seconds: int
     start_at: str | Unset = UNSET

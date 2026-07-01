@@ -13,9 +13,9 @@ T = TypeVar("T", bound="TrainingsCategory")
 
 @_attrs_define
 class TrainingsCategory:
-    id: int
+    id: str
     name: str
-    company_id: int
+    company_id: str
     created_at: str | Unset = UNSET
     updated_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

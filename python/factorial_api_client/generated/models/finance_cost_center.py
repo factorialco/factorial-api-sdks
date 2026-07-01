@@ -13,13 +13,13 @@ T = TypeVar("T", bound="FinanceCostCenter")
 
 @_attrs_define
 class FinanceCostCenter:
-    id: int
+    id: str
     name: str
-    company_id: int
+    company_id: str
     active_employees_count: int
     historical_employees_count: int
     status: str
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     code: str | Unset = UNSET
     description: str | Unset = UNSET
     deactivation_date: str | Unset = UNSET

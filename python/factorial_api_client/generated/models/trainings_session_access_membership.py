@@ -13,13 +13,13 @@ T = TypeVar("T", bound="TrainingsSessionAccessMembership")
 
 @_attrs_define
 class TrainingsSessionAccessMembership:
-    id: int
+    id: str
     """ ID of this membership """
-    access_id: int
+    access_id: str
     """ ID of the access associated with this membership """
-    session_id: int
+    session_id: str
     """ ID of the session associated with this membership """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ ID of the employee associated with this membership """
     first_name: str | Unset = UNSET
     """ First name of the user associated with this membership """

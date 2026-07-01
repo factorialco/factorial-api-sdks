@@ -14,9 +14,9 @@ T = TypeVar("T", bound="AtsApplicationPhase")
 
 @_attrs_define
 class AtsApplicationPhase:
-    id: int
+    id: str
     """ Identifier of the application Phase """
-    ats_job_posting_id: int
+    ats_job_posting_id: str
     """ Job posting of the application phase """
     name: str
     """ Name of the application phase """
@@ -29,7 +29,7 @@ class AtsApplicationPhase:
     applications_count: int | Unset = UNSET
     """ Active application count """
     active_applications_count: int | Unset = UNSET
-    ats_hiring_stage_id: int | Unset = UNSET
+    ats_hiring_stage_id: str | Unset = UNSET
     """ Hiring stage identifier """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

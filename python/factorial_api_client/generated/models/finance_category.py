@@ -13,7 +13,7 @@ T = TypeVar("T", bound="FinanceCategory")
 
 @_attrs_define
 class FinanceCategory:
-    id: int
+    id: str
     """ Unique identifier for the category """
     label: str
     """ Custom label for the category """
@@ -25,7 +25,7 @@ class FinanceCategory:
     """ Whether the category is visible """
     enabled: bool
     """ Whether the category is enabled """
-    parent_category_id: int | Unset = UNSET
+    parent_category_id: str | Unset = UNSET
     """ Parent category ID (null for main categories) """
     position: int | Unset = UNSET
     """ Display position of the category """

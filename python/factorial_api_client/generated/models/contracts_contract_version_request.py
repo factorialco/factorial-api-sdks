@@ -14,22 +14,22 @@ T = TypeVar("T", bound="ContractsContractVersionRequest")
 
 @_attrs_define
 class ContractsContractVersionRequest:
-    employee_id: int
+    employee_id: str
     effective_on: str
     has_payroll: bool
     created_at: str
     updated_at: str
     status: ContractsContractVersionRequestStatus
     fr_forfait_jours: bool
-    id: int | Unset = UNSET
-    company_id: int | Unset = UNSET
+    id: str | Unset = UNSET
+    company_id: str | Unset = UNSET
     country: str | Unset = UNSET
     job_title: str | Unset = UNSET
-    job_catalog_level_id: int | Unset = UNSET
+    job_catalog_level_id: str | Unset = UNSET
     job_catalog_level_name: str | Unset = UNSET
     job_catalog_level: str | Unset = UNSET
     job_catalog_role: str | Unset = UNSET
-    job_catalog_role_id: int | Unset = UNSET
+    job_catalog_role_id: str | Unset = UNSET
     job_catalog_tree_node_uuid: str | Unset = UNSET
     starts_on: str | Unset = UNSET
     ends_on: str | Unset = UNSET
@@ -48,64 +48,64 @@ class ContractsContractVersionRequest:
     created_by_avatar: str | Unset = UNSET
     action_type: str | Unset = UNSET
     request_details: str | Unset = UNSET
-    approvers_ids: list[int] | Unset = UNSET
-    approval_author_id: int | Unset = UNSET
+    approvers_ids: list[str] | Unset = UNSET
+    approval_author_id: str | Unset = UNSET
     approval_request_created_at: str | Unset = UNSET
     approval_action_type: str | Unset = UNSET
     es_has_teleworking_contract: bool | Unset = UNSET
     es_cotization_group: int | Unset = UNSET
     es_contract_observations: str | Unset = UNSET
     es_job_description: str | Unset = UNSET
-    es_contract_type_id: int | Unset = UNSET
+    es_contract_type_id: str | Unset = UNSET
     es_contract_type_name: str | Unset = UNSET
-    es_working_day_type_id: int | Unset = UNSET
+    es_working_day_type_id: str | Unset = UNSET
     es_working_day_type_name: str | Unset = UNSET
-    es_education_level_id: int | Unset = UNSET
+    es_education_level_id: str | Unset = UNSET
     es_education_level_name: str | Unset = UNSET
-    es_professional_category_id: int | Unset = UNSET
+    es_professional_category_id: str | Unset = UNSET
     es_professional_category_name: str | Unset = UNSET
-    es_contribution_type_id: int | Unset = UNSET
+    es_contribution_type_id: str | Unset = UNSET
     es_contribution_type_name: str | Unset = UNSET
-    es_agreement_code_id: int | Unset = UNSET
+    es_agreement_code_id: str | Unset = UNSET
     es_agreement_code_name: str | Unset = UNSET
-    es_cno_occupation_id: int | Unset = UNSET
+    es_cno_occupation_id: str | Unset = UNSET
     es_cno_occupation_name: str | Unset = UNSET
-    es_regime_id: int | Unset = UNSET
+    es_regime_id: str | Unset = UNSET
     es_regime_name: str | Unset = UNSET
-    es_tariff_group_id: int | Unset = UNSET
+    es_tariff_group_id: str | Unset = UNSET
     es_tariff_group_name: str | Unset = UNSET
-    es_occupation_code_id: int | Unset = UNSET
+    es_occupation_code_id: str | Unset = UNSET
     es_occupation_code_name: str | Unset = UNSET
-    es_classification_id: int | Unset = UNSET
+    es_classification_id: str | Unset = UNSET
     es_classification_name: str | Unset = UNSET
-    es_a3innuva_job_position_id: int | Unset = UNSET
+    es_a3innuva_job_position_id: str | Unset = UNSET
     es_a3innuva_job_position_name: str | Unset = UNSET
     fr_employee_type: str | Unset = UNSET
     fr_jours_par_an: int | Unset = UNSET
     fr_jours_par_an_cents: int | Unset = UNSET
     fr_coefficient: str | Unset = UNSET
-    fr_contract_type_id: int | Unset = UNSET
-    fr_level_id: int | Unset = UNSET
-    fr_step_id: int | Unset = UNSET
-    fr_mutual_id: int | Unset = UNSET
-    fr_professional_category_id: int | Unset = UNSET
-    fr_work_type_id: int | Unset = UNSET
+    fr_contract_type_id: str | Unset = UNSET
+    fr_level_id: str | Unset = UNSET
+    fr_step_id: str | Unset = UNSET
+    fr_mutual_id: str | Unset = UNSET
+    fr_professional_category_id: str | Unset = UNSET
+    fr_work_type_id: str | Unset = UNSET
     fr_contract_type_name: str | Unset = UNSET
     fr_mutual_name: str | Unset = UNSET
     fr_professional_category_name: str | Unset = UNSET
     fr_work_type_name: str | Unset = UNSET
     fr_level_name: str | Unset = UNSET
     fr_step_name: str | Unset = UNSET
-    de_contract_type_id: int | Unset = UNSET
+    de_contract_type_id: str | Unset = UNSET
     de_contract_type_name: str | Unset = UNSET
     de_employment_type: int | Unset = UNSET
     de_flat_rate_tax: int | Unset = UNSET
     de_activity_type: int | Unset = UNSET
-    de_personal_key_group_id: int | Unset = UNSET
+    de_personal_key_group_id: str | Unset = UNSET
     de_personal_key_group_name: str | Unset = UNSET
-    de_base_salary_type_id: int | Unset = UNSET
+    de_base_salary_type_id: str | Unset = UNSET
     de_base_salary_type_name: str | Unset = UNSET
-    pt_contract_type_id: int | Unset = UNSET
+    pt_contract_type_id: str | Unset = UNSET
     pt_contract_type_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -178,7 +178,7 @@ class ContractsContractVersionRequest:
 
         request_details = self.request_details
 
-        approvers_ids: list[int] | Unset = UNSET
+        approvers_ids: list[str] | Unset = UNSET
         if not isinstance(self.approvers_ids, Unset):
             approvers_ids = self.approvers_ids
 
@@ -557,7 +557,7 @@ class ContractsContractVersionRequest:
 
         request_details = d.pop("request_details", UNSET)
 
-        approvers_ids = cast(list[int], d.pop("approvers_ids", UNSET))
+        approvers_ids = cast(list[str], d.pop("approvers_ids", UNSET))
 
         approval_author_id = d.pop("approval_author_id", UNSET)
 

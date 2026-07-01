@@ -16,12 +16,12 @@ T = TypeVar("T", bound="ProjectManagementBudgetStrategy")
 
 @_attrs_define
 class ProjectManagementBudgetStrategy:
-    id: int
+    id: str
     """ Factorial id of the budget strategy """
     budget_type: ProjectManagementBudgetStrategyBudgetType
     """ Type of budget strategy. One of project_fixed_cost => ProjectFixedCost, total_budget => TimeAndMaterials,
     without_budget => WithoutBudget """
-    project_id: int
+    project_id: str
     """ Id of the project this budget strategy belongs to """
     delegated: bool
     """ Whether the budget strategy is delegated """
@@ -31,7 +31,7 @@ class ProjectManagementBudgetStrategy:
     """ Planned time in minutes (for total_budget) """
     fee_amount_cents: int | Unset = UNSET
     """ Fee amount in cents (for project_fixed_cost / total_budget when is billable) """
-    subproject_id: int | Unset = UNSET
+    subproject_id: str | Unset = UNSET
     """ Id of the subproject this budget strategy belongs to, if any """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

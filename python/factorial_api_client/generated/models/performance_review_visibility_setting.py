@@ -11,9 +11,9 @@ T = TypeVar("T", bound="PerformanceReviewVisibilitySetting")
 
 @_attrs_define
 class PerformanceReviewVisibilitySetting:
-    id: int
+    id: str
     """ Review process ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
     restrict_answers_visibility_to_reportees: bool
     """ Employees don't have access to their results when enabled """

@@ -13,11 +13,16 @@ T = TypeVar("T", bound="ProjectManagementFlexibleTimeRecord")
 
 @_attrs_define
 class ProjectManagementFlexibleTimeRecord:
-    id: int
+    id: str
+    """ The unique identifier of the flexible time record. """
     date: str
+    """ The date on which the time was imputed. """
     imputed_minutes: int
-    project_worker_id: int
-    subproject_id: int | Unset = UNSET
+    """ The amount of time imputed to the project, in minutes. """
+    project_worker_id: str
+    """ The ID of the project worker associated with this flexible time record. """
+    subproject_id: str | Unset = UNSET
+    """ The ID of the subproject worked on, if any. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

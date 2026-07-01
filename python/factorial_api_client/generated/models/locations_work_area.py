@@ -13,8 +13,8 @@ T = TypeVar("T", bound="LocationsWorkArea")
 
 @_attrs_define
 class LocationsWorkArea:
-    id: int
-    location_id: int
+    id: str
+    location_id: str
     name: str
     archived_at: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

@@ -37,9 +37,9 @@ T = TypeVar("T", bound="PerformanceReviewQuestionnairesByStrategy")
 
 @_attrs_define
 class PerformanceReviewQuestionnairesByStrategy:
-    id: int
+    id: str
     """ Review process ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
     default_rating_scale: list[Any]
     """ Scoring range used in rating questions """

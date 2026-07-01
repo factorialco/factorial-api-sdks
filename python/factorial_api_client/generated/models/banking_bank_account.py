@@ -14,7 +14,7 @@ T = TypeVar("T", bound="BankingBankAccount")
 
 @_attrs_define
 class BankingBankAccount:
-    id: int
+    id: str
     """ Factorial unique identifier. """
     external_id: str
     """ External ID for the bank account. """
@@ -48,7 +48,7 @@ class BankingBankAccount:
     """ Bank name. """
     account_alias: str | Unset = UNSET
     """ Account alias. """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Factorial unique identifier of the legal entity. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

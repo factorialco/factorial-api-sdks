@@ -13,11 +13,11 @@ T = TypeVar("T", bound="EmployeeUpdatesAbsence")
 
 @_attrs_define
 class EmployeeUpdatesAbsence:
-    id: int
+    id: str
     """ Identifier of the absence employee update """
     status: str
     """ The status of the employee update. """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ Employee id of the absence """
     employee_full_name: str | Unset = UNSET
     """ Full name of the employee """
@@ -37,7 +37,7 @@ class EmployeeUpdatesAbsence:
     """ Indicates if the absence is taken as a half-day """
     hours_amount_in_cents: int | Unset = UNSET
     """ The total number of hours taken for the absence, represented in cents """
-    leave_type_id: int | Unset = UNSET
+    leave_type_id: str | Unset = UNSET
     """ The id of the leave type """
     leave_type_name: str | Unset = UNSET
     """ The name of the leave type """

@@ -13,13 +13,13 @@ T = TypeVar("T", bound="ApiPublicWebhookSubscription")
 
 @_attrs_define
 class ApiPublicWebhookSubscription:
-    id: int
+    id: str
     """ Identifier of the webhook subscription """
     target_url: str
     """ URL where the webhook payload will be sent """
     type_: str
     """ Type of the webhook subscription """
-    company_id: int
+    company_id: str
     """ Company identifier of the webhook subscription """
     enabled: bool
     """ Boolean to enable/disable the subscription """

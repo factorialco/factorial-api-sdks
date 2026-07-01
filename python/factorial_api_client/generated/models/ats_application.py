@@ -1,47 +1,53 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
+if TYPE_CHECKING:
+    from ..models.ats_application_cv import AtsApplicationCv
+
+
 T = TypeVar("T", bound="AtsApplication")
 
 
 @_attrs_define
 class AtsApplication:
-    id: int
+    id: str
     """ Id of the application """
-    company_id: int
+    company_id: str
     """ Company id of the application """
-    ats_job_posting_id: int
+    ats_job_posting_id: str
     """ Job posting id of the application """
-    ats_candidate_id: int
+    ats_candidate_id: str
     """ Candidate id of the application """
     created_at: str
     """ Application created at date """
-    employee_id: int | Unset = UNSET
+    employee_id: str | Unset = UNSET
     """ Employee id of the application """
     phone: str | Unset = UNSET
     """ Candidate phone of the application """
     qualified: bool | Unset = UNSET
     """ Qualified of the application """
-    ats_application_phase_id: int | Unset = UNSET
+    ats_application_phase_id: str | Unset = UNSET
     """ Application phase id """
     cover_letter: str | Unset = UNSET
     """ Application cover letter """
-    ats_conversation_id: int | Unset = UNSET
+    cv: AtsApplicationCv | Unset = UNSET
+    """ CV file attachment of the application (includes filename, url, byte_size, content_type, created_at) """
+    ats_conversation_id: str | Unset = UNSET
     """ Application conversation id """
     medium: str | Unset = UNSET
     """ Application medium """
     rating_average: int | Unset = UNSET
     """ Application average rating """
-    ats_rejection_reason_id: int | Unset = UNSET
+    ats_rejection_reason_id: str | Unset = UNSET
     """ Application rejection reason id """
-    source_id: int | Unset = UNSET
+    source_id: str | Unset = UNSET
     """ Application source id """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -65,6 +71,10 @@ class AtsApplication:
         ats_application_phase_id = self.ats_application_phase_id
 
         cover_letter = self.cover_letter
+
+        cv: dict[str, Any] | Unset = UNSET
+        if not isinstance(self.cv, Unset):
+            cv = self.cv.to_dict()
 
         ats_conversation_id = self.ats_conversation_id
 
@@ -97,6 +107,8 @@ class AtsApplication:
             field_dict["ats_application_phase_id"] = ats_application_phase_id
         if cover_letter is not UNSET:
             field_dict["cover_letter"] = cover_letter
+        if cv is not UNSET:
+            field_dict["cv"] = cv
         if ats_conversation_id is not UNSET:
             field_dict["ats_conversation_id"] = ats_conversation_id
         if medium is not UNSET:
@@ -112,6 +124,8 @@ class AtsApplication:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ats_application_cv import AtsApplicationCv
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -132,6 +146,13 @@ class AtsApplication:
         ats_application_phase_id = d.pop("ats_application_phase_id", UNSET)
 
         cover_letter = d.pop("cover_letter", UNSET)
+
+        _cv = d.pop("cv", UNSET)
+        cv: AtsApplicationCv | Unset
+        if isinstance(_cv, Unset):
+            cv = UNSET
+        else:
+            cv = AtsApplicationCv.from_dict(_cv)
 
         ats_conversation_id = d.pop("ats_conversation_id", UNSET)
 
@@ -154,6 +175,7 @@ class AtsApplication:
             qualified=qualified,
             ats_application_phase_id=ats_application_phase_id,
             cover_letter=cover_letter,
+            cv=cv,
             ats_conversation_id=ats_conversation_id,
             medium=medium,
             rating_average=rating_average,

@@ -14,9 +14,9 @@ T = TypeVar("T", bound="BankingTransaction")
 
 @_attrs_define
 class BankingTransaction:
-    id: int
+    id: str
     """ Factorial unique identifier. """
-    bank_account_id: int
+    bank_account_id: str
     """ Factorial Banking Bank Account unique identifier. """
     amount_cents: int
     """ Amount in cents. """
@@ -28,7 +28,7 @@ class BankingTransaction:
     """ Booking date of the transaction. """
     value_date: str
     """ Value date of the transaction. """
-    card_payment_id: int
+    card_payment_id: str
     """ Factorial unique identifier of the card payment. """
     updated_at: str
     """ Date when the transaction was last updated. """

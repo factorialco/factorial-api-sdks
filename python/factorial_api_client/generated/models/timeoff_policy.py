@@ -13,11 +13,11 @@ T = TypeVar("T", bound="TimeoffPolicy")
 
 @_attrs_define
 class TimeoffPolicy:
-    id: int
+    id: str
     """ The policy id. """
     name: str
     """ Policy name. """
-    company_id: int
+    company_id: str
     """ The company id. """
     main: bool | Unset = UNSET
     """ Is the main policy? It will return true if it's the main policy if not it will return false. """

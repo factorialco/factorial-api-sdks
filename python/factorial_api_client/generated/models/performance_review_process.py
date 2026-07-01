@@ -32,9 +32,9 @@ T = TypeVar("T", bound="PerformanceReviewProcess")
 
 @_attrs_define
 class PerformanceReviewProcess:
-    id: int
+    id: str
     """ Review process ID """
-    company_id: int
+    company_id: str
     """ Company ID """
     status: PerformanceReviewProcessStatus
     """ Review process status """

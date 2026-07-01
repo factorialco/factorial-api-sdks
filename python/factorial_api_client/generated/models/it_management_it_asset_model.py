@@ -16,7 +16,7 @@ class ItManagementItAssetModel:
     type_name: str
     """ Type name of the IT asset model. Possible values are 'laptop', 'desktop', 'tablet', 'phone', 'screen',
     'mouse', 'keyboard', 'headset', 'other' """
-    company_id: int
+    company_id: str
     """ Company identifier """
     brand: str
     """ Brand of the IT asset model """

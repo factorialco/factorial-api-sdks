@@ -14,9 +14,9 @@ T = TypeVar("T", bound="AttendanceOpenShift")
 
 @_attrs_define
 class AttendanceOpenShift:
-    id: int
+    id: str
     """ Open Shift identifier. """
-    employee_id: int
+    employee_id: str
     """ Employee identifier from the open shift. """
     date: str
     """ Date of the open shift. """
@@ -34,9 +34,9 @@ class AttendanceOpenShift:
     """ For open shifts, this field is null. """
     location_type: str | Unset = UNSET
     """ String representing the location type of the shift. Examples work_from_home, office, etc. """
-    workplace_id: int | Unset = UNSET
+    workplace_id: str | Unset = UNSET
     """ Identifier for the workplace assinged to the shift. """
-    time_settings_break_configuration_id: int | Unset = UNSET
+    time_settings_break_configuration_id: str | Unset = UNSET
     """ If the shift is a break, this field will have the break configuration id. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

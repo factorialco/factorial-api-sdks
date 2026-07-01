@@ -14,16 +14,16 @@ T = TypeVar("T", bound="AttendanceOvertimeRequest")
 
 @_attrs_define
 class AttendanceOvertimeRequest:
-    id: int
-    employee_id: int
-    author_id: int
+    id: str
+    employee_id: str
+    author_id: str
     status: AttendanceOvertimeRequestStatus
     date: str
     hours_amount_in_cents: int
     approver: bool
     is_editable: bool
     """ Defines if the overtime request can be edited """
-    approver_id: int | Unset = UNSET
+    approver_id: str | Unset = UNSET
     description: str | Unset = UNSET
     reason: str | Unset = UNSET
     created_at: str | Unset = UNSET

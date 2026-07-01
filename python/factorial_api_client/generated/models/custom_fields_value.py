@@ -13,13 +13,13 @@ T = TypeVar("T", bound="CustomFieldsValue")
 
 @_attrs_define
 class CustomFieldsValue:
-    id: int
+    id: str
     """ Unique identifier for the custom field value """
     custom_field_identifier: str
     """ The unique identifier of the custom field """
-    valuable_id: int
+    valuable_id: str
     """ The identifier of the object that owns this custom field value """
-    field_id: int
+    field_id: str
     """ The identifier of the custom field """
     valuable_type: str
     """ The type of the object that owns this custom field value """
@@ -37,7 +37,7 @@ class CustomFieldsValue:
     """ The label of the custom field """
     required: bool | Unset = UNSET
     """ Whether the custom field is required """
-    usage_group_id: int | Unset = UNSET
+    usage_group_id: str | Unset = UNSET
     """ The identifier of the usage group """
     usage_group_slug: str | Unset = UNSET
     """ The slug of the usage group """

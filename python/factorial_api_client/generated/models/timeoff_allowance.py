@@ -28,7 +28,7 @@ T = TypeVar("T", bound="TimeoffAllowance")
 
 @_attrs_define
 class TimeoffAllowance:
-    id: int
+    id: str
     """ Unique identifier of the allowance """
     allowance_type: TimeoffAllowanceAllowanceType
     """ Sets the allowance units. Can be "days" or "hours" """
@@ -37,7 +37,7 @@ class TimeoffAllowance:
     the first day of the cycle. """
     count_holiday_as_workable: bool
     """ This setting flags if units taken during a bank holiday should be deducted or not from allowance. """
-    leave_type_ids: list[int]
+    leave_type_ids: list[str]
     """ An array of leave type ids associated with that allowance """
     name: str
     """ Allowance name set by the user """
@@ -50,7 +50,7 @@ class TimeoffAllowance:
     timeoff_cycle: str
     """ Value to indicate how the allowance cycle is configured. Its an abbreviation of the first and last month.
     """
-    timeoff_policy_id: int
+    timeoff_policy_id: str
     """ The Id of the policy to which the allowance belongs to """
     accrued_denominator_in_cents: int | Unset = UNSET
     """ Only for Allowances based on worked time. It represents how many units you need to work to be granted
@@ -273,7 +273,7 @@ class TimeoffAllowance:
 
         count_holiday_as_workable = d.pop("count_holiday_as_workable")
 
-        leave_type_ids = cast(list[int], d.pop("leave_type_ids"))
+        leave_type_ids = cast(list[str], d.pop("leave_type_ids"))
 
         name = d.pop("name")
 

@@ -19,13 +19,13 @@ T = TypeVar("T", bound="FinanceLedgerAccountResource")
 
 @_attrs_define
 class FinanceLedgerAccountResource:
-    id: int
+    id: str
     """ Factorial unique identifier. """
     resource_type: FinanceLedgerAccountResourceResourceType
     """ Ledger account resource type. """
-    resource_id: int
+    resource_id: str
     """ Factorial unique identifier of the resource associated to the ledger account resource. """
-    account_id: int
+    account_id: str
     """ Factorial Ledger Account identifier. """
     updated_at: str
     """ Last time the resource was updated. """
@@ -33,7 +33,7 @@ class FinanceLedgerAccountResource:
     """ Ledger account balance type. """
     external_id: str | Unset = UNSET
     """ External identifier. """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ Factorial unique identifier of the Legal entity. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

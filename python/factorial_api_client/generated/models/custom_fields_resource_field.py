@@ -13,9 +13,9 @@ T = TypeVar("T", bound="CustomFieldsResourceField")
 
 @_attrs_define
 class CustomFieldsResourceField:
-    id: int
+    id: str
     """ Resource field identifier """
-    field_id: int | Unset = UNSET
+    field_id: str | Unset = UNSET
     """ Custom Field identifier """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

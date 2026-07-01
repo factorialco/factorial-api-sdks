@@ -7,6 +7,7 @@ class ProcurementPurchaseOrderStatus(str, Enum):
     ORDERED = "ordered"
     PARTIAL = "partial"
     PENDING = "pending"
+    PROCESSING = "processing"
     RECEIVED = "received"
 
     def __str__(self) -> str:

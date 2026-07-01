@@ -15,10 +15,10 @@ T = TypeVar("T", bound="TrainingsSession")
 
 @_attrs_define
 class TrainingsSession:
-    id: int
+    id: str
     """ id of the session """
     name: str
-    training_id: int
+    training_id: str
     """ Identifier of the course """
     subsidized: bool
     """ if the session is subsidized """
@@ -42,11 +42,11 @@ class TrainingsSession:
     """ The link to see material from the session """
     location: str | Unset = UNSET
     """ The place where the session takes place """
-    session_attendance_ids: list[int] | Unset = UNSET
-    session_feedback_id: int | Unset = UNSET
+    session_attendance_ids: list[str] | Unset = UNSET
+    session_feedback_id: str | Unset = UNSET
     status: str | Unset = UNSET
     """ Status of the session """
-    parent_id: int | Unset = UNSET
+    parent_id: str | Unset = UNSET
     """ Id of the recurrent session that is parent of the current one """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -83,7 +83,7 @@ class TrainingsSession:
 
         location = self.location
 
-        session_attendance_ids: list[int] | Unset = UNSET
+        session_attendance_ids: list[str] | Unset = UNSET
         if not isinstance(self.session_attendance_ids, Unset):
             session_attendance_ids = self.session_attendance_ids
 
@@ -175,7 +175,7 @@ class TrainingsSession:
 
         location = d.pop("location", UNSET)
 
-        session_attendance_ids = cast(list[int], d.pop("session_attendance_ids", UNSET))
+        session_attendance_ids = cast(list[str], d.pop("session_attendance_ids", UNSET))
 
         session_feedback_id = d.pop("session_feedback_id", UNSET)
 

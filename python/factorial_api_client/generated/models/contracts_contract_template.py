@@ -13,9 +13,9 @@ T = TypeVar("T", bound="ContractsContractTemplate")
 
 @_attrs_define
 class ContractsContractTemplate:
-    id: int
+    id: str
     """ Unique identifier for the contract template """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ ID of the company this template belongs to """
     contract_version_type: str | Unset = UNSET
     """ Type of contract version (e.g., es for Spain, fr for France) """

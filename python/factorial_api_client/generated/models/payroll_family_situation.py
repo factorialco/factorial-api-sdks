@@ -14,9 +14,9 @@ T = TypeVar("T", bound="PayrollFamilySituation")
 
 @_attrs_define
 class PayrollFamilySituation:
-    id: int
+    id: str
     """ ID of the family situation. """
-    employee_id: int
+    employee_id: str
     """ Employee id of the family situation. """
     civil_status: PayrollFamilySituationCivilStatus | Unset = UNSET
     """ Civil status of the employee. """

@@ -13,13 +13,13 @@ T = TypeVar("T", bound="FinanceBudgetOption")
 
 @_attrs_define
 class FinanceBudgetOption:
-    id: int
+    id: str
     """ Unique identifier for the budget option """
     name: str
     """ Name of the budget option """
     currency: str
     """ Currency of the budget option """
-    legal_entity_id: int
+    legal_entity_id: str
     """ Legal entity ID of the budget option """
     description: str | Unset = UNSET
     """ Description of the budget option """

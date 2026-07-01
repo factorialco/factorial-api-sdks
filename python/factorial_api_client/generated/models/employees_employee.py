@@ -14,9 +14,9 @@ T = TypeVar("T", bound="EmployeesEmployee")
 
 @_attrs_define
 class EmployeesEmployee:
-    id: int
+    id: str
     """ id of the employee. """
-    access_id: int
+    access_id: str
     """ access_id associated to the employee. """
     first_name: str
     """ name of the employee. """
@@ -24,9 +24,9 @@ class EmployeesEmployee:
     """ last name of the employee. """
     full_name: str
     """ full name of the employee. """
-    company_id: int
+    company_id: str
     """ id of the company to which the employee belongs (not editable). """
-    location_id: int
+    location_id: str
     """ location id of the employee, references to locations/locations. """
     created_at: str
     """ creation date of the employee. """
@@ -72,9 +72,9 @@ class EmployeesEmployee:
     """ code to identify banks and financial institutions globally. """
     bank_number_format: EmployeesEmployeeBankNumberFormat | Unset = UNSET
     """ bank number format. """
-    legal_entity_id: int | Unset = UNSET
+    legal_entity_id: str | Unset = UNSET
     """ legal entity of the employee, references to companies/legal_entities. """
-    default_work_area_id: int | Unset = UNSET
+    default_work_area_id: str | Unset = UNSET
     """ Default work area ID for the employee at the default workplace. References locations/work_areas. """
     social_security_number: str | Unset = UNSET
     """ social security number of the employee. """
@@ -86,9 +86,9 @@ class EmployeesEmployee:
     """ A reason for the termination. """
     termination_observations: str | Unset = UNSET
     """ observations about the termination. """
-    manager_id: int | Unset = UNSET
+    manager_id: str | Unset = UNSET
     """ manager id of the employee, you can get the manager id from employees endpoint. """
-    timeoff_manager_id: int | Unset = UNSET
+    timeoff_manager_id: str | Unset = UNSET
     """ Timeoff manager id of the employee. """
     phone_number: str | Unset = UNSET
     """ phone number of the employee. """
@@ -106,6 +106,11 @@ class EmployeesEmployee:
     """ personal email of the employee. """
     seniority_calculation_date: str | Unset = UNSET
     """ date since when the employee is working in the company. """
+    communications_email: str | Unset = UNSET
+    """ Confirmed email address for company communications and notifications. Separate from login email, used for
+    internal company announcements. """
+    unconfirmed_communications_email: str | Unset = UNSET
+    """ unconfirmed communications email address for the employee. """
     pronouns: str | Unset = UNSET
     """ pronouns that an employee uses to define themselves. """
     active: bool | Unset = UNSET
@@ -216,6 +221,10 @@ class EmployeesEmployee:
 
         seniority_calculation_date = self.seniority_calculation_date
 
+        communications_email = self.communications_email
+
+        unconfirmed_communications_email = self.unconfirmed_communications_email
+
         pronouns = self.pronouns
 
         active = self.active
@@ -315,6 +324,10 @@ class EmployeesEmployee:
             field_dict["personal_email"] = personal_email
         if seniority_calculation_date is not UNSET:
             field_dict["seniority_calculation_date"] = seniority_calculation_date
+        if communications_email is not UNSET:
+            field_dict["communications_email"] = communications_email
+        if unconfirmed_communications_email is not UNSET:
+            field_dict["unconfirmed_communications_email"] = unconfirmed_communications_email
         if pronouns is not UNSET:
             field_dict["pronouns"] = pronouns
         if active is not UNSET:
@@ -430,6 +443,10 @@ class EmployeesEmployee:
 
         seniority_calculation_date = d.pop("seniority_calculation_date", UNSET)
 
+        communications_email = d.pop("communications_email", UNSET)
+
+        unconfirmed_communications_email = d.pop("unconfirmed_communications_email", UNSET)
+
         pronouns = d.pop("pronouns", UNSET)
 
         active = d.pop("active", UNSET)
@@ -489,6 +506,8 @@ class EmployeesEmployee:
             contact_number=contact_number,
             personal_email=personal_email,
             seniority_calculation_date=seniority_calculation_date,
+            communications_email=communications_email,
+            unconfirmed_communications_email=unconfirmed_communications_email,
             pronouns=pronouns,
             active=active,
             disability_percentage_cents=disability_percentage_cents,

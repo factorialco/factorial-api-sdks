@@ -13,10 +13,10 @@ T = TypeVar("T", bound="AttendanceBreakConfiguration")
 
 @_attrs_define
 class AttendanceBreakConfiguration:
-    id: int
-    attendance_employees_setting_id: int
+    id: str
+    attendance_employees_setting_id: str
     """ Id of the attendance employee setting """
-    time_settings_break_configuration_id: int
+    time_settings_break_configuration_id: str
     """ Id of the time settings break configuration """
     enabled: bool
     """ Status of the break configuration if enabled or not """

@@ -13,7 +13,7 @@ T = TypeVar("T", bound="PostsGroup")
 
 @_attrs_define
 class PostsGroup:
-    id: int
+    id: str
     """ identifier of the group. """
     title: str
     """ title of the group. """

@@ -13,10 +13,10 @@ T = TypeVar("T", bound="AtsMessage")
 
 @_attrs_define
 class AtsMessage:
-    id: int
+    id: str
     content: str
-    ats_conversation_id: int
-    sent_by_id: int
+    ats_conversation_id: str
+    sent_by_id: str
     sent_by_type: str
     created_at: str
     attachments: list[Any]

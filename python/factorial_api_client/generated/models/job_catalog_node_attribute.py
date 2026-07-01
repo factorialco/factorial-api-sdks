@@ -28,7 +28,7 @@ T = TypeVar("T", bound="JobCatalogNodeAttribute")
 
 @_attrs_define
 class JobCatalogNodeAttribute:
-    id: int
+    id: str
     """ Unique identifier of the node attribute """
     type_: str
     """ Type of the attribute (e.g., competency, salary_range, working_conditions, it_management_asset) """

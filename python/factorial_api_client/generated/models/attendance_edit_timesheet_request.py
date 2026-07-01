@@ -19,11 +19,11 @@ T = TypeVar("T", bound="AttendanceEditTimesheetRequest")
 
 @_attrs_define
 class AttendanceEditTimesheetRequest:
-    id: int
+    id: str
     """ Unique identifier for the edit timesheet request """
     request_type: AttendanceEditTimesheetRequestRequestType
     """ Type of the request """
-    employee_id: int
+    employee_id: str
     """ Id of the shift's employee """
     approved: bool | Unset = UNSET
     """ Status of the edit timesheet request """
@@ -37,9 +37,9 @@ class AttendanceEditTimesheetRequest:
     """ Location of the shift """
     reason: str | Unset = UNSET
     """ Approve or reject reason """
-    attendance_shift_id: int | Unset = UNSET
+    attendance_shift_id: str | Unset = UNSET
     """ Id of the shift for the request """
-    time_settings_break_configuration_id: int | Unset = UNSET
+    time_settings_break_configuration_id: str | Unset = UNSET
     """ Id of the type of break for the request """
     observations: str | Unset = UNSET
     """ Additional observations for the shift """

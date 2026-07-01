@@ -13,11 +13,11 @@ T = TypeVar("T", bound="PerformanceReviewProcessTarget")
 class PerformanceReviewProcessTarget:
     id: str
     """ Review process target ID (composed with performance_review_process_id and access_id) """
-    access_id: int
+    access_id: str
     """ Participant access ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
-    materialized_process_target_id: int
+    materialized_process_target_id: str
     """ Materialized review process target ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

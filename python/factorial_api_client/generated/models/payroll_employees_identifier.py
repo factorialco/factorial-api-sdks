@@ -14,9 +14,9 @@ T = TypeVar("T", bound="PayrollEmployeesIdentifier")
 
 @_attrs_define
 class PayrollEmployeesIdentifier:
-    id: int
+    id: str
     """ payroll employee identifier """
-    employee_id: int
+    employee_id: str
     """ identifier of the employee """
     country: PayrollEmployeesIdentifierCountry
     """ country code of the employee pt | it | de """

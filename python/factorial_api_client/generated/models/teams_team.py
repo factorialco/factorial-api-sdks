@@ -13,13 +13,13 @@ T = TypeVar("T", bound="TeamsTeam")
 
 @_attrs_define
 class TeamsTeam:
-    id: int
+    id: str
     name: str
-    company_id: int
+    company_id: str
     description: str | Unset = UNSET
     avatar: str | Unset = UNSET
-    employee_ids: list[int] | Unset = UNSET
-    lead_ids: list[int] | Unset = UNSET
+    employee_ids: list[str] | Unset = UNSET
+    lead_ids: list[str] | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,11 +33,11 @@ class TeamsTeam:
 
         avatar = self.avatar
 
-        employee_ids: list[int] | Unset = UNSET
+        employee_ids: list[str] | Unset = UNSET
         if not isinstance(self.employee_ids, Unset):
             employee_ids = self.employee_ids
 
-        lead_ids: list[int] | Unset = UNSET
+        lead_ids: list[str] | Unset = UNSET
         if not isinstance(self.lead_ids, Unset):
             lead_ids = self.lead_ids
 
@@ -74,9 +74,9 @@ class TeamsTeam:
 
         avatar = d.pop("avatar", UNSET)
 
-        employee_ids = cast(list[int], d.pop("employee_ids", UNSET))
+        employee_ids = cast(list[str], d.pop("employee_ids", UNSET))
 
-        lead_ids = cast(list[int], d.pop("lead_ids", UNSET))
+        lead_ids = cast(list[str], d.pop("lead_ids", UNSET))
 
         teams_team = cls(
             id=id,

@@ -18,7 +18,7 @@ T = TypeVar("T", bound="FinanceContact")
 
 @_attrs_define
 class FinanceContact:
-    id: int
+    id: str
     """ Unique identifier for the Contact. """
     name: str
     """ The commercial name of the Contact. """

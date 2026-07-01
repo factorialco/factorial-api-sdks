@@ -11,10 +11,10 @@ T = TypeVar("T", bound="MarketplaceInstallation")
 
 @_attrs_define
 class MarketplaceInstallation:
-    id: int
+    id: str
     integration_uuid: str
     """ UUID of the integration """
-    company_id: int
+    company_id: str
     """ Identifier of the company """
     created_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

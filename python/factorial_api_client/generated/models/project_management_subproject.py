@@ -16,9 +16,9 @@ T = TypeVar("T", bound="ProjectManagementSubproject")
 class ProjectManagementSubproject:
     name: str
     """ The name of the subproject """
-    project_id: int
+    project_id: str
     """ The id of the project """
-    id: int | Unset = UNSET
+    id: str | Unset = UNSET
     """ The id of the subproject """
     inputed_minutes: int | Unset = UNSET
     """ The total minutes tracked in the subproject (if requested) """

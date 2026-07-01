@@ -14,7 +14,7 @@ T = TypeVar("T", bound="AtsCandidate")
 
 @_attrs_define
 class AtsCandidate:
-    id: int
+    id: str
     """ identifier of the candidate. """
     first_name: str
     """ name of the candidate. """
@@ -28,7 +28,7 @@ class AtsCandidate:
     """ creation date of the candidate. """
     updated_at: str
     """ last update of the candidate. """
-    company_id: int | Unset = UNSET
+    company_id: str | Unset = UNSET
     """ company identifier. """
     email: str | Unset = UNSET
     """ email of the candidate. """
@@ -38,7 +38,7 @@ class AtsCandidate:
     """ date when the consent was given. """
     inactive_since: str | Unset = UNSET
     """ date when the candidate became inactive. """
-    ats_job_posting_ids: list[int] | Unset = UNSET
+    ats_job_posting_ids: list[str] | Unset = UNSET
     """ list of job posting identifiers. """
     personal_url: str | Unset = UNSET
     """ personal web resource from the candidate. """
@@ -49,7 +49,7 @@ class AtsCandidate:
     medium: str | Unset = UNSET
     """ specifies additional details related to the source of the candidate, such as the referrer name for example
     if the source is referred. """
-    source_id: int | Unset = UNSET
+    source_id: str | Unset = UNSET
     """ candidate source identifier, refers to ats/candidate_sources endpoint. """
     gender: AtsCandidateGender | Unset = UNSET
     """ gender of the candidate. """
@@ -82,7 +82,7 @@ class AtsCandidate:
 
         inactive_since = self.inactive_since
 
-        ats_job_posting_ids: list[int] | Unset = UNSET
+        ats_job_posting_ids: list[str] | Unset = UNSET
         if not isinstance(self.ats_job_posting_ids, Unset):
             ats_job_posting_ids = self.ats_job_posting_ids
 
@@ -171,7 +171,7 @@ class AtsCandidate:
 
         inactive_since = d.pop("inactive_since", UNSET)
 
-        ats_job_posting_ids = cast(list[int], d.pop("ats_job_posting_ids", UNSET))
+        ats_job_posting_ids = cast(list[str], d.pop("ats_job_posting_ids", UNSET))
 
         personal_url = d.pop("personal_url", UNSET)
 

@@ -11,9 +11,12 @@ T = TypeVar("T", bound="ProjectManagementFlexibleTimeRecordComment")
 
 @_attrs_define
 class ProjectManagementFlexibleTimeRecordComment:
-    id: int
+    id: str
+    """ The unique identifier of the flexible time record comment. """
     content: str
-    flexible_time_record_id: int
+    """ The text content of the comment. """
+    flexible_time_record_id: str
+    """ The ID of the flexible time record this comment belongs to. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

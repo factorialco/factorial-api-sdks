@@ -13,12 +13,13 @@ T = TypeVar("T", bound="CompaniesLegalEntity")
 
 @_attrs_define
 class CompaniesLegalEntity:
-    id: int
+    id: str
     """ identifier of the legal entity """
-    company_id: int
+    company_id: str
     """ company identifier """
     country: str
-    """ country code of the legal entity """
+    """ Country code of the jurisdiction the legal entity is registered in (lowercase two-letter code, e.g. "es").
+    """
     legal_name: str
     """ Legal name of the legal entity """
     currency: str

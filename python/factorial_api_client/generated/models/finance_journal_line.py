@@ -13,7 +13,7 @@ T = TypeVar("T", bound="FinanceJournalLine")
 
 @_attrs_define
 class FinanceJournalLine:
-    id: int
+    id: str
     """ Factorial id """
     number: int
     """ Sequential number assigned to the line """
@@ -21,9 +21,9 @@ class FinanceJournalLine:
     """ The debit amount in cents """
     credit_amount_cents: int
     """ The credit amount in cents """
-    journal_entry_id: int
+    journal_entry_id: str
     """ ID of the parent journal entry """
-    account_id: int
+    account_id: str
     """ ID of the associated account """
     updated_at: str
     """ Timestamp when the journal line was last updated. """

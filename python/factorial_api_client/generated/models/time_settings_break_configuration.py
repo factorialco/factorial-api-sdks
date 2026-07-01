@@ -11,7 +11,7 @@ T = TypeVar("T", bound="TimeSettingsBreakConfiguration")
 
 @_attrs_define
 class TimeSettingsBreakConfiguration:
-    id: int
+    id: str
     name: str
     paid: bool
     archived: bool

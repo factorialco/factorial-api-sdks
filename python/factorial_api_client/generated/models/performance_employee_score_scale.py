@@ -11,7 +11,7 @@ T = TypeVar("T", bound="PerformanceEmployeeScoreScale")
 
 @_attrs_define
 class PerformanceEmployeeScoreScale:
-    id: int
+    id: str
     """ Employee score scale ID """
     scale: list[Any]
     """ Scale to be used when scoring the employee performance """

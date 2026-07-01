@@ -15,13 +15,13 @@ T = TypeVar("T", bound="PayrollIntegrationsBaseCode")
 
 @_attrs_define
 class PayrollIntegrationsBaseCode:
-    id: int
+    id: str
     """ Code identifier """
-    company_id: int
+    company_id: str
     """ Company ID where the code belongs to """
     code: str
     """ Code value """
-    codeable_id: int
+    codeable_id: str
     """ Related object ID. Used together with codeable_type """
     codeable_type: str
     """ Related object type. Used together with codeable_id """

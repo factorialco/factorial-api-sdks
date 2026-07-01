@@ -16,36 +16,36 @@ T = TypeVar("T", bound="ExpensesExpensable")
 
 @_attrs_define
 class ExpensesExpensable:
-    id: int
+    id: str
     """ Unique identifier for the expensable """
     type_: ExpensesExpensableType
     """ Type of the expensable. Can be either "expense" or "mileage" or "perdiem" """
-    company_id: int
+    company_id: str
     """ The ID of the company that owns the expensable """
-    employee_id: int
+    employee_id: str
     """ The ID of the employee that owns the expensable """
     created_at: str
     """ The date and time when the expensable was created """
     currency: str
     """ The currency code in ISO 4217 format """
     status: ExpensesExpensableStatus
-    """ The status of the expensable. Can be pending, approved, paid, archived, in_review, rejected, reversed,
-    draft, or in_payroll """
+    """ The lifecycle status of the expensable in the review/payment flow """
     status_updated_at: str
     """ The optional date and time when the status was last updated """
     updated_at: str
     """ The date and time when the expensable was last updated """
-    cost_center_ids: list[int]
-    """ The ids of the cost centers """
-    group_id: int | Unset = UNSET
-    """ The optional ID of the group that the expensable belongs to """
-    legal_entity_id: int | Unset = UNSET
+    cost_center_ids: list[str]
+    """ The IDs of the cost centers the expensable's cost is allocated to """
+    group_id: str | Unset = UNSET
+    """ The ID of the expense report (group of expensables submitted together) this expensable was submitted in, if
+    any """
+    legal_entity_id: str | Unset = UNSET
     """ The optional ID of the legal entity that the expensable belongs to """
     amount: int | Unset = UNSET
     """ The optional amount in cents """
     description: str | Unset = UNSET
     """ The optional description of the expensable """
-    reporter_id: int | Unset = UNSET
+    reporter_id: str | Unset = UNSET
     """ The optional ID of the employee that reported the expensable """
     effective_on: str | Unset = UNSET
     """ The optional date and time when the expensable was effective """
@@ -61,16 +61,16 @@ class ExpensesExpensable:
     """ The optional reimbursement method """
     internal_reference: str | Unset = UNSET
     """ The optional internal reference of the expensable """
-    expense_id: int | Unset = UNSET
-    """ The optional ID of the expense that the expensable belongs to """
-    mileage_id: int | Unset = UNSET
-    """ The optional ID of the mileage that the expensable belongs to """
-    per_diem_id: int | Unset = UNSET
-    """ The optional ID of the per_diem that the expensable belongs to """
-    budget_id: int | Unset = UNSET
-    """ The id of the budget """
-    project_id: int | Unset = UNSET
-    """ The id of the project """
+    expense_id: str | Unset = UNSET
+    """ The ID of the receipt-backed expense detail record; set only when `type` is "expense" """
+    mileage_id: str | Unset = UNSET
+    """ The ID of the mileage claim detail record; set only when `type` is "mileage" """
+    per_diem_id: str | Unset = UNSET
+    """ The ID of the per-diem allowance detail record; set only when `type` is "perdiem" """
+    budget_id: str | Unset = UNSET
+    """ The ID of the budget this expensable draws from, when one is linked """
+    project_id: str | Unset = UNSET
+    """ The ID of the project this expensable is charged to, when one is linked """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -204,7 +204,7 @@ class ExpensesExpensable:
 
         updated_at = d.pop("updated_at")
 
-        cost_center_ids = cast(list[int], d.pop("cost_center_ids"))
+        cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 
         group_id = d.pop("group_id", UNSET)
 

@@ -17,13 +17,13 @@ class TimePlanningPlanningVersion:
     """ Planning version start date """
     planning_tool: str
     """ Type of planning tool (shift_management, work_schedules, contract_hours) """
-    employee_id: int
+    employee_id: str
     """ Employee identifier """
-    id: int | Unset = UNSET
+    id: str | Unset = UNSET
     """ Planning version identifier """
     number_of_rest_days_in_cents: int | Unset = UNSET
     """ Amount of rest days per week if applicable (in cents) """
-    work_schedule_schedule_id: int | Unset = UNSET
+    work_schedule_schedule_id: str | Unset = UNSET
     """ Work schedule identifier to include if applicable """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

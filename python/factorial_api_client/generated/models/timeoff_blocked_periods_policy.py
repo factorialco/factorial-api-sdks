@@ -13,25 +13,25 @@ T = TypeVar("T", bound="TimeoffBlockedPeriodsPolicy")
 
 @_attrs_define
 class TimeoffBlockedPeriodsPolicy:
-    id: int
+    id: str
     """ Unique identifier of the blocked period """
-    company_id: int
+    company_id: str
     """ Company id of the blocked period """
     name: str
     """ Name of the blocked period. """
-    leave_type_ids: list[int]
+    leave_type_ids: list[str]
     """ Leave types for which absence request has been blocked """
     time_periods: list[Any]
     """ The tenure periods associated with the allowance. """
     strategy: str
     """ Type of access group """
-    members: list[int]
+    members: list[str]
     """ Employees whose timeoff will be affected """
-    location_ids: list[int] | Unset = UNSET
+    location_ids: list[str] | Unset = UNSET
     """ List of locations workplace identifiers where the employees are located """
-    team_ids: list[int] | Unset = UNSET
+    team_ids: list[str] | Unset = UNSET
     """ List of team identifiers which the selected employees belong to """
-    legal_entity_ids: list[int] | Unset = UNSET
+    legal_entity_ids: list[str] | Unset = UNSET
     """ List of legal entity identifiers which the selected employees belong to """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -50,15 +50,15 @@ class TimeoffBlockedPeriodsPolicy:
 
         members = self.members
 
-        location_ids: list[int] | Unset = UNSET
+        location_ids: list[str] | Unset = UNSET
         if not isinstance(self.location_ids, Unset):
             location_ids = self.location_ids
 
-        team_ids: list[int] | Unset = UNSET
+        team_ids: list[str] | Unset = UNSET
         if not isinstance(self.team_ids, Unset):
             team_ids = self.team_ids
 
-        legal_entity_ids: list[int] | Unset = UNSET
+        legal_entity_ids: list[str] | Unset = UNSET
         if not isinstance(self.legal_entity_ids, Unset):
             legal_entity_ids = self.legal_entity_ids
 
@@ -93,19 +93,19 @@ class TimeoffBlockedPeriodsPolicy:
 
         name = d.pop("name")
 
-        leave_type_ids = cast(list[int], d.pop("leave_type_ids"))
+        leave_type_ids = cast(list[str], d.pop("leave_type_ids"))
 
         time_periods = cast(list[Any], d.pop("time_periods"))
 
         strategy = d.pop("strategy")
 
-        members = cast(list[int], d.pop("members"))
+        members = cast(list[str], d.pop("members"))
 
-        location_ids = cast(list[int], d.pop("location_ids", UNSET))
+        location_ids = cast(list[str], d.pop("location_ids", UNSET))
 
-        team_ids = cast(list[int], d.pop("team_ids", UNSET))
+        team_ids = cast(list[str], d.pop("team_ids", UNSET))
 
-        legal_entity_ids = cast(list[int], d.pop("legal_entity_ids", UNSET))
+        legal_entity_ids = cast(list[str], d.pop("legal_entity_ids", UNSET))
 
         timeoff_blocked_periods_policy = cls(
             id=id,

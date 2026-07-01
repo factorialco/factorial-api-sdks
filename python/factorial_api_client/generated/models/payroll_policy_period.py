@@ -13,13 +13,13 @@ T = TypeVar("T", bound="PayrollPolicyPeriod")
 
 @_attrs_define
 class PayrollPolicyPeriod:
-    id: int
+    id: str
     """ Policy period id """
     starts_on: str
     """ The start date of the policy period """
-    policy_id: int
+    policy_id: str
     """ The id of the policy associated with the policy period """
-    company_id: int
+    company_id: str
     """ The id of the company """
     ends_on: str
     """ The start date of the policy period """

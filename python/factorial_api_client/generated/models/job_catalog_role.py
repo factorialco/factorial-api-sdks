@@ -13,21 +13,21 @@ T = TypeVar("T", bound="JobCatalogRole")
 
 @_attrs_define
 class JobCatalogRole:
-    id: int
+    id: str
     """ identifier for the job catalog role. """
-    company_id: int
+    company_id: str
     """ Identifier for the company. """
     name: str
     """ Role name. """
-    legal_entities_ids: list[int]
+    legal_entities_ids: list[str]
     """ List of legal entities. """
     archived: bool
     """ Shows if the role is archived. """
     description: str | Unset = UNSET
     """ Role description. """
-    supervisors_ids: list[int] | Unset = UNSET
+    supervisors_ids: list[str] | Unset = UNSET
     """ List of supervisors. """
-    competencies_ids: list[int] | Unset = UNSET
+    competencies_ids: list[str] | Unset = UNSET
     """ List of competencies. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -44,11 +44,11 @@ class JobCatalogRole:
 
         description = self.description
 
-        supervisors_ids: list[int] | Unset = UNSET
+        supervisors_ids: list[str] | Unset = UNSET
         if not isinstance(self.supervisors_ids, Unset):
             supervisors_ids = self.supervisors_ids
 
-        competencies_ids: list[int] | Unset = UNSET
+        competencies_ids: list[str] | Unset = UNSET
         if not isinstance(self.competencies_ids, Unset):
             competencies_ids = self.competencies_ids
 
@@ -81,15 +81,15 @@ class JobCatalogRole:
 
         name = d.pop("name")
 
-        legal_entities_ids = cast(list[int], d.pop("legal_entities_ids"))
+        legal_entities_ids = cast(list[str], d.pop("legal_entities_ids"))
 
         archived = d.pop("archived")
 
         description = d.pop("description", UNSET)
 
-        supervisors_ids = cast(list[int], d.pop("supervisors_ids", UNSET))
+        supervisors_ids = cast(list[str], d.pop("supervisors_ids", UNSET))
 
-        competencies_ids = cast(list[int], d.pop("competencies_ids", UNSET))
+        competencies_ids = cast(list[str], d.pop("competencies_ids", UNSET))
 
         job_catalog_role = cls(
             id=id,

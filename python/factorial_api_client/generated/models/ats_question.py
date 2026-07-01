@@ -14,9 +14,9 @@ T = TypeVar("T", bound="AtsQuestion")
 
 @_attrs_define
 class AtsQuestion:
-    id: int
+    id: str
     """ question identifier """
-    ats_job_posting_id: int
+    ats_job_posting_id: str
     """ job posting identifier. """
     label: str
     """ text of the question. """

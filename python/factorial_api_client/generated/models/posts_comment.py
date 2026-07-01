@@ -11,11 +11,11 @@ T = TypeVar("T", bound="PostsComment")
 
 @_attrs_define
 class PostsComment:
-    id: int
+    id: str
     """ identifier of the comment """
-    post_id: int
+    post_id: str
     """ identifier of the post """
-    author_id: int
+    author_id: str
     """ author identifier refers to the employee access, you can get the employee from the employee endpoint """
     text: str
     """ text of the comment """

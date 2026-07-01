@@ -15,8 +15,8 @@ T = TypeVar("T", bound="AttendanceEstimatedTime")
 @_attrs_define
 class AttendanceEstimatedTime:
     date: str
-    company_id: int
-    employee_id: int
+    company_id: str
+    employee_id: str
     expected_minutes: float
     """ Amount of minutes the employee has to work without taking into consideration time off leaves and bank
     holidays. """

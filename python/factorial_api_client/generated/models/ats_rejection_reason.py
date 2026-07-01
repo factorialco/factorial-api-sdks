@@ -13,9 +13,9 @@ T = TypeVar("T", bound="AtsRejectionReason")
 
 @_attrs_define
 class AtsRejectionReason:
-    id: int
+    id: str
     """ Rejection reason identifier """
-    company_id: int
+    company_id: str
     """ Company identifier of the rejection reason """
     decision_maker: AtsRejectionReasonDecisionMaker
     """ Decision maker of the rejection reason """

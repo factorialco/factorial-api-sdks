@@ -16,22 +16,22 @@ T = TypeVar("T", bound="ApprovalsMaterializedApprovalsFlow")
 
 @_attrs_define
 class ApprovalsMaterializedApprovalsFlow:
-    id: int
-    author_id: int
-    owner_id: int
+    id: str
+    author_id: str
+    owner_id: str
     resource_type: str
-    resource_id: int
+    resource_id: str
     resource_url: str
     status: ApprovalsMaterializedApprovalsFlowStatus
     expires_at: str
-    approval_flow_id: int
+    approval_flow_id: str
     approvers: list[Any]
     email_detail_blocks: list[str]
-    author_employee_id: int | Unset = UNSET
-    owner_employee_id: int | Unset = UNSET
+    author_employee_id: str | Unset = UNSET
+    owner_employee_id: str | Unset = UNSET
     final_decision_at: str | Unset = UNSET
-    override_approver_id: int | Unset = UNSET
-    override_approver_employee_id: int | Unset = UNSET
+    override_approver_id: str | Unset = UNSET
+    override_approver_employee_id: str | Unset = UNSET
     rules_decision: str | Unset = UNSET
     auto_approval_description: str | Unset = UNSET
     action_type: str | Unset = UNSET

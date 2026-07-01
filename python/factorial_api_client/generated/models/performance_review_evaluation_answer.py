@@ -25,9 +25,9 @@ T = TypeVar("T", bound="PerformanceReviewEvaluationAnswer")
 
 @_attrs_define
 class PerformanceReviewEvaluationAnswer:
-    id: int
+    id: str
     """ Review evaluation ID """
-    performance_review_evaluation_id: int
+    performance_review_evaluation_id: str
     """ Review evaluation ID """
     answered_questionnaire_with_sections: (
         PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSections

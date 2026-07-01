@@ -16,23 +16,23 @@ class TimeoffAllowanceStatsNew:
     id: str
     """ A virtual ID for the allowance stat, composed of employee_id/allowance_id/reference_date. Cannot be used to
     fetch this resource. """
-    allowance_id: int
+    allowance_id: str
     """ ID of the allowance these stats belong to. """
-    employee_id: int
+    employee_id: str
     """ ID of the employee these stats belong to. """
     year: int
     """ Calendar year used to scope cycle calculations. """
-    cycles: str
-    """ Array with cycle details (legacy hash structure, may change to a typed entity in the future). """
-    carry_overs: list[str]
-    """ Carry over entries between cycles (serialized array of CycleCarryOver objects). Returned as string in
-    GraphQL. """
+    cycles: list[Any]
+    """ Array of cycle objects describing each accrual period for the allowance. """
+    cycle_carry_overs: list[Any]
+    """ Carry over entries between cycles, typed as an array of CycleCarryOver value objects. """
     accumulated_carry_over: str
     """ Total carried over units accumulated from previous cycles. """
     available_days: str
-    """ Remaining days available (after usage and considering carry overs). """
+    """ Remaining usable allowance units at the reference date, after usage, carry-over, and incidence adjustments.
+    """
     total_accrued_units: str
-    """ Total units accrued up to the reference date. """
+    """ Total accrued/generated allowance units up to the reference date. """
     total: str
     """ Total entitlement for the cycle used by the Total row in counters (accrued + carry over + incidences, with
     backend cap/rounding rules applied before incidences). """
@@ -45,7 +45,8 @@ class TimeoffAllowanceStatsNew:
     """ Sum of incidence units scoped to non-accrued target balances for the current cycle, filtered by cycle
     coverage rules. """
     policy_allowance: str
-    """ Base allowance units defined by the policy (before proration and adjustments). """
+    """ Base policy entitlement for the cycle in allowance units (days or hours depending on allowance setup),
+    before proration and adjustments. """
     prorated_allowance_days: str
     """ Allowance days after proration based on employee tenure or configuration. """
     used_carry_over: str
@@ -73,7 +74,7 @@ class TimeoffAllowanceStatsNew:
 
         cycles = self.cycles
 
-        carry_overs = self.carry_overs
+        cycle_carry_overs = self.cycle_carry_overs
 
         accumulated_carry_over = self.accumulated_carry_over
 
@@ -114,7 +115,7 @@ class TimeoffAllowanceStatsNew:
                 "employee_id": employee_id,
                 "year": year,
                 "cycles": cycles,
-                "carry_overs": carry_overs,
+                "cycle_carry_overs": cycle_carry_overs,
                 "accumulated_carry_over": accumulated_carry_over,
                 "available_days": available_days,
                 "total_accrued_units": total_accrued_units,
@@ -148,9 +149,9 @@ class TimeoffAllowanceStatsNew:
 
         year = d.pop("year")
 
-        cycles = d.pop("cycles")
+        cycles = cast(list[Any], d.pop("cycles"))
 
-        carry_overs = cast(list[str], d.pop("carry_overs"))
+        cycle_carry_overs = cast(list[Any], d.pop("cycle_carry_overs"))
 
         accumulated_carry_over = d.pop("accumulated_carry_over")
 
@@ -188,7 +189,7 @@ class TimeoffAllowanceStatsNew:
             employee_id=employee_id,
             year=year,
             cycles=cycles,
-            carry_overs=carry_overs,
+            cycle_carry_overs=cycle_carry_overs,
             accumulated_carry_over=accumulated_carry_over,
             available_days=available_days,
             total_accrued_units=total_accrued_units,

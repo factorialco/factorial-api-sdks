@@ -14,13 +14,13 @@ T = TypeVar("T", bound="TrainingsTrainingMembership")
 
 @_attrs_define
 class TrainingsTrainingMembership:
-    id: int
+    id: str
     """ Unique identifier for the training membership. """
-    access_id: int
+    access_id: str
     """ Access_id associated to the employee, refers to employees/employees endpoint. """
-    employee_id: int
+    employee_id: str
     """ Employee_id associated to the employee, refers to employees/employees endpoint. """
-    training_id: int
+    training_id: str
     """ This field is used to filter those trainings memberships that belongs to this training. """
     status: TrainingsTrainingMembershipStatus
     """ This field is used to filter those trainings memberships whose attendance status is the given. """

@@ -13,21 +13,21 @@ T = TypeVar("T", bound="AtsFeedback")
 
 @_attrs_define
 class AtsFeedback:
-    id: int
+    id: str
     """ the ID of the feedback entry. """
     created_at: str
     """ the date and time when the feedback entry was created. """
-    ats_candidate_id: int
+    ats_candidate_id: str
     """ the ID of the candidate to whom the feedback is associated. """
     rating: int | Unset = UNSET
     """ the overall rating from 1 to 5 for the candidate's application. """
     description: str | Unset = UNSET
     """ the description of the feedback provided. """
-    ats_application_id: int | Unset = UNSET
+    ats_application_id: str | Unset = UNSET
     """ the ID of the application related to the feedback. """
-    ats_application_phase_id: int | Unset = UNSET
+    ats_application_phase_id: str | Unset = UNSET
     """ the ID of the phase within the application related to the feedback. """
-    ats_evaluation_forms_id: int | Unset = UNSET
+    ats_evaluation_forms_id: str | Unset = UNSET
     """ the ID of the evaluation form to which the feedback belongs if the evaluation forms feature is active. """
     evaluation_form_answers: list[Any] | Unset = UNSET
     """ the answers from the evaluation form, if this feedback is related to an evaluation form. """

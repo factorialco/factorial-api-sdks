@@ -17,7 +17,7 @@ T = TypeVar("T", bound="PerformanceReviewEvaluation")
 
 @_attrs_define
 class PerformanceReviewEvaluation:
-    id: int
+    id: str
     """ Evaluation ID """
     evaluation_type: PerformanceReviewEvaluationEvaluationType
     """ Evaluation type """
@@ -26,11 +26,11 @@ class PerformanceReviewEvaluation:
     status: PerformanceReviewEvaluationStatus
     """ Evaluation status """
     review_process_target_id: str
-    performance_review_process_id: int | Unset = UNSET
+    performance_review_process_id: str | Unset = UNSET
     """ Review process ID """
-    target_access_id: int | Unset = UNSET
+    target_access_id: str | Unset = UNSET
     """ Participant access ID """
-    reviewer_access_id: int | Unset = UNSET
+    reviewer_access_id: str | Unset = UNSET
     """ Reviewer access ID """
     published_at: str | Unset = UNSET
     """ Date when the evaluation was published """

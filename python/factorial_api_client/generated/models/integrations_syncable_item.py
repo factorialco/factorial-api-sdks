@@ -17,7 +17,7 @@ T = TypeVar("T", bound="IntegrationsSyncableItem")
 
 @_attrs_define
 class IntegrationsSyncableItem:
-    syncable_sync_run_id: int
+    syncable_sync_run_id: str
     """ identifier of a syncable item within the sync run. Refers to the integrations/syncable_sync_run resource """
     sync_payload: IntegrationsSyncableItemSyncPayload
     """ data of the item to be synced """

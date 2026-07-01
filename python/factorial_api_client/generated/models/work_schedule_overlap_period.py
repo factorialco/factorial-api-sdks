@@ -11,9 +11,9 @@ T = TypeVar("T", bound="WorkScheduleOverlapPeriod")
 
 @_attrs_define
 class WorkScheduleOverlapPeriod:
-    id: int
+    id: str
     default: bool
-    schedule_id: int
+    schedule_id: str
     start_month: int
     start_day: int
     end_month: int

@@ -13,11 +13,11 @@ T = TypeVar("T", bound="ProjectManagementProjectWorker")
 
 @_attrs_define
 class ProjectManagementProjectWorker:
-    id: int
+    id: str
     """ id of the project worker. """
-    project_id: int
+    project_id: str
     """ id of the project. """
-    employee_id: int
+    employee_id: str
     """ id of the employee. """
     assigned: bool
     """ true if the employee is assigned to the project, false otherwise. """

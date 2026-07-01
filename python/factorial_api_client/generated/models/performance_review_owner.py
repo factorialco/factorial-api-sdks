@@ -11,11 +11,11 @@ T = TypeVar("T", bound="PerformanceReviewOwner")
 
 @_attrs_define
 class PerformanceReviewOwner:
-    id: int
+    id: str
     """ Review owner ID """
-    access_id: int
+    access_id: str
     """ Review owner access ID """
-    performance_review_process_id: int
+    performance_review_process_id: str
     """ Review process ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

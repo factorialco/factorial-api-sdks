@@ -14,9 +14,9 @@ T = TypeVar("T", bound="AttendanceWorkedTime")
 
 @_attrs_define
 class AttendanceWorkedTime:
-    employee_id: int
+    employee_id: str
     date: str
-    company_id: int
+    company_id: str
     tracked_minutes: int
     multiplied_minutes: int
     pending_minutes: int
