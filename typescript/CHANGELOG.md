@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v1.3.0...typescript-v2.0.0) (2026-07-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* regenerate SDKs for API 2026-07-01 ([#18](https://github.com/factorialco/factorial-api-sdks/issues/18))
+
+### Features
+
+* regenerate SDKs for API 2026-07-01 ([#18](https://github.com/factorialco/factorial-api-sdks/issues/18)) ([8cf58e1](https://github.com/factorialco/factorial-api-sdks/commit/8cf58e1e8be38b3a2686e8f0b273672e5001267b))
+
 ## [1.3.0](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v1.2.0...typescript-v1.3.0) (2026-06-23)
 
 
