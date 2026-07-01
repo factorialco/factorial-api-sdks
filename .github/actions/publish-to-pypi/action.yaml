@@ -39,12 +39,18 @@ runs:
       run: |
         PACKAGE=$(grep -E '^name = ' pyproject.toml | head -1 | sed -E 's/^name = "(.*)"/\1/')
         VERSION=$(grep -E '^version = ' pyproject.toml | head -1 | sed -E 's/^version = "(.*)"/\1/')
-        CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://pypi.org/pypi/$PACKAGE/$VERSION/json")
-        if [ "$CODE" = "200" ]; then
+        # Use the simple index (what pip reads) as the existence signal, NOT the
+        # per-version JSON endpoint — that endpoint lags behind upload and can
+        # negative-cache a 404, which would wrongly trigger a duplicate re-upload
+        # (and a hard PyPI rejection) on a re-run. Match the exact sdist filename
+        # to avoid substring false-positives across versions.
+        NORM=$(echo "$PACKAGE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[._-]+/-/g')
+        FNAME_BASE=$(echo "$NORM" | tr '-' '_')
+        if curl -fsS "https://pypi.org/simple/$NORM/" | grep -qF "${FNAME_BASE}-${VERSION}.tar.gz"; then
           echo "✅ $PACKAGE $VERSION is already on PyPI — skipping publish."
           echo "skip=true" >> "$GITHUB_OUTPUT"
         else
-          echo "$PACKAGE $VERSION is not yet on PyPI (HTTP $CODE) — proceeding."
+          echo "$PACKAGE $VERSION is not yet on PyPI — proceeding."
           echo "skip=false" >> "$GITHUB_OUTPUT"
         fi
 
