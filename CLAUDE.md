@@ -25,7 +25,14 @@ Versioning, tagging, and publishing are **fully automated by release-please**.
 **Never** hand-edit versions (`typescript/package.json`, `python/pyproject.toml`,
 `.release-please-manifest.json`), create git tags, or run `npm publish` /
 `uv publish` / the `release.ts` / `release.py` publish steps yourself. Full detail
-in `RELEASING.md`. The rules that matter when opening a PR:
+in `RELEASING.md`.
+
+**Regenerating the SDKs for a new dated API version?** Follow the `release-sdk`
+skill (`.agents/skills/release-sdk/SKILL.md`) — it's the step-by-step runbook
+(fetch spec → regenerate → revert version bumps → update `version_map.json` +
+READMEs → open the `feat!:` PR).
+
+The rules that matter when opening a PR:
 
 - **PRs are squash-merged, so the PR *title* is the commit release-please parses —
   it MUST be a [Conventional Commit](https://www.conventionalcommits.org/).**

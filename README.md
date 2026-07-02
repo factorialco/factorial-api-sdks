@@ -75,6 +75,9 @@ When opening a PR, two things decide the release:
 The `release.ts` / `release.py` scripts remain for **regenerating** the SDK from a
 new OpenAPI spec; see the per-SDK READMEs: [TypeScript](typescript/README.md) · [Python](python/README.md)
 
+Regenerating for a new dated API version is a repeatable runbook, captured as the
+`release-sdk` agent skill (`.agents/skills/release-sdk/`) for coding agents to follow.
+
 ## Development
 
 ### TypeScript
