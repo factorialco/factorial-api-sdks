@@ -1,7 +1,4 @@
-.gitignore
 .rspec
-.rubocop.yml
-Gemfile
 Rakefile
 docs/ApiPublicCredential.md
 docs/ApiPublicCredentialApi.md

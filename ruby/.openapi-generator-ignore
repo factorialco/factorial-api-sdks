@@ -30,3 +30,5 @@ lib/factorial_api/api.rb
 factorial_api.gemspec
 README.md
 .gitignore
+.rubocop.yml
+Gemfile

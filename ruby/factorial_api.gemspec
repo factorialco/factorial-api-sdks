@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'marcel', '~> 1.0'
 
   s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+  s.add_development_dependency 'rubocop', '~> 1.60'
 
   s.files = Dir.glob("lib/**/*.rb") + %w[README.md]
   s.executables   = []

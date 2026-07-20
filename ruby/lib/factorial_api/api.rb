@@ -11,14 +11,16 @@ module F
     end.freeze
 
     attr_reader :client
-
-    def initialize(api_key: ENV["FACTORIAL_API_KEY"], host: nil)
+    
+    def initialize(api_key: ENV["FACTORIAL_API_KEY"], token: ENV["FACTORIAL_TOKEN"], host: nil)
       config = Configuration.new
-      config.api_key["x-api-key"] = api_key
+      config.api_key["apikey"] = api_key
+      config.access_token = token if token
       config.host = host if host
       @client = ApiClient.new(config)
       @apis = {}
     end
+
 
     API_CLASSES.each do |method_name, const|
       define_method(method_name) do
