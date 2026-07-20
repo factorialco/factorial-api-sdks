@@ -1,0 +1,159 @@
+# F::EmployeeUpdatesAbsenceApi
+
+All URIs are relative to *https://api.factorialhr.com*
+
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**employee_updates_absences_get**](EmployeeUpdatesAbsenceApi.md#employee_updates_absences_get) | **GET** /api/2026-07-01/resources/employee_updates/absences | Reads all Absences |
+| [**employee_updates_absences_id_get**](EmployeeUpdatesAbsenceApi.md#employee_updates_absences_id_get) | **GET** /api/2026-07-01/resources/employee_updates/absences/{id} | Reads a single Absence |
+
+
+## employee_updates_absences_get
+
+> <EmployeeUpdatesAbsencesGet200Response> employee_updates_absences_get(opts)
+
+Reads all Absences
+
+This endpoint can be used to retrieve a list of absence `employee updates`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'factorial_api'
+# setup authorization
+F.configure do |config|
+  # Configure API key authorization: apikey
+  config.api_key['x-api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['x-api-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = F::EmployeeUpdatesAbsenceApi.new
+opts = {
+  ids: ['inner_example'] # Array<String> | filter by absence incidence ids.
+}
+
+begin
+  # Reads all Absences
+  result = api_instance.employee_updates_absences_get(opts)
+  p result
+rescue F::ApiError => e
+  puts "Error when calling EmployeeUpdatesAbsenceApi->employee_updates_absences_get: #{e}"
+end
+```
+
+#### Using the employee_updates_absences_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmployeeUpdatesAbsencesGet200Response>, Integer, Hash)> employee_updates_absences_get_with_http_info(opts)
+
+```ruby
+begin
+  # Reads all Absences
+  data, status_code, headers = api_instance.employee_updates_absences_get_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmployeeUpdatesAbsencesGet200Response>
+rescue F::ApiError => e
+  puts "Error when calling EmployeeUpdatesAbsenceApi->employee_updates_absences_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ids** | [**Array&lt;String&gt;**](String.md) | filter by absence incidence ids. | [optional] |
+
+### Return type
+
+[**EmployeeUpdatesAbsencesGet200Response**](EmployeeUpdatesAbsencesGet200Response.md)
+
+### Authorization
+
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## employee_updates_absences_id_get
+
+> <EmployeeUpdatesAbsence> employee_updates_absences_id_get(id)
+
+Reads a single Absence
+
+This endpoint can be used to retrieve a list of absence `employee updates`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'factorial_api'
+# setup authorization
+F.configure do |config|
+  # Configure API key authorization: apikey
+  config.api_key['x-api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['x-api-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = F::EmployeeUpdatesAbsenceApi.new
+id = '1' # String | filter by absence incidence ids.
+
+begin
+  # Reads a single Absence
+  result = api_instance.employee_updates_absences_id_get(id)
+  p result
+rescue F::ApiError => e
+  puts "Error when calling EmployeeUpdatesAbsenceApi->employee_updates_absences_id_get: #{e}"
+end
+```
+
+#### Using the employee_updates_absences_id_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmployeeUpdatesAbsence>, Integer, Hash)> employee_updates_absences_id_get_with_http_info(id)
+
+```ruby
+begin
+  # Reads a single Absence
+  data, status_code, headers = api_instance.employee_updates_absences_id_get_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmployeeUpdatesAbsence>
+rescue F::ApiError => e
+  puts "Error when calling EmployeeUpdatesAbsenceApi->employee_updates_absences_id_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | filter by absence incidence ids. |  |
+
+### Return type
+
+[**EmployeeUpdatesAbsence**](EmployeeUpdatesAbsence.md)
+
+### Authorization
+
+[apikey](../README.md#apikey), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
