@@ -16,20 +16,13 @@ from typing import Any, TypeVar
 
 T = TypeVar("T")
 
-# The pagination params are not in the OpenAPI spec but work at runtime.
-# We inject them via httpx's `params` extra kwarg mechanism.
-# The generated _get_kwargs puts them in the `params` dict — but since the
-# generated functions don't accept after_id/limit, we use a different approach:
-# callers pass a `fetcher` closure that accepts `after_id: str | None` and
-# returns the Response object from *_detailed().
-#
-# The fetcher is responsible for injecting after_id into the request.
-# Since the generated code doesn't support extra params natively, callers can
-# use sync_detailed(client=..., **other_params) and the extra pagination params
-# must be passed via the client's base URL or by monkey-patching.
-#
-# Simplest approach: callers pass a fetcher(after_id) that calls the generated
-# function. We extract meta from response.parsed.meta.
+# The pagination params (`after_id`, `limit`) are not in the OpenAPI spec but
+# work at runtime, so the generated functions don't accept them. Callers pass a
+# `fetcher(after_id)` closure that performs the request; the generated client
+# builds those closures with `fetch_page` / `fetch_page_async` below, which
+# replicate the generated `sync_detailed` / `asyncio_detailed` flow
+# (`_get_kwargs` → httpx request → `_build_response`) and inject the pagination
+# params into the query string.
 
 
 def _extract_page(response: Any) -> tuple[list[Any], str | None, bool]:
@@ -49,6 +42,60 @@ def _extract_page(response: Any) -> tuple[list[Any], str | None, bool]:
         end_cursor = None
     has_next = getattr(meta, "has_next_page", False)
     return data, end_cursor, has_next
+
+
+def fetch_page(
+    module: Any,
+    client: Any,
+    after_id: str | None = None,
+    limit: int | None = None,
+    **params: Any,
+) -> Any:
+    """
+    Call a generated list-endpoint module with pagination params injected.
+
+    ``after_id`` and ``limit`` are not in the OpenAPI spec, so the generated
+    ``sync_detailed`` functions do not accept them. This helper replicates
+    ``sync_detailed`` (``_get_kwargs`` → httpx request → ``_build_response``)
+    and adds the pagination params to the query string.
+
+    Args:
+        module: A generated endpoint module exposing ``_get_kwargs`` and
+                ``_build_response``.
+        client: The ``AuthenticatedClient``.
+        after_id: Opaque cursor (``meta.end_cursor`` of the previous page).
+        limit: Page size (the API caps it at 100).
+        **params: The endpoint's own query params, passed to ``_get_kwargs``.
+
+    Returns:
+        The ``Response`` object, as returned by ``sync_detailed``.
+    """
+    kwargs = module._get_kwargs(**params)
+    query = kwargs.setdefault("params", {})
+    if after_id is not None:
+        query["after_id"] = after_id
+    if limit is not None:
+        query["limit"] = limit
+    response = client.get_httpx_client().request(**kwargs)
+    return module._build_response(client=client, response=response)
+
+
+async def fetch_page_async(
+    module: Any,
+    client: Any,
+    after_id: str | None = None,
+    limit: int | None = None,
+    **params: Any,
+) -> Any:
+    """Async variant of :func:`fetch_page` (see its docstring)."""
+    kwargs = module._get_kwargs(**params)
+    query = kwargs.setdefault("params", {})
+    if after_id is not None:
+        query["after_id"] = after_id
+    if limit is not None:
+        query["limit"] = limit
+    response = await client.get_async_httpx_client().request(**kwargs)
+    return module._build_response(client=client, response=response)
 
 
 def paginate(
