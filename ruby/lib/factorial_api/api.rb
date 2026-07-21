@@ -2,6 +2,14 @@
 
 module F
   class Api
+    class Config < Configuration
+      def auth_settings
+        super.reject do |_name, setting|
+          setting[:value].nil? || setting[:value].strip == "Bearer"
+        end
+      end
+    end
+
     API_CLASSES = (F.constants.grep(/Api$/) - [:Api]).to_h do |const|
       method_name = const.to_s
                          .delete_suffix("Api")
@@ -13,8 +21,8 @@ module F
     attr_reader :client
     
     def initialize(api_key: ENV["FACTORIAL_API_KEY"], token: ENV["FACTORIAL_TOKEN"], host: nil)
-      config = Configuration.new
-      config.api_key["apikey"] = api_key
+      config = Config.new
+      config.api_key["x-api-key"] = api_key
       config.access_token = token if token
       config.host = host if host
       @client = ApiClient.new(config)
