@@ -96,6 +96,30 @@ for emp in client.employees.employee.paginate(max_items=50): ...
 everyone = client.employees.employee.all()
 ```
 
+### High-volume retrieval
+
+Pages are capped at **100 items** — a server-side hard max, not a default
+(see the [pagination docs](https://apidoc.factorialhr.com/docs/pagination)).
+Passing a larger `limit` has no effect. Cursor pagination is sequential (page
+N+1 needs page N's `end_cursor`), so `all()` on a big dataset (e.g. a full
+company-month of `attendance/worked_times`) means dozens of sequential
+requests. To keep request counts and latency sane:
+
+- **Filter first.** Use the endpoint's query params (date ranges, `ids`,
+  `employee_ids`, …) instead of pulling everything and filtering locally.
+- **Sync incrementally.** Where an endpoint supports `updated_at`-style
+  filters, fetch only what changed since your last run and cache locally —
+  don't re-pull the full dataset per report.
+- **Shard big pulls.** Split one large query into filtered sub-queries (by
+  date window or id chunks) and run those concurrently — each sub-query still
+  paginates sequentially, but wall-clock time drops. Total request count is
+  unchanged, so watch rate limits.
+- **Cap defensively.** Pass `max_items` / `maxItems` so a bug or unexpected
+  data volume can't turn into an unbounded crawl.
+
+There is no server-side aggregation endpoint; totals (e.g. hours per employee
+per period) must be computed client-side from the raw records.
+
 ## Errors
 
 The client throws on any non-2xx response (bad/expired token, wrong base URL,
