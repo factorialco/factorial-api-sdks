@@ -153,6 +153,23 @@ const all = await client.employees.employees.all({ maxItems: 500 });
 
 Both `paginate()` and `all()` are available on every list endpoint.
 
+### High-volume retrieval
+
+Pages are capped at **100 items** — a server-side hard max
+([pagination docs](https://apidoc.factorialhr.com/docs/pagination)); a larger
+`limit` has no effect. Cursor pagination is sequential, so `all()` on a large
+dataset issues one request per 100 records. For big pulls:
+
+- Filter with the endpoint's query params (date ranges, `ids`, `employee_ids`, …)
+  instead of pulling everything.
+- Sync incrementally where `updated_at`-style filters exist, and cache locally.
+- Split one large query into filtered sub-queries (date windows, id chunks) and
+  run them concurrently with `Promise.all` — faster wall-clock, same total
+  request count, so mind rate limits.
+- Pass `maxItems` as a safety cap.
+
+There is no server-side aggregation endpoint; compute totals client-side.
+
 ## Error handling
 
 The client is configured with `throwOnError: true`, so any non-2xx response
