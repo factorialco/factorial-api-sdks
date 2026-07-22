@@ -36,20 +36,20 @@ spec = ARGV[0] || Dir.glob("oas-*.yaml").grep_v(/normalized/).max
 abort("ERROR: no oas-*.yaml found") unless spec && File.exist?(spec)
 
 date_str = spec[/\d{4}-\d{2}-\d{2}/] or abort("ERROR: #{spec} has no YYYY-MM-DD date")
-year, month, day = date_str.split("-").map { |part| Integer(part, 10) }
+spec_date = date_str.delete("-") # "2026-07-01" -> "20260701"
 
-step "Spec: #{spec} (date #{year}.#{month}.#{day})"
+step "Spec: #{spec} (date #{date_str})"
 
-# --- 2. Compute the gem version: MAJOR.MINOR.YEAR.MONTH.DAY.BUILD ---
+# --- 2. Compute the gem version: MAJOR.MINOR.YYYYMMDD.BUILD ---
 config = YAML.load_file(CONFIG_FILE)
 major_minor = config.fetch("additionalProperties").fetch("sdkMajorMinor")
 
 previous_version = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
-previous_date = previous_version&.split(".")&.values_at(2, 3, 4)&.join(".")
+previous_date = previous_version&.split(".")&.at(2)
 
-build = (previous_date == "#{year}.#{month}.#{day}") ? Integer(previous_version.split(".").last) + 1 : 0
+build = (previous_date == spec_date) ? Integer(previous_version.split(".").last) + 1 : 0
 
-version = "#{major_minor}.#{year}.#{month}.#{day}.#{build}"
+version = "#{major_minor}.#{spec_date}.#{build}"
 step "Gem version: #{version} (build #{build.zero? ? 'first for this date' : "increment from #{previous_version}"})"
 
 # --- 3. Normalize operationIds ---

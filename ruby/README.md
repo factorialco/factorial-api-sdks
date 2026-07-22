@@ -127,15 +127,15 @@ end
 
 ## Versioning
 
-The gem version follows `MAJOR.MINOR.YEAR.MONTH.DAY.BUILD`:
+The gem version follows `MAJOR.MINOR.YYYYMMDD.BUILD`:
 
 - `MAJOR.MINOR` — version of the handwritten SDK layer (the `F::Api`
   facade). Bumped manually when the facade changes.
-- `YEAR.MONTH.DAY` — date of the OpenAPI spec the client was generated
-  from (spec `oas-2026-07-01.yaml` → `2026.7.1`).
+- `YYYYMMDD` — date of the OpenAPI spec the client was generated
+  from (spec `oas-2026-07-01.yaml` → `20260701`).
 - `BUILD` — regeneration counter within the same spec date, starting at 0.
 
-Example: `1.0.2026.7.1.0` is the first build of the 1.0 facade against the
+Example: `1.0.20260701.0` is the first build of the 1.0 facade against the
 2026-07-01 spec.
 
 ## License
