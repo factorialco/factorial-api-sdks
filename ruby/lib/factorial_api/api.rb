@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "uri"
+require "factorial_api/pagination"
+
 module F
   class Api
     class Config < Configuration
@@ -20,20 +23,33 @@ module F
 
     attr_reader :client
     
-    def initialize(api_key: ENV["FACTORIAL_API_KEY"], token: ENV["FACTORIAL_TOKEN"], host: nil)
+    def initialize(api_key: ENV["FACTORIAL_API_KEY"], token: ENV["FACTORIAL_TOKEN"],
+                   base_url: ENV["FACTORIAL_BASE_URL"])
       config = Config.new
       config.api_key["x-api-key"] = api_key
       config.access_token = token if token
-      config.host = host if host
+      apply_base_url(config, base_url) if base_url
       @client = ApiClient.new(config)
       @apis = {}
     end
-
 
     API_CLASSES.each do |method_name, const|
       define_method(method_name) do
         @apis[method_name] ||= F.const_get(const).new(client)
       end
+    end
+
+    private def apply_base_url(config, base_url)
+      uri = URI.parse(base_url)
+      unless uri.is_a?(URI::HTTP) && uri.host
+        raise ArgumentError,
+              "base_url must be a full http(s) URL, e.g. https://api.factorialhr.com " \
+              "(got #{base_url.inspect})"
+      end
+
+      config.scheme = uri.scheme
+      config.host = uri.port == uri.default_port ? uri.host : "#{uri.host}:#{uri.port}"
+      config.base_path = uri.path unless uri.path.empty?
     end
   end
 end

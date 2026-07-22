@@ -32,3 +32,5 @@ README.md
 .gitignore
 .rubocop.yml
 Gemfile
+lib/factorial_api/pagination.rb
+spec/factorial_api/api_spec.rb

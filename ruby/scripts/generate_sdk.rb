@@ -55,7 +55,7 @@ step "Gem version: #{version} (build #{build.zero? ? 'first for this date' : "in
 # --- 3. Normalize operationIds ---
 step "Normalizing spec"
 FileUtils.rm_f(Dir.glob("*.normalized.yaml"))
-run!("ruby", "scripts/normalize_spec.rb", spec)
+run!("ruby", "scripts/normalize_oas.rb", spec)
 normalized = spec.sub(/\.yaml\z/, ".normalized.yaml")
 
 # --- 4. Update the generator config ---
@@ -84,5 +84,9 @@ run!("bundle", "exec", "ruby", "-e",
      'require "factorial_api"; ' \
      'abort("F::Api did not load") unless defined?(F::Api); ' \
      'puts "OK #{F::VERSION} - #{F::Api::API_CLASSES.size} APIs"')
+
+# --- 9. Verify the facade still works on the regenerated client ---
+step "Running facade specs"
+run!("bundle", "exec", "rspec", "spec/factorial_api")
 
 step "Done. Review the diff with git; run gem build when ready to package."

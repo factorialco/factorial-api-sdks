@@ -24,7 +24,7 @@
 # operationIds (or named schemas) in the source spec — raised with the API
 # team.
 #
-# Usage: ruby scripts/normalize_spec.rb oas-2026-07-01.yaml
+# Usage: ruby scripts/normalize_oas.rb oas-2026-07-01.yaml
 
 require "yaml"
 
