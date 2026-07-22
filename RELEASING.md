@@ -35,6 +35,41 @@ what previously let a tag drift from the code it was supposed to point at.
 - `.release-please-manifest.json` — the **last released** version per package
   (release-please reads/writes this; don't hand-edit unless correcting drift).
 
+## Backporting fixes to previous majors
+
+Each SDK major tracks a dated Factorial API version (`version_map.json`), so
+previous majors stay supported. Patch releases for them use release-please's
+maintenance branches: the workflow also runs on `N.x` branches
+(`.github/workflows/release-please.yaml`), and release-please reads the config
+and manifest from the branch it runs on, so each branch carries its own
+version state.
+
+To ship e.g. `python 1.3.1`:
+
+1. **Create the maintenance branch once** (skip if it exists), at the commit
+   of the last 1.x tag:
+
+   ```bash
+   git branch 1.x python-v1.3.0   # or typescript-v1.3.0 — same commit line
+   git push origin 1.x
+   ```
+
+2. **Backport the fix via a PR into `1.x`** with a conventional-commit title
+   (`fix: …`, or `fix(python): …` if package-specific) and squash-merge it.
+   The same title/path rules as `main` apply.
+
+3. **release-please does the rest**: it opens a Release PR against `1.x`;
+   merging it bumps the version, creates the `python-v1.3.1` tag and GitHub
+   Release, and publishes. The npm package keeps its dated API-version
+   dist-tag from `version_map.json`; `latest` stays on the newest major.
+
+**Caveat: don't cherry-pick generated files blindly.** `python/factorial_api_client/client.py`,
+`typescript/src/sdk.ts`, `webhooks.*` and `generated/` are produced from the
+spec of *that* major's API version. If the fix touches a generator, apply the
+generator change on `1.x` and re-run the stage-2/3 generators there
+(`npm run generate-sdk`, `python scripts/generate_python_sdk.py`, …) so the
+output matches the 1.x spec.
+
 ## Manual / recovery publish
 
 If an automated publish fails, re-run it without touching versions:
