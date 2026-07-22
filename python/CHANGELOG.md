@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/factorialco/factorial-api-sdks/compare/python-v1.3.0...python-v1.3.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* **python:** forward after_id cursor in paginate()/all() ([#30](https://github.com/factorialco/factorial-api-sdks/issues/30)) ([c1c3f40](https://github.com/factorialco/factorial-api-sdks/commit/c1c3f407412288119f8f4a56374df84b1d28931b))
+
 ## [1.3.0](https://github.com/factorialco/factorial-api-sdks/compare/python-v1.2.0...python-v1.3.0) (2026-06-23)
 
 
