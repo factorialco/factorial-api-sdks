@@ -15,10 +15,15 @@ name: "Create release"
 # for the affected package(s), checking out the freshly-created tag. Publishing
 # happens in-process (not via a separate `release` event), so it works with the
 # default GITHUB_TOKEN — no PAT required.
+#
+# Maintenance branches (1.x, 2.x, ...) get the same treatment: release-please
+# reads the config + manifest from the branch that triggered the run and opens
+# the Release PR against that branch (target-branch), so previous majors can
+# ship patch releases independently. See RELEASING.md § Backporting.
 
 on:
   push:
-    branches: [main]
+    branches: [main, "[0-9]+.x"]
 
 permissions:
   contents: write
@@ -41,6 +46,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+          target-branch: ${{ github.ref_name }}
 
   publish-typescript:
     name: "Publish TypeScript release"
