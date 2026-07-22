@@ -36,24 +36,24 @@ class FakeFactorialServer
 
   private
 
-  def serve
-    loop do
-      sock = @server.accept
-      request_line = sock.gets.to_s.chomp
-      headers = {}
-      while (line = sock.gets) && line != "\r\n"
-        key, value = line.chomp.split(": ", 2)
-        headers[key.downcase] = value
+    def serve
+      loop do
+        sock = @server.accept
+        request_line = sock.gets.to_s.chomp
+        headers = {}
+        while (line = sock.gets) && line != "\r\n"
+          key, value = line.chomp.split(": ", 2)
+          headers[key.downcase] = value
+        end
+        @requests << { line: request_line, headers: headers }
+        body = @responder.call(request_line)
+        sock.write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n" \
+                   "Content-Length: #{body.bytesize}\r\nConnection: close\r\n\r\n#{body}")
+        sock.close
       end
-      @requests << { line: request_line, headers: headers }
-      body = @responder.call(request_line)
-      sock.write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n" \
-                 "Content-Length: #{body.bytesize}\r\nConnection: close\r\n\r\n#{body}")
-      sock.close
+    rescue IOError, Errno::EBADF
+      # server socket closed: shutting down
     end
-  rescue IOError, Errno::EBADF
-    # server socket closed: shutting down
-  end
 end
 
 RSpec.describe F::Api do
