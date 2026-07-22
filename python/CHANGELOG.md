@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.1](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.0...python-v2.0.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* **python:** forward after_id cursor in paginate()/all() ([#27](https://github.com/factorialco/factorial-api-sdks/issues/27)) ([b0bbfb6](https://github.com/factorialco/factorial-api-sdks/commit/b0bbfb6a53fce66c8a6639bfd9cfd9654068c3fb))
+
+
+### Documentation
+
+* document 100-item page cap and high-volume retrieval patterns ([#28](https://github.com/factorialco/factorial-api-sdks/issues/28)) ([0259f6e](https://github.com/factorialco/factorial-api-sdks/commit/0259f6e1e0f3ed2effbb42aea8eb1bf4122acd81))
+
 ## [2.0.0](https://github.com/factorialco/factorial-api-sdks/compare/python-v1.3.0...python-v2.0.0) (2026-07-01)
 
 
