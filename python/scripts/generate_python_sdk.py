@@ -165,38 +165,44 @@ def emit_method(e):
 
 def emit_pagination(list_ep, taken):
     kw = [f"{p}: Any = None" for p in list_ep.keyword]
-    sig = "self, *, max_items: int | None = None" + "".join(f", {k}" for k in kw)
-    kwline = ", ".join(f"{k}={k}" for k in list_ep.keyword)
+    sig = (
+        "self, *, max_items: int | None = None, limit: int | None = None"
+        + "".join(f", {k}" for k in kw)
+    )
+    kwline = "".join(f", {k}={k}" for k in list_ep.keyword)
     all_name = "collect_all" if "all" in taken else "all"
 
-    def fetcher_call(detailed, awaited):
+    def fetcher_call(awaited):
         prefix = "await " if awaited else ""
+        fn = "fetch_page_async" if awaited else "fetch_page"
         if list_ep.keyword:
             return [
-                f"            return {prefix}{list_ep.module}.{detailed}(",
-                "                client=self._client,",
-                f"                {kwline},",
+                f"            return {prefix}{fn}(",
+                f"                {list_ep.module},",
+                "                self._client,",
+                f"                after_id, limit=limit{kwline},",
                 "            )",
             ]
-        return [f"            return {prefix}{list_ep.module}.{detailed}(client=self._client)"]
+        call = f"{fn}({list_ep.module}, self._client, after_id, limit=limit)"
+        return [f"            return {prefix}{call}"]
 
     lines = []
     lines.append(f"    def paginate({sig}) -> Any:")
     lines.append('        """Cursor-paginated iterator over all items."""')
     lines.append("        def fetcher(after_id: str | None) -> Any:")
-    lines.extend(fetcher_call("sync_detailed", False))
+    lines.extend(fetcher_call(False))
     lines.append("        return paginate(fetcher, max_items=max_items)")
     lines.append("")
     lines.append(f"    def {all_name}({sig}) -> List[Any]:")
     lines.append('        """Collect all pages into a list."""')
     lines.append("        def fetcher(after_id: str | None) -> Any:")
-    lines.extend(fetcher_call("sync_detailed", False))
+    lines.extend(fetcher_call(False))
     lines.append("        return collect_all(fetcher, max_items=max_items)")
     lines.append("")
     lines.append(f"    async def paginate_async({sig}) -> Any:")
     lines.append('        """Async cursor-paginated iterator."""')
     lines.append("        async def fetcher(after_id: str | None) -> Any:")
-    lines.extend(fetcher_call("asyncio_detailed", True))
+    lines.extend(fetcher_call(True))
     lines.append("        return paginate_async(fetcher, max_items=max_items)")
     lines.append("")
     return lines
@@ -227,7 +233,10 @@ def main():
     out.append("from typing import Any, List")
     out.append("")
     out.append(f"from {PKG}.generated.client import AuthenticatedClient")
-    out.append(f"from {PKG}.pagination import paginate, paginate_async, collect_all")
+    out.append(
+        f"from {PKG}.pagination import ("
+        "paginate, paginate_async, collect_all, fetch_page, fetch_page_async)"
+    )
     out.append("")
 
     # Imports, grouped by the generated dir each resource lives in.

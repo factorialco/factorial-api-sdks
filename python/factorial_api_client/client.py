@@ -9,7 +9,7 @@ import os
 from typing import Any, List
 
 from factorial_api_client.generated.client import AuthenticatedClient
-from factorial_api_client.pagination import paginate, paginate_async, collect_all
+from factorial_api_client.pagination import (paginate, paginate_async, collect_all, fetch_page, fetch_page_async)
 
 from factorial_api_client.generated.api.api_public_credential import (
     get_api_2026_07_01_resources_api_public_credentials,
@@ -885,22 +885,22 @@ class ApiPublicCredentialsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_api_public_credentials.asyncio(client=self._client)
 
-    def paginate(self, *, max_items: int | None = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_api_public_credentials.sync_detailed(client=self._client)
+            return fetch_page(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_api_public_credentials.sync_detailed(client=self._client)
+            return fetch_page(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_api_public_credentials.asyncio_detailed(client=self._client)
+            return await fetch_page_async(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return paginate_async(fetcher, max_items=max_items)
 
 
@@ -950,30 +950,33 @@ class ApiPublicWebhookSubscriptionsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_api_public_webhook_subscriptions.sync_detailed(
-                client=self._client,
-                id=id, company_id=company_id, type_=type_, enabled=enabled,
+            return fetch_page(
+                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                self._client,
+                after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_api_public_webhook_subscriptions.sync_detailed(
-                client=self._client,
-                id=id, company_id=company_id, type_=type_, enabled=enabled,
+            return fetch_page(
+                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                self._client,
+                after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, company_id: Any = None, type_: Any = None, enabled: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_api_public_webhook_subscriptions.asyncio_detailed(
-                client=self._client,
-                id=id, company_id=company_id, type_=type_, enabled=enabled,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                self._client,
+                after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1031,30 +1034,33 @@ class AtsAnswersResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_ats_answers.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_answers.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_answers,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_answers.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_answers,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_answers.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_answers,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1081,30 +1087,33 @@ class AtsApplicationPhasesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_ats_application_phases_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_application_phases.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_application_phases,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_application_phases.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_application_phases,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_application_phases.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_application_phases,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1171,30 +1180,33 @@ class AtsApplicationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_ats_applications_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_applications.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_applications,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_applications.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_applications,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_id: Any = None, qualified: Any = None, ats_application_phase_id: Any = None, ats_candidate_ids: Any = None, ats_rejection_reason_ids: Any = None, search: Any = None, ats_tags_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_applications.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_applications,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1221,30 +1233,33 @@ class AtsCandidateSourcesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_ats_candidate_sources_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_candidate_sources.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_candidate_sources,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_candidate_sources.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_candidate_sources,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_candidate_sources.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_candidate_sources,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1295,30 +1310,33 @@ class AtsCandidatesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_ats_candidates_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_candidates.sync_detailed(
-                client=self._client,
-                ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_candidates,
+                self._client,
+                after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_candidates.sync_detailed(
-                client=self._client,
-                ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_candidates,
+                self._client,
+                after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, emails: Any = None, team_ids: Any = None, location_ids: Any = None, source: Any = None, remote: Any = None, job_posting_ids: Any = None, minimum_average_rating: Any = None, active: Any = None, talent_pool: Any = None, archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_candidates.asyncio_detailed(
-                client=self._client,
-                ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_candidates,
+                self._client,
+                after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1353,30 +1371,33 @@ class AtsEvaluationFormsResource:
         """Async version of save_as_template."""
         return await post_api_2026_07_01_resources_ats_evaluation_forms_save_as_template.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_evaluation_forms.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_evaluation_forms,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_evaluation_forms.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_evaluation_forms,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None, template: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_evaluation_forms.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_evaluation_forms,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1427,30 +1448,33 @@ class AtsFeedbacksResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_ats_feedbacks_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_feedbacks.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_feedbacks,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_feedbacks.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_feedbacks,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None, ats_candidate_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_feedbacks.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_feedbacks,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1477,30 +1501,33 @@ class AtsHiringStagesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_ats_hiring_stages_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_hiring_stages.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_phase_id=ats_application_phase_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_hiring_stages,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_hiring_stages.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_phase_id=ats_application_phase_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_hiring_stages,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_phase_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_hiring_stages.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_application_phase_id=ats_application_phase_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_hiring_stages,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1559,30 +1586,33 @@ class AtsJobPostingsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_ats_job_postings_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_job_postings.sync_detailed(
-                client=self._client,
-                ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_job_postings,
+                self._client,
+                after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_job_postings.sync_detailed(
-                client=self._client,
-                ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_job_postings,
+                self._client,
+                after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, status: Any = None, team_id: Any = None, location_id: Any = None, legal_entity_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_job_postings.asyncio_detailed(
-                client=self._client,
-                ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_job_postings,
+                self._client,
+                after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1617,30 +1647,33 @@ class AtsMessagesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_ats_messages.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_messages.sync_detailed(
-                client=self._client,
-                id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_messages,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_messages.sync_detailed(
-                client=self._client,
-                id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_messages,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, ats_conversation_id: Any = None, ats_conversation_ids: Any = None, last_per_conversation: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_messages.asyncio_detailed(
-                client=self._client,
-                id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_messages,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1691,30 +1724,33 @@ class AtsQuestionsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_ats_questions_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_questions.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_questions,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_questions.sync_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_questions,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_job_posting_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_questions.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_job_posting_ids=ats_job_posting_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_questions,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1741,30 +1777,33 @@ class AtsRejectionReasonsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_ats_rejection_reasons_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_rejection_reasons.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_rejection_reasons,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_ats_rejection_reasons.sync_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_ats_rejection_reasons,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, ats_application_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_ats_rejection_reasons.asyncio_detailed(
-                client=self._client,
-                ids=ids, ats_application_ids=ats_application_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_ats_rejection_reasons,
+                self._client,
+                after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1807,30 +1846,33 @@ class AttendanceBreakConfigurationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_attendance_break_configurations_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_break_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_break_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, time_settings_break_configuration_ids: Any = None, attendance_employees_setting_id: Any = None, enabled: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_break_configurations.asyncio_detailed(
-                client=self._client,
-                ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1881,30 +1923,33 @@ class AttendanceEditTimesheetRequestsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_edit_timesheet_requests.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_edit_timesheet_requests.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, shift_id: Any = None, pending: Any = None, start_on: Any = None, end_on: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_edit_timesheet_requests.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1923,30 +1968,33 @@ class AttendanceEstimatedTimesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_attendance_estimated_times.asyncio(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids)
 
-    def paginate(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_estimated_times.sync_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_estimated_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_estimated_times.sync_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_estimated_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_estimated_times.asyncio_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_estimated_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -1965,30 +2013,33 @@ class AttendanceOpenShiftsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_attendance_open_shifts.asyncio(client=self._client, employee_ids=employee_ids)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_open_shifts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_open_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_open_shifts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_open_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_open_shifts.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_open_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2055,30 +2106,33 @@ class AttendanceOvertimeRequestsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_overtime_requests.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_overtime_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_overtime_requests.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_overtime_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, status: Any = None, include_approval_flow: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_overtime_requests.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_overtime_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2113,30 +2167,33 @@ class AttendanceReviewsResource:
         """Async version of bulk_destroy."""
         return await post_api_2026_07_01_resources_attendance_reviews_bulk_destroy.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_reviews.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_reviews,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_reviews.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_reviews,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, reviewed_at: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_reviews.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_reviews,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2235,30 +2292,33 @@ class AttendanceShiftsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_attendance_shifts_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_shifts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_shifts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, start_on: Any = None, end_on: Any = None, ids: Any = None, half_day: Any = None, workable: Any = None, latest_shift: Any = None, sort_created_at_asc: Any = None, breaks_with_time_configuration: Any = None, last_working_shift: Any = None, updated_at: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_shifts.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_shifts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2277,30 +2337,33 @@ class AttendanceWorkedTimesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_attendance_worked_times.asyncio(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees)
 
-    def paginate(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_worked_times.sync_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_worked_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_attendance_worked_times.sync_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+            return fetch_page(
+                get_api_2026_07_01_resources_attendance_worked_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = None, end_on: Any = None, employee_ids: Any = None, include_time_range_category: Any = None, include_non_attendable_employees: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_attendance_worked_times.asyncio_detailed(
-                client=self._client,
-                start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_attendance_worked_times,
+                self._client,
+                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2335,30 +2398,33 @@ class BankingBankAccountsResource:
         """Async version of create_manual."""
         return await post_api_2026_07_01_resources_banking_bank_accounts_create_manual.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_bank_accounts.sync_detailed(
-                client=self._client,
-                ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_bank_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_bank_accounts.sync_detailed(
-                client=self._client,
-                ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_bank_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, currency: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_banking_bank_accounts.asyncio_detailed(
-                client=self._client,
-                ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_banking_bank_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2385,30 +2451,33 @@ class BankingCardPaymentsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_banking_card_payments_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_card_payments.sync_detailed(
-                client=self._client,
-                ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_card_payments,
+                self._client,
+                after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_card_payments.sync_detailed(
-                client=self._client,
-                ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_card_payments,
+                self._client,
+                after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, account_ids: Any = None, status: Any = None, from_: Any = None, to: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_banking_card_payments.asyncio_detailed(
-                client=self._client,
-                ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_banking_card_payments,
+                self._client,
+                after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2435,30 +2504,33 @@ class BankingTransactionsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_banking_transactions_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_transactions.sync_detailed(
-                client=self._client,
-                ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_transactions,
+                self._client,
+                after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_banking_transactions.sync_detailed(
-                client=self._client,
-                ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_banking_transactions,
+                self._client,
+                after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, bank_account_ids: Any = None, card_payment_ids: Any = None, from_: Any = None, to: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_banking_transactions.asyncio_detailed(
-                client=self._client,
-                ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_banking_transactions,
+                self._client,
+                after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2493,30 +2565,33 @@ class BookkeepersManagementIncidencesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_bookkeepers_management_incidences_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_bookkeepers_management_incidences.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
+            return fetch_page(
+                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_bookkeepers_management_incidences.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
+            return fetch_page(
+                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entities_ids: Any = None, status: Any = None, starts_on: Any = None, ends_on: Any = None, type_: Any = None, sort_by: Any = None, direction: Any = None, search: Any = None, employee_ids: Any = None, contains_message: Any = None, message_from: Any = None, custom_leave_name: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_bookkeepers_management_incidences.asyncio_detailed(
-                client=self._client,
-                ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2551,30 +2626,33 @@ class CompaniesLegalEntitiesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_companies_legal_entities.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_companies_legal_entities.sync_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_companies_legal_entities,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_companies_legal_entities.sync_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_companies_legal_entities,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, companies_ids: Any = None, country_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_companies_legal_entities.asyncio_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_companies_legal_entities,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2601,30 +2679,33 @@ class CompensationsConceptsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_compensations_concepts_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_compensations_concepts.sync_detailed(
-                client=self._client,
-                ids=ids, categories=categories, with_active_status=with_active_status,
+            return fetch_page(
+                get_api_2026_07_01_resources_compensations_concepts,
+                self._client,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_compensations_concepts.sync_detailed(
-                client=self._client,
-                ids=ids, categories=categories, with_active_status=with_active_status,
+            return fetch_page(
+                get_api_2026_07_01_resources_compensations_concepts,
+                self._client,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, categories: Any = None, with_active_status: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_compensations_concepts.asyncio_detailed(
-                client=self._client,
-                ids=ids, categories=categories, with_active_status=with_active_status,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_compensations_concepts,
+                self._client,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2675,30 +2756,33 @@ class ContractsCompensationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_contracts_compensations_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_compensations.sync_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_compensations.sync_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_compensations.asyncio_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2725,30 +2809,33 @@ class ContractsContractTemplatesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_contract_templates_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_templates.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, contract_version_type=contract_version_type,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_templates.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, contract_version_type=contract_version_type,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, contract_version_type: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_contract_templates.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, contract_version_type=contract_version_type,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_contract_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2775,30 +2862,33 @@ class ContractsContractVersionHistoriesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_contract_version_histories_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_version_histories.sync_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_version_histories.sync_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_version_ids: Any = None, employee_ids: Any = None, current_on: Any = None, changes_lteq: Any = None, changes_gteq: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_contract_version_histories.asyncio_detailed(
-                client=self._client,
-                ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2817,30 +2907,33 @@ class ContractsContractVersionMetaDataResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_contracts_contract_version_meta_data.asyncio(client=self._client, contract_version_ids=contract_version_ids)
 
-    def paginate(self, *, max_items: int | None = None, contract_version_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, contract_version_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_version_meta_data.sync_detailed(
-                client=self._client,
-                contract_version_ids=contract_version_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                self._client,
+                after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, contract_version_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, contract_version_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_version_meta_data.sync_detailed(
-                client=self._client,
-                contract_version_ids=contract_version_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                self._client,
+                after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, contract_version_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, contract_version_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_contract_version_meta_data.asyncio_detailed(
-                client=self._client,
-                contract_version_ids=contract_version_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                self._client,
+                after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2891,30 +2984,33 @@ class ContractsContractVersionsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_versions.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_contract_versions.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_contract_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, date: Any = None, job_catalog_tree_node_uuids: Any = None, updated_at_gteq: Any = None, updated_at_lteq: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_contract_versions.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_contract_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2941,30 +3037,33 @@ class ContractsFrenchContractTypesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_french_contract_types_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_french_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_french_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_french_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_french_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_french_contract_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_french_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2991,30 +3090,33 @@ class ContractsGermanContractTypesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_german_contract_types_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_german_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_german_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_german_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_german_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_german_contract_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_german_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3033,30 +3135,33 @@ class ContractsMaterializedTemplatesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_contracts_materialized_templates.asyncio(client=self._client, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived)
 
-    def paginate(self, *, max_items: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_materialized_templates.sync_detailed(
-                client=self._client,
-                company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_materialized_templates,
+                self._client,
+                after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_materialized_templates.sync_detailed(
-                client=self._client,
-                company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_materialized_templates,
+                self._client,
+                after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, legal_entity_ids: Any = None, countries: Any = None, template_type: Any = None, field_ids: Any = None, include_archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_materialized_templates.asyncio_detailed(
-                client=self._client,
-                company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_materialized_templates,
+                self._client,
+                after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3083,30 +3188,33 @@ class ContractsPortugueseContractTypesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_portuguese_contract_types_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_portuguese_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_portuguese_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_portuguese_contract_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, archived=archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3125,30 +3233,33 @@ class ContractsReferenceContractsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_contracts_reference_contracts.asyncio(client=self._client, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_reference_contracts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_reference_contracts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_reference_contracts.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_reference_contracts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, job_catalog_tree_node_uuids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_reference_contracts.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_reference_contracts,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3183,30 +3294,33 @@ class ContractsSpanishContractTypesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_contracts_spanish_contract_types.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_contract_types.sync_detailed(
-                client=self._client,
-                ids=ids, archived=archived, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, archived: Any = None, contract_template_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_spanish_contract_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, archived=archived, contract_template_id=contract_template_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                self._client,
+                after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3241,30 +3355,33 @@ class ContractsSpanishEducationLevelsResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_contracts_spanish_education_levels.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_education_levels.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_education_levels.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_spanish_education_levels.asyncio_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3299,30 +3416,33 @@ class ContractsSpanishProfessionalCategoriesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_contracts_spanish_professional_categories.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_professional_categories.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_professional_categories.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_spanish_professional_categories.asyncio_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3357,30 +3477,33 @@ class ContractsSpanishWorkingDayTypesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_contracts_spanish_working_day_types.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_working_day_types.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_spanish_working_day_types.sync_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, contract_template_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_spanish_working_day_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, contract_template_id=contract_template_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                self._client,
+                after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3407,30 +3530,33 @@ class ContractsTaxonomiesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_contracts_taxonomies_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_taxonomies.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_taxonomies,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_contracts_taxonomies.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_contracts_taxonomies,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, legal_entity_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_contracts_taxonomies.asyncio_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_contracts_taxonomies,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3473,30 +3599,33 @@ class CustomFieldsFieldsResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_custom_fields_fields.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_fields.sync_detailed(
-                client=self._client,
-                ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_fields.sync_detailed(
-                client=self._client,
-                ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_type: Any = None, label: Any = None, slug: Any = None, company_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_fields_fields.asyncio_detailed(
-                client=self._client,
-                ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_fields_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3531,30 +3660,33 @@ class CustomFieldsOptionsResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_custom_fields_options.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_options.sync_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_options,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_options.sync_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_options,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_fields_options.asyncio_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_fields_options,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3589,30 +3721,33 @@ class CustomFieldsResourceFieldsResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_custom_fields_resource_fields.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_resource_fields.sync_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids, schema_ids=schema_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_resource_fields.sync_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids, schema_ids=schema_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, field_ids: Any = None, schema_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_fields_resource_fields.asyncio_detailed(
-                client=self._client,
-                ids=ids, field_ids=field_ids, schema_ids=schema_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                self._client,
+                after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3655,30 +3790,33 @@ class CustomFieldsValuesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_custom_fields_values_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_values.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_values,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_fields_values.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_fields_values,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, identifiers: Any = None, ids: Any = None, instance_id: Any = None, value: Any = None, slug: Any = None, field_id: Any = None, updated_at_gteq: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_fields_values.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_fields_values,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3705,30 +3843,33 @@ class CustomResourcesResourcesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_custom_resources_resources_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_resources.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_resources.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_resources_resources.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_resources_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3763,30 +3904,33 @@ class CustomResourcesSchemasResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_custom_resources_schemas.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_schemas.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_schemas,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_schemas.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_schemas,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_resources_schemas.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_resources_schemas,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3821,30 +3965,33 @@ class CustomResourcesValuesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_custom_resources_values.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_values.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_values,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_custom_resources_values.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_custom_resources_values,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_custom_resources_values.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_custom_resources_values,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3911,30 +4058,33 @@ class DocumentsDocumentsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_documents_documents_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_documents_documents.sync_detailed(
-                client=self._client,
-                by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_documents_documents,
+                self._client,
+                after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_documents_documents.sync_detailed(
-                client=self._client,
-                by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_documents_documents,
+                self._client,
+                after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, by_bookkeeper_documents: Any = None, by_pending_assignment: Any = None, by_trash_bin: Any = None, by_without_folder: Any = None, employee_ids: Any = None, folder_id: Any = None, ids: Any = None, leave_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_documents_documents.asyncio_detailed(
-                client=self._client,
-                by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_documents_documents,
+                self._client,
+                after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -3992,30 +4142,33 @@ class DocumentsFoldersResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_documents_folders_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_documents_folders.sync_detailed(
-                client=self._client,
-                active=active, employee_id=employee_id, ids=ids, name=name,
+            return fetch_page(
+                get_api_2026_07_01_resources_documents_folders,
+                self._client,
+                after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_documents_folders.sync_detailed(
-                client=self._client,
-                active=active, employee_id=employee_id, ids=ids, name=name,
+            return fetch_page(
+                get_api_2026_07_01_resources_documents_folders,
+                self._client,
+                after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, active: Any = None, employee_id: Any = None, ids: Any = None, name: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_documents_folders.asyncio_detailed(
-                client=self._client,
-                active=active, employee_id=employee_id, ids=ids, name=name,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_documents_folders,
+                self._client,
+                after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4042,30 +4195,33 @@ class EmployeeUpdatesAbsencesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_absences_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_absences.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_absences,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_absences.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_absences,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_absences.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_absences,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4092,30 +4248,33 @@ class EmployeeUpdatesContractChangesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_contract_changes_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_contract_changes.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_contract_changes.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_contract_changes.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4142,30 +4301,33 @@ class EmployeeUpdatesNewHiresResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_new_hires_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_new_hires.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_new_hires,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_new_hires.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_new_hires,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_new_hires.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_new_hires,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4192,30 +4354,33 @@ class EmployeeUpdatesPersonalChangesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_personal_changes_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_personal_changes.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_personal_changes.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_personal_changes.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4242,30 +4407,33 @@ class EmployeeUpdatesSummariesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_summaries_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_summaries.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_summaries,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_summaries.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_summaries,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, legal_entities_ids: Any = None, type_: Any = None, starts_on: Any = None, ends_on: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_summaries.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_summaries,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4292,30 +4460,33 @@ class EmployeeUpdatesTerminationsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_employee_updates_terminations_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_terminations.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_terminations,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employee_updates_terminations.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_employee_updates_terminations,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employee_updates_terminations.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employee_updates_terminations,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4390,30 +4561,33 @@ class EmployeesEmployeesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_employees_employees_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employees_employees.sync_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
+            return fetch_page(
+                get_api_2026_07_01_resources_employees_employees,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_employees_employees.sync_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
+            return fetch_page(
+                get_api_2026_07_01_resources_employees_employees,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, emails: Any = None, full_text_name: Any = None, updated_at_gteq: Any = None, legal_entity_ids: Any = None, company_identifier: Any = None, only_active: Any = None, team_ids: Any = None, location_ids: Any = None, only_managers: Any = None, name_starts_with: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_employees_employees.asyncio_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_employees_employees,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4456,30 +4630,33 @@ class ExpensesExpensablesResource:
         """Async version of update_reimbursable_amount."""
         return await post_api_2026_07_01_resources_expenses_expensables_update_reimbursable_amount.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_expensables.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_expensables,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_expensables.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_expensables,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, group_ids: Any = None, by_resources: Any = None, employee_ids: Any = None, reporter_ids: Any = None, status: Any = None, creation_type: Any = None, from_: Any = None, to: Any = None, search: Any = None, include_grouped: Any = None, include_attachments: Any = None, include_manual_drafts: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_expenses_expensables.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_expenses_expensables,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4506,30 +4683,33 @@ class ExpensesExpensesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_expenses_expenses_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_expenses.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_expenses,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_expenses.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_expenses,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_expenses_expenses.asyncio_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_expenses_expenses,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4556,30 +4736,33 @@ class ExpensesMileagesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_expenses_mileages_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_mileages.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_mileages,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_mileages.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_mileages,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, include_manual_drafts: Any = None, employee_ids: Any = None, external_authorization_ids: Any = None, card_ids: Any = None, card_payment_ids: Any = None, include_attachments: Any = None, from_: Any = None, to: Any = None, dispute_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_expenses_mileages.asyncio_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_expenses_mileages,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4606,30 +4789,33 @@ class ExpensesPerDiemsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_expenses_per_diems_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_per_diems.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_per_diems,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_expenses_per_diems.sync_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
+            return fetch_page(
+                get_api_2026_07_01_resources_expenses_per_diems,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, expenses_expensable_ids: Any = None, exclude_drafts: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_expenses_per_diems.asyncio_detailed(
-                client=self._client,
-                ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_expenses_per_diems,
+                self._client,
+                after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4664,30 +4850,33 @@ class FinanceAccountingSettingsResource:
         """Async version of upsert."""
         return await post_api_2026_07_01_resources_finance_accounting_settings_upsert.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_accounting_settings.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_accounting_settings,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_accounting_settings.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_accounting_settings,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_accounting_settings.asyncio_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_accounting_settings,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4730,30 +4919,33 @@ class FinanceAccountsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_finance_accounts_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_accounts.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_accounts.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, types: Any = None, number: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_accounts.asyncio_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_accounts,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4780,30 +4972,33 @@ class FinanceBudgetOptionsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_finance_budget_options_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_budget_options.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_budget_options,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_budget_options.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_budget_options,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, effective_at: Any = None, include_inactive: Any = None, include_archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_budget_options.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_budget_options,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4830,30 +5025,33 @@ class FinanceCategoriesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_finance_categories_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_categories.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_categories.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, parent_category_ids: Any = None, category_level: Any = None, type_: Any = None, statuses: Any = None, search: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_categories.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_categories,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4896,30 +5094,33 @@ class FinanceContactsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_finance_contacts_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_contacts.sync_detailed(
-                client=self._client,
-                ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_contacts,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_contacts.sync_detailed(
-                client=self._client,
-                ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_contacts,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_ids: Any = None, legal_name: Any = None, name: Any = None, contact_type: Any = None, website: Any = None, email: Any = None, phone_number: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_contacts.asyncio_detailed(
-                client=self._client,
-                ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_contacts,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -4946,30 +5147,33 @@ class FinanceCostCenterMembershipsResource:
         """Async version of bulk_create_update."""
         return await post_api_2026_07_01_resources_finance_cost_center_memberships_bulk_create_update.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_cost_center_memberships.sync_detailed(
-                client=self._client,
-                cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                self._client,
+                after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_cost_center_memberships.sync_detailed(
-                client=self._client,
-                cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                self._client,
+                after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, cost_center_id: Any = None, employee_id: Any = None, active_on: Any = None, only_active: Any = None, applying_on: Any = None, company_id: Any = None, cost_center_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_cost_center_memberships.asyncio_detailed(
-                client=self._client,
-                cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                self._client,
+                after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5020,30 +5224,33 @@ class FinanceCostCentersResource:
         """Async version of edit."""
         return await post_api_2026_07_01_resources_finance_cost_centers_edit.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_cost_centers.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_cost_centers,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_cost_centers.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_cost_centers,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, legal_entity_ids: Any = None, include_actives_on_date: Any = None, search: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_cost_centers.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_cost_centers,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5070,30 +5277,33 @@ class FinanceFinancialDocumentsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_finance_financial_documents_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_financial_documents.sync_detailed(
-                client=self._client,
-                company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_financial_documents,
+                self._client,
+                after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_financial_documents.sync_detailed(
-                client=self._client,
-                company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_financial_documents,
+                self._client,
+                after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, ids: Any = None, vendor_id: Any = None, currency: Any = None, statuses: Any = None, legal_entity_ids: Any = None, document_types: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_financial_documents.asyncio_detailed(
-                client=self._client,
-                company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_financial_documents,
+                self._client,
+                after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5128,30 +5338,33 @@ class FinanceJournalEntriesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_finance_journal_entries.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_journal_entries.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_journal_entries,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_journal_entries.sync_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_journal_entries,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, legal_entity_ids: Any = None, source_ids: Any = None, source_type: Any = None, types: Any = None, status: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_journal_entries.asyncio_detailed(
-                client=self._client,
-                ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_journal_entries,
+                self._client,
+                after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5178,30 +5391,33 @@ class FinanceJournalLinesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_finance_journal_lines_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_journal_lines.sync_detailed(
-                client=self._client,
-                ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_journal_lines,
+                self._client,
+                after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_journal_lines.sync_detailed(
-                client=self._client,
-                ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_journal_lines,
+                self._client,
+                after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, journal_entry_ids: Any = None, account_ids: Any = None, journal_entry_types: Any = None, reconciliation_status: Any = None, description: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_journal_lines.asyncio_detailed(
-                client=self._client,
-                ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_journal_lines,
+                self._client,
+                after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5236,30 +5452,33 @@ class FinanceLedgerAccountResourcesResource:
         """Async version of upsert."""
         return await post_api_2026_07_01_resources_finance_ledger_account_resources_upsert.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_ledger_account_resources.sync_detailed(
-                client=self._client,
-                ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_ledger_account_resources.sync_detailed(
-                client=self._client,
-                ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, resource_ids: Any = None, resource_type: Any = None, legal_entity_ids: Any = None, updated_from: Any = None, finance_account_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_ledger_account_resources.asyncio_detailed(
-                client=self._client,
-                ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                self._client,
+                after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5302,30 +5521,33 @@ class FinanceTaxRatesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_finance_tax_rates_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_tax_rates.sync_detailed(
-                client=self._client,
-                ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_tax_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_tax_rates.sync_detailed(
-                client=self._client,
-                ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_tax_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, tax_type_ids: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_tax_rates.asyncio_detailed(
-                client=self._client,
-                ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_tax_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5368,30 +5590,33 @@ class FinanceTaxTypesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_finance_tax_types_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_tax_types.sync_detailed(
-                client=self._client,
-                ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_tax_types,
+                self._client,
+                after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_finance_tax_types.sync_detailed(
-                client=self._client,
-                ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
+            return fetch_page(
+                get_api_2026_07_01_resources_finance_tax_types,
+                self._client,
+                after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, country_code: Any = None, type_: Any = None, updated_from: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_finance_tax_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_finance_tax_types,
+                self._client,
+                after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5418,30 +5643,33 @@ class HolidaysCompanyHolidaysResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_holidays_company_holidays_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_holidays_company_holidays.sync_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_holidays_company_holidays,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_holidays_company_holidays.sync_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
+            return fetch_page(
+                get_api_2026_07_01_resources_holidays_company_holidays,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, team_ids: Any = None, employee_ids: Any = None, start_at: Any = None, end_at: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_holidays_company_holidays.asyncio_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_holidays_company_holidays,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5475,30 +5703,33 @@ class IntegrationsSyncableItemsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_integrations_syncable_items.asyncio(client=self._client, sync_run_id=sync_run_id)
 
-    def paginate(self, *, max_items: int | None = None, sync_run_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, sync_run_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_integrations_syncable_items.sync_detailed(
-                client=self._client,
-                sync_run_id=sync_run_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_integrations_syncable_items,
+                self._client,
+                after_id, limit=limit, sync_run_id=sync_run_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, sync_run_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, sync_run_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_integrations_syncable_items.sync_detailed(
-                client=self._client,
-                sync_run_id=sync_run_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_integrations_syncable_items,
+                self._client,
+                after_id, limit=limit, sync_run_id=sync_run_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, sync_run_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, sync_run_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_integrations_syncable_items.asyncio_detailed(
-                client=self._client,
-                sync_run_id=sync_run_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_integrations_syncable_items,
+                self._client,
+                after_id, limit=limit, sync_run_id=sync_run_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5556,30 +5787,33 @@ class ItManagementItAssetModelsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_it_management_it_asset_models_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_it_management_it_asset_models.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_it_management_it_asset_models,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_it_management_it_asset_models.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_it_management_it_asset_models,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_it_management_it_asset_models.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_it_management_it_asset_models,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5630,30 +5864,33 @@ class ItManagementItAssetsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_it_management_it_assets_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_it_management_it_assets.sync_detailed(
-                client=self._client,
-                ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_it_management_it_assets,
+                self._client,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_it_management_it_assets.sync_detailed(
-                client=self._client,
-                ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_it_management_it_assets,
+                self._client,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, serial_numbers: Any = None, type_names: Any = None, owner_ids: Any = None, location_ids: Any = None, workplace_ids: Any = None, team_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_it_management_it_assets.asyncio_detailed(
-                client=self._client,
-                ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_it_management_it_assets,
+                self._client,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5680,30 +5917,33 @@ class JobCatalogLevelsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_job_catalog_levels_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, role_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, role_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_levels.sync_detailed(
-                client=self._client,
-                ids=ids, role_ids=role_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, role_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, role_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_levels.sync_detailed(
-                client=self._client,
-                ids=ids, role_ids=role_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, role_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, role_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_job_catalog_levels.asyncio_detailed(
-                client=self._client,
-                ids=ids, role_ids=role_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_job_catalog_levels,
+                self._client,
+                after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5722,30 +5962,33 @@ class JobCatalogNodeAttributesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_job_catalog_node_attributes.asyncio(client=self._client, node_uuid=node_uuid, attribute_types=attribute_types)
 
-    def paginate(self, *, max_items: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_node_attributes.sync_detailed(
-                client=self._client,
-                node_uuid=node_uuid, attribute_types=attribute_types,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                self._client,
+                after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_node_attributes.sync_detailed(
-                client=self._client,
-                node_uuid=node_uuid, attribute_types=attribute_types,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                self._client,
+                after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, node_uuid: Any = None, attribute_types: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_job_catalog_node_attributes.asyncio_detailed(
-                client=self._client,
-                node_uuid=node_uuid, attribute_types=attribute_types,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                self._client,
+                after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5772,30 +6015,33 @@ class JobCatalogRolesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_job_catalog_roles_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_roles.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_roles,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_roles.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_roles,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_job_catalog_roles.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_job_catalog_roles,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5814,30 +6060,33 @@ class JobCatalogTreeNodesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_job_catalog_tree_nodes.asyncio(client=self._client, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path)
 
-    def paginate(self, *, max_items: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_tree_nodes.sync_detailed(
-                client=self._client,
-                uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                self._client,
+                after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_job_catalog_tree_nodes.sync_detailed(
-                client=self._client,
-                uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
+            return fetch_page(
+                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                self._client,
+                after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, uuids: Any = None, node_type: Any = None, ancestor_uuids: Any = None, include_full_path: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_job_catalog_tree_nodes.asyncio_detailed(
-                client=self._client,
-                uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                self._client,
+                after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5888,30 +6137,33 @@ class LocationsLocationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_locations_locations_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_locations_locations.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, main=main,
+            return fetch_page(
+                get_api_2026_07_01_resources_locations_locations,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_locations_locations.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, main=main,
+            return fetch_page(
+                get_api_2026_07_01_resources_locations_locations,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, main: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_locations_locations.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, main=main,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_locations_locations,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5970,30 +6222,33 @@ class LocationsWorkAreasResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_locations_work_areas_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_locations_work_areas.sync_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_locations_work_areas,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_locations_work_areas.sync_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
+            return fetch_page(
+                get_api_2026_07_01_resources_locations_work_areas,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, location_ids: Any = None, only_non_archived: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_locations_work_areas.asyncio_detailed(
-                client=self._client,
-                ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_locations_work_areas,
+                self._client,
+                after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6012,30 +6267,33 @@ class MarketplaceInstallationSettingsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_marketplace_installation_settings.asyncio(client=self._client, company_id=company_id, integration_id=integration_id)
 
-    def paginate(self, *, max_items: int | None = None, company_id: Any = None, integration_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, integration_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_marketplace_installation_settings.sync_detailed(
-                client=self._client,
-                company_id=company_id, integration_id=integration_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_marketplace_installation_settings,
+                self._client,
+                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, company_id: Any = None, integration_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, integration_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_marketplace_installation_settings.sync_detailed(
-                client=self._client,
-                company_id=company_id, integration_id=integration_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_marketplace_installation_settings,
+                self._client,
+                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, company_id: Any = None, integration_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = None, integration_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_marketplace_installation_settings.asyncio_detailed(
-                client=self._client,
-                company_id=company_id, integration_id=integration_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_marketplace_installation_settings,
+                self._client,
+                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6085,30 +6343,33 @@ class PayrollFamilySituationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_payroll_family_situations_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_family_situations.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_family_situations,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_family_situations.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_family_situations,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_payroll_family_situations.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_payroll_family_situations,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6174,30 +6435,33 @@ class PayrollSupplementsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_payroll_supplements_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_supplements.sync_detailed(
-                client=self._client,
-                from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_supplements,
+                self._client,
+                after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_supplements.sync_detailed(
-                client=self._client,
-                from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_supplements,
+                self._client,
+                after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, from_: Any = None, to: Any = None, employee_ids: Any = None, policy_period_ids: Any = None, compensation_id: Any = None, ids: Any = None, legal_entity_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_payroll_supplements.asyncio_detailed(
-                client=self._client,
-                from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_payroll_supplements,
+                self._client,
+                after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6248,30 +6512,33 @@ class PayrollEmployeesIdentifiersResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_employees_identifiers.sync_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_employees_identifiers.sync_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employees_ids: Any = None, legal_entities_ids: Any = None, country: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_payroll_employees_identifiers.asyncio_detailed(
-                client=self._client,
-                ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                self._client,
+                after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6314,30 +6581,33 @@ class PayrollIntegrationsBaseCodesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_payroll_integrations_base_codes_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_integrations_base_codes.sync_detailed(
-                client=self._client,
-                code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                self._client,
+                after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_payroll_integrations_base_codes.sync_detailed(
-                client=self._client,
-                code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
+            return fetch_page(
+                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                self._client,
+                after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, code: Any = None, integrations: Any = None, codeable_id: Any = None, codeable_type: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_payroll_integrations_base_codes.asyncio_detailed(
-                client=self._client,
-                code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                self._client,
+                after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6380,30 +6650,33 @@ class PerformanceAgreementsResource:
         """Async version of initiate."""
         return await post_api_2026_07_01_resources_performance_agreements_initiate.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_agreements.sync_detailed(
-                client=self._client,
-                ids=ids, process_ids=process_ids, target_ids=target_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_agreements,
+                self._client,
+                after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_agreements.sync_detailed(
-                client=self._client,
-                ids=ids, process_ids=process_ids, target_ids=target_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_agreements,
+                self._client,
+                after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, process_ids: Any = None, target_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_agreements.asyncio_detailed(
-                client=self._client,
-                ids=ids, process_ids=process_ids, target_ids=target_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_agreements,
+                self._client,
+                after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6438,30 +6711,33 @@ class PerformanceCompanyEmployeeScoreScalesResource:
         """Async version of set."""
         return await post_api_2026_07_01_resources_performance_company_employee_score_scales_set.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_company_employee_score_scales.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_company_employee_score_scales.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_company_employee_score_scales.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6488,30 +6764,33 @@ class PerformanceEmployeeScoreScalesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_performance_employee_score_scales_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_employee_score_scales.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_employee_score_scales.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_employee_score_scales.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_employee_score_scales,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6530,30 +6809,33 @@ class PerformanceReviewEvaluationAnswersResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_performance_review_evaluation_answers.asyncio(client=self._client, performance_review_evaluation_ids=performance_review_evaluation_ids)
 
-    def paginate(self, *, max_items: int | None = None, performance_review_evaluation_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_evaluation_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluation_answers.sync_detailed(
-                client=self._client,
-                performance_review_evaluation_ids=performance_review_evaluation_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                self._client,
+                after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, performance_review_evaluation_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, performance_review_evaluation_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluation_answers.sync_detailed(
-                client=self._client,
-                performance_review_evaluation_ids=performance_review_evaluation_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                self._client,
+                after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, performance_review_evaluation_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, performance_review_evaluation_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_evaluation_answers.asyncio_detailed(
-                client=self._client,
-                performance_review_evaluation_ids=performance_review_evaluation_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                self._client,
+                after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6580,30 +6862,33 @@ class PerformanceReviewEvaluationScoresResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_performance_review_evaluation_scores_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluation_scores.sync_detailed(
-                client=self._client,
-                ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                self._client,
+                after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluation_scores.sync_detailed(
-                client=self._client,
-                ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                self._client,
+                after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, review_process_ids: Any = None, review_evaluation_ids: Any = None, target_access_ids: Any = None, reviewer_strategies: Any = None, review_process_target_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_evaluation_scores.asyncio_detailed(
-                client=self._client,
-                ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                self._client,
+                after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6638,30 +6923,33 @@ class PerformanceReviewEvaluationsResource:
         """Async version of replace_reviewer."""
         return await post_api_2026_07_01_resources_performance_review_evaluations_replace_reviewer.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluations.sync_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluations,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_evaluations.sync_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_evaluations,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None, published: Any = None, reviewer_ids: Any = None, reviewer_strategies: Any = None, target_access_ids: Any = None, review_process_target_ids: Any = None, with_targets_managed_by_filter: Any = None, exclude_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_evaluations.asyncio_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_evaluations,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6696,30 +6984,33 @@ class PerformanceReviewOwnersResource:
         """Async version of bulk_create."""
         return await post_api_2026_07_01_resources_performance_review_owners_bulk_create.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_owners.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_owners,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_owners.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_owners,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_owners.asyncio_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_owners,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6746,30 +7037,33 @@ class PerformanceReviewProcessCustomTemplatesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_performance_review_process_custom_templates_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_custom_templates.sync_detailed(
-                client=self._client,
-                ids=ids, author_ids=author_ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_custom_templates.sync_detailed(
-                client=self._client,
-                ids=ids, author_ids=author_ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, author_ids: Any = None, search: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_process_custom_templates.asyncio_detailed(
-                client=self._client,
-                ids=ids, author_ids=author_ids, search=search,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                self._client,
+                after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6788,30 +7082,33 @@ class PerformanceReviewProcessEstimatedTargetsResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_performance_review_process_estimated_targets.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids)
 
-    def paginate(self, *, max_items: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_estimated_targets.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_estimated_targets.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None, access_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_process_estimated_targets.asyncio_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6870,30 +7167,33 @@ class PerformanceReviewProcessTargetsResource:
         """Async version of remove_peer_evaluations."""
         return await post_api_2026_07_01_resources_performance_review_process_targets_remove_peer_evaluations.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_targets.sync_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_targets,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_process_targets.sync_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_process_targets,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, access_ids: Any = None, only_for_peer_assignment: Any = None, without_manager: Any = None, performance_review_process_ids: Any = None, agreement_completion_status: Any = None, pending_peer_evaluations: Any = None, managed_by_filter: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_process_targets.asyncio_detailed(
-                client=self._client,
-                ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_process_targets,
+                self._client,
+                after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7072,30 +7372,33 @@ class PerformanceReviewProcessesResource:
         """Async version of update_target_strategy."""
         return await post_api_2026_07_01_resources_performance_review_processes_update_target_strategy.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_processes.sync_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_processes,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_processes.sync_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_processes,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_processes.asyncio_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_processes,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7138,30 +7441,33 @@ class PerformanceReviewQuestionnaireByStrategiesResource:
         """Async version of update_questionnaire_for_strategy."""
         return await post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7188,30 +7494,33 @@ class PerformanceReviewVisibilitySettingsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_performance_review_visibility_settings_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_visibility_settings.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_review_visibility_settings.sync_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, performance_review_process_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_review_visibility_settings.asyncio_detailed(
-                client=self._client,
-                performance_review_process_ids=performance_review_process_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                self._client,
+                after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7238,30 +7547,33 @@ class PerformanceTargetManagersResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_performance_target_managers_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_target_managers.sync_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_target_managers,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_performance_target_managers.sync_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_performance_target_managers,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, performance_review_process_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_performance_target_managers.asyncio_detailed(
-                client=self._client,
-                ids=ids, performance_review_process_ids=performance_review_process_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_performance_target_managers,
+                self._client,
+                after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7312,30 +7624,33 @@ class PostsCommentsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_posts_comments_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, post_ids: Any = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, post_ids: Any = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_comments.sync_detailed(
-                client=self._client,
-                post_ids=post_ids, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_comments,
+                self._client,
+                after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, post_ids: Any = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, post_ids: Any = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_comments.sync_detailed(
-                client=self._client,
-                post_ids=post_ids, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_comments,
+                self._client,
+                after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, post_ids: Any = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, post_ids: Any = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_posts_comments.asyncio_detailed(
-                client=self._client,
-                post_ids=post_ids, ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_posts_comments,
+                self._client,
+                after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7394,30 +7709,33 @@ class PostsGroupsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_posts_groups_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_groups.sync_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_groups,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_groups.sync_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_groups,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, search: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, search: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_posts_groups.asyncio_detailed(
-                client=self._client,
-                ids=ids, search=search,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_posts_groups,
+                self._client,
+                after_id, limit=limit, ids=ids, search=search,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7468,30 +7786,33 @@ class PostsPostsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_posts_posts_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_posts.sync_detailed(
-                client=self._client,
-                groups=groups, from_=from_, until=until, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_posts,
+                self._client,
+                after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_posts_posts.sync_detailed(
-                client=self._client,
-                groups=groups, from_=from_, until=until, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_posts_posts,
+                self._client,
+                after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, groups: Any = None, from_: Any = None, until: Any = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_posts_posts.asyncio_detailed(
-                client=self._client,
-                groups=groups, from_=from_, until=until, ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_posts_posts,
+                self._client,
+                after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7518,30 +7839,33 @@ class ProcurementPurchaseOrdersResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_procurement_purchase_orders_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_purchase_orders.sync_detailed(
-                client=self._client,
-                ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_purchase_orders,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_purchase_orders.sync_detailed(
-                client=self._client,
-                ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_purchase_orders,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, purchase_request_ids: Any = None, status: Any = None, vendor_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_procurement_purchase_orders.asyncio_detailed(
-                client=self._client,
-                ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_procurement_purchase_orders,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7568,30 +7892,33 @@ class ProcurementPurchaseRequestsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_procurement_purchase_requests_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_purchase_requests.sync_detailed(
-                client=self._client,
-                ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_purchase_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_purchase_requests.sync_detailed(
-                client=self._client,
-                ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_purchase_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, requester_employee_ids: Any = None, type_ids: Any = None, status: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_procurement_purchase_requests.asyncio_detailed(
-                client=self._client,
-                ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_procurement_purchase_requests,
+                self._client,
+                after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7618,30 +7945,33 @@ class ProcurementTypesResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_procurement_types_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_types.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_types,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_procurement_types.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_procurement_types,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_procurement_types.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_procurement_types,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7692,30 +8022,33 @@ class ProjectManagementBudgetStrategiesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_budget_strategies.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_budget_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_budget_strategies.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_budget_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, without_subproject: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_budget_strategies.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_budget_strategies,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7742,30 +8075,33 @@ class ProjectManagementExpenseRecordsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_project_management_expense_records_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_expense_records.sync_detailed(
-                client=self._client,
-                ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_expense_records,
+                self._client,
+                after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_expense_records.sync_detailed(
-                client=self._client,
-                ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_expense_records,
+                self._client,
+                after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, start_date: Any = None, end_date: Any = None, expense_ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, updated_after: Any = None, employee_user_name_like: Any = None, project_worker_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_expense_records.asyncio_detailed(
-                client=self._client,
-                ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_expense_records,
+                self._client,
+                after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7784,30 +8120,33 @@ class ProjectManagementExportableExpensesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_project_management_exportable_expenses.asyncio(client=self._client, start_date=start_date, end_date=end_date, project_ids=project_ids)
 
-    def paginate(self, *, max_items: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_exportable_expenses.sync_detailed(
-                client=self._client,
-                start_date=start_date, end_date=end_date, project_ids=project_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                self._client,
+                after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_exportable_expenses.sync_detailed(
-                client=self._client,
-                start_date=start_date, end_date=end_date, project_ids=project_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                self._client,
+                after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, start_date: Any = None, end_date: Any = None, project_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_exportable_expenses.asyncio_detailed(
-                client=self._client,
-                start_date=start_date, end_date=end_date, project_ids=project_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                self._client,
+                after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7834,30 +8173,33 @@ class ProjectManagementImputableProjectsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_project_management_imputable_projects_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_imputable_projects.sync_detailed(
-                client=self._client,
-                ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_imputable_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_imputable_projects.sync_detailed(
-                client=self._client,
-                ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_imputable_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name_or_code: Any = None, only_active: Any = None, assigned: Any = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_imputable_projects.asyncio_detailed(
-                client=self._client,
-                ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_imputable_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7908,30 +8250,33 @@ class ProjectManagementPlannedRecordsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_project_management_planned_records_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_planned_records.sync_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_planned_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_planned_records.sync_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_planned_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, start_date: Any = None, end_date: Any = None, subproject_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_planned_records.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_planned_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7990,30 +8335,33 @@ class ProjectManagementProjectTasksResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_project_management_project_tasks_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_project_tasks.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_project_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_project_tasks.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_project_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, task_ids: Any = None, completed: Any = None, overdue: Any = None, search: Any = None, due_status: Any = None, client_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_project_tasks.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_project_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8072,30 +8420,33 @@ class ProjectManagementProjectWorkersResource:
         """Async version of unassign."""
         return await post_api_2026_07_01_resources_project_management_project_workers_unassign.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_project_workers.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_project_workers,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_project_workers.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_project_workers,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, subproject_ids: Any = None, no_subproject: Any = None, employee_ids: Any = None, assigned: Any = None, project_active: Any = None, employee_name: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None, include_labor_cost: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_project_workers.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_project_workers,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8178,30 +8529,33 @@ class ProjectManagementProjectsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_project_management_projects_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_projects.sync_detailed(
-                client=self._client,
-                ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_projects.sync_detailed(
-                client=self._client,
-                ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, name: Any = None, name_or_code: Any = None, include_inputed_minutes: Any = None, include_costs: Any = None, updated_after: Any = None, legal_entity_id: Any = None, client_ids: Any = None, no_clients: Any = None, total_currency: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_projects.asyncio_detailed(
-                client=self._client,
-                ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_projects,
+                self._client,
+                after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8260,30 +8614,33 @@ class ProjectManagementSubprojectsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_project_management_subprojects_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_subprojects.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_subprojects,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_subprojects.sync_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_subprojects,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_ids: Any = None, name: Any = None, include_no_subproject: Any = None, include_inputed_minutes: Any = None, include_cost: Any = None, updated_after: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_subprojects.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_subprojects,
+                self._client,
+                after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8350,30 +8707,33 @@ class ProjectManagementTimeRecordsResource:
         """Async version of update_project_worker."""
         return await post_api_2026_07_01_resources_project_management_time_records_update_project_worker.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_time_records.sync_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_time_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_project_management_time_records.sync_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+            return fetch_page(
+                get_api_2026_07_01_resources_project_management_time_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, project_worker_ids: Any = None, subproject_ids: Any = None, attendance_shift_ids: Any = None, employee_ids: Any = None, month: Any = None, year: Any = None, updated_after: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_project_management_time_records.asyncio_detailed(
-                client=self._client,
-                ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_project_management_time_records,
+                self._client,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8432,30 +8792,33 @@ class ShiftManagementShiftsResource:
         """Async version of bulk_delete."""
         return await post_api_2026_07_01_resources_shift_management_shifts_bulk_delete.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_shift_management_shifts.sync_detailed(
-                client=self._client,
-                ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
+            return fetch_page(
+                get_api_2026_07_01_resources_shift_management_shifts,
+                self._client,
+                after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_shift_management_shifts.sync_detailed(
-                client=self._client,
-                ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
+            return fetch_page(
+                get_api_2026_07_01_resources_shift_management_shifts,
+                self._client,
+                after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, without_ids: Any = None, employee_ids: Any = None, location_ids: Any = None, start_at: Any = None, end_at: Any = None, only_published: Any = None, only_states: Any = None, split_overnight_shifts: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_shift_management_shifts.asyncio_detailed(
-                client=self._client,
-                ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_shift_management_shifts,
+                self._client,
+                after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8498,30 +8861,33 @@ class TasksTaskFilesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_tasks_task_files.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, task_id: Any = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, task_id: Any = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_tasks_task_files.sync_detailed(
-                client=self._client,
-                task_id=task_id, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_tasks_task_files,
+                self._client,
+                after_id, limit=limit, task_id=task_id, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, task_id: Any = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, task_id: Any = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_tasks_task_files.sync_detailed(
-                client=self._client,
-                task_id=task_id, ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_tasks_task_files,
+                self._client,
+                after_id, limit=limit, task_id=task_id, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, task_id: Any = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, task_id: Any = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_tasks_task_files.asyncio_detailed(
-                client=self._client,
-                task_id=task_id, ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_tasks_task_files,
+                self._client,
+                after_id, limit=limit, task_id=task_id, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8612,30 +8978,33 @@ class TasksTasksResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_tasks_tasks_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_tasks_tasks.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
+            return fetch_page(
+                get_api_2026_07_01_resources_tasks_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_tasks_tasks.sync_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
+            return fetch_page(
+                get_api_2026_07_01_resources_tasks_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_id: Any = None, assignee_id: Any = None, due_on: Any = None, already_due: Any = None, task_status: Any = None, involvee_id: Any = None, category: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_tasks_tasks.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_tasks_tasks,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8686,30 +9055,33 @@ class TeamsMembershipsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_teams_memberships_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_teams_memberships.sync_detailed(
-                client=self._client,
-                ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_teams_memberships,
+                self._client,
+                after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_teams_memberships.sync_detailed(
-                client=self._client,
-                ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_teams_memberships,
+                self._client,
+                after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, lead: Any = None, team_ids: Any = None, employee_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_teams_memberships.asyncio_detailed(
-                client=self._client,
-                ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_teams_memberships,
+                self._client,
+                after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8760,30 +9132,33 @@ class TeamsTeamsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_teams_teams_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_teams_teams.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_teams_teams,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_teams_teams.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_teams_teams,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_teams_teams.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_teams_teams,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8818,30 +9193,33 @@ class TimePlanningPlannedBreaksResource:
         """Async version of bulk_create."""
         return await post_api_2026_07_01_resources_time_planning_planned_breaks_bulk_create.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_planning_planned_breaks.sync_detailed(
-                client=self._client,
-                ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                self._client,
+                after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_planning_planned_breaks.sync_detailed(
-                client=self._client,
-                ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                self._client,
+                after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, paid: Any = None, default_shift_ids: Any = None, shift_ids: Any = None, day_configuration_ids: Any = None, shift_configuration_ids: Any = None, active_break_configuration: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_time_planning_planned_breaks.asyncio_detailed(
-                client=self._client,
-                ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                self._client,
+                after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8892,30 +9270,33 @@ class TimePlanningPlanningVersionsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_time_planning_planning_versions_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_planning_planning_versions.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_planning_planning_versions,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_planning_planning_versions.sync_detailed(
-                client=self._client,
-                employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_planning_planning_versions,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = None, for_shifts: Any = None, only_active: Any = None, planning_tool: Any = None, schedule_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_time_planning_planning_versions.asyncio_detailed(
-                client=self._client,
-                employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_time_planning_planning_versions,
+                self._client,
+                after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8958,30 +9339,33 @@ class TimeSettingsBreakConfigurationsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_time_settings_break_configurations_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, active: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, active: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_settings_break_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, active=active,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_settings_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, active=active,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, active: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, active: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_time_settings_break_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, active=active,
+            return fetch_page(
+                get_api_2026_07_01_resources_time_settings_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, active=active,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, active: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, active: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_time_settings_break_configurations.asyncio_detailed(
-                client=self._client,
-                ids=ids, active=active,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_time_settings_break_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, active=active,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9032,30 +9416,33 @@ class TimeoffAllowanceIncidencesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowance_incidences.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowance_incidences.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_allowance_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_allowance_incidences.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9082,30 +9469,33 @@ class TimeoffAllowanceStatsResource:
         """Async version of get."""
         return await get_api_2026_07_01_resources_timeoff_allowance_stats_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowance_stats.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowance_stats.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, allowance_ids: Any = None, reference_date: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_allowance_stats.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9164,30 +9554,33 @@ class TimeoffAllowancesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_allowances_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowances.sync_detailed(
-                client=self._client,
-                ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowances,
+                self._client,
+                after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_allowances.sync_detailed(
-                client=self._client,
-                ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_allowances,
+                self._client,
+                after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, timeoff_policy_id: Any = None, by_overtime: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_allowances.asyncio_detailed(
-                client=self._client,
-                ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_allowances,
+                self._client,
+                after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9238,30 +9631,33 @@ class TimeoffBlockedPeriodsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_blocked_periods.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_blocked_periods.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_blocked_periods.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9304,30 +9700,33 @@ class TimeoffLeaveTypesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_leave_types_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_leave_types.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_leave_types,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_leave_types.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_leave_types,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None, active: Any = None, payable: Any = None, identifier: Any = None, employee_id: Any = None, reference_date: Any = None, leave_type_id: Any = None, allow_endless: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_leave_types.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_leave_types,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9402,30 +9801,33 @@ class TimeoffLeavesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_leaves_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_leaves.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_leaves,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_leaves.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_leaves,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, leave_type_id: Any = None, to: Any = None, from_: Any = None, only_active: Any = None, include_deleted_leaves: Any = None, approved: Any = None, include_pending: Any = None, include_leave_type: Any = None, include_duration: Any = None, type_is_workable: Any = None, type_is_payable: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_leaves.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_leaves,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9476,30 +9878,33 @@ class TimeoffPoliciesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_policies_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policies.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policies,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policies.sync_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policies,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, company_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_policies.asyncio_detailed(
-                client=self._client,
-                ids=ids, company_ids=company_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_policies,
+                self._client,
+                after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9550,30 +9955,33 @@ class TimeoffPolicyAssignmentsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policy_assignments.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policy_assignments.sync_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, employee_ids: Any = None, timeoff_policy_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_policy_assignments.asyncio_detailed(
-                client=self._client,
-                ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9592,30 +10000,33 @@ class TimeoffPolicyTimelinesResource:
         """Async version of list."""
         return await get_api_2026_07_01_resources_timeoff_policy_timelines.asyncio(client=self._client, employee_id=employee_id, reference_date=reference_date)
 
-    def paginate(self, *, max_items: int | None = None, employee_id: Any = None, reference_date: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_id: Any = None, reference_date: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policy_timelines.sync_detailed(
-                client=self._client,
-                employee_id=employee_id, reference_date=reference_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                self._client,
+                after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, employee_id: Any = None, reference_date: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, employee_id: Any = None, reference_date: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_timeoff_policy_timelines.sync_detailed(
-                client=self._client,
-                employee_id=employee_id, reference_date=reference_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                self._client,
+                after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, employee_id: Any = None, reference_date: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, employee_id: Any = None, reference_date: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_timeoff_policy_timelines.asyncio_detailed(
-                client=self._client,
-                employee_id=employee_id, reference_date=reference_date,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                self._client,
+                after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9658,30 +10069,33 @@ class TrainingsCategoriesResource:
         """Async version of create."""
         return await post_api_2026_07_01_resources_trainings_categories.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_categories.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_categories,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_categories.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_categories,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_categories.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_categories,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9724,30 +10138,33 @@ class TrainingsSessionAccessMembershipsResource:
         """Async version of bulk_destroy."""
         return await post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_destroy.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_session_access_memberships.sync_detailed(
-                client=self._client,
-                session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                self._client,
+                after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_session_access_memberships.sync_detailed(
-                client=self._client,
-                session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                self._client,
+                after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, ids: Any = None, search: Any = None, team_ids: Any = None, status: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_session_access_memberships.asyncio_detailed(
-                client=self._client,
-                session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                self._client,
+                after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9782,30 +10199,33 @@ class TrainingsSessionAttendancesResource:
         """Async version of bulk_update."""
         return await post_api_2026_07_01_resources_trainings_session_attendances_bulk_update.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_session_attendances.sync_detailed(
-                client=self._client,
-                session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_session_attendances,
+                self._client,
+                after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_session_attendances.sync_detailed(
-                client=self._client,
-                session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_session_attendances,
+                self._client,
+                after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = None, id: Any = None, ids: Any = None, session_access_membership_ids: Any = None, access_ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_session_attendances.asyncio_detailed(
-                client=self._client,
-                session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_session_attendances,
+                self._client,
+                after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9856,30 +10276,33 @@ class TrainingsSessionsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_trainings_sessions_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_sessions.sync_detailed(
-                client=self._client,
-                ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_sessions,
+                self._client,
+                after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_sessions.sync_detailed(
-                client=self._client,
-                ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_sessions,
+                self._client,
+                after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, training_ids: Any = None, search: Any = None, start_after: Any = None, start_before: Any = None, access_id: Any = None, employee_id: Any = None, training_class_ids: Any = None, next_: Any = None, modality: Any = None, starts_at: Any = None, active: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_sessions.asyncio_detailed(
-                client=self._client,
-                ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_sessions,
+                self._client,
+                after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9930,30 +10353,33 @@ class TrainingsTrainingClassesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_trainings_training_classes_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_training_classes.sync_detailed(
-                client=self._client,
-                ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_training_classes,
+                self._client,
+                after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_training_classes.sync_detailed(
-                client=self._client,
-                ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_training_classes,
+                self._client,
+                after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, id: Any = None, training_id: Any = None, search: Any = None, start_date: Any = None, end_date: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_training_classes.asyncio_detailed(
-                client=self._client,
-                ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_training_classes,
+                self._client,
+                after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -10004,30 +10430,33 @@ class TrainingsTrainingMembershipsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_trainings_training_memberships_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_training_memberships.sync_detailed(
-                client=self._client,
-                training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_training_memberships,
+                self._client,
+                after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_training_memberships.sync_detailed(
-                client=self._client,
-                training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_training_memberships,
+                self._client,
+                after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, training_id: Any = None, ids: Any = None, search: Any = None, team_id: Any = None, status: Any = None, class_id: Any = None, employee_id: Any = None, due_date: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_training_memberships.asyncio_detailed(
-                client=self._client,
-                training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_training_memberships,
+                self._client,
+                after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -10102,30 +10531,33 @@ class TrainingsTrainingsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_trainings_trainings_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_trainings.sync_detailed(
-                client=self._client,
-                id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_trainings,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_trainings_trainings.sync_detailed(
-                client=self._client,
-                id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
+            return fetch_page(
+                get_api_2026_07_01_resources_trainings_trainings,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, id: Any = None, ids: Any = None, access_id: Any = None, search: Any = None, status: Any = None, catalog: Any = None, only_assigned: Any = None, with_expired_memberships: Any = None, return_expired_memberships: Any = None, is_mandatory: Any = None, with_current_training_classes: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_trainings_trainings.asyncio_detailed(
-                client=self._client,
-                id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_trainings_trainings,
+                self._client,
+                after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -10160,30 +10592,33 @@ class WorkScheduleDayConfigurationsResource:
         """Async version of bulk_cud."""
         return await post_api_2026_07_01_resources_work_schedule_day_configurations_bulk_cud.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_day_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_day_configurations.sync_detailed(
-                client=self._client,
-                ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, overlap_period_id: Any = None, schedule_id: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_work_schedule_day_configurations.asyncio_detailed(
-                client=self._client,
-                ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                self._client,
+                after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -10234,30 +10669,33 @@ class WorkScheduleOverlapPeriodsResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_overlap_periods.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_overlap_periods.sync_detailed(
-                client=self._client,
-                ids=ids,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_work_schedule_overlap_periods.asyncio_detailed(
-                client=self._client,
-                ids=ids,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -10308,30 +10746,33 @@ class WorkScheduleSchedulesResource:
         """Async version of update."""
         return await put_api_2026_07_01_resources_work_schedule_schedules_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_schedules.sync_detailed(
-                client=self._client,
-                ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_schedules,
+                self._client,
+                after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return get_api_2026_07_01_resources_work_schedule_schedules.sync_detailed(
-                client=self._client,
-                ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
+            return fetch_page(
+                get_api_2026_07_01_resources_work_schedule_schedules,
+                self._client,
+                after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = None, with_employee_ids: Any = None, with_periods: Any = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await get_api_2026_07_01_resources_work_schedule_schedules.asyncio_detailed(
-                client=self._client,
-                ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
+            return await fetch_page_async(
+                get_api_2026_07_01_resources_work_schedule_schedules,
+                self._client,
+                after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
         return paginate_async(fetcher, max_items=max_items)
 
