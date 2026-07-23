@@ -149,7 +149,11 @@ def call_args(e):
 
 def emit_method(e):
     pos = [f"{p}: Any" for p in e.positional]
-    kw = [f"{p}: Any = None" for p in e.keyword]
+    # Default optional (query/body) params to UNSET, not None: the generated
+    # endpoints expect the UNSET sentinel for "omitted" and dereference enum
+    # values unconditionally (`field_type.value`), so forwarding None crashes
+    # before the request is sent. See issue #33.
+    kw = [f"{p}: Any = UNSET" for p in e.keyword]
     params = "self, " + ", ".join(pos + kw)
     return [
         f"    def {e.method}({params}) -> Any:",
@@ -164,7 +168,9 @@ def emit_method(e):
 
 
 def emit_pagination(list_ep, taken):
-    kw = [f"{p}: Any = None" for p in list_ep.keyword]
+    # See emit_method: optional filters default to UNSET so omitting them does
+    # not forward None into the generated endpoint's serializer (issue #33).
+    kw = [f"{p}: Any = UNSET" for p in list_ep.keyword]
     sig = (
         "self, *, max_items: int | None = None, limit: int | None = None"
         + "".join(f", {k}" for k in kw)
@@ -233,6 +239,7 @@ def main():
     out.append("from typing import Any, List")
     out.append("")
     out.append(f"from {PKG}.generated.client import AuthenticatedClient")
+    out.append(f"from {PKG}.generated.types import UNSET")
     out.append(
         f"from {PKG}.pagination import ("
         "paginate, paginate_async, collect_all, fetch_page, fetch_page_async)"
