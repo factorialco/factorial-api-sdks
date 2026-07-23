@@ -23,7 +23,8 @@ require "factorial_api"
 
 api = F::Api.new(api_key: "YOUR_KEY")
 
-teams = api.teams_team.teams_teams_get
+response = api.teams_team.teams_teams_get
+response.data.each { |team| puts team.name }
 ```
 
 ## Authentication
