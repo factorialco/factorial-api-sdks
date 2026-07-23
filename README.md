@@ -58,8 +58,9 @@ require "factorial_api"
 
 api = F::Api.new(api_key: "YOUR_KEY")
 
-page = api.employees_employee.employees_employees_get
-F.paginate(max_items: 50) { |p| api.employees_employee.employees_employees_get(query_params: p) }
+# only_active, only_managers (required query params become positional args)
+page = api.employees_employee.employees_employees_get(true, false)
+F.paginate(max_items: 50) { |p| api.employees_employee.employees_employees_get(true, false, query_params: p) }
  .each { |emp| puts emp.full_name }
 ```
 

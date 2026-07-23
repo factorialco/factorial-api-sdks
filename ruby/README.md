@@ -73,14 +73,18 @@ returns an object with `data` (the items) and `meta` (`has_next_page`,
 `end_cursor`, `total`, …). The pagination params (`after_id`, `limit`) are
 passed via `query_params:`.
 
+Note: query params the spec marks as *required* are generated as positional
+arguments — for employees, `only_active` and `only_managers` below.
+
 ### Single page
 
 ```ruby
-page = api.employees_employee.employees_employees_get(query_params: { limit: 50 })
+page = api.employees_employee.employees_employees_get(true, false, query_params: { limit: 50 })
 
 # Fetch the next page manually
 if page.meta.has_next_page
   next_page = api.employees_employee.employees_employees_get(
+    true, false,
     query_params: { limit: 50, after_id: page.meta.end_cursor }
   )
 end
@@ -94,7 +98,7 @@ the list call with the pagination params it hands you; it returns a lazy
 
 ```ruby
 employees = F.paginate do |page|
-  api.employees_employee.employees_employees_get(query_params: page)
+  api.employees_employee.employees_employees_get(true, false, query_params: page)
 end
 
 employees.each { |employee| puts employee.full_name }
@@ -106,7 +110,7 @@ employees.first(10)   # fetches a single page
 ```ruby
 # Optional safety caps: limit (page size, max 100) and max_items (total)
 pages = F.paginate(limit: 100, max_items: 500) do |page|
-  api.employees_employee.employees_employees_get(query_params: page)
+  api.employees_employee.employees_employees_get(true, false, query_params: page)
 end
 
 all_employees = pages.to_a
