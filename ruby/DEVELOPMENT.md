@@ -38,8 +38,21 @@ The facade specs live in `spec/factorial_api/` (outside the regenerated
 bundle exec rspec spec/factorial_api
 ```
 
-## Smoke test against the live API
+## Verifying auth and tokens manually
+
+Three dev scripts cover the full cycle (none are shipped in the gem):
 
 ```bash
+# 1. Obtain an OAuth access token (guides you through the authorization
+#    code flow; also supports --refresh REFRESH_TOKEN to renew)
+FACTORIAL_OAUTH_CLIENT_ID=... FACTORIAL_OAUTH_CLIENT_SECRET=... \
+FACTORIAL_BASE_URL=... bundle exec ruby scripts/oauth_token.rb
+
+# 2. Verify authentication: asserts the exact auth headers sent on the
+#    wire (offline), then checks real credentials against the API if
+#    FACTORIAL_API_KEY / FACTORIAL_TOKEN are set
+bundle exec ruby scripts/test_auth.rb
+
+# 3. Smoke test the SDK against the live API
 FACTORIAL_API_KEY=your_key bundle exec ruby scripts/test_api.rb
 ```
