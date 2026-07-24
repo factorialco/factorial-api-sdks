@@ -666,7 +666,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -676,7 +677,8 @@ module F
     # @param [Object] access_id Value to be assigned
     def access_id=(access_id)
       if access_id.nil?
-        fail ArgumentError, 'access_id cannot be nil'
+        @access_id = nil
+        return
       end
 
       @access_id = access_id
@@ -686,7 +688,8 @@ module F
     # @param [Object] first_name Value to be assigned
     def first_name=(first_name)
       if first_name.nil?
-        fail ArgumentError, 'first_name cannot be nil'
+        @first_name = nil
+        return
       end
 
       @first_name = first_name
@@ -696,7 +699,8 @@ module F
     # @param [Object] last_name Value to be assigned
     def last_name=(last_name)
       if last_name.nil?
-        fail ArgumentError, 'last_name cannot be nil'
+        @last_name = nil
+        return
       end
 
       @last_name = last_name
@@ -706,7 +710,8 @@ module F
     # @param [Object] full_name Value to be assigned
     def full_name=(full_name)
       if full_name.nil?
-        fail ArgumentError, 'full_name cannot be nil'
+        @full_name = nil
+        return
       end
 
       @full_name = full_name
@@ -726,7 +731,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -736,7 +742,8 @@ module F
     # @param [Object] location_id Value to be assigned
     def location_id=(location_id)
       if location_id.nil?
-        fail ArgumentError, 'location_id cannot be nil'
+        @location_id = nil
+        return
       end
 
       @location_id = location_id
@@ -746,7 +753,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -756,7 +764,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at
@@ -766,7 +775,8 @@ module F
     # @param [Object] is_terminating Value to be assigned
     def is_terminating=(is_terminating)
       if is_terminating.nil?
-        fail ArgumentError, 'is_terminating cannot be nil'
+        @is_terminating = nil
+        return
       end
 
       @is_terminating = is_terminating
@@ -776,7 +786,8 @@ module F
     # @param [Object] attendable Value to be assigned
     def attendable=(attendable)
       if attendable.nil?
-        fail ArgumentError, 'attendable cannot be nil'
+        @attendable = nil
+        return
       end
 
       @attendable = attendable

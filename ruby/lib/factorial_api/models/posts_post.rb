@@ -219,7 +219,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -229,7 +230,8 @@ module F
     # @param [Object] allow_comments_and_reactions Value to be assigned
     def allow_comments_and_reactions=(allow_comments_and_reactions)
       if allow_comments_and_reactions.nil?
-        fail ArgumentError, 'allow_comments_and_reactions cannot be nil'
+        @allow_comments_and_reactions = nil
+        return
       end
 
       @allow_comments_and_reactions = allow_comments_and_reactions
@@ -239,7 +241,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -249,7 +252,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at
@@ -259,7 +263,8 @@ module F
     # @param [Object] visits_count Value to be assigned
     def visits_count=(visits_count)
       if visits_count.nil?
-        fail ArgumentError, 'visits_count cannot be nil'
+        @visits_count = nil
+        return
       end
 
       @visits_count = visits_count
@@ -269,7 +274,8 @@ module F
     # @param [Object] comments_count Value to be assigned
     def comments_count=(comments_count)
       if comments_count.nil?
-        fail ArgumentError, 'comments_count cannot be nil'
+        @comments_count = nil
+        return
       end
 
       @comments_count = comments_count

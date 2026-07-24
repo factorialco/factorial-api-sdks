@@ -216,7 +216,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -226,7 +227,8 @@ module F
     # @param [Object] project_id Value to be assigned
     def project_id=(project_id)
       if project_id.nil?
-        fail ArgumentError, 'project_id cannot be nil'
+        @project_id = nil
+        return
       end
 
       @project_id = project_id

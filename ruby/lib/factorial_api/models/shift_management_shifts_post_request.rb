@@ -179,7 +179,8 @@ module F
     # @param [Object] start_at Value to be assigned
     def start_at=(start_at)
       if start_at.nil?
-        fail ArgumentError, 'start_at cannot be nil'
+        @start_at = nil
+        return
       end
 
       @start_at = start_at
@@ -189,7 +190,8 @@ module F
     # @param [Object] end_at Value to be assigned
     def end_at=(end_at)
       if end_at.nil?
-        fail ArgumentError, 'end_at cannot be nil'
+        @end_at = nil
+        return
       end
 
       @end_at = end_at
@@ -199,7 +201,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -209,7 +212,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id

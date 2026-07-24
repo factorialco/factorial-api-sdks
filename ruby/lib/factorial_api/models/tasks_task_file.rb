@@ -168,7 +168,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -178,7 +179,8 @@ module F
     # @param [Object] task_id Value to be assigned
     def task_id=(task_id)
       if task_id.nil?
-        fail ArgumentError, 'task_id cannot be nil'
+        @task_id = nil
+        return
       end
 
       @task_id = task_id
@@ -188,7 +190,8 @@ module F
     # @param [Object] filename Value to be assigned
     def filename=(filename)
       if filename.nil?
-        fail ArgumentError, 'filename cannot be nil'
+        @filename = nil
+        return
       end
 
       @filename = filename
@@ -198,7 +201,8 @@ module F
     # @param [Object] path Value to be assigned
     def path=(path)
       if path.nil?
-        fail ArgumentError, 'path cannot be nil'
+        @path = nil
+        return
       end
 
       @path = path
@@ -208,7 +212,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

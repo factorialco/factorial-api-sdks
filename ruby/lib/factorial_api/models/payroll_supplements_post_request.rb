@@ -186,7 +186,8 @@ module F
     # @param [Object] amount_in_cents Value to be assigned
     def amount_in_cents=(amount_in_cents)
       if amount_in_cents.nil?
-        fail ArgumentError, 'amount_in_cents cannot be nil'
+        @amount_in_cents = nil
+        return
       end
 
       @amount_in_cents = amount_in_cents
@@ -196,7 +197,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -206,7 +208,8 @@ module F
     # @param [Object] effective_on Value to be assigned
     def effective_on=(effective_on)
       if effective_on.nil?
-        fail ArgumentError, 'effective_on cannot be nil'
+        @effective_on = nil
+        return
       end
 
       @effective_on = effective_on
@@ -216,7 +219,8 @@ module F
     # @param [Object] contracts_taxonomy_id Value to be assigned
     def contracts_taxonomy_id=(contracts_taxonomy_id)
       if contracts_taxonomy_id.nil?
-        fail ArgumentError, 'contracts_taxonomy_id cannot be nil'
+        @contracts_taxonomy_id = nil
+        return
       end
 
       @contracts_taxonomy_id = contracts_taxonomy_id
@@ -226,7 +230,8 @@ module F
     # @param [Object] payroll_policy_period_id Value to be assigned
     def payroll_policy_period_id=(payroll_policy_period_id)
       if payroll_policy_period_id.nil?
-        fail ArgumentError, 'payroll_policy_period_id cannot be nil'
+        @payroll_policy_period_id = nil
+        return
       end
 
       @payroll_policy_period_id = payroll_policy_period_id

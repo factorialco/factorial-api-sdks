@@ -210,7 +210,8 @@ module F
     # @param [Object] it_asset_model_id Value to be assigned
     def it_asset_model_id=(it_asset_model_id)
       if it_asset_model_id.nil?
-        fail ArgumentError, 'it_asset_model_id cannot be nil'
+        @it_asset_model_id = nil
+        return
       end
 
       @it_asset_model_id = it_asset_model_id
@@ -220,7 +221,8 @@ module F
     # @param [Object] serial_number Value to be assigned
     def serial_number=(serial_number)
       if serial_number.nil?
-        fail ArgumentError, 'serial_number cannot be nil'
+        @serial_number = nil
+        return
       end
 
       @serial_number = serial_number

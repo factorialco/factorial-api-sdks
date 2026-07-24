@@ -111,7 +111,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -121,7 +122,8 @@ module F
     # @param [Object] author_access_id Value to be assigned
     def author_access_id=(author_access_id)
       if author_access_id.nil?
-        fail ArgumentError, 'author_access_id cannot be nil'
+        @author_access_id = nil
+        return
       end
 
       @author_access_id = author_access_id

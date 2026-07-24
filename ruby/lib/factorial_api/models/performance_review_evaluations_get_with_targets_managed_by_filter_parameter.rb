@@ -110,7 +110,8 @@ module F
     # @param [Object] manager_employee_id Value to be assigned
     def manager_employee_id=(manager_employee_id)
       if manager_employee_id.nil?
-        fail ArgumentError, 'manager_employee_id cannot be nil'
+        @manager_employee_id = nil
+        return
       end
 
       @manager_employee_id = manager_employee_id
@@ -120,7 +121,8 @@ module F
     # @param [Object] only_direct_reports Value to be assigned
     def only_direct_reports=(only_direct_reports)
       if only_direct_reports.nil?
-        fail ArgumentError, 'only_direct_reports cannot be nil'
+        @only_direct_reports = nil
+        return
       end
 
       @only_direct_reports = only_direct_reports

@@ -267,7 +267,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -277,7 +278,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -287,7 +289,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -297,7 +300,8 @@ module F
     # @param [Object] reference_date Value to be assigned
     def reference_date=(reference_date)
       if reference_date.nil?
-        fail ArgumentError, 'reference_date cannot be nil'
+        @reference_date = nil
+        return
       end
 
       @reference_date = reference_date
@@ -307,7 +311,8 @@ module F
     # @param [Object] clock_in Value to be assigned
     def clock_in=(clock_in)
       if clock_in.nil?
-        fail ArgumentError, 'clock_in cannot be nil'
+        @clock_in = nil
+        return
       end
 
       @clock_in = clock_in
@@ -327,7 +332,8 @@ module F
     # @param [Object] workable Value to be assigned
     def workable=(workable)
       if workable.nil?
-        fail ArgumentError, 'workable cannot be nil'
+        @workable = nil
+        return
       end
 
       @workable = workable
@@ -337,7 +343,8 @@ module F
     # @param [Object] automatic_clock_in Value to be assigned
     def automatic_clock_in=(automatic_clock_in)
       if automatic_clock_in.nil?
-        fail ArgumentError, 'automatic_clock_in cannot be nil'
+        @automatic_clock_in = nil
+        return
       end
 
       @automatic_clock_in = automatic_clock_in

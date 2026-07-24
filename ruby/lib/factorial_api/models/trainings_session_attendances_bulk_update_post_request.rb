@@ -115,7 +115,8 @@ module F
     # @param [Object] ids Value to be assigned
     def ids=(ids)
       if ids.nil?
-        fail ArgumentError, 'ids cannot be nil'
+        @ids = nil
+        return
       end
 
       @ids = ids

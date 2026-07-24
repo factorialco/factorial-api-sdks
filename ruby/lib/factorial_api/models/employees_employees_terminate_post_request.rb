@@ -138,7 +138,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -148,7 +149,8 @@ module F
     # @param [Object] terminated_on Value to be assigned
     def terminated_on=(terminated_on)
       if terminated_on.nil?
-        fail ArgumentError, 'terminated_on cannot be nil'
+        @terminated_on = nil
+        return
       end
 
       @terminated_on = terminated_on

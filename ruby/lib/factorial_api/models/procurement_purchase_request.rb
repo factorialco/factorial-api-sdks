@@ -260,7 +260,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -270,7 +271,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -280,7 +282,8 @@ module F
     # @param [Object] type_id Value to be assigned
     def type_id=(type_id)
       if type_id.nil?
-        fail ArgumentError, 'type_id cannot be nil'
+        @type_id = nil
+        return
       end
 
       @type_id = type_id
@@ -290,7 +293,8 @@ module F
     # @param [Object] cost Value to be assigned
     def cost=(cost)
       if cost.nil?
-        fail ArgumentError, 'cost cannot be nil'
+        @cost = nil
+        return
       end
 
       @cost = cost
@@ -300,7 +304,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -310,7 +315,8 @@ module F
     # @param [Object] requester_employee_id Value to be assigned
     def requester_employee_id=(requester_employee_id)
       if requester_employee_id.nil?
-        fail ArgumentError, 'requester_employee_id cannot be nil'
+        @requester_employee_id = nil
+        return
       end
 
       @requester_employee_id = requester_employee_id

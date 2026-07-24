@@ -161,7 +161,8 @@ module F
     # @param [Object] active Value to be assigned
     def active=(active)
       if active.nil?
-        fail ArgumentError, 'active cannot be nil'
+        @active = nil
+        return
       end
 
       @active = active
@@ -171,7 +172,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -181,7 +183,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -191,7 +194,8 @@ module F
     # @param [Object] space Value to be assigned
     def space=(space)
       if space.nil?
-        fail ArgumentError, 'space cannot be nil'
+        @space = nil
+        return
       end
 
       @space = space

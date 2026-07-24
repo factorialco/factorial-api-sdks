@@ -235,7 +235,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -245,7 +246,8 @@ module F
     # @param [Object] cost Value to be assigned
     def cost=(cost)
       if cost.nil?
-        fail ArgumentError, 'cost cannot be nil'
+        @cost = nil
+        return
       end
 
       @cost = cost
@@ -255,7 +257,8 @@ module F
     # @param [Object] subsidized_cost Value to be assigned
     def subsidized_cost=(subsidized_cost)
       if subsidized_cost.nil?
-        fail ArgumentError, 'subsidized_cost cannot be nil'
+        @subsidized_cost = nil
+        return
       end
 
       @subsidized_cost = subsidized_cost
@@ -265,7 +268,8 @@ module F
     # @param [Object] salary_cost Value to be assigned
     def salary_cost=(salary_cost)
       if salary_cost.nil?
-        fail ArgumentError, 'salary_cost cannot be nil'
+        @salary_cost = nil
+        return
       end
 
       @salary_cost = salary_cost
@@ -275,7 +279,8 @@ module F
     # @param [Object] indirect_cost Value to be assigned
     def indirect_cost=(indirect_cost)
       if indirect_cost.nil?
-        fail ArgumentError, 'indirect_cost cannot be nil'
+        @indirect_cost = nil
+        return
       end
 
       @indirect_cost = indirect_cost

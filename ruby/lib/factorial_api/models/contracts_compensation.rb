@@ -283,7 +283,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -293,7 +294,8 @@ module F
     # @param [Object] contract_version_id Value to be assigned
     def contract_version_id=(contract_version_id)
       if contract_version_id.nil?
-        fail ArgumentError, 'contract_version_id cannot be nil'
+        @contract_version_id = nil
+        return
       end
 
       @contract_version_id = contract_version_id
@@ -303,7 +305,8 @@ module F
     # @param [Object] contracts_taxonomy_id Value to be assigned
     def contracts_taxonomy_id=(contracts_taxonomy_id)
       if contracts_taxonomy_id.nil?
-        fail ArgumentError, 'contracts_taxonomy_id cannot be nil'
+        @contracts_taxonomy_id = nil
+        return
       end
 
       @contracts_taxonomy_id = contracts_taxonomy_id
@@ -313,7 +316,8 @@ module F
     # @param [Object] unit Value to be assigned
     def unit=(unit)
       if unit.nil?
-        fail ArgumentError, 'unit cannot be nil'
+        @unit = nil
+        return
       end
 
       @unit = unit

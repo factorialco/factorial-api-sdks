@@ -111,7 +111,8 @@ module F
     # @param [Object] process_id Value to be assigned
     def process_id=(process_id)
       if process_id.nil?
-        fail ArgumentError, 'process_id cannot be nil'
+        @process_id = nil
+        return
       end
 
       @process_id = process_id
@@ -121,7 +122,8 @@ module F
     # @param [Object] target_id Value to be assigned
     def target_id=(target_id)
       if target_id.nil?
-        fail ArgumentError, 'target_id cannot be nil'
+        @target_id = nil
+        return
       end
 
       @target_id = target_id

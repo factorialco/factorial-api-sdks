@@ -185,7 +185,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -205,7 +206,8 @@ module F
     # @param [Object] error_messages Value to be assigned
     def error_messages=(error_messages)
       if error_messages.nil?
-        fail ArgumentError, 'error_messages cannot be nil'
+        @error_messages = nil
+        return
       end
 
       @error_messages = error_messages
@@ -215,7 +217,8 @@ module F
     # @param [Object] sync_run_id Value to be assigned
     def sync_run_id=(sync_run_id)
       if sync_run_id.nil?
-        fail ArgumentError, 'sync_run_id cannot be nil'
+        @sync_run_id = nil
+        return
       end
 
       @sync_run_id = sync_run_id
@@ -225,7 +228,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id

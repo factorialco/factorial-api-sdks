@@ -386,7 +386,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -396,7 +397,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -406,7 +408,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -416,7 +419,8 @@ module F
     # @param [Object] reference_date Value to be assigned
     def reference_date=(reference_date)
       if reference_date.nil?
-        fail ArgumentError, 'reference_date cannot be nil'
+        @reference_date = nil
+        return
       end
 
       @reference_date = reference_date
@@ -446,7 +450,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -456,7 +461,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -466,7 +472,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at
@@ -476,7 +483,8 @@ module F
     # @param [Object] minutes Value to be assigned
     def minutes=(minutes)
       if minutes.nil?
-        fail ArgumentError, 'minutes cannot be nil'
+        @minutes = nil
+        return
       end
 
       @minutes = minutes

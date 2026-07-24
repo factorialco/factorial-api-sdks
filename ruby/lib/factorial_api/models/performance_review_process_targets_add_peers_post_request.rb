@@ -113,7 +113,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -123,7 +124,8 @@ module F
     # @param [Object] peer_access_ids Value to be assigned
     def peer_access_ids=(peer_access_ids)
       if peer_access_ids.nil?
-        fail ArgumentError, 'peer_access_ids cannot be nil'
+        @peer_access_ids = nil
+        return
       end
 
       @peer_access_ids = peer_access_ids

@@ -113,7 +113,8 @@ module F
     # @param [Object] project_id Value to be assigned
     def project_id=(project_id)
       if project_id.nil?
-        fail ArgumentError, 'project_id cannot be nil'
+        @project_id = nil
+        return
       end
 
       @project_id = project_id
@@ -123,7 +124,8 @@ module F
     # @param [Object] employee_ids Value to be assigned
     def employee_ids=(employee_ids)
       if employee_ids.nil?
-        fail ArgumentError, 'employee_ids cannot be nil'
+        @employee_ids = nil
+        return
       end
 
       @employee_ids = employee_ids

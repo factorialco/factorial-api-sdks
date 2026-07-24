@@ -145,7 +145,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -155,7 +156,8 @@ module F
     # @param [Object] performance_review_evaluation_id Value to be assigned
     def performance_review_evaluation_id=(performance_review_evaluation_id)
       if performance_review_evaluation_id.nil?
-        fail ArgumentError, 'performance_review_evaluation_id cannot be nil'
+        @performance_review_evaluation_id = nil
+        return
       end
 
       @performance_review_evaluation_id = performance_review_evaluation_id
@@ -165,7 +167,8 @@ module F
     # @param [Object] answered_questionnaire_with_sections Value to be assigned
     def answered_questionnaire_with_sections=(answered_questionnaire_with_sections)
       if answered_questionnaire_with_sections.nil?
-        fail ArgumentError, 'answered_questionnaire_with_sections cannot be nil'
+        @answered_questionnaire_with_sections = nil
+        return
       end
 
       @answered_questionnaire_with_sections = answered_questionnaire_with_sections

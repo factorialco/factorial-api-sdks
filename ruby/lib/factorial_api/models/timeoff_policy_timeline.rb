@@ -157,7 +157,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -167,7 +168,8 @@ module F
     # @param [Object] start_limit_date Value to be assigned
     def start_limit_date=(start_limit_date)
       if start_limit_date.nil?
-        fail ArgumentError, 'start_limit_date cannot be nil'
+        @start_limit_date = nil
+        return
       end
 
       @start_limit_date = start_limit_date
@@ -177,7 +179,8 @@ module F
     # @param [Object] end_limit_date Value to be assigned
     def end_limit_date=(end_limit_date)
       if end_limit_date.nil?
-        fail ArgumentError, 'end_limit_date cannot be nil'
+        @end_limit_date = nil
+        return
       end
 
       @end_limit_date = end_limit_date
@@ -187,7 +190,8 @@ module F
     # @param [Object] items Value to be assigned
     def items=(items)
       if items.nil?
-        fail ArgumentError, 'items cannot be nil'
+        @items = nil
+        return
       end
 
       @items = items
@@ -197,7 +201,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id

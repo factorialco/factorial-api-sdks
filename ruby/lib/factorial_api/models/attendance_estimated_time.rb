@@ -310,7 +310,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -320,7 +321,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -330,7 +332,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -340,7 +343,8 @@ module F
     # @param [Object] expected_minutes Value to be assigned
     def expected_minutes=(expected_minutes)
       if expected_minutes.nil?
-        fail ArgumentError, 'expected_minutes cannot be nil'
+        @expected_minutes = nil
+        return
       end
 
       @expected_minutes = expected_minutes
@@ -350,7 +354,8 @@ module F
     # @param [Object] regular_minutes Value to be assigned
     def regular_minutes=(regular_minutes)
       if regular_minutes.nil?
-        fail ArgumentError, 'regular_minutes cannot be nil'
+        @regular_minutes = nil
+        return
       end
 
       @regular_minutes = regular_minutes
@@ -360,7 +365,8 @@ module F
     # @param [Object] overtime_minutes Value to be assigned
     def overtime_minutes=(overtime_minutes)
       if overtime_minutes.nil?
-        fail ArgumentError, 'overtime_minutes cannot be nil'
+        @overtime_minutes = nil
+        return
       end
 
       @overtime_minutes = overtime_minutes
@@ -370,7 +376,8 @@ module F
     # @param [Object] breaks Value to be assigned
     def breaks=(breaks)
       if breaks.nil?
-        fail ArgumentError, 'breaks cannot be nil'
+        @breaks = nil
+        return
       end
 
       @breaks = breaks
@@ -390,7 +397,8 @@ module F
     # @param [Object] estimated_half_days Value to be assigned
     def estimated_half_days=(estimated_half_days)
       if estimated_half_days.nil?
-        fail ArgumentError, 'estimated_half_days cannot be nil'
+        @estimated_half_days = nil
+        return
       end
 
       @estimated_half_days = estimated_half_days
@@ -400,7 +408,8 @@ module F
     # @param [Object] shifts Value to be assigned
     def shifts=(shifts)
       if shifts.nil?
-        fail ArgumentError, 'shifts cannot be nil'
+        @shifts = nil
+        return
       end
 
       @shifts = shifts
@@ -420,7 +429,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -430,7 +440,8 @@ module F
     # @param [Object] minutes Value to be assigned
     def minutes=(minutes)
       if minutes.nil?
-        fail ArgumentError, 'minutes cannot be nil'
+        @minutes = nil
+        return
       end
 
       @minutes = minutes

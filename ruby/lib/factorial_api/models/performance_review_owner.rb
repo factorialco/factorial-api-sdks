@@ -127,7 +127,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -137,7 +138,8 @@ module F
     # @param [Object] access_id Value to be assigned
     def access_id=(access_id)
       if access_id.nil?
-        fail ArgumentError, 'access_id cannot be nil'
+        @access_id = nil
+        return
       end
 
       @access_id = access_id
@@ -147,7 +149,8 @@ module F
     # @param [Object] performance_review_process_id Value to be assigned
     def performance_review_process_id=(performance_review_process_id)
       if performance_review_process_id.nil?
-        fail ArgumentError, 'performance_review_process_id cannot be nil'
+        @performance_review_process_id = nil
+        return
       end
 
       @performance_review_process_id = performance_review_process_id

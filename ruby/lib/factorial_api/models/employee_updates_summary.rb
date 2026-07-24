@@ -178,7 +178,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -188,7 +189,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id
@@ -198,7 +200,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status
@@ -208,7 +211,8 @@ module F
     # @param [Object] type Value to be assigned
     def type=(type)
       if type.nil?
-        fail ArgumentError, 'type cannot be nil'
+        @type = nil
+        return
       end
 
       @type = type
@@ -218,7 +222,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

@@ -122,7 +122,8 @@ module F
     # @param [Object] now Value to be assigned
     def now=(now)
       if now.nil?
-        fail ArgumentError, 'now cannot be nil'
+        @now = nil
+        return
       end
 
       @now = now

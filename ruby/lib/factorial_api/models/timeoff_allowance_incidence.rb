@@ -209,7 +209,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -219,7 +220,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -229,7 +231,8 @@ module F
     # @param [Object] days_in_cents Value to be assigned
     def days_in_cents=(days_in_cents)
       if days_in_cents.nil?
-        fail ArgumentError, 'days_in_cents cannot be nil'
+        @days_in_cents = nil
+        return
       end
 
       @days_in_cents = days_in_cents
@@ -239,7 +242,8 @@ module F
     # @param [Object] timeoff_allowance_id Value to be assigned
     def timeoff_allowance_id=(timeoff_allowance_id)
       if timeoff_allowance_id.nil?
-        fail ArgumentError, 'timeoff_allowance_id cannot be nil'
+        @timeoff_allowance_id = nil
+        return
       end
 
       @timeoff_allowance_id = timeoff_allowance_id
@@ -249,7 +253,8 @@ module F
     # @param [Object] effective_on Value to be assigned
     def effective_on=(effective_on)
       if effective_on.nil?
-        fail ArgumentError, 'effective_on cannot be nil'
+        @effective_on = nil
+        return
       end
 
       @effective_on = effective_on
@@ -259,7 +264,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -269,7 +275,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

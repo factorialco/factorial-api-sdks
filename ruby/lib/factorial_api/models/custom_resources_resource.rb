@@ -143,7 +143,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -153,7 +154,8 @@ module F
     # @param [Object] schema_id Value to be assigned
     def schema_id=(schema_id)
       if schema_id.nil?
-        fail ArgumentError, 'schema_id cannot be nil'
+        @schema_id = nil
+        return
       end
 
       @schema_id = schema_id
@@ -163,7 +165,8 @@ module F
     # @param [Object] attachable_type Value to be assigned
     def attachable_type=(attachable_type)
       if attachable_type.nil?
-        fail ArgumentError, 'attachable_type cannot be nil'
+        @attachable_type = nil
+        return
       end
 
       @attachable_type = attachable_type
@@ -173,7 +176,8 @@ module F
     # @param [Object] attachable_id Value to be assigned
     def attachable_id=(attachable_id)
       if attachable_id.nil?
-        fail ArgumentError, 'attachable_id cannot be nil'
+        @attachable_id = nil
+        return
       end
 
       @attachable_id = attachable_id

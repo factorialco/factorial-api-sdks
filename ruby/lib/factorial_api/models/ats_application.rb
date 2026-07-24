@@ -258,7 +258,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -268,7 +269,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -278,7 +280,8 @@ module F
     # @param [Object] ats_job_posting_id Value to be assigned
     def ats_job_posting_id=(ats_job_posting_id)
       if ats_job_posting_id.nil?
-        fail ArgumentError, 'ats_job_posting_id cannot be nil'
+        @ats_job_posting_id = nil
+        return
       end
 
       @ats_job_posting_id = ats_job_posting_id
@@ -288,7 +291,8 @@ module F
     # @param [Object] ats_candidate_id Value to be assigned
     def ats_candidate_id=(ats_candidate_id)
       if ats_candidate_id.nil?
-        fail ArgumentError, 'ats_candidate_id cannot be nil'
+        @ats_candidate_id = nil
+        return
       end
 
       @ats_candidate_id = ats_candidate_id
@@ -298,7 +302,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

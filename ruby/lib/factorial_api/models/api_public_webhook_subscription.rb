@@ -193,7 +193,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -203,7 +204,8 @@ module F
     # @param [Object] target_url Value to be assigned
     def target_url=(target_url)
       if target_url.nil?
-        fail ArgumentError, 'target_url cannot be nil'
+        @target_url = nil
+        return
       end
 
       @target_url = target_url
@@ -213,7 +215,8 @@ module F
     # @param [Object] type Value to be assigned
     def type=(type)
       if type.nil?
-        fail ArgumentError, 'type cannot be nil'
+        @type = nil
+        return
       end
 
       @type = type
@@ -223,7 +226,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -233,7 +237,8 @@ module F
     # @param [Object] enabled Value to be assigned
     def enabled=(enabled)
       if enabled.nil?
-        fail ArgumentError, 'enabled cannot be nil'
+        @enabled = nil
+        return
       end
 
       @enabled = enabled
@@ -243,7 +248,8 @@ module F
     # @param [Object] api_version Value to be assigned
     def api_version=(api_version)
       if api_version.nil?
-        fail ArgumentError, 'api_version cannot be nil'
+        @api_version = nil
+        return
       end
 
       @api_version = api_version

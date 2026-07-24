@@ -113,7 +113,8 @@ module F
     # @param [Object] review_process_id Value to be assigned
     def review_process_id=(review_process_id)
       if review_process_id.nil?
-        fail ArgumentError, 'review_process_id cannot be nil'
+        @review_process_id = nil
+        return
       end
 
       @review_process_id = review_process_id
@@ -123,7 +124,8 @@ module F
     # @param [Object] owner_access_ids Value to be assigned
     def owner_access_ids=(owner_access_ids)
       if owner_access_ids.nil?
-        fail ArgumentError, 'owner_access_ids cannot be nil'
+        @owner_access_ids = nil
+        return
       end
 
       @owner_access_ids = owner_access_ids

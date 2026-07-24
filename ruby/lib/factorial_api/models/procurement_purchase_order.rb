@@ -272,7 +272,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -282,7 +283,8 @@ module F
     # @param [Object] po_number Value to be assigned
     def po_number=(po_number)
       if po_number.nil?
-        fail ArgumentError, 'po_number cannot be nil'
+        @po_number = nil
+        return
       end
 
       @po_number = po_number
@@ -292,7 +294,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -312,7 +315,8 @@ module F
     # @param [Object] cost Value to be assigned
     def cost=(cost)
       if cost.nil?
-        fail ArgumentError, 'cost cannot be nil'
+        @cost = nil
+        return
       end
 
       @cost = cost
@@ -322,7 +326,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -332,7 +337,8 @@ module F
     # @param [Object] purchase_request_id Value to be assigned
     def purchase_request_id=(purchase_request_id)
       if purchase_request_id.nil?
-        fail ArgumentError, 'purchase_request_id cannot be nil'
+        @purchase_request_id = nil
+        return
       end
 
       @purchase_request_id = purchase_request_id
@@ -342,7 +348,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id
@@ -352,7 +359,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -362,7 +370,8 @@ module F
     # @param [Object] formatted_po_number Value to be assigned
     def formatted_po_number=(formatted_po_number)
       if formatted_po_number.nil?
-        fail ArgumentError, 'formatted_po_number cannot be nil'
+        @formatted_po_number = nil
+        return
       end
 
       @formatted_po_number = formatted_po_number

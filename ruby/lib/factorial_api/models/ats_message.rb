@@ -241,7 +241,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -251,7 +252,8 @@ module F
     # @param [Object] content Value to be assigned
     def content=(content)
       if content.nil?
-        fail ArgumentError, 'content cannot be nil'
+        @content = nil
+        return
       end
 
       @content = content
@@ -261,7 +263,8 @@ module F
     # @param [Object] ats_conversation_id Value to be assigned
     def ats_conversation_id=(ats_conversation_id)
       if ats_conversation_id.nil?
-        fail ArgumentError, 'ats_conversation_id cannot be nil'
+        @ats_conversation_id = nil
+        return
       end
 
       @ats_conversation_id = ats_conversation_id
@@ -271,7 +274,8 @@ module F
     # @param [Object] sent_by_id Value to be assigned
     def sent_by_id=(sent_by_id)
       if sent_by_id.nil?
-        fail ArgumentError, 'sent_by_id cannot be nil'
+        @sent_by_id = nil
+        return
       end
 
       @sent_by_id = sent_by_id
@@ -281,7 +285,8 @@ module F
     # @param [Object] sent_by_type Value to be assigned
     def sent_by_type=(sent_by_type)
       if sent_by_type.nil?
-        fail ArgumentError, 'sent_by_type cannot be nil'
+        @sent_by_type = nil
+        return
       end
 
       @sent_by_type = sent_by_type
@@ -291,7 +296,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -301,7 +307,8 @@ module F
     # @param [Object] attachments Value to be assigned
     def attachments=(attachments)
       if attachments.nil?
-        fail ArgumentError, 'attachments cannot be nil'
+        @attachments = nil
+        return
       end
 
       @attachments = attachments
@@ -311,7 +318,8 @@ module F
     # @param [Object] topic Value to be assigned
     def topic=(topic)
       if topic.nil?
-        fail ArgumentError, 'topic cannot be nil'
+        @topic = nil
+        return
       end
 
       @topic = topic

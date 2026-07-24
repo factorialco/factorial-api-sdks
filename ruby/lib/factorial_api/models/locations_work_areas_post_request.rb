@@ -109,7 +109,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -119,7 +120,8 @@ module F
     # @param [Object] location_id Value to be assigned
     def location_id=(location_id)
       if location_id.nil?
-        fail ArgumentError, 'location_id cannot be nil'
+        @location_id = nil
+        return
       end
 
       @location_id = location_id

@@ -209,7 +209,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -219,7 +220,8 @@ module F
     # @param [Object] number Value to be assigned
     def number=(number)
       if number.nil?
-        fail ArgumentError, 'number cannot be nil'
+        @number = nil
+        return
       end
 
       @number = number
@@ -229,7 +231,8 @@ module F
     # @param [Object] debit_amount_cents Value to be assigned
     def debit_amount_cents=(debit_amount_cents)
       if debit_amount_cents.nil?
-        fail ArgumentError, 'debit_amount_cents cannot be nil'
+        @debit_amount_cents = nil
+        return
       end
 
       @debit_amount_cents = debit_amount_cents
@@ -239,7 +242,8 @@ module F
     # @param [Object] credit_amount_cents Value to be assigned
     def credit_amount_cents=(credit_amount_cents)
       if credit_amount_cents.nil?
-        fail ArgumentError, 'credit_amount_cents cannot be nil'
+        @credit_amount_cents = nil
+        return
       end
 
       @credit_amount_cents = credit_amount_cents
@@ -249,7 +253,8 @@ module F
     # @param [Object] journal_entry_id Value to be assigned
     def journal_entry_id=(journal_entry_id)
       if journal_entry_id.nil?
-        fail ArgumentError, 'journal_entry_id cannot be nil'
+        @journal_entry_id = nil
+        return
       end
 
       @journal_entry_id = journal_entry_id
@@ -259,7 +264,8 @@ module F
     # @param [Object] account_id Value to be assigned
     def account_id=(account_id)
       if account_id.nil?
-        fail ArgumentError, 'account_id cannot be nil'
+        @account_id = nil
+        return
       end
 
       @account_id = account_id
@@ -269,7 +275,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

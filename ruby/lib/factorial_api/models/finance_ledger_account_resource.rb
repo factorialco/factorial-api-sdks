@@ -212,7 +212,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -232,7 +233,8 @@ module F
     # @param [Object] resource_id Value to be assigned
     def resource_id=(resource_id)
       if resource_id.nil?
-        fail ArgumentError, 'resource_id cannot be nil'
+        @resource_id = nil
+        return
       end
 
       @resource_id = resource_id
@@ -242,7 +244,8 @@ module F
     # @param [Object] account_id Value to be assigned
     def account_id=(account_id)
       if account_id.nil?
-        fail ArgumentError, 'account_id cannot be nil'
+        @account_id = nil
+        return
       end
 
       @account_id = account_id
@@ -262,7 +265,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

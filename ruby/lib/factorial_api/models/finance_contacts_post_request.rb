@@ -194,7 +194,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -204,7 +205,8 @@ module F
     # @param [Object] address Value to be assigned
     def address=(address)
       if address.nil?
-        fail ArgumentError, 'address cannot be nil'
+        @address = nil
+        return
       end
 
       @address = address

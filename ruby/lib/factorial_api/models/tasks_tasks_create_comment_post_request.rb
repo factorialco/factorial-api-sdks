@@ -149,7 +149,8 @@ module F
     # @param [Object] content Value to be assigned
     def content=(content)
       if content.nil?
-        fail ArgumentError, 'content cannot be nil'
+        @content = nil
+        return
       end
 
       @content = content
@@ -159,7 +160,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -169,7 +171,8 @@ module F
     # @param [Object] resource_id Value to be assigned
     def resource_id=(resource_id)
       if resource_id.nil?
-        fail ArgumentError, 'resource_id cannot be nil'
+        @resource_id = nil
+        return
       end
 
       @resource_id = resource_id
@@ -179,7 +182,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id

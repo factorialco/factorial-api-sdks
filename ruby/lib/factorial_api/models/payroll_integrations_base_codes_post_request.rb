@@ -167,7 +167,8 @@ module F
     # @param [Object] code Value to be assigned
     def code=(code)
       if code.nil?
-        fail ArgumentError, 'code cannot be nil'
+        @code = nil
+        return
       end
 
       @code = code
@@ -177,7 +178,8 @@ module F
     # @param [Object] codeable_id Value to be assigned
     def codeable_id=(codeable_id)
       if codeable_id.nil?
-        fail ArgumentError, 'codeable_id cannot be nil'
+        @codeable_id = nil
+        return
       end
 
       @codeable_id = codeable_id
@@ -187,7 +189,8 @@ module F
     # @param [Object] codeable_type Value to be assigned
     def codeable_type=(codeable_type)
       if codeable_type.nil?
-        fail ArgumentError, 'codeable_type cannot be nil'
+        @codeable_type = nil
+        return
       end
 
       @codeable_type = codeable_type

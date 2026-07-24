@@ -527,7 +527,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -567,7 +568,8 @@ module F
     # @param [Object] count_holiday_as_workable Value to be assigned
     def count_holiday_as_workable=(count_holiday_as_workable)
       if count_holiday_as_workable.nil?
-        fail ArgumentError, 'count_holiday_as_workable cannot be nil'
+        @count_holiday_as_workable = nil
+        return
       end
 
       @count_holiday_as_workable = count_holiday_as_workable
@@ -597,7 +599,8 @@ module F
     # @param [Object] leave_type_ids Value to be assigned
     def leave_type_ids=(leave_type_ids)
       if leave_type_ids.nil?
-        fail ArgumentError, 'leave_type_ids cannot be nil'
+        @leave_type_ids = nil
+        return
       end
 
       @leave_type_ids = leave_type_ids
@@ -607,7 +610,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -677,7 +681,8 @@ module F
     # @param [Object] tenure_periods Value to be assigned
     def tenure_periods=(tenure_periods)
       if tenure_periods.nil?
-        fail ArgumentError, 'tenure_periods cannot be nil'
+        @tenure_periods = nil
+        return
       end
 
       @tenure_periods = tenure_periods
@@ -687,7 +692,8 @@ module F
     # @param [Object] timeoff_cycle Value to be assigned
     def timeoff_cycle=(timeoff_cycle)
       if timeoff_cycle.nil?
-        fail ArgumentError, 'timeoff_cycle cannot be nil'
+        @timeoff_cycle = nil
+        return
       end
 
       @timeoff_cycle = timeoff_cycle
@@ -697,7 +703,8 @@ module F
     # @param [Object] timeoff_policy_id Value to be assigned
     def timeoff_policy_id=(timeoff_policy_id)
       if timeoff_policy_id.nil?
-        fail ArgumentError, 'timeoff_policy_id cannot be nil'
+        @timeoff_policy_id = nil
+        return
       end
 
       @timeoff_policy_id = timeoff_policy_id

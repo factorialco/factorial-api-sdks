@@ -199,7 +199,8 @@ module F
     # @param [Object] first_name Value to be assigned
     def first_name=(first_name)
       if first_name.nil?
-        fail ArgumentError, 'first_name cannot be nil'
+        @first_name = nil
+        return
       end
 
       @first_name = first_name
@@ -209,7 +210,8 @@ module F
     # @param [Object] last_name Value to be assigned
     def last_name=(last_name)
       if last_name.nil?
-        fail ArgumentError, 'last_name cannot be nil'
+        @last_name = nil
+        return
       end
 
       @last_name = last_name
@@ -219,7 +221,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id

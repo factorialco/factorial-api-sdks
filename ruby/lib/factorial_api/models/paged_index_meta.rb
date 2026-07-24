@@ -155,7 +155,8 @@ module F
     # @param [Object] has_previous_page Value to be assigned
     def has_previous_page=(has_previous_page)
       if has_previous_page.nil?
-        fail ArgumentError, 'has_previous_page cannot be nil'
+        @has_previous_page = nil
+        return
       end
 
       @has_previous_page = has_previous_page
@@ -165,7 +166,8 @@ module F
     # @param [Object] has_next_page Value to be assigned
     def has_next_page=(has_next_page)
       if has_next_page.nil?
-        fail ArgumentError, 'has_next_page cannot be nil'
+        @has_next_page = nil
+        return
       end
 
       @has_next_page = has_next_page
@@ -175,7 +177,8 @@ module F
     # @param [Object] limit Value to be assigned
     def limit=(limit)
       if limit.nil?
-        fail ArgumentError, 'limit cannot be nil'
+        @limit = nil
+        return
       end
 
       @limit = limit
@@ -185,7 +188,8 @@ module F
     # @param [Object] total Value to be assigned
     def total=(total)
       if total.nil?
-        fail ArgumentError, 'total cannot be nil'
+        @total = nil
+        return
       end
 
       @total = total

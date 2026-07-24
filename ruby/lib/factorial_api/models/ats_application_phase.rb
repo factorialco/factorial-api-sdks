@@ -225,7 +225,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -235,7 +236,8 @@ module F
     # @param [Object] ats_job_posting_id Value to be assigned
     def ats_job_posting_id=(ats_job_posting_id)
       if ats_job_posting_id.nil?
-        fail ArgumentError, 'ats_job_posting_id cannot be nil'
+        @ats_job_posting_id = nil
+        return
       end
 
       @ats_job_posting_id = ats_job_posting_id
@@ -245,7 +247,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -255,7 +258,8 @@ module F
     # @param [Object] position Value to be assigned
     def position=(position)
       if position.nil?
-        fail ArgumentError, 'position cannot be nil'
+        @position = nil
+        return
       end
 
       @position = position
@@ -265,7 +269,8 @@ module F
     # @param [Object] editable Value to be assigned
     def editable=(editable)
       if editable.nil?
-        fail ArgumentError, 'editable cannot be nil'
+        @editable = nil
+        return
       end
 
       @editable = editable

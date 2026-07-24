@@ -111,7 +111,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -121,7 +122,8 @@ module F
     # @param [Object] starts_at Value to be assigned
     def starts_at=(starts_at)
       if starts_at.nil?
-        fail ArgumentError, 'starts_at cannot be nil'
+        @starts_at = nil
+        return
       end
 
       @starts_at = starts_at

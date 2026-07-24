@@ -145,7 +145,8 @@ module F
     # @param [Object] effective_at Value to be assigned
     def effective_at=(effective_at)
       if effective_at.nil?
-        fail ArgumentError, 'effective_at cannot be nil'
+        @effective_at = nil
+        return
       end
 
       @effective_at = effective_at
@@ -155,7 +156,8 @@ module F
     # @param [Object] planning_tool Value to be assigned
     def planning_tool=(planning_tool)
       if planning_tool.nil?
-        fail ArgumentError, 'planning_tool cannot be nil'
+        @planning_tool = nil
+        return
       end
 
       @planning_tool = planning_tool
@@ -165,7 +167,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id

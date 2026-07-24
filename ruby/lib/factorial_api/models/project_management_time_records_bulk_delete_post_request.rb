@@ -117,7 +117,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -127,7 +128,8 @@ module F
     # @param [Object] project_worker_id Value to be assigned
     def project_worker_id=(project_worker_id)
       if project_worker_id.nil?
-        fail ArgumentError, 'project_worker_id cannot be nil'
+        @project_worker_id = nil
+        return
       end
 
       @project_worker_id = project_worker_id

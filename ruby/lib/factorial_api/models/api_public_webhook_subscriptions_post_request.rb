@@ -187,7 +187,8 @@ module F
     # @param [Object] subscription_type Value to be assigned
     def subscription_type=(subscription_type)
       if subscription_type.nil?
-        fail ArgumentError, 'subscription_type cannot be nil'
+        @subscription_type = nil
+        return
       end
 
       @subscription_type = subscription_type
@@ -197,7 +198,8 @@ module F
     # @param [Object] target_url Value to be assigned
     def target_url=(target_url)
       if target_url.nil?
-        fail ArgumentError, 'target_url cannot be nil'
+        @target_url = nil
+        return
       end
 
       @target_url = target_url
@@ -207,7 +209,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id

@@ -136,7 +136,8 @@ module F
     # @param [Object] type_name Value to be assigned
     def type_name=(type_name)
       if type_name.nil?
-        fail ArgumentError, 'type_name cannot be nil'
+        @type_name = nil
+        return
       end
 
       @type_name = type_name
@@ -146,7 +147,8 @@ module F
     # @param [Object] brand Value to be assigned
     def brand=(brand)
       if brand.nil?
-        fail ArgumentError, 'brand cannot be nil'
+        @brand = nil
+        return
       end
 
       @brand = brand
@@ -156,7 +158,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name

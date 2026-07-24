@@ -127,7 +127,8 @@ module F
     # @param [Object] time_settings_break_configuration_id Value to be assigned
     def time_settings_break_configuration_id=(time_settings_break_configuration_id)
       if time_settings_break_configuration_id.nil?
-        fail ArgumentError, 'time_settings_break_configuration_id cannot be nil'
+        @time_settings_break_configuration_id = nil
+        return
       end
 
       @time_settings_break_configuration_id = time_settings_break_configuration_id
@@ -137,7 +138,8 @@ module F
     # @param [Object] attendance_employees_setting_id Value to be assigned
     def attendance_employees_setting_id=(attendance_employees_setting_id)
       if attendance_employees_setting_id.nil?
-        fail ArgumentError, 'attendance_employees_setting_id cannot be nil'
+        @attendance_employees_setting_id = nil
+        return
       end
 
       @attendance_employees_setting_id = attendance_employees_setting_id
@@ -147,7 +149,8 @@ module F
     # @param [Object] enabled Value to be assigned
     def enabled=(enabled)
       if enabled.nil?
-        fail ArgumentError, 'enabled cannot be nil'
+        @enabled = nil
+        return
       end
 
       @enabled = enabled

@@ -265,7 +265,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -275,7 +276,8 @@ module F
     # @param [Object] bank_account_id Value to be assigned
     def bank_account_id=(bank_account_id)
       if bank_account_id.nil?
-        fail ArgumentError, 'bank_account_id cannot be nil'
+        @bank_account_id = nil
+        return
       end
 
       @bank_account_id = bank_account_id
@@ -285,7 +287,8 @@ module F
     # @param [Object] amount_cents Value to be assigned
     def amount_cents=(amount_cents)
       if amount_cents.nil?
-        fail ArgumentError, 'amount_cents cannot be nil'
+        @amount_cents = nil
+        return
       end
 
       @amount_cents = amount_cents
@@ -295,7 +298,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -315,7 +319,8 @@ module F
     # @param [Object] booking_date Value to be assigned
     def booking_date=(booking_date)
       if booking_date.nil?
-        fail ArgumentError, 'booking_date cannot be nil'
+        @booking_date = nil
+        return
       end
 
       @booking_date = booking_date
@@ -325,7 +330,8 @@ module F
     # @param [Object] value_date Value to be assigned
     def value_date=(value_date)
       if value_date.nil?
-        fail ArgumentError, 'value_date cannot be nil'
+        @value_date = nil
+        return
       end
 
       @value_date = value_date
@@ -335,7 +341,8 @@ module F
     # @param [Object] card_payment_id Value to be assigned
     def card_payment_id=(card_payment_id)
       if card_payment_id.nil?
-        fail ArgumentError, 'card_payment_id cannot be nil'
+        @card_payment_id = nil
+        return
       end
 
       @card_payment_id = card_payment_id
@@ -345,7 +352,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

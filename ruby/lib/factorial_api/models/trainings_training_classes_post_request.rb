@@ -281,7 +281,8 @@ module F
     # @param [Object] start_date Value to be assigned
     def start_date=(start_date)
       if start_date.nil?
-        fail ArgumentError, 'start_date cannot be nil'
+        @start_date = nil
+        return
       end
 
       @start_date = start_date
@@ -291,7 +292,8 @@ module F
     # @param [Object] end_date Value to be assigned
     def end_date=(end_date)
       if end_date.nil?
-        fail ArgumentError, 'end_date cannot be nil'
+        @end_date = nil
+        return
       end
 
       @end_date = end_date
@@ -301,7 +303,8 @@ module F
     # @param [Object] training_id Value to be assigned
     def training_id=(training_id)
       if training_id.nil?
-        fail ArgumentError, 'training_id cannot be nil'
+        @training_id = nil
+        return
       end
 
       @training_id = training_id
@@ -311,7 +314,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -321,7 +325,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -331,7 +336,8 @@ module F
     # @param [Object] cost Value to be assigned
     def cost=(cost)
       if cost.nil?
-        fail ArgumentError, 'cost cannot be nil'
+        @cost = nil
+        return
       end
 
       @cost = cost
@@ -341,7 +347,8 @@ module F
     # @param [Object] subsidized_cost Value to be assigned
     def subsidized_cost=(subsidized_cost)
       if subsidized_cost.nil?
-        fail ArgumentError, 'subsidized_cost cannot be nil'
+        @subsidized_cost = nil
+        return
       end
 
       @subsidized_cost = subsidized_cost
@@ -351,7 +358,8 @@ module F
     # @param [Object] indirect_cost Value to be assigned
     def indirect_cost=(indirect_cost)
       if indirect_cost.nil?
-        fail ArgumentError, 'indirect_cost cannot be nil'
+        @indirect_cost = nil
+        return
       end
 
       @indirect_cost = indirect_cost
@@ -361,7 +369,8 @@ module F
     # @param [Object] salary_cost Value to be assigned
     def salary_cost=(salary_cost)
       if salary_cost.nil?
-        fail ArgumentError, 'salary_cost cannot be nil'
+        @salary_cost = nil
+        return
       end
 
       @salary_cost = salary_cost

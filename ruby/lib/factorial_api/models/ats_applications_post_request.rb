@@ -221,7 +221,8 @@ module F
     # @param [Object] ats_job_posting_id Value to be assigned
     def ats_job_posting_id=(ats_job_posting_id)
       if ats_job_posting_id.nil?
-        fail ArgumentError, 'ats_job_posting_id cannot be nil'
+        @ats_job_posting_id = nil
+        return
       end
 
       @ats_job_posting_id = ats_job_posting_id

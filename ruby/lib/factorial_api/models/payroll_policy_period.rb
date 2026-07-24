@@ -211,7 +211,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -221,7 +222,8 @@ module F
     # @param [Object] starts_on Value to be assigned
     def starts_on=(starts_on)
       if starts_on.nil?
-        fail ArgumentError, 'starts_on cannot be nil'
+        @starts_on = nil
+        return
       end
 
       @starts_on = starts_on
@@ -231,7 +233,8 @@ module F
     # @param [Object] policy_id Value to be assigned
     def policy_id=(policy_id)
       if policy_id.nil?
-        fail ArgumentError, 'policy_id cannot be nil'
+        @policy_id = nil
+        return
       end
 
       @policy_id = policy_id
@@ -241,7 +244,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -251,7 +255,8 @@ module F
     # @param [Object] ends_on Value to be assigned
     def ends_on=(ends_on)
       if ends_on.nil?
-        fail ArgumentError, 'ends_on cannot be nil'
+        @ends_on = nil
+        return
       end
 
       @ends_on = ends_on
@@ -261,7 +266,8 @@ module F
     # @param [Object] period Value to be assigned
     def period=(period)
       if period.nil?
-        fail ArgumentError, 'period cannot be nil'
+        @period = nil
+        return
       end
 
       @period = period

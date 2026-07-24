@@ -224,7 +224,8 @@ module F
     # @param [Object] uuid Value to be assigned
     def uuid=(uuid)
       if uuid.nil?
-        fail ArgumentError, 'uuid cannot be nil'
+        @uuid = nil
+        return
       end
 
       @uuid = uuid
@@ -234,7 +235,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -244,7 +246,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

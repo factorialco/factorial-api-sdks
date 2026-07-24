@@ -249,7 +249,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -259,7 +260,8 @@ module F
     # @param [Object] custom_field_identifier Value to be assigned
     def custom_field_identifier=(custom_field_identifier)
       if custom_field_identifier.nil?
-        fail ArgumentError, 'custom_field_identifier cannot be nil'
+        @custom_field_identifier = nil
+        return
       end
 
       @custom_field_identifier = custom_field_identifier
@@ -269,7 +271,8 @@ module F
     # @param [Object] valuable_id Value to be assigned
     def valuable_id=(valuable_id)
       if valuable_id.nil?
-        fail ArgumentError, 'valuable_id cannot be nil'
+        @valuable_id = nil
+        return
       end
 
       @valuable_id = valuable_id
@@ -279,7 +282,8 @@ module F
     # @param [Object] field_id Value to be assigned
     def field_id=(field_id)
       if field_id.nil?
-        fail ArgumentError, 'field_id cannot be nil'
+        @field_id = nil
+        return
       end
 
       @field_id = field_id
@@ -289,7 +293,8 @@ module F
     # @param [Object] valuable_type Value to be assigned
     def valuable_type=(valuable_type)
       if valuable_type.nil?
-        fail ArgumentError, 'valuable_type cannot be nil'
+        @valuable_type = nil
+        return
       end
 
       @valuable_type = valuable_type

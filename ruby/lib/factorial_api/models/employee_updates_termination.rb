@@ -208,7 +208,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -218,7 +219,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status
@@ -228,7 +230,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -238,7 +241,8 @@ module F
     # @param [Object] remaining_holidays Value to be assigned
     def remaining_holidays=(remaining_holidays)
       if remaining_holidays.nil?
-        fail ArgumentError, 'remaining_holidays cannot be nil'
+        @remaining_holidays = nil
+        return
       end
 
       @remaining_holidays = remaining_holidays

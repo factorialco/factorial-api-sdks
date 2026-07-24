@@ -168,7 +168,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -178,7 +179,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -188,7 +190,8 @@ module F
     # @param [Object] cost_center_id Value to be assigned
     def cost_center_id=(cost_center_id)
       if cost_center_id.nil?
-        fail ArgumentError, 'cost_center_id cannot be nil'
+        @cost_center_id = nil
+        return
       end
 
       @cost_center_id = cost_center_id
@@ -198,7 +201,8 @@ module F
     # @param [Object] start_date Value to be assigned
     def start_date=(start_date)
       if start_date.nil?
-        fail ArgumentError, 'start_date cannot be nil'
+        @start_date = nil
+        return
       end
 
       @start_date = start_date
@@ -208,7 +212,8 @@ module F
     # @param [Object] percentage Value to be assigned
     def percentage=(percentage)
       if percentage.nil?
-        fail ArgumentError, 'percentage cannot be nil'
+        @percentage = nil
+        return
       end
 
       @percentage = percentage

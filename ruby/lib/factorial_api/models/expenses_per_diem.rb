@@ -410,7 +410,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -420,7 +421,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -430,7 +432,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -450,7 +453,8 @@ module F
     # @param [Object] files Value to be assigned
     def files=(files)
       if files.nil?
-        fail ArgumentError, 'files cannot be nil'
+        @files = nil
+        return
       end
 
       @files = files
@@ -470,7 +474,8 @@ module F
     # @param [Object] cost_center_ids Value to be assigned
     def cost_center_ids=(cost_center_ids)
       if cost_center_ids.nil?
-        fail ArgumentError, 'cost_center_ids cannot be nil'
+        @cost_center_ids = nil
+        return
       end
 
       @cost_center_ids = cost_center_ids
@@ -480,7 +485,8 @@ module F
     # @param [Object] rates Value to be assigned
     def rates=(rates)
       if rates.nil?
-        fail ArgumentError, 'rates cannot be nil'
+        @rates = nil
+        return
       end
 
       @rates = rates

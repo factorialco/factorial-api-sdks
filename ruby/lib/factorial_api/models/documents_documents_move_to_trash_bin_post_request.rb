@@ -97,7 +97,8 @@ module F
     # @param [Object] document_ids Value to be assigned
     def document_ids=(document_ids)
       if document_ids.nil?
-        fail ArgumentError, 'document_ids cannot be nil'
+        @document_ids = nil
+        return
       end
 
       @document_ids = document_ids

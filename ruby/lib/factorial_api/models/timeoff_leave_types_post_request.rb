@@ -306,7 +306,8 @@ module F
     # @param [Object] accrues Value to be assigned
     def accrues=(accrues)
       if accrues.nil?
-        fail ArgumentError, 'accrues cannot be nil'
+        @accrues = nil
+        return
       end
 
       @accrues = accrues
@@ -316,7 +317,8 @@ module F
     # @param [Object] approval_required Value to be assigned
     def approval_required=(approval_required)
       if approval_required.nil?
-        fail ArgumentError, 'approval_required cannot be nil'
+        @approval_required = nil
+        return
       end
 
       @approval_required = approval_required
@@ -326,7 +328,8 @@ module F
     # @param [Object] identifier Value to be assigned
     def identifier=(identifier)
       if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
+        @identifier = nil
+        return
       end
 
       @identifier = identifier
@@ -336,7 +339,8 @@ module F
     # @param [Object] color Value to be assigned
     def color=(color)
       if color.nil?
-        fail ArgumentError, 'color cannot be nil'
+        @color = nil
+        return
       end
 
       @color = color
@@ -346,7 +350,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -356,7 +361,8 @@ module F
     # @param [Object] workable Value to be assigned
     def workable=(workable)
       if workable.nil?
-        fail ArgumentError, 'workable cannot be nil'
+        @workable = nil
+        return
       end
 
       @workable = workable
@@ -366,7 +372,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -376,7 +383,8 @@ module F
     # @param [Object] details_required Value to be assigned
     def details_required=(details_required)
       if details_required.nil?
-        fail ArgumentError, 'details_required cannot be nil'
+        @details_required = nil
+        return
       end
 
       @details_required = details_required

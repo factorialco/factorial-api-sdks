@@ -193,7 +193,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -203,7 +204,8 @@ module F
     # @param [Object] label Value to be assigned
     def label=(label)
       if label.nil?
-        fail ArgumentError, 'label cannot be nil'
+        @label = nil
+        return
       end
 
       @label = label
@@ -213,7 +215,8 @@ module F
     # @param [Object] default_label Value to be assigned
     def default_label=(default_label)
       if default_label.nil?
-        fail ArgumentError, 'default_label cannot be nil'
+        @default_label = nil
+        return
       end
 
       @default_label = default_label
@@ -223,7 +226,8 @@ module F
     # @param [Object] identifier Value to be assigned
     def identifier=(identifier)
       if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
+        @identifier = nil
+        return
       end
 
       @identifier = identifier
@@ -233,7 +237,8 @@ module F
     # @param [Object] visible Value to be assigned
     def visible=(visible)
       if visible.nil?
-        fail ArgumentError, 'visible cannot be nil'
+        @visible = nil
+        return
       end
 
       @visible = visible
@@ -243,7 +248,8 @@ module F
     # @param [Object] enabled Value to be assigned
     def enabled=(enabled)
       if enabled.nil?
-        fail ArgumentError, 'enabled cannot be nil'
+        @enabled = nil
+        return
       end
 
       @enabled = enabled

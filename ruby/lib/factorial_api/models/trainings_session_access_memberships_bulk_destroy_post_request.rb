@@ -111,7 +111,8 @@ module F
     # @param [Object] ids Value to be assigned
     def ids=(ids)
       if ids.nil?
-        fail ArgumentError, 'ids cannot be nil'
+        @ids = nil
+        return
       end
 
       @ids = ids
@@ -121,7 +122,8 @@ module F
     # @param [Object] notify Value to be assigned
     def notify=(notify)
       if notify.nil?
-        fail ArgumentError, 'notify cannot be nil'
+        @notify = nil
+        return
       end
 
       @notify = notify

@@ -250,7 +250,8 @@ module F
     # @param [Object] schema_id Value to be assigned
     def schema_id=(schema_id)
       if schema_id.nil?
-        fail ArgumentError, 'schema_id cannot be nil'
+        @schema_id = nil
+        return
       end
 
       @schema_id = schema_id
@@ -260,7 +261,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -280,7 +282,8 @@ module F
     # @param [Object] required Value to be assigned
     def required=(required)
       if required.nil?
-        fail ArgumentError, 'required cannot be nil'
+        @required = nil
+        return
       end
 
       @required = required

@@ -358,7 +358,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -368,7 +369,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -378,7 +380,8 @@ module F
     # @param [Object] identifier Value to be assigned
     def identifier=(identifier)
       if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
+        @identifier = nil
+        return
       end
 
       @identifier = identifier
@@ -388,7 +391,8 @@ module F
     # @param [Object] color Value to be assigned
     def color=(color)
       if color.nil?
-        fail ArgumentError, 'color cannot be nil'
+        @color = nil
+        return
       end
 
       @color = color
@@ -398,7 +402,8 @@ module F
     # @param [Object] attachment Value to be assigned
     def attachment=(attachment)
       if attachment.nil?
-        fail ArgumentError, 'attachment cannot be nil'
+        @attachment = nil
+        return
       end
 
       @attachment = attachment
@@ -408,7 +413,8 @@ module F
     # @param [Object] visibility Value to be assigned
     def visibility=(visibility)
       if visibility.nil?
-        fail ArgumentError, 'visibility cannot be nil'
+        @visibility = nil
+        return
       end
 
       @visibility = visibility
@@ -418,7 +424,8 @@ module F
     # @param [Object] workable Value to be assigned
     def workable=(workable)
       if workable.nil?
-        fail ArgumentError, 'workable cannot be nil'
+        @workable = nil
+        return
       end
 
       @workable = workable
@@ -428,7 +435,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -438,7 +446,8 @@ module F
     # @param [Object] allowance_ids Value to be assigned
     def allowance_ids=(allowance_ids)
       if allowance_ids.nil?
-        fail ArgumentError, 'allowance_ids cannot be nil'
+        @allowance_ids = nil
+        return
       end
 
       @allowance_ids = allowance_ids
@@ -448,7 +457,8 @@ module F
     # @param [Object] details_required Value to be assigned
     def details_required=(details_required)
       if details_required.nil?
-        fail ArgumentError, 'details_required cannot be nil'
+        @details_required = nil
+        return
       end
 
       @details_required = details_required

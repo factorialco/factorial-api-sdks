@@ -190,7 +190,8 @@ module F
     # @param [Object] project_id Value to be assigned
     def project_id=(project_id)
       if project_id.nil?
-        fail ArgumentError, 'project_id cannot be nil'
+        @project_id = nil
+        return
       end
 
       @project_id = project_id

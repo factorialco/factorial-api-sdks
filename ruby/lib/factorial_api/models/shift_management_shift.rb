@@ -308,7 +308,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -318,7 +319,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -338,7 +340,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -348,7 +351,8 @@ module F
     # @param [Object] start_at Value to be assigned
     def start_at=(start_at)
       if start_at.nil?
-        fail ArgumentError, 'start_at cannot be nil'
+        @start_at = nil
+        return
       end
 
       @start_at = start_at
@@ -358,7 +362,8 @@ module F
     # @param [Object] end_at Value to be assigned
     def end_at=(end_at)
       if end_at.nil?
-        fail ArgumentError, 'end_at cannot be nil'
+        @end_at = nil
+        return
       end
 
       @end_at = end_at
@@ -368,7 +373,8 @@ module F
     # @param [Object] extra_hours Value to be assigned
     def extra_hours=(extra_hours)
       if extra_hours.nil?
-        fail ArgumentError, 'extra_hours cannot be nil'
+        @extra_hours = nil
+        return
       end
 
       @extra_hours = extra_hours
@@ -378,7 +384,8 @@ module F
     # @param [Object] timezone Value to be assigned
     def timezone=(timezone)
       if timezone.nil?
-        fail ArgumentError, 'timezone cannot be nil'
+        @timezone = nil
+        return
       end
 
       @timezone = timezone
@@ -388,7 +395,8 @@ module F
     # @param [Object] local_start_at Value to be assigned
     def local_start_at=(local_start_at)
       if local_start_at.nil?
-        fail ArgumentError, 'local_start_at cannot be nil'
+        @local_start_at = nil
+        return
       end
 
       @local_start_at = local_start_at
@@ -398,7 +406,8 @@ module F
     # @param [Object] local_end_at Value to be assigned
     def local_end_at=(local_end_at)
       if local_end_at.nil?
-        fail ArgumentError, 'local_end_at cannot be nil'
+        @local_end_at = nil
+        return
       end
 
       @local_end_at = local_end_at

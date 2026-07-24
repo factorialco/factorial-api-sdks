@@ -183,7 +183,8 @@ module F
     # @param [Object] ats_question_id Value to be assigned
     def ats_question_id=(ats_question_id)
       if ats_question_id.nil?
-        fail ArgumentError, 'ats_question_id cannot be nil'
+        @ats_question_id = nil
+        return
       end
 
       @ats_question_id = ats_question_id
@@ -193,7 +194,8 @@ module F
     # @param [Object] ats_application_id Value to be assigned
     def ats_application_id=(ats_application_id)
       if ats_application_id.nil?
-        fail ArgumentError, 'ats_application_id cannot be nil'
+        @ats_application_id = nil
+        return
       end
 
       @ats_application_id = ats_application_id
@@ -203,7 +205,8 @@ module F
     # @param [Object] value Value to be assigned
     def value=(value)
       if value.nil?
-        fail ArgumentError, 'value cannot be nil'
+        @value = nil
+        return
       end
 
       @value = value
@@ -213,7 +216,8 @@ module F
     # @param [Object] original_question_label Value to be assigned
     def original_question_label=(original_question_label)
       if original_question_label.nil?
-        fail ArgumentError, 'original_question_label cannot be nil'
+        @original_question_label = nil
+        return
       end
 
       @original_question_label = original_question_label

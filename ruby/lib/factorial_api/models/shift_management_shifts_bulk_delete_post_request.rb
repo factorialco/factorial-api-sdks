@@ -144,7 +144,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id

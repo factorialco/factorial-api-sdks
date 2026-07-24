@@ -124,7 +124,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -134,7 +135,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status
@@ -144,7 +146,8 @@ module F
     # @param [Object] notify Value to be assigned
     def notify=(notify)
       if notify.nil?
-        fail ArgumentError, 'notify cannot be nil'
+        @notify = nil
+        return
       end
 
       @notify = notify

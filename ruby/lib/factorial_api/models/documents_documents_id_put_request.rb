@@ -163,7 +163,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -173,7 +174,8 @@ module F
     # @param [Object] public Value to be assigned
     def public=(public)
       if public.nil?
-        fail ArgumentError, 'public cannot be nil'
+        @public = nil
+        return
       end
 
       @public = public
@@ -183,7 +185,8 @@ module F
     # @param [Object] request_esignature Value to be assigned
     def request_esignature=(request_esignature)
       if request_esignature.nil?
-        fail ArgumentError, 'request_esignature cannot be nil'
+        @request_esignature = nil
+        return
       end
 
       @request_esignature = request_esignature
@@ -193,7 +196,8 @@ module F
     # @param [Object] signee_ids Value to be assigned
     def signee_ids=(signee_ids)
       if signee_ids.nil?
-        fail ArgumentError, 'signee_ids cannot be nil'
+        @signee_ids = nil
+        return
       end
 
       @signee_ids = signee_ids

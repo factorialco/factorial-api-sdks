@@ -120,7 +120,8 @@ module F
     # @param [Object] label Value to be assigned
     def label=(label)
       if label.nil?
-        fail ArgumentError, 'label cannot be nil'
+        @label = nil
+        return
       end
 
       @label = label
@@ -130,7 +131,8 @@ module F
     # @param [Object] field_id Value to be assigned
     def field_id=(field_id)
       if field_id.nil?
-        fail ArgumentError, 'field_id cannot be nil'
+        @field_id = nil
+        return
       end
 
       @field_id = field_id

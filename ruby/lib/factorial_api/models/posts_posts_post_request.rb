@@ -136,7 +136,8 @@ module F
     # @param [Object] title Value to be assigned
     def title=(title)
       if title.nil?
-        fail ArgumentError, 'title cannot be nil'
+        @title = nil
+        return
       end
 
       @title = title
@@ -146,7 +147,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -156,7 +158,8 @@ module F
     # @param [Object] post_group_id Value to be assigned
     def post_group_id=(post_group_id)
       if post_group_id.nil?
-        fail ArgumentError, 'post_group_id cannot be nil'
+        @post_group_id = nil
+        return
       end
 
       @post_group_id = post_group_id

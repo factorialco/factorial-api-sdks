@@ -159,7 +159,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -169,7 +170,8 @@ module F
     # @param [Object] post_id Value to be assigned
     def post_id=(post_id)
       if post_id.nil?
-        fail ArgumentError, 'post_id cannot be nil'
+        @post_id = nil
+        return
       end
 
       @post_id = post_id
@@ -179,7 +181,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -189,7 +192,8 @@ module F
     # @param [Object] text Value to be assigned
     def text=(text)
       if text.nil?
-        fail ArgumentError, 'text cannot be nil'
+        @text = nil
+        return
       end
 
       @text = text
@@ -199,7 +203,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

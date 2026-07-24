@@ -211,7 +211,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id

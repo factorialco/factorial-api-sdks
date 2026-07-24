@@ -152,7 +152,8 @@ module F
     # @param [Object] schema_id Value to be assigned
     def schema_id=(schema_id)
       if schema_id.nil?
-        fail ArgumentError, 'schema_id cannot be nil'
+        @schema_id = nil
+        return
       end
 
       @schema_id = schema_id
@@ -162,7 +163,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -172,7 +174,8 @@ module F
     # @param [Object] field_id Value to be assigned
     def field_id=(field_id)
       if field_id.nil?
-        fail ArgumentError, 'field_id cannot be nil'
+        @field_id = nil
+        return
       end
 
       @field_id = field_id
@@ -182,7 +185,8 @@ module F
     # @param [Object] value Value to be assigned
     def value=(value)
       if value.nil?
-        fail ArgumentError, 'value cannot be nil'
+        @value = nil
+        return
       end
 
       @value = value

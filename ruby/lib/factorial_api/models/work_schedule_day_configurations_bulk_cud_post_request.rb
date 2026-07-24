@@ -111,7 +111,8 @@ module F
     # @param [Object] overlap_period_id Value to be assigned
     def overlap_period_id=(overlap_period_id)
       if overlap_period_id.nil?
-        fail ArgumentError, 'overlap_period_id cannot be nil'
+        @overlap_period_id = nil
+        return
       end
 
       @overlap_period_id = overlap_period_id
@@ -121,7 +122,8 @@ module F
     # @param [Object] day_configurations Value to be assigned
     def day_configurations=(day_configurations)
       if day_configurations.nil?
-        fail ArgumentError, 'day_configurations cannot be nil'
+        @day_configurations = nil
+        return
       end
 
       @day_configurations = day_configurations

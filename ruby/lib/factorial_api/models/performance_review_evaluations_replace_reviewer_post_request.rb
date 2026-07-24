@@ -111,7 +111,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -121,7 +122,8 @@ module F
     # @param [Object] new_reviewer_access_id Value to be assigned
     def new_reviewer_access_id=(new_reviewer_access_id)
       if new_reviewer_access_id.nil?
-        fail ArgumentError, 'new_reviewer_access_id cannot be nil'
+        @new_reviewer_access_id = nil
+        return
       end
 
       @new_reviewer_access_id = new_reviewer_access_id

@@ -109,7 +109,8 @@ module F
     # @param [Object] schedule_id Value to be assigned
     def schedule_id=(schedule_id)
       if schedule_id.nil?
-        fail ArgumentError, 'schedule_id cannot be nil'
+        @schedule_id = nil
+        return
       end
 
       @schedule_id = schedule_id
@@ -119,7 +120,8 @@ module F
     # @param [Object] create_params Value to be assigned
     def create_params=(create_params)
       if create_params.nil?
-        fail ArgumentError, 'create_params cannot be nil'
+        @create_params = nil
+        return
       end
 
       @create_params = create_params

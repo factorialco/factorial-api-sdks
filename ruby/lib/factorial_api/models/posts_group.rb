@@ -120,7 +120,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -130,7 +131,8 @@ module F
     # @param [Object] title Value to be assigned
     def title=(title)
       if title.nil?
-        fail ArgumentError, 'title cannot be nil'
+        @title = nil
+        return
       end
 
       @title = title

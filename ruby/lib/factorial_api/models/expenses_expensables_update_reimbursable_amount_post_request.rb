@@ -111,7 +111,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -121,7 +122,8 @@ module F
     # @param [Object] reimbursable_amount Value to be assigned
     def reimbursable_amount=(reimbursable_amount)
       if reimbursable_amount.nil?
-        fail ArgumentError, 'reimbursable_amount cannot be nil'
+        @reimbursable_amount = nil
+        return
       end
 
       @reimbursable_amount = reimbursable_amount

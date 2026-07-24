@@ -578,7 +578,8 @@ module F
     # @param [Object] count_holiday_as_workable Value to be assigned
     def count_holiday_as_workable=(count_holiday_as_workable)
       if count_holiday_as_workable.nil?
-        fail ArgumentError, 'count_holiday_as_workable cannot be nil'
+        @count_holiday_as_workable = nil
+        return
       end
 
       @count_holiday_as_workable = count_holiday_as_workable
@@ -618,7 +619,8 @@ module F
     # @param [Object] holiday_allowance_in_cents Value to be assigned
     def holiday_allowance_in_cents=(holiday_allowance_in_cents)
       if holiday_allowance_in_cents.nil?
-        fail ArgumentError, 'holiday_allowance_in_cents cannot be nil'
+        @holiday_allowance_in_cents = nil
+        return
       end
 
       @holiday_allowance_in_cents = holiday_allowance_in_cents
@@ -628,7 +630,8 @@ module F
     # @param [Object] leave_type_ids Value to be assigned
     def leave_type_ids=(leave_type_ids)
       if leave_type_ids.nil?
-        fail ArgumentError, 'leave_type_ids cannot be nil'
+        @leave_type_ids = nil
+        return
       end
 
       @leave_type_ids = leave_type_ids
@@ -638,7 +641,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -668,7 +672,8 @@ module F
     # @param [Object] pto_proratio_enabled Value to be assigned
     def pto_proratio_enabled=(pto_proratio_enabled)
       if pto_proratio_enabled.nil?
-        fail ArgumentError, 'pto_proratio_enabled cannot be nil'
+        @pto_proratio_enabled = nil
+        return
       end
 
       @pto_proratio_enabled = pto_proratio_enabled
@@ -718,7 +723,8 @@ module F
     # @param [Object] tenure_periods Value to be assigned
     def tenure_periods=(tenure_periods)
       if tenure_periods.nil?
-        fail ArgumentError, 'tenure_periods cannot be nil'
+        @tenure_periods = nil
+        return
       end
 
       @tenure_periods = tenure_periods
@@ -728,7 +734,8 @@ module F
     # @param [Object] timeoff_policy_id Value to be assigned
     def timeoff_policy_id=(timeoff_policy_id)
       if timeoff_policy_id.nil?
-        fail ArgumentError, 'timeoff_policy_id cannot be nil'
+        @timeoff_policy_id = nil
+        return
       end
 
       @timeoff_policy_id = timeoff_policy_id
@@ -738,7 +745,8 @@ module F
     # @param [Object] unlimited_accrued_hours Value to be assigned
     def unlimited_accrued_hours=(unlimited_accrued_hours)
       if unlimited_accrued_hours.nil?
-        fail ArgumentError, 'unlimited_accrued_hours cannot be nil'
+        @unlimited_accrued_hours = nil
+        return
       end
 
       @unlimited_accrued_hours = unlimited_accrued_hours
@@ -748,7 +756,8 @@ module F
     # @param [Object] unlimited_carry_over Value to be assigned
     def unlimited_carry_over=(unlimited_carry_over)
       if unlimited_carry_over.nil?
-        fail ArgumentError, 'unlimited_carry_over cannot be nil'
+        @unlimited_carry_over = nil
+        return
       end
 
       @unlimited_carry_over = unlimited_carry_over
@@ -758,7 +767,8 @@ module F
     # @param [Object] unlimited_carry_over_expiration Value to be assigned
     def unlimited_carry_over_expiration=(unlimited_carry_over_expiration)
       if unlimited_carry_over_expiration.nil?
-        fail ArgumentError, 'unlimited_carry_over_expiration cannot be nil'
+        @unlimited_carry_over_expiration = nil
+        return
       end
 
       @unlimited_carry_over_expiration = unlimited_carry_over_expiration
@@ -768,7 +778,8 @@ module F
     # @param [Object] unlimited_holidays Value to be assigned
     def unlimited_holidays=(unlimited_holidays)
       if unlimited_holidays.nil?
-        fail ArgumentError, 'unlimited_holidays cannot be nil'
+        @unlimited_holidays = nil
+        return
       end
 
       @unlimited_holidays = unlimited_holidays

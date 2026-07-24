@@ -246,7 +246,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -266,7 +267,8 @@ module F
     # @param [Object] break_configuration_id Value to be assigned
     def break_configuration_id=(break_configuration_id)
       if break_configuration_id.nil?
-        fail ArgumentError, 'break_configuration_id cannot be nil'
+        @break_configuration_id = nil
+        return
       end
 
       @break_configuration_id = break_configuration_id
@@ -276,7 +278,8 @@ module F
     # @param [Object] break_configuration_name Value to be assigned
     def break_configuration_name=(break_configuration_name)
       if break_configuration_name.nil?
-        fail ArgumentError, 'break_configuration_name cannot be nil'
+        @break_configuration_name = nil
+        return
       end
 
       @break_configuration_name = break_configuration_name
@@ -286,7 +289,8 @@ module F
     # @param [Object] break_configuration_paid Value to be assigned
     def break_configuration_paid=(break_configuration_paid)
       if break_configuration_paid.nil?
-        fail ArgumentError, 'break_configuration_paid cannot be nil'
+        @break_configuration_paid = nil
+        return
       end
 
       @break_configuration_paid = break_configuration_paid

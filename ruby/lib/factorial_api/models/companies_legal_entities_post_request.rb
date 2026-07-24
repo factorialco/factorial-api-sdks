@@ -197,7 +197,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -207,7 +208,8 @@ module F
     # @param [Object] country Value to be assigned
     def country=(country)
       if country.nil?
-        fail ArgumentError, 'country cannot be nil'
+        @country = nil
+        return
       end
 
       @country = country
@@ -217,7 +219,8 @@ module F
     # @param [Object] legal_name Value to be assigned
     def legal_name=(legal_name)
       if legal_name.nil?
-        fail ArgumentError, 'legal_name cannot be nil'
+        @legal_name = nil
+        return
       end
 
       @legal_name = legal_name
@@ -227,7 +230,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency

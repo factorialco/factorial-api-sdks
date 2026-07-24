@@ -264,7 +264,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -274,7 +275,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -284,7 +286,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -304,7 +307,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -314,7 +318,8 @@ module F
     # @param [Object] hours_amount_in_cents Value to be assigned
     def hours_amount_in_cents=(hours_amount_in_cents)
       if hours_amount_in_cents.nil?
-        fail ArgumentError, 'hours_amount_in_cents cannot be nil'
+        @hours_amount_in_cents = nil
+        return
       end
 
       @hours_amount_in_cents = hours_amount_in_cents
@@ -324,7 +329,8 @@ module F
     # @param [Object] approver Value to be assigned
     def approver=(approver)
       if approver.nil?
-        fail ArgumentError, 'approver cannot be nil'
+        @approver = nil
+        return
       end
 
       @approver = approver
@@ -334,7 +340,8 @@ module F
     # @param [Object] is_editable Value to be assigned
     def is_editable=(is_editable)
       if is_editable.nil?
-        fail ArgumentError, 'is_editable cannot be nil'
+        @is_editable = nil
+        return
       end
 
       @is_editable = is_editable

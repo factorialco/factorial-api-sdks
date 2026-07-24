@@ -111,7 +111,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -121,7 +122,8 @@ module F
     # @param [Object] contracts_contract_template_id Value to be assigned
     def contracts_contract_template_id=(contracts_contract_template_id)
       if contracts_contract_template_id.nil?
-        fail ArgumentError, 'contracts_contract_template_id cannot be nil'
+        @contracts_contract_template_id = nil
+        return
       end
 
       @contracts_contract_template_id = contracts_contract_template_id

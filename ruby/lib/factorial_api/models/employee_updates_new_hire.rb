@@ -411,7 +411,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -421,7 +422,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status
@@ -431,7 +433,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -441,7 +444,8 @@ module F
     # @param [Object] first_name Value to be assigned
     def first_name=(first_name)
       if first_name.nil?
-        fail ArgumentError, 'first_name cannot be nil'
+        @first_name = nil
+        return
       end
 
       @first_name = first_name
@@ -451,7 +455,8 @@ module F
     # @param [Object] last_name Value to be assigned
     def last_name=(last_name)
       if last_name.nil?
-        fail ArgumentError, 'last_name cannot be nil'
+        @last_name = nil
+        return
       end
 
       @last_name = last_name
@@ -461,7 +466,8 @@ module F
     # @param [Object] address Value to be assigned
     def address=(address)
       if address.nil?
-        fail ArgumentError, 'address cannot be nil'
+        @address = nil
+        return
       end
 
       @address = address

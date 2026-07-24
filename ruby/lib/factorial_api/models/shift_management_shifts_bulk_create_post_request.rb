@@ -108,7 +108,8 @@ module F
     # @param [Object] shifts Value to be assigned
     def shifts=(shifts)
       if shifts.nil?
-        fail ArgumentError, 'shifts cannot be nil'
+        @shifts = nil
+        return
       end
 
       @shifts = shifts

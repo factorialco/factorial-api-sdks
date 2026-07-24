@@ -109,7 +109,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -119,7 +120,8 @@ module F
     # @param [Object] schedule_type Value to be assigned
     def schedule_type=(schedule_type)
       if schedule_type.nil?
-        fail ArgumentError, 'schedule_type cannot be nil'
+        @schedule_type = nil
+        return
       end
 
       @schedule_type = schedule_type

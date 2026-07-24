@@ -113,7 +113,8 @@ module F
     # @param [Object] employee_ids Value to be assigned
     def employee_ids=(employee_ids)
       if employee_ids.nil?
-        fail ArgumentError, 'employee_ids cannot be nil'
+        @employee_ids = nil
+        return
       end
 
       @employee_ids = employee_ids
@@ -123,7 +124,8 @@ module F
     # @param [Object] training_id Value to be assigned
     def training_id=(training_id)
       if training_id.nil?
-        fail ArgumentError, 'training_id cannot be nil'
+        @training_id = nil
+        return
       end
 
       @training_id = training_id

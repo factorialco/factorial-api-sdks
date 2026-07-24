@@ -191,7 +191,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id
@@ -211,7 +212,8 @@ module F
     # @param [Object] lines Value to be assigned
     def lines=(lines)
       if lines.nil?
-        fail ArgumentError, 'lines cannot be nil'
+        @lines = nil
+        return
       end
 
       @lines = lines
@@ -221,7 +223,8 @@ module F
     # @param [Object] reference_date Value to be assigned
     def reference_date=(reference_date)
       if reference_date.nil?
-        fail ArgumentError, 'reference_date cannot be nil'
+        @reference_date = nil
+        return
       end
 
       @reference_date = reference_date

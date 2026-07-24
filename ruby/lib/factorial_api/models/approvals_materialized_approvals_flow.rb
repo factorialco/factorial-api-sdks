@@ -344,7 +344,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -354,7 +355,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -364,7 +366,8 @@ module F
     # @param [Object] owner_id Value to be assigned
     def owner_id=(owner_id)
       if owner_id.nil?
-        fail ArgumentError, 'owner_id cannot be nil'
+        @owner_id = nil
+        return
       end
 
       @owner_id = owner_id
@@ -374,7 +377,8 @@ module F
     # @param [Object] resource_type Value to be assigned
     def resource_type=(resource_type)
       if resource_type.nil?
-        fail ArgumentError, 'resource_type cannot be nil'
+        @resource_type = nil
+        return
       end
 
       @resource_type = resource_type
@@ -384,7 +388,8 @@ module F
     # @param [Object] resource_id Value to be assigned
     def resource_id=(resource_id)
       if resource_id.nil?
-        fail ArgumentError, 'resource_id cannot be nil'
+        @resource_id = nil
+        return
       end
 
       @resource_id = resource_id
@@ -394,7 +399,8 @@ module F
     # @param [Object] resource_url Value to be assigned
     def resource_url=(resource_url)
       if resource_url.nil?
-        fail ArgumentError, 'resource_url cannot be nil'
+        @resource_url = nil
+        return
       end
 
       @resource_url = resource_url
@@ -414,7 +420,8 @@ module F
     # @param [Object] expires_at Value to be assigned
     def expires_at=(expires_at)
       if expires_at.nil?
-        fail ArgumentError, 'expires_at cannot be nil'
+        @expires_at = nil
+        return
       end
 
       @expires_at = expires_at
@@ -424,7 +431,8 @@ module F
     # @param [Object] approval_flow_id Value to be assigned
     def approval_flow_id=(approval_flow_id)
       if approval_flow_id.nil?
-        fail ArgumentError, 'approval_flow_id cannot be nil'
+        @approval_flow_id = nil
+        return
       end
 
       @approval_flow_id = approval_flow_id
@@ -434,7 +442,8 @@ module F
     # @param [Object] approvers Value to be assigned
     def approvers=(approvers)
       if approvers.nil?
-        fail ArgumentError, 'approvers cannot be nil'
+        @approvers = nil
+        return
       end
 
       @approvers = approvers
@@ -444,7 +453,8 @@ module F
     # @param [Object] email_detail_blocks Value to be assigned
     def email_detail_blocks=(email_detail_blocks)
       if email_detail_blocks.nil?
-        fail ArgumentError, 'email_detail_blocks cannot be nil'
+        @email_detail_blocks = nil
+        return
       end
 
       @email_detail_blocks = email_detail_blocks

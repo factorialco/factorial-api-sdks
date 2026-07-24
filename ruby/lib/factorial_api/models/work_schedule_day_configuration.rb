@@ -147,7 +147,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -157,7 +158,8 @@ module F
     # @param [Object] overlap_period_id Value to be assigned
     def overlap_period_id=(overlap_period_id)
       if overlap_period_id.nil?
-        fail ArgumentError, 'overlap_period_id cannot be nil'
+        @overlap_period_id = nil
+        return
       end
 
       @overlap_period_id = overlap_period_id
@@ -167,7 +169,8 @@ module F
     # @param [Object] weekday Value to be assigned
     def weekday=(weekday)
       if weekday.nil?
-        fail ArgumentError, 'weekday cannot be nil'
+        @weekday = nil
+        return
       end
 
       @weekday = weekday
@@ -177,7 +180,8 @@ module F
     # @param [Object] duration_in_seconds Value to be assigned
     def duration_in_seconds=(duration_in_seconds)
       if duration_in_seconds.nil?
-        fail ArgumentError, 'duration_in_seconds cannot be nil'
+        @duration_in_seconds = nil
+        return
       end
 
       @duration_in_seconds = duration_in_seconds

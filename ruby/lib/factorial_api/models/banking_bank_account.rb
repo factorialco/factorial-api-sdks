@@ -335,7 +335,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -345,7 +346,8 @@ module F
     # @param [Object] external_id Value to be assigned
     def external_id=(external_id)
       if external_id.nil?
-        fail ArgumentError, 'external_id cannot be nil'
+        @external_id = nil
+        return
       end
 
       @external_id = external_id
@@ -355,7 +357,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -365,7 +368,8 @@ module F
     # @param [Object] country Value to be assigned
     def country=(country)
       if country.nil?
-        fail ArgumentError, 'country cannot be nil'
+        @country = nil
+        return
       end
 
       @country = country
@@ -375,7 +379,8 @@ module F
     # @param [Object] account_number Value to be assigned
     def account_number=(account_number)
       if account_number.nil?
-        fail ArgumentError, 'account_number cannot be nil'
+        @account_number = nil
+        return
       end
 
       @account_number = account_number
@@ -395,7 +400,8 @@ module F
     # @param [Object] account_balance_cents Value to be assigned
     def account_balance_cents=(account_balance_cents)
       if account_balance_cents.nil?
-        fail ArgumentError, 'account_balance_cents cannot be nil'
+        @account_balance_cents = nil
+        return
       end
 
       @account_balance_cents = account_balance_cents
@@ -405,7 +411,8 @@ module F
     # @param [Object] available_balance_cents Value to be assigned
     def available_balance_cents=(available_balance_cents)
       if available_balance_cents.nil?
-        fail ArgumentError, 'available_balance_cents cannot be nil'
+        @available_balance_cents = nil
+        return
       end
 
       @available_balance_cents = available_balance_cents
@@ -415,7 +422,8 @@ module F
     # @param [Object] pending_balance_cents Value to be assigned
     def pending_balance_cents=(pending_balance_cents)
       if pending_balance_cents.nil?
-        fail ArgumentError, 'pending_balance_cents cannot be nil'
+        @pending_balance_cents = nil
+        return
       end
 
       @pending_balance_cents = pending_balance_cents
@@ -425,7 +433,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

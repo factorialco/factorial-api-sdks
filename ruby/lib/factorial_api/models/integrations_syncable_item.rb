@@ -151,7 +151,8 @@ module F
     # @param [Object] syncable_sync_run_id Value to be assigned
     def syncable_sync_run_id=(syncable_sync_run_id)
       if syncable_sync_run_id.nil?
-        fail ArgumentError, 'syncable_sync_run_id cannot be nil'
+        @syncable_sync_run_id = nil
+        return
       end
 
       @syncable_sync_run_id = syncable_sync_run_id
@@ -161,7 +162,8 @@ module F
     # @param [Object] sync_payload Value to be assigned
     def sync_payload=(sync_payload)
       if sync_payload.nil?
-        fail ArgumentError, 'sync_payload cannot be nil'
+        @sync_payload = nil
+        return
       end
 
       @sync_payload = sync_payload

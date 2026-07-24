@@ -271,7 +271,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -281,7 +282,8 @@ module F
     # @param [Object] number Value to be assigned
     def number=(number)
       if number.nil?
-        fail ArgumentError, 'number cannot be nil'
+        @number = nil
+        return
       end
 
       @number = number
@@ -291,7 +293,8 @@ module F
     # @param [Object] published_at Value to be assigned
     def published_at=(published_at)
       if published_at.nil?
-        fail ArgumentError, 'published_at cannot be nil'
+        @published_at = nil
+        return
       end
 
       @published_at = published_at
@@ -321,7 +324,8 @@ module F
     # @param [Object] reference_date Value to be assigned
     def reference_date=(reference_date)
       if reference_date.nil?
-        fail ArgumentError, 'reference_date cannot be nil'
+        @reference_date = nil
+        return
       end
 
       @reference_date = reference_date
@@ -331,7 +335,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id
@@ -351,7 +356,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

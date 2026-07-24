@@ -117,7 +117,8 @@ module F
     # @param [Object] employee_ids Value to be assigned
     def employee_ids=(employee_ids)
       if employee_ids.nil?
-        fail ArgumentError, 'employee_ids cannot be nil'
+        @employee_ids = nil
+        return
       end
 
       @employee_ids = employee_ids

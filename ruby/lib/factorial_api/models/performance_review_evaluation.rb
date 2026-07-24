@@ -220,7 +220,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -240,7 +241,8 @@ module F
     # @param [Object] published Value to be assigned
     def published=(published)
       if published.nil?
-        fail ArgumentError, 'published cannot be nil'
+        @published = nil
+        return
       end
 
       @published = published
@@ -260,7 +262,8 @@ module F
     # @param [Object] review_process_target_id Value to be assigned
     def review_process_target_id=(review_process_target_id)
       if review_process_target_id.nil?
-        fail ArgumentError, 'review_process_target_id cannot be nil'
+        @review_process_target_id = nil
+        return
       end
 
       @review_process_target_id = review_process_target_id

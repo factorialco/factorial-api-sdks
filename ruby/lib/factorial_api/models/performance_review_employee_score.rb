@@ -321,7 +321,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -331,7 +332,8 @@ module F
     # @param [Object] review_process_id Value to be assigned
     def review_process_id=(review_process_id)
       if review_process_id.nil?
-        fail ArgumentError, 'review_process_id cannot be nil'
+        @review_process_id = nil
+        return
       end
 
       @review_process_id = review_process_id
@@ -341,7 +343,8 @@ module F
     # @param [Object] review_evaluation_id Value to be assigned
     def review_evaluation_id=(review_evaluation_id)
       if review_evaluation_id.nil?
-        fail ArgumentError, 'review_evaluation_id cannot be nil'
+        @review_evaluation_id = nil
+        return
       end
 
       @review_evaluation_id = review_evaluation_id
@@ -351,7 +354,8 @@ module F
     # @param [Object] target_access_id Value to be assigned
     def target_access_id=(target_access_id)
       if target_access_id.nil?
-        fail ArgumentError, 'target_access_id cannot be nil'
+        @target_access_id = nil
+        return
       end
 
       @target_access_id = target_access_id
@@ -361,7 +365,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -381,7 +386,8 @@ module F
     # @param [Object] review_process_target_id Value to be assigned
     def review_process_target_id=(review_process_target_id)
       if review_process_target_id.nil?
-        fail ArgumentError, 'review_process_target_id cannot be nil'
+        @review_process_target_id = nil
+        return
       end
 
       @review_process_target_id = review_process_target_id
@@ -391,7 +397,8 @@ module F
     # @param [Object] score Value to be assigned
     def score=(score)
       if score.nil?
-        fail ArgumentError, 'score cannot be nil'
+        @score = nil
+        return
       end
 
       @score = score
@@ -401,7 +408,8 @@ module F
     # @param [Object] scale_min Value to be assigned
     def scale_min=(scale_min)
       if scale_min.nil?
-        fail ArgumentError, 'scale_min cannot be nil'
+        @scale_min = nil
+        return
       end
 
       @scale_min = scale_min
@@ -411,7 +419,8 @@ module F
     # @param [Object] scale_max Value to be assigned
     def scale_max=(scale_max)
       if scale_max.nil?
-        fail ArgumentError, 'scale_max cannot be nil'
+        @scale_max = nil
+        return
       end
 
       @scale_max = scale_max
@@ -421,7 +430,8 @@ module F
     # @param [Object] normalized_score Value to be assigned
     def normalized_score=(normalized_score)
       if normalized_score.nil?
-        fail ArgumentError, 'normalized_score cannot be nil'
+        @normalized_score = nil
+        return
       end
 
       @normalized_score = normalized_score
@@ -431,7 +441,8 @@ module F
     # @param [Object] published_at Value to be assigned
     def published_at=(published_at)
       if published_at.nil?
-        fail ArgumentError, 'published_at cannot be nil'
+        @published_at = nil
+        return
       end
 
       @published_at = published_at

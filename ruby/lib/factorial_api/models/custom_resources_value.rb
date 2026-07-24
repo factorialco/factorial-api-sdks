@@ -120,7 +120,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -130,7 +131,8 @@ module F
     # @param [Object] resource_id Value to be assigned
     def resource_id=(resource_id)
       if resource_id.nil?
-        fail ArgumentError, 'resource_id cannot be nil'
+        @resource_id = nil
+        return
       end
 
       @resource_id = resource_id

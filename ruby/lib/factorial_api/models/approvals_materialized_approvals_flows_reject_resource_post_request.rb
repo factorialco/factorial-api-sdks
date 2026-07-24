@@ -120,7 +120,8 @@ module F
     # @param [Object] resource_id Value to be assigned
     def resource_id=(resource_id)
       if resource_id.nil?
-        fail ArgumentError, 'resource_id cannot be nil'
+        @resource_id = nil
+        return
       end
 
       @resource_id = resource_id
@@ -130,7 +131,8 @@ module F
     # @param [Object] resource_type Value to be assigned
     def resource_type=(resource_type)
       if resource_type.nil?
-        fail ArgumentError, 'resource_type cannot be nil'
+        @resource_type = nil
+        return
       end
 
       @resource_type = resource_type

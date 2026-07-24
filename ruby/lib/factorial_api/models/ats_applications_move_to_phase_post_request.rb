@@ -111,7 +111,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -121,7 +122,8 @@ module F
     # @param [Object] ats_application_phase_id Value to be assigned
     def ats_application_phase_id=(ats_application_phase_id)
       if ats_application_phase_id.nil?
-        fail ArgumentError, 'ats_application_phase_id cannot be nil'
+        @ats_application_phase_id = nil
+        return
       end
 
       @ats_application_phase_id = ats_application_phase_id

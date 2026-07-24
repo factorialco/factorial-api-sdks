@@ -178,7 +178,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -188,7 +189,8 @@ module F
     # @param [Object] location_id Value to be assigned
     def location_id=(location_id)
       if location_id.nil?
-        fail ArgumentError, 'location_id cannot be nil'
+        @location_id = nil
+        return
       end
 
       @location_id = location_id
@@ -198,7 +200,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date

@@ -201,7 +201,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -211,7 +212,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -221,7 +223,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -231,7 +234,8 @@ module F
     # @param [Object] active_employees_count Value to be assigned
     def active_employees_count=(active_employees_count)
       if active_employees_count.nil?
-        fail ArgumentError, 'active_employees_count cannot be nil'
+        @active_employees_count = nil
+        return
       end
 
       @active_employees_count = active_employees_count
@@ -241,7 +245,8 @@ module F
     # @param [Object] historical_employees_count Value to be assigned
     def historical_employees_count=(historical_employees_count)
       if historical_employees_count.nil?
-        fail ArgumentError, 'historical_employees_count cannot be nil'
+        @historical_employees_count = nil
+        return
       end
 
       @historical_employees_count = historical_employees_count
@@ -251,7 +256,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status

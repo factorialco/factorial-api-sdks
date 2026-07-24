@@ -153,7 +153,8 @@ module F
     # @param [Object] performance_review_process_id Value to be assigned
     def performance_review_process_id=(performance_review_process_id)
       if performance_review_process_id.nil?
-        fail ArgumentError, 'performance_review_process_id cannot be nil'
+        @performance_review_process_id = nil
+        return
       end
 
       @performance_review_process_id = performance_review_process_id
@@ -173,7 +174,8 @@ module F
     # @param [Object] questionnaire_content Value to be assigned
     def questionnaire_content=(questionnaire_content)
       if questionnaire_content.nil?
-        fail ArgumentError, 'questionnaire_content cannot be nil'
+        @questionnaire_content = nil
+        return
       end
 
       @questionnaire_content = questionnaire_content

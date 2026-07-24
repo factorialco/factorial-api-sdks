@@ -186,7 +186,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -196,7 +197,8 @@ module F
     # @param [Object] daily_minutes Value to be assigned
     def daily_minutes=(daily_minutes)
       if daily_minutes.nil?
-        fail ArgumentError, 'daily_minutes cannot be nil'
+        @daily_minutes = nil
+        return
       end
 
       @daily_minutes = daily_minutes
@@ -206,7 +208,8 @@ module F
     # @param [Object] start_date Value to be assigned
     def start_date=(start_date)
       if start_date.nil?
-        fail ArgumentError, 'start_date cannot be nil'
+        @start_date = nil
+        return
       end
 
       @start_date = start_date
@@ -216,7 +219,8 @@ module F
     # @param [Object] end_date Value to be assigned
     def end_date=(end_date)
       if end_date.nil?
-        fail ArgumentError, 'end_date cannot be nil'
+        @end_date = nil
+        return
       end
 
       @end_date = end_date
@@ -226,7 +230,8 @@ module F
     # @param [Object] project_worker_id Value to be assigned
     def project_worker_id=(project_worker_id)
       if project_worker_id.nil?
-        fail ArgumentError, 'project_worker_id cannot be nil'
+        @project_worker_id = nil
+        return
       end
 
       @project_worker_id = project_worker_id
@@ -236,7 +241,8 @@ module F
     # @param [Object] week_days Value to be assigned
     def week_days=(week_days)
       if week_days.nil?
-        fail ArgumentError, 'week_days cannot be nil'
+        @week_days = nil
+        return
       end
 
       @week_days = week_days

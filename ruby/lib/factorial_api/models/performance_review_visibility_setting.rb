@@ -159,7 +159,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -169,7 +170,8 @@ module F
     # @param [Object] performance_review_process_id Value to be assigned
     def performance_review_process_id=(performance_review_process_id)
       if performance_review_process_id.nil?
-        fail ArgumentError, 'performance_review_process_id cannot be nil'
+        @performance_review_process_id = nil
+        return
       end
 
       @performance_review_process_id = performance_review_process_id
@@ -179,7 +181,8 @@ module F
     # @param [Object] restrict_answers_visibility_to_reportees Value to be assigned
     def restrict_answers_visibility_to_reportees=(restrict_answers_visibility_to_reportees)
       if restrict_answers_visibility_to_reportees.nil?
-        fail ArgumentError, 'restrict_answers_visibility_to_reportees cannot be nil'
+        @restrict_answers_visibility_to_reportees = nil
+        return
       end
 
       @restrict_answers_visibility_to_reportees = restrict_answers_visibility_to_reportees
@@ -189,7 +192,8 @@ module F
     # @param [Object] early_access_to_answers_for_managers Value to be assigned
     def early_access_to_answers_for_managers=(early_access_to_answers_for_managers)
       if early_access_to_answers_for_managers.nil?
-        fail ArgumentError, 'early_access_to_answers_for_managers cannot be nil'
+        @early_access_to_answers_for_managers = nil
+        return
       end
 
       @early_access_to_answers_for_managers = early_access_to_answers_for_managers
@@ -199,7 +203,8 @@ module F
     # @param [Object] anonymous_peer_evaluation_for_target Value to be assigned
     def anonymous_peer_evaluation_for_target=(anonymous_peer_evaluation_for_target)
       if anonymous_peer_evaluation_for_target.nil?
-        fail ArgumentError, 'anonymous_peer_evaluation_for_target cannot be nil'
+        @anonymous_peer_evaluation_for_target = nil
+        return
       end
 
       @anonymous_peer_evaluation_for_target = anonymous_peer_evaluation_for_target

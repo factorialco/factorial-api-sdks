@@ -127,7 +127,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -137,7 +138,8 @@ module F
     # @param [Object] timeoff_policy_id Value to be assigned
     def timeoff_policy_id=(timeoff_policy_id)
       if timeoff_policy_id.nil?
-        fail ArgumentError, 'timeoff_policy_id cannot be nil'
+        @timeoff_policy_id = nil
+        return
       end
 
       @timeoff_policy_id = timeoff_policy_id
@@ -147,7 +149,8 @@ module F
     # @param [Object] effective_at Value to be assigned
     def effective_at=(effective_at)
       if effective_at.nil?
-        fail ArgumentError, 'effective_at cannot be nil'
+        @effective_at = nil
+        return
       end
 
       @effective_at = effective_at

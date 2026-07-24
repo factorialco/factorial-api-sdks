@@ -203,7 +203,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -223,7 +224,8 @@ module F
     # @param [Object] project_id Value to be assigned
     def project_id=(project_id)
       if project_id.nil?
-        fail ArgumentError, 'project_id cannot be nil'
+        @project_id = nil
+        return
       end
 
       @project_id = project_id
@@ -233,7 +235,8 @@ module F
     # @param [Object] delegated Value to be assigned
     def delegated=(delegated)
       if delegated.nil?
-        fail ArgumentError, 'delegated cannot be nil'
+        @delegated = nil
+        return
       end
 
       @delegated = delegated

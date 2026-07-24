@@ -143,7 +143,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -153,7 +154,8 @@ module F
     # @param [Object] sync_run_id Value to be assigned
     def sync_run_id=(sync_run_id)
       if sync_run_id.nil?
-        fail ArgumentError, 'sync_run_id cannot be nil'
+        @sync_run_id = nil
+        return
       end
 
       @sync_run_id = sync_run_id
@@ -163,7 +165,8 @@ module F
     # @param [Object] file_name Value to be assigned
     def file_name=(file_name)
       if file_name.nil?
-        fail ArgumentError, 'file_name cannot be nil'
+        @file_name = nil
+        return
       end
 
       @file_name = file_name
@@ -173,7 +176,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

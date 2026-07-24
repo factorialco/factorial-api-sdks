@@ -405,7 +405,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -415,7 +416,8 @@ module F
     # @param [Object] allowance_id Value to be assigned
     def allowance_id=(allowance_id)
       if allowance_id.nil?
-        fail ArgumentError, 'allowance_id cannot be nil'
+        @allowance_id = nil
+        return
       end
 
       @allowance_id = allowance_id
@@ -425,7 +427,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -435,7 +438,8 @@ module F
     # @param [Object] year Value to be assigned
     def year=(year)
       if year.nil?
-        fail ArgumentError, 'year cannot be nil'
+        @year = nil
+        return
       end
 
       @year = year
@@ -445,7 +449,8 @@ module F
     # @param [Object] cycles Value to be assigned
     def cycles=(cycles)
       if cycles.nil?
-        fail ArgumentError, 'cycles cannot be nil'
+        @cycles = nil
+        return
       end
 
       @cycles = cycles
@@ -455,7 +460,8 @@ module F
     # @param [Object] cycle_carry_overs Value to be assigned
     def cycle_carry_overs=(cycle_carry_overs)
       if cycle_carry_overs.nil?
-        fail ArgumentError, 'cycle_carry_overs cannot be nil'
+        @cycle_carry_overs = nil
+        return
       end
 
       @cycle_carry_overs = cycle_carry_overs
@@ -465,7 +471,8 @@ module F
     # @param [Object] accumulated_carry_over Value to be assigned
     def accumulated_carry_over=(accumulated_carry_over)
       if accumulated_carry_over.nil?
-        fail ArgumentError, 'accumulated_carry_over cannot be nil'
+        @accumulated_carry_over = nil
+        return
       end
 
       @accumulated_carry_over = accumulated_carry_over
@@ -475,7 +482,8 @@ module F
     # @param [Object] available_days Value to be assigned
     def available_days=(available_days)
       if available_days.nil?
-        fail ArgumentError, 'available_days cannot be nil'
+        @available_days = nil
+        return
       end
 
       @available_days = available_days
@@ -485,7 +493,8 @@ module F
     # @param [Object] total_accrued_units Value to be assigned
     def total_accrued_units=(total_accrued_units)
       if total_accrued_units.nil?
-        fail ArgumentError, 'total_accrued_units cannot be nil'
+        @total_accrued_units = nil
+        return
       end
 
       @total_accrued_units = total_accrued_units
@@ -495,7 +504,8 @@ module F
     # @param [Object] total Value to be assigned
     def total=(total)
       if total.nil?
-        fail ArgumentError, 'total cannot be nil'
+        @total = nil
+        return
       end
 
       @total = total
@@ -505,7 +515,8 @@ module F
     # @param [Object] incidences Value to be assigned
     def incidences=(incidences)
       if incidences.nil?
-        fail ArgumentError, 'incidences cannot be nil'
+        @incidences = nil
+        return
       end
 
       @incidences = incidences
@@ -515,7 +526,8 @@ module F
     # @param [Object] accrued_incidences Value to be assigned
     def accrued_incidences=(accrued_incidences)
       if accrued_incidences.nil?
-        fail ArgumentError, 'accrued_incidences cannot be nil'
+        @accrued_incidences = nil
+        return
       end
 
       @accrued_incidences = accrued_incidences
@@ -525,7 +537,8 @@ module F
     # @param [Object] available_incidences Value to be assigned
     def available_incidences=(available_incidences)
       if available_incidences.nil?
-        fail ArgumentError, 'available_incidences cannot be nil'
+        @available_incidences = nil
+        return
       end
 
       @available_incidences = available_incidences
@@ -535,7 +548,8 @@ module F
     # @param [Object] policy_allowance Value to be assigned
     def policy_allowance=(policy_allowance)
       if policy_allowance.nil?
-        fail ArgumentError, 'policy_allowance cannot be nil'
+        @policy_allowance = nil
+        return
       end
 
       @policy_allowance = policy_allowance
@@ -545,7 +559,8 @@ module F
     # @param [Object] prorated_allowance_days Value to be assigned
     def prorated_allowance_days=(prorated_allowance_days)
       if prorated_allowance_days.nil?
-        fail ArgumentError, 'prorated_allowance_days cannot be nil'
+        @prorated_allowance_days = nil
+        return
       end
 
       @prorated_allowance_days = prorated_allowance_days
@@ -555,7 +570,8 @@ module F
     # @param [Object] used_carry_over Value to be assigned
     def used_carry_over=(used_carry_over)
       if used_carry_over.nil?
-        fail ArgumentError, 'used_carry_over cannot be nil'
+        @used_carry_over = nil
+        return
       end
 
       @used_carry_over = used_carry_over
@@ -565,7 +581,8 @@ module F
     # @param [Object] used_days Value to be assigned
     def used_days=(used_days)
       if used_days.nil?
-        fail ArgumentError, 'used_days cannot be nil'
+        @used_days = nil
+        return
       end
 
       @used_days = used_days
@@ -575,7 +592,8 @@ module F
     # @param [Object] used_units_until_reference_date Value to be assigned
     def used_units_until_reference_date=(used_units_until_reference_date)
       if used_units_until_reference_date.nil?
-        fail ArgumentError, 'used_units_until_reference_date cannot be nil'
+        @used_units_until_reference_date = nil
+        return
       end
 
       @used_units_until_reference_date = used_units_until_reference_date
@@ -585,7 +603,8 @@ module F
     # @param [Object] outstanding_units Value to be assigned
     def outstanding_units=(outstanding_units)
       if outstanding_units.nil?
-        fail ArgumentError, 'outstanding_units cannot be nil'
+        @outstanding_units = nil
+        return
       end
 
       @outstanding_units = outstanding_units

@@ -160,7 +160,8 @@ module F
     # @param [Object] author_access_id Value to be assigned
     def author_access_id=(author_access_id)
       if author_access_id.nil?
-        fail ArgumentError, 'author_access_id cannot be nil'
+        @author_access_id = nil
+        return
       end
 
       @author_access_id = author_access_id
@@ -170,7 +171,8 @@ module F
     # @param [Object] template_id Value to be assigned
     def template_id=(template_id)
       if template_id.nil?
-        fail ArgumentError, 'template_id cannot be nil'
+        @template_id = nil
+        return
       end
 
       @template_id = template_id

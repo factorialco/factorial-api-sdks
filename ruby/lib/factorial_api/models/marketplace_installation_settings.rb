@@ -151,7 +151,8 @@ module F
     # @param [Object] leave_types Value to be assigned
     def leave_types=(leave_types)
       if leave_types.nil?
-        fail ArgumentError, 'leave_types cannot be nil'
+        @leave_types = nil
+        return
       end
 
       @leave_types = leave_types
@@ -161,7 +162,8 @@ module F
     # @param [Object] file_numbers Value to be assigned
     def file_numbers=(file_numbers)
       if file_numbers.nil?
-        fail ArgumentError, 'file_numbers cannot be nil'
+        @file_numbers = nil
+        return
       end
 
       @file_numbers = file_numbers
@@ -171,7 +173,8 @@ module F
     # @param [Object] establishment_codes Value to be assigned
     def establishment_codes=(establishment_codes)
       if establishment_codes.nil?
-        fail ArgumentError, 'establishment_codes cannot be nil'
+        @establishment_codes = nil
+        return
       end
 
       @establishment_codes = establishment_codes
@@ -181,7 +184,8 @@ module F
     # @param [Object] timeoff_allowance_code Value to be assigned
     def timeoff_allowance_code=(timeoff_allowance_code)
       if timeoff_allowance_code.nil?
-        fail ArgumentError, 'timeoff_allowance_code cannot be nil'
+        @timeoff_allowance_code = nil
+        return
       end
 
       @timeoff_allowance_code = timeoff_allowance_code

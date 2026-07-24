@@ -97,7 +97,8 @@ module F
     # @param [Object] tasks Value to be assigned
     def tasks=(tasks)
       if tasks.nil?
-        fail ArgumentError, 'tasks cannot be nil'
+        @tasks = nil
+        return
       end
 
       @tasks = tasks

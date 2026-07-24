@@ -161,7 +161,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -171,7 +172,8 @@ module F
     # @param [Object] rate Value to be assigned
     def rate=(rate)
       if rate.nil?
-        fail ArgumentError, 'rate cannot be nil'
+        @rate = nil
+        return
       end
 
       @rate = rate
@@ -181,7 +183,8 @@ module F
     # @param [Object] tax_type_id Value to be assigned
     def tax_type_id=(tax_type_id)
       if tax_type_id.nil?
-        fail ArgumentError, 'tax_type_id cannot be nil'
+        @tax_type_id = nil
+        return
       end
 
       @tax_type_id = tax_type_id
@@ -191,7 +194,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

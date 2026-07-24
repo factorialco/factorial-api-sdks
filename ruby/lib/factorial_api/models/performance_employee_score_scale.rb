@@ -128,7 +128,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -138,7 +139,8 @@ module F
     # @param [Object] scale Value to be assigned
     def scale=(scale)
       if scale.nil?
-        fail ArgumentError, 'scale cannot be nil'
+        @scale = nil
+        return
       end
 
       @scale = scale
@@ -148,7 +150,8 @@ module F
     # @param [Object] is_default Value to be assigned
     def is_default=(is_default)
       if is_default.nil?
-        fail ArgumentError, 'is_default cannot be nil'
+        @is_default = nil
+        return
       end
 
       @is_default = is_default

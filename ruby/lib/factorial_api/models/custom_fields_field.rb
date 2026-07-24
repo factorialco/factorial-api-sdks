@@ -214,7 +214,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -234,7 +235,8 @@ module F
     # @param [Object] label_text Value to be assigned
     def label_text=(label_text)
       if label_text.nil?
-        fail ArgumentError, 'label_text cannot be nil'
+        @label_text = nil
+        return
       end
 
       @label_text = label_text

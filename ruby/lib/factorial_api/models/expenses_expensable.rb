@@ -422,7 +422,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -442,7 +443,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -452,7 +454,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -462,7 +465,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -472,7 +476,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -492,7 +497,8 @@ module F
     # @param [Object] status_updated_at Value to be assigned
     def status_updated_at=(status_updated_at)
       if status_updated_at.nil?
-        fail ArgumentError, 'status_updated_at cannot be nil'
+        @status_updated_at = nil
+        return
       end
 
       @status_updated_at = status_updated_at
@@ -502,7 +508,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at
@@ -522,7 +529,8 @@ module F
     # @param [Object] cost_center_ids Value to be assigned
     def cost_center_ids=(cost_center_ids)
       if cost_center_ids.nil?
-        fail ArgumentError, 'cost_center_ids cannot be nil'
+        @cost_center_ids = nil
+        return
       end
 
       @cost_center_ids = cost_center_ids

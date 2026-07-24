@@ -575,7 +575,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -585,7 +586,8 @@ module F
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+        @status = nil
+        return
       end
 
       @status = status
@@ -595,7 +597,8 @@ module F
     # @param [Object] effective_on Value to be assigned
     def effective_on=(effective_on)
       if effective_on.nil?
-        fail ArgumentError, 'effective_on cannot be nil'
+        @effective_on = nil
+        return
       end
 
       @effective_on = effective_on
@@ -605,7 +608,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -615,7 +619,8 @@ module F
     # @param [Object] has_payroll Value to be assigned
     def has_payroll=(has_payroll)
       if has_payroll.nil?
-        fail ArgumentError, 'has_payroll cannot be nil'
+        @has_payroll = nil
+        return
       end
 
       @has_payroll = has_payroll
@@ -625,7 +630,8 @@ module F
     # @param [Object] fr_forfait_jours Value to be assigned
     def fr_forfait_jours=(fr_forfait_jours)
       if fr_forfait_jours.nil?
-        fail ArgumentError, 'fr_forfait_jours cannot be nil'
+        @fr_forfait_jours = nil
+        return
       end
 
       @fr_forfait_jours = fr_forfait_jours
@@ -635,7 +641,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -645,7 +652,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

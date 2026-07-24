@@ -185,7 +185,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -205,7 +206,8 @@ module F
     # @param [Object] session_access_membership_id Value to be assigned
     def session_access_membership_id=(session_access_membership_id)
       if session_access_membership_id.nil?
-        fail ArgumentError, 'session_access_membership_id cannot be nil'
+        @session_access_membership_id = nil
+        return
       end
 
       @session_access_membership_id = session_access_membership_id
@@ -215,7 +217,8 @@ module F
     # @param [Object] access_id Value to be assigned
     def access_id=(access_id)
       if access_id.nil?
-        fail ArgumentError, 'access_id cannot be nil'
+        @access_id = nil
+        return
       end
 
       @access_id = access_id

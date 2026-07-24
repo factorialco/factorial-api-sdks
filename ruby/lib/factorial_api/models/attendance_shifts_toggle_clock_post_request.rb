@@ -171,7 +171,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -181,7 +182,8 @@ module F
     # @param [Object] clock_time Value to be assigned
     def clock_time=(clock_time)
       if clock_time.nil?
-        fail ArgumentError, 'clock_time cannot be nil'
+        @clock_time = nil
+        return
       end
 
       @clock_time = clock_time

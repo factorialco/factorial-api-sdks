@@ -113,7 +113,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -123,7 +124,8 @@ module F
     # @param [Object] reviewer_strategies Value to be assigned
     def reviewer_strategies=(reviewer_strategies)
       if reviewer_strategies.nil?
-        fail ArgumentError, 'reviewer_strategies cannot be nil'
+        @reviewer_strategies = nil
+        return
       end
 
       @reviewer_strategies = reviewer_strategies

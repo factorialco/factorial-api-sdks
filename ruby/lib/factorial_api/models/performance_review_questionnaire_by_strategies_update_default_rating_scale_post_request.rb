@@ -113,7 +113,8 @@ module F
     # @param [Object] performance_review_process_id Value to be assigned
     def performance_review_process_id=(performance_review_process_id)
       if performance_review_process_id.nil?
-        fail ArgumentError, 'performance_review_process_id cannot be nil'
+        @performance_review_process_id = nil
+        return
       end
 
       @performance_review_process_id = performance_review_process_id
@@ -123,7 +124,8 @@ module F
     # @param [Object] default_rating_scale Value to be assigned
     def default_rating_scale=(default_rating_scale)
       if default_rating_scale.nil?
-        fail ArgumentError, 'default_rating_scale cannot be nil'
+        @default_rating_scale = nil
+        return
       end
 
       @default_rating_scale = default_rating_scale

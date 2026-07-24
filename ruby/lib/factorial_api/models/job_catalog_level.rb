@@ -191,7 +191,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -201,7 +202,8 @@ module F
     # @param [Object] role_id Value to be assigned
     def role_id=(role_id)
       if role_id.nil?
-        fail ArgumentError, 'role_id cannot be nil'
+        @role_id = nil
+        return
       end
 
       @role_id = role_id
@@ -211,7 +213,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -221,7 +224,8 @@ module F
     # @param [Object] role_name Value to be assigned
     def role_name=(role_name)
       if role_name.nil?
-        fail ArgumentError, 'role_name cannot be nil'
+        @role_name = nil
+        return
       end
 
       @role_name = role_name
@@ -231,7 +235,8 @@ module F
     # @param [Object] order Value to be assigned
     def order=(order)
       if order.nil?
-        fail ArgumentError, 'order cannot be nil'
+        @order = nil
+        return
       end
 
       @order = order
@@ -241,7 +246,8 @@ module F
     # @param [Object] archived Value to be assigned
     def archived=(archived)
       if archived.nil?
-        fail ArgumentError, 'archived cannot be nil'
+        @archived = nil
+        return
       end
 
       @archived = archived
@@ -251,7 +257,8 @@ module F
     # @param [Object] is_default Value to be assigned
     def is_default=(is_default)
       if is_default.nil?
-        fail ArgumentError, 'is_default cannot be nil'
+        @is_default = nil
+        return
       end
 
       @is_default = is_default

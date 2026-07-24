@@ -174,7 +174,8 @@ module F
     # @param [Object] employee_name Value to be assigned
     def employee_name=(employee_name)
       if employee_name.nil?
-        fail ArgumentError, 'employee_name cannot be nil'
+        @employee_name = nil
+        return
       end
 
       @employee_name = employee_name

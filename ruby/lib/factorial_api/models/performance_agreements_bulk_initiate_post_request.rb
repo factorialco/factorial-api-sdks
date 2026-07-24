@@ -95,7 +95,8 @@ module F
     # @param [Object] process_id Value to be assigned
     def process_id=(process_id)
       if process_id.nil?
-        fail ArgumentError, 'process_id cannot be nil'
+        @process_id = nil
+        return
       end
 
       @process_id = process_id

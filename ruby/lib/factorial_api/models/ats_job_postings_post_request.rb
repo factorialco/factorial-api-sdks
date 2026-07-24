@@ -318,7 +318,8 @@ module F
     # @param [Object] title Value to be assigned
     def title=(title)
       if title.nil?
-        fail ArgumentError, 'title cannot be nil'
+        @title = nil
+        return
       end
 
       @title = title

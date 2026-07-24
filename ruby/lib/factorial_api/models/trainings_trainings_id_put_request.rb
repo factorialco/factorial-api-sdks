@@ -230,7 +230,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -240,7 +241,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -250,7 +252,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -260,7 +263,8 @@ module F
     # @param [Object] external Value to be assigned
     def external=(external)
       if external.nil?
-        fail ArgumentError, 'external cannot be nil'
+        @external = nil
+        return
       end
 
       @external = external
@@ -270,7 +274,8 @@ module F
     # @param [Object] year Value to be assigned
     def year=(year)
       if year.nil?
-        fail ArgumentError, 'year cannot be nil'
+        @year = nil
+        return
       end
 
       @year = year

@@ -185,7 +185,8 @@ module F
     # @param [Object] number Value to be assigned
     def number=(number)
       if number.nil?
-        fail ArgumentError, 'number cannot be nil'
+        @number = nil
+        return
       end
 
       @number = number
@@ -205,7 +206,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -215,7 +217,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id

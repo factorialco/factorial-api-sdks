@@ -97,7 +97,8 @@ module F
     # @param [Object] planned_breaks Value to be assigned
     def planned_breaks=(planned_breaks)
       if planned_breaks.nil?
-        fail ArgumentError, 'planned_breaks cannot be nil'
+        @planned_breaks = nil
+        return
       end
 
       @planned_breaks = planned_breaks

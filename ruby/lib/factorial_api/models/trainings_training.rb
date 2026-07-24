@@ -578,7 +578,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -588,7 +589,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -598,7 +600,8 @@ module F
     # @param [Object] author_id Value to be assigned
     def author_id=(author_id)
       if author_id.nil?
-        fail ArgumentError, 'author_id cannot be nil'
+        @author_id = nil
+        return
       end
 
       @author_id = author_id
@@ -608,7 +611,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -618,7 +622,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -628,7 +633,8 @@ module F
     # @param [Object] external Value to be assigned
     def external=(external)
       if external.nil?
-        fail ArgumentError, 'external cannot be nil'
+        @external = nil
+        return
       end
 
       @external = external
@@ -638,7 +644,8 @@ module F
     # @param [Object] fundae_subsidized Value to be assigned
     def fundae_subsidized=(fundae_subsidized)
       if fundae_subsidized.nil?
-        fail ArgumentError, 'fundae_subsidized cannot be nil'
+        @fundae_subsidized = nil
+        return
       end
 
       @fundae_subsidized = fundae_subsidized
@@ -648,7 +655,8 @@ module F
     # @param [Object] subsidized Value to be assigned
     def subsidized=(subsidized)
       if subsidized.nil?
-        fail ArgumentError, 'subsidized cannot be nil'
+        @subsidized = nil
+        return
       end
 
       @subsidized = subsidized
@@ -658,7 +666,8 @@ module F
     # @param [Object] cost Value to be assigned
     def cost=(cost)
       if cost.nil?
-        fail ArgumentError, 'cost cannot be nil'
+        @cost = nil
+        return
       end
 
       @cost = cost
@@ -668,7 +677,8 @@ module F
     # @param [Object] subsidized_cost Value to be assigned
     def subsidized_cost=(subsidized_cost)
       if subsidized_cost.nil?
-        fail ArgumentError, 'subsidized_cost cannot be nil'
+        @subsidized_cost = nil
+        return
       end
 
       @subsidized_cost = subsidized_cost
@@ -678,7 +688,8 @@ module F
     # @param [Object] cost_decimal Value to be assigned
     def cost_decimal=(cost_decimal)
       if cost_decimal.nil?
-        fail ArgumentError, 'cost_decimal cannot be nil'
+        @cost_decimal = nil
+        return
       end
 
       @cost_decimal = cost_decimal
@@ -688,7 +699,8 @@ module F
     # @param [Object] subsidized_cost_decimal Value to be assigned
     def subsidized_cost_decimal=(subsidized_cost_decimal)
       if subsidized_cost_decimal.nil?
-        fail ArgumentError, 'subsidized_cost_decimal cannot be nil'
+        @subsidized_cost_decimal = nil
+        return
       end
 
       @subsidized_cost_decimal = subsidized_cost_decimal
@@ -708,7 +720,8 @@ module F
     # @param [Object] year Value to be assigned
     def year=(year)
       if year.nil?
-        fail ArgumentError, 'year cannot be nil'
+        @year = nil
+        return
       end
 
       @year = year
@@ -718,7 +731,8 @@ module F
     # @param [Object] catalog Value to be assigned
     def catalog=(catalog)
       if catalog.nil?
-        fail ArgumentError, 'catalog cannot be nil'
+        @catalog = nil
+        return
       end
 
       @catalog = catalog
@@ -728,7 +742,8 @@ module F
     # @param [Object] competency_ids Value to be assigned
     def competency_ids=(competency_ids)
       if competency_ids.nil?
-        fail ArgumentError, 'competency_ids cannot be nil'
+        @competency_ids = nil
+        return
       end
 
       @competency_ids = competency_ids
@@ -738,7 +753,8 @@ module F
     # @param [Object] total_training_cost Value to be assigned
     def total_training_cost=(total_training_cost)
       if total_training_cost.nil?
-        fail ArgumentError, 'total_training_cost cannot be nil'
+        @total_training_cost = nil
+        return
       end
 
       @total_training_cost = total_training_cost
@@ -748,7 +764,8 @@ module F
     # @param [Object] total_training_indirect_cost Value to be assigned
     def total_training_indirect_cost=(total_training_indirect_cost)
       if total_training_indirect_cost.nil?
-        fail ArgumentError, 'total_training_indirect_cost cannot be nil'
+        @total_training_indirect_cost = nil
+        return
       end
 
       @total_training_indirect_cost = total_training_indirect_cost
@@ -758,7 +775,8 @@ module F
     # @param [Object] total_training_salary_cost Value to be assigned
     def total_training_salary_cost=(total_training_salary_cost)
       if total_training_salary_cost.nil?
-        fail ArgumentError, 'total_training_salary_cost cannot be nil'
+        @total_training_salary_cost = nil
+        return
       end
 
       @total_training_salary_cost = total_training_salary_cost
@@ -768,7 +786,8 @@ module F
     # @param [Object] total_training_subsidized_cost Value to be assigned
     def total_training_subsidized_cost=(total_training_subsidized_cost)
       if total_training_subsidized_cost.nil?
-        fail ArgumentError, 'total_training_subsidized_cost cannot be nil'
+        @total_training_subsidized_cost = nil
+        return
       end
 
       @total_training_subsidized_cost = total_training_subsidized_cost
@@ -778,7 +797,8 @@ module F
     # @param [Object] total_participants Value to be assigned
     def total_participants=(total_participants)
       if total_participants.nil?
-        fail ArgumentError, 'total_participants cannot be nil'
+        @total_participants = nil
+        return
       end
 
       @total_participants = total_participants
@@ -798,7 +818,8 @@ module F
     # @param [Object] total_duration Value to be assigned
     def total_duration=(total_duration)
       if total_duration.nil?
-        fail ArgumentError, 'total_duration cannot be nil'
+        @total_duration = nil
+        return
       end
 
       @total_duration = total_duration
@@ -808,7 +829,8 @@ module F
     # @param [Object] is_mandatory Value to be assigned
     def is_mandatory=(is_mandatory)
       if is_mandatory.nil?
-        fail ArgumentError, 'is_mandatory cannot be nil'
+        @is_mandatory = nil
+        return
       end
 
       @is_mandatory = is_mandatory

@@ -139,7 +139,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -149,7 +150,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -159,7 +161,8 @@ module F
     # @param [Object] paid Value to be assigned
     def paid=(paid)
       if paid.nil?
-        fail ArgumentError, 'paid cannot be nil'
+        @paid = nil
+        return
       end
 
       @paid = paid
@@ -169,7 +172,8 @@ module F
     # @param [Object] archived Value to be assigned
     def archived=(archived)
       if archived.nil?
-        fail ArgumentError, 'archived cannot be nil'
+        @archived = nil
+        return
       end
 
       @archived = archived

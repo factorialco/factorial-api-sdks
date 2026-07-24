@@ -96,7 +96,8 @@ module F
     # @param [Object] items Value to be assigned
     def items=(items)
       if items.nil?
-        fail ArgumentError, 'items cannot be nil'
+        @items = nil
+        return
       end
 
       @items = items

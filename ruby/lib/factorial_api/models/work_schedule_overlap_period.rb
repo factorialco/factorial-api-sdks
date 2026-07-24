@@ -199,7 +199,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -209,7 +210,8 @@ module F
     # @param [Object] default Value to be assigned
     def default=(default)
       if default.nil?
-        fail ArgumentError, 'default cannot be nil'
+        @default = nil
+        return
       end
 
       @default = default
@@ -219,7 +221,8 @@ module F
     # @param [Object] schedule_id Value to be assigned
     def schedule_id=(schedule_id)
       if schedule_id.nil?
-        fail ArgumentError, 'schedule_id cannot be nil'
+        @schedule_id = nil
+        return
       end
 
       @schedule_id = schedule_id
@@ -229,7 +232,8 @@ module F
     # @param [Object] start_month Value to be assigned
     def start_month=(start_month)
       if start_month.nil?
-        fail ArgumentError, 'start_month cannot be nil'
+        @start_month = nil
+        return
       end
 
       @start_month = start_month
@@ -239,7 +243,8 @@ module F
     # @param [Object] start_day Value to be assigned
     def start_day=(start_day)
       if start_day.nil?
-        fail ArgumentError, 'start_day cannot be nil'
+        @start_day = nil
+        return
       end
 
       @start_day = start_day
@@ -249,7 +254,8 @@ module F
     # @param [Object] end_month Value to be assigned
     def end_month=(end_month)
       if end_month.nil?
-        fail ArgumentError, 'end_month cannot be nil'
+        @end_month = nil
+        return
       end
 
       @end_month = end_month
@@ -259,7 +265,8 @@ module F
     # @param [Object] end_day Value to be assigned
     def end_day=(end_day)
       if end_day.nil?
-        fail ArgumentError, 'end_day cannot be nil'
+        @end_day = nil
+        return
       end
 
       @end_day = end_day
@@ -269,7 +276,8 @@ module F
     # @param [Object] schedule_type Value to be assigned
     def schedule_type=(schedule_type)
       if schedule_type.nil?
-        fail ArgumentError, 'schedule_type cannot be nil'
+        @schedule_type = nil
+        return
       end
 
       @schedule_type = schedule_type

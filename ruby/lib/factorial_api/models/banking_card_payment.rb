@@ -324,7 +324,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -334,7 +335,8 @@ module F
     # @param [Object] card_id Value to be assigned
     def card_id=(card_id)
       if card_id.nil?
-        fail ArgumentError, 'card_id cannot be nil'
+        @card_id = nil
+        return
       end
 
       @card_id = card_id
@@ -344,7 +346,8 @@ module F
     # @param [Object] amount_cents Value to be assigned
     def amount_cents=(amount_cents)
       if amount_cents.nil?
-        fail ArgumentError, 'amount_cents cannot be nil'
+        @amount_cents = nil
+        return
       end
 
       @amount_cents = amount_cents
@@ -354,7 +357,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -364,7 +368,8 @@ module F
     # @param [Object] merchant_name Value to be assigned
     def merchant_name=(merchant_name)
       if merchant_name.nil?
-        fail ArgumentError, 'merchant_name cannot be nil'
+        @merchant_name = nil
+        return
       end
 
       @merchant_name = merchant_name
@@ -374,7 +379,8 @@ module F
     # @param [Object] merchant_amount_cents Value to be assigned
     def merchant_amount_cents=(merchant_amount_cents)
       if merchant_amount_cents.nil?
-        fail ArgumentError, 'merchant_amount_cents cannot be nil'
+        @merchant_amount_cents = nil
+        return
       end
 
       @merchant_amount_cents = merchant_amount_cents
@@ -384,7 +390,8 @@ module F
     # @param [Object] merchant_currency Value to be assigned
     def merchant_currency=(merchant_currency)
       if merchant_currency.nil?
-        fail ArgumentError, 'merchant_currency cannot be nil'
+        @merchant_currency = nil
+        return
       end
 
       @merchant_currency = merchant_currency
@@ -394,7 +401,8 @@ module F
     # @param [Object] approved Value to be assigned
     def approved=(approved)
       if approved.nil?
-        fail ArgumentError, 'approved cannot be nil'
+        @approved = nil
+        return
       end
 
       @approved = approved
@@ -404,7 +412,8 @@ module F
     # @param [Object] external_created_at Value to be assigned
     def external_created_at=(external_created_at)
       if external_created_at.nil?
-        fail ArgumentError, 'external_created_at cannot be nil'
+        @external_created_at = nil
+        return
       end
 
       @external_created_at = external_created_at
@@ -434,7 +443,8 @@ module F
     # @param [Object] exchange_rate Value to be assigned
     def exchange_rate=(exchange_rate)
       if exchange_rate.nil?
-        fail ArgumentError, 'exchange_rate cannot be nil'
+        @exchange_rate = nil
+        return
       end
 
       @exchange_rate = exchange_rate
@@ -454,7 +464,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at

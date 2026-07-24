@@ -127,7 +127,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -137,7 +138,8 @@ module F
     # @param [Object] content Value to be assigned
     def content=(content)
       if content.nil?
-        fail ArgumentError, 'content cannot be nil'
+        @content = nil
+        return
       end
 
       @content = content
@@ -147,7 +149,8 @@ module F
     # @param [Object] flexible_time_record_id Value to be assigned
     def flexible_time_record_id=(flexible_time_record_id)
       if flexible_time_record_id.nil?
-        fail ArgumentError, 'flexible_time_record_id cannot be nil'
+        @flexible_time_record_id = nil
+        return
       end
 
       @flexible_time_record_id = flexible_time_record_id

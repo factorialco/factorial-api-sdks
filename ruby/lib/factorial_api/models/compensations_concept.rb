@@ -244,7 +244,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -264,7 +265,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -274,7 +276,8 @@ module F
     # @param [Object] default Value to be assigned
     def default=(default)
       if default.nil?
-        fail ArgumentError, 'default cannot be nil'
+        @default = nil
+        return
       end
 
       @default = default
@@ -284,7 +287,8 @@ module F
     # @param [Object] description Value to be assigned
     def description=(description)
       if description.nil?
-        fail ArgumentError, 'description cannot be nil'
+        @description = nil
+        return
       end
 
       @description = description
@@ -294,7 +298,8 @@ module F
     # @param [Object] label Value to be assigned
     def label=(label)
       if label.nil?
-        fail ArgumentError, 'label cannot be nil'
+        @label = nil
+        return
       end
 
       @label = label
@@ -304,7 +309,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -314,7 +320,8 @@ module F
     # @param [Object] translated_name Value to be assigned
     def translated_name=(translated_name)
       if translated_name.nil?
-        fail ArgumentError, 'translated_name cannot be nil'
+        @translated_name = nil
+        return
       end
 
       @translated_name = translated_name

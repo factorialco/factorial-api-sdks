@@ -152,7 +152,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -162,7 +163,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -172,7 +174,8 @@ module F
     # @param [Object] imputed_minutes Value to be assigned
     def imputed_minutes=(imputed_minutes)
       if imputed_minutes.nil?
-        fail ArgumentError, 'imputed_minutes cannot be nil'
+        @imputed_minutes = nil
+        return
       end
 
       @imputed_minutes = imputed_minutes
@@ -182,7 +185,8 @@ module F
     # @param [Object] project_worker_id Value to be assigned
     def project_worker_id=(project_worker_id)
       if project_worker_id.nil?
-        fail ArgumentError, 'project_worker_id cannot be nil'
+        @project_worker_id = nil
+        return
       end
 
       @project_worker_id = project_worker_id

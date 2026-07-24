@@ -143,7 +143,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -153,7 +154,8 @@ module F
     # @param [Object] performance_review_process_id Value to be assigned
     def performance_review_process_id=(performance_review_process_id)
       if performance_review_process_id.nil?
-        fail ArgumentError, 'performance_review_process_id cannot be nil'
+        @performance_review_process_id = nil
+        return
       end
 
       @performance_review_process_id = performance_review_process_id
@@ -163,7 +165,8 @@ module F
     # @param [Object] manager_access_id Value to be assigned
     def manager_access_id=(manager_access_id)
       if manager_access_id.nil?
-        fail ArgumentError, 'manager_access_id cannot be nil'
+        @manager_access_id = nil
+        return
       end
 
       @manager_access_id = manager_access_id
@@ -173,7 +176,8 @@ module F
     # @param [Object] manager_full_name Value to be assigned
     def manager_full_name=(manager_full_name)
       if manager_full_name.nil?
-        fail ArgumentError, 'manager_full_name cannot be nil'
+        @manager_full_name = nil
+        return
       end
 
       @manager_full_name = manager_full_name

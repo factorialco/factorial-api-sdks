@@ -215,7 +215,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -225,7 +226,8 @@ module F
     # @param [Object] project_name Value to be assigned
     def project_name=(project_name)
       if project_name.nil?
-        fail ArgumentError, 'project_name cannot be nil'
+        @project_name = nil
+        return
       end
 
       @project_name = project_name
@@ -235,7 +237,8 @@ module F
     # @param [Object] project_status Value to be assigned
     def project_status=(project_status)
       if project_status.nil?
-        fail ArgumentError, 'project_status cannot be nil'
+        @project_status = nil
+        return
       end
 
       @project_status = project_status
@@ -245,7 +248,8 @@ module F
     # @param [Object] inputed_time Value to be assigned
     def inputed_time=(inputed_time)
       if inputed_time.nil?
-        fail ArgumentError, 'inputed_time cannot be nil'
+        @inputed_time = nil
+        return
       end
 
       @inputed_time = inputed_time

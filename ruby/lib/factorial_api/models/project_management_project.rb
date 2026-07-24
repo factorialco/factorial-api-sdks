@@ -291,7 +291,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -301,7 +302,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -331,7 +333,8 @@ module F
     # @param [Object] is_billable Value to be assigned
     def is_billable=(is_billable)
       if is_billable.nil?
-        fail ArgumentError, 'is_billable cannot be nil'
+        @is_billable = nil
+        return
       end
 
       @is_billable = is_billable
@@ -341,7 +344,8 @@ module F
     # @param [Object] legal_entity_id Value to be assigned
     def legal_entity_id=(legal_entity_id)
       if legal_entity_id.nil?
-        fail ArgumentError, 'legal_entity_id cannot be nil'
+        @legal_entity_id = nil
+        return
       end
 
       @legal_entity_id = legal_entity_id

@@ -334,7 +334,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -344,7 +345,8 @@ module F
     # @param [Object] first_name Value to be assigned
     def first_name=(first_name)
       if first_name.nil?
-        fail ArgumentError, 'first_name cannot be nil'
+        @first_name = nil
+        return
       end
 
       @first_name = first_name
@@ -354,7 +356,8 @@ module F
     # @param [Object] last_name Value to be assigned
     def last_name=(last_name)
       if last_name.nil?
-        fail ArgumentError, 'last_name cannot be nil'
+        @last_name = nil
+        return
       end
 
       @last_name = last_name
@@ -364,7 +367,8 @@ module F
     # @param [Object] full_name Value to be assigned
     def full_name=(full_name)
       if full_name.nil?
-        fail ArgumentError, 'full_name cannot be nil'
+        @full_name = nil
+        return
       end
 
       @full_name = full_name
@@ -374,7 +378,8 @@ module F
     # @param [Object] talent_pool Value to be assigned
     def talent_pool=(talent_pool)
       if talent_pool.nil?
-        fail ArgumentError, 'talent_pool cannot be nil'
+        @talent_pool = nil
+        return
       end
 
       @talent_pool = talent_pool
@@ -384,7 +389,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -394,7 +400,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

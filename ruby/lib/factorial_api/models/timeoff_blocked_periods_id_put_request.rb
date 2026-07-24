@@ -214,7 +214,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -224,7 +225,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -234,7 +236,8 @@ module F
     # @param [Object] leave_type_ids Value to be assigned
     def leave_type_ids=(leave_type_ids)
       if leave_type_ids.nil?
-        fail ArgumentError, 'leave_type_ids cannot be nil'
+        @leave_type_ids = nil
+        return
       end
 
       @leave_type_ids = leave_type_ids
@@ -244,7 +247,8 @@ module F
     # @param [Object] time_periods_attributes Value to be assigned
     def time_periods_attributes=(time_periods_attributes)
       if time_periods_attributes.nil?
-        fail ArgumentError, 'time_periods_attributes cannot be nil'
+        @time_periods_attributes = nil
+        return
       end
 
       @time_periods_attributes = time_periods_attributes
@@ -254,7 +258,8 @@ module F
     # @param [Object] strategy Value to be assigned
     def strategy=(strategy)
       if strategy.nil?
-        fail ArgumentError, 'strategy cannot be nil'
+        @strategy = nil
+        return
       end
 
       @strategy = strategy

@@ -300,7 +300,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -310,7 +311,8 @@ module F
     # @param [Object] process_id Value to be assigned
     def process_id=(process_id)
       if process_id.nil?
-        fail ArgumentError, 'process_id cannot be nil'
+        @process_id = nil
+        return
       end
 
       @process_id = process_id
@@ -320,7 +322,8 @@ module F
     # @param [Object] target_id Value to be assigned
     def target_id=(target_id)
       if target_id.nil?
-        fail ArgumentError, 'target_id cannot be nil'
+        @target_id = nil
+        return
       end
 
       @target_id = target_id
@@ -340,7 +343,8 @@ module F
     # @param [Object] locked Value to be assigned
     def locked=(locked)
       if locked.nil?
-        fail ArgumentError, 'locked cannot be nil'
+        @locked = nil
+        return
       end
 
       @locked = locked
@@ -350,7 +354,8 @@ module F
     # @param [Object] self_comments Value to be assigned
     def self_comments=(self_comments)
       if self_comments.nil?
-        fail ArgumentError, 'self_comments cannot be nil'
+        @self_comments = nil
+        return
       end
 
       @self_comments = self_comments
@@ -360,7 +365,8 @@ module F
     # @param [Object] manager_comments Value to be assigned
     def manager_comments=(manager_comments)
       if manager_comments.nil?
-        fail ArgumentError, 'manager_comments cannot be nil'
+        @manager_comments = nil
+        return
       end
 
       @manager_comments = manager_comments

@@ -192,7 +192,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -202,7 +203,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -212,7 +214,8 @@ module F
     # @param [Object] name Value to be assigned
     def name=(name)
       if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+        @name = nil
+        return
       end
 
       @name = name
@@ -222,7 +225,8 @@ module F
     # @param [Object] legal_entities_ids Value to be assigned
     def legal_entities_ids=(legal_entities_ids)
       if legal_entities_ids.nil?
-        fail ArgumentError, 'legal_entities_ids cannot be nil'
+        @legal_entities_ids = nil
+        return
       end
 
       @legal_entities_ids = legal_entities_ids
@@ -232,7 +236,8 @@ module F
     # @param [Object] archived Value to be assigned
     def archived=(archived)
       if archived.nil?
-        fail ArgumentError, 'archived cannot be nil'
+        @archived = nil
+        return
       end
 
       @archived = archived

@@ -129,7 +129,8 @@ module F
     # @param [Object] session_id Value to be assigned
     def session_id=(session_id)
       if session_id.nil?
-        fail ArgumentError, 'session_id cannot be nil'
+        @session_id = nil
+        return
       end
 
       @session_id = session_id
@@ -139,7 +140,8 @@ module F
     # @param [Object] notify Value to be assigned
     def notify=(notify)
       if notify.nil?
-        fail ArgumentError, 'notify cannot be nil'
+        @notify = nil
+        return
       end
 
       @notify = notify

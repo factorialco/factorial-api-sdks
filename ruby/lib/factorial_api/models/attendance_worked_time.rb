@@ -273,7 +273,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -283,7 +284,8 @@ module F
     # @param [Object] date Value to be assigned
     def date=(date)
       if date.nil?
-        fail ArgumentError, 'date cannot be nil'
+        @date = nil
+        return
       end
 
       @date = date
@@ -293,7 +295,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -303,7 +306,8 @@ module F
     # @param [Object] tracked_minutes Value to be assigned
     def tracked_minutes=(tracked_minutes)
       if tracked_minutes.nil?
-        fail ArgumentError, 'tracked_minutes cannot be nil'
+        @tracked_minutes = nil
+        return
       end
 
       @tracked_minutes = tracked_minutes
@@ -313,7 +317,8 @@ module F
     # @param [Object] multiplied_minutes Value to be assigned
     def multiplied_minutes=(multiplied_minutes)
       if multiplied_minutes.nil?
-        fail ArgumentError, 'multiplied_minutes cannot be nil'
+        @multiplied_minutes = nil
+        return
       end
 
       @multiplied_minutes = multiplied_minutes
@@ -323,7 +328,8 @@ module F
     # @param [Object] pending_minutes Value to be assigned
     def pending_minutes=(pending_minutes)
       if pending_minutes.nil?
-        fail ArgumentError, 'pending_minutes cannot be nil'
+        @pending_minutes = nil
+        return
       end
 
       @pending_minutes = pending_minutes
@@ -333,7 +339,8 @@ module F
     # @param [Object] minutes Value to be assigned
     def minutes=(minutes)
       if minutes.nil?
-        fail ArgumentError, 'minutes cannot be nil'
+        @minutes = nil
+        return
       end
 
       @minutes = minutes
@@ -353,7 +360,8 @@ module F
     # @param [Object] worked_time_blocks Value to be assigned
     def worked_time_blocks=(worked_time_blocks)
       if worked_time_blocks.nil?
-        fail ArgumentError, 'worked_time_blocks cannot be nil'
+        @worked_time_blocks = nil
+        return
       end
 
       @worked_time_blocks = worked_time_blocks
@@ -373,7 +381,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id

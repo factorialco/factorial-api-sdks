@@ -327,7 +327,8 @@ module F
     # @param [Object] created_at Value to be assigned
     def created_at=(created_at)
       if created_at.nil?
-        fail ArgumentError, 'created_at cannot be nil'
+        @created_at = nil
+        return
       end
 
       @created_at = created_at
@@ -337,7 +338,8 @@ module F
     # @param [Object] filename Value to be assigned
     def filename=(filename)
       if filename.nil?
-        fail ArgumentError, 'filename cannot be nil'
+        @filename = nil
+        return
       end
 
       @filename = filename
@@ -347,7 +349,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -357,7 +360,8 @@ module F
     # @param [Object] public Value to be assigned
     def public=(public)
       if public.nil?
-        fail ArgumentError, 'public cannot be nil'
+        @public = nil
+        return
       end
 
       @public = public
@@ -377,7 +381,8 @@ module F
     # @param [Object] space Value to be assigned
     def space=(space)
       if space.nil?
-        fail ArgumentError, 'space cannot be nil'
+        @space = nil
+        return
       end
 
       @space = space
@@ -387,7 +392,8 @@ module F
     # @param [Object] updated_at Value to be assigned
     def updated_at=(updated_at)
       if updated_at.nil?
-        fail ArgumentError, 'updated_at cannot be nil'
+        @updated_at = nil
+        return
       end
 
       @updated_at = updated_at

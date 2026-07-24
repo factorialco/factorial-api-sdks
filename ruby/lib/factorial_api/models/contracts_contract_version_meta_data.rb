@@ -104,7 +104,8 @@ module F
     # @param [Object] contract_version_id Value to be assigned
     def contract_version_id=(contract_version_id)
       if contract_version_id.nil?
-        fail ArgumentError, 'contract_version_id cannot be nil'
+        @contract_version_id = nil
+        return
       end
 
       @contract_version_id = contract_version_id

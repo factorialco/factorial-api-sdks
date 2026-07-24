@@ -545,7 +545,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -565,7 +566,8 @@ module F
     # @param [Object] currency Value to be assigned
     def currency=(currency)
       if currency.nil?
-        fail ArgumentError, 'currency cannot be nil'
+        @currency = nil
+        return
       end
 
       @currency = currency
@@ -585,7 +587,8 @@ module F
     # @param [Object] effective_on Value to be assigned
     def effective_on=(effective_on)
       if effective_on.nil?
-        fail ArgumentError, 'effective_on cannot be nil'
+        @effective_on = nil
+        return
       end
 
       @effective_on = effective_on
@@ -595,7 +598,8 @@ module F
     # @param [Object] status_updated_at Value to be assigned
     def status_updated_at=(status_updated_at)
       if status_updated_at.nil?
-        fail ArgumentError, 'status_updated_at cannot be nil'
+        @status_updated_at = nil
+        return
       end
 
       @status_updated_at = status_updated_at
@@ -605,7 +609,8 @@ module F
     # @param [Object] files Value to be assigned
     def files=(files)
       if files.nil?
-        fail ArgumentError, 'files cannot be nil'
+        @files = nil
+        return
       end
 
       @files = files
@@ -625,7 +630,8 @@ module F
     # @param [Object] taxes Value to be assigned
     def taxes=(taxes)
       if taxes.nil?
-        fail ArgumentError, 'taxes cannot be nil'
+        @taxes = nil
+        return
       end
 
       @taxes = taxes
@@ -635,7 +641,8 @@ module F
     # @param [Object] cost_center_ids Value to be assigned
     def cost_center_ids=(cost_center_ids)
       if cost_center_ids.nil?
-        fail ArgumentError, 'cost_center_ids cannot be nil'
+        @cost_center_ids = nil
+        return
       end
 
       @cost_center_ids = cost_center_ids

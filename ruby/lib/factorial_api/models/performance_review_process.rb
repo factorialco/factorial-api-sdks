@@ -291,7 +291,8 @@ module F
     # @param [Object] id Value to be assigned
     def id=(id)
       if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+        @id = nil
+        return
       end
 
       @id = id
@@ -301,7 +302,8 @@ module F
     # @param [Object] company_id Value to be assigned
     def company_id=(company_id)
       if company_id.nil?
-        fail ArgumentError, 'company_id cannot be nil'
+        @company_id = nil
+        return
       end
 
       @company_id = company_id
@@ -321,7 +323,8 @@ module F
     # @param [Object] start_validation_errors Value to be assigned
     def start_validation_errors=(start_validation_errors)
       if start_validation_errors.nil?
-        fail ArgumentError, 'start_validation_errors cannot be nil'
+        @start_validation_errors = nil
+        return
       end
 
       @start_validation_errors = start_validation_errors
@@ -331,7 +334,8 @@ module F
     # @param [Object] archived Value to be assigned
     def archived=(archived)
       if archived.nil?
-        fail ArgumentError, 'archived cannot be nil'
+        @archived = nil
+        return
       end
 
       @archived = archived
@@ -341,7 +345,8 @@ module F
     # @param [Object] agreements_configuration Value to be assigned
     def agreements_configuration=(agreements_configuration)
       if agreements_configuration.nil?
-        fail ArgumentError, 'agreements_configuration cannot be nil'
+        @agreements_configuration = nil
+        return
       end
 
       @agreements_configuration = agreements_configuration
@@ -351,7 +356,8 @@ module F
     # @param [Object] competencies_assessments_configuration Value to be assigned
     def competencies_assessments_configuration=(competencies_assessments_configuration)
       if competencies_assessments_configuration.nil?
-        fail ArgumentError, 'competencies_assessments_configuration cannot be nil'
+        @competencies_assessments_configuration = nil
+        return
       end
 
       @competencies_assessments_configuration = competencies_assessments_configuration

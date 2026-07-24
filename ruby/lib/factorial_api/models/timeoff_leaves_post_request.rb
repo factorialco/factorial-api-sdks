@@ -246,7 +246,8 @@ module F
     # @param [Object] employee_id Value to be assigned
     def employee_id=(employee_id)
       if employee_id.nil?
-        fail ArgumentError, 'employee_id cannot be nil'
+        @employee_id = nil
+        return
       end
 
       @employee_id = employee_id
@@ -256,7 +257,8 @@ module F
     # @param [Object] start_on Value to be assigned
     def start_on=(start_on)
       if start_on.nil?
-        fail ArgumentError, 'start_on cannot be nil'
+        @start_on = nil
+        return
       end
 
       @start_on = start_on
