@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.1...python-v2.0.2) (2026-07-24)
+
+
+### Bug Fixes
+
+* **python:** don't crash when optional list filters are omitted ([#34](https://github.com/factorialco/factorial-api-sdks/issues/34)) ([a96ebaf](https://github.com/factorialco/factorial-api-sdks/commit/a96ebafb13bc690c9c3a53924dc37dbf38630748))
+
 ## [2.0.1](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.0...python-v2.0.1) (2026-07-22)
 
 
