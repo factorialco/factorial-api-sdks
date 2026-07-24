@@ -11,9 +11,19 @@ ruby scripts/generate_sdk.rb oas-2026-08-01.yaml
 
 The script normalizes the spec, computes the gem version (bumping the build
 counter when regenerating for the same spec date), cleans and regenerates
-the client, re-attaches the handwritten facade, verifies the gem loads and
-runs the handwritten facade specs (`spec/factorial_api/`) against the
-freshly generated code.
+the client, patches the generated models (see below), re-attaches the
+handwritten facade, verifies the gem loads and runs the handwritten facade
+specs (`spec/factorial_api/`) against the freshly generated code.
+
+## Why the generated models are patched
+
+The spec marks many fields as required, but the live API returns `null` for
+some of them (e.g. `ApiPublicCredential.employee_id` is null for
+company-level API keys). The generated attribute writers raise
+`ArgumentError: <field> cannot be nil` unconditionally, crashing the
+deserialization of valid responses. `scripts/patch_models.rb` rewrites those
+guards to tolerate nil; `generate_sdk.rb` runs it after every regeneration.
+(The Python SDK post-patches its generated code for the same reason.)
 
 To bump `MAJOR.MINOR`, edit `sdkMajorMinor` in `openapi-ruby-client.yaml`.
 

@@ -72,6 +72,12 @@ FileUtils.rm_rf(GENERATED_PATHS)
 step "Generating SDK"
 run!("openapi-generator", "generate", "-c", CONFIG_FILE)
 
+# --- 6.5. Patch generated models: nil-tolerant required-field setters ---
+# The spec marks fields as required that the live API returns as null;
+# without this patch, deserializing those responses raises ArgumentError.
+step "Patching generated models"
+run!("ruby", "scripts/patch_models.rb")
+
 # --- 7. Re-attach the facade (idempotent) ---
 step "Re-attaching the F::Api facade"
 unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
