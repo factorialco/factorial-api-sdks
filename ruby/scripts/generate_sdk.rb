@@ -76,10 +76,14 @@ run!("ruby", "scripts/normalize_oas.rb", spec)
 normalized = spec.sub(/\.yaml\z/, ".normalized.yaml")
 
 # --- 4. Update the generator config ---
+# Surgical line edits instead of a YAML round-trip, so comments survive.
 step "Updating #{CONFIG_FILE}"
-config["inputSpec"] = normalized
-config["additionalProperties"]["gemVersion"] = version
-File.write(CONFIG_FILE, config.to_yaml)
+config_text = File.read(CONFIG_FILE)
+config_text.sub!(/^inputSpec: .*/, "inputSpec: #{normalized}") or
+  abort("ERROR: inputSpec line not found in #{CONFIG_FILE}")
+config_text.sub!(/^(\s*)gemVersion: .*/, "\\1gemVersion: #{version}") or
+  abort("ERROR: gemVersion line not found in #{CONFIG_FILE}")
+File.write(CONFIG_FILE, config_text)
 
 # --- 5. Clean up previously generated code ---
 step "Cleaning previous generated code"

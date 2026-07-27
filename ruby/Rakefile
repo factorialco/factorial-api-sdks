@@ -8,3 +8,11 @@ begin
 rescue LoadError
   # no rspec available
 end
+
+desc "Regenerate the SDK (SPEC=oas-YYYY-MM-DD.yaml to pick a spec, BETA=1 for a prerelease)"
+task :generate do
+  args = []
+  args << ENV["SPEC"] if ENV["SPEC"]
+  args << "--beta" if ENV["BETA"]
+  sh "ruby", "scripts/generate_sdk.rb", *args
+end

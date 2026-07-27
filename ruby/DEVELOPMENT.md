@@ -5,9 +5,10 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 ## Regenerating the SDK
 
 ```bash
-ruby scripts/generate_sdk.rb            # uses the latest oas-*.yaml
-ruby scripts/generate_sdk.rb oas-2026-08-01.yaml
-ruby scripts/generate_sdk.rb --beta     # prerelease: YYYYMMDD.X.Y.beta.N
+bundle exec rake generate               # uses the latest oas-*.yaml
+bundle exec rake generate SPEC=oas-2026-08-01.yaml
+bundle exec rake generate BETA=1        # prerelease: YYYYMMDD.X.Y.beta.N
+# (equivalent: ruby scripts/generate_sdk.rb [spec] [--beta])
 ```
 
 The script normalizes the spec, computes the gem version, cleans and
