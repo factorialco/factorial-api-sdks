@@ -32,25 +32,43 @@ def run!(*cmd)
 end
 
 # --- 1. Locate the spec and extract its date ---
+beta = !ARGV.delete("--beta").nil?
 spec = ARGV[0] || Dir.glob("oas-*.yaml").grep_v(/normalized/).max
 abort("ERROR: no oas-*.yaml found") unless spec && File.exist?(spec)
 
 date_str = spec[/\d{4}-\d{2}-\d{2}/] or abort("ERROR: #{spec} has no YYYY-MM-DD date")
 spec_date = date_str.delete("-") # "2026-07-01" -> "20260701"
 
-step "Spec: #{spec} (date #{date_str})"
+step "Spec: #{spec} (date #{date_str})#{beta ? ' [beta]' : ''}"
 
-# --- 2. Compute the gem version: MAJOR.MINOR.YYYYMMDD.BUILD ---
+# --- 2. Compute the gem version: YYYYMMDD.X.Y[.beta.N] ---
+# The API date is the leading segment and the only breaking boundary; X.Y
+# versions the handwritten layer (features.fixes) and MUST stay backwards
+# compatible within the same date line. `~> YYYYMMDD` therefore pins users
+# to an API version while receiving every compatible update.
 config = YAML.load_file(CONFIG_FILE)
-major_minor = config.fetch("additionalProperties").fetch("sdkMajorMinor")
+facade = config.fetch("additionalProperties").fetch("sdkMajorMinor")
+facade_x, facade_y = facade.split(".").map { |part| Integer(part, 10) }
 
-previous_version = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
-previous_date = previous_version&.split(".")&.at(2)
+previous = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
+prev_date, prev_x, prev_y = previous&.split(".")&.values_at(0, 1, 2)
+prev_is_beta = previous&.include?(".beta.") || false
 
-build = (previous_date == spec_date) ? Integer(previous_version.split(".").last) + 1 : 0
+# Regenerating the same date with the same facade X is a rebuild, i.e. a fix
+# release: Y auto-bumps past the previous one. Releasing after a beta of the
+# same line keeps the base version (the beta sorts below it).
+if prev_date == spec_date && prev_x == facade_x.to_s && !prev_is_beta
+  facade_y = [facade_y, Integer(prev_y, 10) + 1].max
+end
 
-version = "#{major_minor}.#{spec_date}.#{build}"
-step "Gem version: #{version} (build #{build.zero? ? 'first for this date' : "increment from #{previous_version}"})"
+version = "#{spec_date}.#{facade_x}.#{facade_y}"
+
+if beta
+  n = previous&.match(/\A#{Regexp.escape(version)}\.beta\.(\d+)\z/) { |m| Integer(m[1], 10) + 1 } || 1
+  version = "#{version}.beta.#{n}"
+end
+
+step "Gem version: #{version}#{previous ? " (previous: #{previous})" : ''}"
 
 # --- 3. Normalize operationIds ---
 step "Normalizing spec"

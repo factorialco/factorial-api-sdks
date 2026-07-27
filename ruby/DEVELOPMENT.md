@@ -7,13 +7,21 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 ```bash
 ruby scripts/generate_sdk.rb            # uses the latest oas-*.yaml
 ruby scripts/generate_sdk.rb oas-2026-08-01.yaml
+ruby scripts/generate_sdk.rb --beta     # prerelease: YYYYMMDD.X.Y.beta.N
 ```
 
-The script normalizes the spec, computes the gem version (bumping the build
-counter when regenerating for the same spec date), cleans and regenerates
-the client, patches the generated models (see below), re-attaches the
-handwritten facade, verifies the gem loads and runs the handwritten facade
-specs (`spec/factorial_api/`) against the freshly generated code.
+The script normalizes the spec, computes the gem version, cleans and
+regenerates the client, patches the generated models (see below),
+re-attaches the handwritten facade, verifies the gem loads and runs the
+handwritten facade specs (`spec/factorial_api/`) against the freshly
+generated code.
+
+Versions are `YYYYMMDD.X.Y` (see the README): `X.Y` comes from
+`sdkMajorMinor` in `openapi-ruby-client.yaml`, and regenerating the same
+spec date auto-bumps `Y` (a rebuild is a fix release). **Contract: no
+breaking changes in the handwritten layer within a date line** — breaking
+facade changes wait for the next API date, and a facade fix/feature must be
+republished for every live date line.
 
 ## Why the generated models are patched
 
@@ -24,8 +32,6 @@ company-level API keys). The generated attribute writers raise
 deserialization of valid responses. `scripts/patch_models.rb` rewrites those
 guards to tolerate nil; `generate_sdk.rb` runs it after every regeneration.
 (The Python SDK post-patches its generated code for the same reason.)
-
-To bump `MAJOR.MINOR`, edit `sdkMajorMinor` in `openapi-ruby-client.yaml`.
 
 ## Why the spec is normalized first
 

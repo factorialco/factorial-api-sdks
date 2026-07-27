@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    factorial_api (1.0.20260701.0)
+    factorial_api (20260701.1.0)
       faraday (>= 1.0.1, < 3.0)
       faraday-multipart (~> 1.0)
       marcel (~> 1.0)

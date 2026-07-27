@@ -132,16 +132,22 @@ end
 
 ## Versioning
 
-The gem version follows `MAJOR.MINOR.YYYYMMDD.BUILD`:
+The gem version is `YYYYMMDD.X.Y` (e.g. `20260701.1.0`):
 
-- `MAJOR.MINOR` — version of the handwritten SDK layer (the `F::Api`
-  facade). Bumped manually when the facade changes.
-- `YYYYMMDD` — date of the OpenAPI spec the client was generated
-  from (spec `oas-2026-07-01.yaml` → `20260701`).
-- `BUILD` — regeneration counter within the same spec date, starting at 0.
+- `YYYYMMDD` — the Factorial API version (date) the client is generated
+  from. **A new API date is a breaking change** and starts a fresh line.
+- `X.Y` — features/fixes of the handwritten SDK layer. Guaranteed
+  backwards compatible within the same date line.
+- Prereleases are tagged `YYYYMMDD.X.Y.beta.N`. Bundler and `gem install`
+  ignore them unless you ask for them explicitly.
 
-Example: `1.0.20260701.0` is the first build of the 1.0 facade against the
-2026-07-01 spec.
+Pick your update policy in the `Gemfile`:
+
+```ruby
+gem "factorial_api", "~> 20260701"      # stay on this API version, receive every compatible update
+gem "factorial_api", "~> 20260701.1.2"  # fixes only
+gem "factorial_api"                     # always the newest API version
+```
 
 ## License
 
