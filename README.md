@@ -94,9 +94,9 @@ When opening a PR, two things decide the release:
   **both** SDKs, use a bare `feat:`/`fix:` with **no scope** so both bump together.
 
 > The Ruby SDK is **not wired into release-please yet**: it uses its own
-> date-based version scheme (`MAJOR.MINOR.YYYYMMDD.BUILD`) and is regenerated
-> and packaged via `ruby/scripts/generate_sdk.rb` — see
-> [ruby/DEVELOPMENT.md](ruby/DEVELOPMENT.md).
+> date-first version scheme (`YYYYMMDD.X.Y`, where the API date is the
+> breaking boundary) and is regenerated and packaged via
+> `ruby/scripts/generate_sdk.rb` — see [ruby/DEVELOPMENT.md](ruby/DEVELOPMENT.md).
 
 The `release.ts` / `release.py` scripts remain for **regenerating** the SDK from a
 new OpenAPI spec; see the per-SDK READMEs: [TypeScript](typescript/README.md) · [Python](python/README.md)
