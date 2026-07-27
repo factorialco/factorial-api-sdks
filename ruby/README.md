@@ -63,9 +63,9 @@ generated class in snake_case:
 | `F::EmployeesEmployeeApi` | `api.employees_employee` |
 | `F::TimeoffLeaveApi`      | `api.timeoff_leave`      |
 
-The full list is available at runtime via `F::Api::API_CLASSES.keys`. A
-detailed per-endpoint reference lives in
-[`docs/`](https://github.com/factorialco/factorial-api-sdks/tree/main/ruby/docs).
+The full list is available at runtime via `F::Api::API_CLASSES.keys`. For
+the per-endpoint reference, see the
+[Factorial API docs](https://apidoc.factorialhr.com).
 
 ## Pagination
 

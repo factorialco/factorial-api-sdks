@@ -44,8 +44,11 @@ the limit. Full story in that script's header comment.
 ## Handwritten vs generated files
 
 Handwritten files are listed in `.openapi-generator-ignore` and survive
-regeneration. Everything else under `lib/`, `docs/` and `spec/` is
-generated — do not edit it by hand.
+regeneration. Everything else under `lib/` and `spec/` is generated — do
+not edit it by hand. The generator's per-class markdown docs are disabled
+(`globalProperties` in `openapi-ruby-client.yaml`): they are not shipped in
+the gem, and rubydoc.info renders docs from the YARD comments once the gem
+is published.
 
 The facade specs live in `spec/factorial_api/` (outside the regenerated
 `spec/api/` and `spec/models/` trees). Run them alone with:

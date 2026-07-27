@@ -14,7 +14,6 @@ Dir.chdir(ROOT)
 GENERATED_PATHS = %w[
   lib/factorial_api/api
   lib/factorial_api/models
-  docs
   spec/api
   spec/models
 ].freeze

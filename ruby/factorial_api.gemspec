@@ -31,15 +31,11 @@ Gem::Specification.new do |s|
 
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/factorialco/factorial-api-sdks/tree/main/ruby"
-  # s.metadata["changelog_uri"] = "https://github.com/factorialco/factorial-api-sdks/blob/main/ruby/CHANGELOG.md"
   s.metadata["rubygems_mfa_required"] = "true"
 
   s.add_dependency 'faraday', '>= 1.0.1', '< 3.0'
   s.add_dependency 'faraday-multipart', '~> 1.0'
   s.add_dependency 'marcel', '~> 1.0'
-
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
-  s.add_development_dependency 'rubocop', '~> 1.60'
 
   s.files = Dir.glob("lib/**/*.rb") + %w[README.md]
   s.executables   = []

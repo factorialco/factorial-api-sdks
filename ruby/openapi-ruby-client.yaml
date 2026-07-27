@@ -2,6 +2,11 @@
 generatorName: ruby
 inputSpec: oas-2026-07-01.normalized.yaml
 outputDir: "."
+# Skip the per-class markdown docs (~1k files of churn, not shipped in the
+# gem; rubydoc.info serves docs from the YARD comments once published).
+globalProperties:
+  apiDocs: "false"
+  modelDocs: "false"
 additionalProperties:
   gemName: factorial_api
   moduleName: F
