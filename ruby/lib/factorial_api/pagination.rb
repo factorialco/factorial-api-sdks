@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Factorial Ruby SDK.
 module F
   # Cursor-based pagination for list endpoints.
   #
@@ -11,6 +12,8 @@ module F
   #   pages.each { |team| puts team.name }
   #   pages.to_a          # collect everything
   #   pages.first(10)     # stops fetching once it has 10
+  # rubocop:disable Metrics/MethodLength -- one cohesive cursor loop; splitting it
+  # further would scatter the enumerator's control flow across methods.
   def self.paginate(limit: nil, max_items: nil, &fetcher)
     Enumerator.new do |yielder|
       after_id = nil
@@ -22,13 +25,7 @@ module F
       # already returned.
       catch(:done) do
         loop do
-          page_params = {}
-          page_params[:limit]    = limit    if limit
-          page_params[:after_id] = after_id if after_id
-
-          response = fetcher.call(page_params)
-          items    = response.respond_to?(:data) ? Array(response.data) : []
-          meta     = response.respond_to?(:meta) ? response.meta : nil
+          items, meta = extract_page(fetcher.call(page_params(limit, after_id)))
 
           items.each do |item|
             yielder << item
@@ -36,11 +33,29 @@ module F
             throw :done if max_items && yielded >= max_items
           end
 
-          break unless meta&.has_next_page && meta&.end_cursor
+          break unless meta&.has_next_page && meta.end_cursor
 
           after_id = meta.end_cursor
         end
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+
+  # Query params for a single page request.
+  def self.page_params(limit, after_id)
+    params = {}
+    params[:limit] = limit if limit
+    params[:after_id] = after_id if after_id
+    params
+  end
+
+  # Splits a list response into its items and pagination metadata.
+  def self.extract_page(response)
+    items = response.respond_to?(:data) ? Array(response.data) : []
+    meta  = response.respond_to?(:meta) ? response.meta : nil
+    [items, meta]
+  end
+
+  private_class_method :page_params, :extract_page
 end

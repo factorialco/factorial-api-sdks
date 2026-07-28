@@ -27,7 +27,7 @@
 #
 # Usage: ruby scripts/patch_models.rb
 
-MODELS_GLOB = File.expand_path("../lib/factorial_api/models/*.rb", __dir__)
+MODELS_GLOB = File.expand_path('../lib/factorial_api/models/*.rb', __dir__)
 
 NIL_GUARD = /
   if\ (\w+)\.nil\?\n
@@ -38,8 +38,8 @@ NIL_GUARD = /
 patched_files = 0
 patched_setters = 0
 
-Dir.glob(MODELS_GLOB).sort.each do |path|
-  content = File.read(path, encoding: "UTF-8")
+Dir.glob(MODELS_GLOB).each do |path|
+  content = File.read(path, encoding: 'UTF-8')
   count = 0
 
   patched = content.gsub(NIL_GUARD) do

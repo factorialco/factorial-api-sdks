@@ -14,19 +14,19 @@
 # WARNING: debug output contains your credentials. Never paste it
 # anywhere without redacting them first.
 
-require_relative "../lib/factorial_api"
+require_relative '../lib/factorial_api'
 
 # Treat unset and empty-string env vars the same.
-api_key = ENV["FACTORIAL_API_KEY"]
-token   = ENV["FACTORIAL_TOKEN"]
-api_key = nil if api_key&.empty?
-token   = nil if token&.empty?
+api_key = ENV.fetch('FACTORIAL_API_KEY', nil)
+token   = ENV.fetch('FACTORIAL_TOKEN', nil)
+api_key = nil if api_key && api_key.empty?
+token   = nil if token && token.empty?
 
-abort("ERROR: set FACTORIAL_API_KEY or FACTORIAL_TOKEN before running") unless api_key || token
-warn("NOTE: both credentials set; both auth headers will be sent") if api_key && token
+abort('ERROR: set FACTORIAL_API_KEY or FACTORIAL_TOKEN before running') unless api_key || token
+warn('NOTE: both credentials set; both auth headers will be sent') if api_key && token
 
 api = F::Api.new(api_key: api_key, token: token)
-api.client.config.debugging = true if ARGV.include?("--debug")
+api.client.config.debugging = true if ARGV.include?('--debug')
 
 puts "Host: #{api.client.config.host}"
 puts "Auth: #{token ? 'OAuth2 token' : 'API key'}"

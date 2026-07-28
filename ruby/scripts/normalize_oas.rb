@@ -26,30 +26,30 @@
 #
 # Usage: ruby scripts/normalize_oas.rb oas-2026-07-01.yaml
 
-require "yaml"
+require 'yaml'
 
 VERBS  = %w[get post put patch delete head options trace].freeze
 PREFIX = %r{\A/api/\d{4}-\d{2}-\d{2}/resources/}
 
 input  = ARGV.fetch(0)
-output = input.sub(/\.yaml\z/, ".normalized.yaml")
+output = input.sub(/\.yaml\z/, '.normalized.yaml')
 
 spec = YAML.unsafe_load_file(input)
 
-spec.fetch("paths").each do |route, item|
+spec.fetch('paths').each do |route, item|
   VERBS.each do |verb|
     op = item[verb]
     next unless op
-    next if op["operationId"]
+    next if op['operationId']
 
-    base = route.sub(PREFIX, "")
-                .gsub(/[^a-zA-Z0-9]+/, "_")
-                .delete_prefix("_")
-                .delete_suffix("_")
-    op["operationId"] = "#{base}_#{verb}"
+    base = route.sub(PREFIX, '')
+                .gsub(/[^a-zA-Z0-9]+/, '_')
+                .delete_prefix('_')
+                .delete_suffix('_')
+    op['operationId'] = "#{base}_#{verb}"
   end
 end
 
-spec.delete("webhooks")
+spec.delete('webhooks')
 File.write(output, spec.to_yaml)
 puts "Output file: #{output}"

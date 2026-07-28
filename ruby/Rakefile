@@ -1,4 +1,6 @@
-require "bundler/gem_tasks"
+# frozen_string_literal: true
+
+require 'bundler/gem_tasks'
 
 begin
   require 'rspec/core/rake_task'
@@ -9,11 +11,11 @@ rescue LoadError
   # no rspec available
 end
 
-desc "Regenerate the SDK (SPEC=oas-YYYY-MM-DD.yaml, BUMP=feature|fix|none, BETA=1)"
+desc 'Regenerate the SDK (SPEC=oas-YYYY-MM-DD.yaml, BUMP=feature|fix|none, BETA=1)'
 task :generate do
   args = []
-  args << ENV["SPEC"] if ENV["SPEC"]
-  args << "--bump=#{ENV['BUMP']}" if ENV["BUMP"]
-  args << "--beta" if ENV["BETA"]
-  sh "ruby", "scripts/generate_sdk.rb", *args
+  args << ENV['SPEC'] if ENV['SPEC']
+  args << "--bump=#{ENV['BUMP']}" if ENV['BUMP']
+  args << '--beta' if ENV['BETA']
+  sh 'ruby', 'scripts/generate_sdk.rb', *args
 end
