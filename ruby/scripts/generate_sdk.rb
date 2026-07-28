@@ -31,7 +31,14 @@ def run!(*cmd)
 end
 
 # --- 1. Locate the spec and extract its date ---
+VALID_BUMPS = %w[feature fix none].freeze
+
 beta = !ARGV.delete("--beta").nil?
+bump = ARGV.grep(/\A--bump=/).first&.then { |arg| ARGV.delete(arg); arg.split("=", 2).last }
+if bump && !VALID_BUMPS.include?(bump)
+  abort("ERROR: --bump must be one of #{VALID_BUMPS.join(', ')} (got #{bump.inspect})")
+end
+
 spec = ARGV[0] || Dir.glob("oas-*.yaml").grep_v(/normalized/).max
 abort("ERROR: no oas-*.yaml found") unless spec && File.exist?(spec)
 
@@ -52,12 +59,20 @@ facade_x, facade_y = facade.split(".").map { |part| Integer(part, 10) }
 previous = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
 prev_date, prev_x, prev_y = previous&.split(".")&.values_at(0, 1, 2)
 prev_is_beta = previous&.include?(".beta.") || false
+same_line = prev_date == spec_date && prev_x == facade_x.to_s
 
-# Regenerating the same date with the same facade X is a rebuild, i.e. a fix
-# release: Y auto-bumps past the previous one. Releasing after a beta of the
-# same line keeps the base version (the beta sorts below it).
-if prev_date == spec_date && prev_x == facade_x.to_s && !prev_is_beta
-  facade_y = [facade_y, Integer(prev_y, 10) + 1].max
+# Without an explicit --bump, regenerating the same line is a rebuild (a fix
+# release), while a new API date starts at the X.Y configured in the YAML.
+# Releasing after a beta of the same line keeps the base version, since the
+# beta already sorts below it.
+bump ||= (same_line && !prev_is_beta ? "fix" : "none")
+
+case bump
+when "feature"
+  facade_x += 1
+  facade_y = 0
+when "fix"
+  facade_y = [facade_y, same_line && prev_y ? Integer(prev_y, 10) + 1 : facade_y].max
 end
 
 version = "#{spec_date}.#{facade_x}.#{facade_y}"
@@ -67,7 +82,7 @@ if beta
   version = "#{version}.beta.#{n}"
 end
 
-step "Gem version: #{version}#{previous ? " (previous: #{previous})" : ''}"
+step "Gem version: #{version} (bump: #{bump}#{previous ? ", previous: #{previous}" : ''})"
 
 # --- 3. Normalize operationIds ---
 step "Normalizing spec"
@@ -83,6 +98,9 @@ config_text.sub!(/^inputSpec: .*/, "inputSpec: #{normalized}") or
   abort("ERROR: inputSpec line not found in #{CONFIG_FILE}")
 config_text.sub!(/^(\s*)gemVersion: .*/, "\\1gemVersion: #{version}") or
   abort("ERROR: gemVersion line not found in #{CONFIG_FILE}")
+# Persist the bumped facade version, so the next run starts from it.
+config_text.sub!(/^(\s*)sdkMajorMinor: .*/, "\\1sdkMajorMinor: '#{facade_x}.#{facade_y}'") or
+  abort("ERROR: sdkMajorMinor line not found in #{CONFIG_FILE}")
 File.write(CONFIG_FILE, config_text)
 
 # --- 5. Clean up previously generated code ---

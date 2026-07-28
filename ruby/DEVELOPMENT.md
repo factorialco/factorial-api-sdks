@@ -7,9 +7,29 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 ```bash
 bundle exec rake generate               # uses the latest oas-*.yaml
 bundle exec rake generate SPEC=oas-2026-08-01.yaml
+bundle exec rake generate BUMP=feature  # bump X (new facade feature)
 bundle exec rake generate BETA=1        # prerelease: YYYYMMDD.X.Y.beta.N
-# (equivalent: ruby scripts/generate_sdk.rb [spec] [--beta])
+# (equivalent: ruby scripts/generate_sdk.rb [spec] [--bump=...] [--beta])
 ```
+
+### Choosing the version bump
+
+`BUMP` decides how `X.Y` moves (the API date always comes from the spec):
+
+| `BUMP` | Effect | Use when |
+|--------|--------|----------|
+| `fix` | `Y+1` | Regenerating, or a backwards-compatible facade fix |
+| `feature` | `X+1`, `Y=0` | New feature in the handwritten layer |
+| `none` | keeps the configured `X.Y` | Republishing a facade version onto another API date |
+
+Omit it and the script picks the sensible default: `fix` when regenerating
+the same date line (a rebuild is a fix release), `none` for a new API date
+(it starts at the configured `X.Y`). The resulting `X.Y` is written back to
+`sdkMajorMinor` in `openapi-ruby-client.yaml`, so the next run continues
+from it — no manual edits needed.
+
+Remember the contract: a facade `feature`/`fix` must be republished for
+every live date line, keeping `X.Y` aligned across lines.
 
 The script normalizes the spec, computes the gem version, cleans and
 regenerates the client, patches the generated models (see below),
