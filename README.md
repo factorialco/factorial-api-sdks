@@ -1,8 +1,8 @@
 # Factorial API SDKs
 
-Official auto-generated SDKs for the [Factorial API](https://apidoc.factorialhr.com), available for TypeScript and Python.
+Official auto-generated SDKs for the [Factorial API](https://apidoc.factorialhr.com), available for TypeScript, Python and Ruby.
 
-Both SDKs are generated from the OpenAPI spec and wrapped with a generated `FactorialClient` providing clean domain-namespaced access and cursor pagination helpers.
+The SDKs are generated from the OpenAPI spec and wrapped with a handwritten or generated client layer providing clean resource access, auth handling and cursor pagination helpers.
 
 ## SDKs
 
@@ -47,9 +47,30 @@ for emp in client.employees.employee.paginate(max_items=50):
 
 ---
 
+### Ruby · `factorial_api`
+
+```bash
+gem install factorial_api
+```
+
+```ruby
+require "factorial_api"
+
+api = F::Api.new(api_key: "YOUR_KEY")
+
+# only_active, only_managers (required query params become positional args)
+page = api.employees_employee.employees_employees_get(true, false)
+F.paginate(max_items: 50) { |p| api.employees_employee.employees_employees_get(true, false, query_params: p) }
+ .each { |emp| puts emp.full_name }
+```
+
+→ [Full docs](ruby/README.md)
+
+---
+
 ## Versioning
 
-Both SDKs use standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
+The TypeScript and Python SDKs use standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial API version date.
 
 | SDK version | Factorial API version |
 |-------------|----------------------|
@@ -71,6 +92,11 @@ When opening a PR, two things decide the release:
 - **Which package bumps is decided by file path:** changes under `typescript/`
   bump the npm package, under `python/` the PyPI package. For a change spanning
   **both** SDKs, use a bare `feat:`/`fix:` with **no scope** so both bump together.
+
+> The Ruby SDK follows the **same semver + `version_map.json` model** but is
+> **not wired into release-please yet**: its version is computed by
+> `ruby/scripts/generate_sdk.rb` for now — see
+> [ruby/DEVELOPMENT.md](ruby/DEVELOPMENT.md).
 
 The `release.ts` / `release.py` scripts remain for **regenerating** the SDK from a
 new OpenAPI spec; see the per-SDK READMEs: [TypeScript](typescript/README.md) · [Python](python/README.md)
@@ -123,7 +149,7 @@ The release script:
 
 ## Authentication
 
-Both SDKs support:
+All SDKs support:
 
 - **API key** — via `apiKey:` / `api_key=` (sent as `x-api-key` header)
 - **OAuth2 bearer token** — via `token:` / `token=` (sent as `Authorization: Bearer`)
@@ -149,14 +175,20 @@ const client = new FactorialClient();
 client = FactorialClient()
 ```
 
+```ruby
+# Ruby — same
+api = F::Api.new
+```
+
 > The TypeScript client reads `process.env`, so env-var fallback applies in Node-like
 > runtimes; in the browser, pass credentials explicitly.
 
 ## Error handling
 
-Both SDKs **fail loudly** on non-2xx responses (bad/expired token, wrong base URL,
+All SDKs **fail loudly** on non-2xx responses (bad/expired token, wrong base URL,
 server errors) instead of silently returning empty data:
 
 - **TypeScript** throws — wrap calls in `try`/`catch`.
 - **Python** raises `factorial_api_client.generated.errors.UnexpectedStatus`
   (with `.status_code` and `.content`).
+- **Ruby** raises `F::ApiError` (with `.code` and `.response_body`).

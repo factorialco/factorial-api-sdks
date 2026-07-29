@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+require 'bundler/gem_tasks'
+
+begin
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new(:spec)
+  task default: :spec
+rescue LoadError
+  # no rspec available
+end
+
+desc 'Regenerate the SDK (VERSION=yyyy-mm-dd, SPEC=local-file, BUMP=major|minor|patch, BETA=1)'
+task :generate do
+  args = []
+  args << ENV['SPEC'] if ENV['SPEC']
+  args << "--version=#{ENV['VERSION']}" if ENV['VERSION']
+  args << "--bump=#{ENV['BUMP']}" if ENV['BUMP']
+  args << '--beta' if ENV['BETA']
+  sh 'ruby', 'scripts/generate_sdk.rb', *args
+end

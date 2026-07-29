@@ -1,0 +1,17 @@
+---
+generatorName: ruby
+inputSpec: oas-2026-07-01.normalized.yaml
+outputDir: "."
+# Skip the per-class markdown docs (~1k files of churn, not shipped in the
+# gem; rubydoc.info serves docs from the YARD comments once published).
+globalProperties:
+  apiDocs: "false"
+  modelDocs: "false"
+additionalProperties:
+  gemName: factorial_api
+  moduleName: F
+  gemVersion: 2.0.0
+  library: faraday
+  gemLicense: MIT
+  gemHomepage: https://github.com/factorialco/factorial-api-sdks
+  gemSummary: Ruby SDK for the Factorial public API

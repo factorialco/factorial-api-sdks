@@ -9,6 +9,9 @@ python/.venv/
 **/*.pyo
 python/dist/
 
+# Ruby
+ruby/.ruby-lsp/
+
 # Environment
 .envrc
 

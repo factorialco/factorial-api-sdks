@@ -1,0 +1,46 @@
+# RuboCop defaults, applied to the handwritten layer only.
+#
+# Everything listed under Exclude is emitted by openapi-generator and is
+# rewritten on every regeneration, so linting it is neither useful nor
+# actionable. The files that remain are exactly the ones protected in
+# `.openapi-generator-ignore`, plus `scripts/`.
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Exclude:
+    - 'lib/factorial_api.rb'
+    - 'lib/factorial_api/webhooks.rb'
+    - 'lib/factorial_api/api_client.rb'
+    - 'lib/factorial_api/api_error.rb'
+    - 'lib/factorial_api/api_model_base.rb'
+    - 'lib/factorial_api/configuration.rb'
+    - 'lib/factorial_api/version.rb'
+    - 'lib/factorial_api/api/**/*'
+    - 'lib/factorial_api/models/**/*'
+    - 'spec/api/**/*'
+    - 'spec/models/**/*'
+    - 'spec/spec_helper.rb'
+
+# The maintenance scripts are linear, procedural runbooks and RSpec files are
+# built out of long nested blocks: length and branching metrics carry no
+# useful signal in either.
+Metrics/AbcSize:
+  Exclude:
+    - 'scripts/**/*'
+    - 'spec/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'scripts/**/*'
+    - 'spec/**/*'
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'scripts/**/*'
+    - 'spec/**/*'
+Metrics/MethodLength:
+  Exclude:
+    - 'scripts/**/*'
+    - 'spec/**/*'
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'scripts/**/*'
+    - 'spec/**/*'
