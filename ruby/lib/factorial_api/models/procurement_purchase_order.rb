@@ -36,7 +36,7 @@ module F
     # Identifier of the vendor (contact) associated with this purchase order
     attr_accessor :vendor_id
 
-    # Identifier of the purchase request that generated this purchase order
+    # Identifier of the purchase request that generated this purchase order, if any. Externally-created purchase orders (e.g. synced from an ERP) have no purchase request.
     attr_accessor :purchase_request_id
 
     # Identifier of the legal entity that owns this purchase order
@@ -178,8 +178,6 @@ module F
 
       if attributes.key?(:'purchase_request_id')
         self.purchase_request_id = attributes[:'purchase_request_id']
-      else
-        self.purchase_request_id = nil
       end
 
       if attributes.key?(:'legal_entity_id')
@@ -230,10 +228,6 @@ module F
         invalid_properties.push('invalid value for "date", date cannot be nil.')
       end
 
-      if @purchase_request_id.nil?
-        invalid_properties.push('invalid value for "purchase_request_id", purchase_request_id cannot be nil.')
-      end
-
       if @legal_entity_id.nil?
         invalid_properties.push('invalid value for "legal_entity_id", legal_entity_id cannot be nil.')
       end
@@ -261,7 +255,6 @@ module F
       return false unless status_validator.valid?(@status)
       return false if @cost.nil?
       return false if @date.nil?
-      return false if @purchase_request_id.nil?
       return false if @legal_entity_id.nil?
       return false if @company_id.nil?
       return false if @formatted_po_number.nil?
@@ -331,17 +324,6 @@ module F
       end
 
       @date = date
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] purchase_request_id Value to be assigned
-    def purchase_request_id=(purchase_request_id)
-      if purchase_request_id.nil?
-        @purchase_request_id = nil
-        return
-      end
-
-      @purchase_request_id = purchase_request_id
     end
 
     # Custom attribute writer method with validation
@@ -445,5 +427,7 @@ module F
       end
       hash
     end
+
   end
+
 end

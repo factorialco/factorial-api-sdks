@@ -284,7 +284,8 @@ module F
     end
 
     def operation_server_settings
-      {}
+      {
+      }
     end
 
     # Returns URL based on server settings
@@ -401,5 +402,6 @@ module F
         end
       end
     end
+
   end
 end
