@@ -11,5 +11,5 @@ Generator version: 7.23.0
 =end
 
 module F
-  VERSION = '20260701.1.0'
+  VERSION = '2.0.0'
 end

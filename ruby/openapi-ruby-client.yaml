@@ -10,8 +10,7 @@ globalProperties:
 additionalProperties:
   gemName: factorial_api
   moduleName: F
-  sdkMajorMinor: '1.0'
-  gemVersion: 20260701.1.0
+  gemVersion: 2.0.0
   library: faraday
   gemLicense: MIT
   gemHomepage: https://github.com/factorialco/factorial-api-sdks

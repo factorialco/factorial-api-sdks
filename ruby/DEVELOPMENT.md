@@ -7,42 +7,37 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 ```bash
 bundle exec rake generate               # uses the latest oas-*.yaml
 bundle exec rake generate SPEC=oas-2026-08-01.yaml
-bundle exec rake generate BUMP=feature  # bump X (new facade feature)
-bundle exec rake generate BETA=1        # prerelease: YYYYMMDD.X.Y.beta.N
+bundle exec rake generate BUMP=major    # new dated API version
+bundle exec rake generate BETA=1        # prerelease: MAJOR.MINOR.PATCH.beta.N
 # (equivalent: ruby scripts/generate_sdk.rb [spec] [--bump=...] [--beta])
 ```
 
 ### Choosing the version bump
 
-`BUMP` decides how `X.Y` moves (the API date always comes from the spec):
+Versions are plain semver, same model as the TypeScript and Python SDKs:
+the major tracks the Factorial API version (mapped in the repo-root
+`version_map.json`), minor/patch version the handwritten layer. The script
+bumps from the previous version in `version.rb`:
 
-| `BUMP` | Effect | Use when |
-|--------|--------|----------|
-| `fix` | `Y+1` | Regenerating, or a backwards-compatible facade fix |
-| `feature` | `X+1`, `Y=0` | New feature in the handwritten layer |
-| `none` | keeps the configured `X.Y` | Republishing a facade version onto another API date |
+| `BUMP` | Use when |
+|--------|----------|
+| `major` | Regenerating for a **new dated API version** (breaking; ship as `feat!:`) |
+| `minor` | New feature in the handwritten layer (default, like the sibling SDKs) |
+| `patch` | Backwards-compatible fix |
 
-Omit it and the script picks the sensible default: `fix` when regenerating
-the same date line (a rebuild is a fix release), `none` for a new API date
-(it starts at the configured `X.Y`). The resulting `X.Y` is written back to
-`sdkMajorMinor` in `openapi-ruby-client.yaml`, so the next run continues
-from it — no manual edits needed.
+Betas: with `BETA=1` the version gets a `.beta.N` suffix (a native RubyGems
+prerelease, never installed by default). Re-running with `BETA=1` and no
+explicit `BUMP` iterates `N`; running without `BETA` afterwards promotes
+the same base version to the release.
 
-Remember the contract: a facade `feature`/`fix` must be republished for
-every live date line, keeping `X.Y` aligned across lines.
+This versioning is interim: once the Ruby package is wired into
+release-please, the bot owns the version and this logic goes away.
 
 The script normalizes the spec, computes the gem version, cleans and
 regenerates the client, patches the generated models (see below),
 re-attaches the handwritten facade, verifies the gem loads and runs the
 handwritten facade specs (`spec/factorial_api/`) against the freshly
 generated code.
-
-Versions are `YYYYMMDD.X.Y` (see the README): `X.Y` comes from
-`sdkMajorMinor` in `openapi-ruby-client.yaml`, and regenerating the same
-spec date auto-bumps `Y` (a rebuild is a fix release). **Contract: no
-breaking changes in the handwritten layer within a date line** — breaking
-facade changes wait for the next API date, and a facade fix/feature must be
-republished for every live date line.
 
 ## Why the generated models are patched
 

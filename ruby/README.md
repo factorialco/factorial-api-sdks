@@ -132,21 +132,25 @@ end
 
 ## Versioning
 
-The gem version is `YYYYMMDD.X.Y` (e.g. `20260701.1.0`):
+Standard semver (`MAJOR.MINOR.PATCH`), same model as the TypeScript and
+Python SDKs:
 
-- `YYYYMMDD` — the Factorial API version (date) the client is generated
-  from. **A new API date is a breaking change** and starts a fresh line.
-- `X.Y` — features/fixes of the handwritten SDK layer. Guaranteed
-  backwards compatible within the same date line.
-- Prereleases are tagged `YYYYMMDD.X.Y.beta.N`. Bundler and `gem install`
-  ignore them unless you ask for them explicitly.
+- **Major** tracks the Factorial API version — the mapping lives in the
+  repo-root
+  [`version_map.json`](https://github.com/factorialco/factorial-api-sdks/blob/main/version_map.json)
+  (e.g. `2.x.y` targets `2026-07-01`). **A new dated API version is a
+  breaking change** and ships as a new major.
+- **Minor/patch** — features/fixes of the handwritten SDK layer, always
+  backwards compatible within the same major.
+- Prereleases are tagged `MAJOR.MINOR.PATCH.beta.N`. Bundler and
+  `gem install` ignore them unless you ask for them explicitly.
 
 Pick your update policy in the `Gemfile`:
 
 ```ruby
-gem "factorial_api", "~> 20260701"      # stay on this API version, receive every compatible update
-gem "factorial_api", "~> 20260701.1.2"  # fixes only
-gem "factorial_api"                     # always the newest API version
+gem "factorial_api", "~> 2.0"    # stay on this API version, receive every compatible update
+gem "factorial_api", "~> 2.1.3"  # fixes only
+gem "factorial_api"              # always the newest API version
 ```
 
 ## License

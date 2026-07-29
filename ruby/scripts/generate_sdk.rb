@@ -5,7 +5,6 @@
 # Usage: ruby scripts/generate_sdk.rb [oas-YYYY-MM-DD.yaml]
 # With no argument, uses the most recent oas-*.yaml in the root.
 
-require 'yaml'
 require 'fileutils'
 
 ROOT = File.expand_path('..', __dir__)
@@ -31,7 +30,10 @@ def run!(*cmd)
 end
 
 # --- 1. Locate the spec and extract its date ---
-VALID_BUMPS = %w[feature fix none].freeze
+VALID_BUMPS = %w[major minor patch].freeze
+# First semver version; major 2 targets API 2026-07-01 in version_map.json,
+# matching the TypeScript and Python SDKs.
+INITIAL_VERSION = '2.0.0'
 
 beta = !ARGV.delete('--beta').nil?
 bump_arg = ARGV.grep(/\A--bump=/).first
@@ -45,46 +47,55 @@ spec = ARGV[0] || Dir.glob('oas-*.yaml').grep_v(/normalized/).max
 abort('ERROR: no oas-*.yaml found') unless spec && File.exist?(spec)
 
 date_str = spec[/\d{4}-\d{2}-\d{2}/] or abort("ERROR: #{spec} has no YYYY-MM-DD date")
-spec_date = date_str.delete('-') # "2026-07-01" -> "20260701"
 
 step "Spec: #{spec} (date #{date_str})#{' [beta]' if beta}"
 
-# --- 2. Compute the gem version: YYYYMMDD.X.Y[.beta.N] ---
-# The API date is the leading segment and the only breaking boundary; X.Y
-# versions the handwritten layer (features.fixes) and MUST stay backwards
-# compatible within the same date line. `~> YYYYMMDD` therefore pins users
-# to an API version while receiving every compatible update.
-config = YAML.load_file(CONFIG_FILE)
-facade = config.fetch('additionalProperties').fetch('sdkMajorMinor')
-facade_x, facade_y = facade.split('.').map { |part| Integer(part, 10) }
+# --- 2. Compute the gem version: MAJOR.MINOR.PATCH[.beta.N] ---
+# Plain semver, same model as the TypeScript and Python SDKs: the major
+# tracks the Factorial API version (mapped in the repo-root version_map.json,
+# so a new dated API version is a major bump), minor = features and
+# patch = fixes in the handwritten layer. Default bump is minor, matching
+# the sibling release scripts. Interim only: once release-please owns the
+# Ruby package, it takes over the version.
+bump_explicit = !bump.nil?
+bump ||= 'minor'
 
 previous = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
-prev_date, prev_x, prev_y = previous&.split('.')&.values_at(0, 1, 2)
-prev_is_beta = previous&.include?('.beta.') || false
-same_line = prev_date == spec_date && prev_x == facade_x.to_s
+prev_base = previous&.sub(/\.beta\.\d+\z/, '')
+prev_is_beta = !previous.nil? && previous != prev_base
 
-# Without an explicit --bump, regenerating the same line is a rebuild (a fix
-# release), while a new API date starts at the X.Y configured in the YAML.
-# Releasing after a beta of the same line keeps the base version, since the
-# beta already sorts below it.
-bump ||= (same_line && !prev_is_beta ? 'fix' : 'none')
+base =
+  if prev_base.nil? || prev_base.match?(/\A\d{8}\./)
+    # First semver release, or migrating from the legacy date-first scheme.
+    INITIAL_VERSION
+  elsif prev_is_beta && !bump_explicit
+    # Iterate the current beta, or promote it to a release: the base was
+    # already bumped when the first beta of this line was cut.
+    prev_base
+  else
+    major, minor, patch = prev_base.split('.').map { |part| Integer(part, 10) }
+    case bump
+    when 'major'
+      major += 1
+      minor = 0
+      patch = 0
+    when 'minor'
+      minor += 1
+      patch = 0
+    when 'patch'
+      patch += 1
+    end
+    "#{major}.#{minor}.#{patch}"
+  end
 
-case bump
-when 'feature'
-  facade_x += 1
-  facade_y = 0
-when 'fix'
-  facade_y = [facade_y, same_line && prev_y ? Integer(prev_y, 10) + 1 : facade_y].max
-end
-
-version = "#{spec_date}.#{facade_x}.#{facade_y}"
-
+version = base
 if beta
-  n = previous&.match(/\A#{Regexp.escape(version)}\.beta\.(\d+)\z/) { |m| Integer(m[1], 10) + 1 } || 1
-  version = "#{version}.beta.#{n}"
+  n = previous&.match(/\A#{Regexp.escape(base)}\.beta\.(\d+)\z/) { |m| Integer(m[1], 10) + 1 } || 1
+  version = "#{base}.beta.#{n}"
 end
 
-step "Gem version: #{version} (bump: #{bump}#{", previous: #{previous}" if previous})"
+bump_label = bump_explicit ? bump : "#{bump} by default"
+step "Gem version: #{version} (bump: #{bump_label}#{", previous: #{previous}" if previous})"
 
 # --- 3. Normalize operationIds ---
 step 'Normalizing spec'
@@ -100,9 +111,6 @@ config_text.sub!(/^inputSpec: .*/, "inputSpec: #{normalized}") or
   abort("ERROR: inputSpec line not found in #{CONFIG_FILE}")
 config_text.sub!(/^(\s*)gemVersion: .*/, "\\1gemVersion: #{version}") or
   abort("ERROR: gemVersion line not found in #{CONFIG_FILE}")
-# Persist the bumped facade version, so the next run starts from it.
-config_text.sub!(/^(\s*)sdkMajorMinor: .*/, "\\1sdkMajorMinor: '#{facade_x}.#{facade_y}'") or
-  abort("ERROR: sdkMajorMinor line not found in #{CONFIG_FILE}")
 File.write(CONFIG_FILE, config_text)
 
 # --- 5. Clean up previously generated code ---

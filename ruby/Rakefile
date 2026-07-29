@@ -11,7 +11,7 @@ rescue LoadError
   # no rspec available
 end
 
-desc 'Regenerate the SDK (SPEC=oas-YYYY-MM-DD.yaml, BUMP=feature|fix|none, BETA=1)'
+desc 'Regenerate the SDK (SPEC=oas-YYYY-MM-DD.yaml, BUMP=major|minor|patch, BETA=1)'
 task :generate do
   args = []
   args << ENV['SPEC'] if ENV['SPEC']
