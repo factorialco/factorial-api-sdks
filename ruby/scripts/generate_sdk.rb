@@ -178,6 +178,11 @@ run!('openapi-generator', 'generate', '-c', CONFIG_FILE)
 step 'Patching generated models'
 run!('ruby', 'scripts/patch_models.rb')
 
+# --- 7.6. Regenerate the typed webhook catalog (stage 3) ---
+# Reads the RAW spec: the normalized one has the webhooks section stripped.
+step 'Generating webhook catalog'
+run!('ruby', 'scripts/generate_webhooks.rb', spec)
+
 # --- 8. Re-attach the facade (idempotent) ---
 step 'Re-attaching the F::Api facade'
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)

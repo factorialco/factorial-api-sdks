@@ -9,6 +9,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'lib/factorial_api.rb'
+    - 'lib/factorial_api/webhooks.rb'
     - 'lib/factorial_api/api_client.rb'
     - 'lib/factorial_api/api_error.rb'
     - 'lib/factorial_api/api_model_base.rb'

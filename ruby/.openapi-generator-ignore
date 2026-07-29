@@ -36,3 +36,4 @@ lib/factorial_api/pagination.rb
 spec/factorial_api/api_spec.rb
 docs/**
 Rakefile
+spec/factorial_api/webhooks_spec.rb

@@ -117,6 +117,30 @@ end
 all_employees = pages.to_a
 ```
 
+## Webhooks
+
+Manage subscriptions through the client, and use the generated webhook
+catalog to type your handler payloads. Factorial delivers the resource
+object **at the top level** of the POST body (no `{type, data}` envelope);
+the `challenge` you choose when subscribing is echoed back in the
+`x-factorial-wh-challenge` header of every delivery so you can verify the
+sender.
+
+```ruby
+# Discover events and their payload types
+F::WEBHOOK_SUBSCRIPTION_TYPES        # every valid subscription_type
+F::WEBHOOK_CATALOG                   # runtime list of every event
+
+# In your receiver: parse the delivered body into a typed model
+payload = F::WEBHOOK_PAYLOAD_TYPES
+          .fetch('ats/application/create')
+          .build_from_hash(JSON.parse(request.body.read))
+payload.id
+
+# Or reference payload types directly — one alias per event
+payload.is_a?(F::AtsApplicationCreateWebhook)  # => true
+```
+
 ## Error handling
 
 Non-2xx responses raise `F::ApiError`:

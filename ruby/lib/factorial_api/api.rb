@@ -2,6 +2,7 @@
 
 require 'uri'
 require 'factorial_api/pagination'
+require 'factorial_api/webhooks'
 
 module F
   # Entry point of the SDK: exposes one accessor per API resource over a

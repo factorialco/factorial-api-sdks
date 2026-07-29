@@ -41,9 +41,11 @@ release-please, the bot owns the version and this logic goes away.
 
 The script normalizes the spec, computes the gem version, cleans and
 regenerates the client, patches the generated models (see below),
-re-attaches the handwritten facade, verifies the gem loads and runs the
-handwritten facade specs (`spec/factorial_api/`) against the freshly
-generated code.
+regenerates the typed webhook catalog (`lib/factorial_api/webhooks.rb`,
+emitted by `scripts/generate_webhooks.rb` from the raw spec's `webhooks`
+section), re-attaches the handwritten facade, verifies the gem loads and
+runs the handwritten facade specs (`spec/factorial_api/`) against the
+freshly generated code.
 
 ## Why the generated models are patched
 
