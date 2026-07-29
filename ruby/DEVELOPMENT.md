@@ -5,12 +5,18 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 ## Regenerating the SDK
 
 ```bash
-bundle exec rake generate               # uses the latest oas-*.yaml
-bundle exec rake generate SPEC=oas-2026-08-01.yaml
-bundle exec rake generate BUMP=major    # new dated API version
-bundle exec rake generate BETA=1        # prerelease: MAJOR.MINOR.PATCH.beta.N
-# (equivalent: ruby scripts/generate_sdk.rb [spec] [--bump=...] [--beta])
+bundle exec rake generate                             # latest spec
+bundle exec rake generate VERSION=2026-10-01 BUMP=major   # new dated API version
+bundle exec rake generate SPEC=path/to/oas.yaml       # local spec file (offline dev)
+bundle exec rake generate BETA=1                      # prerelease: MAJOR.MINOR.PATCH.beta.N
+# (equivalent: ruby scripts/generate_sdk.rb [spec] [--version=...] [--bump=...] [--beta])
 ```
+
+The spec is fetched from `https://api.factorialhr.com/oas/?version=<date>`
+(unversioned = latest) and is **never committed** — downloads land in
+gitignored `oas-<date>.yaml` files. Override the source with
+`OPENAPI_SPEC_URL` (e.g. `https://api.local.factorial.dev/oas/` to generate
+against a local instance), same contract as the TypeScript and Python SDKs.
 
 ### Choosing the version bump
 

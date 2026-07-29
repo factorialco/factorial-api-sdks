@@ -40,3 +40,5 @@ build/
 
 # Project-specific
 *.normalized.yaml
+# Specs are fetched at generation time, never committed
+oas-*.yaml
