@@ -200,13 +200,13 @@ def derive_method(http: str, rest_segments: list[str]) -> str:
     if action_segs:
         return camel("_".join(action_segs))
     if http == "get":
-        return "get(id)" if has_id else "list()"
+        return "get({ path: { id } })" if has_id else "list()"
     if http == "post":
-        return "create(body)"
+        return "create({ body })"
     if http in ("put", "patch"):
-        return "update(id, body)" if has_id else "update(body)"
+        return "update({ path: { id }, body })" if has_id else "update({ body })"
     if http == "delete":
-        return "delete(id)" if has_id else "delete()"
+        return "delete({ path: { id } })" if has_id else "delete()"
     return http
 
 
@@ -245,11 +245,12 @@ def gen_sdk_methods(spec: dict) -> str:
         f"{len(by_ns)} namespaces.\n"
     )
     out.append(
-        "The SDK call column shows the **TypeScript** accessor "
-        "(`client.<namespace>.<resource>.<method>`). The Python SDK uses the same "
-        "namespaces/resources in `snake_case` (and `collect_all()` instead of `all()`). "
-        "`id`/`body` args are illustrative; see the [online reference]"
-        f"({DOCS_BASE}/reference) for exact request shapes.\n"
+        "The SDK call column shows the **TypeScript** accessor and request shape "
+        "(`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK "
+        "uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of "
+        "`all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. "
+        "`body` contents are endpoint-specific; see the [online reference]"
+        f"({DOCS_BASE}/reference) for exact fields.\n"
     )
     for ns in sorted(by_ns):
         out.append(f"## {ns}\n")
