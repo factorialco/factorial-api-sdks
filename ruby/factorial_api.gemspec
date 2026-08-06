@@ -11,6 +11,7 @@
 #
 
 $LOAD_PATH.push File.expand_path('lib', __dir__)
+require 'f'
 require 'factorial_api/version'
 
 Gem::Specification.new do |s|

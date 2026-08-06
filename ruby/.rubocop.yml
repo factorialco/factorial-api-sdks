@@ -47,4 +47,4 @@ Metrics/PerceivedComplexity:
 
 # `module Api` reopenings don't each need a doc comment; api.rb carries it.
 Style/Documentation:
-  AllowedConstants: ['Api']
+  AllowedConstants: ['Api', 'F']

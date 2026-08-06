@@ -183,18 +183,10 @@ run!('ruby', 'scripts/patch_models.rb')
 step 'Generating webhook catalog'
 run!('ruby', 'scripts/generate_webhooks.rb', spec)
 
-# --- 8. Re-attach the namespace prelude and the facade (idempotent) ---
-step 'Re-attaching the namespace prelude and the facade'
-prelude = <<~PRELUDE
-  # Generated files use the compact `module F::Api` form; F must exist first.
-  module F
-  end
-
-PRELUDE
-[ENTRYPOINT, VERSION_FILE].each do |file|
-  content = File.read(file)
-  File.write(file, prelude + content) unless content.match?(/^module F$/)
-end
+# --- 8. Re-attach the F require and the facade (idempotent) ---
+step 'Re-attaching the F require and the facade'
+content = File.read(ENTRYPOINT)
+File.write(ENTRYPOINT, "require 'f'\n#{content}") unless content.match?(/^require 'f'$/)
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 
 # --- 9. Sanity check ---

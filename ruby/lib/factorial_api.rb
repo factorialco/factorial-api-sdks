@@ -1,7 +1,4 @@
-# Generated files use the compact `module F::Api` form; F must exist first.
-module F
-end
-
+require 'f'
 =begin
 #Factorial API
 
