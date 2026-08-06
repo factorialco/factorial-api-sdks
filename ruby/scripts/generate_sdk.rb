@@ -184,16 +184,16 @@ step 'Generating webhook catalog'
 run!('ruby', 'scripts/generate_webhooks.rb', spec)
 
 # --- 8. Re-attach the namespace prelude and the facade (idempotent) ---
-# Generated files declare `module F::Api` (compact form), which needs F to
-# already exist. The gem claims only F::Api on the shared F:: root — this
-# prelude is the single place that touches F itself.
 step 'Re-attaching the namespace prelude and the facade'
-prelude = "module F; end # namespace prelude: generated files declare module F::Api\n"
+prelude = <<~PRELUDE
+  # Generated files use the compact `module F::Api` form; F must exist first.
+  module F
+  end
+
+PRELUDE
 [ENTRYPOINT, VERSION_FILE].each do |file|
   content = File.read(file)
-  # Idempotence keys on the load-bearing code, not the full line: rewording
-  # the prelude's comment must not cause a second copy to stack up.
-  File.write(file, prelude + content) unless content.start_with?('module F; end')
+  File.write(file, prelude + content) unless content.match?(/^module F$/)
 end
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 

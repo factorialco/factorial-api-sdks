@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module F
-  # The gem's single namespace on the shared F:: root (see api.rb).
   module Api
     # Cursor-based pagination for list endpoints.
     #

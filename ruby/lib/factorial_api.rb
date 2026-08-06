@@ -1,4 +1,7 @@
-module F; end # namespace prelude: generated files declare module F::Api
+# Generated files use the compact `module F::Api` form; F must exist first.
+module F
+end
+
 =begin
 #Factorial API
 
