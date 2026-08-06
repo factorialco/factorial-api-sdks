@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Handwritten specs for the F::Api facade (auth, base_url, accessors) and
-# F.paginate. Unlike the generated placeholder specs, these exercise the SDK
+# F::Api.paginate. Unlike the generated placeholder specs, these exercise the SDK
 # end-to-end: every request goes through the full stack (facade -> generated
 # client -> Faraday -> real TCP socket) against a local fake server, and the
 # assertions inspect what actually went over the wire.
@@ -158,7 +158,7 @@ RSpec.describe F::Api do
       api = build_api(api_key: 'k')
 
       expect(described_class::API_CLASSES).to include(teams_team: :TeamsTeamApi)
-      expect(api.teams_team).to be_a(F::TeamsTeamApi)
+      expect(api.teams_team).to be_a(F::Api::TeamsTeamApi)
     end
 
     it 'memoizes resource instances and shares one ApiClient' do
@@ -169,7 +169,7 @@ RSpec.describe F::Api do
     end
   end
 
-  describe 'F.paginate' do
+  describe 'F::Api.paginate' do
     let(:page1) do
       '{"data":[{"id":1,"name":"A","company_id":1},{"id":2,"name":"B","company_id":1}],' \
         '"meta":{"end_cursor":"2","has_next_page":true,"has_previous_page":false,"limit":2,"total":3}}'
@@ -184,7 +184,7 @@ RSpec.describe F::Api do
     let(:api) { build_api(api_key: 'k') }
 
     def paginate(**options)
-      F.paginate(limit: 2, **options) do |page|
+      F::Api.paginate(limit: 2, **options) do |page|
         api.teams_team.teams_teams_get(query_params: page)
       end
     end

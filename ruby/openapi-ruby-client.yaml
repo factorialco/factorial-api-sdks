@@ -9,7 +9,9 @@ globalProperties:
   modelDocs: "false"
 additionalProperties:
   gemName: factorial_api
-  moduleName: F
+  # The gem claims a single namespace (F::Api) on the shared F:: root; the
+  # namespace prelude that defines F itself is re-attached by generate_sdk.rb.
+  moduleName: F::Api
   gemVersion: 2.0.0
   library: faraday
   gemLicense: MIT

@@ -9,10 +9,10 @@
 # normalized one used by openapi-generator has it stripped) and emits:
 #
 #   - One alias constant per event, pointing at the generated payload model
-#     (e.g. F::AtsApplicationCreateWebhook = F::AtsApplication).
-#   - F::WEBHOOK_SUBSCRIPTION_TYPES - every valid subscription_type.
-#   - F::WEBHOOK_PAYLOAD_TYPES     - subscription_type => payload model class.
-#   - F::WEBHOOK_CATALOG           - runtime list of every event.
+#     (e.g. F::Api::AtsApplicationCreateWebhook = F::Api::AtsApplication).
+#   - F::Api::WEBHOOK_SUBSCRIPTION_TYPES - every valid subscription_type.
+#   - F::Api::WEBHOOK_PAYLOAD_TYPES     - subscription_type => payload model class.
+#   - F::Api::WEBHOOK_CATALOG           - runtime list of every event.
 #
 # Each spec webhook entry looks like:
 #
@@ -135,12 +135,13 @@ lines << '# need the author.'
 lines << '#'
 lines << '# Example:'
 lines << '#'
-lines << '#   payload = F::WEBHOOK_PAYLOAD_TYPES'
+lines << '#   payload = F::Api::WEBHOOK_PAYLOAD_TYPES'
 lines << "#     .fetch('ats/application/create')"
 lines << '#     .build_from_hash(JSON.parse(request.body.read))'
 lines << '#   payload.id'
 lines << '#'
-lines << 'module F'
+lines << 'module F; end # namespace prelude: the compact declaration below needs F'
+lines << 'module F::Api'
 lines << '  # -- Per-event payload aliases ------------------------------------------'
 entries.each do |e|
   lines << "  # Payload for `#{e[:subscription_type]}` (#{e[:summary]})."

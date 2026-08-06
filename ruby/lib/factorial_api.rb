@@ -1,3 +1,4 @@
+module F; end # namespace prelude: generated files declare module F::Api
 =begin
 #Factorial API
 
@@ -679,10 +680,10 @@ require 'factorial_api/api/work_schedule_day_configuration_api'
 require 'factorial_api/api/work_schedule_overlap_period_api'
 require 'factorial_api/api/work_schedule_schedule_api'
 
-module F
+module F::Api
   class << self
     # Customize default settings for the SDK using block.
-    #   F.configure do |config|
+    #   F::Api.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

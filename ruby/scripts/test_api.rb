@@ -36,7 +36,7 @@ begin
   data = response.respond_to?(:data) ? Array(response.data) : []
   puts "OK: teams endpoint responded (#{data.size} teams)"
   puts "First team: #{data.first.name}" if !data.empty? && data.first.respond_to?(:name)
-rescue F::ApiError => e
+rescue F::Api::ApiError => e
   warn "API ERROR: HTTP #{e.code}"
   warn "Response body: #{e.response_body}"
   exit 1

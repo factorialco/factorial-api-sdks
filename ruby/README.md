@@ -59,9 +59,9 @@ generated class in snake_case:
 
 | Generated class           | Accessor                 |
 |---------------------------|--------------------------|
-| `F::TeamsTeamApi`         | `api.teams_team`         |
-| `F::EmployeesEmployeeApi` | `api.employees_employee` |
-| `F::TimeoffLeaveApi`      | `api.timeoff_leave`      |
+| `F::Api::TeamsTeamApi`         | `api.teams_team`         |
+| `F::Api::EmployeesEmployeeApi` | `api.employees_employee` |
+| `F::Api::TimeoffLeaveApi`      | `api.timeoff_leave`      |
 
 The full list is available at runtime via `F::Api::API_CLASSES.keys`. For
 the per-endpoint reference, see the
@@ -93,12 +93,12 @@ end
 
 ### Stream all pages (lazy Enumerator)
 
-`F.paginate` follows cursors automatically. Give it a block that performs
+`F::Api.paginate` follows cursors automatically. Give it a block that performs
 the list call with the pagination params it hands you; it returns a lazy
 `Enumerator`, so pages are only fetched as items are consumed:
 
 ```ruby
-employees = F.paginate do |page|
+employees = F::Api.paginate do |page|
   api.employees_employee.employees_employees_get(true, false, query_params: page)
 end
 
@@ -110,7 +110,7 @@ employees.first(10)   # fetches a single page
 
 ```ruby
 # Optional safety caps: limit (page size, max 100) and max_items (total)
-pages = F.paginate(limit: 100, max_items: 500) do |page|
+pages = F::Api.paginate(limit: 100, max_items: 500) do |page|
   api.employees_employee.employees_employees_get(true, false, query_params: page)
 end
 
@@ -128,27 +128,27 @@ sender.
 
 ```ruby
 # Discover events and their payload types
-F::WEBHOOK_SUBSCRIPTION_TYPES        # every valid subscription_type
-F::WEBHOOK_CATALOG                   # runtime list of every event
+F::Api::WEBHOOK_SUBSCRIPTION_TYPES        # every valid subscription_type
+F::Api::WEBHOOK_CATALOG                   # runtime list of every event
 
 # In your receiver: parse the delivered body into a typed model
-payload = F::WEBHOOK_PAYLOAD_TYPES
+payload = F::Api::WEBHOOK_PAYLOAD_TYPES
           .fetch('ats/application/create')
           .build_from_hash(JSON.parse(request.body.read))
 payload.id
 
 # Or reference payload types directly — one alias per event
-payload.is_a?(F::AtsApplicationCreateWebhook)  # => true
+payload.is_a?(F::Api::AtsApplicationCreateWebhook)  # => true
 ```
 
 ## Error handling
 
-Non-2xx responses raise `F::ApiError`:
+Non-2xx responses raise `F::Api::ApiError`:
 
 ```ruby
 begin
   api.teams_team.teams_teams_get
-rescue F::ApiError => e
+rescue F::Api::ApiError => e
   puts e.code           # e.g. 401
   puts e.response_body
 end

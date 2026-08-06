@@ -183,8 +183,18 @@ run!('ruby', 'scripts/patch_models.rb')
 step 'Generating webhook catalog'
 run!('ruby', 'scripts/generate_webhooks.rb', spec)
 
-# --- 8. Re-attach the facade (idempotent) ---
-step 'Re-attaching the F::Api facade'
+# --- 8. Re-attach the namespace prelude and the facade (idempotent) ---
+# Generated files declare `module F::Api` (compact form), which needs F to
+# already exist. The gem claims only F::Api on the shared F:: root — this
+# prelude is the single place that touches F itself.
+step 'Re-attaching the namespace prelude and the facade'
+prelude = "module F; end # namespace prelude: generated files declare module F::Api\n"
+[ENTRYPOINT, VERSION_FILE].each do |file|
+  content = File.read(file)
+  # Idempotence keys on the load-bearing code, not the full line: rewording
+  # the prelude's comment must not cause a second copy to stack up.
+  File.write(file, prelude + content) unless content.start_with?('module F; end')
+end
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 
 # --- 9. Sanity check ---
@@ -194,7 +204,9 @@ step 'Verifying the gem loads'
 load_check = <<~'RUBY'
   require "factorial_api"
   abort("F::Api did not load") unless defined?(F::Api)
-  puts "OK #{F::VERSION} - #{F::Api::API_CLASSES.size} APIs"
+  extras = F.constants.sort - [:Api]
+  abort("namespace polluted: F:: carries #{extras.inspect} besides :Api") unless extras.empty?
+  puts "OK #{F::Api::VERSION} - #{F::Api::API_CLASSES.size} APIs"
 RUBY
 run!('bundle', 'exec', 'ruby', '-e', load_check)
 

@@ -13,12 +13,13 @@
 #
 # Example:
 #
-#   payload = F::WEBHOOK_PAYLOAD_TYPES
+#   payload = F::Api::WEBHOOK_PAYLOAD_TYPES
 #     .fetch('ats/application/create')
 #     .build_from_hash(JSON.parse(request.body.read))
 #   payload.id
 #
-module F
+module F; end # namespace prelude: the compact declaration below needs F
+module F::Api
   # -- Per-event payload aliases ------------------------------------------
   # Payload for `api_public/webhook_subscription/create` (ApiPublic > WebhookSubscription > Creates).
   ApiPublicWebhookSubscriptionCreateWebhook = ApiPublicWebhookSubscription

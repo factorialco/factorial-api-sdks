@@ -1,3 +1,4 @@
+module F; end # namespace prelude: generated files declare module F::Api
 =begin
 #Factorial API
 
@@ -10,6 +11,6 @@ Generator version: 7.23.0
 
 =end
 
-module F
+module F::Api
   VERSION = '2.0.0'
 end

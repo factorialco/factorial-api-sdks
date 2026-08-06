@@ -12,7 +12,7 @@ Generator version: 7.23.0
 
 require 'cgi'
 
-module F
+module F::Api
   class AtsJobPostingApi
     attr_accessor :api_client
 

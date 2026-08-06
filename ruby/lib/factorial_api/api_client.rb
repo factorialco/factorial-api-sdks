@@ -20,7 +20,7 @@ require 'faraday/multipart' if Gem::Version.new(Faraday::VERSION) >= Gem::Versio
 require 'marcel'
 
 
-module F
+module F::Api
   class ApiClient
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
@@ -323,7 +323,7 @@ module F
         end
       else
         # models (e.g. Pet) or oneOf/anyOf
-        klass = F.const_get(return_type)
+        klass = F::Api.const_get(return_type)
         if klass.respond_to?(:openapi_one_of) || klass.respond_to?(:openapi_any_of)
           klass.build(data)
         else
