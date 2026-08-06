@@ -183,8 +183,10 @@ run!('ruby', 'scripts/patch_models.rb')
 step 'Generating webhook catalog'
 run!('ruby', 'scripts/generate_webhooks.rb', spec)
 
-# --- 8. Re-attach the facade (idempotent) ---
-step 'Re-attaching the F::Api facade'
+# --- 8. Re-attach the F require and the facade (idempotent) ---
+step 'Re-attaching the F require and the facade'
+content = File.read(ENTRYPOINT)
+File.write(ENTRYPOINT, "require 'f'\n#{content}") unless content.match?(/^require 'f'$/)
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 
 # --- 9. Sanity check ---
@@ -194,7 +196,9 @@ step 'Verifying the gem loads'
 load_check = <<~'RUBY'
   require "factorial_api"
   abort("F::Api did not load") unless defined?(F::Api)
-  puts "OK #{F::VERSION} - #{F::Api::API_CLASSES.size} APIs"
+  extras = F.constants.sort - [:Api]
+  abort("namespace polluted: F:: carries #{extras.inspect} besides :Api") unless extras.empty?
+  puts "OK #{F::Api::VERSION} - #{F::Api::API_CLASSES.size} APIs"
 RUBY
 run!('bundle', 'exec', 'ruby', '-e', load_check)
 

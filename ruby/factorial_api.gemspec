@@ -11,11 +11,12 @@
 #
 
 $LOAD_PATH.push File.expand_path('lib', __dir__)
+require 'f'
 require 'factorial_api/version'
 
 Gem::Specification.new do |s|
   s.name        = 'factorial_api'
-  s.version     = F::VERSION
+  s.version     = F::Api::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Factorial']
   s.email       = ['info@factorial.co']

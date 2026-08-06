@@ -10,7 +10,7 @@ Generator version: 7.23.0
 
 =end
 
-module F
+module F::Api
   class ApiModelBase
     # Deserializes the data based on type
     # @param string type Data type
@@ -50,7 +50,7 @@ module F
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = F.const_get(type)
+        klass = F::Api.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end

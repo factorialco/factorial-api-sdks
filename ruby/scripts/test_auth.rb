@@ -129,7 +129,7 @@ else
     # Cheapest possible call: describes the credential itself, minimal scope.
     api.api_public_credential.api_public_credentials_get
     puts "  PASS  #{name}: credential accepted (2xx)"
-  rescue F::ApiError => e
+  rescue F::Api::ApiError => e
     case e.code
     when 401
       failures << "live: #{name} rejected (401)"

@@ -13,7 +13,7 @@ Generator version: 7.23.0
 require 'date'
 require 'time'
 
-module F
+module F::Api
   class TimeoffAllowance < ApiModelBase
     # Unique identifier of the allowance
     attr_accessor :id
@@ -248,14 +248,14 @@ module F
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `F::TimeoffAllowance` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::TimeoffAllowance` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `F::TimeoffAllowance`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::TimeoffAllowance`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

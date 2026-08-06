@@ -60,7 +60,7 @@ api = F::Api.new(api_key: "YOUR_KEY")
 
 # only_active, only_managers (required query params become positional args)
 page = api.employees_employee.employees_employees_get(true, false)
-F.paginate(max_items: 50) { |p| api.employees_employee.employees_employees_get(true, false, query_params: p) }
+F::Api.paginate(max_items: 50) { |p| api.employees_employee.employees_employees_get(true, false, query_params: p) }
  .each { |emp| puts emp.full_name }
 ```
 
@@ -191,4 +191,4 @@ server errors) instead of silently returning empty data:
 - **TypeScript** throws — wrap calls in `try`/`catch`.
 - **Python** raises `factorial_api_client.generated.errors.UnexpectedStatus`
   (with `.status_code` and `.content`).
-- **Ruby** raises `F::ApiError` (with `.code` and `.response_body`).
+- **Ruby** raises `F::Api::ApiError` (with `.code` and `.response_body`).
