@@ -7,68 +7,22 @@
 # assertions inspect what actually went over the wire.
 
 require 'spec_helper'
-require 'socket'
-
-# Minimal single-threaded HTTP server on a random free port. Records every
-# request it receives (request line + headers) and answers with the JSON the
-# `responder` block returns for the given request line.
-class FakeFactorialServer
-  EMPTY_PAGE = '{"data":[],"meta":{"end_cursor":null,"has_next_page":false,' \
-               '"has_previous_page":false,"limit":100,"total":0}}'
-
-  attr_reader :requests
-
-  def initialize(&responder)
-    @server = TCPServer.new('127.0.0.1', 0)
-    @responder = responder || ->(_request_line) { EMPTY_PAGE }
-    @requests = []
-    @thread = Thread.new { serve }
-  end
-
-  def base_url
-    "http://127.0.0.1:#{@server.addr[1]}"
-  end
-
-  def stop
-    @server.close
-    @thread.join(1)
-  end
-
-  private
-
-  def serve
-    loop do
-      sock = @server.accept
-      request_line = sock.gets.to_s.chomp
-      headers = {}
-      while (line = sock.gets) && line != "\r\n"
-        key, value = line.chomp.split(': ', 2)
-        headers[key.downcase] = value
-      end
-      @requests << { line: request_line, headers: headers }
-      body = @responder.call(request_line)
-      sock.write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n" \
-                 "Content-Length: #{body.bytesize}\r\nConnection: close\r\n\r\n#{body}")
-      sock.close
-    end
-  rescue IOError, Errno::EBADF
-    # server socket closed: shutting down
-  end
-end
+require_relative '../support/fake_factorial_server'
 
 RSpec.describe F::Api do
   let(:server) { FakeFactorialServer.new }
 
   after { server.stop }
 
-  # Keep FACTORIAL_BASE_URL out of the picture: the facade reads it as a
-  # default, so a value leaking in from the developer's shell would silently
-  # change what these examples exercise.
+  # Keep the facade's env fallbacks out of the picture: values leaking in
+  # from the developer's shell would silently change what these examples
+  # exercise (and the env-fallback examples below set their own).
   around do |example|
-    saved = ENV.delete('FACTORIAL_BASE_URL')
+    saved = %w[FACTORIAL_BASE_URL FACTORIAL_API_KEY FACTORIAL_TOKEN]
+            .to_h { |name| [name, ENV.delete(name)] }
     example.run
   ensure
-    saved ? ENV['FACTORIAL_BASE_URL'] = saved : ENV.delete('FACTORIAL_BASE_URL')
+    saved.each { |name, value| value ? ENV[name] = value : ENV.delete(name) }
   end
 
   def build_api(**options)
@@ -103,12 +57,117 @@ RSpec.describe F::Api do
       )
     end
 
-    # Documents current behaviour. If the facade ever gains fail-fast
-    # credential validation, replace this with `expect { ... }.to raise_error`.
-    it 'sends no auth headers when constructed without credentials' do
-      build_api(api_key: nil, token: nil).teams_team.teams_teams_get
+    # Validation-only examples construct directly: no request is ever sent,
+    # so there is no server to boot.
+    it 'fails fast when constructed without credentials' do
+      expect { described_class.new }
+        .to raise_error(ArgumentError,
+                        /provide api_key, token, oauth, or access_token \(or set FACTORIAL_API_KEY/)
+    end
 
-      expect(last_request[:headers].keys).not_to include('authorization', 'x-api-key')
+    it 'treats empty-string credentials (unset-but-exported env vars) as absent' do
+      expect { described_class.new(api_key: '', token: '  ') }
+        .to raise_error(ArgumentError, /provide api_key/)
+    end
+  end
+
+  describe 'env credential fallback' do
+    it 'falls back to env credentials only when none are passed' do
+      ENV['FACTORIAL_API_KEY'] = 'ENV_KEY'
+
+      build_api.teams_team.teams_teams_get
+
+      expect(last_request[:headers]).to include('x-api-key' => 'ENV_KEY')
+    end
+
+    it 'ignores env credentials once any credential is passed explicitly' do
+      ENV['FACTORIAL_TOKEN'] = 'ENV_LEFTOVER'
+      ENV['FACTORIAL_API_KEY'] = 'ENV_KEY'
+      session = instance_double(F::Api::OAuth::Session)
+      allow(session).to receive(:access_token).and_return('SESSION')
+
+      # Neither a "mutually exclusive" veto from the env token, nor an
+      # x-api-key riding along from the env key.
+      build_api(oauth: session).teams_team.teams_teams_get
+
+      expect(last_request[:headers]['authorization']).to eq('Bearer SESSION')
+      expect(last_request[:headers]).not_to have_key('x-api-key')
+    end
+  end
+
+  describe 'oauth session integration' do
+    it 'consults the session on every request: a token swap needs no client rebuild' do
+      session = instance_double(F::Api::OAuth::Session)
+      current_token = 'FIRST'
+      allow(session).to receive(:access_token) { current_token }
+      api = build_api(api_key: nil, token: nil, oauth: session)
+
+      api.teams_team.teams_teams_get
+      current_token = 'SECOND'
+      api.teams_team.teams_teams_get
+
+      bearers = server.requests.map { |r| r[:headers]['authorization'] }
+      expect(bearers).to eq(['Bearer FIRST', 'Bearer SECOND'])
+      expect(server.requests.last[:headers]).not_to have_key('x-api-key')
+    end
+
+    it 'rejects token and oauth together' do
+      session = instance_double(F::Api::OAuth::Session, access_token: 'X')
+
+      expect { described_class.new(token: 'T', oauth: session) }
+        .to raise_error(ArgumentError, /mutually exclusive/)
+    end
+
+    it 'rejects an oauth source that does not respond to #access_token' do
+      expect { described_class.new(oauth: 'a-raw-token-string') }
+        .to raise_error(ArgumentError, /oauth must respond to #access_token/)
+    end
+
+    # The composition seam: `oauth:` is duck-typed on purpose, so any token
+    # source can plug in without depending on this gem's Session class.
+    it 'accepts any token source that responds to #access_token' do
+      source = Class.new { def access_token = 'PLUGGED' }.new
+      api = build_api(oauth: source)
+
+      api.teams_team.teams_teams_get
+
+      expect(last_request[:headers]['authorization']).to eq('Bearer PLUGGED')
+    end
+
+    it 'refuses to send a request when the token source yields no token' do
+      api = build_api(access_token: -> {})
+
+      expect { api.teams_team.teams_teams_get }
+        .to raise_error(RuntimeError, /returned no token/)
+      expect(server.requests).to be_empty
+    end
+  end
+
+  describe 'access_token callable' do
+    it 'evaluates the callable on every request, so one client can serve many callers' do
+      current = 'FIRST'
+      api = build_api(api_key: nil, token: nil, access_token: -> { current })
+
+      api.teams_team.teams_teams_get
+      current = 'SECOND'
+      api.teams_team.teams_teams_get
+
+      bearers = server.requests.map { |r| r[:headers]['authorization'] }
+      expect(bearers).to eq(['Bearer FIRST', 'Bearer SECOND'])
+    end
+
+    it 'rejects a non-callable access_token, pointing at token: instead' do
+      expect { described_class.new(access_token: 'A-STRING') }
+        .to raise_error(ArgumentError, /must be callable.*use token:/)
+    end
+
+    it 'rejects access_token combined with another bearer source' do
+      expect { described_class.new(token: 'T', access_token: -> { 'X' }) }
+        .to raise_error(ArgumentError, /token and access_token are mutually exclusive/)
+
+      session = instance_double(F::Api::OAuth::Session, access_token: 'X')
+      expect { described_class.new(oauth: session, access_token: -> { 'X' }) }
+        .to raise_error(ArgumentError, /oauth and access_token are mutually exclusive/)
     end
   end
 

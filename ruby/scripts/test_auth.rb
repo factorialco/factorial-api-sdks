@@ -77,12 +77,6 @@ wire_cases = [
     args: { api_key: 'FAKE_KEY', token: 'FAKE_TOKEN' },
     expect: { 'x-api-key' => 'FAKE_KEY', 'authorization' => 'Bearer FAKE_TOKEN' },
     forbid: []
-  },
-  {
-    name: 'no credentials (current behaviour: request goes out unauthenticated)',
-    args: { api_key: nil, token: nil },
-    expect: {},
-    forbid: %w[authorization x-api-key]
   }
 ]
 
@@ -100,6 +94,15 @@ wire_cases.each do |c|
     puts "  FAIL  #{c[:name]} — problematic headers: #{wrong.join(', ')}"
     puts "        sent: #{headers.slice('x-api-key', 'authorization').inspect}"
   end
+end
+
+# No credentials: the facade must fail fast, before anything reaches the wire.
+begin
+  F::Api.new(base_url: base_url, api_key: nil, token: nil)
+  failures << 'wire: no credentials'
+  puts '  FAIL  no credentials — expected ArgumentError, got a client'
+rescue ArgumentError
+  puts '  PASS  no credentials -> ArgumentError (fail-fast, nothing sent)'
 end
 
 server.close
