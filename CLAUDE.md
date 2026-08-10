@@ -45,7 +45,8 @@ The rules that matter when opening a PR:
 - **A change touching both SDKs → use a bare `feat:` / `fix:` (no scope)** so both
   packages bump together. Only add a scope (`feat(typescript):`) for a change
   confined to one package.
-- **There is no PR-level CI** — validate locally before opening:
+- **PR-level CI covers Ruby only** (`.github/workflows/ci.yaml`: `rspec` +
+  `rubocop`). TS and Python have none — validate those locally before opening:
   TS `npx tsc --noEmit` + `npm run build`; Python
   `uv run mypy factorial_api_client/` + `uv run ruff check factorial_api_client/`.
 - Merging your PR does **not** publish. release-please then opens a per-package
