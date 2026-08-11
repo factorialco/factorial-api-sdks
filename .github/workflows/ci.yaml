@@ -1,0 +1,43 @@
+name: "CI"
+
+# Runs the checks contributors are asked to run locally, so a PR cannot land
+# with a red suite. Ruby only for now: the TypeScript and Python SDKs have no
+# test job yet.
+
+on:
+  pull_request:
+    paths:
+      - "ruby/**"
+      - ".github/workflows/ci.yaml"
+  push:
+    branches: [main]
+    paths:
+      - "ruby/**"
+      - ".github/workflows/ci.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  ruby:
+    name: "[💎 RUBY] Specs and RuboCop"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ruby
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+          working-directory: ./ruby
+
+      - name: Run specs
+        run: bundle exec rspec
+
+      - name: Run RuboCop
+        run: bundle exec rubocop

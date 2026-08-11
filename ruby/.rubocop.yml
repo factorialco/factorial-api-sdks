@@ -4,6 +4,12 @@
 # rewritten on every regeneration, so linting it is neither useful nor
 # actionable. The files that remain are exactly the ones protected in
 # `.openapi-generator-ignore`, plus `scripts/`.
+# Keep RuboCop's own excludes (vendor/, tmp/, node_modules/, .git/) instead of
+# replacing them with the list below — CI installs gems into ruby/vendor/bundle.
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   TargetRubyVersion: 3.1
   NewCops: enable
