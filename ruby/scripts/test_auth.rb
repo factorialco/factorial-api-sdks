@@ -97,12 +97,17 @@ wire_cases.each do |c|
 end
 
 # No credentials: the facade must fail fast, before anything reaches the wire.
+# Scrub the env fallbacks for this check — exported FACTORIAL_* credentials
+# would legitimately take over otherwise.
+saved = %w[FACTORIAL_API_KEY FACTORIAL_TOKEN].to_h { |name| [name, ENV.delete(name)] }
 begin
   F::Api.new(base_url: base_url, api_key: nil, token: nil)
   failures << 'wire: no credentials'
   puts '  FAIL  no credentials — expected ArgumentError, got a client'
 rescue ArgumentError
   puts '  PASS  no credentials -> ArgumentError (fail-fast, nothing sent)'
+ensure
+  saved.each { |name, value| ENV[name] = value if value }
 end
 
 server.close
