@@ -4,6 +4,8 @@ Auto-generated from the OpenAPI spec. 128 events across 22 namespaces, 33 distin
 
 Factorial POSTs the payload (the resource object) to your `target_url` at the **top level** — it is not wrapped in a `{ type, data }` envelope. Subscribe with the `subscription_type` value shown below. See `../SKILL.md` for delivery, verification, and retry details.
 
+Each SDK ships a typed catalog with one alias per event: at the package root in TypeScript/Python, and under `F::Api::` in Ruby (e.g. `F::Api::AtsApplicationCreateWebhook`).
+
 ## Events by namespace
 
 ### ApiPublic
@@ -798,8 +800,8 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `amount_in_cents` | integer | no | The amount of the supplement in cents |
 | `unit` | string | yes | The unit of the supplement |
 | `effective_on` | string | no | The date on which the supplement becomes effective |
-| `created_at` | string | no | The created at date when the supplement was created |
-| `updated_at` | string | no | The last updated at date when the supplement was last updated |
+| `created_at` | unknown | no | The created at date when the supplement was created |
+| `updated_at` | unknown | no | The last updated at date when the supplement was last updated |
 | `description` | string | no | The description of the supplement |
 | `payroll_policy_period_id` | string | no | The payroll policy period identifier associated with the supplement |
 | `employee_observations` | array<string> | no | Observations on the employee made by the admin or manager |

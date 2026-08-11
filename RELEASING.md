@@ -18,15 +18,17 @@ what previously let a tag drift from the code it was supposed to point at.
    It keeps updating as more commits land.
 
 3. **You merge the Release PR.** That single action:
-   - bumps the version (`typescript/package.json` / `python/pyproject.toml`),
-   - creates the tag (`typescript-vX.Y.Z` / `python-vX.Y.Z`) **on the merge commit**,
+   - bumps the version (`typescript/package.json` / `python/pyproject.toml` /
+     `ruby/lib/factorial_api/version.rb`),
+   - creates the tag (`typescript-vX.Y.Z` / `python-vX.Y.Z` / `ruby-vX.Y.Z`)
+     **on the merge commit**,
    - creates the GitHub Release.
 
    The tag and the version are produced together, so they cannot disagree.
 
 4. **Publishing runs automatically.** "Create release" then calls the reusable
    `publish.yaml` for the released package, checking out the freshly-created tag
-   and publishing to npm / PyPI. Each publish step skips if that version is
+   and publishing to npm / PyPI / RubyGems. Each publish step skips if that version is
    already on the registry, so re-runs are safe.
 
 ## Config

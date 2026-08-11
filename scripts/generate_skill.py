@@ -27,7 +27,9 @@ from __future__ import annotations
 import json
 import os
 import re
+import subprocess
 import sys
+import tempfile
 import urllib.request
 from pathlib import Path
 
@@ -52,15 +54,43 @@ def fetch(url: str) -> str:
         return resp.read().decode("utf-8")
 
 
-def load_spec(arg: str | None) -> dict:
+def load_spec(arg: str | None) -> tuple[dict, Path]:
+    """Returns the parsed spec and a local file with its contents (downloads
+    land in a temp file), for tools that read the spec from disk."""
     src = arg or os.environ.get("OPENAPI_SPEC_URL") or LATEST_SPEC_URL
     print(f"Loading OpenAPI spec from {src}")
     if re.match(r"^https?://", src):
-        spec = json.loads(fetch(src))
+        raw = fetch(src)
+        spec = json.loads(raw)
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        tmp.write(raw)
+        tmp.close()
+        spec_file = Path(tmp.name)
     else:
-        spec = json.loads(Path(src).read_text())
+        spec_file = Path(src)
+        spec = json.loads(spec_file.read_text())
     print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
-    return spec
+    return spec, spec_file
+
+
+def load_ruby_calls(spec_file: Path) -> dict[str, str]:
+    """`"VERB /path" -> "api.<accessor>.<method>"`, straight from the Ruby gem.
+
+    ruby/scripts/skill_methods.rb reflects on the loaded gem, so the table can
+    only show calls that exist. A broken Ruby toolchain fails the whole run:
+    silently omitting the column would ship stale docs."""
+    result = subprocess.run(
+        ["bundle", "exec", "ruby", "scripts/skill_methods.rb", str(spec_file.resolve())],
+        cwd=REPO_ROOT / "ruby",
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        sys.exit(
+            "ERROR: could not extract the Ruby SDK methods "
+            "(is Ruby installed and `bundle install` run in ruby/?):\n" + result.stderr
+        )
+    return json.loads(result.stdout)
 
 
 def camel(snake: str) -> str:
@@ -144,6 +174,11 @@ def gen_webhooks(spec: dict) -> str:
         "the `subscription_type` value shown below. See `../SKILL.md` for delivery, "
         "verification, and retry details.\n"
     )
+    out.append(
+        "Each SDK ships a typed catalog with one alias per event: at the package root in "
+        "TypeScript/Python, and under `F::Api::` in Ruby "
+        "(e.g. `F::Api::AtsApplicationCreateWebhook`).\n"
+    )
 
     out.append("## Events by namespace\n")
     for ns in sorted(by_ns):
@@ -210,7 +245,7 @@ def derive_method(http: str, rest_segments: list[str]) -> str:
     return http
 
 
-def gen_sdk_methods(spec: dict) -> str:
+def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
     paths = spec.get("paths", {})
     by_ns: dict[str, list[dict]] = {}
     for path, ops in paths.items():
@@ -227,10 +262,14 @@ def gen_sdk_methods(spec: dict) -> str:
             if http not in ("get", "post", "put", "patch", "delete"):
                 continue
             method = derive_method(http, tail)
+            ruby_key = f"{http.upper()} {path}"
+            if ruby_key not in ruby_calls:
+                sys.exit(f"ERROR: no Ruby SDK call found for {ruby_key}")
             by_ns.setdefault(namespace, []).append(
                 {
                     "resource": resource,
                     "call": f"client.{camel(namespace)}.{camel(resource)}.{method}",
+                    "ruby": ruby_calls[ruby_key],
                     "http": http.upper(),
                     "path": path,
                     "summary": op.get("summary", ""),
@@ -249,16 +288,20 @@ def gen_sdk_methods(spec: dict) -> str:
         "(`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK "
         "uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of "
         "`all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. "
+        "The Ruby column shows the full call on an `F::Api.new` client; required params are "
+        "positional and optional query params go in a `query_params:` hash "
+        "(paginate with `F::Api.paginate`). "
         "`body` contents are endpoint-specific; see the [online reference]"
         f"({DOCS_BASE}/reference) for exact fields.\n"
     )
     for ns in sorted(by_ns):
         out.append(f"## {ns}\n")
-        out.append("| SDK call | HTTP | path | summary |")
-        out.append("| --- | --- | --- | --- |")
+        out.append("| SDK call (TS) | Ruby | HTTP | path | summary |")
+        out.append("| --- | --- | --- | --- | --- |")
         for e in sorted(by_ns[ns], key=lambda x: (x["resource"], x["path"], x["http"])):
             out.append(
-                f"| `{e['call']}` | {e['http']} | `{e['path']}` | {md_escape(e['summary'])} |"
+                f"| `{e['call']}` | `{e['ruby']}` | {e['http']} | `{e['path']}` "
+                f"| {md_escape(e['summary'])} |"
             )
         out.append("")
     return "\n".join(out)
@@ -268,13 +311,14 @@ def gen_sdk_methods(spec: dict) -> str:
 
 
 def main() -> None:
-    spec = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
+    spec, spec_file = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
+    ruby_calls = load_ruby_calls(spec_file)
     REFERENCE_DIR.mkdir(parents=True, exist_ok=True)
 
     (REFERENCE_DIR / "webhooks.md").write_text(gen_webhooks(spec))
     print("  Wrote reference/webhooks.md")
 
-    (REFERENCE_DIR / "sdk-methods.md").write_text(gen_sdk_methods(spec))
+    (REFERENCE_DIR / "sdk-methods.md").write_text(gen_sdk_methods(spec, ruby_calls))
     print("  Wrote reference/sdk-methods.md")
 
 

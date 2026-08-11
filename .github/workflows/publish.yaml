@@ -80,3 +80,22 @@ jobs:
         with:
           registry_token: ${{ secrets.PYPI_TOKEN }}
           working-directory: ./python
+
+  publish-ruby:
+    name: "[🎯 API-CLIENT] Publish to RubyGems"
+    # Only run for Ruby releases (ruby-v* tag).
+    if: contains(inputs.release_tag, 'ruby-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.release_tag }}
+
+      - uses: ./.github/actions/publish-to-rubygems
+        id: publish
+        with:
+          registry_token: ${{ secrets.RUBYGEMS_API_KEY }}
+          working-directory: ./ruby

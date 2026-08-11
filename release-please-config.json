@@ -13,6 +13,12 @@
       "release-type": "python",
       "component": "python",
       "package-name": "factorial-api-client"
+    },
+    "ruby": {
+      "release-type": "ruby",
+      "component": "ruby",
+      "package-name": "factorial_api",
+      "version-file": "lib/factorial_api/version.rb"
     }
   }
 }
