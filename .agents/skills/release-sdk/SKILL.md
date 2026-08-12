@@ -55,7 +55,26 @@ Diff the new spec against the current one to know what actually changed (new
 webhooks, paths, schemas). Most of the generated churn is just the date prefix
 in every URL / filename — that's expected, not a red flag.
 
-### 1. Regenerate TypeScript
+### 1. Regenerate Ruby (first: it refreshes the shared skill tables)
+
+```bash
+cd ruby
+bundle exec rake generate VERSION=<yyyy-mm-dd>
+cd ..
+```
+
+Go first: this regenerates `reference/ruby-methods.json`, the committed map
+the later TS/Python skill refreshes read — running it first keeps every
+refresh complete. There is also **nothing to revert**: the pipeline reuses the
+version already in `version.rb` (release-please owns bumps) and it also
+refreshes the skill `reference/` tables and runs the facade specs itself.
+Validate the lint on top:
+
+```bash
+cd ruby && bundle exec rubocop && cd ..
+```
+
+### 2. Regenerate TypeScript
 
 ```bash
 cd typescript
@@ -76,7 +95,7 @@ Validate:
 cd typescript && npx tsc --noEmit && npm run build && cd ..
 ```
 
-### 2. Regenerate Python
+### 3. Regenerate Python
 
 ```bash
 cd python
@@ -101,23 +120,6 @@ uv run mypy factorial_api_client/ && uv run ruff check factorial_api_client/ && 
 ```
 
 Note: `uv run` during mypy may re-touch `uv.lock` — revert it again after.
-
-### 3. Regenerate Ruby
-
-```bash
-cd ruby
-bundle exec rake generate VERSION=<yyyy-mm-dd>
-cd ..
-```
-
-Unlike TS/Python there is **nothing to revert**: the pipeline reuses the
-version already in `version.rb` (release-please owns bumps) and it also
-refreshes the skill `reference/` tables and runs the facade specs itself.
-Validate the lint on top:
-
-```bash
-cd ruby && bundle exec rubocop && cd ..
-```
 
 ### 4. Update `version_map.json`
 
@@ -185,6 +187,7 @@ anything by hand.
   `generated/`, the Ruby `lib/factorial_api/{api,models}/`, plus
   `sdk.ts`/`client.py`/`webhooks.*` and the skill `reference/`, is generated —
   never edit by hand.
-- The Ruby pipeline shells out to `python3 ../scripts/generate_skill.py`, which
-  in turn loads the Ruby gem — both toolchains must be installed; a missing one
-  fails loudly rather than skipping the skill refresh.
+- The Ruby pipeline shells out to `python3 ../scripts/generate_skill.py`, so it
+  needs a Python 3 toolchain. TS/Python releases do NOT need Ruby: their skill
+  refresh reads the committed `reference/ruby-methods.json`; endpoints missing
+  from it (spec newer than the last Ruby regen) render as `—` with a warning.

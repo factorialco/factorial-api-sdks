@@ -27,9 +27,7 @@ from __future__ import annotations
 import json
 import os
 import re
-import subprocess
 import sys
-import tempfile
 import urllib.request
 from pathlib import Path
 
@@ -54,43 +52,55 @@ def fetch(url: str) -> str:
         return resp.read().decode("utf-8")
 
 
-def load_spec(arg: str | None) -> tuple[dict, Path]:
-    """Returns the parsed spec and a local file with its contents (downloads
-    land in a temp file), for tools that read the spec from disk."""
+def load_spec(arg: str | None) -> dict:
     src = arg or os.environ.get("OPENAPI_SPEC_URL") or LATEST_SPEC_URL
     print(f"Loading OpenAPI spec from {src}")
     if re.match(r"^https?://", src):
-        raw = fetch(src)
-        spec = json.loads(raw)
-        tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
-        tmp.write(raw)
-        tmp.close()
-        spec_file = Path(tmp.name)
+        spec = json.loads(fetch(src))
     else:
-        spec_file = Path(src)
-        spec = json.loads(spec_file.read_text())
+        spec = json.loads(Path(src).read_text())
     print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
-    return spec, spec_file
+    return patch_unknown_types(spec)
 
 
-def load_ruby_calls(spec_file: Path) -> dict[str, str]:
-    """`"VERB /path" -> "api.<accessor>.<method>"`, straight from the Ruby gem.
+def patch_unknown_types(node: object) -> dict:
+    """The source spec types some fields as `unknown` (they are strings on the
+    wire); the Python release pipeline patches them to `string` before
+    generating. Applying the same patch here means every caller — TS, Python,
+    or Ruby pipeline — produces identical reference tables."""
+    stack: list[object] = [node]
+    while stack:
+        cur = stack.pop()
+        if isinstance(cur, dict):
+            t = cur.get("type")
+            if t == "unknown":
+                cur["type"] = "string"
+            elif isinstance(t, list):
+                cur["type"] = ["string" if x == "unknown" else x for x in t]
+            stack.extend(cur.values())
+        elif isinstance(cur, list):
+            stack.extend(cur)
+    return node  # type: ignore[return-value]
 
-    ruby/scripts/skill_methods.rb reflects on the loaded gem, so the table can
-    only show calls that exist. A broken Ruby toolchain fails the whole run:
-    silently omitting the column would ship stale docs."""
-    result = subprocess.run(
-        ["bundle", "exec", "ruby", "scripts/skill_methods.rb", str(spec_file.resolve())],
-        cwd=REPO_ROOT / "ruby",
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
+
+RUBY_METHODS_FILE = REFERENCE_DIR / "ruby-methods.json"
+DATED_PREFIX = re.compile(r"^/api/\d{4}-\d{2}-\d{2}/resources/")
+
+
+def load_ruby_calls() -> dict[str, str]:
+    """`"VERB namespace/resource/..." -> "api.<accessor>.<method>"`.
+
+    Read from the committed ruby-methods.json, which the Ruby pipeline
+    regenerates by reflecting on the loaded gem — so this script never needs a
+    Ruby toolchain. Endpoints missing from the map (a spec newer than the last
+    Ruby regeneration) render as `—` with a warning; the strict guard lives in
+    ruby/scripts/skill_methods.rb, where a regeneration can actually fix it."""
+    if not RUBY_METHODS_FILE.exists():
         sys.exit(
-            "ERROR: could not extract the Ruby SDK methods "
-            "(is Ruby installed and `bundle install` run in ruby/?):\n" + result.stderr
+            f"ERROR: {RUBY_METHODS_FILE} is missing - regenerate the Ruby SDK "
+            "(ruby/scripts/generate_sdk.rb) to produce it."
         )
-    return json.loads(result.stdout)
+    return json.loads(RUBY_METHODS_FILE.read_text())
 
 
 def camel(snake: str) -> str:
@@ -248,6 +258,7 @@ def derive_method(http: str, rest_segments: list[str]) -> str:
 def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
     paths = spec.get("paths", {})
     by_ns: dict[str, list[dict]] = {}
+    missing_ruby: list[str] = []
     for path, ops in paths.items():
         # /api/<version>/resources/<namespace>/<resource>/<rest...>
         segs = [s for s in path.split("/") if s]
@@ -262,14 +273,15 @@ def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
             if http not in ("get", "post", "put", "patch", "delete"):
                 continue
             method = derive_method(http, tail)
-            ruby_key = f"{http.upper()} {path}"
-            if ruby_key not in ruby_calls:
-                sys.exit(f"ERROR: no Ruby SDK call found for {ruby_key}")
+            ruby_key = f"{http.upper()} {DATED_PREFIX.sub('', path)}"
+            ruby_call = ruby_calls.get(ruby_key)
+            if ruby_call is None:
+                missing_ruby.append(ruby_key)
             by_ns.setdefault(namespace, []).append(
                 {
                     "resource": resource,
                     "call": f"client.{camel(namespace)}.{camel(resource)}.{method}",
-                    "ruby": ruby_calls[ruby_key],
+                    "ruby": ruby_call,
                     "http": http.upper(),
                     "path": path,
                     "summary": op.get("summary", ""),
@@ -299,11 +311,19 @@ def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
         out.append("| SDK call (TS) | Ruby | HTTP | path | summary |")
         out.append("| --- | --- | --- | --- | --- |")
         for e in sorted(by_ns[ns], key=lambda x: (x["resource"], x["path"], x["http"])):
+            ruby_cell = f"`{e['ruby']}`" if e["ruby"] else "—"
             out.append(
-                f"| `{e['call']}` | `{e['ruby']}` | {e['http']} | `{e['path']}` "
+                f"| `{e['call']}` | {ruby_cell} | {e['http']} | `{e['path']}` "
                 f"| {md_escape(e['summary'])} |"
             )
         out.append("")
+    if missing_ruby:
+        print(
+            f"WARNING: {len(missing_ruby)} endpoint(s) have no Ruby call in "
+            f"{RUBY_METHODS_FILE.name} (regenerate the Ruby SDK to fill them): "
+            + ", ".join(missing_ruby[:5]) + ("..." if len(missing_ruby) > 5 else ""),
+            file=sys.stderr,
+        )
     return "\n".join(out)
 
 
@@ -311,8 +331,8 @@ def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
 
 
 def main() -> None:
-    spec, spec_file = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
-    ruby_calls = load_ruby_calls(spec_file)
+    spec = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
+    ruby_calls = load_ruby_calls()
     REFERENCE_DIR.mkdir(parents=True, exist_ok=True)
 
     (REFERENCE_DIR / "webhooks.md").write_text(gen_webhooks(spec))

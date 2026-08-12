@@ -33,17 +33,20 @@ runs:
       id: check
       working-directory: ${{ inputs.working-directory }}
       run: |
-        PACKAGE=$(ruby -e "puts Gem::Specification.load(Dir['*.gemspec'].first).name")
-        VERSION=$(ruby -e "puts Gem::Specification.load(Dir['*.gemspec'].first).version")
-        # The versions endpoint 404s while the gem has never been published —
-        # treat that as "not there yet" rather than a failure.
-        if curl -fsS "https://rubygems.org/api/v1/versions/$PACKAGE.json" 2>/dev/null \
-             | grep -qF "\"number\":\"$VERSION\""; then
+        read -r PACKAGE VERSION < <(ruby -e 's = Gem::Specification.load(Dir["*.gemspec"].first); puts "#{s.name} #{s.version}"')
+        # 404 = the gem has never been published (fine, proceed); anything
+        # else but 200 is an API problem and must fail rather than risk a
+        # duplicate push.
+        STATUS=$(curl -sS -o versions.json -w '%{http_code}' "https://rubygems.org/api/v1/versions/$PACKAGE.json")
+        if [ "$STATUS" = "200" ] && grep -qF "\"number\":\"$VERSION\"" versions.json; then
           echo "✅ $PACKAGE $VERSION is already on RubyGems — skipping publish."
           echo "skip=true" >> "$GITHUB_OUTPUT"
-        else
+        elif [ "$STATUS" = "200" ] || [ "$STATUS" = "404" ]; then
           echo "$PACKAGE $VERSION is not yet on RubyGems — proceeding."
           echo "skip=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "::error::RubyGems versions API returned HTTP $STATUS for $PACKAGE"
+          exit 1
         fi
 
     - name: Build
@@ -59,7 +62,7 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         gem push *.gem 2>&1 | tee publish.log
-        if grep -qE "Successfully registered|Pushing gem" publish.log; then
+        if grep -q "Successfully registered" publish.log; then
           echo "published=true" >> $GITHUB_OUTPUT
         else
           echo "published=false" >> $GITHUB_OUTPUT

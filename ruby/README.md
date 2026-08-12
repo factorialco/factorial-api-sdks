@@ -166,8 +166,6 @@ Python SDKs:
   breaking change** and ships as a new major.
 - **Minor/patch** — features/fixes of the handwritten SDK layer, always
   backwards compatible within the same major.
-- Prereleases are tagged `MAJOR.MINOR.PATCH.beta.N`. Bundler and
-  `gem install` ignore them unless you ask for them explicitly.
 
 Pick your update policy in the `Gemfile`:
 

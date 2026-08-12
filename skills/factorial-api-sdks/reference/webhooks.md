@@ -800,8 +800,8 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `amount_in_cents` | integer | no | The amount of the supplement in cents |
 | `unit` | string | yes | The unit of the supplement |
 | `effective_on` | string | no | The date on which the supplement becomes effective |
-| `created_at` | unknown | no | The created at date when the supplement was created |
-| `updated_at` | unknown | no | The last updated at date when the supplement was last updated |
+| `created_at` | string | no | The created at date when the supplement was created |
+| `updated_at` | string | no | The last updated at date when the supplement was last updated |
 | `description` | string | no | The description of the supplement |
 | `payroll_policy_period_id` | string | no | The payroll policy period identifier associated with the supplement |
 | `employee_observations` | array<string> | no | Observations on the employee made by the admin or manager |

@@ -9,11 +9,10 @@
 #   ruby scripts/generate_sdk.rb path/to/oas.yaml       # a local file (offline dev)
 #   OPENAPI_SPEC_URL=https://api.local.factorial.dev/oas/ ruby scripts/generate_sdk.rb
 #
-# Plus --set-version=X.Y.Z to pin an exact version (used by the beta
-# workflow); otherwise the version already in version.rb is kept —
-# release-please owns bumps.
+# Plus --set-version=X.Y.Z to pin an exact version; see DEVELOPMENT.md.
 
 require 'fileutils'
+require 'json'
 require 'net/http'
 require 'uri'
 require 'yaml'
@@ -58,6 +57,9 @@ SPEC_BASE_URL = 'https://api.factorialhr.com/oas/'
 set_version_arg = ARGV.grep(/\A--set-version=/).first
 requested_version = set_version_arg&.split('=', 2)&.last
 ARGV.delete(set_version_arg) if set_version_arg
+if requested_version && !requested_version.match?(/\A\d+\.\d+\.\d+(\.[0-9A-Za-z.]+)?\z/)
+  abort("ERROR: --set-version must look like 2.0.0 or 3.0.0.beta.1 (got #{requested_version.inspect})")
+end
 
 version_arg = ARGV.grep(/\A--version=/).first
 requested_date = version_arg&.split('=', 2)&.last
@@ -95,10 +97,8 @@ end
 
 step "Spec: #{spec} (date #{date_str})"
 
-# --- 3. Resolve the gem version: release-please owns it ---
-# Regenerating never bumps: the version already in version.rb (maintained by
-# release-please from Conventional Commits) is reused, so there is nothing to
-# revert afterwards. --set-version pins an exact version for the beta workflow.
+# --- 3. Resolve the gem version: release-please owns it (see DEVELOPMENT.md) ---
+abort("ERROR: #{VERSION_FILE} not found") unless requested_version || File.exist?(VERSION_FILE)
 version = requested_version ||
           File.read(VERSION_FILE, encoding: 'UTF-8')[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] ||
           abort("ERROR: could not read the current version from #{VERSION_FILE}")
@@ -145,13 +145,6 @@ content = File.read(ENTRYPOINT)
 File.write(ENTRYPOINT, "require 'f'\n#{content}") unless content.match?(/^require 'f'$/)
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 
-# --- 8.5. Refresh the factorial-api-sdks skill reference tables ---
-# Same anti-drift loop as release.ts / release.py. Runs after step 8: the
-# tables' Ruby column is read from the loaded gem, which needs the facade
-# re-attached to the regenerated entrypoint.
-step 'Refreshing the skill reference'
-run!('python3', '../scripts/generate_skill.py', spec)
-
 # --- 9. Sanity check ---
 step 'Verifying the gem loads'
 # Quoted heredoc: the #{...} below is passed through literally, for the child
@@ -164,6 +157,21 @@ load_check = <<~'RUBY'
   puts "OK #{F::Api::VERSION} - #{F::Api::API_CLASSES.size} APIs"
 RUBY
 run!('bundle', 'exec', 'ruby', '-e', load_check)
+
+# --- 9.5. Refresh the skill reference tables ---
+# ruby-methods.json (committed) maps every endpoint to its Ruby call by
+# reflecting on the freshly verified gem; generate_skill.py then rebuilds the
+# tables from it, so the TS/Python flows never need a Ruby toolchain.
+step 'Refreshing the skill reference'
+run!('bundle', 'exec', 'ruby', 'scripts/skill_methods.rb', normalized)
+skill_spec = spec
+unless File.read(spec, encoding: 'UTF-8').lstrip.start_with?('{')
+  # generate_skill.py reads JSON; bridge real-YAML specs through a temp copy.
+  skill_spec = 'oas-skill.tmp.json'
+  File.write(skill_spec, JSON.generate(YAML.unsafe_load_file(spec)))
+end
+run!('python3', '../scripts/generate_skill.py', skill_spec)
+FileUtils.rm_f('oas-skill.tmp.json')
 
 # --- 10. Verify the facade still works on the regenerated client ---
 step 'Running facade specs'

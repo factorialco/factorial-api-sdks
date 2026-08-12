@@ -1,38 +1,28 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Emits the Ruby SDK call for every REST endpoint, as JSON on stdout:
+# Regenerates skills/factorial-api-sdks/reference/ruby-methods.json: the Ruby
+# SDK call for every REST endpoint, keyed date-agnostically ("GET teams/teams").
 #
-#   { "GET /api/.../teams/teams": "api.teams_team.teams_teams_get", ... }
+# scripts/generate_skill.py reads that committed file to fill the Ruby column
+# of reference/sdk-methods.md, so the TS/Python release flows never need a Ruby
+# toolchain. Method names are never derived here: operationIds come from the
+# normalized spec (scripts/normalize_oas.rb) and the owning accessor from
+# reflecting on the loaded gem, so the map can only contain calls that exist.
 #
-# Consumed by scripts/generate_skill.py to fill the Ruby column of the skill's
-# reference/sdk-methods.md. Method names are never derived here: the
-# operationIds come from normalize_oas.rb (the same normalization the real
-# pipeline runs) and the owning accessor comes from reflecting on the loaded
-# gem — so the table can only ever show calls that actually exist.
-#
-# Usage: bundle exec ruby scripts/skill_methods.rb <spec.(yaml|json)>
+# Usage: bundle exec ruby scripts/skill_methods.rb <normalized-spec.yaml>
 
-require 'fileutils'
 require 'json'
-require 'tmpdir'
 require 'yaml'
 require_relative '../lib/factorial_api'
 
-VERBS = %w[get post put patch delete].freeze
+VERBS  = %w[get post put patch delete].freeze
+PREFIX = %r{\A/api/\d{4}-\d{2}-\d{2}/resources/}
+OUT    = File.expand_path('../../skills/factorial-api-sdks/reference/ruby-methods.json', __dir__)
 
-spec_path = ARGV.fetch(0) { abort('Usage: skill_methods.rb <spec.(yaml|json)>') }
+spec_path = ARGV.fetch(0) { abort('Usage: skill_methods.rb <normalized-spec.yaml>') }
 abort("ERROR: spec not found: #{spec_path}") unless File.exist?(spec_path)
-
-# normalize_oas.rb names its output from a .yaml input; go through a temp copy
-# so any input name (or a .json download) works and nothing is overwritten.
-normalized = Dir.mktmpdir do |dir|
-  tmp_spec = File.join(dir, 'spec.yaml')
-  FileUtils.cp(spec_path, tmp_spec)
-  system('ruby', File.expand_path('normalize_oas.rb', __dir__), tmp_spec, out: File::NULL) or
-    abort('ERROR: normalize_oas.rb failed')
-  YAML.unsafe_load_file(File.join(dir, 'spec.normalized.yaml'))
-end
+spec = YAML.unsafe_load_file(spec_path)
 
 # operation_id => accessor, from the gem itself.
 accessor_by_method = {}
@@ -45,15 +35,19 @@ F::Api::API_CLASSES.each do |accessor, const|
 end
 
 calls = {}
-normalized.fetch('paths').each do |route, item|
+spec.fetch('paths').each do |route, item|
   VERBS.each do |verb|
     operation = item[verb] or next
-    operation_id = operation.fetch('operationId')
+    operation_id = operation['operationId'] ||
+                   abort("ERROR: #{verb.upcase} #{route} has no operationId " \
+                         '- pass the NORMALIZED spec (see scripts/normalize_oas.rb)')
     accessor = accessor_by_method.fetch(operation_id) do
-      abort("ERROR: the gem exposes no method #{operation_id} (#{verb.upcase} #{route}) — regenerate it first")
+      abort("ERROR: the gem exposes no method #{operation_id} (#{verb.upcase} #{route}) " \
+            '- regenerate the gem first')
     end
-    calls["#{verb.upcase} #{route}"] = "api.#{accessor}.#{operation_id}"
+    calls["#{verb.upcase} #{route.sub(PREFIX, '')}"] = "api.#{accessor}.#{operation_id}"
   end
 end
 
-puts JSON.generate(calls)
+File.write(OUT, "#{JSON.pretty_generate(calls)}\n")
+puts "Wrote #{OUT} (#{calls.size} endpoints)"

@@ -20,8 +20,8 @@ what previously let a tag drift from the code it was supposed to point at.
 3. **You merge the Release PR.** That single action:
    - bumps the version (`typescript/package.json` / `python/pyproject.toml` /
      `ruby/lib/factorial_api/version.rb`),
-   - creates the tag (`typescript-vX.Y.Z` / `python-vX.Y.Z` / `ruby-vX.Y.Z`)
-     **on the merge commit**,
+   - creates the tag (`typescript-vX.Y.Z` / `python-vX.Y.Z` / `ruby/vX.Y.Z` —
+     the ruby release type uses `/` as its tag separator) **on the merge commit**,
    - creates the GitHub Release.
 
    The tag and the version are produced together, so they cannot disagree.
@@ -35,7 +35,8 @@ what previously let a tag drift from the code it was supposed to point at.
 
 - `release-please-config.json` — package definitions, release types, tag components.
 - `.release-please-manifest.json` — the **last released** version per package
-  (release-please reads/writes this; don't hand-edit unless correcting drift).
+  (release-please reads/writes this; don't hand-edit unless correcting drift
+  or seeding the entry for a newly wired package).
 
 ## Backporting fixes to previous majors
 

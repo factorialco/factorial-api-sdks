@@ -8,7 +8,7 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 bundle exec rake generate                             # latest spec
 bundle exec rake generate VERSION=2026-10-01          # a dated API version
 bundle exec rake generate SPEC=path/to/oas.yaml       # local spec file (offline dev)
-bundle exec rake generate SET_VERSION=3.0.0.beta.1    # pin an exact version (beta workflow)
+bundle exec rake generate SET_VERSION=2.1.0           # pin an exact version
 # (equivalent: ruby scripts/generate_sdk.rb [spec] [--version=...] [--set-version=...])
 ```
 
@@ -25,8 +25,8 @@ SDKs): it maintains `lib/factorial_api/version.rb` from Conventional Commits,
 and the major tracks the Factorial API version (mapped in the repo-root
 `version_map.json`). Regenerating never bumps — the pipeline reuses whatever
 version.rb says, so there is nothing to revert afterwards. `SET_VERSION` pins
-an exact version and exists for the beta workflow (RubyGems prereleases like
-`3.0.0.beta.1` are opt-in by default).
+an exact version (reserved for prerelease automation; Ruby has no beta
+publishing workflow yet).
 
 The script normalizes the spec, cleans and
 regenerates the client, patches the generated models (see below),
