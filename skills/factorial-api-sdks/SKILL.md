@@ -16,12 +16,14 @@ and how to work with Factorial webhooks. Generated reference data lives in
 
 - **TypeScript**: `@factorialco/api-client` (npm)
 - **Python**: `factorial-api-client` (PyPI)
+- **Ruby**: `factorial_api` (RubyGems)
 
 ## Install
 
 ```bash
 npm install @factorialco/api-client     # TypeScript
 pip install factorial-api-client          # Python
+gem install factorial_api                 # Ruby
 ```
 
 ## Authentication
@@ -46,6 +48,11 @@ const client = new FactorialClient({ apiKey: process.env.FACTORIAL_API_KEY });
 ```python
 from factorial_api_client import FactorialClient
 client = FactorialClient(api_key="YOUR_KEY")   # or token="...", or from env
+```
+
+```ruby
+require "factorial_api"
+api = F::Api.new(api_key: ENV["FACTORIAL_API_KEY"])   # or token:, or from env
 ```
 
 ## Calling endpoints
@@ -74,9 +81,17 @@ employees = client.employees.employee.list()
 sub = client.api_public.webhook_subscription.create(body={...})
 ```
 
+**Ruby differs**: it exposes one accessor per resource (`api.employees_employee`)
+whose methods are the spec operationIds; required params are positional and
+optional query params go in a `query_params:` hash.
+
+```ruby
+employees = api.employees_employee.employees_employees_get(true, false).data
+```
+
 To discover the exact namespace/resource/method for any endpoint, consult
-`reference/sdk-methods.md` (every endpoint, grouped) or the
-[online API reference](https://apidoc.factorialhr.com/reference).
+`reference/sdk-methods.md` (every endpoint with its TS and Ruby calls, grouped)
+or the [online API reference](https://apidoc.factorialhr.com/reference).
 
 ## Pagination
 
@@ -85,6 +100,7 @@ List endpoints return `{ data: T[], meta: { end_cursor?, has_next_page, ... } }`
 - `list()` — one raw page
 - `paginate()` — async iterator (TS) / sync or async generator (Python)
 - `all()` (TS) / `collect_all()` (Python) — fetch every page into one array/list
+- Ruby: `F::Api.paginate { |page| ... }` wraps any list call in a lazy Enumerator
 
 ```ts
 for await (const emp of client.employees.employees.paginate()) { /* ... */ }

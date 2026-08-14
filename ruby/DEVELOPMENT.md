@@ -6,10 +6,10 @@ Maintainer notes for the Ruby SDK. Users: see [README.md](README.md).
 
 ```bash
 bundle exec rake generate                             # latest spec
-bundle exec rake generate VERSION=2026-10-01 BUMP=major   # new dated API version
+bundle exec rake generate VERSION=2026-10-01          # a dated API version
 bundle exec rake generate SPEC=path/to/oas.yaml       # local spec file (offline dev)
-bundle exec rake generate BETA=1                      # prerelease: MAJOR.MINOR.PATCH.beta.N
-# (equivalent: ruby scripts/generate_sdk.rb [spec] [--version=...] [--bump=...] [--beta])
+bundle exec rake generate SET_VERSION=2.1.0           # pin an exact version
+# (equivalent: ruby scripts/generate_sdk.rb [spec] [--version=...] [--set-version=...])
 ```
 
 The spec is fetched from `https://api.factorialhr.com/oas/?version=<date>`
@@ -18,28 +18,17 @@ gitignored `oas-<date>.yaml` files. Override the source with
 `OPENAPI_SPEC_URL` (e.g. `https://api.local.factorial.dev/oas/` to generate
 against a local instance), same contract as the TypeScript and Python SDKs.
 
-### Choosing the version bump
+### Versioning
 
-Versions are plain semver, same model as the TypeScript and Python SDKs:
-the major tracks the Factorial API version (mapped in the repo-root
-`version_map.json`), minor/patch version the handwritten layer. The script
-bumps from the previous version in `version.rb`:
+**release-please owns the version** (same model as the TypeScript and Python
+SDKs): it maintains `lib/factorial_api/version.rb` from Conventional Commits,
+and the major tracks the Factorial API version (mapped in the repo-root
+`version_map.json`). Regenerating never bumps — the pipeline reuses whatever
+version.rb says, so there is nothing to revert afterwards. `SET_VERSION` pins
+an exact version (reserved for prerelease automation; Ruby has no beta
+publishing workflow yet).
 
-| `BUMP` | Use when |
-|--------|----------|
-| `major` | Regenerating for a **new dated API version** (breaking; ship as `feat!:`) |
-| `minor` | New feature in the handwritten layer (default, like the sibling SDKs) |
-| `patch` | Backwards-compatible fix |
-
-Betas: with `BETA=1` the version gets a `.beta.N` suffix (a native RubyGems
-prerelease, never installed by default). Re-running with `BETA=1` and no
-explicit `BUMP` iterates `N`; running without `BETA` afterwards promotes
-the same base version to the release.
-
-This versioning is interim: once the Ruby package is wired into
-release-please, the bot owns the version and this logic goes away.
-
-The script normalizes the spec, computes the gem version, cleans and
+The script normalizes the spec, cleans and
 regenerates the client, patches the generated models (see below),
 regenerates the typed webhook catalog (`lib/factorial_api/webhooks.rb`,
 emitted by `scripts/generate_webhooks.rb` from the raw spec's `webhooks`

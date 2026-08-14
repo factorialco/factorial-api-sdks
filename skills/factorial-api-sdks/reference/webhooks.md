@@ -4,6 +4,8 @@ Auto-generated from the OpenAPI spec. 128 events across 22 namespaces, 33 distin
 
 Factorial POSTs the payload (the resource object) to your `target_url` at the **top level** — it is not wrapped in a `{ type, data }` envelope. Subscribe with the `subscription_type` value shown below. See `../SKILL.md` for delivery, verification, and retry details.
 
+Each SDK ships a typed catalog with one alias per event: at the package root in TypeScript/Python, and under `F::Api::` in Ruby (e.g. `F::Api::AtsApplicationCreateWebhook`).
+
 ## Events by namespace
 
 ### ApiPublic

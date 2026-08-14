@@ -39,6 +39,8 @@ jobs:
       ts_tag: ${{ steps.release.outputs['typescript--tag_name'] }}
       py_released: ${{ steps.release.outputs['python--release_created'] }}
       py_tag: ${{ steps.release.outputs['python--tag_name'] }}
+      rb_released: ${{ steps.release.outputs['ruby--release_created'] }}
+      rb_tag: ${{ steps.release.outputs['ruby--tag_name'] }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -64,4 +66,13 @@ jobs:
     uses: ./.github/workflows/publish.yaml
     with:
       release_tag: ${{ needs.release-please.outputs.py_tag }}
+    secrets: inherit
+
+  publish-ruby:
+    name: "Publish Ruby release"
+    needs: release-please
+    if: needs.release-please.outputs.rb_released == 'true'
+    uses: ./.github/workflows/publish.yaml
+    with:
+      release_tag: ${{ needs.release-please.outputs.rb_tag }}
     secrets: inherit

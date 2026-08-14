@@ -9,9 +9,10 @@
 #   ruby scripts/generate_sdk.rb path/to/oas.yaml       # a local file (offline dev)
 #   OPENAPI_SPEC_URL=https://api.local.factorial.dev/oas/ ruby scripts/generate_sdk.rb
 #
-# Plus --bump=major|minor|patch and --beta (see DEVELOPMENT.md).
+# Plus --set-version=X.Y.Z to pin an exact version; see DEVELOPMENT.md.
 
 require 'fileutils'
+require 'json'
 require 'net/http'
 require 'uri'
 require 'yaml'
@@ -51,18 +52,13 @@ def http_get!(url, hops = 3)
 end
 
 # --- 1. Parse the flags ---
-VALID_BUMPS = %w[major minor patch].freeze
-# First semver version; major 2 targets API 2026-07-01 in version_map.json,
-# matching the TypeScript and Python SDKs.
-INITIAL_VERSION = '2.0.0'
 SPEC_BASE_URL = 'https://api.factorialhr.com/oas/'
 
-beta = !ARGV.delete('--beta').nil?
-bump_arg = ARGV.grep(/\A--bump=/).first
-bump = bump_arg&.split('=', 2)&.last
-ARGV.delete(bump_arg) if bump_arg
-if bump && !VALID_BUMPS.include?(bump)
-  abort("ERROR: --bump must be one of #{VALID_BUMPS.join(', ')} (got #{bump.inspect})")
+set_version_arg = ARGV.grep(/\A--set-version=/).first
+requested_version = set_version_arg&.split('=', 2)&.last
+ARGV.delete(set_version_arg) if set_version_arg
+if requested_version && !requested_version.match?(/\A\d+\.\d+\.\d+(\.[0-9A-Za-z.]+)?\z/)
+  abort("ERROR: --set-version must look like 2.0.0 or 3.0.0.beta.1 (got #{requested_version.inspect})")
 end
 
 version_arg = ARGV.grep(/\A--version=/).first
@@ -99,54 +95,14 @@ unless spec
   File.write(spec, spec_body)
 end
 
-step "Spec: #{spec} (date #{date_str})#{' [beta]' if beta}"
+step "Spec: #{spec} (date #{date_str})"
 
-# --- 3. Compute the gem version: MAJOR.MINOR.PATCH[.beta.N] ---
-# Plain semver, same model as the TypeScript and Python SDKs: the major
-# tracks the Factorial API version (mapped in the repo-root version_map.json,
-# so a new dated API version is a major bump), minor = features and
-# patch = fixes in the handwritten layer. Default bump is minor, matching
-# the sibling release scripts. Interim only: once release-please owns the
-# Ruby package, it takes over the version.
-bump_explicit = !bump.nil?
-bump ||= 'minor'
-
-previous = File.exist?(VERSION_FILE) ? File.read(VERSION_FILE)[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] : nil
-prev_base = previous&.sub(/\.beta\.\d+\z/, '')
-prev_is_beta = !previous.nil? && previous != prev_base
-
-base =
-  if prev_base.nil? || prev_base.match?(/\A\d{8}\./)
-    # First semver release, or migrating from the legacy date-first scheme.
-    INITIAL_VERSION
-  elsif prev_is_beta && !bump_explicit
-    # Iterate the current beta, or promote it to a release: the base was
-    # already bumped when the first beta of this line was cut.
-    prev_base
-  else
-    major, minor, patch = prev_base.split('.').map { |part| Integer(part, 10) }
-    case bump
-    when 'major'
-      major += 1
-      minor = 0
-      patch = 0
-    when 'minor'
-      minor += 1
-      patch = 0
-    when 'patch'
-      patch += 1
-    end
-    "#{major}.#{minor}.#{patch}"
-  end
-
-version = base
-if beta
-  n = previous&.match(/\A#{Regexp.escape(base)}\.beta\.(\d+)\z/) { |m| Integer(m[1], 10) + 1 } || 1
-  version = "#{base}.beta.#{n}"
-end
-
-bump_label = bump_explicit ? bump : "#{bump} by default"
-step "Gem version: #{version} (bump: #{bump_label}#{", previous: #{previous}" if previous})"
+# --- 3. Resolve the gem version: release-please owns it (see DEVELOPMENT.md) ---
+abort("ERROR: #{VERSION_FILE} not found") unless requested_version || File.exist?(VERSION_FILE)
+version = requested_version ||
+          File.read(VERSION_FILE, encoding: 'UTF-8')[/VERSION\s*=\s*['"]([^'"]+)['"]/, 1] ||
+          abort("ERROR: could not read the current version from #{VERSION_FILE}")
+step "Gem version: #{version}#{' (from --set-version)' if requested_version}"
 
 # --- 4. Normalize operationIds ---
 step 'Normalizing spec'
@@ -201,6 +157,21 @@ load_check = <<~'RUBY'
   puts "OK #{F::Api::VERSION} - #{F::Api::API_CLASSES.size} APIs"
 RUBY
 run!('bundle', 'exec', 'ruby', '-e', load_check)
+
+# --- 9.5. Refresh the skill reference tables ---
+# ruby-methods.json (committed) maps every endpoint to its Ruby call by
+# reflecting on the freshly verified gem; generate_skill.py then rebuilds the
+# tables from it, so the TS/Python flows never need a Ruby toolchain.
+step 'Refreshing the skill reference'
+run!('bundle', 'exec', 'ruby', 'scripts/skill_methods.rb', normalized)
+skill_spec = spec
+unless File.read(spec, encoding: 'UTF-8').lstrip.start_with?('{')
+  # generate_skill.py reads JSON; bridge real-YAML specs through a temp copy.
+  skill_spec = 'oas-skill.tmp.json'
+  File.write(skill_spec, JSON.generate(YAML.unsafe_load_file(spec)))
+end
+run!('python3', '../scripts/generate_skill.py', skill_spec)
+FileUtils.rm_f('oas-skill.tmp.json')
 
 # --- 10. Verify the facade still works on the regenerated client ---
 step 'Running facade specs'

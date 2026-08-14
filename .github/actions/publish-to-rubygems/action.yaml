@@ -1,0 +1,71 @@
+name: "Publish to RubyGems"
+description: "Publish gem to rubygems.org"
+
+inputs:
+  registry_token:
+    description: "RubyGems API key"
+    required: true
+  working-directory:
+    description: "Working directory"
+    required: false
+    default: "."
+  ruby-version:
+    description: "Ruby version"
+    required: false
+    default: "3.4"
+
+outputs:
+  published:
+    description: "Whether package was published"
+    value: ${{ steps.publish.outputs.published }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ inputs.ruby-version }}
+        working-directory: ${{ inputs.working-directory }}
+
+    - name: Check if version already published
+      shell: bash
+      id: check
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        read -r PACKAGE VERSION < <(ruby -e 's = Gem::Specification.load(Dir["*.gemspec"].first); puts "#{s.name} #{s.version}"')
+        # 404 = the gem has never been published (fine, proceed); anything
+        # else but 200 is an API problem and must fail rather than risk a
+        # duplicate push.
+        STATUS=$(curl -sS -o versions.json -w '%{http_code}' "https://rubygems.org/api/v1/versions/$PACKAGE.json")
+        if [ "$STATUS" = "200" ] && grep -qF "\"number\":\"$VERSION\"" versions.json; then
+          echo "✅ $PACKAGE $VERSION is already on RubyGems — skipping publish."
+          echo "skip=true" >> "$GITHUB_OUTPUT"
+        elif [ "$STATUS" = "200" ] || [ "$STATUS" = "404" ]; then
+          echo "$PACKAGE $VERSION is not yet on RubyGems — proceeding."
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "::error::RubyGems versions API returned HTTP $STATUS for $PACKAGE"
+          exit 1
+        fi
+
+    - name: Build
+      if: steps.check.outputs.skip != 'true'
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: gem build *.gemspec
+
+    - name: Publish to RubyGems
+      if: steps.check.outputs.skip != 'true'
+      shell: bash
+      id: publish
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        gem push *.gem 2>&1 | tee publish.log
+        if grep -q "Successfully registered" publish.log; then
+          echo "published=true" >> $GITHUB_OUTPUT
+        else
+          echo "published=false" >> $GITHUB_OUTPUT
+        fi
+      env:
+        GEM_HOST_API_KEY: ${{ inputs.registry_token }}

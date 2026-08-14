@@ -60,7 +60,47 @@ def load_spec(arg: str | None) -> dict:
     else:
         spec = json.loads(Path(src).read_text())
     print(f"Spec version: {spec.get('info', {}).get('version', '<unknown>')}")
-    return spec
+    return patch_unknown_types(spec)
+
+
+def patch_unknown_types(node: object) -> dict:
+    """The source spec types some fields as `unknown` (they are strings on the
+    wire); the Python release pipeline patches them to `string` before
+    generating. Applying the same patch here means every caller — TS, Python,
+    or Ruby pipeline — produces identical reference tables."""
+    stack: list[object] = [node]
+    while stack:
+        cur = stack.pop()
+        if isinstance(cur, dict):
+            t = cur.get("type")
+            if t == "unknown":
+                cur["type"] = "string"
+            elif isinstance(t, list):
+                cur["type"] = ["string" if x == "unknown" else x for x in t]
+            stack.extend(cur.values())
+        elif isinstance(cur, list):
+            stack.extend(cur)
+    return node  # type: ignore[return-value]
+
+
+RUBY_METHODS_FILE = REFERENCE_DIR / "ruby-methods.json"
+DATED_PREFIX = re.compile(r"^/api/\d{4}-\d{2}-\d{2}/resources/")
+
+
+def load_ruby_calls() -> dict[str, str]:
+    """`"VERB namespace/resource/..." -> "api.<accessor>.<method>"`.
+
+    Read from the committed ruby-methods.json, which the Ruby pipeline
+    regenerates by reflecting on the loaded gem — so this script never needs a
+    Ruby toolchain. Endpoints missing from the map (a spec newer than the last
+    Ruby regeneration) render as `—` with a warning; the strict guard lives in
+    ruby/scripts/skill_methods.rb, where a regeneration can actually fix it."""
+    if not RUBY_METHODS_FILE.exists():
+        sys.exit(
+            f"ERROR: {RUBY_METHODS_FILE} is missing - regenerate the Ruby SDK "
+            "(ruby/scripts/generate_sdk.rb) to produce it."
+        )
+    return json.loads(RUBY_METHODS_FILE.read_text())
 
 
 def camel(snake: str) -> str:
@@ -144,6 +184,11 @@ def gen_webhooks(spec: dict) -> str:
         "the `subscription_type` value shown below. See `../SKILL.md` for delivery, "
         "verification, and retry details.\n"
     )
+    out.append(
+        "Each SDK ships a typed catalog with one alias per event: at the package root in "
+        "TypeScript/Python, and under `F::Api::` in Ruby "
+        "(e.g. `F::Api::AtsApplicationCreateWebhook`).\n"
+    )
 
     out.append("## Events by namespace\n")
     for ns in sorted(by_ns):
@@ -210,9 +255,10 @@ def derive_method(http: str, rest_segments: list[str]) -> str:
     return http
 
 
-def gen_sdk_methods(spec: dict) -> str:
+def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
     paths = spec.get("paths", {})
     by_ns: dict[str, list[dict]] = {}
+    missing_ruby: list[str] = []
     for path, ops in paths.items():
         # /api/<version>/resources/<namespace>/<resource>/<rest...>
         segs = [s for s in path.split("/") if s]
@@ -227,10 +273,15 @@ def gen_sdk_methods(spec: dict) -> str:
             if http not in ("get", "post", "put", "patch", "delete"):
                 continue
             method = derive_method(http, tail)
+            ruby_key = f"{http.upper()} {DATED_PREFIX.sub('', path)}"
+            ruby_call = ruby_calls.get(ruby_key)
+            if ruby_call is None:
+                missing_ruby.append(ruby_key)
             by_ns.setdefault(namespace, []).append(
                 {
                     "resource": resource,
                     "call": f"client.{camel(namespace)}.{camel(resource)}.{method}",
+                    "ruby": ruby_call,
                     "http": http.upper(),
                     "path": path,
                     "summary": op.get("summary", ""),
@@ -249,18 +300,31 @@ def gen_sdk_methods(spec: dict) -> str:
         "(`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK "
         "uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of "
         "`all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. "
+        "The Ruby column shows the full call on an `F::Api.new` client, with its "
+        "required positional arguments; optional query params go in a trailing "
+        "`query_params:` hash and bodies in the matching `opts` key "
+        "(paginate with `F::Api.paginate`). "
         "`body` contents are endpoint-specific; see the [online reference]"
         f"({DOCS_BASE}/reference) for exact fields.\n"
     )
     for ns in sorted(by_ns):
         out.append(f"## {ns}\n")
-        out.append("| SDK call | HTTP | path | summary |")
-        out.append("| --- | --- | --- | --- |")
+        out.append("| SDK call (TS) | Ruby | HTTP | path | summary |")
+        out.append("| --- | --- | --- | --- | --- |")
         for e in sorted(by_ns[ns], key=lambda x: (x["resource"], x["path"], x["http"])):
+            ruby_cell = f"`{e['ruby']}`" if e["ruby"] else "—"
             out.append(
-                f"| `{e['call']}` | {e['http']} | `{e['path']}` | {md_escape(e['summary'])} |"
+                f"| `{e['call']}` | {ruby_cell} | {e['http']} | `{e['path']}` "
+                f"| {md_escape(e['summary'])} |"
             )
         out.append("")
+    if missing_ruby:
+        print(
+            f"WARNING: {len(missing_ruby)} endpoint(s) have no Ruby call in "
+            f"{RUBY_METHODS_FILE.name} (regenerate the Ruby SDK to fill them): "
+            + ", ".join(missing_ruby[:5]) + ("..." if len(missing_ruby) > 5 else ""),
+            file=sys.stderr,
+        )
     return "\n".join(out)
 
 
@@ -269,12 +333,13 @@ def gen_sdk_methods(spec: dict) -> str:
 
 def main() -> None:
     spec = load_spec(sys.argv[1] if len(sys.argv) > 1 else None)
+    ruby_calls = load_ruby_calls()
     REFERENCE_DIR.mkdir(parents=True, exist_ok=True)
 
     (REFERENCE_DIR / "webhooks.md").write_text(gen_webhooks(spec))
     print("  Wrote reference/webhooks.md")
 
-    (REFERENCE_DIR / "sdk-methods.md").write_text(gen_sdk_methods(spec))
+    (REFERENCE_DIR / "sdk-methods.md").write_text(gen_sdk_methods(spec, ruby_calls))
     print("  Wrote reference/sdk-methods.md")
 
 
