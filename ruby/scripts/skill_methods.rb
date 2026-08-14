@@ -6,9 +6,10 @@
 #
 # scripts/generate_skill.py reads that committed file to fill the Ruby column
 # of reference/sdk-methods.md, so the TS/Python release flows never need a Ruby
-# toolchain. Method names are never derived here: operationIds come from the
-# normalized spec (scripts/normalize_oas.rb) and the owning accessor from
-# reflecting on the loaded gem, so the map can only contain calls that exist.
+# toolchain. Nothing is derived here: operationIds come from the normalized
+# spec (scripts/normalize_oas.rb), and the owning accessor plus the required
+# arguments come from reflecting on the loaded gem, so the map can only
+# describe calls that exist with the signature they actually have.
 #
 # Usage: bundle exec ruby scripts/skill_methods.rb <normalized-spec.yaml>
 
@@ -24,13 +25,18 @@ spec_path = ARGV.fetch(0) { abort('Usage: skill_methods.rb <normalized-spec.yaml
 abort("ERROR: spec not found: #{spec_path}") unless File.exist?(spec_path)
 spec = YAML.unsafe_load_file(spec_path)
 
-# operation_id => accessor, from the gem itself.
-accessor_by_method = {}
+# operation_id => "<accessor>.<method>(<required args>)", from the gem itself.
+# Optional query params and bodies travel in the trailing opts hash, which the
+# skill documents once rather than per row.
+call_by_method = {}
 F::Api::API_CLASSES.each do |accessor, const|
-  F::Api.const_get(const).instance_methods(false).each do |method|
+  klass = F::Api.const_get(const)
+  klass.instance_methods(false).each do |method|
     next if method.to_s.end_with?('_with_http_info') || method.to_s.start_with?('api_client')
 
-    accessor_by_method[method.to_s] = accessor
+    required = klass.instance_method(method).parameters.filter_map { |kind, name| name if kind == :req }
+    signature = required.empty? ? '' : "(#{required.join(', ')})"
+    call_by_method[method.to_s] = "api.#{accessor}.#{method}#{signature}"
   end
 end
 
@@ -41,11 +47,11 @@ spec.fetch('paths').each do |route, item|
     operation_id = operation['operationId'] ||
                    abort("ERROR: #{verb.upcase} #{route} has no operationId " \
                          '- pass the NORMALIZED spec (see scripts/normalize_oas.rb)')
-    accessor = accessor_by_method.fetch(operation_id) do
+    call = call_by_method.fetch(operation_id) do
       abort("ERROR: the gem exposes no method #{operation_id} (#{verb.upcase} #{route}) " \
             '- regenerate the gem first')
     end
-    calls["#{verb.upcase} #{route.sub(PREFIX, '')}"] = "api.#{accessor}.#{operation_id}"
+    calls["#{verb.upcase} #{route.sub(PREFIX, '')}"] = call
   end
 end
 

@@ -82,9 +82,16 @@ If an automated publish fails, re-run it without touching versions:
 
 ## Notes
 
-- `uv.lock` records the package version too, but the published wheel's version
-  comes from `pyproject.toml` (hatchling), so a stale `uv.lock` version line does
-  not affect releases. Refresh it with `uv lock` when convenient.
+- `uv.lock` and `ruby/Gemfile.lock` record the package version too, but the
+  published artifact takes its version from `pyproject.toml` (hatchling) and
+  from the gemspec via `version.rb` (`gem build`), so a stale version line in a
+  lockfile does not affect releases. Refresh with `uv lock` / `bundle lock`
+  when convenient.
+- The Ruby manifest entry was seeded at `2.0.0` so the gem's first release is
+  necessarily `2.x` (matching `version_map.json`, where major 2 = API
+  2026-07-01). release-please treats that seed as already released, so the
+  first version actually published to RubyGems is the next bump (e.g. `2.1.0`);
+  `2.0.0` itself never ships.
 - The `release.ts` / `release.py` scripts remain for **regenerating** the SDK
   from a new OpenAPI spec. With release-please owning versioning and publishing,
   prefer using them only to regenerate code; let release-please cut the release.
