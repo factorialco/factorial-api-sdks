@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.2...python-v2.0.3) (2026-08-17)
+
+
+### Bug Fixes
+
+* **python:** send OAuth token as Authorization: Bearer ([#47](https://github.com/factorialco/factorial-api-sdks/issues/47)) ([5a7c90e](https://github.com/factorialco/factorial-api-sdks/commit/5a7c90e46482422e19b4bf96e21c679b0b09907e))
+
 ## [2.0.2](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.1...python-v2.0.2) (2026-07-24)
 
 
