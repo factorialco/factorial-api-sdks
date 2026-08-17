@@ -144,9 +144,9 @@ def _patch_raise_on_unexpected_status(client_py: Path) -> None:
         return
 
     patched = content.replace(
-        '            auth_header_name="x-api-key",\n        )',
-        '            auth_header_name="x-api-key",\n'
-        '            raise_on_unexpected_status=True,\n        )',
+        "            auth_header_name=auth_header_name,\n        )",
+        "            auth_header_name=auth_header_name,\n"
+        "            raise_on_unexpected_status=True,\n        )",
         1,
     )
     if patched == content:
