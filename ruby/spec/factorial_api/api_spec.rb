@@ -171,6 +171,20 @@ RSpec.describe F::Api do
     end
   end
 
+  describe '401 responses' do
+    # The 401 refresh-and-retry (see oauth_spec's end-to-end examples) is
+    # exclusive to sources that can mint a replacement bearer: with a static
+    # credential there is nothing to retry with.
+    it 'propagates the error without retrying when the credential cannot be refreshed' do
+      server.responder = ->(_l, _b) { [401, '{"error":"Unauthorized"}'] }
+      api = build_api(token: 'STATIC')
+
+      expect { api.teams_team.teams_teams_get }
+        .to raise_error(F::Api::ApiError) { |error| expect(error.code).to eq(401) }
+      expect(server.requests.size).to eq(1)
+    end
+  end
+
   describe 'base_url' do
     it 'defaults to production over https' do
       config = described_class.new(api_key: 'k').client.config

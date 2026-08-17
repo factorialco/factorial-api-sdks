@@ -68,7 +68,7 @@ remains the authority on whether it works.
 ### OAuth (managed token lifecycle)
 
 For OAuth2 integrations, `F::Api::OAuth` covers the whole lifecycle: authorize
-URL, code exchange, decoding, proactive refresh, and rotation:
+URL, code exchange, decoding, proactive and reactive refresh, and rotation:
 
 ```ruby
 oauth = F::Api::OAuth.new(client_id: "...", client_secret: "...")
@@ -94,9 +94,11 @@ api.employees_employee.employees_employees_get(true, false) # required params ar
 The session checks the access token before every request and refreshes it
 when it is within `margin:` seconds of expiry (default 60, configurable via
 `oauth.session(tokens, margin: 120)`), judged by the token endpoint's
-`expires_in` — so it works even if the access token is not a JWT. Token
-endpoint failures raise `F::Api::OAuthError`, which carries the HTTP `code`
-and parsed `body`.
+`expires_in` — so it works even if the access token is not a JWT. Expiry is
+only an upper bound (a token can be revoked at any time), so if the API
+still rejects the bearer with a 401, the client refreshes reactively and
+retries that request once. Token endpoint failures raise `F::Api::OAuthError`,
+which carries the HTTP `code` and parsed `body`.
 
 ### Bring your own token source
 
@@ -113,6 +115,10 @@ end
 
 api = F::Api.new(oauth: MyTokenSource.new)
 ```
+
+A source that also responds to `refresh_after_reject!(rejected_bearer)` —
+returning whether it now holds a different bearer — opts into the built-in
+401 refresh-and-retry.
 
 For the common "forward the caller's token" case there is a shortcut:
 `access_token:` takes any callable, so one shared client can act on behalf

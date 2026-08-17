@@ -44,6 +44,32 @@ module F
         end
       end
 
+      # Every generated method funnels through ApiClient#call_api, which makes
+      # this override the SDK's request wrapper: the one seat for cross-cutting
+      # transport behavior. Today that is reauthentication — expiry-based
+      # refresh cannot see revocation, so a 401 (the API's authoritative "this
+      # bearer is dead") triggers one reactive refresh and one retry when the
+      # credential source can mint a replacement. Safe even for writes: a 401
+      # is rejected at authentication, before the action runs. Static
+      # credentials fail exactly as before.
+      class RefreshingClient < ApiClient
+        def initialize(config, session:)
+          super(config)
+          @session = session
+        end
+
+        def call_api(http_method, path, opts = {})
+          sent = @session&.access_token
+          super
+        rescue ApiError => e
+          # A rescue clause does not cover its own body: a second 401 (or a
+          # failed refresh) propagates instead of looping.
+          raise unless e.code == 401 && @session&.refresh_after_reject!(sent)
+
+          super
+        end
+      end
+
       attr_reader :client
 
       def initialize(api_key: nil, token: nil, base_url: ENV.fetch('FACTORIAL_BASE_URL', nil),
@@ -59,7 +85,7 @@ module F
           token = presence(ENV.fetch('FACTORIAL_TOKEN', nil))
         end
         validate_credentials!(api_key, token, oauth, access_token)
-        @client = ApiClient.new(build_config(api_key, token, oauth, access_token, presence(base_url)))
+        @client = build_client(build_config(api_key, token, oauth, access_token, presence(base_url)), oauth)
         @apis = {}
       end
 
@@ -97,6 +123,13 @@ module F
         return unless access_token && !access_token.respond_to?(:call)
 
         raise ArgumentError, 'access_token must be callable — for a static string use token:'
+      end
+
+      # Only a source that can mint a replacement bearer opts into the 401
+      # retry; the contract is duck-typed like `oauth:` itself.
+      def build_client(config, oauth)
+        session = oauth if oauth.respond_to?(:refresh_after_reject!)
+        RefreshingClient.new(config, session: session)
       end
 
       def build_config(api_key, token, oauth, access_token, base_url)

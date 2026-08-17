@@ -277,9 +277,50 @@ RSpec.describe F::Api::OAuth do
       expect { session.access_token }.to raise_error(F::Api::OAuthError, /invalid_grant/)
       expect(rotations).to be_empty
     end
+
+    describe '#refresh_after_reject!' do
+      it 'refreshes when the rejected token is still current and reports a retry is worth it' do
+        server.responder = ->(_l, _b) { token_response(access_token: fresh_jwt) }
+        session = build_session(build_oauth, tokens_with('revoked-token'))
+
+        expect(session.refresh_after_reject!('revoked-token')).to be(true)
+        expect(session.tokens.access_token.raw).to eq(fresh_jwt)
+        expect(rotations.map(&:refresh_token)).to eq(['REFRESH-2'])
+      end
+
+      it 'refreshes only once when concurrent requests reject the same token' do
+        server.responder = ->(_l, _b) { token_response(access_token: fresh_jwt) }
+        session = build_session(build_oauth, tokens_with('revoked-token'))
+
+        expect(session.refresh_after_reject!('revoked-token')).to be(true)
+        # The second rejection arrives late: the token it saw die is already
+        # replaced, so hitting the endpoint again would burn the single-use
+        # refresh token the first refresh just rotated in.
+        expect(session.refresh_after_reject!('revoked-token')).to be(true)
+        expect(server.requests.size).to eq(1)
+      end
+
+      it 'reports nothing to retry with when the session has no refresh token' do
+        session = build_session(build_oauth, tokens_with('revoked-token', refresh_token: nil))
+
+        expect(session.refresh_after_reject!('revoked-token')).to be(false)
+        expect(server.requests).to be_empty
+      end
+    end
   end
 
   describe 'end-to-end with F::Api' do
+    let(:rotations) { [] }
+
+    # A real Session over the fake server, its rotation block recording into
+    # `rotations` — the same shape an integrator writes.
+    def live_session(access_token)
+      build_oauth.session(F::Api::OAuth::Tokens.new('access_token' => access_token,
+                                                    'refresh_token' => 'REFRESH-1')) do |t|
+        rotations << t.refresh_token
+      end
+    end
+
     it 'refreshes mid-flight: the API request carries the rotated bearer' do
       fresh_jwt = build_jwt('exp' => Time.now.to_i + 3600)
       stale_jwt = build_jwt('exp' => Time.now.to_i + 5)
@@ -290,11 +331,7 @@ RSpec.describe F::Api::OAuth do
           FakeFactorialServer::EMPTY_PAGE
         end
       end
-      rotations = []
-      session = build_oauth.session(F::Api::OAuth::Tokens.new('access_token' => stale_jwt,
-                                                              'refresh_token' => 'REFRESH-1')) do |t|
-        rotations << t.refresh_token
-      end
+      session = live_session(stale_jwt)
 
       F::Api.new(oauth: session, base_url: server.base_url)
             .teams_team.teams_teams_get
@@ -304,6 +341,67 @@ RSpec.describe F::Api::OAuth do
       expect(api_request[:headers]['authorization']).to eq("Bearer #{fresh_jwt}")
       expect(api_request[:headers]).not_to have_key('x-api-key')
       expect(rotations).to eq(['REFRESH-2'])
+    end
+
+    it 'retries once after a 401: revocation is invisible to expiry, visible to the API' do
+      revoked_jwt = build_jwt('exp' => Time.now.to_i + 3600) # fresh by every clock
+      fresh_jwt   = build_jwt('exp' => Time.now.to_i + 7200)
+      server.responder = lambda do |line, _body|
+        next token_response(access_token: fresh_jwt) if line.start_with?('POST /oauth/token')
+
+        # Judge by the bearer actually on the wire, like real revocation does
+        # (the server records a request before answering it).
+        if server.requests.last[:headers]['authorization'] == "Bearer #{fresh_jwt}"
+          FakeFactorialServer::EMPTY_PAGE
+        else
+          [401, '{"error":"Unauthorized"}']
+        end
+      end
+
+      result = F::Api.new(oauth: live_session(revoked_jwt), base_url: server.base_url)
+                     .teams_team.teams_teams_get
+
+      expect(result.data).to eq([])
+      expect(server.requests.size).to eq(3)
+      expect(server.requests[1][:line]).to start_with('POST /oauth/token')
+      expect(server.requests.first[:headers]['authorization']).to eq("Bearer #{revoked_jwt}")
+      expect(server.requests.last[:headers]['authorization']).to eq("Bearer #{fresh_jwt}")
+      expect(rotations).to eq(['REFRESH-2'])
+    end
+
+    it 'gives up after one retry when the API keeps rejecting the bearer' do
+      fresh_jwt = build_jwt('exp' => Time.now.to_i + 7200)
+      server.responder = lambda do |line, _body|
+        if line.start_with?('POST /oauth/token')
+          token_response(access_token: fresh_jwt)
+        else
+          [401, '{"error":"Unauthorized"}']
+        end
+      end
+      api = F::Api.new(oauth: live_session(build_jwt('exp' => Time.now.to_i + 3600)),
+                       base_url: server.base_url)
+
+      expect { api.teams_team.teams_teams_get }
+        .to raise_error(F::Api::ApiError) { |error| expect(error.code).to eq(401) }
+      token_requests = server.requests.count { |r| r[:line].start_with?('POST /oauth/token') }
+      expect(token_requests).to eq(1)
+      expect(server.requests.size).to eq(3)
+    end
+
+    it 'surfaces a refresh that fails after a 401 as F::Api::OAuthError' do
+      server.responder = lambda do |line, _body|
+        if line.start_with?('POST /oauth/token')
+          [400, '{"error":"invalid_grant"}']
+        else
+          [401, '{"error":"Unauthorized"}']
+        end
+      end
+      api = F::Api.new(oauth: live_session(build_jwt('exp' => Time.now.to_i + 3600)),
+                       base_url: server.base_url)
+
+      expect { api.teams_team.teams_teams_get }
+        .to raise_error(F::Api::OAuthError, /invalid_grant/)
+      expect(rotations).to be_empty
     end
   end
 end

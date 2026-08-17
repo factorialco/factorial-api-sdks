@@ -215,8 +215,11 @@ module F
       #
       # Built through F::Api::OAuth#session; F::Api's `oauth:` calls
       # #access_token before every request, so refreshes happen mid-flight,
-      # invisibly. A failed refresh raises F::Api::OAuthError from that
-      # request's call site.
+      # invisibly. Expiry is an upper bound, not a guarantee — a token may be
+      # revoked at any time — so when the API rejects one with 401 the client
+      # refreshes reactively too (#refresh_after_reject!) and retries once.
+      # A failed refresh raises F::Api::OAuthError from that request's call
+      # site.
       class Session
         ROTATION_BLOCK_ERROR = 'F::Api::OAuth session requires a rotation block: each refresh ' \
                                'normally invalidates the previous refresh token, so persist ' \
@@ -247,6 +250,21 @@ module F
           @lock.synchronize do
             refresh! if refreshable? && @tokens.expiring_soon?(margin: margin)
             @tokens.access_token.raw
+          end
+        end
+
+        # Reactive counterpart to #access_token, called by the transport after
+        # the API rejected `rejected` with 401 — expiry is only an upper
+        # bound, and revocation is visible to the API alone. Returns whether a
+        # retry is worth it: whether the session now holds a different bearer.
+        # Single-flight under rotation: when concurrent requests fail on the
+        # same token, only the first one refreshes — the rest find the token
+        # already swapped and skip the endpoint, where a second refresh would
+        # burn the freshly rotated (single-use) refresh token.
+        def refresh_after_reject!(rejected)
+          @lock.synchronize do
+            refresh! if refreshable? && @tokens.access_token.raw == rejected
+            @tokens.access_token.raw != rejected
           end
         end
 
