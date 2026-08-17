@@ -11181,11 +11181,15 @@ class FactorialClient:
             raise ValueError(
                 "Provide api_key or token (or set FACTORIAL_API_KEY / FACTORIAL_TOKEN)"
             )
+        # An api_key travels in x-api-key; a token is an OAuth2 bearer credential.
+        auth_header_name, prefix = (
+            ("x-api-key", "") if api_key else ("Authorization", "Bearer")
+        )
         self._client = AuthenticatedClient(
             base_url=base_url,
             token=auth_token,
-            prefix="",
-            auth_header_name="x-api-key",
+            prefix=prefix,
+            auth_header_name=auth_header_name,
             raise_on_unexpected_status=True,
         )
         self.api_public = ApiPublicNamespace(self._client)
