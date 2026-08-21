@@ -39,8 +39,99 @@ api = F::Api.new(api_key: "YOUR_KEY")
 api = F::Api.new(token: "YOUR_BEARER_TOKEN")
 ```
 
-When an argument is omitted, the client falls back to environment variables:
-`FACTORIAL_API_KEY` for the API key, `FACTORIAL_TOKEN` for the token.
+When **no credential is passed at all**, the client falls back to the
+`FACTORIAL_API_KEY` / `FACTORIAL_TOKEN` environment variables. Passing any
+credential explicitly disables the env fallback entirely, so a leftover
+exported variable can never ride along with (or veto) the credential you
+actually chose.
+
+### Inspecting a token
+
+Factorial credentials are opaque strings that happen to be JWTs. `F::Api::Token`
+decodes one — **without verifying its signature**; verification is the
+server's job — so you can read its claims and plan refreshes:
+
+```ruby
+token = F::Api::Token.new(ENV["FACTORIAL_TOKEN"])
+
+token.claims                       # => {"exp" => 1767225600, "cid" => "42", ...}
+token[:cid]                        # => "42"
+token.expires_at                   # => 2026-01-01 00:00:00 UTC
+token.expired?                     # => false
+token.expiring_soon?(margin: 120)  # => true within 2 minutes of expiry
+```
+
+A credential that isn't a decodable JWT is handled gracefully: `claims` is
+empty, `expires_at` is `nil`, and `expired?` never reports true — the API
+remains the authority on whether it works.
+
+### OAuth (managed token lifecycle)
+
+For OAuth2 integrations, `F::Api::OAuth` covers the whole lifecycle: authorize
+URL, code exchange, decoding, proactive and reactive refresh, and rotation:
+
+```ruby
+oauth = F::Api::OAuth.new(client_id: "...", client_secret: "...")
+# Falls back to FACTORIAL_OAUTH_CLIENT_ID / FACTORIAL_OAUTH_CLIENT_SECRET.
+
+# 1. Send the user to authorize (browser step, by design):
+oauth.authorize_url(redirect_uri: "https://myapp.com/callback")
+
+# 2. Exchange the code your callback receives (single-use, ~10 min):
+tokens = oauth.exchange_code(params[:code], redirect_uri: "https://myapp.com/callback")
+
+# 3. Wrap the tokens in a self-refreshing session:
+session = oauth.session(tokens) do |rotated|
+  # Refresh tokens are SINGLE-USE: each refresh invalidates the previous
+  # one. Persist the new one here, or the chain breaks.
+  save_refresh_token!(rotated.refresh_token)
+end
+
+api = F::Api.new(oauth: session)
+api.employees_employee.employees_employees_get(true, false) # required params are positional
+```
+
+The session checks the access token before every request and refreshes it
+when it is within `margin:` seconds of expiry (default 60, configurable via
+`oauth.session(tokens, margin: 120)`), judged by the token endpoint's
+`expires_in` — so it works even if the access token is not a JWT. Expiry is
+only an upper bound (a token can be revoked at any time), so if the API
+still rejects the bearer with a 401, the client refreshes reactively and
+retries that request once. Token endpoint failures raise `F::Api::OAuthError`,
+which carries the HTTP `code` and parsed `body`.
+
+### Bring your own token source
+
+`oauth:` is duck-typed: any object that responds to `access_token` and
+returns the bearer string works — the built-in session is just the
+batteries-included implementation. This is the composition seam for other
+token sources (your own cache or vault, or another Factorial gem's token
+client) without coupling them to this gem:
+
+```ruby
+class MyTokenSource
+  def access_token = fetch_current_token_from_somewhere
+end
+
+api = F::Api.new(oauth: MyTokenSource.new)
+```
+
+A source that also responds to `refresh_after_reject!(rejected_bearer)` —
+returning whether it now holds a different bearer — opts into the built-in
+401 refresh-and-retry.
+
+For the common "forward the caller's token" case there is a shortcut:
+`access_token:` takes any callable, so one shared client can act on behalf
+of whoever is making the current request:
+
+```ruby
+api = F::Api.new(access_token: -> { Current.factorial_token })
+```
+
+Both forms are consulted on every request — sometimes more than once per
+request — so keep them cheap, idempotent, and thread-safe. `token:`,
+`oauth:` and `access_token:` are mutually exclusive: each is a different
+way of supplying the same `Authorization: Bearer` header.
 
 ### Custom base URL
 

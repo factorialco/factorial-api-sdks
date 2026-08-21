@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday', '>= 1.0.1', '< 3.0'
   s.add_dependency 'faraday-multipart', '~> 1.0'
   s.add_dependency 'marcel', '~> 1.0'
+  s.add_dependency 'oauth2', '~> 2.0'
 
   s.files = Dir.glob('lib/**/*.rb') + %w[README.md]
   s.executables   = []

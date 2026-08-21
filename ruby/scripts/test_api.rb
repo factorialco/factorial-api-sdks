@@ -16,20 +16,22 @@
 
 require_relative '../lib/factorial_api'
 
-# Treat unset and empty-string env vars the same.
-api_key = ENV.fetch('FACTORIAL_API_KEY', nil)
-token   = ENV.fetch('FACTORIAL_TOKEN', nil)
-api_key = nil if api_key && api_key.empty?
-token   = nil if token && token.empty?
+begin
+  api = F::Api.new
+rescue ArgumentError => e
+  abort("ERROR: #{e.message}")
+end
 
-abort('ERROR: set FACTORIAL_API_KEY or FACTORIAL_TOKEN before running') unless api_key || token
-warn('NOTE: both credentials set; both auth headers will be sent') if api_key && token
+# Read what actually got configured, so the banner can never disagree with
+# what goes on the wire.
+key_set   = !api.client.config.api_key['x-api-key'].nil?
+token_set = !api.client.config.access_token.nil?
+warn('NOTE: both credentials set; both auth headers will be sent') if key_set && token_set
 
-api = F::Api.new(api_key: api_key, token: token)
 api.client.config.debugging = true if ARGV.include?('--debug')
 
 puts "Host: #{api.client.config.host}"
-puts "Auth: #{token ? 'OAuth2 token' : 'API key'}"
+puts "Auth: #{token_set ? 'OAuth2 token' : 'API key'}"
 
 begin
   response = api.teams_team.teams_teams_get
