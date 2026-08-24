@@ -145,6 +145,14 @@ content = File.read(ENTRYPOINT)
 File.write(ENTRYPOINT, "require 'f'\n#{content}") unless content.match?(/^require 'f'$/)
 File.open(ENTRYPOINT, 'a') { |f| f.puts(REQUIRE_LINE) } unless File.read(ENTRYPOINT).include?(REQUIRE_LINE)
 
+# --- 8.5. Emit the ergonomic layer (stage 2) ---
+# After step 8 on purpose: the emitter loads the gem to reflect on the
+# regenerated classes, so the entrypoint requires must already be attached.
+# It rewrites lib/factorial_api/sdk.rb and idempotently re-adds its require
+# to the entrypoint; the sanity check and the facade specs then cover it.
+step 'Emitting the ergonomic layer'
+run!('bundle', 'exec', 'ruby', 'scripts/generate_sdk_layer.rb', normalized)
+
 # --- 9. Sanity check ---
 step 'Verifying the gem loads'
 # Quoted heredoc: the #{...} below is passed through literally, for the child
