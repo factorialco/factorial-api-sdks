@@ -23,8 +23,11 @@ require "factorial_api"
 
 api = F::Api.new(api_key: "YOUR_KEY")
 
-response = api.teams_team.teams_teams_get
+response = api.teams.team.list
 response.data.each { |team| puts team.name }
+
+api.teams.team.get(id: 123)
+api.employees.employee.all(only_active: true, only_managers: false)
 ```
 
 ## Authentication
@@ -88,7 +91,7 @@ session = oauth.session(tokens) do |rotated|
 end
 
 api = F::Api.new(oauth: session)
-api.employees_employee.employees_employees_get(true, false) # required params are positional
+api.employees.employee.list(only_active: true, only_managers: false)
 ```
 
 The session checks the access token before every request and refreshes it
@@ -145,17 +148,31 @@ api = F::Api.new(api_key: "YOUR_KEY", base_url: "http://localhost:3000")
 
 ## SDK structure
 
-`F::Api` exposes one accessor per API resource, named after the underlying
-generated class in snake_case:
+`F::Api` exposes the API as `api.<namespace>.<resource>.<method>` — one
+namespace per API domain, one resource per endpoint group:
 
-| Generated class           | Accessor                 |
-|---------------------------|--------------------------|
-| `F::Api::TeamsTeamApi`         | `api.teams_team`         |
-| `F::Api::EmployeesEmployeeApi` | `api.employees_employee` |
-| `F::Api::TimeoffLeaveApi`      | `api.timeoff_leave`      |
+```ruby
+api.teams.team.list                # GET    .../teams/teams
+api.teams.team.get(id: 123)        # GET    .../teams/teams/123
+api.teams.team.create              # POST   .../teams/teams
+api.teams.team.update(id: 123)     # PUT    .../teams/teams/123
+api.teams.team.delete(id: 123)     # DELETE .../teams/teams/123
+api.employees.employee.terminate   # POST   .../employees/employees/terminate
+```
 
-The full list is available at runtime via `F::Api::API_CLASSES.keys`. For
-the per-endpoint reference, see the
+Collection endpoints map to `list`/`create`/`update`/`delete`, member
+(`/{id}`) endpoints to `get`/`update`/`delete`, and any other path segment
+becomes a method named after it (like `terminate` above). Parameters the
+spec marks as required — path, query or form alike — are **named
+keywords**; everything optional travels in the trailing keywords exactly
+as in the generated methods (`query_params:`, the request body under its
+`*_request` keyword, …):
+
+```ruby
+api.teams.team.create(teams_teams_post_request: { name: "Platform" })
+```
+
+For the endpoint-by-endpoint reference, see the
 [Factorial API docs](https://apidoc.factorialhr.com).
 
 ## Pagination
@@ -165,18 +182,16 @@ returns an object with `data` (the items) and `meta` (`has_next_page`,
 `end_cursor`, `total`, …). The pagination params (`after_id`, `limit`) are
 passed via `query_params:`.
 
-Note: query params the spec marks as *required* are generated as positional
-arguments — for employees, `only_active` and `only_managers` below.
-
 ### Single page
 
 ```ruby
-page = api.employees_employee.employees_employees_get(true, false, query_params: { limit: 50 })
+page = api.employees.employee.list(only_active: true, only_managers: false,
+                                   query_params: { limit: 50 })
 
 # Fetch the next page manually
 if page.meta.has_next_page
-  next_page = api.employees_employee.employees_employees_get(
-    true, false,
+  next_page = api.employees.employee.list(
+    only_active: true, only_managers: false,
     query_params: { limit: 50, after_id: page.meta.end_cursor }
   )
 end
@@ -184,14 +199,12 @@ end
 
 ### Stream all pages (lazy Enumerator)
 
-`F::Api.paginate` follows cursors automatically. Give it a block that performs
-the list call with the pagination params it hands you; it returns a lazy
-`Enumerator`, so pages are only fetched as items are consumed:
+Every resource with a `list` also has `paginate`, which follows cursors
+automatically and returns a lazy `Enumerator` — pages are only fetched as
+items are consumed. It takes the same keywords as `list`:
 
 ```ruby
-employees = F::Api.paginate do |page|
-  api.employees_employee.employees_employees_get(true, false, query_params: page)
-end
+employees = api.employees.employee.paginate(only_active: true, only_managers: false)
 
 employees.each { |employee| puts employee.full_name }
 employees.first(10)   # fetches a single page
@@ -199,13 +212,35 @@ employees.first(10)   # fetches a single page
 
 ### Collect all into an array
 
+`all` drains every page into one Array. Optional safety caps: `limit:`
+(page size, max 100) and `max_items:` (total):
+
 ```ruby
-# Optional safety caps: limit (page size, max 100) and max_items (total)
-pages = F::Api.paginate(limit: 100, max_items: 500) do |page|
+all_employees = api.employees.employee.all(only_active: true, only_managers: false,
+                                           limit: 100, max_items: 500)
+```
+
+## Low-level access
+
+The domain accessors wrap a generated client that is public too. Each
+generated class has a snake_case accessor, and its methods are named after
+the full route — required params positional, everything else in a trailing
+options hash:
+
+```ruby
+api.teams_team.teams_teams_get                               # GET .../teams/teams
+api.employees_employee.employees_employees_get(true, false)  # required params positional
+```
+
+The full list is available at runtime via `F::Api::API_CLASSES.keys`. Both
+layers share the same client, credentials and connection, so they can be
+mixed freely. `F::Api.paginate` is the block form of `paginate` for these
+raw calls:
+
+```ruby
+employees = F::Api.paginate(limit: 100, max_items: 500) do |page|
   api.employees_employee.employees_employees_get(true, false, query_params: page)
 end
-
-all_employees = pages.to_a
 ```
 
 ## Webhooks
@@ -238,7 +273,7 @@ Non-2xx responses raise `F::Api::ApiError`:
 
 ```ruby
 begin
-  api.teams_team.teams_teams_get
+  api.teams.team.list
 rescue F::Api::ApiError => e
   puts e.code           # e.g. 401
   puts e.response_body
