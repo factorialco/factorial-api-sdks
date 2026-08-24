@@ -698,3 +698,4 @@ module F::Api
   end
 end
 require 'factorial_api/api'
+require 'factorial_api/sdk'
