@@ -201,7 +201,8 @@ end
 
 Every resource with a `list` also has `paginate`, which follows cursors
 automatically and returns a lazy `Enumerator` — pages are only fetched as
-items are consumed. It takes the same keywords as `list`:
+items are consumed. It takes the same keywords as `list`, plus the optional
+caps `limit:` (page size, max 100) and `max_items:` (total):
 
 ```ruby
 employees = api.employees.employee.paginate(only_active: true, only_managers: false)

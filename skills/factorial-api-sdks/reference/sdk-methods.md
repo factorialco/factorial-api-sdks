@@ -2,7 +2,7 @@
 
 Auto-generated from the OpenAPI spec. 550 endpoints across 37 namespaces.
 
-The SDK call column shows the **TypeScript** accessor and request shape (`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of `all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. The Ruby column shows the full call on an `F::Api.new` client, with its required positional arguments; optional query params go in a trailing `query_params:` hash and bodies in the matching `opts` key (paginate with `F::Api.paginate`). `body` contents are endpoint-specific; see the [online reference](https://apidoc.factorialhr.com/reference) for exact fields.
+The SDK call column shows the **TypeScript** accessor and request shape (`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of `all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. The Ruby column shows the full call on an `F::Api.new` client, with its required params as named keywords; optional query params go in a trailing `query_params:` hash and bodies under their `*_request` keyword (every listable resource also has `paginate` and `all`). `body` contents are endpoint-specific; see the [online reference](https://apidoc.factorialhr.com/reference) for exact fields.
 
 ## api_public
 
