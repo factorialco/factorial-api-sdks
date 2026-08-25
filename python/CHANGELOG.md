@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/factorialco/factorial-api-sdks/compare/python-v1.3.2...python-v1.3.3) (2026-08-25)
+
+
+### Bug Fixes
+
+* **python:** make from_dict/to_dict null-safe for nullable enum fields ([#56](https://github.com/factorialco/factorial-api-sdks/issues/56)) ([38e45cd](https://github.com/factorialco/factorial-api-sdks/commit/38e45cd776bfe91533372a845b4a269c113779de))
+
 ## [1.3.2](https://github.com/factorialco/factorial-api-sdks/compare/python-v1.3.1...python-v1.3.2) (2026-07-24)
 
 
