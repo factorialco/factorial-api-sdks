@@ -50,7 +50,7 @@ class FinanceLedgerAccountResource:
 
         balance_type: str | Unset = UNSET
         if not isinstance(self.balance_type, Unset):
-            balance_type = self.balance_type.value
+            balance_type = self.balance_type.value if self.balance_type is not None else None
 
         external_id = self.external_id
 

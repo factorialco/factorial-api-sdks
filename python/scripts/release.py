@@ -99,14 +99,22 @@ def _patch_enum_none_safety(models_dir: Path) -> None:
     The Factorial API returns null for many enum fields that the spec declares as
     non-nullable. Patch all generated model from_dict methods so that enum
     constructor calls like SomeEnum(value) become SomeEnum(value) if value is not None else None.
-    """
-    import re as _re
 
+    openapi-python-client emits the call on one line, or wrapped across several
+    lines when it is long — both must be patched or from_dict raises ValueError
+    (`None is not a valid SomeEnum`) at parse time on a null value:
+
+        x = SomeEnum(_x)
+        # ...and...
+        x = SomeEnum(
+            _x
+        )
+    """
     # Collect all enum class names from the models directory
     enum_classes: set[str] = set()
     for fpath in models_dir.glob("*.py"):
         content = fpath.read_text()
-        for m in _re.finditer(r"class (\w+)\(str, Enum\)", content):
+        for m in re.finditer(r"class (\w+)\(str, Enum\)", content):
             enum_classes.add(m.group(1))
 
     patched_files = 0
@@ -114,16 +122,82 @@ def _patch_enum_none_safety(models_dir: Path) -> None:
         content = fpath.read_text()
         original = content
         for enum_cls in enum_classes:
-            pattern = rf"({_re.escape(enum_cls)})\((\w+)\)"
-            def _repl(m: _re.Match) -> str:
-                cls_name, var_name = m.group(1), m.group(2)
-                return f"{cls_name}({var_name}) if {var_name} is not None else None"
-            content = _re.sub(pattern, _repl, content)
+            # Anchored on `SomeEnum(<localvar>)`, single- or multi-line:
+            #   \b            — don't match FooEnum inside BarFooEnum
+            #   \s*…\s*       — absorb the newline/indent of the wrapped form
+            #   (\w+)         — a bare local like `_x`; excludes required-field
+            #                   calls `SomeEnum(d.pop("x"))` and multi-arg calls
+            #   (?! if \1 …)  — skip calls we already guarded, so re-runs are
+            #                   idempotent (no double `if … else None`)
+            pattern = re.compile(
+                rf"\b{re.escape(enum_cls)}\(\s*(\w+)\s*\)"
+                rf"(?! if \1 is not None else None)"
+            )
+            def _repl(m: re.Match) -> str:
+                ctor, var_name = m.group(0), m.group(1)
+                return f"{ctor} if {var_name} is not None else None"
+            content = pattern.sub(_repl, content)
         if content != original:
             fpath.write_text(content)
             patched_files += 1
 
     print(f"  Patched {patched_files} model files for enum None-safety")
+
+
+def _patch_enum_none_safety_to_dict(models_dir: Path) -> None:
+    """
+    Symmetric counterpart to _patch_enum_none_safety, for the serialization side.
+
+    A nullable enum field has three states in from_dict: UNSET (key absent), None
+    (key present, value null) and the enum value. But the generated to_dict guards
+    the enum access with only `isinstance(..., Unset)`, so a None slips past and
+    crashes on `.value`:
+
+        bank_number_format: str | Unset = UNSET
+        if not isinstance(self.bank_number_format, Unset):
+            bank_number_format = self.bank_number_format.value   # None.value -> AttributeError
+
+    Make that access None-tolerant, preserving all three states on the round trip
+    (UNSET stays omitted, None serializes back to null, an enum to its value):
+
+        if not isinstance(self.bank_number_format, Unset):
+            bank_number_format = self.bank_number_format.value if self.bank_number_format is not None else None
+
+    Scope: only the OPTIONAL sites — a `self.x.value` guarded by a preceding
+    `if not isinstance(self.x, Unset):`. Those are exactly the fields from_dict
+    can set to None, matching _patch_enum_none_safety (which only null-guards
+    optional-field constructors). Required-field serializations (a bare
+    `x = self.x.value`, no isinstance guard) are left untouched: from_dict never
+    yields None for them (it raises first), so a guard there is dead code. This
+    keeps the patched surface tight and consistent with the parsing side.
+
+    Idempotent: the rewritten line no longer ends in `.value`, so re-runs skip it.
+    """
+    # The two-line optional-enum serialization block. The backreference ties the
+    # isinstance target to the .value target, so a bare/required `x.value` (no
+    # preceding isinstance guard) never matches.
+    pattern = re.compile(
+        r"^(?P<ind1>\s*)if not isinstance\((?P<attr>self\.\w+), Unset\):\n"
+        r"(?P<ind2>\s*)(?P<var>\w+) = (?P=attr)\.value$",
+        re.MULTILINE,
+    )
+
+    def _repl(m: re.Match) -> str:
+        ind1, ind2, attr, var = m.group("ind1"), m.group("ind2"), m.group("attr"), m.group("var")
+        return (
+            f"{ind1}if not isinstance({attr}, Unset):\n"
+            f"{ind2}{var} = {attr}.value if {attr} is not None else None"
+        )
+
+    patched_files = 0
+    for fpath in models_dir.glob("*.py"):
+        content = fpath.read_text()
+        new_content = pattern.sub(_repl, content)
+        if new_content != content:
+            fpath.write_text(new_content)
+            patched_files += 1
+
+    print(f"  Patched {patched_files} model files for enum None-safety in to_dict")
 
 
 def _patch_raise_on_unexpected_status(client_py: Path) -> None:
@@ -305,6 +379,7 @@ def main() -> None:
     # Post-generation patches to fix spec inaccuracies
     print("  Post-processing generated models...")
     _patch_enum_none_safety(GENERATED_DIR / "models")
+    _patch_enum_none_safety_to_dict(GENERATED_DIR / "models")
 
     if GENERATE_SCRIPT.exists():
         run(["python3", str(GENERATE_SCRIPT)])

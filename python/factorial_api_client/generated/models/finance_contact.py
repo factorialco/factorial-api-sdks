@@ -67,7 +67,7 @@ class FinanceContact:
 
         preferred_payment_method: str | Unset = UNSET
         if not isinstance(self.preferred_payment_method, Unset):
-            preferred_payment_method = self.preferred_payment_method.value
+            preferred_payment_method = self.preferred_payment_method.value if self.preferred_payment_method is not None else None
 
         website = self.website
 
@@ -136,7 +136,7 @@ class FinanceContact:
         else:
             preferred_payment_method = FinanceContactPreferredPaymentMethod(
                 _preferred_payment_method
-            )
+            ) if _preferred_payment_method is not None else None
 
         website = d.pop("website", UNSET)
 

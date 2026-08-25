@@ -54,13 +54,13 @@ class CompensationsConcept:
 
         category: str | Unset = UNSET
         if not isinstance(self.category, Unset):
-            category = self.category.value
+            category = self.category.value if self.category is not None else None
 
         unit_name = self.unit_name
 
         unit_type: str | Unset = UNSET
         if not isinstance(self.unit_type, Unset):
-            unit_type = self.unit_type.value
+            unit_type = self.unit_type.value if self.unit_type is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)

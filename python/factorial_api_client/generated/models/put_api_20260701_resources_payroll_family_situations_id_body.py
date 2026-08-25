@@ -33,7 +33,7 @@ class PutApi20260701ResourcesPayrollFamilySituationsIdBody:
 
         civil_status: str | Unset = UNSET
         if not isinstance(self.civil_status, Unset):
-            civil_status = self.civil_status.value
+            civil_status = self.civil_status.value if self.civil_status is not None else None
 
         number_of_dependants = self.number_of_dependants
 
@@ -66,7 +66,7 @@ class PutApi20260701ResourcesPayrollFamilySituationsIdBody:
         else:
             civil_status = PutApi20260701ResourcesPayrollFamilySituationsIdBodyCivilStatus(
                 _civil_status
-            )
+            ) if _civil_status is not None else None
 
         number_of_dependants = d.pop("number_of_dependants", UNSET)
 

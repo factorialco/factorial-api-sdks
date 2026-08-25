@@ -67,11 +67,11 @@ class PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertBody:
 
         balance_type: str | Unset = UNSET
         if not isinstance(self.balance_type, Unset):
-            balance_type = self.balance_type.value
+            balance_type = self.balance_type.value if self.balance_type is not None else None
 
         operation_type: str | Unset = UNSET
         if not isinstance(self.operation_type, Unset):
-            operation_type = self.operation_type.value
+            operation_type = self.operation_type.value if self.operation_type is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -131,7 +131,7 @@ class PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertBody:
             balance_type = (
                 PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertBodyBalanceType(
                     _balance_type
-                )
+                ) if _balance_type is not None else None
             )
 
         _operation_type = d.pop("operation_type", UNSET)
@@ -144,7 +144,7 @@ class PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertBody:
             operation_type = (
                 PostApi20260701ResourcesFinanceLedgerAccountResourcesUpsertBodyOperationType(
                     _operation_type
-                )
+                ) if _operation_type is not None else None
             )
 
         post_api_20260701_resources_finance_ledger_account_resources_upsert_body = cls(

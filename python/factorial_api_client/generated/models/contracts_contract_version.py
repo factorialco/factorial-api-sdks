@@ -191,7 +191,7 @@ class ContractsContractVersion:
 
         annual_working_time_distribution: str | Unset = UNSET
         if not isinstance(self.annual_working_time_distribution, Unset):
-            annual_working_time_distribution = self.annual_working_time_distribution.value
+            annual_working_time_distribution = self.annual_working_time_distribution.value if self.annual_working_time_distribution is not None else None
 
         version_data: dict[str, Any] | Unset = UNSET
         if not isinstance(self.version_data, Unset):
@@ -421,7 +421,7 @@ class ContractsContractVersion:
             annual_working_time_distribution = (
                 ContractsContractVersionAnnualWorkingTimeDistribution(
                     _annual_working_time_distribution
-                )
+                ) if _annual_working_time_distribution is not None else None
             )
 
         _version_data = d.pop("version_data", UNSET)

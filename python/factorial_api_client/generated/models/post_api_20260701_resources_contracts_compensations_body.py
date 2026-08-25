@@ -63,7 +63,7 @@ class PostApi20260701ResourcesContractsCompensationsBody:
 
         time_condition: str | Unset = UNSET
         if not isinstance(self.time_condition, Unset):
-            time_condition = self.time_condition.value
+            time_condition = self.time_condition.value if self.time_condition is not None else None
 
         minimum_amount_of_hours = self.minimum_amount_of_hours
 
@@ -144,7 +144,7 @@ class PostApi20260701ResourcesContractsCompensationsBody:
         else:
             time_condition = PostApi20260701ResourcesContractsCompensationsBodyTimeCondition(
                 _time_condition
-            )
+            ) if _time_condition is not None else None
 
         minimum_amount_of_hours = d.pop("minimum_amount_of_hours", UNSET)
 

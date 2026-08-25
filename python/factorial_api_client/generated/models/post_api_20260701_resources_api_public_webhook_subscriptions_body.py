@@ -47,7 +47,7 @@ class PostApi20260701ResourcesApiPublicWebhookSubscriptionsBody:
 
         api_version: str | Unset = UNSET
         if not isinstance(self.api_version, Unset):
-            api_version = self.api_version.value
+            api_version = self.api_version.value if self.api_version is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -91,7 +91,7 @@ class PostApi20260701ResourcesApiPublicWebhookSubscriptionsBody:
         else:
             api_version = PostApi20260701ResourcesApiPublicWebhookSubscriptionsBodyApiVersion(
                 _api_version
-            )
+            ) if _api_version is not None else None
 
         post_api_20260701_resources_api_public_webhook_subscriptions_body = cls(
             subscription_type=subscription_type,

@@ -48,13 +48,13 @@ class PostApi20260701ResourcesFinanceJournalEntriesBody:
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
+            type_ = self.type_.value if self.type_ is not None else None
 
         description = self.description
 
         status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
-            status = self.status.value
+            status = self.status.value if self.status is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)

@@ -75,7 +75,7 @@ class BankingCardPayment:
 
         rejected_reason: str | Unset = UNSET
         if not isinstance(self.rejected_reason, Unset):
-            rejected_reason = self.rejected_reason.value
+            rejected_reason = self.rejected_reason.value if self.rejected_reason is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)

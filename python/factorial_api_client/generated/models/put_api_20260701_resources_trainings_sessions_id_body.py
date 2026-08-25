@@ -62,7 +62,7 @@ class PutApi20260701ResourcesTrainingsSessionsIdBody:
 
         schedule: str | Unset = UNSET
         if not isinstance(self.schedule, Unset):
-            schedule = self.schedule.value
+            schedule = self.schedule.value if self.schedule is not None else None
 
         link = self.link
 

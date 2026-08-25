@@ -173,7 +173,7 @@ class PostApi20260701ResourcesTimeoffAllowancesBody:
 
         frequency: str | Unset = UNSET
         if not isinstance(self.frequency, Unset):
-            frequency = self.frequency.value
+            frequency = self.frequency.value if self.frequency is not None else None
 
         maximum_amount_in_cents = self.maximum_amount_in_cents
 
@@ -181,11 +181,11 @@ class PostApi20260701ResourcesTimeoffAllowancesBody:
 
         range_type: str | Unset = UNSET
         if not isinstance(self.range_type, Unset):
-            range_type = self.range_type.value
+            range_type = self.range_type.value if self.range_type is not None else None
 
         tenure_period_transition: str | Unset = UNSET
         if not isinstance(self.tenure_period_transition, Unset):
-            tenure_period_transition = self.tenure_period_transition.value
+            tenure_period_transition = self.tenure_period_transition.value if self.tenure_period_transition is not None else None
 
         tenure_periods_enabled = self.tenure_periods_enabled
 
@@ -335,7 +335,7 @@ class PostApi20260701ResourcesTimeoffAllowancesBody:
             tenure_period_transition = (
                 PostApi20260701ResourcesTimeoffAllowancesBodyTenurePeriodTransition(
                     _tenure_period_transition
-                )
+                ) if _tenure_period_transition is not None else None
             )
 
         tenure_periods_enabled = d.pop("tenure_periods_enabled", UNSET)
