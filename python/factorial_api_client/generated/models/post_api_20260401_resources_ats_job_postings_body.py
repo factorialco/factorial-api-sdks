@@ -84,15 +84,15 @@ class PostApi20260401ResourcesAtsJobPostingsBody:
 
         contract_type: str | Unset = UNSET
         if not isinstance(self.contract_type, Unset):
-            contract_type = self.contract_type.value
+            contract_type = self.contract_type.value if self.contract_type is not None else None
 
         workplace_type: str | Unset = UNSET
         if not isinstance(self.workplace_type, Unset):
-            workplace_type = self.workplace_type.value
+            workplace_type = self.workplace_type.value if self.workplace_type is not None else None
 
         schedule_type: str | Unset = UNSET
         if not isinstance(self.schedule_type, Unset):
-            schedule_type = self.schedule_type.value
+            schedule_type = self.schedule_type.value if self.schedule_type is not None else None
 
         team_id = self.team_id
 
@@ -100,7 +100,7 @@ class PostApi20260401ResourcesAtsJobPostingsBody:
 
         salary_format: str | Unset = UNSET
         if not isinstance(self.salary_format, Unset):
-            salary_format = self.salary_format.value
+            salary_format = self.salary_format.value if self.salary_format is not None else None
 
         salary_from_amount_in_cents = self.salary_from_amount_in_cents
 
@@ -108,7 +108,7 @@ class PostApi20260401ResourcesAtsJobPostingsBody:
 
         salary_period: str | Unset = UNSET
         if not isinstance(self.salary_period, Unset):
-            salary_period = self.salary_period.value
+            salary_period = self.salary_period.value if self.salary_period is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -189,7 +189,7 @@ class PostApi20260401ResourcesAtsJobPostingsBody:
         else:
             workplace_type = PostApi20260401ResourcesAtsJobPostingsBodyWorkplaceType(
                 _workplace_type
-            )
+            ) if _workplace_type is not None else None
 
         _schedule_type = d.pop("schedule_type", UNSET)
         schedule_type: PostApi20260401ResourcesAtsJobPostingsBodyScheduleType | Unset

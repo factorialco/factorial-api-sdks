@@ -63,11 +63,11 @@ class PostApi20260401ResourcesPerformanceReviewProcessesBody:
 
         reviewer_strategies: str | Unset = UNSET
         if not isinstance(self.reviewer_strategies, Unset):
-            reviewer_strategies = self.reviewer_strategies.value
+            reviewer_strategies = self.reviewer_strategies.value if self.reviewer_strategies is not None else None
 
         target_strategy: str | Unset = UNSET
         if not isinstance(self.target_strategy, Unset):
-            target_strategy = self.target_strategy.value
+            target_strategy = self.target_strategy.value if self.target_strategy is not None else None
 
         arguments: list[int] | Unset = UNSET
         if not isinstance(self.arguments, Unset):
@@ -136,7 +136,7 @@ class PostApi20260401ResourcesPerformanceReviewProcessesBody:
             reviewer_strategies = (
                 PostApi20260401ResourcesPerformanceReviewProcessesBodyReviewerStrategies(
                     _reviewer_strategies
-                )
+                ) if _reviewer_strategies is not None else None
             )
 
         _target_strategy = d.pop("target_strategy", UNSET)
@@ -148,7 +148,7 @@ class PostApi20260401ResourcesPerformanceReviewProcessesBody:
         else:
             target_strategy = PostApi20260401ResourcesPerformanceReviewProcessesBodyTargetStrategy(
                 _target_strategy
-            )
+            ) if _target_strategy is not None else None
 
         arguments = cast(list[int], d.pop("arguments", UNSET))
 

@@ -119,13 +119,13 @@ class PutApi20260401ResourcesContractsContractVersionsIdBody:
 
         bank_holiday_treatment: str | Unset = UNSET
         if not isinstance(self.bank_holiday_treatment, Unset):
-            bank_holiday_treatment = self.bank_holiday_treatment.value
+            bank_holiday_treatment = self.bank_holiday_treatment.value if self.bank_holiday_treatment is not None else None
 
         working_time_percentage_in_cents = self.working_time_percentage_in_cents
 
         annual_working_time_distribution: str | Unset = UNSET
         if not isinstance(self.annual_working_time_distribution, Unset):
-            annual_working_time_distribution = self.annual_working_time_distribution.value
+            annual_working_time_distribution = self.annual_working_time_distribution.value if self.annual_working_time_distribution is not None else None
 
         de_base_salary_type_id = self.de_base_salary_type_id
 
@@ -234,7 +234,7 @@ class PutApi20260401ResourcesContractsContractVersionsIdBody:
             bank_holiday_treatment = (
                 PutApi20260401ResourcesContractsContractVersionsIdBodyBankHolidayTreatment(
                     _bank_holiday_treatment
-                )
+                ) if _bank_holiday_treatment is not None else None
             )
 
         working_time_percentage_in_cents = d.pop("working_time_percentage_in_cents", UNSET)

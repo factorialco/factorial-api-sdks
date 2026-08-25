@@ -93,7 +93,7 @@ class DocumentsDocument:
 
         signature_status: str | Unset = UNSET
         if not isinstance(self.signature_status, Unset):
-            signature_status = self.signature_status.value
+            signature_status = self.signature_status.value if self.signature_status is not None else None
 
         signees: list[int] | Unset = UNSET
         if not isinstance(self.signees, Unset):

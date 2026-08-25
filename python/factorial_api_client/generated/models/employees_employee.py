@@ -180,7 +180,7 @@ class EmployeesEmployee:
 
         bank_number_format: str | Unset = UNSET
         if not isinstance(self.bank_number_format, Unset):
-            bank_number_format = self.bank_number_format.value
+            bank_number_format = self.bank_number_format.value if self.bank_number_format is not None else None
 
         legal_entity_id = self.legal_entity_id
 

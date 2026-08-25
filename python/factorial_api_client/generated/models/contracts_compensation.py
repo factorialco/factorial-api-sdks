@@ -81,7 +81,7 @@ class ContractsCompensation:
 
         time_condition: str | Unset = UNSET
         if not isinstance(self.time_condition, Unset):
-            time_condition = self.time_condition.value
+            time_condition = self.time_condition.value if self.time_condition is not None else None
 
         minimum_amount_of_hours = self.minimum_amount_of_hours
 

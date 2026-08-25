@@ -66,11 +66,11 @@ class PostApi20260401ResourcesAttendanceShiftsBody:
 
         location_type: str | Unset = UNSET
         if not isinstance(self.location_type, Unset):
-            location_type = self.location_type.value
+            location_type = self.location_type.value if self.location_type is not None else None
 
         source: str | Unset = UNSET
         if not isinstance(self.source, Unset):
-            source = self.source.value
+            source = self.source.value if self.source is not None else None
 
         time_settings_break_configuration_id = self.time_settings_break_configuration_id
 

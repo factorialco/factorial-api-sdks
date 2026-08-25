@@ -134,7 +134,7 @@ class TimeoffAllowance:
 
         accrued_units_availability: str | Unset = UNSET
         if not isinstance(self.accrued_units_availability, Unset):
-            accrued_units_availability = self.accrued_units_availability.value
+            accrued_units_availability = self.accrued_units_availability.value if self.accrued_units_availability is not None else None
 
         carry_over_days = self.carry_over_days
 
@@ -146,7 +146,7 @@ class TimeoffAllowance:
 
         days_type: str | Unset = UNSET
         if not isinstance(self.days_type, Unset):
-            days_type = self.days_type.value
+            days_type = self.days_type.value if self.days_type is not None else None
 
         employee_carry_over_starting_year = self.employee_carry_over_starting_year
 
@@ -154,7 +154,7 @@ class TimeoffAllowance:
 
         frequency: str | Unset = UNSET
         if not isinstance(self.frequency, Unset):
-            frequency = self.frequency.value
+            frequency = self.frequency.value if self.frequency is not None else None
 
         holiday_allowance_in_cents = self.holiday_allowance_in_cents
 
@@ -162,7 +162,7 @@ class TimeoffAllowance:
 
         negative_counter_type: str | Unset = UNSET
         if not isinstance(self.negative_counter_type, Unset):
-            negative_counter_type = self.negative_counter_type.value
+            negative_counter_type = self.negative_counter_type.value if self.negative_counter_type is not None else None
 
         position = self.position
 
@@ -170,17 +170,17 @@ class TimeoffAllowance:
 
         range_type: str | Unset = UNSET
         if not isinstance(self.range_type, Unset):
-            range_type = self.range_type.value
+            range_type = self.range_type.value if self.range_type is not None else None
 
         send_notification = self.send_notification
 
         source_units: str | Unset = UNSET
         if not isinstance(self.source_units, Unset):
-            source_units = self.source_units.value
+            source_units = self.source_units.value if self.source_units is not None else None
 
         tenure_period_transition: str | Unset = UNSET
         if not isinstance(self.tenure_period_transition, Unset):
-            tenure_period_transition = self.tenure_period_transition.value
+            tenure_period_transition = self.tenure_period_transition.value if self.tenure_period_transition is not None else None
 
         tenure_periods_enabled = self.tenure_periods_enabled
 
@@ -298,7 +298,7 @@ class TimeoffAllowance:
         else:
             accrued_units_availability = TimeoffAllowanceAccruedUnitsAvailability(
                 _accrued_units_availability
-            )
+            ) if _accrued_units_availability is not None else None
 
         carry_over_days = d.pop("carry_over_days", UNSET)
 
@@ -364,7 +364,7 @@ class TimeoffAllowance:
         else:
             tenure_period_transition = TimeoffAllowanceTenurePeriodTransition(
                 _tenure_period_transition
-            )
+            ) if _tenure_period_transition is not None else None
 
         tenure_periods_enabled = d.pop("tenure_periods_enabled", UNSET)
 

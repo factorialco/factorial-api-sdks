@@ -63,7 +63,7 @@ class FinanceJournalEntry:
 
         source_type: str | Unset = UNSET
         if not isinstance(self.source_type, Unset):
-            source_type = self.source_type.value
+            source_type = self.source_type.value if self.source_type is not None else None
 
         description = self.description
 

@@ -44,7 +44,7 @@ class PutApi20260401ResourcesProjectManagementBudgetStrategiesIdBody:
 
         budget_strategy_type: str | Unset = UNSET
         if not isinstance(self.budget_strategy_type, Unset):
-            budget_strategy_type = self.budget_strategy_type.value
+            budget_strategy_type = self.budget_strategy_type.value if self.budget_strategy_type is not None else None
 
         delegated = self.delegated
 
@@ -89,7 +89,7 @@ class PutApi20260401ResourcesProjectManagementBudgetStrategiesIdBody:
             budget_strategy_type = (
                 PutApi20260401ResourcesProjectManagementBudgetStrategiesIdBodyBudgetStrategyType(
                     _budget_strategy_type
-                )
+                ) if _budget_strategy_type is not None else None
             )
 
         delegated = d.pop("delegated", UNSET)

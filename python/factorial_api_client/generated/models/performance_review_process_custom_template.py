@@ -78,7 +78,7 @@ class PerformanceReviewProcessCustomTemplate:
 
         reviewer_strategies: str | Unset = UNSET
         if not isinstance(self.reviewer_strategies, Unset):
-            reviewer_strategies = self.reviewer_strategies.value
+            reviewer_strategies = self.reviewer_strategies.value if self.reviewer_strategies is not None else None
 
         agreements_enabled = self.agreements_enabled
 
@@ -161,7 +161,7 @@ class PerformanceReviewProcessCustomTemplate:
         else:
             reviewer_strategies = PerformanceReviewProcessCustomTemplateReviewerStrategies(
                 _reviewer_strategies
-            )
+            ) if _reviewer_strategies is not None else None
 
         agreements_enabled = d.pop("agreements_enabled", UNSET)
 

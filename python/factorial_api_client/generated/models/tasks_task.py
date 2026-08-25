@@ -64,7 +64,7 @@ class TasksTask:
 
         status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
-            status = self.status.value
+            status = self.status.value if self.status is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
