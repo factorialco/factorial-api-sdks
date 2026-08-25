@@ -120,13 +120,13 @@ class PostApi20260701ResourcesContractsContractVersionsBody:
 
         annual_working_time_distribution: str | Unset = UNSET
         if not isinstance(self.annual_working_time_distribution, Unset):
-            annual_working_time_distribution = self.annual_working_time_distribution.value
+            annual_working_time_distribution = self.annual_working_time_distribution.value if self.annual_working_time_distribution is not None else None
 
         copy_current_contract_version = self.copy_current_contract_version
 
         bank_holiday_treatment: str | Unset = UNSET
         if not isinstance(self.bank_holiday_treatment, Unset):
-            bank_holiday_treatment = self.bank_holiday_treatment.value
+            bank_holiday_treatment = self.bank_holiday_treatment.value if self.bank_holiday_treatment is not None else None
 
         job_catalog_tree_node_uuid = self.job_catalog_tree_node_uuid
 
@@ -238,7 +238,7 @@ class PostApi20260701ResourcesContractsContractVersionsBody:
             annual_working_time_distribution = (
                 PostApi20260701ResourcesContractsContractVersionsBodyAnnualWorkingTimeDistribution(
                     _annual_working_time_distribution
-                )
+                ) if _annual_working_time_distribution is not None else None
             )
 
         copy_current_contract_version = d.pop("copy_current_contract_version", UNSET)
@@ -253,7 +253,7 @@ class PostApi20260701ResourcesContractsContractVersionsBody:
             bank_holiday_treatment = (
                 PostApi20260701ResourcesContractsContractVersionsBodyBankHolidayTreatment(
                     _bank_holiday_treatment
-                )
+                ) if _bank_holiday_treatment is not None else None
             )
 
         job_catalog_tree_node_uuid = d.pop("job_catalog_tree_node_uuid", UNSET)

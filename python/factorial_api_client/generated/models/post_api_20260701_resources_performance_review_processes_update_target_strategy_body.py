@@ -32,7 +32,7 @@ class PostApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategyBody
 
         target_strategy: str | Unset = UNSET
         if not isinstance(self.target_strategy, Unset):
-            target_strategy = self.target_strategy.value
+            target_strategy = self.target_strategy.value if self.target_strategy is not None else None
 
         arguments: list[str] | Unset = UNSET
         if not isinstance(self.arguments, Unset):

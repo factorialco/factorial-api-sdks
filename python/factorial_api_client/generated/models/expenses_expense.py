@@ -180,7 +180,7 @@ class ExpensesExpense:
 
         payment: str | Unset = UNSET
         if not isinstance(self.payment, Unset):
-            payment = self.payment.value
+            payment = self.payment.value if self.payment is not None else None
 
         payment_method = self.payment_method
 

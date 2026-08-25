@@ -73,11 +73,11 @@ class PostApi20260701ResourcesTrainingsSessionsBody:
 
         modality: str | Unset = UNSET
         if not isinstance(self.modality, Unset):
-            modality = self.modality.value
+            modality = self.modality.value if self.modality is not None else None
 
         schedule: str | Unset = UNSET
         if not isinstance(self.schedule, Unset):
-            schedule = self.schedule.value
+            schedule = self.schedule.value if self.schedule is not None else None
 
         link = self.link
 

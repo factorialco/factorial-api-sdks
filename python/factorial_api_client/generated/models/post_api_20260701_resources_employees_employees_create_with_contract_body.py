@@ -191,7 +191,7 @@ class PostApi20260701ResourcesEmployeesEmployeesCreateWithContractBody:
 
         contracts_bank_holiday_treatment: str | Unset = UNSET
         if not isinstance(self.contracts_bank_holiday_treatment, Unset):
-            contracts_bank_holiday_treatment = self.contracts_bank_holiday_treatment.value
+            contracts_bank_holiday_treatment = self.contracts_bank_holiday_treatment.value if self.contracts_bank_holiday_treatment is not None else None
 
         contracts_annual_working_time_distribution: str | Unset = UNSET
         if not isinstance(self.contracts_annual_working_time_distribution, Unset):

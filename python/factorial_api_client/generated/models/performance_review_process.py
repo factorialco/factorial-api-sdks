@@ -96,7 +96,7 @@ class PerformanceReviewProcess:
 
         reviewer_strategies: str | Unset = UNSET
         if not isinstance(self.reviewer_strategies, Unset):
-            reviewer_strategies = self.reviewer_strategies.value
+            reviewer_strategies = self.reviewer_strategies.value if self.reviewer_strategies is not None else None
 
         starts_at = self.starts_at
 

@@ -29,7 +29,7 @@ class PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkBody:
 
         evaluation_types: str | Unset = UNSET
         if not isinstance(self.evaluation_types, Unset):
-            evaluation_types = self.evaluation_types.value
+            evaluation_types = self.evaluation_types.value if self.evaluation_types is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -59,7 +59,7 @@ class PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkBody:
             evaluation_types = (
                 PostApi20260701ResourcesPerformanceReviewProcessesRemindInBulkBodyEvaluationTypes(
                     _evaluation_types
-                )
+                ) if _evaluation_types is not None else None
             )
 
         post_api_20260701_resources_performance_review_processes_remind_in_bulk_body = cls(

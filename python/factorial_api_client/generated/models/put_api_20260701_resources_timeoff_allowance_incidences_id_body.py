@@ -44,7 +44,7 @@ class PutApi20260701ResourcesTimeoffAllowanceIncidencesIdBody:
 
         target_balance: str | Unset = UNSET
         if not isinstance(self.target_balance, Unset):
-            target_balance = self.target_balance.value
+            target_balance = self.target_balance.value if self.target_balance is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -86,7 +86,7 @@ class PutApi20260701ResourcesTimeoffAllowanceIncidencesIdBody:
         else:
             target_balance = PutApi20260701ResourcesTimeoffAllowanceIncidencesIdBodyTargetBalance(
                 _target_balance
-            )
+            ) if _target_balance is not None else None
 
         put_api_20260701_resources_timeoff_allowance_incidences_id_body = cls(
             id=id,

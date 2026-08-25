@@ -106,7 +106,7 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
 
         available_days: str | Unset = UNSET
         if not isinstance(self.available_days, Unset):
-            available_days = self.available_days.value
+            available_days = self.available_days.value if self.available_days is not None else None
 
         carry_over_units_in_cents = self.carry_over_units_in_cents
 
@@ -114,13 +114,13 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
 
         days_type: str | Unset = UNSET
         if not isinstance(self.days_type, Unset):
-            days_type = self.days_type.value
+            days_type = self.days_type.value if self.days_type is not None else None
 
         expire_in_months = self.expire_in_months
 
         frequency: str | Unset = UNSET
         if not isinstance(self.frequency, Unset):
-            frequency = self.frequency.value
+            frequency = self.frequency.value if self.frequency is not None else None
 
         holiday_allowance_in_cents = self.holiday_allowance_in_cents
 
@@ -134,27 +134,27 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
 
         negative_counter_type: str | Unset = UNSET
         if not isinstance(self.negative_counter_type, Unset):
-            negative_counter_type = self.negative_counter_type.value
+            negative_counter_type = self.negative_counter_type.value if self.negative_counter_type is not None else None
 
         position = self.position
 
         proration_type: str | Unset = UNSET
         if not isinstance(self.proration_type, Unset):
-            proration_type = self.proration_type.value
+            proration_type = self.proration_type.value if self.proration_type is not None else None
 
         pto_proratio_enabled = self.pto_proratio_enabled
 
         range_type: str | Unset = UNSET
         if not isinstance(self.range_type, Unset):
-            range_type = self.range_type.value
+            range_type = self.range_type.value if self.range_type is not None else None
 
         rounding: str | Unset = UNSET
         if not isinstance(self.rounding, Unset):
-            rounding = self.rounding.value
+            rounding = self.rounding.value if self.rounding is not None else None
 
         tenure_period_transition: str | Unset = UNSET
         if not isinstance(self.tenure_period_transition, Unset):
-            tenure_period_transition = self.tenure_period_transition.value
+            tenure_period_transition = self.tenure_period_transition.value if self.tenure_period_transition is not None else None
 
         tenure_periods_enabled = self.tenure_periods_enabled
 
@@ -246,7 +246,7 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
         else:
             available_days = PutApi20260701ResourcesTimeoffAllowancesIdBodyAvailableDays(
                 _available_days
-            )
+            ) if _available_days is not None else None
 
         carry_over_units_in_cents = d.pop("carry_over_units_in_cents", UNSET)
 
@@ -286,7 +286,7 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
             negative_counter_type = (
                 PutApi20260701ResourcesTimeoffAllowancesIdBodyNegativeCounterType(
                     _negative_counter_type
-                )
+                ) if _negative_counter_type is not None else None
             )
 
         position = d.pop("position", UNSET)
@@ -298,7 +298,7 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
         else:
             proration_type = PutApi20260701ResourcesTimeoffAllowancesIdBodyProrationType(
                 _proration_type
-            )
+            ) if _proration_type is not None else None
 
         pto_proratio_enabled = d.pop("pto_proratio_enabled", UNSET)
 
@@ -326,7 +326,7 @@ class PutApi20260701ResourcesTimeoffAllowancesIdBody:
             tenure_period_transition = (
                 PutApi20260701ResourcesTimeoffAllowancesIdBodyTenurePeriodTransition(
                     _tenure_period_transition
-                )
+                ) if _tenure_period_transition is not None else None
             )
 
         tenure_periods_enabled = d.pop("tenure_periods_enabled", UNSET)

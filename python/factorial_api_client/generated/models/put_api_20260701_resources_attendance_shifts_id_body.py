@@ -51,7 +51,7 @@ class PutApi20260701ResourcesAttendanceShiftsIdBody:
 
         location_type: str | Unset = UNSET
         if not isinstance(self.location_type, Unset):
-            location_type = self.location_type.value
+            location_type = self.location_type.value if self.location_type is not None else None
 
         workplace_id = self.workplace_id
 
@@ -107,7 +107,7 @@ class PutApi20260701ResourcesAttendanceShiftsIdBody:
         else:
             location_type = PutApi20260701ResourcesAttendanceShiftsIdBodyLocationType(
                 _location_type
-            )
+            ) if _location_type is not None else None
 
         workplace_id = d.pop("workplace_id", UNSET)
 

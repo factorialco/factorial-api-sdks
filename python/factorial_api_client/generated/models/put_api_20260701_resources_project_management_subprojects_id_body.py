@@ -41,7 +41,7 @@ class PutApi20260701ResourcesProjectManagementSubprojectsIdBody:
 
         status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
-            status = self.status.value
+            status = self.status.value if self.status is not None else None
 
         code = self.code
 

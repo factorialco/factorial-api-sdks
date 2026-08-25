@@ -98,7 +98,7 @@ class AtsCandidate:
 
         gender: str | Unset = UNSET
         if not isinstance(self.gender, Unset):
-            gender = self.gender.value
+            gender = self.gender.value if self.gender is not None else None
 
         score = self.score
 

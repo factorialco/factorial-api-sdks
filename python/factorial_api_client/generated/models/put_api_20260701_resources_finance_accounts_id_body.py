@@ -41,7 +41,7 @@ class PutApi20260701ResourcesFinanceAccountsIdBody:
 
         type_: str | Unset = UNSET
         if not isinstance(self.type_, Unset):
-            type_ = self.type_.value
+            type_ = self.type_.value if self.type_ is not None else None
 
         currency = self.currency
 
