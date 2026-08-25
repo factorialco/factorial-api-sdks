@@ -116,7 +116,7 @@ class ExpensesExpensable:
 
         reimbursement_method: str | Unset = UNSET
         if not isinstance(self.reimbursement_method, Unset):
-            reimbursement_method = self.reimbursement_method.value
+            reimbursement_method = self.reimbursement_method.value if self.reimbursement_method is not None else None
 
         internal_reference = self.internal_reference
 

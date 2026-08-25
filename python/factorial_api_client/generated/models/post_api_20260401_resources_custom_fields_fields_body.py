@@ -49,11 +49,11 @@ class PostApi20260401ResourcesCustomFieldsFieldsBody:
 
         editable: str | Unset = UNSET
         if not isinstance(self.editable, Unset):
-            editable = self.editable.value
+            editable = self.editable.value if self.editable is not None else None
 
         visible: str | Unset = UNSET
         if not isinstance(self.visible, Unset):
-            visible = self.visible.value
+            visible = self.visible.value if self.visible is not None else None
 
         label = self.label
 

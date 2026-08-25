@@ -146,7 +146,7 @@ class TrainingsTraining:
 
         status: str | Unset = UNSET
         if not isinstance(self.status, Unset):
-            status = self.status.value
+            status = self.status.value if self.status is not None else None
 
         valid_for = self.valid_for
 

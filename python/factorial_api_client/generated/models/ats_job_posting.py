@@ -107,15 +107,15 @@ class AtsJobPosting:
 
         contract_type: str | Unset = UNSET
         if not isinstance(self.contract_type, Unset):
-            contract_type = self.contract_type.value
+            contract_type = self.contract_type.value if self.contract_type is not None else None
 
         workplace_type: str | Unset = UNSET
         if not isinstance(self.workplace_type, Unset):
-            workplace_type = self.workplace_type.value
+            workplace_type = self.workplace_type.value if self.workplace_type is not None else None
 
         schedule_type: str | Unset = UNSET
         if not isinstance(self.schedule_type, Unset):
-            schedule_type = self.schedule_type.value
+            schedule_type = self.schedule_type.value if self.schedule_type is not None else None
 
         team_id = self.team_id
 
@@ -125,7 +125,7 @@ class AtsJobPosting:
 
         salary_format: str | Unset = UNSET
         if not isinstance(self.salary_format, Unset):
-            salary_format = self.salary_format.value
+            salary_format = self.salary_format.value if self.salary_format is not None else None
 
         salary_from_amount_in_cents = self.salary_from_amount_in_cents
 

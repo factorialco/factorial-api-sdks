@@ -66,7 +66,7 @@ class AttendanceEditTimesheetRequest:
 
         location_type: str | Unset = UNSET
         if not isinstance(self.location_type, Unset):
-            location_type = self.location_type.value
+            location_type = self.location_type.value if self.location_type is not None else None
 
         reason = self.reason
 

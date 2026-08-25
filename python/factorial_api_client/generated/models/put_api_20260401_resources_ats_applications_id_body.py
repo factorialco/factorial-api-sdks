@@ -45,7 +45,7 @@ class PutApi20260401ResourcesAtsApplicationsIdBody:
 
         author_type: str | Unset = UNSET
         if not isinstance(self.author_type, Unset):
-            author_type = self.author_type.value
+            author_type = self.author_type.value if self.author_type is not None else None
 
         qualified = self.qualified
 

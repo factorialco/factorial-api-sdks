@@ -85,7 +85,7 @@ class TrainingsTrainingClass:
 
         payment_status: str | Unset = UNSET
         if not isinstance(self.payment_status, Unset):
-            payment_status = self.payment_status.value
+            payment_status = self.payment_status.value if self.payment_status is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)

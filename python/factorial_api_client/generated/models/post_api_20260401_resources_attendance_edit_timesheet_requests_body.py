@@ -58,7 +58,7 @@ class PostApi20260401ResourcesAttendanceEditTimesheetRequestsBody:
 
         location_type: str | Unset = UNSET
         if not isinstance(self.location_type, Unset):
-            location_type = self.location_type.value
+            location_type = self.location_type.value if self.location_type is not None else None
 
         observations = self.observations
 
@@ -129,7 +129,7 @@ class PostApi20260401ResourcesAttendanceEditTimesheetRequestsBody:
         else:
             location_type = PostApi20260401ResourcesAttendanceEditTimesheetRequestsBodyLocationType(
                 _location_type
-            )
+            ) if _location_type is not None else None
 
         observations = d.pop("observations", UNSET)
 

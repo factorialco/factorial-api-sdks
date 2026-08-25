@@ -41,7 +41,7 @@ class HolidaysCompanyHoliday:
 
         half_day: str | Unset = UNSET
         if not isinstance(self.half_day, Unset):
-            half_day = self.half_day.value
+            half_day = self.half_day.value if self.half_day is not None else None
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
