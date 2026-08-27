@@ -3,8 +3,12 @@ description: "Publish package to npmjs registry"
 
 inputs:
   registry_token:
-    description: "Registry token"
-    required: true
+    description: >-
+      npm token. Publishing itself uses npm trusted publishing (GitHub OIDC, needs
+      `id-token: write` on the calling job), so this is only needed when extra
+      dist-tags are added after publish (`npm dist-tag add` has no OIDC path).
+    required: false
+    default: ""
   working-directory:
     description: "Working directory"
     required: false
@@ -54,29 +58,42 @@ runs:
       id: publish
       working-directory: ${{ inputs.working-directory }}
       run: |
+        set -euo pipefail
+        # Auth via npm trusted publishing (GitHub OIDC): the package on npmjs is
+        # bound to this repo + workflow file. OIDC publishing needs npm >= 11.5.1
+        # and Node 22 bundles npm 10, hence the upgrade. Provenance is attached
+        # automatically.
+        npm install -g npm@latest
         TAGS=(${{ inputs.tag }})
         if [ ${#TAGS[@]} -gt 0 ]; then
-          PUBLISH_CMD="pnpm publish --no-git-checks --access=public --tag ${TAGS[0]}"
+          npm publish --access public --tag "${TAGS[0]}"
         else
-          PUBLISH_CMD="pnpm publish --no-git-checks --access=public"
+          npm publish --access public
         fi
+        echo "Packages published"
+        echo "published=true" >> "$GITHUB_OUTPUT"
 
-        result=$($PUBLISH_CMD)
-        if [[ $result == "There are no new packages that should be published" ]]; then
-          echo "No new packages to publish"
-          echo "published=false" >> $GITHUB_OUTPUT
-        else
-          echo "Packages published"
-          echo "published=true" >> $GITHUB_OUTPUT
-
-          # Add any extra dist-tags
-          if [ ${#TAGS[@]} -gt 1 ]; then
-            PACKAGE=$(node -p "require('./package.json').name")
-            VERSION=$(node -p "require('./package.json').version")
-            for extra_tag in "${TAGS[@]:1}"; do
-              npm dist-tag add "$PACKAGE@$VERSION" "$extra_tag"
-            done
-          fi
-        fi
+    - name: Add extra dist-tags
+      if: steps.check.outputs.skip != 'true'
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      # `npm dist-tag` has no OIDC flow, so this step is the only one that still
+      # needs a token.
       env:
         NODE_AUTH_TOKEN: ${{ inputs.registry_token }}
+      run: |
+        set -euo pipefail
+        TAGS=(${{ inputs.tag }})
+        if [ ${#TAGS[@]} -le 1 ]; then
+          echo "No extra dist-tags to add."
+          exit 0
+        fi
+        if [ -z "$NODE_AUTH_TOKEN" ]; then
+          echo "::error::extra dist-tags requested (${TAGS[*]:1}) but no registry_token provided." >&2
+          exit 1
+        fi
+        PACKAGE=$(node -p "require('./package.json').name")
+        VERSION=$(node -p "require('./package.json').version")
+        for extra_tag in "${TAGS[@]:1}"; do
+          npm dist-tag add "$PACKAGE@$VERSION" "$extra_tag"
+        done

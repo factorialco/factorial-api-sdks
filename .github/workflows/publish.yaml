@@ -34,6 +34,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write # npm trusted publishing (OIDC)
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -58,6 +59,8 @@ jobs:
       - uses: ./.github/actions/publish-to-npmjs
         id: publish
         with:
+          # Publish authenticates via OIDC; the token is only used to add the
+          # extra `latest` dist-tag when this is the current major.
           registry_token: ${{ secrets.NPMJS_TOKEN }}
           working-directory: ./typescript
           tag: ${{ steps.resolve-tag.outputs.npm_tag }}

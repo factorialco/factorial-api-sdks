@@ -29,6 +29,7 @@ permissions:
   contents: write
   pull-requests: write
   packages: write
+  id-token: write # required so the reusable publish.yaml can use npm trusted publishing (OIDC)
 
 jobs:
   release-please:
