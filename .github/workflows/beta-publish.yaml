@@ -77,6 +77,7 @@ jobs:
     permissions:
       contents: write
       packages: write
+      id-token: write # npm trusted publishing (OIDC)
     env:
       TARGET_DATE: ${{ needs.detect.outputs.target_date }}
       NPM_VERSION: ${{ needs.detect.outputs.npm_version }}
@@ -119,6 +120,8 @@ jobs:
       - name: Publish npm beta
         uses: ./.github/actions/publish-to-npmjs
         with:
+          # Publish authenticates via OIDC; the token is only used to add the
+          # extra API-date dist-tag.
           registry_token: ${{ secrets.NPMJS_TOKEN }}
           working-directory: ./typescript
           # primary dist-tag `beta` + the API date; NEVER `latest`.
