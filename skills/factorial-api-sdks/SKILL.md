@@ -81,12 +81,16 @@ employees = client.employees.employee.list()
 sub = client.api_public.webhook_subscription.create(body={...})
 ```
 
-**Ruby differs**: it exposes one accessor per resource (`api.employees_employee`)
-whose methods are the spec operationIds; required params are positional and
-optional query params go in a `query_params:` hash.
+Ruby follows the same shape in `snake_case`, with required params — path,
+query or form alike — as **named keywords**; optional query params go in a
+`query_params:` hash and bodies under their `*_request` keyword. (The raw
+low-level accessors, e.g.
+`api.employees_employee.employees_employees_get(true, false)`, keep working
+underneath.)
 
 ```ruby
-employees = api.employees_employee.employees_employees_get(true, false).data
+employees = api.employees.employee.list(only_active: true, only_managers: false).data
+team = api.teams.team.create(teams_teams_post_request: { name: "Platform" })
 ```
 
 To discover the exact namespace/resource/method for any endpoint, consult
@@ -100,7 +104,8 @@ List endpoints return `{ data: T[], meta: { end_cursor?, has_next_page, ... } }`
 - `list()` — one raw page
 - `paginate()` — async iterator (TS) / sync or async generator (Python)
 - `all()` (TS) / `collect_all()` (Python) — fetch every page into one array/list
-- Ruby: `F::Api.paginate { |page| ... }` wraps any list call in a lazy Enumerator
+- Ruby: `paginate` (lazy Enumerator, caps via `limit:`/`max_items:`) and `all`
+  on every listable resource; `F::Api.paginate { |page| ... }` wraps raw calls
 
 ```ts
 for await (const emp of client.employees.employees.paginate()) { /* ... */ }

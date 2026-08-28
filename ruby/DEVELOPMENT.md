@@ -32,9 +32,12 @@ The script normalizes the spec, cleans and
 regenerates the client, patches the generated models (see below),
 regenerates the typed webhook catalog (`lib/factorial_api/webhooks.rb`,
 emitted by `scripts/generate_webhooks.rb` from the raw spec's `webhooks`
-section), re-attaches the handwritten facade, verifies the gem loads and
-runs the handwritten facade specs (`spec/factorial_api/`) against the
-freshly generated code.
+section), re-attaches the handwritten facade, re-emits the ergonomic layer
+(`lib/factorial_api/sdk.rb`, by `scripts/generate_sdk_layer.rb` from the
+endpoint table it shares with `scripts/skill_methods.rb` — pass `--dry-run`
+to inspect that table), verifies the gem loads, refreshes the skill
+reference tables and runs the handwritten facade specs
+(`spec/factorial_api/`) against the freshly generated code.
 
 ## Why the generated models are patched
 

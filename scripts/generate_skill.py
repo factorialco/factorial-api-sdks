@@ -88,7 +88,7 @@ DATED_PREFIX = re.compile(r"^/api/\d{4}-\d{2}-\d{2}/resources/")
 
 
 def load_ruby_calls() -> dict[str, str]:
-    """`"VERB namespace/resource/..." -> "api.<accessor>.<method>"`.
+    """`"VERB namespace/resource/..." -> "api.<namespace>.<resource>.<method>(kwargs)"`.
 
     Read from the committed ruby-methods.json, which the Ruby pipeline
     regenerates by reflecting on the loaded gem — so this script never needs a
@@ -301,9 +301,9 @@ def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
         "uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of "
         "`all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. "
         "The Ruby column shows the full call on an `F::Api.new` client, with its "
-        "required positional arguments; optional query params go in a trailing "
-        "`query_params:` hash and bodies in the matching `opts` key "
-        "(paginate with `F::Api.paginate`). "
+        "required params as named keywords; optional query params go in a trailing "
+        "`query_params:` hash and bodies under their `*_request` keyword "
+        "(every listable resource also has `paginate` and `all`). "
         "`body` contents are endpoint-specific; see the [online reference]"
         f"({DOCS_BASE}/reference) for exact fields.\n"
     )
