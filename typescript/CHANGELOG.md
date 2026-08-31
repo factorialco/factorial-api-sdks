@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v2.0.0...typescript-v2.0.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* **python:** make from_dict/to_dict null-safe for nullable enum fields ([#53](https://github.com/factorialco/factorial-api-sdks/issues/53)) ([f664a7e](https://github.com/factorialco/factorial-api-sdks/commit/f664a7e6d5e4ebdffb067a4cbf0b380d3d3c2f4c))
+* **typescript:** add repository metadata required by npm provenance ([#61](https://github.com/factorialco/factorial-api-sdks/issues/61)) ([3649b76](https://github.com/factorialco/factorial-api-sdks/commit/3649b7602c17cff0994001acab603f54cdc94b51))
+
 ## [2.0.0](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v1.3.0...typescript-v2.0.0) (2026-07-01)
 
 
