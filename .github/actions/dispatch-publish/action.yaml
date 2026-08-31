@@ -1,0 +1,60 @@
+name: "Dispatch publish workflow"
+description: >-
+  Trigger publish.yaml via workflow_dispatch for a release tag and wait for that
+  run to finish, failing if it fails. Publishing must happen in a TOP-LEVEL run
+  of publish.yaml (dispatch, not workflow_call): npm trusted publishing (OIDC)
+  validates the top-level workflow filename and allows a single workflow per
+  package, so publish.yaml is the only workflow allowed to run `npm publish`.
+
+inputs:
+  github_token:
+    description: "Token used to dispatch and watch the run (needs `actions: write`)."
+    required: true
+  release_tag:
+    description: "Tag to publish (e.g. typescript-v1.2.0 or ruby/v2.0.0)."
+    required: true
+  npm_dist_tag:
+    description: "Optional npm dist-tag override forwarded to publish.yaml (space-separated)."
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - name: Dispatch publish.yaml and wait
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
+        RELEASE_TAG: ${{ inputs.release_tag }}
+        NPM_DIST_TAG: ${{ inputs.npm_dist_tag }}
+      run: |
+        set -euo pipefail
+        # Dispatch on the branch that carries this workflow run's definition
+        # (main or a maintenance N.x branch); the publish run itself checks out
+        # RELEASE_TAG, so the ref only selects the publish.yaml definition.
+        SINCE=$(date -u -d '60 seconds ago' +%FT%TZ)
+        args=(-f "release_tag=$RELEASE_TAG")
+        if [ -n "$NPM_DIST_TAG" ]; then
+          args+=(-f "npm_dist_tag=$NPM_DIST_TAG")
+        fi
+        gh workflow run publish.yaml -R "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" "${args[@]}"
+
+        # `gh workflow run` doesn't report the run id, so locate the fresh run
+        # by its run-name ("Publish <tag>", set in publish.yaml), newest first,
+        # created no earlier than just before the dispatch.
+        echo "Dispatched publish.yaml for $RELEASE_TAG — locating the run…"
+        RUN_ID=""
+        for i in $(seq 1 30); do
+          sleep 5
+          RUN_ID=$(gh run list -R "$GITHUB_REPOSITORY" --workflow publish.yaml \
+            --json databaseId,displayTitle,createdAt \
+            --jq "([.[] | select(.displayTitle == \"Publish $RELEASE_TAG\" and .createdAt >= \"$SINCE\")] | first | .databaseId) // empty")
+          if [ -n "$RUN_ID" ]; then break; fi
+          echo "run not visible yet ($i/30)…"
+        done
+        if [ -z "$RUN_ID" ]; then
+          echo "::error::could not locate the dispatched publish.yaml run for $RELEASE_TAG" >&2
+          exit 1
+        fi
+        echo "Watching https://github.com/$GITHUB_REPOSITORY/actions/runs/$RUN_ID"
+        gh run watch "$RUN_ID" -R "$GITHUB_REPOSITORY" --interval 10 --exit-status

@@ -59,11 +59,18 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         set -euo pipefail
-        # Auth via npm trusted publishing (GitHub OIDC): the package on npmjs is
-        # bound to this repo + workflow file. OIDC publishing needs npm >= 11.5.1
-        # and Node 22 bundles npm 10, hence the upgrade. Provenance is attached
+        # Auth via npm trusted publishing (GitHub OIDC): the package on npmjs
+        # is bound to this repo + the top-level publish.yaml workflow. OIDC
+        # publishing needs npm >= 11.5.1 and Node 22 bundles npm 10, hence the
+        # upgrade (pinned to the npm 11 line). Provenance is attached
         # automatically.
-        npm install -g npm@latest
+        npm install -g npm@11
+        # setup-node wrote an .npmrc whose auth token is a PLACEHOLDER
+        # (XXXXX-XXXXX-…) unless NODE_AUTH_TOKEN is exported, and ANY configured
+        # token makes npm skip the OIDC flow (the placeholder then fails as a
+        # 404 on PUT). Point the publish at an empty user config so npm falls
+        # back to trusted publishing.
+        export NPM_CONFIG_USERCONFIG="$(mktemp)"
         TAGS=(${{ inputs.tag }})
         if [ ${#TAGS[@]} -gt 0 ]; then
           npm publish --access public --tag "${TAGS[0]}"

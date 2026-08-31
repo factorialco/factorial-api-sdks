@@ -11,10 +11,13 @@ name: "Create release"
 # Because the tag and the version are produced by the same actor in one step,
 # they can never drift — which is the class of bug this replaces.
 #
-# When a release is created, this workflow then calls the reusable publish.yaml
-# for the affected package(s), checking out the freshly-created tag. Publishing
-# happens in-process (not via a separate `release` event), so it works with the
-# default GITHUB_TOKEN — no PAT required.
+# When a release is created, this workflow DISPATCHES the top-level publish.yaml
+# for the affected package(s) and waits for it (via the dispatch-publish
+# composite action). Dispatch — not workflow_call — because npm trusted
+# publishing validates the top-level workflow filename and allows a single
+# trusted workflow per package, so publish.yaml must be the top-level run.
+# Dispatching with the default GITHUB_TOKEN works (workflow_dispatch is exempt
+# from the no-recursive-workflows rule) — no PAT required.
 #
 # Maintenance branches (1.x, 2.x, ...) get the same treatment: release-please
 # reads the config + manifest from the branch that triggered the run and opens
@@ -28,8 +31,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  packages: write
-  id-token: write # required so the reusable publish.yaml can use npm trusted publishing (OIDC)
 
 jobs:
   release-please:
@@ -55,25 +56,43 @@ jobs:
     name: "Publish TypeScript release"
     needs: release-please
     if: needs.release-please.outputs.ts_released == 'true'
-    uses: ./.github/workflows/publish.yaml
-    with:
-      release_tag: ${{ needs.release-please.outputs.ts_tag }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write # dispatch publish.yaml
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/dispatch-publish
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ needs.release-please.outputs.ts_tag }}
 
   publish-python:
     name: "Publish Python release"
     needs: release-please
     if: needs.release-please.outputs.py_released == 'true'
-    uses: ./.github/workflows/publish.yaml
-    with:
-      release_tag: ${{ needs.release-please.outputs.py_tag }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write # dispatch publish.yaml
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/dispatch-publish
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ needs.release-please.outputs.py_tag }}
 
   publish-ruby:
     name: "Publish Ruby release"
     needs: release-please
     if: needs.release-please.outputs.rb_released == 'true'
-    uses: ./.github/workflows/publish.yaml
-    with:
-      release_tag: ${{ needs.release-please.outputs.rb_tag }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write # dispatch publish.yaml
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/dispatch-publish
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ needs.release-please.outputs.rb_tag }}
