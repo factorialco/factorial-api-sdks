@@ -75,9 +75,8 @@ jobs:
     if: needs.detect.outputs.should_publish == 'true'
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      packages: write
-      id-token: write # npm trusted publishing (OIDC)
+      contents: write # push the beta release tag + beta_state.json
+      actions: write # dispatch publish.yaml (npm trusted publishing)
     env:
       TARGET_DATE: ${{ needs.detect.outputs.target_date }}
       NPM_VERSION: ${{ needs.detect.outputs.npm_version }}
@@ -116,16 +115,36 @@ jobs:
           uv sync
           uv run python scripts/release.py --version "$TARGET_DATE" --set-version "$PYPI_VERSION" --no-publish
 
-      # ── Publish (idempotent: composite actions skip if the version exists). ──
-      - name: Publish npm beta
-        uses: ./.github/actions/publish-to-npmjs
+      # ── Publish (idempotent: publish.yaml / the composite actions skip if
+      #    the version already exists on the registry). npm MUST go through a
+      #    workflow_dispatch of the top-level publish.yaml: npm trusted
+      #    publishing allows a single trusted workflow per package and
+      #    validates the TOP-LEVEL workflow filename, so publish.yaml is the
+      #    only workflow that may run `npm publish`. That requires the
+      #    regenerated tree to exist at a git tag publish.yaml can check out. ──
+      - name: Push beta release tag
+        id: beta-tag
+        run: |
+          set -euo pipefail
+          TAG="beta/typescript-v$NPM_VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(beta): regenerated SDKs for $TARGET_DATE ($NPM_VERSION)"
+          # The `beta/` prefix keeps the tag out of release-please's
+          # typescript-v* namespace. --force: a retry of a partially-failed run
+          # recomputes the same version (state is recorded only after publish),
+          # so the tag may already exist.
+          git tag -f "$TAG"
+          git push --force origin "refs/tags/$TAG"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Publish npm beta (dispatch publish.yaml)
+        uses: ./.github/actions/dispatch-publish
         with:
-          # Publish authenticates via OIDC; the token is only used to add the
-          # extra API-date dist-tag.
-          registry_token: ${{ secrets.NPMJS_TOKEN }}
-          working-directory: ./typescript
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ steps.beta-tag.outputs.tag }}
           # primary dist-tag `beta` + the API date; NEVER `latest`.
-          tag: "beta ${{ env.TARGET_DATE }}"
+          npm_dist_tag: "beta ${{ env.TARGET_DATE }}"
       - name: Publish PyPI beta
         uses: ./.github/actions/publish-to-pypi
         with:

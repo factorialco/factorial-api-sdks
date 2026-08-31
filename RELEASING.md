@@ -26,10 +26,20 @@ what previously let a tag drift from the code it was supposed to point at.
 
    The tag and the version are produced together, so they cannot disagree.
 
-4. **Publishing runs automatically.** "Create release" then calls the reusable
-   `publish.yaml` for the released package, checking out the freshly-created tag
-   and publishing to npm / PyPI / RubyGems. Each publish step skips if that version is
+4. **Publishing runs automatically.** "Create release" then dispatches the
+   top-level `publish.yaml` (Actions → "Publish packages") for the released
+   package and waits for that run; it checks out the freshly-created tag and
+   publishes to npm / PyPI / RubyGems. Each publish step skips if that version is
    already on the registry, so re-runs are safe.
+
+   npm authenticates via **trusted publishing** (GitHub OIDC): the npm package
+   is bound to this repo + the `publish.yaml` workflow *filename* (configured on
+   npmjs.com, no environment). npm allows a single trusted workflow per package
+   and validates the **top-level** workflow, which is why every npm publish —
+   stable, beta (`beta-publish.yaml`), and manual recovery — goes through a
+   `workflow_dispatch` of `publish.yaml` (via `.github/actions/dispatch-publish`)
+   instead of `workflow_call`. The `NPMJS_TOKEN` secret remains only for
+   `npm dist-tag add`, which has no OIDC path.
 
 ## Config
 

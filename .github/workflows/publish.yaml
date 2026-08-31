@@ -1,39 +1,46 @@
 name: "Publish packages"
 
-# Reusable publisher. It does NOT decide WHEN to release — it only builds and
+run-name: "Publish ${{ inputs.release_tag }}"
+
+# Top-level publisher. It does NOT decide WHEN to release — it only builds and
 # publishes the package identified by `release_tag` from that exact tag.
 #
-#   - Called automatically by "Create release" (release-please.yaml) right after
-#     a release is created, via `workflow_call`.
-#   - Can be run manually via `workflow_dispatch` to re-publish / recover a
-#     specific tag (e.g. if a publish step failed).
+# It runs ONLY via workflow_dispatch, never workflow_call: npm trusted
+# publishing (OIDC) validates the TOP-LEVEL workflow filename and allows a
+# single trusted workflow per package, so every path that publishes to npm must
+# be a dispatch of THIS file (via .github/actions/dispatch-publish):
+#
+#   - Dispatched automatically by "Create release" (release-please.yaml) right
+#     after a release is created.
+#   - Dispatched by "Publish beta SDKs" (beta-publish.yaml) after it pushes a
+#     beta/typescript-v* tag, with an explicit npm_dist_tag override.
+#   - Can be run manually via the Actions UI to re-publish / recover a specific
+#     tag (e.g. if a publish step failed).
 #
 # Each underlying composite action skips the upload if that version is already
 # present on the registry, so re-running against an existing tag is a no-op.
 
 on:
-  workflow_call:
-    inputs:
-      release_tag:
-        description: "Tag to build & publish (e.g. typescript-v1.2.0 or ruby/v2.0.0)"
-        required: true
-        type: string
   workflow_dispatch:
     inputs:
       release_tag:
         description: "Tag to build & publish (e.g. typescript-v1.2.0 or ruby/v2.0.0)"
         required: true
         type: string
+      npm_dist_tag:
+        description: "Space-separated npm dist-tag(s) override (e.g. 'beta 2026-10-01'). Blank = resolve from version_map.json."
+        required: false
+        type: string
+        default: ""
 
 jobs:
   publish-typescript:
     name: "[🎯 API-CLIENT] Publish to npm"
-    # Only run for TypeScript releases (typescript-v* tag).
+    # Only run for TypeScript releases (typescript-v* tag, incl. beta/ prefix).
     if: contains(inputs.release_tag, 'typescript-v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
       id-token: write # npm trusted publishing (OIDC)
     steps:
       - name: Checkout code
@@ -43,7 +50,14 @@ jobs:
 
       - name: Resolve npm dist-tag
         id: resolve-tag
+        env:
+          OVERRIDE: ${{ inputs.npm_dist_tag }}
         run: |
+          if [ -n "$OVERRIDE" ]; then
+            echo "Using npm dist-tag override: $OVERRIDE"
+            echo "npm_tag=$OVERRIDE" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           MAJOR=$(node -p "require('./typescript/package.json').version.split('.')[0]")
           TAG=$(jq -r ".versions[\"$MAJOR\"]" version_map.json)
           if [ "$TAG" = "null" ] || [ -z "$TAG" ]; then
@@ -60,7 +74,7 @@ jobs:
         id: publish
         with:
           # Publish authenticates via OIDC; the token is only used to add the
-          # extra `latest` dist-tag when this is the current major.
+          # extra dist-tags (`latest` on the current major, the API date on betas).
           registry_token: ${{ secrets.NPMJS_TOKEN }}
           working-directory: ./typescript
           tag: ${{ steps.resolve-tag.outputs.npm_tag }}
