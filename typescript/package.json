@@ -2,6 +2,15 @@
   "name": "@factorialco/api-client",
   "version": "2.0.0",
   "description": "Official TypeScript SDK for the Factorial API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/factorialco/factorial-api-sdks.git",
+    "directory": "typescript"
+  },
+  "homepage": "https://github.com/factorialco/factorial-api-sdks/tree/main/typescript#readme",
+  "bugs": {
+    "url": "https://github.com/factorialco/factorial-api-sdks/issues"
+  },
   "type": "module",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
