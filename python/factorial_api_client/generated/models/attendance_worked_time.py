@@ -1,13 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.attendance_worked_time_day_type import AttendanceWorkedTimeDayType
 from ..models.attendance_worked_time_time_unit import AttendanceWorkedTimeTimeUnit
+
+if TYPE_CHECKING:
+    from ..models.attendance_worked_time_worked_time_blocks_item import (
+        AttendanceWorkedTimeWorkedTimeBlocksItem,
+    )
+
 
 T = TypeVar("T", bound="AttendanceWorkedTime")
 
@@ -22,7 +28,7 @@ class AttendanceWorkedTime:
     pending_minutes: int
     minutes: int
     time_unit: AttendanceWorkedTimeTimeUnit
-    worked_time_blocks: list[Any]
+    worked_time_blocks: list[AttendanceWorkedTimeWorkedTimeBlocksItem]
     day_type: AttendanceWorkedTimeDayType
     id: str
     """ ID to specify the worked time it includes the employee_id and date """
@@ -45,7 +51,10 @@ class AttendanceWorkedTime:
 
         time_unit = self.time_unit.value
 
-        worked_time_blocks = self.worked_time_blocks
+        worked_time_blocks = []
+        for worked_time_blocks_item_data in self.worked_time_blocks:
+            worked_time_blocks_item = worked_time_blocks_item_data.to_dict()
+            worked_time_blocks.append(worked_time_blocks_item)
 
         day_type = self.day_type.value
 
@@ -73,6 +82,10 @@ class AttendanceWorkedTime:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.attendance_worked_time_worked_time_blocks_item import (
+            AttendanceWorkedTimeWorkedTimeBlocksItem,
+        )
+
         d = dict(src_dict)
         employee_id = d.pop("employee_id")
 
@@ -90,7 +103,14 @@ class AttendanceWorkedTime:
 
         time_unit = AttendanceWorkedTimeTimeUnit(d.pop("time_unit"))
 
-        worked_time_blocks = cast(list[Any], d.pop("worked_time_blocks"))
+        worked_time_blocks = []
+        _worked_time_blocks = d.pop("worked_time_blocks")
+        for worked_time_blocks_item_data in _worked_time_blocks:
+            worked_time_blocks_item = AttendanceWorkedTimeWorkedTimeBlocksItem.from_dict(
+                worked_time_blocks_item_data
+            )
+
+            worked_time_blocks.append(worked_time_blocks_item)
 
         day_type = AttendanceWorkedTimeDayType(d.pop("day_type"))
 

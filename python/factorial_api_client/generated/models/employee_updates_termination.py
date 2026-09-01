@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.employee_updates_termination_remaining_holidays_item import (
+        EmployeeUpdatesTerminationRemainingHolidaysItem,
+    )
+
 
 T = TypeVar("T", bound="EmployeeUpdatesTermination")
 
@@ -19,7 +25,7 @@ class EmployeeUpdatesTermination:
     """ Status of the termination """
     employee_id: str
     """ Employee ID """
-    remaining_holidays: list[Any]
+    remaining_holidays: list[EmployeeUpdatesTerminationRemainingHolidaysItem]
     """ Remaining holidays """
     terminated_on: str | Unset = UNSET
     """ Date terminated on """
@@ -45,7 +51,10 @@ class EmployeeUpdatesTermination:
 
         employee_id = self.employee_id
 
-        remaining_holidays = self.remaining_holidays
+        remaining_holidays = []
+        for remaining_holidays_item_data in self.remaining_holidays:
+            remaining_holidays_item = remaining_holidays_item_data.to_dict()
+            remaining_holidays.append(remaining_holidays_item)
 
         terminated_on = self.terminated_on
 
@@ -90,6 +99,10 @@ class EmployeeUpdatesTermination:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.employee_updates_termination_remaining_holidays_item import (
+            EmployeeUpdatesTerminationRemainingHolidaysItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -97,7 +110,14 @@ class EmployeeUpdatesTermination:
 
         employee_id = d.pop("employee_id")
 
-        remaining_holidays = cast(list[Any], d.pop("remaining_holidays"))
+        remaining_holidays = []
+        _remaining_holidays = d.pop("remaining_holidays")
+        for remaining_holidays_item_data in _remaining_holidays:
+            remaining_holidays_item = EmployeeUpdatesTerminationRemainingHolidaysItem.from_dict(
+                remaining_holidays_item_data
+            )
+
+            remaining_holidays.append(remaining_holidays_item)
 
         terminated_on = d.pop("terminated_on", UNSET)
 

@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.ats_message_attachments_item import AtsMessageAttachmentsItem
+
 
 T = TypeVar("T", bound="AtsMessage")
 
@@ -19,7 +23,7 @@ class AtsMessage:
     sent_by_id: str
     sent_by_type: str
     created_at: str
-    attachments: list[Any]
+    attachments: list[AtsMessageAttachmentsItem]
     topic: str
     delayed_until: str | Unset = UNSET
     sent_at: str | Unset = UNSET
@@ -41,7 +45,10 @@ class AtsMessage:
 
         created_at = self.created_at
 
-        attachments = self.attachments
+        attachments = []
+        for attachments_item_data in self.attachments:
+            attachments_item = attachments_item_data.to_dict()
+            attachments.append(attachments_item)
 
         topic = self.topic
 
@@ -84,6 +91,8 @@ class AtsMessage:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ats_message_attachments_item import AtsMessageAttachmentsItem
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -97,7 +106,12 @@ class AtsMessage:
 
         created_at = d.pop("created_at")
 
-        attachments = cast(list[Any], d.pop("attachments"))
+        attachments = []
+        _attachments = d.pop("attachments")
+        for attachments_item_data in _attachments:
+            attachments_item = AtsMessageAttachmentsItem.from_dict(attachments_item_data)
+
+            attachments.append(attachments_item)
 
         topic = d.pop("topic")
 

@@ -12,13 +12,21 @@ T = TypeVar("T", bound="WorkScheduleOverlapPeriod")
 @_attrs_define
 class WorkScheduleOverlapPeriod:
     id: str
+    """ Identifier of the overlap period """
     default: bool
+    """ Whether this is the default overlap period of the schedule """
     schedule_id: str
+    """ Identifier of the schedule this overlap period belongs to """
     start_month: int
+    """ Month the overlap period starts on """
     start_day: int
+    """ Day of the month the overlap period starts on """
     end_month: int
+    """ Month the overlap period ends on """
     end_day: int
+    """ Day of the month the overlap period ends on """
     schedule_type: str
+    """ Whether the schedule is flexible or fixed """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -18,19 +18,37 @@ class ExpensesExpenseCategory:
 
     """
 
+    id: str
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "id": id,
+                "name": name,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        expenses_expense_category = cls()
+        id = d.pop("id")
+
+        name = d.pop("name")
+
+        expenses_expense_category = cls(
+            id=id,
+            name=name,
+        )
 
         expenses_expense_category.additional_properties = d
         return expenses_expense_category

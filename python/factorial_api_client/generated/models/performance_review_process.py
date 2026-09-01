@@ -65,8 +65,6 @@ class PerformanceReviewProcess:
     """ Date when the review process should end """
     last_bulk_reminder: str | Unset = UNSET
     """ Date when the last bulk reminder was sent """
-    cycle_id: str | Unset = UNSET
-    """ Performance cycle ID """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,8 +102,6 @@ class PerformanceReviewProcess:
 
         last_bulk_reminder = self.last_bulk_reminder
 
-        cycle_id = self.cycle_id
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -133,8 +129,6 @@ class PerformanceReviewProcess:
             field_dict["ends_at"] = ends_at
         if last_bulk_reminder is not UNSET:
             field_dict["last_bulk_reminder"] = last_bulk_reminder
-        if cycle_id is not UNSET:
-            field_dict["cycle_id"] = cycle_id
 
         return field_dict
 
@@ -197,8 +191,6 @@ class PerformanceReviewProcess:
 
         last_bulk_reminder = d.pop("last_bulk_reminder", UNSET)
 
-        cycle_id = d.pop("cycle_id", UNSET)
-
         performance_review_process = cls(
             id=id,
             company_id=company_id,
@@ -214,7 +206,6 @@ class PerformanceReviewProcess:
             starts_at=starts_at,
             ends_at=ends_at,
             last_bulk_reminder=last_bulk_reminder,
-            cycle_id=cycle_id,
         )
 
         performance_review_process.additional_properties = d

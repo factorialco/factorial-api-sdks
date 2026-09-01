@@ -14,15 +14,25 @@ T = TypeVar("T", bound="FinanceCostCenter")
 @_attrs_define
 class FinanceCostCenter:
     id: str
+    """ Factorial id of the cost center. """
     name: str
+    """ Name of the cost center. """
     company_id: str
+    """ Company id the cost center belongs to. """
     active_employees_count: int
+    """ Number of employees currently assigned to the cost center. """
     historical_employees_count: int
+    """ Number of employees ever assigned to the cost center. """
     status: str
+    """ Whether the cost center is active or inactive. """
     legal_entity_id: str | Unset = UNSET
+    """ Legal entity id the cost center belongs to. """
     code: str | Unset = UNSET
+    """ Optional unique code of the cost center. """
     description: str | Unset = UNSET
+    """ Optional free text describing the cost center. """
     deactivation_date: str | Unset = UNSET
+    """ Date the cost center was deactivated, if inactive. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

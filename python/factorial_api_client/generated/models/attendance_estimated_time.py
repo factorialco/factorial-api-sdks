@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.attendance_estimated_time_source import AttendanceEstimatedTimeSource
 from ..models.attendance_estimated_time_time_unit import AttendanceEstimatedTimeTimeUnit
+
+if TYPE_CHECKING:
+    from ..models.attendance_estimated_time_breaks_item import AttendanceEstimatedTimeBreaksItem
+    from ..models.attendance_estimated_time_shifts_item import AttendanceEstimatedTimeShiftsItem
+
 
 T = TypeVar("T", bound="AttendanceEstimatedTime")
 
@@ -24,10 +29,10 @@ class AttendanceEstimatedTime:
     """ Amount of regular minutes the employee has to work. """
     overtime_minutes: float
     """ Amount of overtime minutes the employee has to work (only available with Shift Management). """
-    breaks: list[Any]
+    breaks: list[AttendanceEstimatedTimeBreaksItem]
     time_unit: AttendanceEstimatedTimeTimeUnit
     estimated_half_days: int
-    shifts: list[Any]
+    shifts: list[AttendanceEstimatedTimeShiftsItem]
     source: AttendanceEstimatedTimeSource
     """ Source of the estimated time. Could be employee's contract, work schedule or shift management. """
     id: str
@@ -49,13 +54,19 @@ class AttendanceEstimatedTime:
 
         overtime_minutes = self.overtime_minutes
 
-        breaks = self.breaks
+        breaks = []
+        for breaks_item_data in self.breaks:
+            breaks_item = breaks_item_data.to_dict()
+            breaks.append(breaks_item)
 
         time_unit = self.time_unit.value
 
         estimated_half_days = self.estimated_half_days
 
-        shifts = self.shifts
+        shifts = []
+        for shifts_item_data in self.shifts:
+            shifts_item = shifts_item_data.to_dict()
+            shifts.append(shifts_item)
 
         source = self.source.value
 
@@ -87,6 +98,9 @@ class AttendanceEstimatedTime:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.attendance_estimated_time_breaks_item import AttendanceEstimatedTimeBreaksItem
+        from ..models.attendance_estimated_time_shifts_item import AttendanceEstimatedTimeShiftsItem
+
         d = dict(src_dict)
         date = d.pop("date")
 
@@ -100,13 +114,23 @@ class AttendanceEstimatedTime:
 
         overtime_minutes = d.pop("overtime_minutes")
 
-        breaks = cast(list[Any], d.pop("breaks"))
+        breaks = []
+        _breaks = d.pop("breaks")
+        for breaks_item_data in _breaks:
+            breaks_item = AttendanceEstimatedTimeBreaksItem.from_dict(breaks_item_data)
+
+            breaks.append(breaks_item)
 
         time_unit = AttendanceEstimatedTimeTimeUnit(d.pop("time_unit"))
 
         estimated_half_days = d.pop("estimated_half_days")
 
-        shifts = cast(list[Any], d.pop("shifts"))
+        shifts = []
+        _shifts = d.pop("shifts")
+        for shifts_item_data in _shifts:
+            shifts_item = AttendanceEstimatedTimeShiftsItem.from_dict(shifts_item_data)
+
+            shifts.append(shifts_item)
 
         source = AttendanceEstimatedTimeSource(d.pop("source"))
 

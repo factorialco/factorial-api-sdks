@@ -18,19 +18,39 @@ class ProcurementPurchaseRequestCost:
 
     """
 
+    cents: int
+    """ Total cost in cents (smallest currency unit) """
+    currency: str
+    """ Currency code in ISO 4217 format """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        cents = self.cents
+
+        currency = self.currency
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "cents": cents,
+                "currency": currency,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        procurement_purchase_request_cost = cls()
+        cents = d.pop("cents")
+
+        currency = d.pop("currency")
+
+        procurement_purchase_request_cost = cls(
+            cents=cents,
+            currency=currency,
+        )
 
         procurement_purchase_request_cost.additional_properties = d
         return procurement_purchase_request_cost

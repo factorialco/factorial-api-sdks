@@ -22,7 +22,8 @@ class AttendanceShift:
     date: str
     """ Date of the shift """
     reference_date: str
-    """ Reference date for the shift """
+    """ The business day this shift is attributed to; can differ from `date` for overnight shifts that cross
+    midnight """
     created_at: str
     """ Timestamp when the shift record was created """
     company_id: str
@@ -44,7 +45,8 @@ class AttendanceShift:
     location_type: AttendanceShiftLocationType | Unset = UNSET
     """ Type of location for the shift """
     half_day: AttendanceShiftHalfDay | Unset = UNSET
-    """ Indicates which worked part of the day """
+    """ Which half of the day the shift covers when it is a half-day — `beginning_of_day` or `end_of_day`; null for
+    full-day shifts """
     in_location_latitude: float | Unset = UNSET
     """ Latitude of the clock-in location """
     in_location_longitude: float | Unset = UNSET
@@ -58,7 +60,7 @@ class AttendanceShift:
     out_location_accuracy: float | Unset = UNSET
     """ Accuracy of the clock-out location """
     workable: bool | Unset = UNSET
-    """ Indicates if the shift is workable """
+    """ Whether the shift counts as worked (workable) time rather than a break """
     workplace_id: str | Unset = UNSET
     """ Identifier for the location """
     time_settings_break_configuration_id: str | Unset = UNSET

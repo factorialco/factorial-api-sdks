@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -22,6 +22,10 @@ from ..models.timeoff_allowance_tenure_period_transition import (
     TimeoffAllowanceTenurePeriodTransition,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.timeoff_allowance_tenure_periods_item import TimeoffAllowanceTenurePeriodsItem
+
 
 T = TypeVar("T", bound="TimeoffAllowance")
 
@@ -45,7 +49,7 @@ class TimeoffAllowance:
     """ Whether the allowance has proration enabled or not. """
     rounding: TimeoffAllowanceRounding
     """ How the accrued units of the allowance are rounded. It depends if the allowance is set in hours or days. """
-    tenure_periods: list[Any]
+    tenure_periods: list[TimeoffAllowanceTenurePeriodsItem]
     """ The tenure periods associated with the allowance. """
     timeoff_cycle: str
     """ Value to indicate how the allowance cycle is configured. Its an abbreviation of the first and last month.
@@ -89,6 +93,7 @@ class TimeoffAllowance:
     range_type: TimeoffAllowanceRangeType | Unset = UNSET
     """ Configures how leaves duration is handled. """
     send_notification: bool | Unset = UNSET
+    """ Whether employees are notified when the allowance changes """
     source_units: TimeoffAllowanceSourceUnits | Unset = UNSET
     """ This field configures the type of allowance (fixed balance, based on worked time) """
     tenure_period_transition: TimeoffAllowanceTenurePeriodTransition | Unset = UNSET
@@ -122,7 +127,10 @@ class TimeoffAllowance:
 
         rounding = self.rounding.value
 
-        tenure_periods = self.tenure_periods
+        tenure_periods = []
+        for tenure_periods_item_data in self.tenure_periods:
+            tenure_periods_item = tenure_periods_item_data.to_dict()
+            tenure_periods.append(tenure_periods_item)
 
         timeoff_cycle = self.timeoff_cycle
 
@@ -264,6 +272,8 @@ class TimeoffAllowance:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.timeoff_allowance_tenure_periods_item import TimeoffAllowanceTenurePeriodsItem
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -281,7 +291,14 @@ class TimeoffAllowance:
 
         rounding = TimeoffAllowanceRounding(d.pop("rounding"))
 
-        tenure_periods = cast(list[Any], d.pop("tenure_periods"))
+        tenure_periods = []
+        _tenure_periods = d.pop("tenure_periods")
+        for tenure_periods_item_data in _tenure_periods:
+            tenure_periods_item = TimeoffAllowanceTenurePeriodsItem.from_dict(
+                tenure_periods_item_data
+            )
+
+            tenure_periods.append(tenure_periods_item)
 
         timeoff_cycle = d.pop("timeoff_cycle")
 

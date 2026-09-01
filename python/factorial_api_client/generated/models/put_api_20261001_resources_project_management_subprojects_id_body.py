@@ -1,0 +1,114 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..models.put_api_20261001_resources_project_management_subprojects_id_body_status import (
+    PutApi20261001ResourcesProjectManagementSubprojectsIdBodyStatus,
+)
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="PutApi20261001ResourcesProjectManagementSubprojectsIdBody")
+
+
+@_attrs_define
+class PutApi20261001ResourcesProjectManagementSubprojectsIdBody:
+    id: str
+    """ The id of the subproject. """
+    name: str
+    """ The name of the subproject. """
+    status: PutApi20261001ResourcesProjectManagementSubprojectsIdBodyStatus
+    """ The status of the subproject. """
+    description: str | Unset = UNSET
+    """ The description of the subproject. """
+    code: str | Unset = UNSET
+    """ The code of the subproject. """
+    start_date: str | Unset = UNSET
+    """ The start date of the subproject. """
+    due_date: str | Unset = UNSET
+    """ The due date of the subproject. """
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
+        name = self.name
+
+        status = self.status.value
+
+        description = self.description
+
+        code = self.code
+
+        start_date = self.start_date
+
+        due_date = self.due_date
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "id": id,
+                "name": name,
+                "status": status,
+            }
+        )
+        if description is not UNSET:
+            field_dict["description"] = description
+        if code is not UNSET:
+            field_dict["code"] = code
+        if start_date is not UNSET:
+            field_dict["start_date"] = start_date
+        if due_date is not UNSET:
+            field_dict["due_date"] = due_date
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        id = d.pop("id")
+
+        name = d.pop("name")
+
+        status = PutApi20261001ResourcesProjectManagementSubprojectsIdBodyStatus(d.pop("status"))
+
+        description = d.pop("description", UNSET)
+
+        code = d.pop("code", UNSET)
+
+        start_date = d.pop("start_date", UNSET)
+
+        due_date = d.pop("due_date", UNSET)
+
+        put_api_20261001_resources_project_management_subprojects_id_body = cls(
+            id=id,
+            name=name,
+            status=status,
+            description=description,
+            code=code,
+            start_date=start_date,
+            due_date=due_date,
+        )
+
+        put_api_20261001_resources_project_management_subprojects_id_body.additional_properties = d
+        return put_api_20261001_resources_project_management_subprojects_id_body
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

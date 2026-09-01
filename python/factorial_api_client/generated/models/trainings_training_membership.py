@@ -25,9 +25,10 @@ class TrainingsTrainingMembership:
     status: TrainingsTrainingMembershipStatus
     """ This field is used to filter those trainings memberships whose attendance status is the given. """
     training_due_date: str | Unset = UNSET
-    """ This field is used for those trainings with an expiry date. """
+    """ Date on which the training will expire for the employee, calculated from the completion date, for trainings
+    with an expiry date. """
     training_completed_at: str | Unset = UNSET
-    """ This field is used to record the date a training was completed for trainings that have an expiry date. """
+    """ The date on which the employee completed the training. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.finance_financial_document_file import FinanceFinancialDocumentFile
+    from ..models.finance_financial_document_taxes_item import FinanceFinancialDocumentTaxesItem
 
 
 T = TypeVar("T", bound="FinanceFinancialDocument")
@@ -25,7 +26,7 @@ class FinanceFinancialDocument:
     """ Current status. """
     updated_at: str
     """ Updation date. """
-    taxes: list[Any]
+    taxes: list[FinanceFinancialDocumentTaxesItem]
     """ Taxes. """
     document_type: FinanceFinancialDocumentDocumentType
     """ Type of the financial document. Using "invoice" as default. """
@@ -102,7 +103,10 @@ class FinanceFinancialDocument:
 
         updated_at = self.updated_at
 
-        taxes = self.taxes
+        taxes = []
+        for taxes_item_data in self.taxes:
+            taxes_item = taxes_item_data.to_dict()
+            taxes.append(taxes_item)
 
         document_type = self.document_type.value
 
@@ -253,6 +257,7 @@ class FinanceFinancialDocument:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.finance_financial_document_file import FinanceFinancialDocumentFile
+        from ..models.finance_financial_document_taxes_item import FinanceFinancialDocumentTaxesItem
 
         d = dict(src_dict)
         id = d.pop("id")
@@ -261,7 +266,12 @@ class FinanceFinancialDocument:
 
         updated_at = d.pop("updated_at")
 
-        taxes = cast(list[Any], d.pop("taxes"))
+        taxes = []
+        _taxes = d.pop("taxes")
+        for taxes_item_data in _taxes:
+            taxes_item = FinanceFinancialDocumentTaxesItem.from_dict(taxes_item_data)
+
+            taxes.append(taxes_item)
 
         document_type = FinanceFinancialDocumentDocumentType(d.pop("document_type"))
 

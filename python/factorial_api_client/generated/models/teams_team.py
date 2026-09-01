@@ -14,12 +14,18 @@ T = TypeVar("T", bound="TeamsTeam")
 @_attrs_define
 class TeamsTeam:
     id: str
+    """ Unique identifier of the team """
     name: str
+    """ Human-readable name of the team (e.g. "Engineering") """
     company_id: str
+    """ ID of the company this team belongs to """
     description: str | Unset = UNSET
+    """ Free-text description of the team """
     avatar: str | Unset = UNSET
     employee_ids: list[str] | Unset = UNSET
+    """ IDs of the employees who are members of this team """
     lead_ids: list[str] | Unset = UNSET
+    """ IDs of the employees who are leads of this team (subset of employee_ids) """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
