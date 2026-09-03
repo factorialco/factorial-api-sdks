@@ -22,11 +22,11 @@ class AttendanceEditTimesheetRequest:
     id: str
     """ Unique identifier for the edit timesheet request """
     request_type: AttendanceEditTimesheetRequestRequestType
-    """ Type of the request """
+    """ What the request asks to do — one of `create_shift`, `update_shift`, `delete_shift` """
     employee_id: str
     """ Id of the shift's employee """
     approved: bool | Unset = UNSET
-    """ Status of the edit timesheet request """
+    """ Tri-state approval status — true = approved, false = rejected, null = pending approval """
     workable: bool | Unset = UNSET
     """ Indicates if the shift is workable or a break """
     clock_in: str | Unset = UNSET
@@ -47,6 +47,12 @@ class AttendanceEditTimesheetRequest:
     """ Date of the shift """
     reference_date: str | Unset = UNSET
     """ Reference date for the shift """
+    workplace_id: str | Unset = UNSET
+    """ Id of the workplace (location) for the shift """
+    clock_in_work_area_id: str | Unset = UNSET
+    """ Id of the clock-in work area within the workplace """
+    clock_out_work_area_id: str | Unset = UNSET
+    """ Id of the clock-out work area within the workplace """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -79,6 +85,12 @@ class AttendanceEditTimesheetRequest:
         date = self.date
 
         reference_date = self.reference_date
+
+        workplace_id = self.workplace_id
+
+        clock_in_work_area_id = self.clock_in_work_area_id
+
+        clock_out_work_area_id = self.clock_out_work_area_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -113,6 +125,12 @@ class AttendanceEditTimesheetRequest:
             field_dict["date"] = date
         if reference_date is not UNSET:
             field_dict["reference_date"] = reference_date
+        if workplace_id is not UNSET:
+            field_dict["workplace_id"] = workplace_id
+        if clock_in_work_area_id is not UNSET:
+            field_dict["clock_in_work_area_id"] = clock_in_work_area_id
+        if clock_out_work_area_id is not UNSET:
+            field_dict["clock_out_work_area_id"] = clock_out_work_area_id
 
         return field_dict
 
@@ -152,6 +170,12 @@ class AttendanceEditTimesheetRequest:
 
         reference_date = d.pop("reference_date", UNSET)
 
+        workplace_id = d.pop("workplace_id", UNSET)
+
+        clock_in_work_area_id = d.pop("clock_in_work_area_id", UNSET)
+
+        clock_out_work_area_id = d.pop("clock_out_work_area_id", UNSET)
+
         attendance_edit_timesheet_request = cls(
             id=id,
             request_type=request_type,
@@ -167,6 +191,9 @@ class AttendanceEditTimesheetRequest:
             observations=observations,
             date=date,
             reference_date=reference_date,
+            workplace_id=workplace_id,
+            clock_in_work_area_id=clock_in_work_area_id,
+            clock_out_work_area_id=clock_out_work_area_id,
         )
 
         attendance_edit_timesheet_request.additional_properties = d

@@ -19,19 +19,65 @@ class FinanceFinancialDocumentFile:
 
     """
 
+    id: str
+    filename: str
+    url: str
+    size: int
+    content_type: str
+    created_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
+        filename = self.filename
+
+        url = self.url
+
+        size = self.size
+
+        content_type = self.content_type
+
+        created_at = self.created_at
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "id": id,
+                "filename": filename,
+                "url": url,
+                "size": size,
+                "content_type": content_type,
+                "created_at": created_at,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        finance_financial_document_file = cls()
+        id = d.pop("id")
+
+        filename = d.pop("filename")
+
+        url = d.pop("url")
+
+        size = d.pop("size")
+
+        content_type = d.pop("content_type")
+
+        created_at = d.pop("created_at")
+
+        finance_financial_document_file = cls(
+            id=id,
+            filename=filename,
+            url=url,
+            size=size,
+            content_type=content_type,
+            created_at=created_at,
+        )
 
         finance_financial_document_file.additional_properties = d
         return finance_financial_document_file

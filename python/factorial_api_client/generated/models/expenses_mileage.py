@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.expenses_mileage_category import ExpensesMileageCategory
+    from ..models.expenses_mileage_files_item import ExpensesMileageFilesItem
 
 
 T = TypeVar("T", bound="ExpensesMileage")
@@ -26,7 +27,7 @@ class ExpensesMileage:
     """ The currency code in ISO 4217 format """
     status: str
     """ The status of the mileage """
-    files: list[Any]
+    files: list[ExpensesMileageFilesItem]
     """ The files associated with the mileage """
     payment: ExpensesMileagePayment
     """ The payment method """
@@ -54,6 +55,9 @@ class ExpensesMileage:
     """ The distance unit `mileage` is expressed in (e.g. km) """
     rate: str | Unset = UNSET
     """ The reimbursement rate per distance unit, in `currency` """
+    rate_measurement_unit: str | Unset = UNSET
+    """ The distance unit the `rate` is denominated in (e.g. mi). The distance is converted into this unit before
+    the rate is applied. """
     from_: str | Unset = UNSET
     """ The origin location """
     to: str | Unset = UNSET
@@ -95,7 +99,10 @@ class ExpensesMileage:
 
         status = self.status
 
-        files = self.files
+        files = []
+        for files_item_data in self.files:
+            files_item = files_item_data.to_dict()
+            files.append(files_item)
 
         payment = self.payment.value
 
@@ -124,6 +131,8 @@ class ExpensesMileage:
         units = self.units
 
         rate = self.rate
+
+        rate_measurement_unit = self.rate_measurement_unit
 
         from_ = self.from_
 
@@ -190,6 +199,8 @@ class ExpensesMileage:
             field_dict["units"] = units
         if rate is not UNSET:
             field_dict["rate"] = rate
+        if rate_measurement_unit is not UNSET:
+            field_dict["rate_measurement_unit"] = rate_measurement_unit
         if from_ is not UNSET:
             field_dict["from"] = from_
         if to is not UNSET:
@@ -226,6 +237,7 @@ class ExpensesMileage:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.expenses_mileage_category import ExpensesMileageCategory
+        from ..models.expenses_mileage_files_item import ExpensesMileageFilesItem
 
         d = dict(src_dict)
         id = d.pop("id")
@@ -236,7 +248,12 @@ class ExpensesMileage:
 
         status = d.pop("status")
 
-        files = cast(list[Any], d.pop("files"))
+        files = []
+        _files = d.pop("files")
+        for files_item_data in _files:
+            files_item = ExpensesMileageFilesItem.from_dict(files_item_data)
+
+            files.append(files_item)
 
         payment = ExpensesMileagePayment(d.pop("payment"))
 
@@ -268,6 +285,8 @@ class ExpensesMileage:
         units = d.pop("units", UNSET)
 
         rate = d.pop("rate", UNSET)
+
+        rate_measurement_unit = d.pop("rate_measurement_unit", UNSET)
 
         from_ = d.pop("from", UNSET)
 
@@ -318,6 +337,7 @@ class ExpensesMileage:
             mileage=mileage,
             units=units,
             rate=rate,
+            rate_measurement_unit=rate_measurement_unit,
             from_=from_,
             to=to,
             description=description,

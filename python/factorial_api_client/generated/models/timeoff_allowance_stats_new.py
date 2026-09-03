@@ -1,12 +1,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.timeoff_allowance_stats_new_cycle_carry_overs_item import (
+        TimeoffAllowanceStatsNewCycleCarryOversItem,
+    )
+    from ..models.timeoff_allowance_stats_new_cycles_item import TimeoffAllowanceStatsNewCyclesItem
+
 
 T = TypeVar("T", bound="TimeoffAllowanceStatsNew")
 
@@ -22,9 +29,9 @@ class TimeoffAllowanceStatsNew:
     """ ID of the employee these stats belong to. """
     year: int
     """ Calendar year used to scope cycle calculations. """
-    cycles: list[Any]
+    cycles: list[TimeoffAllowanceStatsNewCyclesItem]
     """ Array of cycle objects describing each accrual period for the allowance. """
-    cycle_carry_overs: list[Any]
+    cycle_carry_overs: list[TimeoffAllowanceStatsNewCycleCarryOversItem]
     """ Carry over entries between cycles, typed as an array of CycleCarryOver value objects. """
     accumulated_carry_over: str
     """ Total carried over units accumulated from previous cycles. """
@@ -72,9 +79,15 @@ class TimeoffAllowanceStatsNew:
 
         year = self.year
 
-        cycles = self.cycles
+        cycles = []
+        for cycles_item_data in self.cycles:
+            cycles_item = cycles_item_data.to_dict()
+            cycles.append(cycles_item)
 
-        cycle_carry_overs = self.cycle_carry_overs
+        cycle_carry_overs = []
+        for cycle_carry_overs_item_data in self.cycle_carry_overs:
+            cycle_carry_overs_item = cycle_carry_overs_item_data.to_dict()
+            cycle_carry_overs.append(cycle_carry_overs_item)
 
         accumulated_carry_over = self.accumulated_carry_over
 
@@ -140,6 +153,13 @@ class TimeoffAllowanceStatsNew:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.timeoff_allowance_stats_new_cycle_carry_overs_item import (
+            TimeoffAllowanceStatsNewCycleCarryOversItem,
+        )
+        from ..models.timeoff_allowance_stats_new_cycles_item import (
+            TimeoffAllowanceStatsNewCyclesItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -149,9 +169,21 @@ class TimeoffAllowanceStatsNew:
 
         year = d.pop("year")
 
-        cycles = cast(list[Any], d.pop("cycles"))
+        cycles = []
+        _cycles = d.pop("cycles")
+        for cycles_item_data in _cycles:
+            cycles_item = TimeoffAllowanceStatsNewCyclesItem.from_dict(cycles_item_data)
 
-        cycle_carry_overs = cast(list[Any], d.pop("cycle_carry_overs"))
+            cycles.append(cycles_item)
+
+        cycle_carry_overs = []
+        _cycle_carry_overs = d.pop("cycle_carry_overs")
+        for cycle_carry_overs_item_data in _cycle_carry_overs:
+            cycle_carry_overs_item = TimeoffAllowanceStatsNewCycleCarryOversItem.from_dict(
+                cycle_carry_overs_item_data
+            )
+
+            cycle_carry_overs.append(cycle_carry_overs_item)
 
         accumulated_carry_over = d.pop("accumulated_carry_over")
 

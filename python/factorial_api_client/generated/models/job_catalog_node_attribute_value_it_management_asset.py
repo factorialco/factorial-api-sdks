@@ -18,19 +18,44 @@ class JobCatalogNodeAttributeValueItManagementAsset:
 
     """
 
+    type_name: str
+    brand: str
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        type_name = self.type_name
+
+        brand = self.brand
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "type_name": type_name,
+                "brand": brand,
+                "name": name,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        job_catalog_node_attribute_value_it_management_asset = cls()
+        type_name = d.pop("type_name")
+
+        brand = d.pop("brand")
+
+        name = d.pop("name")
+
+        job_catalog_node_attribute_value_it_management_asset = cls(
+            type_name=type_name,
+            brand=brand,
+            name=name,
+        )
 
         job_catalog_node_attribute_value_it_management_asset.additional_properties = d
         return job_catalog_node_attribute_value_it_management_asset

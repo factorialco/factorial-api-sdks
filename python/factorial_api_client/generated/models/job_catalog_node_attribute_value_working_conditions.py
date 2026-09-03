@@ -1,10 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.job_catalog_node_attribute_value_working_conditions_conditions_item import (
+        JobCatalogNodeAttributeValueWorkingConditionsConditionsItem,
+    )
+
 
 T = TypeVar("T", bound="JobCatalogNodeAttributeValueWorkingConditions")
 
@@ -20,19 +28,59 @@ class JobCatalogNodeAttributeValueWorkingConditions:
 
     """
 
+    name: str
+    conditions: list[JobCatalogNodeAttributeValueWorkingConditionsConditionsItem]
+    description: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        name = self.name
+
+        conditions = []
+        for conditions_item_data in self.conditions:
+            conditions_item = conditions_item_data.to_dict()
+            conditions.append(conditions_item)
+
+        description = self.description
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "name": name,
+                "conditions": conditions,
+            }
+        )
+        if description is not UNSET:
+            field_dict["description"] = description
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.job_catalog_node_attribute_value_working_conditions_conditions_item import (
+            JobCatalogNodeAttributeValueWorkingConditionsConditionsItem,
+        )
+
         d = dict(src_dict)
-        job_catalog_node_attribute_value_working_conditions = cls()
+        name = d.pop("name")
+
+        conditions = []
+        _conditions = d.pop("conditions")
+        for conditions_item_data in _conditions:
+            conditions_item = JobCatalogNodeAttributeValueWorkingConditionsConditionsItem.from_dict(
+                conditions_item_data
+            )
+
+            conditions.append(conditions_item)
+
+        description = d.pop("description", UNSET)
+
+        job_catalog_node_attribute_value_working_conditions = cls(
+            name=name,
+            conditions=conditions,
+            description=description,
+        )
 
         job_catalog_node_attribute_value_working_conditions.additional_properties = d
         return job_catalog_node_attribute_value_working_conditions

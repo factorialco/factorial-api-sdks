@@ -15,11 +15,15 @@ T = TypeVar("T", bound="ContractsCompensation")
 @_attrs_define
 class ContractsCompensation:
     id: str
+    """ Unique identifier of the compensation """
     contract_version_id: str
+    """ ID of the contract version this compensation belongs to """
     contracts_taxonomy_id: str
+    """ ID of the contracts taxonomy categorising this compensation """
     unit: str
     """ In which unit compensation is paid """
     description: str | Unset = UNSET
+    """ Free-text description of the compensation """
     compensation_type: str | Unset = UNSET
     """ Required field. You can only use the following options: fixed, undefined, up_to, per_worked_day,
     per_worked_hour """
@@ -32,6 +36,7 @@ class ContractsCompensation:
     """ How much time will pass between payments. If recurrence is empty, assume months. For example, 12 here means
     compensation is paid yearly """
     starts_on: str | Unset = UNSET
+    """ Date from which this compensation applies """
     recurrence: str | Unset = UNSET
     """ Frequency (monthly, yearly, one_time) to determine how often the employee is paid. Could be empty, use
     `recurrence_count` in that case """
@@ -42,6 +47,7 @@ class ContractsCompensation:
     """ Human-readable hint about the payroll formula used (for example "current period" or "average of last 3
     months") """
     currency: str | Unset = UNSET
+    """ ISO 4217 currency code the amount is expressed in """
     time_condition: ContractsCompensationTimeCondition | Unset = UNSET
     minimum_amount_of_hours: int | Unset = UNSET
     minimum_amount_of_hours_in_cents: int | Unset = UNSET

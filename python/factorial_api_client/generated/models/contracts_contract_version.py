@@ -63,6 +63,8 @@ class ContractsContractVersion:
     date is not related with the end date of a contract. """
     salary_amount: int | Unset = UNSET
     """ the amount of money the employee earns in cents. """
+    salary_currency: str | Unset = UNSET
+    """ the currency of the salary amount, inherited from the governing legal entity. """
     salary_frequency: str | Unset = UNSET
     """ the frequency of the salary payment. """
     working_week_days: str | Unset = UNSET
@@ -175,6 +177,8 @@ class ContractsContractVersion:
 
         salary_amount = self.salary_amount
 
+        salary_currency = self.salary_currency
+
         salary_frequency = self.salary_frequency
 
         working_week_days = self.working_week_days
@@ -281,6 +285,8 @@ class ContractsContractVersion:
             field_dict["trial_period_ends_on"] = trial_period_ends_on
         if salary_amount is not UNSET:
             field_dict["salary_amount"] = salary_amount
+        if salary_currency is not UNSET:
+            field_dict["salary_currency"] = salary_currency
         if salary_frequency is not UNSET:
             field_dict["salary_frequency"] = salary_frequency
         if working_week_days is not UNSET:
@@ -397,6 +403,8 @@ class ContractsContractVersion:
 
         salary_amount = d.pop("salary_amount", UNSET)
 
+        salary_currency = d.pop("salary_currency", UNSET)
+
         salary_frequency = d.pop("salary_frequency", UNSET)
 
         working_week_days = d.pop("working_week_days", UNSET)
@@ -500,6 +508,7 @@ class ContractsContractVersion:
             has_trial_period=has_trial_period,
             trial_period_ends_on=trial_period_ends_on,
             salary_amount=salary_amount,
+            salary_currency=salary_currency,
             salary_frequency=salary_frequency,
             working_week_days=working_week_days,
             working_hours=working_hours,

@@ -14,7 +14,9 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.expenses_expense_card import ExpensesExpenseCard
     from ..models.expenses_expense_category import ExpensesExpenseCategory
+    from ..models.expenses_expense_files_item import ExpensesExpenseFilesItem
     from ..models.expenses_expense_signed_document import ExpensesExpenseSignedDocument
+    from ..models.expenses_expense_taxes_item import ExpensesExpenseTaxesItem
 
 
 T = TypeVar("T", bound="ExpensesExpense")
@@ -34,9 +36,9 @@ class ExpensesExpense:
     """ The date when the expense was made """
     status_updated_at: str
     """ The date and time when the status was updated """
-    files: list[Any]
+    files: list[ExpensesExpenseFilesItem]
     """ The files of the expense """
-    taxes: list[Any]
+    taxes: list[ExpensesExpenseTaxesItem]
     """ The taxes of the expense """
     cost_center_ids: list[str]
     """ Array of cost center IDs associated with this expense """
@@ -120,9 +122,15 @@ class ExpensesExpense:
 
         status_updated_at = self.status_updated_at
 
-        files = self.files
+        files = []
+        for files_item_data in self.files:
+            files_item = files_item_data.to_dict()
+            files.append(files_item)
 
-        taxes = self.taxes
+        taxes = []
+        for taxes_item_data in self.taxes:
+            taxes_item = taxes_item_data.to_dict()
+            taxes.append(taxes_item)
 
         cost_center_ids = self.cost_center_ids
 
@@ -284,7 +292,9 @@ class ExpensesExpense:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.expenses_expense_card import ExpensesExpenseCard
         from ..models.expenses_expense_category import ExpensesExpenseCategory
+        from ..models.expenses_expense_files_item import ExpensesExpenseFilesItem
         from ..models.expenses_expense_signed_document import ExpensesExpenseSignedDocument
+        from ..models.expenses_expense_taxes_item import ExpensesExpenseTaxesItem
 
         d = dict(src_dict)
         company_id = d.pop("company_id")
@@ -299,9 +309,19 @@ class ExpensesExpense:
 
         status_updated_at = d.pop("status_updated_at")
 
-        files = cast(list[Any], d.pop("files"))
+        files = []
+        _files = d.pop("files")
+        for files_item_data in _files:
+            files_item = ExpensesExpenseFilesItem.from_dict(files_item_data)
 
-        taxes = cast(list[Any], d.pop("taxes"))
+            files.append(files_item)
+
+        taxes = []
+        _taxes = d.pop("taxes")
+        for taxes_item_data in _taxes:
+            taxes_item = ExpensesExpenseTaxesItem.from_dict(taxes_item_data)
+
+            taxes.append(taxes_item)
 
         cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 

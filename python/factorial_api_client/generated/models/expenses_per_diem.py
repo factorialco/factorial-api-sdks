@@ -12,6 +12,8 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.expenses_per_diem_category import ExpensesPerDiemCategory
+    from ..models.expenses_per_diem_files_item import ExpensesPerDiemFilesItem
+    from ..models.expenses_per_diem_rates_item import ExpensesPerDiemRatesItem
 
 
 T = TypeVar("T", bound="ExpensesPerDiem")
@@ -27,13 +29,13 @@ class ExpensesPerDiem:
     """ The currency code in ISO 4217 format. """
     payment: ExpensesPerDiemPayment
     """ The payment method for the per diem. """
-    files: list[Any]
+    files: list[ExpensesPerDiemFilesItem]
     """ The files attached to the per diem. """
     status: ExpensesPerDiemStatus
     """ The status of the per diem. """
     cost_center_ids: list[str]
     """ Array of cost center IDs associated with this per diem """
-    rates: list[Any]
+    rates: list[ExpensesPerDiemRatesItem]
     """ The rates for the per diem. """
     employee_id: str | Unset = UNSET
     """ The ID of the employee the per diem is for. """
@@ -84,13 +86,19 @@ class ExpensesPerDiem:
 
         payment = self.payment.value
 
-        files = self.files
+        files = []
+        for files_item_data in self.files:
+            files_item = files_item_data.to_dict()
+            files.append(files_item)
 
         status = self.status.value
 
         cost_center_ids = self.cost_center_ids
 
-        rates = self.rates
+        rates = []
+        for rates_item_data in self.rates:
+            rates_item = rates_item_data.to_dict()
+            rates.append(rates_item)
 
         employee_id = self.employee_id
 
@@ -190,6 +198,8 @@ class ExpensesPerDiem:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.expenses_per_diem_category import ExpensesPerDiemCategory
+        from ..models.expenses_per_diem_files_item import ExpensesPerDiemFilesItem
+        from ..models.expenses_per_diem_rates_item import ExpensesPerDiemRatesItem
 
         d = dict(src_dict)
         id = d.pop("id")
@@ -200,13 +210,23 @@ class ExpensesPerDiem:
 
         payment = ExpensesPerDiemPayment(d.pop("payment"))
 
-        files = cast(list[Any], d.pop("files"))
+        files = []
+        _files = d.pop("files")
+        for files_item_data in _files:
+            files_item = ExpensesPerDiemFilesItem.from_dict(files_item_data)
+
+            files.append(files_item)
 
         status = ExpensesPerDiemStatus(d.pop("status"))
 
         cost_center_ids = cast(list[str], d.pop("cost_center_ids"))
 
-        rates = cast(list[Any], d.pop("rates"))
+        rates = []
+        _rates = d.pop("rates")
+        for rates_item_data in _rates:
+            rates_item = ExpensesPerDiemRatesItem.from_dict(rates_item_data)
+
+            rates.append(rates_item)
 
         employee_id = d.pop("employee_id", UNSET)
 

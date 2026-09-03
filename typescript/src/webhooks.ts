@@ -49,6 +49,7 @@ import type {
   PayrollPolicyPeriod,
   PayrollSupplement,
   PerformanceReviewProcess,
+  ProjectManagementTimeRecord,
   ShiftManagementShift,
   TasksTask,
   TeamsMembership,
@@ -231,6 +232,16 @@ export type PerformanceReviewProcessUpdateReviewerStrategiesWebhook = Performanc
 export type PerformanceReviewProcessUpdateScheduleWebhook = PerformanceReviewProcess;
 /** Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies). */
 export type PerformanceReviewProcessUpdateTargetStrategyWebhook = PerformanceReviewProcess;
+/** Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates). */
+export type ProjectManagementTimeRecordCreateWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes). */
+export type ProjectManagementTimeRecordDeleteWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_imputed_minutes` (ProjectManagement > TimeRecord > Update imputed minutes). */
+export type ProjectManagementTimeRecordUpdateImputedMinutesWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_observations` (ProjectManagement > TimeRecord > Update observations). */
+export type ProjectManagementTimeRecordUpdateObservationsWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_project_worker` (ProjectManagement > TimeRecord > Update project workers). */
+export type ProjectManagementTimeRecordUpdateProjectWorkerWebhook = ProjectManagementTimeRecord;
 /** Payload for `shift_management/shift/bulk_create` (ShiftManagement > Shift > Bulk creates). */
 export type ShiftManagementShiftBulkCreateWebhook = ShiftManagementShift;
 /** Payload for `shift_management/shift/bulk_delete` (ShiftManagement > Shift > Bulk deletes). */
@@ -301,6 +312,8 @@ export type TimeoffPolicyUpdateWebhook = TimeoffPolicy;
 export type TrainingsCategoryCreateWebhook = TrainingsCategory;
 /** Payload for `trainings/category/delete` (Trainings > Category > Deletes). */
 export type TrainingsCategoryDeleteWebhook = TrainingsCategory;
+/** Payload for `trainings/category/update` (Trainings > Category > Updates). */
+export type TrainingsCategoryUpdateWebhook = TrainingsCategory;
 /** Payload for `trainings/training/bulk_delete` (Trainings > Training > Bulk deletes). */
 export type TrainingsTrainingBulkDeleteWebhook = TrainingsTraining;
 /** Payload for `trainings/training/bulk_update_catalog` (Trainings > Training > Bulk update catalogs). */
@@ -407,6 +420,11 @@ export type WebhookSubscriptionType =
   | "performance/review_process/update_reviewer_strategies"
   | "performance/review_process/update_schedule"
   | "performance/review_process/update_target_strategy"
+  | "project_management/time_record/create"
+  | "project_management/time_record/delete"
+  | "project_management/time_record/update_imputed_minutes"
+  | "project_management/time_record/update_observations"
+  | "project_management/time_record/update_project_worker"
   | "shift_management/shift/bulk_create"
   | "shift_management/shift/bulk_delete"
   | "shift_management/shift/create"
@@ -442,6 +460,7 @@ export type WebhookSubscriptionType =
   | "timeoff/policy/update"
   | "trainings/category/create"
   | "trainings/category/delete"
+  | "trainings/category/update"
   | "trainings/training/bulk_delete"
   | "trainings/training/bulk_update_catalog"
   | "trainings/training/create"
@@ -539,6 +558,11 @@ export interface WebhookPayloadMap {
   "performance/review_process/update_reviewer_strategies": PerformanceReviewProcess;
   "performance/review_process/update_schedule": PerformanceReviewProcess;
   "performance/review_process/update_target_strategy": PerformanceReviewProcess;
+  "project_management/time_record/create": ProjectManagementTimeRecord;
+  "project_management/time_record/delete": ProjectManagementTimeRecord;
+  "project_management/time_record/update_imputed_minutes": ProjectManagementTimeRecord;
+  "project_management/time_record/update_observations": ProjectManagementTimeRecord;
+  "project_management/time_record/update_project_worker": ProjectManagementTimeRecord;
   "shift_management/shift/bulk_create": ShiftManagementShift;
   "shift_management/shift/bulk_delete": ShiftManagementShift;
   "shift_management/shift/create": ShiftManagementShift;
@@ -574,6 +598,7 @@ export interface WebhookPayloadMap {
   "timeoff/policy/update": TimeoffPolicy;
   "trainings/category/create": TrainingsCategory;
   "trainings/category/delete": TrainingsCategory;
+  "trainings/category/update": TrainingsCategory;
   "trainings/training/bulk_delete": TrainingsTraining;
   "trainings/training/bulk_update_catalog": TrainingsTraining;
   "trainings/training/create": TrainingsTraining;
@@ -687,6 +712,11 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "performance/review_process/update_reviewer_strategies", namespace: "Performance", resource: "ReviewProcess", event: "Update reviewer strategies", summary: "Performance > ReviewProcess > Update reviewer strategies", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_schedule", namespace: "Performance", resource: "ReviewProcess", event: "Update schedules", summary: "Performance > ReviewProcess > Update schedules", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_target_strategy", namespace: "Performance", resource: "ReviewProcess", event: "Update target strategies", summary: "Performance > ReviewProcess > Update target strategies", payloadSchema: "performance_review_process" },
+  { subscriptionType: "project_management/time_record/create", namespace: "ProjectManagement", resource: "TimeRecord", event: "Creates", summary: "ProjectManagement > TimeRecord > Creates", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/delete", namespace: "ProjectManagement", resource: "TimeRecord", event: "Deletes", summary: "ProjectManagement > TimeRecord > Deletes", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_imputed_minutes", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update imputed minutes", summary: "ProjectManagement > TimeRecord > Update imputed minutes", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_observations", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update observations", summary: "ProjectManagement > TimeRecord > Update observations", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_project_worker", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update project workers", summary: "ProjectManagement > TimeRecord > Update project workers", payloadSchema: "project_management_time_record" },
   { subscriptionType: "shift_management/shift/bulk_create", namespace: "ShiftManagement", resource: "Shift", event: "Bulk creates", summary: "ShiftManagement > Shift > Bulk creates", payloadSchema: "shift_management_shift" },
   { subscriptionType: "shift_management/shift/bulk_delete", namespace: "ShiftManagement", resource: "Shift", event: "Bulk deletes", summary: "ShiftManagement > Shift > Bulk deletes", payloadSchema: "shift_management_shift" },
   { subscriptionType: "shift_management/shift/create", namespace: "ShiftManagement", resource: "Shift", event: "Creates", summary: "ShiftManagement > Shift > Creates", payloadSchema: "shift_management_shift" },
@@ -722,6 +752,7 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "timeoff/policy/update", namespace: "Timeoff", resource: "Policy", event: "Updates", summary: "Timeoff > Policy > Updates", payloadSchema: "timeoff_policy" },
   { subscriptionType: "trainings/category/create", namespace: "Trainings", resource: "Category", event: "Creates", summary: "Trainings > Category > Creates", payloadSchema: "trainings_category" },
   { subscriptionType: "trainings/category/delete", namespace: "Trainings", resource: "Category", event: "Deletes", summary: "Trainings > Category > Deletes", payloadSchema: "trainings_category" },
+  { subscriptionType: "trainings/category/update", namespace: "Trainings", resource: "Category", event: "Updates", summary: "Trainings > Category > Updates", payloadSchema: "trainings_category" },
   { subscriptionType: "trainings/training/bulk_delete", namespace: "Trainings", resource: "Training", event: "Bulk deletes", summary: "Trainings > Training > Bulk deletes", payloadSchema: "trainings_training" },
   { subscriptionType: "trainings/training/bulk_update_catalog", namespace: "Trainings", resource: "Training", event: "Bulk update catalogs", summary: "Trainings > Training > Bulk update catalogs", payloadSchema: "trainings_training" },
   { subscriptionType: "trainings/training/create", namespace: "Trainings", resource: "Training", event: "Creates", summary: "Trainings > Training > Creates", payloadSchema: "trainings_training" },

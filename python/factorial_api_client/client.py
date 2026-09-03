@@ -13,862 +13,938 @@ from factorial_api_client.generated.types import UNSET
 from factorial_api_client.pagination import (paginate, paginate_async, collect_all, fetch_page, fetch_page_async)
 
 from factorial_api_client.generated.api.api_public_credential import (
-    get_api_2026_07_01_resources_api_public_credentials,
+    get_api_2026_10_01_resources_api_public_credentials,
 )
 from factorial_api_client.generated.api.api_public_webhook_subscription import (
-    delete_api_2026_07_01_resources_api_public_webhook_subscriptions_id,
-    get_api_2026_07_01_resources_api_public_webhook_subscriptions,
-    get_api_2026_07_01_resources_api_public_webhook_subscriptions_id,
-    post_api_2026_07_01_resources_api_public_webhook_subscriptions,
-    put_api_2026_07_01_resources_api_public_webhook_subscriptions_id,
+    delete_api_2026_10_01_resources_api_public_webhook_subscriptions_id,
+    get_api_2026_10_01_resources_api_public_webhook_subscriptions,
+    get_api_2026_10_01_resources_api_public_webhook_subscriptions_id,
+    post_api_2026_10_01_resources_api_public_webhook_subscriptions,
+    put_api_2026_10_01_resources_api_public_webhook_subscriptions_id,
 )
 from factorial_api_client.generated.api.approvals_materialized_approvals_flow import (
-    post_api_2026_07_01_resources_approvals_materialized_approvals_flows_approve_resource,
-    post_api_2026_07_01_resources_approvals_materialized_approvals_flows_reject_resource,
+    post_api_2026_10_01_resources_approvals_materialized_approvals_flows_approve_resource,
+    post_api_2026_10_01_resources_approvals_materialized_approvals_flows_reject_resource,
 )
 from factorial_api_client.generated.api.ats_answer import (
-    get_api_2026_07_01_resources_ats_answers,
-    get_api_2026_07_01_resources_ats_answers_id,
-    post_api_2026_07_01_resources_ats_answers,
+    get_api_2026_10_01_resources_ats_answers,
+    get_api_2026_10_01_resources_ats_answers_id,
+    post_api_2026_10_01_resources_ats_answers,
 )
 from factorial_api_client.generated.api.ats_application_phase import (
-    get_api_2026_07_01_resources_ats_application_phases,
-    get_api_2026_07_01_resources_ats_application_phases_id,
+    get_api_2026_10_01_resources_ats_application_phases,
+    get_api_2026_10_01_resources_ats_application_phases_id,
 )
 from factorial_api_client.generated.api.ats_application import (
-    delete_api_2026_07_01_resources_ats_applications_id,
-    get_api_2026_07_01_resources_ats_applications,
-    get_api_2026_07_01_resources_ats_applications_id,
-    post_api_2026_07_01_resources_ats_applications,
-    post_api_2026_07_01_resources_ats_applications_apply,
-    post_api_2026_07_01_resources_ats_applications_move_to_phase,
-    put_api_2026_07_01_resources_ats_applications_id,
+    delete_api_2026_10_01_resources_ats_applications_id,
+    get_api_2026_10_01_resources_ats_applications,
+    get_api_2026_10_01_resources_ats_applications_id,
+    post_api_2026_10_01_resources_ats_applications,
+    post_api_2026_10_01_resources_ats_applications_apply,
+    post_api_2026_10_01_resources_ats_applications_move_to_phase,
+    put_api_2026_10_01_resources_ats_applications_id,
 )
 from factorial_api_client.generated.api.ats_candidate_source import (
-    get_api_2026_07_01_resources_ats_candidate_sources,
-    get_api_2026_07_01_resources_ats_candidate_sources_id,
+    get_api_2026_10_01_resources_ats_candidate_sources,
+    get_api_2026_10_01_resources_ats_candidate_sources_id,
 )
 from factorial_api_client.generated.api.ats_candidate import (
-    delete_api_2026_07_01_resources_ats_candidates_id,
-    get_api_2026_07_01_resources_ats_candidates,
-    get_api_2026_07_01_resources_ats_candidates_id,
-    post_api_2026_07_01_resources_ats_candidates,
-    put_api_2026_07_01_resources_ats_candidates_id,
+    delete_api_2026_10_01_resources_ats_candidates_id,
+    get_api_2026_10_01_resources_ats_candidates,
+    get_api_2026_10_01_resources_ats_candidates_id,
+    post_api_2026_10_01_resources_ats_candidates,
+    put_api_2026_10_01_resources_ats_candidates_id,
 )
 from factorial_api_client.generated.api.ats_evaluation_form import (
-    get_api_2026_07_01_resources_ats_evaluation_forms,
-    get_api_2026_07_01_resources_ats_evaluation_forms_id,
-    post_api_2026_07_01_resources_ats_evaluation_forms_save_as_template,
+    get_api_2026_10_01_resources_ats_evaluation_forms,
+    get_api_2026_10_01_resources_ats_evaluation_forms_id,
+    post_api_2026_10_01_resources_ats_evaluation_forms_save_as_template,
 )
 from factorial_api_client.generated.api.ats_feedback import (
-    delete_api_2026_07_01_resources_ats_feedbacks_id,
-    get_api_2026_07_01_resources_ats_feedbacks,
-    get_api_2026_07_01_resources_ats_feedbacks_id,
-    post_api_2026_07_01_resources_ats_feedbacks,
-    put_api_2026_07_01_resources_ats_feedbacks_id,
+    delete_api_2026_10_01_resources_ats_feedbacks_id,
+    get_api_2026_10_01_resources_ats_feedbacks,
+    get_api_2026_10_01_resources_ats_feedbacks_id,
+    post_api_2026_10_01_resources_ats_feedbacks,
+    put_api_2026_10_01_resources_ats_feedbacks_id,
 )
 from factorial_api_client.generated.api.ats_hiring_stage import (
-    get_api_2026_07_01_resources_ats_hiring_stages,
-    get_api_2026_07_01_resources_ats_hiring_stages_id,
+    get_api_2026_10_01_resources_ats_hiring_stages,
+    get_api_2026_10_01_resources_ats_hiring_stages_id,
 )
 from factorial_api_client.generated.api.ats_job_posting import (
-    delete_api_2026_07_01_resources_ats_job_postings_id,
-    get_api_2026_07_01_resources_ats_job_postings,
-    get_api_2026_07_01_resources_ats_job_postings_id,
-    post_api_2026_07_01_resources_ats_job_postings,
-    post_api_2026_07_01_resources_ats_job_postings_duplicate,
-    put_api_2026_07_01_resources_ats_job_postings_id,
+    delete_api_2026_10_01_resources_ats_job_postings_id,
+    get_api_2026_10_01_resources_ats_job_postings,
+    get_api_2026_10_01_resources_ats_job_postings_id,
+    post_api_2026_10_01_resources_ats_job_postings,
+    post_api_2026_10_01_resources_ats_job_postings_duplicate,
+    put_api_2026_10_01_resources_ats_job_postings_id,
 )
 from factorial_api_client.generated.api.ats_message import (
-    get_api_2026_07_01_resources_ats_messages,
-    get_api_2026_07_01_resources_ats_messages_id,
-    post_api_2026_07_01_resources_ats_messages,
+    get_api_2026_10_01_resources_ats_messages,
+    get_api_2026_10_01_resources_ats_messages_id,
+    post_api_2026_10_01_resources_ats_messages,
 )
 from factorial_api_client.generated.api.ats_question import (
-    delete_api_2026_07_01_resources_ats_questions_id,
-    get_api_2026_07_01_resources_ats_questions,
-    get_api_2026_07_01_resources_ats_questions_id,
-    post_api_2026_07_01_resources_ats_questions,
-    put_api_2026_07_01_resources_ats_questions_id,
+    delete_api_2026_10_01_resources_ats_questions_id,
+    get_api_2026_10_01_resources_ats_questions,
+    get_api_2026_10_01_resources_ats_questions_id,
+    post_api_2026_10_01_resources_ats_questions,
+    put_api_2026_10_01_resources_ats_questions_id,
 )
 from factorial_api_client.generated.api.ats_rejection_reason import (
-    get_api_2026_07_01_resources_ats_rejection_reasons,
-    get_api_2026_07_01_resources_ats_rejection_reasons_id,
+    get_api_2026_10_01_resources_ats_rejection_reasons,
+    get_api_2026_10_01_resources_ats_rejection_reasons_id,
 )
 from factorial_api_client.generated.api.attendance_break_configuration import (
-    get_api_2026_07_01_resources_attendance_break_configurations,
-    get_api_2026_07_01_resources_attendance_break_configurations_id,
-    post_api_2026_07_01_resources_attendance_break_configurations,
-    put_api_2026_07_01_resources_attendance_break_configurations_id,
+    get_api_2026_10_01_resources_attendance_break_configurations,
+    get_api_2026_10_01_resources_attendance_break_configurations_id,
+    post_api_2026_10_01_resources_attendance_break_configurations,
+    put_api_2026_10_01_resources_attendance_break_configurations_id,
 )
 from factorial_api_client.generated.api.attendance_edit_timesheet_request import (
-    delete_api_2026_07_01_resources_attendance_edit_timesheet_requests_id,
-    get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
-    get_api_2026_07_01_resources_attendance_edit_timesheet_requests_id,
-    post_api_2026_07_01_resources_attendance_edit_timesheet_requests,
-    put_api_2026_07_01_resources_attendance_edit_timesheet_requests_id,
+    delete_api_2026_10_01_resources_attendance_edit_timesheet_requests_id,
+    get_api_2026_10_01_resources_attendance_edit_timesheet_requests,
+    get_api_2026_10_01_resources_attendance_edit_timesheet_requests_id,
+    post_api_2026_10_01_resources_attendance_edit_timesheet_requests,
+    put_api_2026_10_01_resources_attendance_edit_timesheet_requests_id,
 )
 from factorial_api_client.generated.api.attendance_estimated_time import (
-    get_api_2026_07_01_resources_attendance_estimated_times,
+    get_api_2026_10_01_resources_attendance_estimated_times,
 )
 from factorial_api_client.generated.api.attendance_open_shift import (
-    get_api_2026_07_01_resources_attendance_open_shifts,
+    get_api_2026_10_01_resources_attendance_open_shifts,
 )
 from factorial_api_client.generated.api.attendance_overtime_request import (
-    delete_api_2026_07_01_resources_attendance_overtime_requests_id,
-    get_api_2026_07_01_resources_attendance_overtime_requests,
-    get_api_2026_07_01_resources_attendance_overtime_requests_id,
-    post_api_2026_07_01_resources_attendance_overtime_requests,
-    post_api_2026_07_01_resources_attendance_overtime_requests_approve,
-    post_api_2026_07_01_resources_attendance_overtime_requests_reject,
-    put_api_2026_07_01_resources_attendance_overtime_requests_id,
+    delete_api_2026_10_01_resources_attendance_overtime_requests_id,
+    get_api_2026_10_01_resources_attendance_overtime_requests,
+    get_api_2026_10_01_resources_attendance_overtime_requests_id,
+    post_api_2026_10_01_resources_attendance_overtime_requests,
+    post_api_2026_10_01_resources_attendance_overtime_requests_approve,
+    post_api_2026_10_01_resources_attendance_overtime_requests_reject,
+    put_api_2026_10_01_resources_attendance_overtime_requests_id,
 )
 from factorial_api_client.generated.api.attendance_review import (
-    get_api_2026_07_01_resources_attendance_reviews,
-    post_api_2026_07_01_resources_attendance_reviews_bulk_create,
-    post_api_2026_07_01_resources_attendance_reviews_bulk_destroy,
+    get_api_2026_10_01_resources_attendance_reviews,
+    post_api_2026_10_01_resources_attendance_reviews_bulk_create,
+    post_api_2026_10_01_resources_attendance_reviews_bulk_destroy,
 )
 from factorial_api_client.generated.api.attendance_shift import (
-    delete_api_2026_07_01_resources_attendance_shifts_id,
-    get_api_2026_07_01_resources_attendance_shifts,
-    get_api_2026_07_01_resources_attendance_shifts_id,
-    post_api_2026_07_01_resources_attendance_shifts,
-    post_api_2026_07_01_resources_attendance_shifts_autofill,
-    post_api_2026_07_01_resources_attendance_shifts_break_end,
-    post_api_2026_07_01_resources_attendance_shifts_break_start,
-    post_api_2026_07_01_resources_attendance_shifts_clock_in,
-    post_api_2026_07_01_resources_attendance_shifts_clock_out,
-    post_api_2026_07_01_resources_attendance_shifts_toggle_clock,
-    put_api_2026_07_01_resources_attendance_shifts_id,
+    delete_api_2026_10_01_resources_attendance_shifts_id,
+    get_api_2026_10_01_resources_attendance_shifts,
+    get_api_2026_10_01_resources_attendance_shifts_id,
+    post_api_2026_10_01_resources_attendance_shifts,
+    post_api_2026_10_01_resources_attendance_shifts_autofill,
+    post_api_2026_10_01_resources_attendance_shifts_break_end,
+    post_api_2026_10_01_resources_attendance_shifts_break_start,
+    post_api_2026_10_01_resources_attendance_shifts_clock_in,
+    post_api_2026_10_01_resources_attendance_shifts_clock_out,
+    post_api_2026_10_01_resources_attendance_shifts_toggle_clock,
+    put_api_2026_10_01_resources_attendance_shifts_id,
 )
 from factorial_api_client.generated.api.attendance_worked_time import (
-    get_api_2026_07_01_resources_attendance_worked_times,
+    get_api_2026_10_01_resources_attendance_worked_times,
+    get_api_2026_10_01_resources_attendance_worked_times_id,
 )
 from factorial_api_client.generated.api.banking_bank_account import (
-    get_api_2026_07_01_resources_banking_bank_accounts,
-    get_api_2026_07_01_resources_banking_bank_accounts_id,
-    post_api_2026_07_01_resources_banking_bank_accounts_create_manual,
+    get_api_2026_10_01_resources_banking_bank_accounts,
+    get_api_2026_10_01_resources_banking_bank_accounts_id,
+    post_api_2026_10_01_resources_banking_bank_accounts_create_manual,
 )
 from factorial_api_client.generated.api.banking_card_payment import (
-    get_api_2026_07_01_resources_banking_card_payments,
-    get_api_2026_07_01_resources_banking_card_payments_id,
+    get_api_2026_10_01_resources_banking_card_payments,
+    get_api_2026_10_01_resources_banking_card_payments_id,
 )
 from factorial_api_client.generated.api.banking_transaction import (
-    get_api_2026_07_01_resources_banking_transactions,
-    get_api_2026_07_01_resources_banking_transactions_id,
+    get_api_2026_10_01_resources_banking_transactions,
+    get_api_2026_10_01_resources_banking_transactions_id,
 )
 from factorial_api_client.generated.api.bookkeepers_management_incidence import (
-    get_api_2026_07_01_resources_bookkeepers_management_incidences,
-    get_api_2026_07_01_resources_bookkeepers_management_incidences_id,
-    put_api_2026_07_01_resources_bookkeepers_management_incidences_id,
+    get_api_2026_10_01_resources_bookkeepers_management_incidences,
+    get_api_2026_10_01_resources_bookkeepers_management_incidences_id,
+    put_api_2026_10_01_resources_bookkeepers_management_incidences_id,
 )
 from factorial_api_client.generated.api.companies_legal_entity import (
-    get_api_2026_07_01_resources_companies_legal_entities,
-    get_api_2026_07_01_resources_companies_legal_entities_id,
-    post_api_2026_07_01_resources_companies_legal_entities,
+    get_api_2026_10_01_resources_companies_legal_entities,
+    get_api_2026_10_01_resources_companies_legal_entities_id,
+    post_api_2026_10_01_resources_companies_legal_entities,
 )
 from factorial_api_client.generated.api.compensations_concept import (
-    get_api_2026_07_01_resources_compensations_concepts,
-    get_api_2026_07_01_resources_compensations_concepts_id,
+    get_api_2026_10_01_resources_compensations_concepts,
+    get_api_2026_10_01_resources_compensations_concepts_id,
+    post_api_2026_10_01_resources_compensations_concepts,
+    put_api_2026_10_01_resources_compensations_concepts_id,
+)
+from factorial_api_client.generated.api.compensations_cycle import (
+    get_api_2026_10_01_resources_compensations_cycles,
+    get_api_2026_10_01_resources_compensations_cycles_id,
+)
+from factorial_api_client.generated.api.compensations_employees_compensation import (
+    delete_api_2026_10_01_resources_compensations_employees_compensations_id,
+    get_api_2026_10_01_resources_compensations_employees_compensations,
+    get_api_2026_10_01_resources_compensations_employees_compensations_id,
+    post_api_2026_10_01_resources_compensations_employees_compensations,
+    put_api_2026_10_01_resources_compensations_employees_compensations_id,
+)
+from factorial_api_client.generated.api.compensations_payroll_result import (
+    get_api_2026_10_01_resources_compensations_payroll_results,
+    get_api_2026_10_01_resources_compensations_payroll_results_id,
+)
+from factorial_api_client.generated.api.compensations_payroll_run import (
+    get_api_2026_10_01_resources_compensations_payroll_runs,
+    get_api_2026_10_01_resources_compensations_payroll_runs_id,
 )
 from factorial_api_client.generated.api.contracts_compensation import (
-    delete_api_2026_07_01_resources_contracts_compensations_id,
-    get_api_2026_07_01_resources_contracts_compensations,
-    get_api_2026_07_01_resources_contracts_compensations_id,
-    post_api_2026_07_01_resources_contracts_compensations,
-    put_api_2026_07_01_resources_contracts_compensations_id,
+    delete_api_2026_10_01_resources_contracts_compensations_id,
+    get_api_2026_10_01_resources_contracts_compensations,
+    get_api_2026_10_01_resources_contracts_compensations_id,
+    post_api_2026_10_01_resources_contracts_compensations,
+    put_api_2026_10_01_resources_contracts_compensations_id,
 )
 from factorial_api_client.generated.api.contracts_contract_template import (
-    get_api_2026_07_01_resources_contracts_contract_templates,
-    get_api_2026_07_01_resources_contracts_contract_templates_id,
+    get_api_2026_10_01_resources_contracts_contract_templates,
+    get_api_2026_10_01_resources_contracts_contract_templates_id,
 )
 from factorial_api_client.generated.api.contracts_contract_version_history import (
-    get_api_2026_07_01_resources_contracts_contract_version_histories,
-    get_api_2026_07_01_resources_contracts_contract_version_histories_id,
+    get_api_2026_10_01_resources_contracts_contract_version_histories,
+    get_api_2026_10_01_resources_contracts_contract_version_histories_id,
 )
 from factorial_api_client.generated.api.contracts_contract_version_meta_datum import (
-    get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+    get_api_2026_10_01_resources_contracts_contract_version_meta_data,
 )
 from factorial_api_client.generated.api.contracts_contract_version import (
-    delete_api_2026_07_01_resources_contracts_contract_versions_id,
-    get_api_2026_07_01_resources_contracts_contract_versions,
-    get_api_2026_07_01_resources_contracts_contract_versions_id,
-    post_api_2026_07_01_resources_contracts_contract_versions,
-    put_api_2026_07_01_resources_contracts_contract_versions_id,
+    delete_api_2026_10_01_resources_contracts_contract_versions_id,
+    get_api_2026_10_01_resources_contracts_contract_versions,
+    get_api_2026_10_01_resources_contracts_contract_versions_id,
+    post_api_2026_10_01_resources_contracts_contract_versions,
+    put_api_2026_10_01_resources_contracts_contract_versions_id,
 )
 from factorial_api_client.generated.api.contracts_french_contract_type import (
-    get_api_2026_07_01_resources_contracts_french_contract_types,
-    get_api_2026_07_01_resources_contracts_french_contract_types_id,
+    get_api_2026_10_01_resources_contracts_french_contract_types,
+    get_api_2026_10_01_resources_contracts_french_contract_types_id,
 )
 from factorial_api_client.generated.api.contracts_german_contract_type import (
-    get_api_2026_07_01_resources_contracts_german_contract_types,
-    get_api_2026_07_01_resources_contracts_german_contract_types_id,
+    get_api_2026_10_01_resources_contracts_german_contract_types,
+    get_api_2026_10_01_resources_contracts_german_contract_types_id,
 )
 from factorial_api_client.generated.api.contracts_materialized_template import (
-    get_api_2026_07_01_resources_contracts_materialized_templates,
+    get_api_2026_10_01_resources_contracts_materialized_templates,
 )
 from factorial_api_client.generated.api.contracts_portuguese_contract_type import (
-    get_api_2026_07_01_resources_contracts_portuguese_contract_types,
-    get_api_2026_07_01_resources_contracts_portuguese_contract_types_id,
+    get_api_2026_10_01_resources_contracts_portuguese_contract_types,
+    get_api_2026_10_01_resources_contracts_portuguese_contract_types_id,
 )
 from factorial_api_client.generated.api.contracts_reference_contract import (
-    get_api_2026_07_01_resources_contracts_reference_contracts,
+    get_api_2026_10_01_resources_contracts_reference_contracts,
 )
 from factorial_api_client.generated.api.contracts_spanish_contract_type import (
-    get_api_2026_07_01_resources_contracts_spanish_contract_types,
-    get_api_2026_07_01_resources_contracts_spanish_contract_types_id,
-    post_api_2026_07_01_resources_contracts_spanish_contract_types,
+    get_api_2026_10_01_resources_contracts_spanish_contract_types,
+    get_api_2026_10_01_resources_contracts_spanish_contract_types_id,
+    post_api_2026_10_01_resources_contracts_spanish_contract_types,
 )
 from factorial_api_client.generated.api.contracts_spanish_education_level import (
-    get_api_2026_07_01_resources_contracts_spanish_education_levels,
-    get_api_2026_07_01_resources_contracts_spanish_education_levels_id,
-    post_api_2026_07_01_resources_contracts_spanish_education_levels,
+    get_api_2026_10_01_resources_contracts_spanish_education_levels,
+    get_api_2026_10_01_resources_contracts_spanish_education_levels_id,
+    post_api_2026_10_01_resources_contracts_spanish_education_levels,
 )
 from factorial_api_client.generated.api.contracts_spanish_professional_category import (
-    get_api_2026_07_01_resources_contracts_spanish_professional_categories,
-    get_api_2026_07_01_resources_contracts_spanish_professional_categories_id,
-    post_api_2026_07_01_resources_contracts_spanish_professional_categories,
+    get_api_2026_10_01_resources_contracts_spanish_professional_categories,
+    get_api_2026_10_01_resources_contracts_spanish_professional_categories_id,
+    post_api_2026_10_01_resources_contracts_spanish_professional_categories,
 )
 from factorial_api_client.generated.api.contracts_spanish_working_day_type import (
-    get_api_2026_07_01_resources_contracts_spanish_working_day_types,
-    get_api_2026_07_01_resources_contracts_spanish_working_day_types_id,
-    post_api_2026_07_01_resources_contracts_spanish_working_day_types,
+    get_api_2026_10_01_resources_contracts_spanish_working_day_types,
+    get_api_2026_10_01_resources_contracts_spanish_working_day_types_id,
+    post_api_2026_10_01_resources_contracts_spanish_working_day_types,
 )
 from factorial_api_client.generated.api.contracts_taxonomy import (
-    get_api_2026_07_01_resources_contracts_taxonomies,
-    get_api_2026_07_01_resources_contracts_taxonomies_id,
+    get_api_2026_10_01_resources_contracts_taxonomies,
+    get_api_2026_10_01_resources_contracts_taxonomies_id,
 )
 from factorial_api_client.generated.api.custom_fields_field import (
-    delete_api_2026_07_01_resources_custom_fields_fields_id,
-    get_api_2026_07_01_resources_custom_fields_fields,
-    get_api_2026_07_01_resources_custom_fields_fields_id,
-    post_api_2026_07_01_resources_custom_fields_fields,
+    delete_api_2026_10_01_resources_custom_fields_fields_id,
+    get_api_2026_10_01_resources_custom_fields_fields,
+    get_api_2026_10_01_resources_custom_fields_fields_id,
+    post_api_2026_10_01_resources_custom_fields_fields,
 )
 from factorial_api_client.generated.api.custom_fields_option import (
-    get_api_2026_07_01_resources_custom_fields_options,
-    get_api_2026_07_01_resources_custom_fields_options_id,
-    post_api_2026_07_01_resources_custom_fields_options,
+    get_api_2026_10_01_resources_custom_fields_options,
+    get_api_2026_10_01_resources_custom_fields_options_id,
+    post_api_2026_10_01_resources_custom_fields_options,
 )
 from factorial_api_client.generated.api.custom_fields_resource_field import (
-    get_api_2026_07_01_resources_custom_fields_resource_fields,
-    get_api_2026_07_01_resources_custom_fields_resource_fields_id,
-    post_api_2026_07_01_resources_custom_fields_resource_fields,
+    get_api_2026_10_01_resources_custom_fields_resource_fields,
+    get_api_2026_10_01_resources_custom_fields_resource_fields_id,
+    post_api_2026_10_01_resources_custom_fields_resource_fields,
 )
 from factorial_api_client.generated.api.custom_fields_value import (
-    get_api_2026_07_01_resources_custom_fields_values,
-    get_api_2026_07_01_resources_custom_fields_values_id,
-    post_api_2026_07_01_resources_custom_fields_values,
-    put_api_2026_07_01_resources_custom_fields_values_id,
+    get_api_2026_10_01_resources_custom_fields_values,
+    get_api_2026_10_01_resources_custom_fields_values_id,
+    post_api_2026_10_01_resources_custom_fields_values,
+    put_api_2026_10_01_resources_custom_fields_values_id,
 )
 from factorial_api_client.generated.api.custom_resources_resource import (
-    get_api_2026_07_01_resources_custom_resources_resources,
-    get_api_2026_07_01_resources_custom_resources_resources_id,
+    get_api_2026_10_01_resources_custom_resources_resources,
+    get_api_2026_10_01_resources_custom_resources_resources_id,
 )
 from factorial_api_client.generated.api.custom_resources_schema import (
-    get_api_2026_07_01_resources_custom_resources_schemas,
-    get_api_2026_07_01_resources_custom_resources_schemas_id,
-    post_api_2026_07_01_resources_custom_resources_schemas,
+    get_api_2026_10_01_resources_custom_resources_schemas,
+    get_api_2026_10_01_resources_custom_resources_schemas_id,
+    post_api_2026_10_01_resources_custom_resources_schemas,
 )
 from factorial_api_client.generated.api.custom_resources_value import (
-    get_api_2026_07_01_resources_custom_resources_values,
-    get_api_2026_07_01_resources_custom_resources_values_id,
-    post_api_2026_07_01_resources_custom_resources_values,
+    get_api_2026_10_01_resources_custom_resources_values,
+    get_api_2026_10_01_resources_custom_resources_values_id,
+    post_api_2026_10_01_resources_custom_resources_values,
 )
 from factorial_api_client.generated.api.documents_document import (
-    delete_api_2026_07_01_resources_documents_documents_id,
-    get_api_2026_07_01_resources_documents_documents,
-    get_api_2026_07_01_resources_documents_documents_id,
-    post_api_2026_07_01_resources_documents_documents,
-    post_api_2026_07_01_resources_documents_documents_move_to_trash_bin,
-    post_api_2026_07_01_resources_documents_documents_restore_from_trash_bin,
-    put_api_2026_07_01_resources_documents_documents_id,
+    delete_api_2026_10_01_resources_documents_documents_id,
+    get_api_2026_10_01_resources_documents_documents,
+    get_api_2026_10_01_resources_documents_documents_id,
+    post_api_2026_10_01_resources_documents_documents,
+    post_api_2026_10_01_resources_documents_documents_move_to_trash_bin,
+    post_api_2026_10_01_resources_documents_documents_restore_from_trash_bin,
+    put_api_2026_10_01_resources_documents_documents_id,
 )
 from factorial_api_client.generated.api.documents_download_url import (
-    post_api_2026_07_01_resources_documents_download_urls_bulk_create,
+    post_api_2026_10_01_resources_documents_download_urls_bulk_create,
 )
 from factorial_api_client.generated.api.documents_folder import (
-    get_api_2026_07_01_resources_documents_folders,
-    get_api_2026_07_01_resources_documents_folders_id,
-    post_api_2026_07_01_resources_documents_folders,
-    put_api_2026_07_01_resources_documents_folders_id,
+    get_api_2026_10_01_resources_documents_folders,
+    get_api_2026_10_01_resources_documents_folders_id,
+    post_api_2026_10_01_resources_documents_folders,
+    put_api_2026_10_01_resources_documents_folders_id,
 )
 from factorial_api_client.generated.api.employee_updates_absence import (
-    get_api_2026_07_01_resources_employee_updates_absences,
-    get_api_2026_07_01_resources_employee_updates_absences_id,
+    get_api_2026_10_01_resources_employee_updates_absences,
+    get_api_2026_10_01_resources_employee_updates_absences_id,
 )
 from factorial_api_client.generated.api.employee_updates_contract_change import (
-    get_api_2026_07_01_resources_employee_updates_contract_changes,
-    get_api_2026_07_01_resources_employee_updates_contract_changes_id,
+    get_api_2026_10_01_resources_employee_updates_contract_changes,
+    get_api_2026_10_01_resources_employee_updates_contract_changes_id,
 )
 from factorial_api_client.generated.api.employee_updates_new_hire import (
-    get_api_2026_07_01_resources_employee_updates_new_hires,
-    get_api_2026_07_01_resources_employee_updates_new_hires_id,
+    get_api_2026_10_01_resources_employee_updates_new_hires,
+    get_api_2026_10_01_resources_employee_updates_new_hires_id,
 )
 from factorial_api_client.generated.api.employee_updates_personal_change import (
-    get_api_2026_07_01_resources_employee_updates_personal_changes,
-    get_api_2026_07_01_resources_employee_updates_personal_changes_id,
+    get_api_2026_10_01_resources_employee_updates_personal_changes,
+    get_api_2026_10_01_resources_employee_updates_personal_changes_id,
 )
 from factorial_api_client.generated.api.employee_updates_summary import (
-    get_api_2026_07_01_resources_employee_updates_summaries,
-    get_api_2026_07_01_resources_employee_updates_summaries_id,
+    get_api_2026_10_01_resources_employee_updates_summaries,
+    get_api_2026_10_01_resources_employee_updates_summaries_id,
 )
 from factorial_api_client.generated.api.employee_updates_termination import (
-    get_api_2026_07_01_resources_employee_updates_terminations,
-    get_api_2026_07_01_resources_employee_updates_terminations_id,
+    get_api_2026_10_01_resources_employee_updates_terminations,
+    get_api_2026_10_01_resources_employee_updates_terminations_id,
 )
 from factorial_api_client.generated.api.employees_employee import (
-    get_api_2026_07_01_resources_employees_employees,
-    get_api_2026_07_01_resources_employees_employees_id,
-    post_api_2026_07_01_resources_employees_employees_create_with_contract,
-    post_api_2026_07_01_resources_employees_employees_invite,
-    post_api_2026_07_01_resources_employees_employees_set_regular_access_start_date,
-    post_api_2026_07_01_resources_employees_employees_terminate,
-    post_api_2026_07_01_resources_employees_employees_unterminate,
-    put_api_2026_07_01_resources_employees_employees_id,
+    get_api_2026_10_01_resources_employees_employees,
+    get_api_2026_10_01_resources_employees_employees_id,
+    post_api_2026_10_01_resources_employees_employees_create_with_contract,
+    post_api_2026_10_01_resources_employees_employees_invite,
+    post_api_2026_10_01_resources_employees_employees_set_regular_access_start_date,
+    post_api_2026_10_01_resources_employees_employees_terminate,
+    post_api_2026_10_01_resources_employees_employees_unterminate,
+    put_api_2026_10_01_resources_employees_employees_id,
 )
 from factorial_api_client.generated.api.expenses_expensable import (
-    get_api_2026_07_01_resources_expenses_expensables,
-    get_api_2026_07_01_resources_expenses_expensables_id,
-    post_api_2026_07_01_resources_expenses_expensables_bulk_set_to_paid,
-    post_api_2026_07_01_resources_expenses_expensables_update_reimbursable_amount,
+    get_api_2026_10_01_resources_expenses_expensables,
+    get_api_2026_10_01_resources_expenses_expensables_id,
+    post_api_2026_10_01_resources_expenses_expensables_bulk_set_to_paid,
+    post_api_2026_10_01_resources_expenses_expensables_update_reimbursable_amount,
 )
 from factorial_api_client.generated.api.expenses_expense import (
-    get_api_2026_07_01_resources_expenses_expenses,
-    get_api_2026_07_01_resources_expenses_expenses_id,
+    get_api_2026_10_01_resources_expenses_expenses,
+    get_api_2026_10_01_resources_expenses_expenses_id,
 )
 from factorial_api_client.generated.api.expenses_mileage import (
-    get_api_2026_07_01_resources_expenses_mileages,
-    get_api_2026_07_01_resources_expenses_mileages_id,
+    get_api_2026_10_01_resources_expenses_mileages,
+    get_api_2026_10_01_resources_expenses_mileages_id,
 )
 from factorial_api_client.generated.api.expenses_per_diem import (
-    get_api_2026_07_01_resources_expenses_per_diems,
-    get_api_2026_07_01_resources_expenses_per_diems_id,
+    get_api_2026_10_01_resources_expenses_per_diems,
+    get_api_2026_10_01_resources_expenses_per_diems_id,
 )
 from factorial_api_client.generated.api.finance_accounting_setting import (
-    get_api_2026_07_01_resources_finance_accounting_settings,
-    get_api_2026_07_01_resources_finance_accounting_settings_id,
-    post_api_2026_07_01_resources_finance_accounting_settings_upsert,
+    get_api_2026_10_01_resources_finance_accounting_settings,
+    get_api_2026_10_01_resources_finance_accounting_settings_id,
+    post_api_2026_10_01_resources_finance_accounting_settings_upsert,
 )
 from factorial_api_client.generated.api.finance_account import (
-    get_api_2026_07_01_resources_finance_accounts,
-    get_api_2026_07_01_resources_finance_accounts_id,
-    post_api_2026_07_01_resources_finance_accounts,
-    put_api_2026_07_01_resources_finance_accounts_id,
+    get_api_2026_10_01_resources_finance_accounts,
+    get_api_2026_10_01_resources_finance_accounts_id,
+    post_api_2026_10_01_resources_finance_accounts,
+    put_api_2026_10_01_resources_finance_accounts_id,
 )
 from factorial_api_client.generated.api.finance_budget_option import (
-    get_api_2026_07_01_resources_finance_budget_options,
-    get_api_2026_07_01_resources_finance_budget_options_id,
+    get_api_2026_10_01_resources_finance_budget_options,
+    get_api_2026_10_01_resources_finance_budget_options_id,
 )
 from factorial_api_client.generated.api.finance_category import (
-    get_api_2026_07_01_resources_finance_categories,
-    get_api_2026_07_01_resources_finance_categories_id,
+    get_api_2026_10_01_resources_finance_categories,
+    get_api_2026_10_01_resources_finance_categories_id,
 )
 from factorial_api_client.generated.api.finance_contact import (
-    get_api_2026_07_01_resources_finance_contacts,
-    get_api_2026_07_01_resources_finance_contacts_id,
-    post_api_2026_07_01_resources_finance_contacts,
-    put_api_2026_07_01_resources_finance_contacts_id,
+    get_api_2026_10_01_resources_finance_contacts,
+    get_api_2026_10_01_resources_finance_contacts_id,
+    post_api_2026_10_01_resources_finance_contacts,
+    put_api_2026_10_01_resources_finance_contacts_id,
 )
 from factorial_api_client.generated.api.finance_cost_center_membership import (
-    get_api_2026_07_01_resources_finance_cost_center_memberships,
-    post_api_2026_07_01_resources_finance_cost_center_memberships_bulk_create_update,
+    get_api_2026_10_01_resources_finance_cost_center_memberships,
+    post_api_2026_10_01_resources_finance_cost_center_memberships_bulk_create_update,
 )
 from factorial_api_client.generated.api.finance_cost_center import (
-    delete_api_2026_07_01_resources_finance_cost_centers_id,
-    get_api_2026_07_01_resources_finance_cost_centers,
-    get_api_2026_07_01_resources_finance_cost_centers_id,
-    post_api_2026_07_01_resources_finance_cost_centers,
-    post_api_2026_07_01_resources_finance_cost_centers_edit,
+    delete_api_2026_10_01_resources_finance_cost_centers_id,
+    get_api_2026_10_01_resources_finance_cost_centers,
+    get_api_2026_10_01_resources_finance_cost_centers_id,
+    post_api_2026_10_01_resources_finance_cost_centers,
+    post_api_2026_10_01_resources_finance_cost_centers_edit,
 )
 from factorial_api_client.generated.api.finance_financial_document import (
-    get_api_2026_07_01_resources_finance_financial_documents,
-    get_api_2026_07_01_resources_finance_financial_documents_id,
+    get_api_2026_10_01_resources_finance_financial_documents,
+    get_api_2026_10_01_resources_finance_financial_documents_id,
+    post_api_2026_10_01_resources_finance_financial_documents,
+    put_api_2026_10_01_resources_finance_financial_documents_id,
 )
 from factorial_api_client.generated.api.finance_journal_entry import (
-    get_api_2026_07_01_resources_finance_journal_entries,
-    get_api_2026_07_01_resources_finance_journal_entries_id,
-    post_api_2026_07_01_resources_finance_journal_entries,
+    get_api_2026_10_01_resources_finance_journal_entries,
+    get_api_2026_10_01_resources_finance_journal_entries_id,
+    post_api_2026_10_01_resources_finance_journal_entries,
 )
 from factorial_api_client.generated.api.finance_journal_line import (
-    get_api_2026_07_01_resources_finance_journal_lines,
-    get_api_2026_07_01_resources_finance_journal_lines_id,
+    get_api_2026_10_01_resources_finance_journal_lines,
+    get_api_2026_10_01_resources_finance_journal_lines_id,
 )
 from factorial_api_client.generated.api.finance_ledger_account_resource import (
-    get_api_2026_07_01_resources_finance_ledger_account_resources,
-    get_api_2026_07_01_resources_finance_ledger_account_resources_id,
-    post_api_2026_07_01_resources_finance_ledger_account_resources_upsert,
+    get_api_2026_10_01_resources_finance_ledger_account_resources,
+    get_api_2026_10_01_resources_finance_ledger_account_resources_id,
+    post_api_2026_10_01_resources_finance_ledger_account_resources_upsert,
 )
 from factorial_api_client.generated.api.finance_tax_rate import (
-    get_api_2026_07_01_resources_finance_tax_rates,
-    get_api_2026_07_01_resources_finance_tax_rates_id,
-    post_api_2026_07_01_resources_finance_tax_rates,
-    put_api_2026_07_01_resources_finance_tax_rates_id,
+    get_api_2026_10_01_resources_finance_tax_rates,
+    get_api_2026_10_01_resources_finance_tax_rates_id,
+    post_api_2026_10_01_resources_finance_tax_rates,
+    put_api_2026_10_01_resources_finance_tax_rates_id,
 )
 from factorial_api_client.generated.api.finance_tax_type import (
-    get_api_2026_07_01_resources_finance_tax_types,
-    get_api_2026_07_01_resources_finance_tax_types_id,
-    post_api_2026_07_01_resources_finance_tax_types,
-    put_api_2026_07_01_resources_finance_tax_types_id,
+    get_api_2026_10_01_resources_finance_tax_types,
+    get_api_2026_10_01_resources_finance_tax_types_id,
+    post_api_2026_10_01_resources_finance_tax_types,
+    put_api_2026_10_01_resources_finance_tax_types_id,
 )
 from factorial_api_client.generated.api.holidays_company_holiday import (
-    get_api_2026_07_01_resources_holidays_company_holidays,
-    get_api_2026_07_01_resources_holidays_company_holidays_id,
+    get_api_2026_10_01_resources_holidays_company_holidays,
+    get_api_2026_10_01_resources_holidays_company_holidays_id,
 )
 from factorial_api_client.generated.api.integrations_sync_run_output import (
-    post_api_2026_07_01_resources_integrations_sync_run_outputs,
+    post_api_2026_10_01_resources_integrations_sync_run_outputs,
+)
+from factorial_api_client.generated.api.integrations_sync_run import (
+    get_api_2026_10_01_resources_integrations_sync_runs,
+    get_api_2026_10_01_resources_integrations_sync_runs_id,
+    post_api_2026_10_01_resources_integrations_sync_runs,
 )
 from factorial_api_client.generated.api.integrations_syncable_item import (
-    get_api_2026_07_01_resources_integrations_syncable_items,
+    get_api_2026_10_01_resources_integrations_syncable_items,
+)
+from factorial_api_client.generated.api.integrations_syncable_state import (
+    get_api_2026_10_01_resources_integrations_syncable_states,
+    get_api_2026_10_01_resources_integrations_syncable_states_id,
 )
 from factorial_api_client.generated.api.integrations_syncable_sync_run import (
-    put_api_2026_07_01_resources_integrations_syncable_sync_runs_id,
+    get_api_2026_10_01_resources_integrations_syncable_sync_runs,
+    get_api_2026_10_01_resources_integrations_syncable_sync_runs_id,
+    post_api_2026_10_01_resources_integrations_syncable_sync_runs_bulk_upsert,
+    put_api_2026_10_01_resources_integrations_syncable_sync_runs_id,
+)
+from factorial_api_client.generated.api.it_management_asset_category import (
+    get_api_2026_10_01_resources_it_management_asset_categories,
+    get_api_2026_10_01_resources_it_management_asset_categories_id,
 )
 from factorial_api_client.generated.api.it_management_it_asset_model import (
-    get_api_2026_07_01_resources_it_management_it_asset_models,
-    get_api_2026_07_01_resources_it_management_it_asset_models_id,
-    post_api_2026_07_01_resources_it_management_it_asset_models,
-    put_api_2026_07_01_resources_it_management_it_asset_models_id,
+    get_api_2026_10_01_resources_it_management_it_asset_models,
+    get_api_2026_10_01_resources_it_management_it_asset_models_id,
+    post_api_2026_10_01_resources_it_management_it_asset_models,
+    put_api_2026_10_01_resources_it_management_it_asset_models_id,
 )
 from factorial_api_client.generated.api.it_management_it_asset import (
-    delete_api_2026_07_01_resources_it_management_it_assets_id,
-    get_api_2026_07_01_resources_it_management_it_assets,
-    get_api_2026_07_01_resources_it_management_it_assets_id,
-    post_api_2026_07_01_resources_it_management_it_assets,
-    put_api_2026_07_01_resources_it_management_it_assets_id,
+    delete_api_2026_10_01_resources_it_management_it_assets_id,
+    get_api_2026_10_01_resources_it_management_it_assets,
+    get_api_2026_10_01_resources_it_management_it_assets_id,
+    post_api_2026_10_01_resources_it_management_it_assets,
+    put_api_2026_10_01_resources_it_management_it_assets_id,
 )
 from factorial_api_client.generated.api.job_catalog_level import (
-    get_api_2026_07_01_resources_job_catalog_levels,
-    get_api_2026_07_01_resources_job_catalog_levels_id,
+    get_api_2026_10_01_resources_job_catalog_levels,
+    get_api_2026_10_01_resources_job_catalog_levels_id,
 )
 from factorial_api_client.generated.api.job_catalog_node_attribute import (
-    get_api_2026_07_01_resources_job_catalog_node_attributes,
+    get_api_2026_10_01_resources_job_catalog_node_attributes,
 )
 from factorial_api_client.generated.api.job_catalog_role import (
-    get_api_2026_07_01_resources_job_catalog_roles,
-    get_api_2026_07_01_resources_job_catalog_roles_id,
+    get_api_2026_10_01_resources_job_catalog_roles,
+    get_api_2026_10_01_resources_job_catalog_roles_id,
 )
 from factorial_api_client.generated.api.job_catalog_tree_node import (
-    get_api_2026_07_01_resources_job_catalog_tree_nodes,
+    get_api_2026_10_01_resources_job_catalog_tree_nodes,
 )
 from factorial_api_client.generated.api.locations_location import (
-    delete_api_2026_07_01_resources_locations_locations_id,
-    get_api_2026_07_01_resources_locations_locations,
-    get_api_2026_07_01_resources_locations_locations_id,
-    post_api_2026_07_01_resources_locations_locations,
-    put_api_2026_07_01_resources_locations_locations_id,
+    delete_api_2026_10_01_resources_locations_locations_id,
+    get_api_2026_10_01_resources_locations_locations,
+    get_api_2026_10_01_resources_locations_locations_id,
+    post_api_2026_10_01_resources_locations_locations,
+    put_api_2026_10_01_resources_locations_locations_id,
 )
 from factorial_api_client.generated.api.locations_work_area import (
-    get_api_2026_07_01_resources_locations_work_areas,
-    get_api_2026_07_01_resources_locations_work_areas_id,
-    post_api_2026_07_01_resources_locations_work_areas,
-    post_api_2026_07_01_resources_locations_work_areas_archive,
-    post_api_2026_07_01_resources_locations_work_areas_unarchive,
-    put_api_2026_07_01_resources_locations_work_areas_id,
+    get_api_2026_10_01_resources_locations_work_areas,
+    get_api_2026_10_01_resources_locations_work_areas_id,
+    post_api_2026_10_01_resources_locations_work_areas,
+    post_api_2026_10_01_resources_locations_work_areas_archive,
+    post_api_2026_10_01_resources_locations_work_areas_unarchive,
+    put_api_2026_10_01_resources_locations_work_areas_id,
 )
 from factorial_api_client.generated.api.marketplace_installation_setting import (
-    get_api_2026_07_01_resources_marketplace_installation_settings,
+    get_api_2026_10_01_resources_marketplace_installation_settings,
 )
 from factorial_api_client.generated.api.marketplace_installation import (
-    post_api_2026_07_01_resources_marketplace_installations,
+    post_api_2026_10_01_resources_marketplace_installations,
 )
 from factorial_api_client.generated.api.payroll_family_situation import (
-    get_api_2026_07_01_resources_payroll_family_situations,
-    post_api_2026_07_01_resources_payroll_family_situations,
-    put_api_2026_07_01_resources_payroll_family_situations_id,
+    get_api_2026_10_01_resources_payroll_family_situations,
+    post_api_2026_10_01_resources_payroll_family_situations,
+    put_api_2026_10_01_resources_payroll_family_situations_id,
 )
 from factorial_api_client.generated.api.payroll_policy_period import (
-    post_api_2026_07_01_resources_payroll_policy_periods_change_status,
+    post_api_2026_10_01_resources_payroll_policy_periods_change_status,
 )
 from factorial_api_client.generated.api.payroll_supplement import (
-    delete_api_2026_07_01_resources_payroll_supplements_id,
-    get_api_2026_07_01_resources_payroll_supplements,
-    get_api_2026_07_01_resources_payroll_supplements_id,
-    post_api_2026_07_01_resources_payroll_supplements,
-    put_api_2026_07_01_resources_payroll_supplements_id,
+    delete_api_2026_10_01_resources_payroll_supplements_id,
+    get_api_2026_10_01_resources_payroll_supplements,
+    get_api_2026_10_01_resources_payroll_supplements_id,
+    post_api_2026_10_01_resources_payroll_supplements,
+    put_api_2026_10_01_resources_payroll_supplements_id,
+)
+from factorial_api_client.generated.api.payroll_employees_german_employee_datum import (
+    get_api_2026_10_01_resources_payroll_employees_german_employee_data,
+    get_api_2026_10_01_resources_payroll_employees_german_employee_data_id,
+    post_api_2026_10_01_resources_payroll_employees_german_employee_data,
+    put_api_2026_10_01_resources_payroll_employees_german_employee_data_id,
 )
 from factorial_api_client.generated.api.payroll_employees_identifier import (
-    delete_api_2026_07_01_resources_payroll_employees_identifiers_id,
-    get_api_2026_07_01_resources_payroll_employees_identifiers,
-    get_api_2026_07_01_resources_payroll_employees_identifiers_id,
-    post_api_2026_07_01_resources_payroll_employees_identifiers,
-    put_api_2026_07_01_resources_payroll_employees_identifiers_id,
+    delete_api_2026_10_01_resources_payroll_employees_identifiers_id,
+    get_api_2026_10_01_resources_payroll_employees_identifiers,
+    get_api_2026_10_01_resources_payroll_employees_identifiers_id,
+    post_api_2026_10_01_resources_payroll_employees_identifiers,
+    put_api_2026_10_01_resources_payroll_employees_identifiers_id,
 )
 from factorial_api_client.generated.api.payroll_integrations_base_code import (
-    delete_api_2026_07_01_resources_payroll_integrations_base_codes_id,
-    get_api_2026_07_01_resources_payroll_integrations_base_codes,
-    post_api_2026_07_01_resources_payroll_integrations_base_codes,
-    put_api_2026_07_01_resources_payroll_integrations_base_codes_id,
+    delete_api_2026_10_01_resources_payroll_integrations_base_codes_id,
+    get_api_2026_10_01_resources_payroll_integrations_base_codes,
+    post_api_2026_10_01_resources_payroll_integrations_base_codes,
+    put_api_2026_10_01_resources_payroll_integrations_base_codes_id,
 )
 from factorial_api_client.generated.api.performance_agreement import (
-    get_api_2026_07_01_resources_performance_agreements,
-    get_api_2026_07_01_resources_performance_agreements_id,
-    post_api_2026_07_01_resources_performance_agreements_bulk_initiate,
-    post_api_2026_07_01_resources_performance_agreements_initiate,
+    get_api_2026_10_01_resources_performance_agreements,
+    get_api_2026_10_01_resources_performance_agreements_id,
+    post_api_2026_10_01_resources_performance_agreements_bulk_initiate,
+    post_api_2026_10_01_resources_performance_agreements_initiate,
 )
 from factorial_api_client.generated.api.performance_company_employee_score_scale import (
-    get_api_2026_07_01_resources_performance_company_employee_score_scales,
-    get_api_2026_07_01_resources_performance_company_employee_score_scales_id,
-    post_api_2026_07_01_resources_performance_company_employee_score_scales_set,
+    get_api_2026_10_01_resources_performance_company_employee_score_scales,
+    get_api_2026_10_01_resources_performance_company_employee_score_scales_id,
+    post_api_2026_10_01_resources_performance_company_employee_score_scales_set,
 )
 from factorial_api_client.generated.api.performance_employee_score_scale import (
-    get_api_2026_07_01_resources_performance_employee_score_scales,
-    get_api_2026_07_01_resources_performance_employee_score_scales_id,
+    get_api_2026_10_01_resources_performance_employee_score_scales,
+    get_api_2026_10_01_resources_performance_employee_score_scales_id,
 )
 from factorial_api_client.generated.api.performance_review_evaluation_answer import (
-    get_api_2026_07_01_resources_performance_review_evaluation_answers,
+    get_api_2026_10_01_resources_performance_review_evaluation_answers,
 )
 from factorial_api_client.generated.api.performance_review_evaluation_score import (
-    get_api_2026_07_01_resources_performance_review_evaluation_scores,
-    get_api_2026_07_01_resources_performance_review_evaluation_scores_id,
+    get_api_2026_10_01_resources_performance_review_evaluation_scores,
+    get_api_2026_10_01_resources_performance_review_evaluation_scores_id,
 )
 from factorial_api_client.generated.api.performance_review_evaluation import (
-    get_api_2026_07_01_resources_performance_review_evaluations,
-    get_api_2026_07_01_resources_performance_review_evaluations_id,
-    post_api_2026_07_01_resources_performance_review_evaluations_replace_reviewer,
+    get_api_2026_10_01_resources_performance_review_evaluations,
+    get_api_2026_10_01_resources_performance_review_evaluations_id,
+    post_api_2026_10_01_resources_performance_review_evaluations_replace_reviewer,
 )
 from factorial_api_client.generated.api.performance_review_owner import (
-    delete_api_2026_07_01_resources_performance_review_owners_id,
-    get_api_2026_07_01_resources_performance_review_owners,
-    post_api_2026_07_01_resources_performance_review_owners_bulk_create,
+    delete_api_2026_10_01_resources_performance_review_owners_id,
+    get_api_2026_10_01_resources_performance_review_owners,
+    post_api_2026_10_01_resources_performance_review_owners_bulk_create,
 )
 from factorial_api_client.generated.api.performance_review_process_custom_template import (
-    get_api_2026_07_01_resources_performance_review_process_custom_templates,
-    get_api_2026_07_01_resources_performance_review_process_custom_templates_id,
+    get_api_2026_10_01_resources_performance_review_process_custom_templates,
+    get_api_2026_10_01_resources_performance_review_process_custom_templates_id,
 )
 from factorial_api_client.generated.api.performance_review_process_estimated_target import (
-    get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+    get_api_2026_10_01_resources_performance_review_process_estimated_targets,
 )
 from factorial_api_client.generated.api.performance_review_process_target import (
-    delete_api_2026_07_01_resources_performance_review_process_targets_id,
-    get_api_2026_07_01_resources_performance_review_process_targets,
-    get_api_2026_07_01_resources_performance_review_process_targets_id,
-    post_api_2026_07_01_resources_performance_review_process_targets_add_peers,
-    post_api_2026_07_01_resources_performance_review_process_targets_bulk_create,
-    post_api_2026_07_01_resources_performance_review_process_targets_remove_peer_evaluations,
+    delete_api_2026_10_01_resources_performance_review_process_targets_id,
+    get_api_2026_10_01_resources_performance_review_process_targets,
+    get_api_2026_10_01_resources_performance_review_process_targets_id,
+    post_api_2026_10_01_resources_performance_review_process_targets_add_peers,
+    post_api_2026_10_01_resources_performance_review_process_targets_bulk_create,
+    post_api_2026_10_01_resources_performance_review_process_targets_remove_peer_evaluations,
 )
 from factorial_api_client.generated.api.performance_review_process import (
-    delete_api_2026_07_01_resources_performance_review_processes_id,
-    get_api_2026_07_01_resources_performance_review_processes,
-    get_api_2026_07_01_resources_performance_review_processes_id,
-    post_api_2026_07_01_resources_performance_review_processes,
-    post_api_2026_07_01_resources_performance_review_processes_create_from_template,
-    post_api_2026_07_01_resources_performance_review_processes_duplicate,
-    post_api_2026_07_01_resources_performance_review_processes_remind_in_bulk,
-    post_api_2026_07_01_resources_performance_review_processes_remove_schedule,
-    post_api_2026_07_01_resources_performance_review_processes_reopen,
-    post_api_2026_07_01_resources_performance_review_processes_schedule,
-    post_api_2026_07_01_resources_performance_review_processes_start,
-    post_api_2026_07_01_resources_performance_review_processes_stop,
-    post_api_2026_07_01_resources_performance_review_processes_toggle_archive,
-    post_api_2026_07_01_resources_performance_review_processes_update_agreements_configuration,
-    post_api_2026_07_01_resources_performance_review_processes_update_basic_info,
-    post_api_2026_07_01_resources_performance_review_processes_update_competencies_assessments_configuration,
-    post_api_2026_07_01_resources_performance_review_processes_update_deadline,
-    post_api_2026_07_01_resources_performance_review_processes_update_employee_score_configuration,
-    post_api_2026_07_01_resources_performance_review_processes_update_reviewer_strategies,
-    post_api_2026_07_01_resources_performance_review_processes_update_schedule,
-    post_api_2026_07_01_resources_performance_review_processes_update_target_strategy,
+    delete_api_2026_10_01_resources_performance_review_processes_id,
+    get_api_2026_10_01_resources_performance_review_processes,
+    get_api_2026_10_01_resources_performance_review_processes_id,
+    post_api_2026_10_01_resources_performance_review_processes,
+    post_api_2026_10_01_resources_performance_review_processes_create_from_template,
+    post_api_2026_10_01_resources_performance_review_processes_duplicate,
+    post_api_2026_10_01_resources_performance_review_processes_remind_in_bulk,
+    post_api_2026_10_01_resources_performance_review_processes_remove_schedule,
+    post_api_2026_10_01_resources_performance_review_processes_reopen,
+    post_api_2026_10_01_resources_performance_review_processes_schedule,
+    post_api_2026_10_01_resources_performance_review_processes_start,
+    post_api_2026_10_01_resources_performance_review_processes_stop,
+    post_api_2026_10_01_resources_performance_review_processes_toggle_archive,
+    post_api_2026_10_01_resources_performance_review_processes_update_agreements_configuration,
+    post_api_2026_10_01_resources_performance_review_processes_update_basic_info,
+    post_api_2026_10_01_resources_performance_review_processes_update_competencies_assessments_configuration,
+    post_api_2026_10_01_resources_performance_review_processes_update_deadline,
+    post_api_2026_10_01_resources_performance_review_processes_update_employee_score_configuration,
+    post_api_2026_10_01_resources_performance_review_processes_update_reviewer_strategies,
+    post_api_2026_10_01_resources_performance_review_processes_update_schedule,
+    post_api_2026_10_01_resources_performance_review_processes_update_target_strategy,
 )
 from factorial_api_client.generated.api.performance_review_questionnaire_by_strategy import (
-    get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
-    get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_id,
-    post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale,
-    post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy,
+    get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies,
+    get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_id,
+    post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale,
+    post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy,
 )
 from factorial_api_client.generated.api.performance_review_visibility_setting import (
-    get_api_2026_07_01_resources_performance_review_visibility_settings,
-    put_api_2026_07_01_resources_performance_review_visibility_settings_id,
+    get_api_2026_10_01_resources_performance_review_visibility_settings,
+    put_api_2026_10_01_resources_performance_review_visibility_settings_id,
 )
 from factorial_api_client.generated.api.performance_target_manager import (
-    get_api_2026_07_01_resources_performance_target_managers,
-    get_api_2026_07_01_resources_performance_target_managers_id,
+    get_api_2026_10_01_resources_performance_target_managers,
+    get_api_2026_10_01_resources_performance_target_managers_id,
 )
 from factorial_api_client.generated.api.posts_comment import (
-    delete_api_2026_07_01_resources_posts_comments_id,
-    get_api_2026_07_01_resources_posts_comments,
-    get_api_2026_07_01_resources_posts_comments_id,
-    post_api_2026_07_01_resources_posts_comments,
-    put_api_2026_07_01_resources_posts_comments_id,
+    delete_api_2026_10_01_resources_posts_comments_id,
+    get_api_2026_10_01_resources_posts_comments,
+    get_api_2026_10_01_resources_posts_comments_id,
+    post_api_2026_10_01_resources_posts_comments,
+    put_api_2026_10_01_resources_posts_comments_id,
 )
 from factorial_api_client.generated.api.posts_group import (
-    delete_api_2026_07_01_resources_posts_groups_id,
-    get_api_2026_07_01_resources_posts_groups,
-    get_api_2026_07_01_resources_posts_groups_id,
-    post_api_2026_07_01_resources_posts_groups,
-    post_api_2026_07_01_resources_posts_groups_archive,
-    put_api_2026_07_01_resources_posts_groups_id,
+    delete_api_2026_10_01_resources_posts_groups_id,
+    get_api_2026_10_01_resources_posts_groups,
+    get_api_2026_10_01_resources_posts_groups_id,
+    post_api_2026_10_01_resources_posts_groups,
+    post_api_2026_10_01_resources_posts_groups_archive,
+    put_api_2026_10_01_resources_posts_groups_id,
 )
 from factorial_api_client.generated.api.posts_post import (
-    delete_api_2026_07_01_resources_posts_posts_id,
-    get_api_2026_07_01_resources_posts_posts,
-    get_api_2026_07_01_resources_posts_posts_id,
-    post_api_2026_07_01_resources_posts_posts,
-    put_api_2026_07_01_resources_posts_posts_id,
+    delete_api_2026_10_01_resources_posts_posts_id,
+    get_api_2026_10_01_resources_posts_posts,
+    get_api_2026_10_01_resources_posts_posts_id,
+    post_api_2026_10_01_resources_posts_posts,
+    put_api_2026_10_01_resources_posts_posts_id,
+)
+from factorial_api_client.generated.api.procurement_po_field_value import (
+    get_api_2026_10_01_resources_procurement_po_field_values,
+    get_api_2026_10_01_resources_procurement_po_field_values_id,
+)
+from factorial_api_client.generated.api.procurement_po_line_item import (
+    get_api_2026_10_01_resources_procurement_po_line_items,
+    get_api_2026_10_01_resources_procurement_po_line_items_id,
+)
+from factorial_api_client.generated.api.procurement_po_template_field_definition import (
+    get_api_2026_10_01_resources_procurement_po_template_field_definitions,
+    get_api_2026_10_01_resources_procurement_po_template_field_definitions_id,
+)
+from factorial_api_client.generated.api.procurement_po_template_version import (
+    get_api_2026_10_01_resources_procurement_po_template_versions,
+    get_api_2026_10_01_resources_procurement_po_template_versions_id,
+)
+from factorial_api_client.generated.api.procurement_po_template import (
+    get_api_2026_10_01_resources_procurement_po_templates,
+    get_api_2026_10_01_resources_procurement_po_templates_id,
 )
 from factorial_api_client.generated.api.procurement_purchase_order import (
-    get_api_2026_07_01_resources_procurement_purchase_orders,
-    get_api_2026_07_01_resources_procurement_purchase_orders_id,
+    get_api_2026_10_01_resources_procurement_purchase_orders,
+    get_api_2026_10_01_resources_procurement_purchase_orders_id,
+    post_api_2026_10_01_resources_procurement_purchase_orders,
+    put_api_2026_10_01_resources_procurement_purchase_orders_id,
 )
 from factorial_api_client.generated.api.procurement_purchase_request import (
-    get_api_2026_07_01_resources_procurement_purchase_requests,
-    get_api_2026_07_01_resources_procurement_purchase_requests_id,
+    get_api_2026_10_01_resources_procurement_purchase_requests,
+    get_api_2026_10_01_resources_procurement_purchase_requests_id,
 )
 from factorial_api_client.generated.api.procurement_type import (
-    get_api_2026_07_01_resources_procurement_types,
-    get_api_2026_07_01_resources_procurement_types_id,
+    get_api_2026_10_01_resources_procurement_types,
+    get_api_2026_10_01_resources_procurement_types_id,
 )
 from factorial_api_client.generated.api.project_management_budget_strategy import (
-    delete_api_2026_07_01_resources_project_management_budget_strategies_id,
-    get_api_2026_07_01_resources_project_management_budget_strategies,
-    get_api_2026_07_01_resources_project_management_budget_strategies_id,
-    post_api_2026_07_01_resources_project_management_budget_strategies,
-    put_api_2026_07_01_resources_project_management_budget_strategies_id,
+    delete_api_2026_10_01_resources_project_management_budget_strategies_id,
+    get_api_2026_10_01_resources_project_management_budget_strategies,
+    get_api_2026_10_01_resources_project_management_budget_strategies_id,
+    post_api_2026_10_01_resources_project_management_budget_strategies,
+    put_api_2026_10_01_resources_project_management_budget_strategies_id,
 )
 from factorial_api_client.generated.api.project_management_expense_record import (
-    get_api_2026_07_01_resources_project_management_expense_records,
-    get_api_2026_07_01_resources_project_management_expense_records_id,
+    get_api_2026_10_01_resources_project_management_expense_records,
+    get_api_2026_10_01_resources_project_management_expense_records_id,
 )
 from factorial_api_client.generated.api.project_management_exportable_expense import (
-    get_api_2026_07_01_resources_project_management_exportable_expenses,
+    get_api_2026_10_01_resources_project_management_exportable_expenses,
 )
 from factorial_api_client.generated.api.project_management_imputable_project import (
-    get_api_2026_07_01_resources_project_management_imputable_projects,
-    get_api_2026_07_01_resources_project_management_imputable_projects_id,
+    get_api_2026_10_01_resources_project_management_imputable_projects,
+    get_api_2026_10_01_resources_project_management_imputable_projects_id,
 )
 from factorial_api_client.generated.api.project_management_planned_record import (
-    delete_api_2026_07_01_resources_project_management_planned_records_id,
-    get_api_2026_07_01_resources_project_management_planned_records,
-    get_api_2026_07_01_resources_project_management_planned_records_id,
-    post_api_2026_07_01_resources_project_management_planned_records_bulk_create,
-    put_api_2026_07_01_resources_project_management_planned_records_id,
+    delete_api_2026_10_01_resources_project_management_planned_records_id,
+    get_api_2026_10_01_resources_project_management_planned_records,
+    get_api_2026_10_01_resources_project_management_planned_records_id,
+    post_api_2026_10_01_resources_project_management_planned_records_bulk_create,
+    put_api_2026_10_01_resources_project_management_planned_records_id,
 )
 from factorial_api_client.generated.api.project_management_project_task import (
-    get_api_2026_07_01_resources_project_management_project_tasks,
-    get_api_2026_07_01_resources_project_management_project_tasks_id,
-    post_api_2026_07_01_resources_project_management_project_tasks,
-    post_api_2026_07_01_resources_project_management_project_tasks_bulk_destroy,
-    post_api_2026_07_01_resources_project_management_project_tasks_bulk_duplicate,
-    put_api_2026_07_01_resources_project_management_project_tasks_id,
+    get_api_2026_10_01_resources_project_management_project_tasks,
+    get_api_2026_10_01_resources_project_management_project_tasks_id,
+    post_api_2026_10_01_resources_project_management_project_tasks,
+    post_api_2026_10_01_resources_project_management_project_tasks_bulk_destroy,
+    post_api_2026_10_01_resources_project_management_project_tasks_bulk_duplicate,
+    put_api_2026_10_01_resources_project_management_project_tasks_id,
 )
 from factorial_api_client.generated.api.project_management_project_worker import (
-    get_api_2026_07_01_resources_project_management_project_workers,
-    get_api_2026_07_01_resources_project_management_project_workers_id,
-    post_api_2026_07_01_resources_project_management_project_workers,
-    post_api_2026_07_01_resources_project_management_project_workers_bulk_assign,
-    post_api_2026_07_01_resources_project_management_project_workers_bulk_create,
-    post_api_2026_07_01_resources_project_management_project_workers_unassign,
+    get_api_2026_10_01_resources_project_management_project_workers,
+    get_api_2026_10_01_resources_project_management_project_workers_id,
+    post_api_2026_10_01_resources_project_management_project_workers,
+    post_api_2026_10_01_resources_project_management_project_workers_bulk_assign,
+    post_api_2026_10_01_resources_project_management_project_workers_bulk_create,
+    post_api_2026_10_01_resources_project_management_project_workers_unassign,
 )
 from factorial_api_client.generated.api.project_management_project import (
-    get_api_2026_07_01_resources_project_management_projects,
-    get_api_2026_07_01_resources_project_management_projects_id,
-    post_api_2026_07_01_resources_project_management_projects,
-    post_api_2026_07_01_resources_project_management_projects_activate,
-    post_api_2026_07_01_resources_project_management_projects_change_assignment,
-    post_api_2026_07_01_resources_project_management_projects_change_status,
-    post_api_2026_07_01_resources_project_management_projects_close,
-    post_api_2026_07_01_resources_project_management_projects_soft_delete,
-    put_api_2026_07_01_resources_project_management_projects_id,
+    get_api_2026_10_01_resources_project_management_projects,
+    get_api_2026_10_01_resources_project_management_projects_id,
+    post_api_2026_10_01_resources_project_management_projects,
+    post_api_2026_10_01_resources_project_management_projects_activate,
+    post_api_2026_10_01_resources_project_management_projects_change_assignment,
+    post_api_2026_10_01_resources_project_management_projects_change_status,
+    post_api_2026_10_01_resources_project_management_projects_close,
+    post_api_2026_10_01_resources_project_management_projects_soft_delete,
+    put_api_2026_10_01_resources_project_management_projects_id,
+)
+from factorial_api_client.generated.api.project_management_rate import (
+    get_api_2026_10_01_resources_project_management_rates,
+    get_api_2026_10_01_resources_project_management_rates_id,
 )
 from factorial_api_client.generated.api.project_management_subproject import (
-    delete_api_2026_07_01_resources_project_management_subprojects_id,
-    get_api_2026_07_01_resources_project_management_subprojects,
-    get_api_2026_07_01_resources_project_management_subprojects_id,
-    post_api_2026_07_01_resources_project_management_subprojects,
-    post_api_2026_07_01_resources_project_management_subprojects_rename,
-    put_api_2026_07_01_resources_project_management_subprojects_id,
+    delete_api_2026_10_01_resources_project_management_subprojects_id,
+    get_api_2026_10_01_resources_project_management_subprojects,
+    get_api_2026_10_01_resources_project_management_subprojects_id,
+    post_api_2026_10_01_resources_project_management_subprojects,
+    post_api_2026_10_01_resources_project_management_subprojects_rename,
+    put_api_2026_10_01_resources_project_management_subprojects_id,
 )
 from factorial_api_client.generated.api.project_management_time_record import (
-    delete_api_2026_07_01_resources_project_management_time_records_id,
-    get_api_2026_07_01_resources_project_management_time_records,
-    get_api_2026_07_01_resources_project_management_time_records_id,
-    post_api_2026_07_01_resources_project_management_time_records,
-    post_api_2026_07_01_resources_project_management_time_records_bulk_delete,
-    post_api_2026_07_01_resources_project_management_time_records_bulk_process,
-    post_api_2026_07_01_resources_project_management_time_records_update_project_worker,
+    delete_api_2026_10_01_resources_project_management_time_records_id,
+    get_api_2026_10_01_resources_project_management_time_records,
+    get_api_2026_10_01_resources_project_management_time_records_id,
+    post_api_2026_10_01_resources_project_management_time_records,
+    post_api_2026_10_01_resources_project_management_time_records_bulk_delete,
+    post_api_2026_10_01_resources_project_management_time_records_bulk_process,
+    post_api_2026_10_01_resources_project_management_time_records_update_observations,
+    post_api_2026_10_01_resources_project_management_time_records_update_project_worker,
 )
 from factorial_api_client.generated.api.shift_management_shift import (
-    delete_api_2026_07_01_resources_shift_management_shifts_id,
-    get_api_2026_07_01_resources_shift_management_shifts,
-    get_api_2026_07_01_resources_shift_management_shifts_id,
-    post_api_2026_07_01_resources_shift_management_shifts,
-    post_api_2026_07_01_resources_shift_management_shifts_bulk_create,
-    post_api_2026_07_01_resources_shift_management_shifts_bulk_delete,
+    delete_api_2026_10_01_resources_shift_management_shifts_id,
+    get_api_2026_10_01_resources_shift_management_shifts,
+    get_api_2026_10_01_resources_shift_management_shifts_id,
+    post_api_2026_10_01_resources_shift_management_shifts,
+    post_api_2026_10_01_resources_shift_management_shifts_bulk_create,
+    post_api_2026_10_01_resources_shift_management_shifts_bulk_delete,
 )
 from factorial_api_client.generated.api.tasks_task_file import (
-    delete_api_2026_07_01_resources_tasks_task_files_id,
-    get_api_2026_07_01_resources_tasks_task_files,
-    get_api_2026_07_01_resources_tasks_task_files_id,
-    post_api_2026_07_01_resources_tasks_task_files,
+    delete_api_2026_10_01_resources_tasks_task_files_id,
+    get_api_2026_10_01_resources_tasks_task_files,
+    get_api_2026_10_01_resources_tasks_task_files_id,
+    post_api_2026_10_01_resources_tasks_task_files,
 )
 from factorial_api_client.generated.api.tasks_task import (
-    delete_api_2026_07_01_resources_tasks_tasks_id,
-    get_api_2026_07_01_resources_tasks_tasks,
-    get_api_2026_07_01_resources_tasks_tasks_id,
-    post_api_2026_07_01_resources_tasks_tasks,
-    post_api_2026_07_01_resources_tasks_tasks_bulk_create,
-    post_api_2026_07_01_resources_tasks_tasks_bulk_delete,
-    post_api_2026_07_01_resources_tasks_tasks_bulk_update,
-    post_api_2026_07_01_resources_tasks_tasks_copy,
-    post_api_2026_07_01_resources_tasks_tasks_create_comment,
-    put_api_2026_07_01_resources_tasks_tasks_id,
+    delete_api_2026_10_01_resources_tasks_tasks_id,
+    get_api_2026_10_01_resources_tasks_tasks,
+    get_api_2026_10_01_resources_tasks_tasks_id,
+    post_api_2026_10_01_resources_tasks_tasks,
+    post_api_2026_10_01_resources_tasks_tasks_bulk_create,
+    post_api_2026_10_01_resources_tasks_tasks_bulk_delete,
+    post_api_2026_10_01_resources_tasks_tasks_bulk_update,
+    post_api_2026_10_01_resources_tasks_tasks_copy,
+    post_api_2026_10_01_resources_tasks_tasks_create_comment,
+    put_api_2026_10_01_resources_tasks_tasks_id,
 )
 from factorial_api_client.generated.api.teams_membership import (
-    delete_api_2026_07_01_resources_teams_memberships_id,
-    get_api_2026_07_01_resources_teams_memberships,
-    get_api_2026_07_01_resources_teams_memberships_id,
-    post_api_2026_07_01_resources_teams_memberships,
-    put_api_2026_07_01_resources_teams_memberships_id,
+    delete_api_2026_10_01_resources_teams_memberships_id,
+    get_api_2026_10_01_resources_teams_memberships,
+    get_api_2026_10_01_resources_teams_memberships_id,
+    post_api_2026_10_01_resources_teams_memberships,
+    put_api_2026_10_01_resources_teams_memberships_id,
 )
 from factorial_api_client.generated.api.teams_team import (
-    delete_api_2026_07_01_resources_teams_teams_id,
-    get_api_2026_07_01_resources_teams_teams,
-    get_api_2026_07_01_resources_teams_teams_id,
-    post_api_2026_07_01_resources_teams_teams,
-    put_api_2026_07_01_resources_teams_teams_id,
+    delete_api_2026_10_01_resources_teams_teams_id,
+    get_api_2026_10_01_resources_teams_teams,
+    get_api_2026_10_01_resources_teams_teams_id,
+    post_api_2026_10_01_resources_teams_teams,
+    put_api_2026_10_01_resources_teams_teams_id,
 )
 from factorial_api_client.generated.api.time_planning_planned_break import (
-    get_api_2026_07_01_resources_time_planning_planned_breaks,
-    get_api_2026_07_01_resources_time_planning_planned_breaks_id,
-    post_api_2026_07_01_resources_time_planning_planned_breaks_bulk_create,
+    get_api_2026_10_01_resources_time_planning_planned_breaks,
+    get_api_2026_10_01_resources_time_planning_planned_breaks_id,
+    post_api_2026_10_01_resources_time_planning_planned_breaks_bulk_create,
 )
 from factorial_api_client.generated.api.time_planning_planning_version import (
-    delete_api_2026_07_01_resources_time_planning_planning_versions_id,
-    get_api_2026_07_01_resources_time_planning_planning_versions,
-    post_api_2026_07_01_resources_time_planning_planning_versions,
-    post_api_2026_07_01_resources_time_planning_planning_versions_bulk_create,
-    put_api_2026_07_01_resources_time_planning_planning_versions_id,
+    delete_api_2026_10_01_resources_time_planning_planning_versions_id,
+    get_api_2026_10_01_resources_time_planning_planning_versions,
+    post_api_2026_10_01_resources_time_planning_planning_versions,
+    post_api_2026_10_01_resources_time_planning_planning_versions_bulk_create,
+    put_api_2026_10_01_resources_time_planning_planning_versions_id,
 )
 from factorial_api_client.generated.api.time_settings_break_configuration import (
-    get_api_2026_07_01_resources_time_settings_break_configurations,
-    get_api_2026_07_01_resources_time_settings_break_configurations_id,
-    post_api_2026_07_01_resources_time_settings_break_configurations,
-    put_api_2026_07_01_resources_time_settings_break_configurations_id,
+    get_api_2026_10_01_resources_time_settings_break_configurations,
+    get_api_2026_10_01_resources_time_settings_break_configurations_id,
+    post_api_2026_10_01_resources_time_settings_break_configurations,
+    put_api_2026_10_01_resources_time_settings_break_configurations_id,
 )
 from factorial_api_client.generated.api.timeoff_allowance_incidence import (
-    delete_api_2026_07_01_resources_timeoff_allowance_incidences_id,
-    get_api_2026_07_01_resources_timeoff_allowance_incidences,
-    get_api_2026_07_01_resources_timeoff_allowance_incidences_id,
-    post_api_2026_07_01_resources_timeoff_allowance_incidences,
-    put_api_2026_07_01_resources_timeoff_allowance_incidences_id,
+    delete_api_2026_10_01_resources_timeoff_allowance_incidences_id,
+    get_api_2026_10_01_resources_timeoff_allowance_incidences,
+    get_api_2026_10_01_resources_timeoff_allowance_incidences_id,
+    post_api_2026_10_01_resources_timeoff_allowance_incidences,
+    put_api_2026_10_01_resources_timeoff_allowance_incidences_id,
 )
 from factorial_api_client.generated.api.timeoff_allowance_stat import (
-    get_api_2026_07_01_resources_timeoff_allowance_stats,
-    get_api_2026_07_01_resources_timeoff_allowance_stats_id,
+    get_api_2026_10_01_resources_timeoff_allowance_stats,
+    get_api_2026_10_01_resources_timeoff_allowance_stats_id,
 )
 from factorial_api_client.generated.api.timeoff_allowance import (
-    delete_api_2026_07_01_resources_timeoff_allowances_id,
-    get_api_2026_07_01_resources_timeoff_allowances,
-    get_api_2026_07_01_resources_timeoff_allowances_id,
-    post_api_2026_07_01_resources_timeoff_allowances,
-    post_api_2026_07_01_resources_timeoff_allowances_delete_with_alt_allowance,
-    put_api_2026_07_01_resources_timeoff_allowances_id,
+    delete_api_2026_10_01_resources_timeoff_allowances_id,
+    get_api_2026_10_01_resources_timeoff_allowances,
+    get_api_2026_10_01_resources_timeoff_allowances_id,
+    post_api_2026_10_01_resources_timeoff_allowances,
+    post_api_2026_10_01_resources_timeoff_allowances_delete_with_alt_allowance,
+    put_api_2026_10_01_resources_timeoff_allowances_id,
 )
 from factorial_api_client.generated.api.timeoff_blocked_period import (
-    delete_api_2026_07_01_resources_timeoff_blocked_periods_id,
-    get_api_2026_07_01_resources_timeoff_blocked_periods,
-    get_api_2026_07_01_resources_timeoff_blocked_periods_id,
-    post_api_2026_07_01_resources_timeoff_blocked_periods,
-    put_api_2026_07_01_resources_timeoff_blocked_periods_id,
+    delete_api_2026_10_01_resources_timeoff_blocked_periods_id,
+    get_api_2026_10_01_resources_timeoff_blocked_periods,
+    get_api_2026_10_01_resources_timeoff_blocked_periods_id,
+    post_api_2026_10_01_resources_timeoff_blocked_periods,
+    put_api_2026_10_01_resources_timeoff_blocked_periods_id,
+)
+from factorial_api_client.generated.api.timeoff_french_leave_day_count import (
+    get_api_2026_10_01_resources_timeoff_french_leave_day_counts,
 )
 from factorial_api_client.generated.api.timeoff_leave_type import (
-    get_api_2026_07_01_resources_timeoff_leave_types,
-    get_api_2026_07_01_resources_timeoff_leave_types_id,
-    post_api_2026_07_01_resources_timeoff_leave_types,
-    put_api_2026_07_01_resources_timeoff_leave_types_id,
+    get_api_2026_10_01_resources_timeoff_leave_types,
+    get_api_2026_10_01_resources_timeoff_leave_types_id,
+    post_api_2026_10_01_resources_timeoff_leave_types,
+    put_api_2026_10_01_resources_timeoff_leave_types_id,
 )
 from factorial_api_client.generated.api.timeoff_leave import (
-    delete_api_2026_07_01_resources_timeoff_leaves_id,
-    get_api_2026_07_01_resources_timeoff_leaves,
-    get_api_2026_07_01_resources_timeoff_leaves_id,
-    post_api_2026_07_01_resources_timeoff_leaves,
-    post_api_2026_07_01_resources_timeoff_leaves_approve,
-    post_api_2026_07_01_resources_timeoff_leaves_approve_all,
-    post_api_2026_07_01_resources_timeoff_leaves_reject,
-    put_api_2026_07_01_resources_timeoff_leaves_id,
+    delete_api_2026_10_01_resources_timeoff_leaves_id,
+    get_api_2026_10_01_resources_timeoff_leaves,
+    get_api_2026_10_01_resources_timeoff_leaves_id,
+    post_api_2026_10_01_resources_timeoff_leaves,
+    post_api_2026_10_01_resources_timeoff_leaves_approve,
+    post_api_2026_10_01_resources_timeoff_leaves_approve_all,
+    post_api_2026_10_01_resources_timeoff_leaves_reject,
+    put_api_2026_10_01_resources_timeoff_leaves_id,
 )
 from factorial_api_client.generated.api.timeoff_policy import (
-    delete_api_2026_07_01_resources_timeoff_policies_id,
-    get_api_2026_07_01_resources_timeoff_policies,
-    get_api_2026_07_01_resources_timeoff_policies_id,
-    post_api_2026_07_01_resources_timeoff_policies,
-    put_api_2026_07_01_resources_timeoff_policies_id,
+    delete_api_2026_10_01_resources_timeoff_policies_id,
+    get_api_2026_10_01_resources_timeoff_policies,
+    get_api_2026_10_01_resources_timeoff_policies_id,
+    post_api_2026_10_01_resources_timeoff_policies,
+    put_api_2026_10_01_resources_timeoff_policies_id,
 )
 from factorial_api_client.generated.api.timeoff_policy_assignment import (
-    delete_api_2026_07_01_resources_timeoff_policy_assignments_id,
-    get_api_2026_07_01_resources_timeoff_policy_assignments,
-    get_api_2026_07_01_resources_timeoff_policy_assignments_id,
-    post_api_2026_07_01_resources_timeoff_policy_assignments,
-    put_api_2026_07_01_resources_timeoff_policy_assignments_id,
+    delete_api_2026_10_01_resources_timeoff_policy_assignments_id,
+    get_api_2026_10_01_resources_timeoff_policy_assignments,
+    get_api_2026_10_01_resources_timeoff_policy_assignments_id,
+    post_api_2026_10_01_resources_timeoff_policy_assignments,
+    put_api_2026_10_01_resources_timeoff_policy_assignments_id,
 )
 from factorial_api_client.generated.api.timeoff_policy_timeline import (
-    get_api_2026_07_01_resources_timeoff_policy_timelines,
+    get_api_2026_10_01_resources_timeoff_policy_timelines,
 )
 from factorial_api_client.generated.api.trainings_category import (
-    delete_api_2026_07_01_resources_trainings_categories_id,
-    get_api_2026_07_01_resources_trainings_categories,
-    get_api_2026_07_01_resources_trainings_categories_id,
-    post_api_2026_07_01_resources_trainings_categories,
+    delete_api_2026_10_01_resources_trainings_categories_id,
+    get_api_2026_10_01_resources_trainings_categories,
+    get_api_2026_10_01_resources_trainings_categories_id,
+    post_api_2026_10_01_resources_trainings_categories,
 )
 from factorial_api_client.generated.api.trainings_session_access_membership import (
-    get_api_2026_07_01_resources_trainings_session_access_memberships,
-    get_api_2026_07_01_resources_trainings_session_access_memberships_id,
-    post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_create,
-    post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_destroy,
+    get_api_2026_10_01_resources_trainings_session_access_memberships,
+    get_api_2026_10_01_resources_trainings_session_access_memberships_id,
+    post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_create,
+    post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_destroy,
 )
 from factorial_api_client.generated.api.trainings_session_attendance import (
-    get_api_2026_07_01_resources_trainings_session_attendances,
-    get_api_2026_07_01_resources_trainings_session_attendances_id,
-    post_api_2026_07_01_resources_trainings_session_attendances_bulk_update,
+    get_api_2026_10_01_resources_trainings_session_attendances,
+    get_api_2026_10_01_resources_trainings_session_attendances_id,
+    post_api_2026_10_01_resources_trainings_session_attendances_bulk_update,
 )
 from factorial_api_client.generated.api.trainings_session import (
-    delete_api_2026_07_01_resources_trainings_sessions_id,
-    get_api_2026_07_01_resources_trainings_sessions,
-    get_api_2026_07_01_resources_trainings_sessions_id,
-    post_api_2026_07_01_resources_trainings_sessions,
-    put_api_2026_07_01_resources_trainings_sessions_id,
+    delete_api_2026_10_01_resources_trainings_sessions_id,
+    get_api_2026_10_01_resources_trainings_sessions,
+    get_api_2026_10_01_resources_trainings_sessions_id,
+    post_api_2026_10_01_resources_trainings_sessions,
+    put_api_2026_10_01_resources_trainings_sessions_id,
 )
 from factorial_api_client.generated.api.trainings_training_class import (
-    delete_api_2026_07_01_resources_trainings_training_classes_id,
-    get_api_2026_07_01_resources_trainings_training_classes,
-    get_api_2026_07_01_resources_trainings_training_classes_id,
-    post_api_2026_07_01_resources_trainings_training_classes,
-    put_api_2026_07_01_resources_trainings_training_classes_id,
+    delete_api_2026_10_01_resources_trainings_training_classes_id,
+    get_api_2026_10_01_resources_trainings_training_classes,
+    get_api_2026_10_01_resources_trainings_training_classes_id,
+    post_api_2026_10_01_resources_trainings_training_classes,
+    put_api_2026_10_01_resources_trainings_training_classes_id,
 )
 from factorial_api_client.generated.api.trainings_training_membership import (
-    get_api_2026_07_01_resources_trainings_training_memberships,
-    get_api_2026_07_01_resources_trainings_training_memberships_id,
-    post_api_2026_07_01_resources_trainings_training_memberships_bulk_create,
-    post_api_2026_07_01_resources_trainings_training_memberships_bulk_destroy,
-    put_api_2026_07_01_resources_trainings_training_memberships_id,
+    get_api_2026_10_01_resources_trainings_training_memberships,
+    get_api_2026_10_01_resources_trainings_training_memberships_id,
+    post_api_2026_10_01_resources_trainings_training_memberships_bulk_create,
+    post_api_2026_10_01_resources_trainings_training_memberships_bulk_destroy,
+    put_api_2026_10_01_resources_trainings_training_memberships_id,
 )
 from factorial_api_client.generated.api.trainings_training import (
-    delete_api_2026_07_01_resources_trainings_trainings_id,
-    get_api_2026_07_01_resources_trainings_trainings,
-    get_api_2026_07_01_resources_trainings_trainings_id,
-    post_api_2026_07_01_resources_trainings_trainings,
-    post_api_2026_07_01_resources_trainings_trainings_bulk_delete,
-    post_api_2026_07_01_resources_trainings_trainings_bulk_update_catalog,
-    post_api_2026_07_01_resources_trainings_trainings_update_status,
-    put_api_2026_07_01_resources_trainings_trainings_id,
+    delete_api_2026_10_01_resources_trainings_trainings_id,
+    get_api_2026_10_01_resources_trainings_trainings,
+    get_api_2026_10_01_resources_trainings_trainings_id,
+    post_api_2026_10_01_resources_trainings_trainings,
+    post_api_2026_10_01_resources_trainings_trainings_bulk_delete,
+    post_api_2026_10_01_resources_trainings_trainings_bulk_update_catalog,
+    post_api_2026_10_01_resources_trainings_trainings_update_status,
+    put_api_2026_10_01_resources_trainings_trainings_id,
 )
 from factorial_api_client.generated.api.work_schedule_day_configuration import (
-    get_api_2026_07_01_resources_work_schedule_day_configurations,
-    get_api_2026_07_01_resources_work_schedule_day_configurations_id,
-    post_api_2026_07_01_resources_work_schedule_day_configurations_bulk_cud,
+    get_api_2026_10_01_resources_work_schedule_day_configurations,
+    get_api_2026_10_01_resources_work_schedule_day_configurations_id,
+    post_api_2026_10_01_resources_work_schedule_day_configurations_bulk_cud,
 )
 from factorial_api_client.generated.api.work_schedule_overlap_period import (
-    delete_api_2026_07_01_resources_work_schedule_overlap_periods_id,
-    get_api_2026_07_01_resources_work_schedule_overlap_periods,
-    get_api_2026_07_01_resources_work_schedule_overlap_periods_id,
-    post_api_2026_07_01_resources_work_schedule_overlap_periods,
-    put_api_2026_07_01_resources_work_schedule_overlap_periods_id,
+    delete_api_2026_10_01_resources_work_schedule_overlap_periods_id,
+    get_api_2026_10_01_resources_work_schedule_overlap_periods,
+    get_api_2026_10_01_resources_work_schedule_overlap_periods_id,
+    post_api_2026_10_01_resources_work_schedule_overlap_periods,
+    put_api_2026_10_01_resources_work_schedule_overlap_periods_id,
 )
 from factorial_api_client.generated.api.work_schedule_schedule import (
-    get_api_2026_07_01_resources_work_schedule_schedules,
-    get_api_2026_07_01_resources_work_schedule_schedules_id,
-    post_api_2026_07_01_resources_work_schedule_schedules,
-    post_api_2026_07_01_resources_work_schedule_schedules_toggle_archive,
-    put_api_2026_07_01_resources_work_schedule_schedules_id,
+    get_api_2026_10_01_resources_work_schedule_schedules,
+    get_api_2026_10_01_resources_work_schedule_schedules_id,
+    post_api_2026_10_01_resources_work_schedule_schedules,
+    post_api_2026_10_01_resources_work_schedule_schedules_toggle_archive,
+    put_api_2026_10_01_resources_work_schedule_schedules_id,
 )
 
 
@@ -879,29 +955,29 @@ class ApiPublicCredentialsResource:
         self._client = client
 
     def list(self, ) -> Any:
-        """Calls get_api_2026_07_01_resources_api_public_credentials."""
-        return get_api_2026_07_01_resources_api_public_credentials.sync(client=self._client)
+        """Calls get_api_2026_10_01_resources_api_public_credentials."""
+        return get_api_2026_10_01_resources_api_public_credentials.sync(client=self._client)
 
     async def list_async(self, ) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_api_public_credentials.asyncio(client=self._client)
+        return await get_api_2026_10_01_resources_api_public_credentials.asyncio(client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
-            return fetch_page(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
+            return fetch_page(get_api_2026_10_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return paginate(fetcher, max_items=max_items)
 
     def all(self, *, max_items: int | None = None, limit: int | None = None) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
-            return fetch_page(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
+            return fetch_page(get_api_2026_10_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return collect_all(fetcher, max_items=max_items)
 
     async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
-            return await fetch_page_async(get_api_2026_07_01_resources_api_public_credentials, self._client, after_id, limit=limit)
+            return await fetch_page_async(get_api_2026_10_01_resources_api_public_credentials, self._client, after_id, limit=limit)
         return paginate_async(fetcher, max_items=max_items)
 
 
@@ -912,50 +988,50 @@ class ApiPublicWebhookSubscriptionsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_api_public_webhook_subscriptions_id."""
-        return delete_api_2026_07_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_api_public_webhook_subscriptions_id."""
+        return delete_api_2026_10_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client)
 
     def list(self, id: Any = UNSET, company_id: Any = UNSET, type_: Any = UNSET, enabled: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_api_public_webhook_subscriptions."""
-        return get_api_2026_07_01_resources_api_public_webhook_subscriptions.sync(client=self._client, id=id, company_id=company_id, type_=type_, enabled=enabled)
+        """Calls get_api_2026_10_01_resources_api_public_webhook_subscriptions."""
+        return get_api_2026_10_01_resources_api_public_webhook_subscriptions.sync(client=self._client, id=id, company_id=company_id, type_=type_, enabled=enabled)
 
     async def list_async(self, id: Any = UNSET, company_id: Any = UNSET, type_: Any = UNSET, enabled: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_api_public_webhook_subscriptions.asyncio(client=self._client, id=id, company_id=company_id, type_=type_, enabled=enabled)
+        return await get_api_2026_10_01_resources_api_public_webhook_subscriptions.asyncio(client=self._client, id=id, company_id=company_id, type_=type_, enabled=enabled)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_api_public_webhook_subscriptions_id."""
-        return get_api_2026_07_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_api_public_webhook_subscriptions_id."""
+        return get_api_2026_10_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_api_public_webhook_subscriptions."""
-        return post_api_2026_07_01_resources_api_public_webhook_subscriptions.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_api_public_webhook_subscriptions."""
+        return post_api_2026_10_01_resources_api_public_webhook_subscriptions.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_api_public_webhook_subscriptions.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_api_public_webhook_subscriptions.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_api_public_webhook_subscriptions_id."""
-        return put_api_2026_07_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_api_public_webhook_subscriptions_id."""
+        return put_api_2026_10_01_resources_api_public_webhook_subscriptions_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_api_public_webhook_subscriptions_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = UNSET, company_id: Any = UNSET, type_: Any = UNSET, enabled: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                get_api_2026_10_01_resources_api_public_webhook_subscriptions,
                 self._client,
                 after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
@@ -965,7 +1041,7 @@ class ApiPublicWebhookSubscriptionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                get_api_2026_10_01_resources_api_public_webhook_subscriptions,
                 self._client,
                 after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
@@ -975,7 +1051,7 @@ class ApiPublicWebhookSubscriptionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_api_public_webhook_subscriptions,
+                get_api_2026_10_01_resources_api_public_webhook_subscriptions,
                 self._client,
                 after_id, limit=limit, id=id, company_id=company_id, type_=type_, enabled=enabled,
             )
@@ -989,20 +1065,20 @@ class ApprovalsMaterializedApprovalsFlowsResource:
         self._client = client
 
     def approve_resource(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_approvals_materialized_approvals_flows_approve_resource."""
-        return post_api_2026_07_01_resources_approvals_materialized_approvals_flows_approve_resource.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_approvals_materialized_approvals_flows_approve_resource."""
+        return post_api_2026_10_01_resources_approvals_materialized_approvals_flows_approve_resource.sync(client=self._client, body=body)
 
     async def approve_resource_async(self, body: Any = UNSET) -> Any:
         """Async version of approve_resource."""
-        return await post_api_2026_07_01_resources_approvals_materialized_approvals_flows_approve_resource.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_approvals_materialized_approvals_flows_approve_resource.asyncio(client=self._client, body=body)
 
     def reject_resource(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_approvals_materialized_approvals_flows_reject_resource."""
-        return post_api_2026_07_01_resources_approvals_materialized_approvals_flows_reject_resource.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_approvals_materialized_approvals_flows_reject_resource."""
+        return post_api_2026_10_01_resources_approvals_materialized_approvals_flows_reject_resource.sync(client=self._client, body=body)
 
     async def reject_resource_async(self, body: Any = UNSET) -> Any:
         """Async version of reject_resource."""
-        return await post_api_2026_07_01_resources_approvals_materialized_approvals_flows_reject_resource.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_approvals_materialized_approvals_flows_reject_resource.asyncio(client=self._client, body=body)
 
 
 class AtsAnswersResource:
@@ -1012,34 +1088,34 @@ class AtsAnswersResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_answers."""
-        return get_api_2026_07_01_resources_ats_answers.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
+        """Calls get_api_2026_10_01_resources_ats_answers."""
+        return get_api_2026_10_01_resources_ats_answers.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
 
     async def list_async(self, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_answers.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
+        return await get_api_2026_10_01_resources_ats_answers.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_answers_id."""
-        return get_api_2026_07_01_resources_ats_answers_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_answers_id."""
+        return get_api_2026_10_01_resources_ats_answers_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_answers_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_answers_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_answers."""
-        return post_api_2026_07_01_resources_ats_answers.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_answers."""
+        return post_api_2026_10_01_resources_ats_answers.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_answers.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_answers.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_answers,
+                get_api_2026_10_01_resources_ats_answers,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1049,7 +1125,7 @@ class AtsAnswersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_answers,
+                get_api_2026_10_01_resources_ats_answers,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1059,7 +1135,7 @@ class AtsAnswersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_answers,
+                get_api_2026_10_01_resources_ats_answers,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1073,26 +1149,26 @@ class AtsApplicationPhasesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_application_phases."""
-        return get_api_2026_07_01_resources_ats_application_phases.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
+        """Calls get_api_2026_10_01_resources_ats_application_phases."""
+        return get_api_2026_10_01_resources_ats_application_phases.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
 
     async def list_async(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_application_phases.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
+        return await get_api_2026_10_01_resources_ats_application_phases.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_application_phases_id."""
-        return get_api_2026_07_01_resources_ats_application_phases_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_application_phases_id."""
+        return get_api_2026_10_01_resources_ats_application_phases_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_application_phases_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_application_phases_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_application_phases,
+                get_api_2026_10_01_resources_ats_application_phases,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1102,7 +1178,7 @@ class AtsApplicationPhasesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_application_phases,
+                get_api_2026_10_01_resources_ats_application_phases,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1112,7 +1188,7 @@ class AtsApplicationPhasesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_application_phases,
+                get_api_2026_10_01_resources_ats_application_phases,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1126,66 +1202,66 @@ class AtsApplicationsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_ats_applications_id."""
-        return delete_api_2026_07_01_resources_ats_applications_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_ats_applications_id."""
+        return delete_api_2026_10_01_resources_ats_applications_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_ats_applications_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_ats_applications_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, ats_job_posting_id: Any = UNSET, qualified: Any = UNSET, ats_application_phase_id: Any = UNSET, ats_candidate_ids: Any = UNSET, ats_rejection_reason_ids: Any = UNSET, search: Any = UNSET, ats_tags_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_applications."""
-        return get_api_2026_07_01_resources_ats_applications.sync(client=self._client, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids)
+        """Calls get_api_2026_10_01_resources_ats_applications."""
+        return get_api_2026_10_01_resources_ats_applications.sync(client=self._client, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids)
 
     async def list_async(self, ids: Any = UNSET, ats_job_posting_id: Any = UNSET, qualified: Any = UNSET, ats_application_phase_id: Any = UNSET, ats_candidate_ids: Any = UNSET, ats_rejection_reason_ids: Any = UNSET, search: Any = UNSET, ats_tags_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_applications.asyncio(client=self._client, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids)
+        return await get_api_2026_10_01_resources_ats_applications.asyncio(client=self._client, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_applications_id."""
-        return get_api_2026_07_01_resources_ats_applications_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_applications_id."""
+        return get_api_2026_10_01_resources_ats_applications_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_applications_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_applications_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_applications."""
-        return post_api_2026_07_01_resources_ats_applications.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_applications."""
+        return post_api_2026_10_01_resources_ats_applications.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_applications.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_applications.asyncio(client=self._client, body=body)
 
     def apply(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_applications_apply."""
-        return post_api_2026_07_01_resources_ats_applications_apply.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_applications_apply."""
+        return post_api_2026_10_01_resources_ats_applications_apply.sync(client=self._client, body=body)
 
     async def apply_async(self, body: Any = UNSET) -> Any:
         """Async version of apply."""
-        return await post_api_2026_07_01_resources_ats_applications_apply.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_applications_apply.asyncio(client=self._client, body=body)
 
     def move_to_phase(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_applications_move_to_phase."""
-        return post_api_2026_07_01_resources_ats_applications_move_to_phase.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_applications_move_to_phase."""
+        return post_api_2026_10_01_resources_ats_applications_move_to_phase.sync(client=self._client, body=body)
 
     async def move_to_phase_async(self, body: Any = UNSET) -> Any:
         """Async version of move_to_phase."""
-        return await post_api_2026_07_01_resources_ats_applications_move_to_phase.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_applications_move_to_phase.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_ats_applications_id."""
-        return put_api_2026_07_01_resources_ats_applications_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_ats_applications_id."""
+        return put_api_2026_10_01_resources_ats_applications_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_ats_applications_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_ats_applications_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_job_posting_id: Any = UNSET, qualified: Any = UNSET, ats_application_phase_id: Any = UNSET, ats_candidate_ids: Any = UNSET, ats_rejection_reason_ids: Any = UNSET, search: Any = UNSET, ats_tags_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_applications,
+                get_api_2026_10_01_resources_ats_applications,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
@@ -1195,7 +1271,7 @@ class AtsApplicationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_applications,
+                get_api_2026_10_01_resources_ats_applications,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
@@ -1205,7 +1281,7 @@ class AtsApplicationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_applications,
+                get_api_2026_10_01_resources_ats_applications,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_id=ats_job_posting_id, qualified=qualified, ats_application_phase_id=ats_application_phase_id, ats_candidate_ids=ats_candidate_ids, ats_rejection_reason_ids=ats_rejection_reason_ids, search=search, ats_tags_ids=ats_tags_ids,
             )
@@ -1219,26 +1295,26 @@ class AtsCandidateSourcesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_candidate_sources."""
-        return get_api_2026_07_01_resources_ats_candidate_sources.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_ats_candidate_sources."""
+        return get_api_2026_10_01_resources_ats_candidate_sources.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_candidate_sources.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_ats_candidate_sources.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_candidate_sources_id."""
-        return get_api_2026_07_01_resources_ats_candidate_sources_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_candidate_sources_id."""
+        return get_api_2026_10_01_resources_ats_candidate_sources_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_candidate_sources_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_candidate_sources_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_candidate_sources,
+                get_api_2026_10_01_resources_ats_candidate_sources,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -1248,7 +1324,7 @@ class AtsCandidateSourcesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_candidate_sources,
+                get_api_2026_10_01_resources_ats_candidate_sources,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -1258,7 +1334,7 @@ class AtsCandidateSourcesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_candidate_sources,
+                get_api_2026_10_01_resources_ats_candidate_sources,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -1272,50 +1348,50 @@ class AtsCandidatesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_ats_candidates_id."""
-        return delete_api_2026_07_01_resources_ats_candidates_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_ats_candidates_id."""
+        return delete_api_2026_10_01_resources_ats_candidates_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_ats_candidates_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_ats_candidates_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, emails: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, source: Any = UNSET, remote: Any = UNSET, job_posting_ids: Any = UNSET, minimum_average_rating: Any = UNSET, active: Any = UNSET, talent_pool: Any = UNSET, archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_candidates."""
-        return get_api_2026_07_01_resources_ats_candidates.sync(client=self._client, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived)
+        """Calls get_api_2026_10_01_resources_ats_candidates."""
+        return get_api_2026_10_01_resources_ats_candidates.sync(client=self._client, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived)
 
     async def list_async(self, ids: Any = UNSET, emails: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, source: Any = UNSET, remote: Any = UNSET, job_posting_ids: Any = UNSET, minimum_average_rating: Any = UNSET, active: Any = UNSET, talent_pool: Any = UNSET, archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_candidates.asyncio(client=self._client, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived)
+        return await get_api_2026_10_01_resources_ats_candidates.asyncio(client=self._client, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_candidates_id."""
-        return get_api_2026_07_01_resources_ats_candidates_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_candidates_id."""
+        return get_api_2026_10_01_resources_ats_candidates_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_candidates_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_candidates_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_candidates."""
-        return post_api_2026_07_01_resources_ats_candidates.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_candidates."""
+        return post_api_2026_10_01_resources_ats_candidates.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_candidates.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_candidates.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_ats_candidates_id."""
-        return put_api_2026_07_01_resources_ats_candidates_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_ats_candidates_id."""
+        return put_api_2026_10_01_resources_ats_candidates_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_ats_candidates_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_ats_candidates_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, emails: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, source: Any = UNSET, remote: Any = UNSET, job_posting_ids: Any = UNSET, minimum_average_rating: Any = UNSET, active: Any = UNSET, talent_pool: Any = UNSET, archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_candidates,
+                get_api_2026_10_01_resources_ats_candidates,
                 self._client,
                 after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
@@ -1325,7 +1401,7 @@ class AtsCandidatesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_candidates,
+                get_api_2026_10_01_resources_ats_candidates,
                 self._client,
                 after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
@@ -1335,7 +1411,7 @@ class AtsCandidatesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_candidates,
+                get_api_2026_10_01_resources_ats_candidates,
                 self._client,
                 after_id, limit=limit, ids=ids, emails=emails, team_ids=team_ids, location_ids=location_ids, source=source, remote=remote, job_posting_ids=job_posting_ids, minimum_average_rating=minimum_average_rating, active=active, talent_pool=talent_pool, archived=archived,
             )
@@ -1349,34 +1425,34 @@ class AtsEvaluationFormsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET, template: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_evaluation_forms."""
-        return get_api_2026_07_01_resources_ats_evaluation_forms.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template)
+        """Calls get_api_2026_10_01_resources_ats_evaluation_forms."""
+        return get_api_2026_10_01_resources_ats_evaluation_forms.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template)
 
     async def list_async(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET, template: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_evaluation_forms.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template)
+        return await get_api_2026_10_01_resources_ats_evaluation_forms.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_evaluation_forms_id."""
-        return get_api_2026_07_01_resources_ats_evaluation_forms_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_evaluation_forms_id."""
+        return get_api_2026_10_01_resources_ats_evaluation_forms_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_evaluation_forms_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_evaluation_forms_id.asyncio(id, client=self._client)
 
     def save_as_template(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_evaluation_forms_save_as_template."""
-        return post_api_2026_07_01_resources_ats_evaluation_forms_save_as_template.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_evaluation_forms_save_as_template."""
+        return post_api_2026_10_01_resources_ats_evaluation_forms_save_as_template.sync(client=self._client, body=body)
 
     async def save_as_template_async(self, body: Any = UNSET) -> Any:
         """Async version of save_as_template."""
-        return await post_api_2026_07_01_resources_ats_evaluation_forms_save_as_template.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_evaluation_forms_save_as_template.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET, template: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_evaluation_forms,
+                get_api_2026_10_01_resources_ats_evaluation_forms,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
@@ -1386,7 +1462,7 @@ class AtsEvaluationFormsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_evaluation_forms,
+                get_api_2026_10_01_resources_ats_evaluation_forms,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
@@ -1396,7 +1472,7 @@ class AtsEvaluationFormsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_evaluation_forms,
+                get_api_2026_10_01_resources_ats_evaluation_forms,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids, template=template,
             )
@@ -1410,50 +1486,50 @@ class AtsFeedbacksResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_ats_feedbacks_id."""
-        return delete_api_2026_07_01_resources_ats_feedbacks_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_ats_feedbacks_id."""
+        return delete_api_2026_10_01_resources_ats_feedbacks_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_ats_feedbacks_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_ats_feedbacks_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, ats_application_ids: Any = UNSET, ats_candidate_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_feedbacks."""
-        return get_api_2026_07_01_resources_ats_feedbacks.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id)
+        """Calls get_api_2026_10_01_resources_ats_feedbacks."""
+        return get_api_2026_10_01_resources_ats_feedbacks.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id)
 
     async def list_async(self, ids: Any = UNSET, ats_application_ids: Any = UNSET, ats_candidate_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_feedbacks.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id)
+        return await get_api_2026_10_01_resources_ats_feedbacks.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_feedbacks_id."""
-        return get_api_2026_07_01_resources_ats_feedbacks_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_feedbacks_id."""
+        return get_api_2026_10_01_resources_ats_feedbacks_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_feedbacks_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_feedbacks_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_feedbacks."""
-        return post_api_2026_07_01_resources_ats_feedbacks.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_feedbacks."""
+        return post_api_2026_10_01_resources_ats_feedbacks.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_feedbacks.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_feedbacks.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_ats_feedbacks_id."""
-        return put_api_2026_07_01_resources_ats_feedbacks_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_ats_feedbacks_id."""
+        return put_api_2026_10_01_resources_ats_feedbacks_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_ats_feedbacks_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_ats_feedbacks_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_application_ids: Any = UNSET, ats_candidate_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_feedbacks,
+                get_api_2026_10_01_resources_ats_feedbacks,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
@@ -1463,7 +1539,7 @@ class AtsFeedbacksResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_feedbacks,
+                get_api_2026_10_01_resources_ats_feedbacks,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
@@ -1473,7 +1549,7 @@ class AtsFeedbacksResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_feedbacks,
+                get_api_2026_10_01_resources_ats_feedbacks,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids, ats_candidate_id=ats_candidate_id,
             )
@@ -1487,26 +1563,26 @@ class AtsHiringStagesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, ats_application_phase_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_hiring_stages."""
-        return get_api_2026_07_01_resources_ats_hiring_stages.sync(client=self._client, ids=ids, ats_application_phase_id=ats_application_phase_id)
+        """Calls get_api_2026_10_01_resources_ats_hiring_stages."""
+        return get_api_2026_10_01_resources_ats_hiring_stages.sync(client=self._client, ids=ids, ats_application_phase_id=ats_application_phase_id)
 
     async def list_async(self, ids: Any = UNSET, ats_application_phase_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_hiring_stages.asyncio(client=self._client, ids=ids, ats_application_phase_id=ats_application_phase_id)
+        return await get_api_2026_10_01_resources_ats_hiring_stages.asyncio(client=self._client, ids=ids, ats_application_phase_id=ats_application_phase_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_hiring_stages_id."""
-        return get_api_2026_07_01_resources_ats_hiring_stages_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_hiring_stages_id."""
+        return get_api_2026_10_01_resources_ats_hiring_stages_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_hiring_stages_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_hiring_stages_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_application_phase_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_hiring_stages,
+                get_api_2026_10_01_resources_ats_hiring_stages,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
@@ -1516,7 +1592,7 @@ class AtsHiringStagesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_hiring_stages,
+                get_api_2026_10_01_resources_ats_hiring_stages,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
@@ -1526,7 +1602,7 @@ class AtsHiringStagesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_hiring_stages,
+                get_api_2026_10_01_resources_ats_hiring_stages,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_phase_id=ats_application_phase_id,
             )
@@ -1540,58 +1616,58 @@ class AtsJobPostingsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_ats_job_postings_id."""
-        return delete_api_2026_07_01_resources_ats_job_postings_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_ats_job_postings_id."""
+        return delete_api_2026_10_01_resources_ats_job_postings_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_ats_job_postings_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_ats_job_postings_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, status: Any = UNSET, team_id: Any = UNSET, location_id: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_job_postings."""
-        return get_api_2026_07_01_resources_ats_job_postings.sync(client=self._client, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id)
+        """Calls get_api_2026_10_01_resources_ats_job_postings."""
+        return get_api_2026_10_01_resources_ats_job_postings.sync(client=self._client, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id)
 
     async def list_async(self, ids: Any = UNSET, status: Any = UNSET, team_id: Any = UNSET, location_id: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_job_postings.asyncio(client=self._client, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id)
+        return await get_api_2026_10_01_resources_ats_job_postings.asyncio(client=self._client, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_job_postings_id."""
-        return get_api_2026_07_01_resources_ats_job_postings_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_job_postings_id."""
+        return get_api_2026_10_01_resources_ats_job_postings_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_job_postings_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_job_postings_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_job_postings."""
-        return post_api_2026_07_01_resources_ats_job_postings.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_job_postings."""
+        return post_api_2026_10_01_resources_ats_job_postings.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_job_postings.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_job_postings.asyncio(client=self._client, body=body)
 
     def duplicate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_job_postings_duplicate."""
-        return post_api_2026_07_01_resources_ats_job_postings_duplicate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_job_postings_duplicate."""
+        return post_api_2026_10_01_resources_ats_job_postings_duplicate.sync(client=self._client, body=body)
 
     async def duplicate_async(self, body: Any = UNSET) -> Any:
         """Async version of duplicate."""
-        return await post_api_2026_07_01_resources_ats_job_postings_duplicate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_job_postings_duplicate.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_ats_job_postings_id."""
-        return put_api_2026_07_01_resources_ats_job_postings_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_ats_job_postings_id."""
+        return put_api_2026_10_01_resources_ats_job_postings_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_ats_job_postings_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_ats_job_postings_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, status: Any = UNSET, team_id: Any = UNSET, location_id: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_job_postings,
+                get_api_2026_10_01_resources_ats_job_postings,
                 self._client,
                 after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
@@ -1601,7 +1677,7 @@ class AtsJobPostingsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_job_postings,
+                get_api_2026_10_01_resources_ats_job_postings,
                 self._client,
                 after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
@@ -1611,7 +1687,7 @@ class AtsJobPostingsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_job_postings,
+                get_api_2026_10_01_resources_ats_job_postings,
                 self._client,
                 after_id, limit=limit, ids=ids, status=status, team_id=team_id, location_id=location_id, legal_entity_id=legal_entity_id,
             )
@@ -1625,34 +1701,34 @@ class AtsMessagesResource:
         self._client = client
 
     def list(self, id: Any = UNSET, ids: Any = UNSET, ats_conversation_id: Any = UNSET, ats_conversation_ids: Any = UNSET, last_per_conversation: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_messages."""
-        return get_api_2026_07_01_resources_ats_messages.sync(client=self._client, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation)
+        """Calls get_api_2026_10_01_resources_ats_messages."""
+        return get_api_2026_10_01_resources_ats_messages.sync(client=self._client, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation)
 
     async def list_async(self, id: Any = UNSET, ids: Any = UNSET, ats_conversation_id: Any = UNSET, ats_conversation_ids: Any = UNSET, last_per_conversation: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_messages.asyncio(client=self._client, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation)
+        return await get_api_2026_10_01_resources_ats_messages.asyncio(client=self._client, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_messages_id."""
-        return get_api_2026_07_01_resources_ats_messages_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_messages_id."""
+        return get_api_2026_10_01_resources_ats_messages_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_messages_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_messages_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_messages."""
-        return post_api_2026_07_01_resources_ats_messages.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_messages."""
+        return post_api_2026_10_01_resources_ats_messages.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_messages.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_messages.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = UNSET, ids: Any = UNSET, ats_conversation_id: Any = UNSET, ats_conversation_ids: Any = UNSET, last_per_conversation: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_messages,
+                get_api_2026_10_01_resources_ats_messages,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
@@ -1662,7 +1738,7 @@ class AtsMessagesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_messages,
+                get_api_2026_10_01_resources_ats_messages,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
@@ -1672,7 +1748,7 @@ class AtsMessagesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_messages,
+                get_api_2026_10_01_resources_ats_messages,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, ats_conversation_id=ats_conversation_id, ats_conversation_ids=ats_conversation_ids, last_per_conversation=last_per_conversation,
             )
@@ -1686,50 +1762,50 @@ class AtsQuestionsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_ats_questions_id."""
-        return delete_api_2026_07_01_resources_ats_questions_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_ats_questions_id."""
+        return delete_api_2026_10_01_resources_ats_questions_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_ats_questions_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_ats_questions_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_questions."""
-        return get_api_2026_07_01_resources_ats_questions.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
+        """Calls get_api_2026_10_01_resources_ats_questions."""
+        return get_api_2026_10_01_resources_ats_questions.sync(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
 
     async def list_async(self, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_questions.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
+        return await get_api_2026_10_01_resources_ats_questions.asyncio(client=self._client, ids=ids, ats_job_posting_ids=ats_job_posting_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_questions_id."""
-        return get_api_2026_07_01_resources_ats_questions_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_questions_id."""
+        return get_api_2026_10_01_resources_ats_questions_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_questions_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_questions_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_ats_questions."""
-        return post_api_2026_07_01_resources_ats_questions.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_ats_questions."""
+        return post_api_2026_10_01_resources_ats_questions.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_ats_questions.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_ats_questions.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_ats_questions_id."""
-        return put_api_2026_07_01_resources_ats_questions_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_ats_questions_id."""
+        return put_api_2026_10_01_resources_ats_questions_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_ats_questions_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_ats_questions_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_job_posting_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_questions,
+                get_api_2026_10_01_resources_ats_questions,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1739,7 +1815,7 @@ class AtsQuestionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_questions,
+                get_api_2026_10_01_resources_ats_questions,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1749,7 +1825,7 @@ class AtsQuestionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_questions,
+                get_api_2026_10_01_resources_ats_questions,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_job_posting_ids=ats_job_posting_ids,
             )
@@ -1763,26 +1839,26 @@ class AtsRejectionReasonsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_rejection_reasons."""
-        return get_api_2026_07_01_resources_ats_rejection_reasons.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
+        """Calls get_api_2026_10_01_resources_ats_rejection_reasons."""
+        return get_api_2026_10_01_resources_ats_rejection_reasons.sync(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
 
     async def list_async(self, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_ats_rejection_reasons.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
+        return await get_api_2026_10_01_resources_ats_rejection_reasons.asyncio(client=self._client, ids=ids, ats_application_ids=ats_application_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_ats_rejection_reasons_id."""
-        return get_api_2026_07_01_resources_ats_rejection_reasons_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_ats_rejection_reasons_id."""
+        return get_api_2026_10_01_resources_ats_rejection_reasons_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_ats_rejection_reasons_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_ats_rejection_reasons_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, ats_application_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_rejection_reasons,
+                get_api_2026_10_01_resources_ats_rejection_reasons,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1792,7 +1868,7 @@ class AtsRejectionReasonsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_ats_rejection_reasons,
+                get_api_2026_10_01_resources_ats_rejection_reasons,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1802,7 +1878,7 @@ class AtsRejectionReasonsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_ats_rejection_reasons,
+                get_api_2026_10_01_resources_ats_rejection_reasons,
                 self._client,
                 after_id, limit=limit, ids=ids, ats_application_ids=ats_application_ids,
             )
@@ -1816,42 +1892,42 @@ class AttendanceBreakConfigurationsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, time_settings_break_configuration_ids: Any = UNSET, attendance_employees_setting_id: Any = UNSET, enabled: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_break_configurations."""
-        return get_api_2026_07_01_resources_attendance_break_configurations.sync(client=self._client, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled)
+        """Calls get_api_2026_10_01_resources_attendance_break_configurations."""
+        return get_api_2026_10_01_resources_attendance_break_configurations.sync(client=self._client, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled)
 
     async def list_async(self, ids: Any = UNSET, time_settings_break_configuration_ids: Any = UNSET, attendance_employees_setting_id: Any = UNSET, enabled: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_break_configurations.asyncio(client=self._client, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled)
+        return await get_api_2026_10_01_resources_attendance_break_configurations.asyncio(client=self._client, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_break_configurations_id."""
-        return get_api_2026_07_01_resources_attendance_break_configurations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_attendance_break_configurations_id."""
+        return get_api_2026_10_01_resources_attendance_break_configurations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_attendance_break_configurations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_attendance_break_configurations_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_break_configurations."""
-        return post_api_2026_07_01_resources_attendance_break_configurations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_break_configurations."""
+        return post_api_2026_10_01_resources_attendance_break_configurations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_attendance_break_configurations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_break_configurations.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_attendance_break_configurations_id."""
-        return put_api_2026_07_01_resources_attendance_break_configurations_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_attendance_break_configurations_id."""
+        return put_api_2026_10_01_resources_attendance_break_configurations_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_attendance_break_configurations_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_attendance_break_configurations_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, time_settings_break_configuration_ids: Any = UNSET, attendance_employees_setting_id: Any = UNSET, enabled: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_break_configurations,
+                get_api_2026_10_01_resources_attendance_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
@@ -1861,7 +1937,7 @@ class AttendanceBreakConfigurationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_break_configurations,
+                get_api_2026_10_01_resources_attendance_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
@@ -1871,7 +1947,7 @@ class AttendanceBreakConfigurationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_break_configurations,
+                get_api_2026_10_01_resources_attendance_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, time_settings_break_configuration_ids=time_settings_break_configuration_ids, attendance_employees_setting_id=attendance_employees_setting_id, enabled=enabled,
             )
@@ -1885,50 +1961,50 @@ class AttendanceEditTimesheetRequestsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_attendance_edit_timesheet_requests_id."""
-        return delete_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_attendance_edit_timesheet_requests_id."""
+        return delete_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, shift_id: Any = UNSET, pending: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_edit_timesheet_requests."""
-        return get_api_2026_07_01_resources_attendance_edit_timesheet_requests.sync(client=self._client, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on)
+        """Calls get_api_2026_10_01_resources_attendance_edit_timesheet_requests."""
+        return get_api_2026_10_01_resources_attendance_edit_timesheet_requests.sync(client=self._client, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, shift_id: Any = UNSET, pending: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_edit_timesheet_requests.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on)
+        return await get_api_2026_10_01_resources_attendance_edit_timesheet_requests.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_edit_timesheet_requests_id."""
-        return get_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_attendance_edit_timesheet_requests_id."""
+        return get_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_edit_timesheet_requests."""
-        return post_api_2026_07_01_resources_attendance_edit_timesheet_requests.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_edit_timesheet_requests."""
+        return post_api_2026_10_01_resources_attendance_edit_timesheet_requests.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_attendance_edit_timesheet_requests.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_edit_timesheet_requests.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_attendance_edit_timesheet_requests_id."""
-        return put_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_attendance_edit_timesheet_requests_id."""
+        return put_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_attendance_edit_timesheet_requests_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, shift_id: Any = UNSET, pending: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                get_api_2026_10_01_resources_attendance_edit_timesheet_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
@@ -1938,7 +2014,7 @@ class AttendanceEditTimesheetRequestsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                get_api_2026_10_01_resources_attendance_edit_timesheet_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
@@ -1948,7 +2024,7 @@ class AttendanceEditTimesheetRequestsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_edit_timesheet_requests,
+                get_api_2026_10_01_resources_attendance_edit_timesheet_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, shift_id=shift_id, pending=pending, start_on=start_on, end_on=end_on,
             )
@@ -1962,18 +2038,18 @@ class AttendanceEstimatedTimesResource:
         self._client = client
 
     def list(self, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_estimated_times."""
-        return get_api_2026_07_01_resources_attendance_estimated_times.sync(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_attendance_estimated_times."""
+        return get_api_2026_10_01_resources_attendance_estimated_times.sync(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids)
 
     async def list_async(self, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_estimated_times.asyncio(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_attendance_estimated_times.asyncio(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_estimated_times,
+                get_api_2026_10_01_resources_attendance_estimated_times,
                 self._client,
                 after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
@@ -1983,7 +2059,7 @@ class AttendanceEstimatedTimesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_estimated_times,
+                get_api_2026_10_01_resources_attendance_estimated_times,
                 self._client,
                 after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
@@ -1993,7 +2069,7 @@ class AttendanceEstimatedTimesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_estimated_times,
+                get_api_2026_10_01_resources_attendance_estimated_times,
                 self._client,
                 after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids,
             )
@@ -2007,18 +2083,18 @@ class AttendanceOpenShiftsResource:
         self._client = client
 
     def list(self, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_open_shifts."""
-        return get_api_2026_07_01_resources_attendance_open_shifts.sync(client=self._client, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_attendance_open_shifts."""
+        return get_api_2026_10_01_resources_attendance_open_shifts.sync(client=self._client, employee_ids=employee_ids)
 
     async def list_async(self, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_open_shifts.asyncio(client=self._client, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_attendance_open_shifts.asyncio(client=self._client, employee_ids=employee_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_open_shifts,
+                get_api_2026_10_01_resources_attendance_open_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -2028,7 +2104,7 @@ class AttendanceOpenShiftsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_open_shifts,
+                get_api_2026_10_01_resources_attendance_open_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -2038,7 +2114,7 @@ class AttendanceOpenShiftsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_open_shifts,
+                get_api_2026_10_01_resources_attendance_open_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -2052,66 +2128,66 @@ class AttendanceOvertimeRequestsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_attendance_overtime_requests_id."""
-        return delete_api_2026_07_01_resources_attendance_overtime_requests_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_attendance_overtime_requests_id."""
+        return delete_api_2026_10_01_resources_attendance_overtime_requests_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, status: Any = UNSET, include_approval_flow: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_overtime_requests."""
-        return get_api_2026_07_01_resources_attendance_overtime_requests.sync(client=self._client, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow)
+        """Calls get_api_2026_10_01_resources_attendance_overtime_requests."""
+        return get_api_2026_10_01_resources_attendance_overtime_requests.sync(client=self._client, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, status: Any = UNSET, include_approval_flow: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_overtime_requests.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow)
+        return await get_api_2026_10_01_resources_attendance_overtime_requests.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_overtime_requests_id."""
-        return get_api_2026_07_01_resources_attendance_overtime_requests_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_attendance_overtime_requests_id."""
+        return get_api_2026_10_01_resources_attendance_overtime_requests_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_overtime_requests."""
-        return post_api_2026_07_01_resources_attendance_overtime_requests.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_overtime_requests."""
+        return post_api_2026_10_01_resources_attendance_overtime_requests.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_attendance_overtime_requests.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_overtime_requests.asyncio(client=self._client, body=body)
 
     def approve(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_overtime_requests_approve."""
-        return post_api_2026_07_01_resources_attendance_overtime_requests_approve.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_overtime_requests_approve."""
+        return post_api_2026_10_01_resources_attendance_overtime_requests_approve.sync(client=self._client, body=body)
 
     async def approve_async(self, body: Any = UNSET) -> Any:
         """Async version of approve."""
-        return await post_api_2026_07_01_resources_attendance_overtime_requests_approve.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_overtime_requests_approve.asyncio(client=self._client, body=body)
 
     def reject(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_overtime_requests_reject."""
-        return post_api_2026_07_01_resources_attendance_overtime_requests_reject.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_overtime_requests_reject."""
+        return post_api_2026_10_01_resources_attendance_overtime_requests_reject.sync(client=self._client, body=body)
 
     async def reject_async(self, body: Any = UNSET) -> Any:
         """Async version of reject."""
-        return await post_api_2026_07_01_resources_attendance_overtime_requests_reject.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_overtime_requests_reject.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_attendance_overtime_requests_id."""
-        return put_api_2026_07_01_resources_attendance_overtime_requests_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_attendance_overtime_requests_id."""
+        return put_api_2026_10_01_resources_attendance_overtime_requests_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_attendance_overtime_requests_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, status: Any = UNSET, include_approval_flow: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_overtime_requests,
+                get_api_2026_10_01_resources_attendance_overtime_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
@@ -2121,7 +2197,7 @@ class AttendanceOvertimeRequestsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_overtime_requests,
+                get_api_2026_10_01_resources_attendance_overtime_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
@@ -2131,7 +2207,7 @@ class AttendanceOvertimeRequestsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_overtime_requests,
+                get_api_2026_10_01_resources_attendance_overtime_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, start_on=start_on, end_on=end_on, status=status, include_approval_flow=include_approval_flow,
             )
@@ -2145,34 +2221,34 @@ class AttendanceReviewsResource:
         self._client = client
 
     def list(self, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, reviewed_at: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_reviews."""
-        return get_api_2026_07_01_resources_attendance_reviews.sync(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at)
+        """Calls get_api_2026_10_01_resources_attendance_reviews."""
+        return get_api_2026_10_01_resources_attendance_reviews.sync(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at)
 
     async def list_async(self, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, reviewed_at: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_reviews.asyncio(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at)
+        return await get_api_2026_10_01_resources_attendance_reviews.asyncio(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_reviews_bulk_create."""
-        return post_api_2026_07_01_resources_attendance_reviews_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_reviews_bulk_create."""
+        return post_api_2026_10_01_resources_attendance_reviews_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_attendance_reviews_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_reviews_bulk_create.asyncio(client=self._client, body=body)
 
     def bulk_destroy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_reviews_bulk_destroy."""
-        return post_api_2026_07_01_resources_attendance_reviews_bulk_destroy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_reviews_bulk_destroy."""
+        return post_api_2026_10_01_resources_attendance_reviews_bulk_destroy.sync(client=self._client, body=body)
 
     async def bulk_destroy_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_destroy."""
-        return await post_api_2026_07_01_resources_attendance_reviews_bulk_destroy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_reviews_bulk_destroy.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, reviewed_at: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_reviews,
+                get_api_2026_10_01_resources_attendance_reviews,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
@@ -2182,7 +2258,7 @@ class AttendanceReviewsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_reviews,
+                get_api_2026_10_01_resources_attendance_reviews,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
@@ -2192,7 +2268,7 @@ class AttendanceReviewsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_reviews,
+                get_api_2026_10_01_resources_attendance_reviews,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, reviewed_at=reviewed_at,
             )
@@ -2206,98 +2282,98 @@ class AttendanceShiftsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_attendance_shifts_id."""
-        return delete_api_2026_07_01_resources_attendance_shifts_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_attendance_shifts_id."""
+        return delete_api_2026_10_01_resources_attendance_shifts_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_attendance_shifts_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_attendance_shifts_id.asyncio(id, client=self._client)
 
     def list(self, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, ids: Any = UNSET, half_day: Any = UNSET, workable: Any = UNSET, latest_shift: Any = UNSET, sort_created_at_asc: Any = UNSET, breaks_with_time_configuration: Any = UNSET, last_working_shift: Any = UNSET, updated_at: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_shifts."""
-        return get_api_2026_07_01_resources_attendance_shifts.sync(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at)
+        """Calls get_api_2026_10_01_resources_attendance_shifts."""
+        return get_api_2026_10_01_resources_attendance_shifts.sync(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at)
 
     async def list_async(self, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, ids: Any = UNSET, half_day: Any = UNSET, workable: Any = UNSET, latest_shift: Any = UNSET, sort_created_at_asc: Any = UNSET, breaks_with_time_configuration: Any = UNSET, last_working_shift: Any = UNSET, updated_at: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_shifts.asyncio(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at)
+        return await get_api_2026_10_01_resources_attendance_shifts.asyncio(client=self._client, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_shifts_id."""
-        return get_api_2026_07_01_resources_attendance_shifts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_attendance_shifts_id."""
+        return get_api_2026_10_01_resources_attendance_shifts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_attendance_shifts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_attendance_shifts_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts."""
-        return post_api_2026_07_01_resources_attendance_shifts.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts."""
+        return post_api_2026_10_01_resources_attendance_shifts.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_attendance_shifts.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts.asyncio(client=self._client, body=body)
 
     def autofill(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_autofill."""
-        return post_api_2026_07_01_resources_attendance_shifts_autofill.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_autofill."""
+        return post_api_2026_10_01_resources_attendance_shifts_autofill.sync(client=self._client, body=body)
 
     async def autofill_async(self, body: Any = UNSET) -> Any:
         """Async version of autofill."""
-        return await post_api_2026_07_01_resources_attendance_shifts_autofill.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_autofill.asyncio(client=self._client, body=body)
 
     def break_end(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_break_end."""
-        return post_api_2026_07_01_resources_attendance_shifts_break_end.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_break_end."""
+        return post_api_2026_10_01_resources_attendance_shifts_break_end.sync(client=self._client, body=body)
 
     async def break_end_async(self, body: Any = UNSET) -> Any:
         """Async version of break_end."""
-        return await post_api_2026_07_01_resources_attendance_shifts_break_end.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_break_end.asyncio(client=self._client, body=body)
 
     def break_start(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_break_start."""
-        return post_api_2026_07_01_resources_attendance_shifts_break_start.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_break_start."""
+        return post_api_2026_10_01_resources_attendance_shifts_break_start.sync(client=self._client, body=body)
 
     async def break_start_async(self, body: Any = UNSET) -> Any:
         """Async version of break_start."""
-        return await post_api_2026_07_01_resources_attendance_shifts_break_start.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_break_start.asyncio(client=self._client, body=body)
 
     def clock_in(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_clock_in."""
-        return post_api_2026_07_01_resources_attendance_shifts_clock_in.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_clock_in."""
+        return post_api_2026_10_01_resources_attendance_shifts_clock_in.sync(client=self._client, body=body)
 
     async def clock_in_async(self, body: Any = UNSET) -> Any:
         """Async version of clock_in."""
-        return await post_api_2026_07_01_resources_attendance_shifts_clock_in.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_clock_in.asyncio(client=self._client, body=body)
 
     def clock_out(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_clock_out."""
-        return post_api_2026_07_01_resources_attendance_shifts_clock_out.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_clock_out."""
+        return post_api_2026_10_01_resources_attendance_shifts_clock_out.sync(client=self._client, body=body)
 
     async def clock_out_async(self, body: Any = UNSET) -> Any:
         """Async version of clock_out."""
-        return await post_api_2026_07_01_resources_attendance_shifts_clock_out.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_clock_out.asyncio(client=self._client, body=body)
 
     def toggle_clock(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_attendance_shifts_toggle_clock."""
-        return post_api_2026_07_01_resources_attendance_shifts_toggle_clock.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_attendance_shifts_toggle_clock."""
+        return post_api_2026_10_01_resources_attendance_shifts_toggle_clock.sync(client=self._client, body=body)
 
     async def toggle_clock_async(self, body: Any = UNSET) -> Any:
         """Async version of toggle_clock."""
-        return await post_api_2026_07_01_resources_attendance_shifts_toggle_clock.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_attendance_shifts_toggle_clock.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_attendance_shifts_id."""
-        return put_api_2026_07_01_resources_attendance_shifts_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_attendance_shifts_id."""
+        return put_api_2026_10_01_resources_attendance_shifts_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_attendance_shifts_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_attendance_shifts_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, ids: Any = UNSET, half_day: Any = UNSET, workable: Any = UNSET, latest_shift: Any = UNSET, sort_created_at_asc: Any = UNSET, breaks_with_time_configuration: Any = UNSET, last_working_shift: Any = UNSET, updated_at: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_shifts,
+                get_api_2026_10_01_resources_attendance_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
@@ -2307,7 +2383,7 @@ class AttendanceShiftsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_shifts,
+                get_api_2026_10_01_resources_attendance_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
@@ -2317,7 +2393,7 @@ class AttendanceShiftsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_shifts,
+                get_api_2026_10_01_resources_attendance_shifts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, start_on=start_on, end_on=end_on, ids=ids, half_day=half_day, workable=workable, latest_shift=latest_shift, sort_created_at_asc=sort_created_at_asc, breaks_with_time_configuration=breaks_with_time_configuration, last_working_shift=last_working_shift, updated_at=updated_at,
             )
@@ -2330,41 +2406,49 @@ class AttendanceWorkedTimesResource:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
-    def list(self, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_attendance_worked_times."""
-        return get_api_2026_07_01_resources_attendance_worked_times.sync(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees)
+    def list(self, ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_attendance_worked_times."""
+        return get_api_2026_10_01_resources_attendance_worked_times.sync(client=self._client, ids=ids, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees)
 
-    async def list_async(self, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_attendance_worked_times.asyncio(client=self._client, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees)
+        return await get_api_2026_10_01_resources_attendance_worked_times.asyncio(client=self._client, ids=ids, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_attendance_worked_times_id."""
+        return get_api_2026_10_01_resources_attendance_worked_times_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_attendance_worked_times_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_worked_times,
+                get_api_2026_10_01_resources_attendance_worked_times,
                 self._client,
-                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+                after_id, limit=limit, ids=ids, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_attendance_worked_times,
+                get_api_2026_10_01_resources_attendance_worked_times,
                 self._client,
-                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+                after_id, limit=limit, ids=ids, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, start_on: Any = UNSET, end_on: Any = UNSET, employee_ids: Any = UNSET, include_time_range_category: Any = UNSET, include_non_attendable_employees: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_attendance_worked_times,
+                get_api_2026_10_01_resources_attendance_worked_times,
                 self._client,
-                after_id, limit=limit, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
+                after_id, limit=limit, ids=ids, start_on=start_on, end_on=end_on, employee_ids=employee_ids, include_time_range_category=include_time_range_category, include_non_attendable_employees=include_non_attendable_employees,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2376,34 +2460,34 @@ class BankingBankAccountsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, currency: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_bank_accounts."""
-        return get_api_2026_07_01_resources_banking_bank_accounts.sync(client=self._client, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_banking_bank_accounts."""
+        return get_api_2026_10_01_resources_banking_bank_accounts.sync(client=self._client, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, currency: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_banking_bank_accounts.asyncio(client=self._client, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_banking_bank_accounts.asyncio(client=self._client, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_bank_accounts_id."""
-        return get_api_2026_07_01_resources_banking_bank_accounts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_banking_bank_accounts_id."""
+        return get_api_2026_10_01_resources_banking_bank_accounts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_banking_bank_accounts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_banking_bank_accounts_id.asyncio(id, client=self._client)
 
     def create_manual(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_banking_bank_accounts_create_manual."""
-        return post_api_2026_07_01_resources_banking_bank_accounts_create_manual.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_banking_bank_accounts_create_manual."""
+        return post_api_2026_10_01_resources_banking_bank_accounts_create_manual.sync(client=self._client, body=body)
 
     async def create_manual_async(self, body: Any = UNSET) -> Any:
         """Async version of create_manual."""
-        return await post_api_2026_07_01_resources_banking_bank_accounts_create_manual.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_banking_bank_accounts_create_manual.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, currency: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_bank_accounts,
+                get_api_2026_10_01_resources_banking_bank_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -2413,7 +2497,7 @@ class BankingBankAccountsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_bank_accounts,
+                get_api_2026_10_01_resources_banking_bank_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -2423,7 +2507,7 @@ class BankingBankAccountsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_banking_bank_accounts,
+                get_api_2026_10_01_resources_banking_bank_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, currency=currency, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -2437,26 +2521,26 @@ class BankingCardPaymentsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, account_ids: Any = UNSET, status: Any = UNSET, from_: Any = UNSET, to: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_card_payments."""
-        return get_api_2026_07_01_resources_banking_card_payments.sync(client=self._client, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to)
+        """Calls get_api_2026_10_01_resources_banking_card_payments."""
+        return get_api_2026_10_01_resources_banking_card_payments.sync(client=self._client, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to)
 
     async def list_async(self, ids: Any = UNSET, account_ids: Any = UNSET, status: Any = UNSET, from_: Any = UNSET, to: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_banking_card_payments.asyncio(client=self._client, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to)
+        return await get_api_2026_10_01_resources_banking_card_payments.asyncio(client=self._client, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_card_payments_id."""
-        return get_api_2026_07_01_resources_banking_card_payments_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_banking_card_payments_id."""
+        return get_api_2026_10_01_resources_banking_card_payments_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_banking_card_payments_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_banking_card_payments_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, account_ids: Any = UNSET, status: Any = UNSET, from_: Any = UNSET, to: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_card_payments,
+                get_api_2026_10_01_resources_banking_card_payments,
                 self._client,
                 after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
@@ -2466,7 +2550,7 @@ class BankingCardPaymentsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_card_payments,
+                get_api_2026_10_01_resources_banking_card_payments,
                 self._client,
                 after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
@@ -2476,7 +2560,7 @@ class BankingCardPaymentsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_banking_card_payments,
+                get_api_2026_10_01_resources_banking_card_payments,
                 self._client,
                 after_id, limit=limit, ids=ids, account_ids=account_ids, status=status, from_=from_, to=to,
             )
@@ -2490,26 +2574,26 @@ class BankingTransactionsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, bank_account_ids: Any = UNSET, card_payment_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_transactions."""
-        return get_api_2026_07_01_resources_banking_transactions.sync(client=self._client, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_banking_transactions."""
+        return get_api_2026_10_01_resources_banking_transactions.sync(client=self._client, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, bank_account_ids: Any = UNSET, card_payment_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_banking_transactions.asyncio(client=self._client, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_banking_transactions.asyncio(client=self._client, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_banking_transactions_id."""
-        return get_api_2026_07_01_resources_banking_transactions_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_banking_transactions_id."""
+        return get_api_2026_10_01_resources_banking_transactions_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_banking_transactions_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_banking_transactions_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, bank_account_ids: Any = UNSET, card_payment_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_transactions,
+                get_api_2026_10_01_resources_banking_transactions,
                 self._client,
                 after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
@@ -2519,7 +2603,7 @@ class BankingTransactionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_banking_transactions,
+                get_api_2026_10_01_resources_banking_transactions,
                 self._client,
                 after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
@@ -2529,7 +2613,7 @@ class BankingTransactionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_banking_transactions,
+                get_api_2026_10_01_resources_banking_transactions,
                 self._client,
                 after_id, limit=limit, ids=ids, bank_account_ids=bank_account_ids, card_payment_ids=card_payment_ids, from_=from_, to=to, updated_from=updated_from,
             )
@@ -2543,34 +2627,34 @@ class BookkeepersManagementIncidencesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, legal_entities_ids: Any = UNSET, status: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET, type_: Any = UNSET, sort_by: Any = UNSET, direction: Any = UNSET, search: Any = UNSET, employee_ids: Any = UNSET, contains_message: Any = UNSET, message_from: Any = UNSET, custom_leave_name: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_bookkeepers_management_incidences."""
-        return get_api_2026_07_01_resources_bookkeepers_management_incidences.sync(client=self._client, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name)
+        """Calls get_api_2026_10_01_resources_bookkeepers_management_incidences."""
+        return get_api_2026_10_01_resources_bookkeepers_management_incidences.sync(client=self._client, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name)
 
     async def list_async(self, ids: Any = UNSET, legal_entities_ids: Any = UNSET, status: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET, type_: Any = UNSET, sort_by: Any = UNSET, direction: Any = UNSET, search: Any = UNSET, employee_ids: Any = UNSET, contains_message: Any = UNSET, message_from: Any = UNSET, custom_leave_name: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_bookkeepers_management_incidences.asyncio(client=self._client, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name)
+        return await get_api_2026_10_01_resources_bookkeepers_management_incidences.asyncio(client=self._client, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_bookkeepers_management_incidences_id."""
-        return get_api_2026_07_01_resources_bookkeepers_management_incidences_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_bookkeepers_management_incidences_id."""
+        return get_api_2026_10_01_resources_bookkeepers_management_incidences_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_bookkeepers_management_incidences_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_bookkeepers_management_incidences_id.asyncio(id, client=self._client)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_bookkeepers_management_incidences_id."""
-        return put_api_2026_07_01_resources_bookkeepers_management_incidences_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_bookkeepers_management_incidences_id."""
+        return put_api_2026_10_01_resources_bookkeepers_management_incidences_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_bookkeepers_management_incidences_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_bookkeepers_management_incidences_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, legal_entities_ids: Any = UNSET, status: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET, type_: Any = UNSET, sort_by: Any = UNSET, direction: Any = UNSET, search: Any = UNSET, employee_ids: Any = UNSET, contains_message: Any = UNSET, message_from: Any = UNSET, custom_leave_name: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                get_api_2026_10_01_resources_bookkeepers_management_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
@@ -2580,7 +2664,7 @@ class BookkeepersManagementIncidencesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                get_api_2026_10_01_resources_bookkeepers_management_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
@@ -2590,7 +2674,7 @@ class BookkeepersManagementIncidencesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_bookkeepers_management_incidences,
+                get_api_2026_10_01_resources_bookkeepers_management_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entities_ids=legal_entities_ids, status=status, starts_on=starts_on, ends_on=ends_on, type_=type_, sort_by=sort_by, direction=direction, search=search, employee_ids=employee_ids, contains_message=contains_message, message_from=message_from, custom_leave_name=custom_leave_name,
             )
@@ -2604,34 +2688,34 @@ class CompaniesLegalEntitiesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, employees_ids: Any = UNSET, companies_ids: Any = UNSET, country_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_companies_legal_entities."""
-        return get_api_2026_07_01_resources_companies_legal_entities.sync(client=self._client, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids)
+        """Calls get_api_2026_10_01_resources_companies_legal_entities."""
+        return get_api_2026_10_01_resources_companies_legal_entities.sync(client=self._client, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids)
 
     async def list_async(self, ids: Any = UNSET, employees_ids: Any = UNSET, companies_ids: Any = UNSET, country_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_companies_legal_entities.asyncio(client=self._client, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids)
+        return await get_api_2026_10_01_resources_companies_legal_entities.asyncio(client=self._client, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_companies_legal_entities_id."""
-        return get_api_2026_07_01_resources_companies_legal_entities_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_companies_legal_entities_id."""
+        return get_api_2026_10_01_resources_companies_legal_entities_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_companies_legal_entities_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_companies_legal_entities_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_companies_legal_entities."""
-        return post_api_2026_07_01_resources_companies_legal_entities.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_companies_legal_entities."""
+        return post_api_2026_10_01_resources_companies_legal_entities.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_companies_legal_entities.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_companies_legal_entities.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employees_ids: Any = UNSET, companies_ids: Any = UNSET, country_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_companies_legal_entities,
+                get_api_2026_10_01_resources_companies_legal_entities,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
@@ -2641,7 +2725,7 @@ class CompaniesLegalEntitiesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_companies_legal_entities,
+                get_api_2026_10_01_resources_companies_legal_entities,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
@@ -2651,7 +2735,7 @@ class CompaniesLegalEntitiesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_companies_legal_entities,
+                get_api_2026_10_01_resources_companies_legal_entities,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, companies_ids=companies_ids, country_ids=country_ids,
             )
@@ -2664,49 +2748,301 @@ class CompensationsConceptsResource:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
-    def list(self, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_compensations_concepts."""
-        return get_api_2026_07_01_resources_compensations_concepts.sync(client=self._client, ids=ids, categories=categories, with_active_status=with_active_status)
+    def list(self, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET, enabled: Any = UNSET, default: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_concepts."""
+        return get_api_2026_10_01_resources_compensations_concepts.sync(client=self._client, ids=ids, categories=categories, with_active_status=with_active_status, enabled=enabled, default=default)
 
-    async def list_async(self, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET, enabled: Any = UNSET, default: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_compensations_concepts.asyncio(client=self._client, ids=ids, categories=categories, with_active_status=with_active_status)
+        return await get_api_2026_10_01_resources_compensations_concepts.asyncio(client=self._client, ids=ids, categories=categories, with_active_status=with_active_status, enabled=enabled, default=default)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_compensations_concepts_id."""
-        return get_api_2026_07_01_resources_compensations_concepts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_compensations_concepts_id."""
+        return get_api_2026_10_01_resources_compensations_concepts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_compensations_concepts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_compensations_concepts_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET) -> Any:
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_compensations_concepts."""
+        return post_api_2026_10_01_resources_compensations_concepts.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_compensations_concepts.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_compensations_concepts_id."""
+        return put_api_2026_10_01_resources_compensations_concepts_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_compensations_concepts_id.asyncio(id, client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET, enabled: Any = UNSET, default: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_compensations_concepts,
+                get_api_2026_10_01_resources_compensations_concepts,
                 self._client,
-                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status, enabled=enabled, default=default,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET, enabled: Any = UNSET, default: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_compensations_concepts,
+                get_api_2026_10_01_resources_compensations_concepts,
                 self._client,
-                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status, enabled=enabled, default=default,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, categories: Any = UNSET, with_active_status: Any = UNSET, enabled: Any = UNSET, default: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_compensations_concepts,
+                get_api_2026_10_01_resources_compensations_concepts,
                 self._client,
-                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status,
+                after_id, limit=limit, ids=ids, categories=categories, with_active_status=with_active_status, enabled=enabled, default=default,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class CompensationsCyclesResource:
+    """Methods for the compensations > cycles resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, company_id: Any = UNSET, company_ids: Any = UNSET, recurrence: Any = UNSET, currency: Any = UNSET, country: Any = UNSET, include_archived: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_cycles."""
+        return get_api_2026_10_01_resources_compensations_cycles.sync(client=self._client, ids=ids, company_id=company_id, company_ids=company_ids, recurrence=recurrence, currency=currency, country=country, include_archived=include_archived, include_hidden=include_hidden)
+
+    async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, company_ids: Any = UNSET, recurrence: Any = UNSET, currency: Any = UNSET, country: Any = UNSET, include_archived: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_compensations_cycles.asyncio(client=self._client, ids=ids, company_id=company_id, company_ids=company_ids, recurrence=recurrence, currency=currency, country=country, include_archived=include_archived, include_hidden=include_hidden)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_cycles_id."""
+        return get_api_2026_10_01_resources_compensations_cycles_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_compensations_cycles_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, company_ids: Any = UNSET, recurrence: Any = UNSET, currency: Any = UNSET, country: Any = UNSET, include_archived: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_cycles,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, company_ids=company_ids, recurrence=recurrence, currency=currency, country=country, include_archived=include_archived, include_hidden=include_hidden,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, company_ids: Any = UNSET, recurrence: Any = UNSET, currency: Any = UNSET, country: Any = UNSET, include_archived: Any = UNSET, include_hidden: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_cycles,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, company_ids=company_ids, recurrence=recurrence, currency=currency, country=country, include_archived=include_archived, include_hidden=include_hidden,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, company_ids: Any = UNSET, recurrence: Any = UNSET, currency: Any = UNSET, country: Any = UNSET, include_archived: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_compensations_cycles,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, company_ids=company_ids, recurrence=recurrence, currency=currency, country=country, include_archived=include_archived, include_hidden=include_hidden,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class CompensationsEmployeesCompensationsResource:
+    """Methods for the compensations > employees_compensations resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def delete(self, id: Any) -> Any:
+        """Calls delete_api_2026_10_01_resources_compensations_employees_compensations_id."""
+        return delete_api_2026_10_01_resources_compensations_employees_compensations_id.sync(id, client=self._client)
+
+    async def delete_async(self, id: Any) -> Any:
+        """Async version of delete."""
+        return await delete_api_2026_10_01_resources_compensations_employees_compensations_id.asyncio(id, client=self._client)
+
+    def list(self, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_employees_compensations."""
+        return get_api_2026_10_01_resources_compensations_employees_compensations.sync(client=self._client, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids)
+
+    async def list_async(self, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_compensations_employees_compensations.asyncio(client=self._client, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_employees_compensations_id."""
+        return get_api_2026_10_01_resources_compensations_employees_compensations_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_compensations_employees_compensations_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_compensations_employees_compensations."""
+        return post_api_2026_10_01_resources_compensations_employees_compensations.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_compensations_employees_compensations.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_compensations_employees_compensations_id."""
+        return put_api_2026_10_01_resources_compensations_employees_compensations_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_compensations_employees_compensations_id.asyncio(id, client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_employees_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_employees_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_compensations_employees_compensations,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class CompensationsPayrollResultsResource:
+    """Methods for the compensations > payroll_results resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_payroll_results."""
+        return get_api_2026_10_01_resources_compensations_payroll_results.sync(client=self._client, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids)
+
+    async def list_async(self, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_compensations_payroll_results.asyncio(client=self._client, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_payroll_results_id."""
+        return get_api_2026_10_01_resources_compensations_payroll_results_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_compensations_payroll_results_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_payroll_results,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_payroll_results,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, payroll_run_ids: Any = UNSET, cycle_ids: Any = UNSET, payroll_run_employee_ids: Any = UNSET, payroll_concept_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_compensations_payroll_results,
+                self._client,
+                after_id, limit=limit, ids=ids, payroll_run_ids=payroll_run_ids, cycle_ids=cycle_ids, payroll_run_employee_ids=payroll_run_employee_ids, payroll_concept_ids=payroll_concept_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class CompensationsPayrollRunsResource:
+    """Methods for the compensations > payroll_runs resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, company_id: Any = UNSET, cycle_ids: Any = UNSET, statuses: Any = UNSET, payment_types: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_payroll_runs."""
+        return get_api_2026_10_01_resources_compensations_payroll_runs.sync(client=self._client, ids=ids, from_=from_, to=to, company_id=company_id, cycle_ids=cycle_ids, statuses=statuses, payment_types=payment_types, include_hidden=include_hidden)
+
+    async def list_async(self, ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, company_id: Any = UNSET, cycle_ids: Any = UNSET, statuses: Any = UNSET, payment_types: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_compensations_payroll_runs.asyncio(client=self._client, ids=ids, from_=from_, to=to, company_id=company_id, cycle_ids=cycle_ids, statuses=statuses, payment_types=payment_types, include_hidden=include_hidden)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_compensations_payroll_runs_id."""
+        return get_api_2026_10_01_resources_compensations_payroll_runs_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_compensations_payroll_runs_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, company_id: Any = UNSET, cycle_ids: Any = UNSET, statuses: Any = UNSET, payment_types: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_payroll_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, from_=from_, to=to, company_id=company_id, cycle_ids=cycle_ids, statuses=statuses, payment_types=payment_types, include_hidden=include_hidden,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, company_id: Any = UNSET, cycle_ids: Any = UNSET, statuses: Any = UNSET, payment_types: Any = UNSET, include_hidden: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_compensations_payroll_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, from_=from_, to=to, company_id=company_id, cycle_ids=cycle_ids, statuses=statuses, payment_types=payment_types, include_hidden=include_hidden,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, company_id: Any = UNSET, cycle_ids: Any = UNSET, statuses: Any = UNSET, payment_types: Any = UNSET, include_hidden: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_compensations_payroll_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, from_=from_, to=to, company_id=company_id, cycle_ids=cycle_ids, statuses=statuses, payment_types=payment_types, include_hidden=include_hidden,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -2718,50 +3054,50 @@ class ContractsCompensationsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_contracts_compensations_id."""
-        return delete_api_2026_07_01_resources_contracts_compensations_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_contracts_compensations_id."""
+        return delete_api_2026_10_01_resources_contracts_compensations_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_contracts_compensations_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_contracts_compensations_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, contract_version_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_compensations."""
-        return get_api_2026_07_01_resources_contracts_compensations.sync(client=self._client, ids=ids, contract_version_ids=contract_version_ids)
+        """Calls get_api_2026_10_01_resources_contracts_compensations."""
+        return get_api_2026_10_01_resources_contracts_compensations.sync(client=self._client, ids=ids, contract_version_ids=contract_version_ids)
 
     async def list_async(self, ids: Any = UNSET, contract_version_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_compensations.asyncio(client=self._client, ids=ids, contract_version_ids=contract_version_ids)
+        return await get_api_2026_10_01_resources_contracts_compensations.asyncio(client=self._client, ids=ids, contract_version_ids=contract_version_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_compensations_id."""
-        return get_api_2026_07_01_resources_contracts_compensations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_compensations_id."""
+        return get_api_2026_10_01_resources_contracts_compensations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_compensations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_compensations_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_compensations."""
-        return post_api_2026_07_01_resources_contracts_compensations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_compensations."""
+        return post_api_2026_10_01_resources_contracts_compensations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_compensations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_compensations.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_contracts_compensations_id."""
-        return put_api_2026_07_01_resources_contracts_compensations_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_contracts_compensations_id."""
+        return put_api_2026_10_01_resources_contracts_compensations_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_contracts_compensations_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_contracts_compensations_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, contract_version_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_compensations,
+                get_api_2026_10_01_resources_contracts_compensations,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
@@ -2771,7 +3107,7 @@ class ContractsCompensationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_compensations,
+                get_api_2026_10_01_resources_contracts_compensations,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
@@ -2781,7 +3117,7 @@ class ContractsCompensationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_compensations,
+                get_api_2026_10_01_resources_contracts_compensations,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids,
             )
@@ -2795,26 +3131,26 @@ class ContractsContractTemplatesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, company_id: Any = UNSET, contract_version_type: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_templates."""
-        return get_api_2026_07_01_resources_contracts_contract_templates.sync(client=self._client, ids=ids, company_id=company_id, contract_version_type=contract_version_type)
+        """Calls get_api_2026_10_01_resources_contracts_contract_templates."""
+        return get_api_2026_10_01_resources_contracts_contract_templates.sync(client=self._client, ids=ids, company_id=company_id, contract_version_type=contract_version_type)
 
     async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, contract_version_type: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_contract_templates.asyncio(client=self._client, ids=ids, company_id=company_id, contract_version_type=contract_version_type)
+        return await get_api_2026_10_01_resources_contracts_contract_templates.asyncio(client=self._client, ids=ids, company_id=company_id, contract_version_type=contract_version_type)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_templates_id."""
-        return get_api_2026_07_01_resources_contracts_contract_templates_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_contract_templates_id."""
+        return get_api_2026_10_01_resources_contracts_contract_templates_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_contract_templates_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_contract_templates_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, contract_version_type: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_templates,
+                get_api_2026_10_01_resources_contracts_contract_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
@@ -2824,7 +3160,7 @@ class ContractsContractTemplatesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_templates,
+                get_api_2026_10_01_resources_contracts_contract_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
@@ -2834,7 +3170,7 @@ class ContractsContractTemplatesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_contract_templates,
+                get_api_2026_10_01_resources_contracts_contract_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, contract_version_type=contract_version_type,
             )
@@ -2848,26 +3184,26 @@ class ContractsContractVersionHistoriesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, contract_version_ids: Any = UNSET, employee_ids: Any = UNSET, current_on: Any = UNSET, changes_lteq: Any = UNSET, changes_gteq: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_version_histories."""
-        return get_api_2026_07_01_resources_contracts_contract_version_histories.sync(client=self._client, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq)
+        """Calls get_api_2026_10_01_resources_contracts_contract_version_histories."""
+        return get_api_2026_10_01_resources_contracts_contract_version_histories.sync(client=self._client, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq)
 
     async def list_async(self, ids: Any = UNSET, contract_version_ids: Any = UNSET, employee_ids: Any = UNSET, current_on: Any = UNSET, changes_lteq: Any = UNSET, changes_gteq: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_contract_version_histories.asyncio(client=self._client, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq)
+        return await get_api_2026_10_01_resources_contracts_contract_version_histories.asyncio(client=self._client, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_version_histories_id."""
-        return get_api_2026_07_01_resources_contracts_contract_version_histories_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_contract_version_histories_id."""
+        return get_api_2026_10_01_resources_contracts_contract_version_histories_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_contract_version_histories_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_contract_version_histories_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, contract_version_ids: Any = UNSET, employee_ids: Any = UNSET, current_on: Any = UNSET, changes_lteq: Any = UNSET, changes_gteq: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                get_api_2026_10_01_resources_contracts_contract_version_histories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
@@ -2877,7 +3213,7 @@ class ContractsContractVersionHistoriesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                get_api_2026_10_01_resources_contracts_contract_version_histories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
@@ -2887,7 +3223,7 @@ class ContractsContractVersionHistoriesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_contract_version_histories,
+                get_api_2026_10_01_resources_contracts_contract_version_histories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_version_ids=contract_version_ids, employee_ids=employee_ids, current_on=current_on, changes_lteq=changes_lteq, changes_gteq=changes_gteq,
             )
@@ -2901,18 +3237,18 @@ class ContractsContractVersionMetaDataResource:
         self._client = client
 
     def list(self, contract_version_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_version_meta_data."""
-        return get_api_2026_07_01_resources_contracts_contract_version_meta_data.sync(client=self._client, contract_version_ids=contract_version_ids)
+        """Calls get_api_2026_10_01_resources_contracts_contract_version_meta_data."""
+        return get_api_2026_10_01_resources_contracts_contract_version_meta_data.sync(client=self._client, contract_version_ids=contract_version_ids)
 
     async def list_async(self, contract_version_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_contract_version_meta_data.asyncio(client=self._client, contract_version_ids=contract_version_ids)
+        return await get_api_2026_10_01_resources_contracts_contract_version_meta_data.asyncio(client=self._client, contract_version_ids=contract_version_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, contract_version_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                get_api_2026_10_01_resources_contracts_contract_version_meta_data,
                 self._client,
                 after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
@@ -2922,7 +3258,7 @@ class ContractsContractVersionMetaDataResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                get_api_2026_10_01_resources_contracts_contract_version_meta_data,
                 self._client,
                 after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
@@ -2932,7 +3268,7 @@ class ContractsContractVersionMetaDataResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_contract_version_meta_data,
+                get_api_2026_10_01_resources_contracts_contract_version_meta_data,
                 self._client,
                 after_id, limit=limit, contract_version_ids=contract_version_ids,
             )
@@ -2946,50 +3282,50 @@ class ContractsContractVersionsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_contracts_contract_versions_id."""
-        return delete_api_2026_07_01_resources_contracts_contract_versions_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_contracts_contract_versions_id."""
+        return delete_api_2026_10_01_resources_contracts_contract_versions_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, date: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET, updated_at_gteq: Any = UNSET, updated_at_lteq: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_versions."""
-        return get_api_2026_07_01_resources_contracts_contract_versions.sync(client=self._client, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq)
+        """Calls get_api_2026_10_01_resources_contracts_contract_versions."""
+        return get_api_2026_10_01_resources_contracts_contract_versions.sync(client=self._client, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, date: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET, updated_at_gteq: Any = UNSET, updated_at_lteq: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_contract_versions.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq)
+        return await get_api_2026_10_01_resources_contracts_contract_versions.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_contract_versions_id."""
-        return get_api_2026_07_01_resources_contracts_contract_versions_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_contract_versions_id."""
+        return get_api_2026_10_01_resources_contracts_contract_versions_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_contract_versions."""
-        return post_api_2026_07_01_resources_contracts_contract_versions.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_contract_versions."""
+        return post_api_2026_10_01_resources_contracts_contract_versions.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_contract_versions.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_contract_versions.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_contracts_contract_versions_id."""
-        return put_api_2026_07_01_resources_contracts_contract_versions_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_contracts_contract_versions_id."""
+        return put_api_2026_10_01_resources_contracts_contract_versions_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_contracts_contract_versions_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, date: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET, updated_at_gteq: Any = UNSET, updated_at_lteq: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_versions,
+                get_api_2026_10_01_resources_contracts_contract_versions,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
@@ -2999,7 +3335,7 @@ class ContractsContractVersionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_contract_versions,
+                get_api_2026_10_01_resources_contracts_contract_versions,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
@@ -3009,7 +3345,7 @@ class ContractsContractVersionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_contract_versions,
+                get_api_2026_10_01_resources_contracts_contract_versions,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, date=date, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids, updated_at_gteq=updated_at_gteq, updated_at_lteq=updated_at_lteq,
             )
@@ -3023,26 +3359,26 @@ class ContractsFrenchContractTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_french_contract_types."""
-        return get_api_2026_07_01_resources_contracts_french_contract_types.sync(client=self._client, ids=ids, archived=archived)
+        """Calls get_api_2026_10_01_resources_contracts_french_contract_types."""
+        return get_api_2026_10_01_resources_contracts_french_contract_types.sync(client=self._client, ids=ids, archived=archived)
 
     async def list_async(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_french_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
+        return await get_api_2026_10_01_resources_contracts_french_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_french_contract_types_id."""
-        return get_api_2026_07_01_resources_contracts_french_contract_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_french_contract_types_id."""
+        return get_api_2026_10_01_resources_contracts_french_contract_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_french_contract_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_french_contract_types_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_french_contract_types,
+                get_api_2026_10_01_resources_contracts_french_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3052,7 +3388,7 @@ class ContractsFrenchContractTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_french_contract_types,
+                get_api_2026_10_01_resources_contracts_french_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3062,7 +3398,7 @@ class ContractsFrenchContractTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_french_contract_types,
+                get_api_2026_10_01_resources_contracts_french_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3076,26 +3412,26 @@ class ContractsGermanContractTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_german_contract_types."""
-        return get_api_2026_07_01_resources_contracts_german_contract_types.sync(client=self._client, ids=ids, archived=archived)
+        """Calls get_api_2026_10_01_resources_contracts_german_contract_types."""
+        return get_api_2026_10_01_resources_contracts_german_contract_types.sync(client=self._client, ids=ids, archived=archived)
 
     async def list_async(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_german_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
+        return await get_api_2026_10_01_resources_contracts_german_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_german_contract_types_id."""
-        return get_api_2026_07_01_resources_contracts_german_contract_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_german_contract_types_id."""
+        return get_api_2026_10_01_resources_contracts_german_contract_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_german_contract_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_german_contract_types_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_german_contract_types,
+                get_api_2026_10_01_resources_contracts_german_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3105,7 +3441,7 @@ class ContractsGermanContractTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_german_contract_types,
+                get_api_2026_10_01_resources_contracts_german_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3115,7 +3451,7 @@ class ContractsGermanContractTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_german_contract_types,
+                get_api_2026_10_01_resources_contracts_german_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3129,18 +3465,18 @@ class ContractsMaterializedTemplatesResource:
         self._client = client
 
     def list(self, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, countries: Any = UNSET, template_type: Any = UNSET, field_ids: Any = UNSET, include_archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_materialized_templates."""
-        return get_api_2026_07_01_resources_contracts_materialized_templates.sync(client=self._client, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived)
+        """Calls get_api_2026_10_01_resources_contracts_materialized_templates."""
+        return get_api_2026_10_01_resources_contracts_materialized_templates.sync(client=self._client, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived)
 
     async def list_async(self, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, countries: Any = UNSET, template_type: Any = UNSET, field_ids: Any = UNSET, include_archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_materialized_templates.asyncio(client=self._client, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived)
+        return await get_api_2026_10_01_resources_contracts_materialized_templates.asyncio(client=self._client, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, countries: Any = UNSET, template_type: Any = UNSET, field_ids: Any = UNSET, include_archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_materialized_templates,
+                get_api_2026_10_01_resources_contracts_materialized_templates,
                 self._client,
                 after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
@@ -3150,7 +3486,7 @@ class ContractsMaterializedTemplatesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_materialized_templates,
+                get_api_2026_10_01_resources_contracts_materialized_templates,
                 self._client,
                 after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
@@ -3160,7 +3496,7 @@ class ContractsMaterializedTemplatesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_materialized_templates,
+                get_api_2026_10_01_resources_contracts_materialized_templates,
                 self._client,
                 after_id, limit=limit, company_id=company_id, legal_entity_ids=legal_entity_ids, countries=countries, template_type=template_type, field_ids=field_ids, include_archived=include_archived,
             )
@@ -3174,26 +3510,26 @@ class ContractsPortugueseContractTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_portuguese_contract_types."""
-        return get_api_2026_07_01_resources_contracts_portuguese_contract_types.sync(client=self._client, ids=ids, archived=archived)
+        """Calls get_api_2026_10_01_resources_contracts_portuguese_contract_types."""
+        return get_api_2026_10_01_resources_contracts_portuguese_contract_types.sync(client=self._client, ids=ids, archived=archived)
 
     async def list_async(self, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_portuguese_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
+        return await get_api_2026_10_01_resources_contracts_portuguese_contract_types.asyncio(client=self._client, ids=ids, archived=archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_portuguese_contract_types_id."""
-        return get_api_2026_07_01_resources_contracts_portuguese_contract_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_portuguese_contract_types_id."""
+        return get_api_2026_10_01_resources_contracts_portuguese_contract_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_portuguese_contract_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_portuguese_contract_types_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                get_api_2026_10_01_resources_contracts_portuguese_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3203,7 +3539,7 @@ class ContractsPortugueseContractTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                get_api_2026_10_01_resources_contracts_portuguese_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3213,7 +3549,7 @@ class ContractsPortugueseContractTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_portuguese_contract_types,
+                get_api_2026_10_01_resources_contracts_portuguese_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived,
             )
@@ -3227,18 +3563,18 @@ class ContractsReferenceContractsResource:
         self._client = client
 
     def list(self, employee_ids: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_reference_contracts."""
-        return get_api_2026_07_01_resources_contracts_reference_contracts.sync(client=self._client, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids)
+        """Calls get_api_2026_10_01_resources_contracts_reference_contracts."""
+        return get_api_2026_10_01_resources_contracts_reference_contracts.sync(client=self._client, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids)
 
     async def list_async(self, employee_ids: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_reference_contracts.asyncio(client=self._client, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids)
+        return await get_api_2026_10_01_resources_contracts_reference_contracts.asyncio(client=self._client, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET, job_catalog_tree_node_uuids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_reference_contracts,
+                get_api_2026_10_01_resources_contracts_reference_contracts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
@@ -3248,7 +3584,7 @@ class ContractsReferenceContractsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_reference_contracts,
+                get_api_2026_10_01_resources_contracts_reference_contracts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
@@ -3258,7 +3594,7 @@ class ContractsReferenceContractsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_reference_contracts,
+                get_api_2026_10_01_resources_contracts_reference_contracts,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, job_catalog_tree_node_uuids=job_catalog_tree_node_uuids,
             )
@@ -3272,34 +3608,34 @@ class ContractsSpanishContractTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, archived: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_contract_types."""
-        return get_api_2026_07_01_resources_contracts_spanish_contract_types.sync(client=self._client, ids=ids, archived=archived, contract_template_id=contract_template_id)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_contract_types."""
+        return get_api_2026_10_01_resources_contracts_spanish_contract_types.sync(client=self._client, ids=ids, archived=archived, contract_template_id=contract_template_id)
 
     async def list_async(self, ids: Any = UNSET, archived: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_spanish_contract_types.asyncio(client=self._client, ids=ids, archived=archived, contract_template_id=contract_template_id)
+        return await get_api_2026_10_01_resources_contracts_spanish_contract_types.asyncio(client=self._client, ids=ids, archived=archived, contract_template_id=contract_template_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_contract_types_id."""
-        return get_api_2026_07_01_resources_contracts_spanish_contract_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_contract_types_id."""
+        return get_api_2026_10_01_resources_contracts_spanish_contract_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_spanish_contract_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_spanish_contract_types_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_spanish_contract_types."""
-        return post_api_2026_07_01_resources_contracts_spanish_contract_types.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_spanish_contract_types."""
+        return post_api_2026_10_01_resources_contracts_spanish_contract_types.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_spanish_contract_types.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_spanish_contract_types.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, archived: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                get_api_2026_10_01_resources_contracts_spanish_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
@@ -3309,7 +3645,7 @@ class ContractsSpanishContractTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                get_api_2026_10_01_resources_contracts_spanish_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
@@ -3319,7 +3655,7 @@ class ContractsSpanishContractTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_spanish_contract_types,
+                get_api_2026_10_01_resources_contracts_spanish_contract_types,
                 self._client,
                 after_id, limit=limit, ids=ids, archived=archived, contract_template_id=contract_template_id,
             )
@@ -3333,34 +3669,34 @@ class ContractsSpanishEducationLevelsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_education_levels."""
-        return get_api_2026_07_01_resources_contracts_spanish_education_levels.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_education_levels."""
+        return get_api_2026_10_01_resources_contracts_spanish_education_levels.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     async def list_async(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_spanish_education_levels.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        return await get_api_2026_10_01_resources_contracts_spanish_education_levels.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_education_levels_id."""
-        return get_api_2026_07_01_resources_contracts_spanish_education_levels_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_education_levels_id."""
+        return get_api_2026_10_01_resources_contracts_spanish_education_levels_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_spanish_education_levels_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_spanish_education_levels_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_spanish_education_levels."""
-        return post_api_2026_07_01_resources_contracts_spanish_education_levels.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_spanish_education_levels."""
+        return post_api_2026_10_01_resources_contracts_spanish_education_levels.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_spanish_education_levels.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_spanish_education_levels.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                get_api_2026_10_01_resources_contracts_spanish_education_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3370,7 +3706,7 @@ class ContractsSpanishEducationLevelsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                get_api_2026_10_01_resources_contracts_spanish_education_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3380,7 +3716,7 @@ class ContractsSpanishEducationLevelsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_spanish_education_levels,
+                get_api_2026_10_01_resources_contracts_spanish_education_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3394,34 +3730,34 @@ class ContractsSpanishProfessionalCategoriesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_professional_categories."""
-        return get_api_2026_07_01_resources_contracts_spanish_professional_categories.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_professional_categories."""
+        return get_api_2026_10_01_resources_contracts_spanish_professional_categories.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     async def list_async(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_spanish_professional_categories.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        return await get_api_2026_10_01_resources_contracts_spanish_professional_categories.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_professional_categories_id."""
-        return get_api_2026_07_01_resources_contracts_spanish_professional_categories_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_professional_categories_id."""
+        return get_api_2026_10_01_resources_contracts_spanish_professional_categories_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_spanish_professional_categories_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_spanish_professional_categories_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_spanish_professional_categories."""
-        return post_api_2026_07_01_resources_contracts_spanish_professional_categories.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_spanish_professional_categories."""
+        return post_api_2026_10_01_resources_contracts_spanish_professional_categories.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_spanish_professional_categories.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_spanish_professional_categories.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                get_api_2026_10_01_resources_contracts_spanish_professional_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3431,7 +3767,7 @@ class ContractsSpanishProfessionalCategoriesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                get_api_2026_10_01_resources_contracts_spanish_professional_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3441,7 +3777,7 @@ class ContractsSpanishProfessionalCategoriesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_spanish_professional_categories,
+                get_api_2026_10_01_resources_contracts_spanish_professional_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3455,34 +3791,34 @@ class ContractsSpanishWorkingDayTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_working_day_types."""
-        return get_api_2026_07_01_resources_contracts_spanish_working_day_types.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_working_day_types."""
+        return get_api_2026_10_01_resources_contracts_spanish_working_day_types.sync(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     async def list_async(self, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_spanish_working_day_types.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
+        return await get_api_2026_10_01_resources_contracts_spanish_working_day_types.asyncio(client=self._client, ids=ids, contract_template_id=contract_template_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_spanish_working_day_types_id."""
-        return get_api_2026_07_01_resources_contracts_spanish_working_day_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_spanish_working_day_types_id."""
+        return get_api_2026_10_01_resources_contracts_spanish_working_day_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_spanish_working_day_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_spanish_working_day_types_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_contracts_spanish_working_day_types."""
-        return post_api_2026_07_01_resources_contracts_spanish_working_day_types.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_contracts_spanish_working_day_types."""
+        return post_api_2026_10_01_resources_contracts_spanish_working_day_types.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_contracts_spanish_working_day_types.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_contracts_spanish_working_day_types.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, contract_template_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                get_api_2026_10_01_resources_contracts_spanish_working_day_types,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3492,7 +3828,7 @@ class ContractsSpanishWorkingDayTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                get_api_2026_10_01_resources_contracts_spanish_working_day_types,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3502,7 +3838,7 @@ class ContractsSpanishWorkingDayTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_spanish_working_day_types,
+                get_api_2026_10_01_resources_contracts_spanish_working_day_types,
                 self._client,
                 after_id, limit=limit, ids=ids, contract_template_id=contract_template_id,
             )
@@ -3516,26 +3852,26 @@ class ContractsTaxonomiesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_taxonomies."""
-        return get_api_2026_07_01_resources_contracts_taxonomies.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id)
+        """Calls get_api_2026_10_01_resources_contracts_taxonomies."""
+        return get_api_2026_10_01_resources_contracts_taxonomies.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id)
 
     async def list_async(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_contracts_taxonomies.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id)
+        return await get_api_2026_10_01_resources_contracts_taxonomies.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_contracts_taxonomies_id."""
-        return get_api_2026_07_01_resources_contracts_taxonomies_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_contracts_taxonomies_id."""
+        return get_api_2026_10_01_resources_contracts_taxonomies_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_contracts_taxonomies_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_contracts_taxonomies_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, legal_entity_ids: Any = UNSET, legal_entity_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_taxonomies,
+                get_api_2026_10_01_resources_contracts_taxonomies,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
@@ -3545,7 +3881,7 @@ class ContractsTaxonomiesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_contracts_taxonomies,
+                get_api_2026_10_01_resources_contracts_taxonomies,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
@@ -3555,7 +3891,7 @@ class ContractsTaxonomiesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_contracts_taxonomies,
+                get_api_2026_10_01_resources_contracts_taxonomies,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, legal_entity_id=legal_entity_id,
             )
@@ -3569,42 +3905,42 @@ class CustomFieldsFieldsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_custom_fields_fields_id."""
-        return delete_api_2026_07_01_resources_custom_fields_fields_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_custom_fields_fields_id."""
+        return delete_api_2026_10_01_resources_custom_fields_fields_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_custom_fields_fields_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_custom_fields_fields_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, field_type: Any = UNSET, label: Any = UNSET, slug: Any = UNSET, company_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_fields."""
-        return get_api_2026_07_01_resources_custom_fields_fields.sync(client=self._client, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id)
+        """Calls get_api_2026_10_01_resources_custom_fields_fields."""
+        return get_api_2026_10_01_resources_custom_fields_fields.sync(client=self._client, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id)
 
     async def list_async(self, ids: Any = UNSET, field_type: Any = UNSET, label: Any = UNSET, slug: Any = UNSET, company_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_fields_fields.asyncio(client=self._client, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id)
+        return await get_api_2026_10_01_resources_custom_fields_fields.asyncio(client=self._client, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_fields_id."""
-        return get_api_2026_07_01_resources_custom_fields_fields_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_fields_fields_id."""
+        return get_api_2026_10_01_resources_custom_fields_fields_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_fields_fields_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_fields_fields_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_fields_fields."""
-        return post_api_2026_07_01_resources_custom_fields_fields.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_fields_fields."""
+        return post_api_2026_10_01_resources_custom_fields_fields.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_fields_fields.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_fields_fields.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, field_type: Any = UNSET, label: Any = UNSET, slug: Any = UNSET, company_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_fields,
+                get_api_2026_10_01_resources_custom_fields_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
@@ -3614,7 +3950,7 @@ class CustomFieldsFieldsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_fields,
+                get_api_2026_10_01_resources_custom_fields_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
@@ -3624,7 +3960,7 @@ class CustomFieldsFieldsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_fields_fields,
+                get_api_2026_10_01_resources_custom_fields_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_type=field_type, label=label, slug=slug, company_id=company_id,
             )
@@ -3638,34 +3974,34 @@ class CustomFieldsOptionsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, field_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_options."""
-        return get_api_2026_07_01_resources_custom_fields_options.sync(client=self._client, ids=ids, field_ids=field_ids)
+        """Calls get_api_2026_10_01_resources_custom_fields_options."""
+        return get_api_2026_10_01_resources_custom_fields_options.sync(client=self._client, ids=ids, field_ids=field_ids)
 
     async def list_async(self, ids: Any = UNSET, field_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_fields_options.asyncio(client=self._client, ids=ids, field_ids=field_ids)
+        return await get_api_2026_10_01_resources_custom_fields_options.asyncio(client=self._client, ids=ids, field_ids=field_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_options_id."""
-        return get_api_2026_07_01_resources_custom_fields_options_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_fields_options_id."""
+        return get_api_2026_10_01_resources_custom_fields_options_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_fields_options_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_fields_options_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_fields_options."""
-        return post_api_2026_07_01_resources_custom_fields_options.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_fields_options."""
+        return post_api_2026_10_01_resources_custom_fields_options.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_fields_options.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_fields_options.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, field_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_options,
+                get_api_2026_10_01_resources_custom_fields_options,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
@@ -3675,7 +4011,7 @@ class CustomFieldsOptionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_options,
+                get_api_2026_10_01_resources_custom_fields_options,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
@@ -3685,7 +4021,7 @@ class CustomFieldsOptionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_fields_options,
+                get_api_2026_10_01_resources_custom_fields_options,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids,
             )
@@ -3699,34 +4035,34 @@ class CustomFieldsResourceFieldsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, field_ids: Any = UNSET, schema_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_resource_fields."""
-        return get_api_2026_07_01_resources_custom_fields_resource_fields.sync(client=self._client, ids=ids, field_ids=field_ids, schema_ids=schema_ids)
+        """Calls get_api_2026_10_01_resources_custom_fields_resource_fields."""
+        return get_api_2026_10_01_resources_custom_fields_resource_fields.sync(client=self._client, ids=ids, field_ids=field_ids, schema_ids=schema_ids)
 
     async def list_async(self, ids: Any = UNSET, field_ids: Any = UNSET, schema_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_fields_resource_fields.asyncio(client=self._client, ids=ids, field_ids=field_ids, schema_ids=schema_ids)
+        return await get_api_2026_10_01_resources_custom_fields_resource_fields.asyncio(client=self._client, ids=ids, field_ids=field_ids, schema_ids=schema_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_resource_fields_id."""
-        return get_api_2026_07_01_resources_custom_fields_resource_fields_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_fields_resource_fields_id."""
+        return get_api_2026_10_01_resources_custom_fields_resource_fields_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_fields_resource_fields_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_fields_resource_fields_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_fields_resource_fields."""
-        return post_api_2026_07_01_resources_custom_fields_resource_fields.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_fields_resource_fields."""
+        return post_api_2026_10_01_resources_custom_fields_resource_fields.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_fields_resource_fields.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_fields_resource_fields.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, field_ids: Any = UNSET, schema_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                get_api_2026_10_01_resources_custom_fields_resource_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
@@ -3736,7 +4072,7 @@ class CustomFieldsResourceFieldsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                get_api_2026_10_01_resources_custom_fields_resource_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
@@ -3746,7 +4082,7 @@ class CustomFieldsResourceFieldsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_fields_resource_fields,
+                get_api_2026_10_01_resources_custom_fields_resource_fields,
                 self._client,
                 after_id, limit=limit, ids=ids, field_ids=field_ids, schema_ids=schema_ids,
             )
@@ -3760,42 +4096,42 @@ class CustomFieldsValuesResource:
         self._client = client
 
     def list(self, employee_ids: Any = UNSET, identifiers: Any = UNSET, ids: Any = UNSET, instance_id: Any = UNSET, value: Any = UNSET, slug: Any = UNSET, field_id: Any = UNSET, updated_at_gteq: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_values."""
-        return get_api_2026_07_01_resources_custom_fields_values.sync(client=self._client, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq)
+        """Calls get_api_2026_10_01_resources_custom_fields_values."""
+        return get_api_2026_10_01_resources_custom_fields_values.sync(client=self._client, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq)
 
     async def list_async(self, employee_ids: Any = UNSET, identifiers: Any = UNSET, ids: Any = UNSET, instance_id: Any = UNSET, value: Any = UNSET, slug: Any = UNSET, field_id: Any = UNSET, updated_at_gteq: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_fields_values.asyncio(client=self._client, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq)
+        return await get_api_2026_10_01_resources_custom_fields_values.asyncio(client=self._client, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_fields_values_id."""
-        return get_api_2026_07_01_resources_custom_fields_values_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_fields_values_id."""
+        return get_api_2026_10_01_resources_custom_fields_values_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_fields_values_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_fields_values_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_fields_values."""
-        return post_api_2026_07_01_resources_custom_fields_values.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_fields_values."""
+        return post_api_2026_10_01_resources_custom_fields_values.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_fields_values.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_fields_values.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_custom_fields_values_id."""
-        return put_api_2026_07_01_resources_custom_fields_values_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_custom_fields_values_id."""
+        return put_api_2026_10_01_resources_custom_fields_values_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_custom_fields_values_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_custom_fields_values_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET, identifiers: Any = UNSET, ids: Any = UNSET, instance_id: Any = UNSET, value: Any = UNSET, slug: Any = UNSET, field_id: Any = UNSET, updated_at_gteq: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_values,
+                get_api_2026_10_01_resources_custom_fields_values,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
@@ -3805,7 +4141,7 @@ class CustomFieldsValuesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_fields_values,
+                get_api_2026_10_01_resources_custom_fields_values,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
@@ -3815,7 +4151,7 @@ class CustomFieldsValuesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_fields_values,
+                get_api_2026_10_01_resources_custom_fields_values,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, identifiers=identifiers, ids=ids, instance_id=instance_id, value=value, slug=slug, field_id=field_id, updated_at_gteq=updated_at_gteq,
             )
@@ -3829,26 +4165,26 @@ class CustomResourcesResourcesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_resources."""
-        return get_api_2026_07_01_resources_custom_resources_resources.sync(client=self._client, ids=ids, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_custom_resources_resources."""
+        return get_api_2026_10_01_resources_custom_resources_resources.sync(client=self._client, ids=ids, employee_ids=employee_ids)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_resources_resources.asyncio(client=self._client, ids=ids, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_custom_resources_resources.asyncio(client=self._client, ids=ids, employee_ids=employee_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_resources_id."""
-        return get_api_2026_07_01_resources_custom_resources_resources_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_resources_resources_id."""
+        return get_api_2026_10_01_resources_custom_resources_resources_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_resources_resources_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_resources_resources_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_resources,
+                get_api_2026_10_01_resources_custom_resources_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -3858,7 +4194,7 @@ class CustomResourcesResourcesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_resources,
+                get_api_2026_10_01_resources_custom_resources_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -3868,7 +4204,7 @@ class CustomResourcesResourcesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_resources_resources,
+                get_api_2026_10_01_resources_custom_resources_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -3882,34 +4218,34 @@ class CustomResourcesSchemasResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_schemas."""
-        return get_api_2026_07_01_resources_custom_resources_schemas.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_custom_resources_schemas."""
+        return get_api_2026_10_01_resources_custom_resources_schemas.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_resources_schemas.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_custom_resources_schemas.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_schemas_id."""
-        return get_api_2026_07_01_resources_custom_resources_schemas_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_resources_schemas_id."""
+        return get_api_2026_10_01_resources_custom_resources_schemas_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_resources_schemas_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_resources_schemas_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_resources_schemas."""
-        return post_api_2026_07_01_resources_custom_resources_schemas.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_resources_schemas."""
+        return post_api_2026_10_01_resources_custom_resources_schemas.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_resources_schemas.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_resources_schemas.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_schemas,
+                get_api_2026_10_01_resources_custom_resources_schemas,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -3919,7 +4255,7 @@ class CustomResourcesSchemasResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_schemas,
+                get_api_2026_10_01_resources_custom_resources_schemas,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -3929,7 +4265,7 @@ class CustomResourcesSchemasResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_resources_schemas,
+                get_api_2026_10_01_resources_custom_resources_schemas,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -3943,34 +4279,34 @@ class CustomResourcesValuesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_values."""
-        return get_api_2026_07_01_resources_custom_resources_values.sync(client=self._client, ids=ids, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_custom_resources_values."""
+        return get_api_2026_10_01_resources_custom_resources_values.sync(client=self._client, ids=ids, employee_ids=employee_ids)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_custom_resources_values.asyncio(client=self._client, ids=ids, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_custom_resources_values.asyncio(client=self._client, ids=ids, employee_ids=employee_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_custom_resources_values_id."""
-        return get_api_2026_07_01_resources_custom_resources_values_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_custom_resources_values_id."""
+        return get_api_2026_10_01_resources_custom_resources_values_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_custom_resources_values_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_custom_resources_values_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_custom_resources_values."""
-        return post_api_2026_07_01_resources_custom_resources_values.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_custom_resources_values."""
+        return post_api_2026_10_01_resources_custom_resources_values.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_custom_resources_values.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_custom_resources_values.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_values,
+                get_api_2026_10_01_resources_custom_resources_values,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -3980,7 +4316,7 @@ class CustomResourcesValuesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_custom_resources_values,
+                get_api_2026_10_01_resources_custom_resources_values,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -3990,7 +4326,7 @@ class CustomResourcesValuesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_custom_resources_values,
+                get_api_2026_10_01_resources_custom_resources_values,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
@@ -4004,66 +4340,66 @@ class DocumentsDocumentsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_documents_documents_id."""
-        return delete_api_2026_07_01_resources_documents_documents_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_documents_documents_id."""
+        return delete_api_2026_10_01_resources_documents_documents_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_documents_documents_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_documents_documents_id.asyncio(id, client=self._client)
 
     def list(self, by_bookkeeper_documents: Any = UNSET, by_pending_assignment: Any = UNSET, by_trash_bin: Any = UNSET, by_without_folder: Any = UNSET, employee_ids: Any = UNSET, folder_id: Any = UNSET, ids: Any = UNSET, leave_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_documents_documents."""
-        return get_api_2026_07_01_resources_documents_documents.sync(client=self._client, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id)
+        """Calls get_api_2026_10_01_resources_documents_documents."""
+        return get_api_2026_10_01_resources_documents_documents.sync(client=self._client, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id)
 
     async def list_async(self, by_bookkeeper_documents: Any = UNSET, by_pending_assignment: Any = UNSET, by_trash_bin: Any = UNSET, by_without_folder: Any = UNSET, employee_ids: Any = UNSET, folder_id: Any = UNSET, ids: Any = UNSET, leave_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_documents_documents.asyncio(client=self._client, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id)
+        return await get_api_2026_10_01_resources_documents_documents.asyncio(client=self._client, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_documents_documents_id."""
-        return get_api_2026_07_01_resources_documents_documents_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_documents_documents_id."""
+        return get_api_2026_10_01_resources_documents_documents_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_documents_documents_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_documents_documents_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_documents_documents."""
-        return post_api_2026_07_01_resources_documents_documents.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_documents_documents."""
+        return post_api_2026_10_01_resources_documents_documents.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_documents_documents.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_documents_documents.asyncio(client=self._client, body=body)
 
     def move_to_trash_bin(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_documents_documents_move_to_trash_bin."""
-        return post_api_2026_07_01_resources_documents_documents_move_to_trash_bin.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_documents_documents_move_to_trash_bin."""
+        return post_api_2026_10_01_resources_documents_documents_move_to_trash_bin.sync(client=self._client, body=body)
 
     async def move_to_trash_bin_async(self, body: Any = UNSET) -> Any:
         """Async version of move_to_trash_bin."""
-        return await post_api_2026_07_01_resources_documents_documents_move_to_trash_bin.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_documents_documents_move_to_trash_bin.asyncio(client=self._client, body=body)
 
     def restore_from_trash_bin(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_documents_documents_restore_from_trash_bin."""
-        return post_api_2026_07_01_resources_documents_documents_restore_from_trash_bin.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_documents_documents_restore_from_trash_bin."""
+        return post_api_2026_10_01_resources_documents_documents_restore_from_trash_bin.sync(client=self._client, body=body)
 
     async def restore_from_trash_bin_async(self, body: Any = UNSET) -> Any:
         """Async version of restore_from_trash_bin."""
-        return await post_api_2026_07_01_resources_documents_documents_restore_from_trash_bin.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_documents_documents_restore_from_trash_bin.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_documents_documents_id."""
-        return put_api_2026_07_01_resources_documents_documents_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_documents_documents_id."""
+        return put_api_2026_10_01_resources_documents_documents_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_documents_documents_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_documents_documents_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, by_bookkeeper_documents: Any = UNSET, by_pending_assignment: Any = UNSET, by_trash_bin: Any = UNSET, by_without_folder: Any = UNSET, employee_ids: Any = UNSET, folder_id: Any = UNSET, ids: Any = UNSET, leave_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_documents_documents,
+                get_api_2026_10_01_resources_documents_documents,
                 self._client,
                 after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
@@ -4073,7 +4409,7 @@ class DocumentsDocumentsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_documents_documents,
+                get_api_2026_10_01_resources_documents_documents,
                 self._client,
                 after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
@@ -4083,7 +4419,7 @@ class DocumentsDocumentsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_documents_documents,
+                get_api_2026_10_01_resources_documents_documents,
                 self._client,
                 after_id, limit=limit, by_bookkeeper_documents=by_bookkeeper_documents, by_pending_assignment=by_pending_assignment, by_trash_bin=by_trash_bin, by_without_folder=by_without_folder, employee_ids=employee_ids, folder_id=folder_id, ids=ids, leave_id=leave_id,
             )
@@ -4097,12 +4433,12 @@ class DocumentsDownloadUrlsResource:
         self._client = client
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_documents_download_urls_bulk_create."""
-        return post_api_2026_07_01_resources_documents_download_urls_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_documents_download_urls_bulk_create."""
+        return post_api_2026_10_01_resources_documents_download_urls_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_documents_download_urls_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_documents_download_urls_bulk_create.asyncio(client=self._client, body=body)
 
 
 class DocumentsFoldersResource:
@@ -4112,42 +4448,42 @@ class DocumentsFoldersResource:
         self._client = client
 
     def list(self, active: Any = UNSET, employee_id: Any = UNSET, ids: Any = UNSET, name: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_documents_folders."""
-        return get_api_2026_07_01_resources_documents_folders.sync(client=self._client, active=active, employee_id=employee_id, ids=ids, name=name)
+        """Calls get_api_2026_10_01_resources_documents_folders."""
+        return get_api_2026_10_01_resources_documents_folders.sync(client=self._client, active=active, employee_id=employee_id, ids=ids, name=name)
 
     async def list_async(self, active: Any = UNSET, employee_id: Any = UNSET, ids: Any = UNSET, name: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_documents_folders.asyncio(client=self._client, active=active, employee_id=employee_id, ids=ids, name=name)
+        return await get_api_2026_10_01_resources_documents_folders.asyncio(client=self._client, active=active, employee_id=employee_id, ids=ids, name=name)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_documents_folders_id."""
-        return get_api_2026_07_01_resources_documents_folders_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_documents_folders_id."""
+        return get_api_2026_10_01_resources_documents_folders_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_documents_folders_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_documents_folders_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_documents_folders."""
-        return post_api_2026_07_01_resources_documents_folders.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_documents_folders."""
+        return post_api_2026_10_01_resources_documents_folders.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_documents_folders.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_documents_folders.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_documents_folders_id."""
-        return put_api_2026_07_01_resources_documents_folders_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_documents_folders_id."""
+        return put_api_2026_10_01_resources_documents_folders_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_documents_folders_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_documents_folders_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, active: Any = UNSET, employee_id: Any = UNSET, ids: Any = UNSET, name: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_documents_folders,
+                get_api_2026_10_01_resources_documents_folders,
                 self._client,
                 after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
@@ -4157,7 +4493,7 @@ class DocumentsFoldersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_documents_folders,
+                get_api_2026_10_01_resources_documents_folders,
                 self._client,
                 after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
@@ -4167,7 +4503,7 @@ class DocumentsFoldersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_documents_folders,
+                get_api_2026_10_01_resources_documents_folders,
                 self._client,
                 after_id, limit=limit, active=active, employee_id=employee_id, ids=ids, name=name,
             )
@@ -4181,26 +4517,26 @@ class EmployeeUpdatesAbsencesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_absences."""
-        return get_api_2026_07_01_resources_employee_updates_absences.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_employee_updates_absences."""
+        return get_api_2026_10_01_resources_employee_updates_absences.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_absences.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_employee_updates_absences.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_absences_id."""
-        return get_api_2026_07_01_resources_employee_updates_absences_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_absences_id."""
+        return get_api_2026_10_01_resources_employee_updates_absences_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_absences_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_absences_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_absences,
+                get_api_2026_10_01_resources_employee_updates_absences,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4210,7 +4546,7 @@ class EmployeeUpdatesAbsencesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_absences,
+                get_api_2026_10_01_resources_employee_updates_absences,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4220,7 +4556,7 @@ class EmployeeUpdatesAbsencesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_absences,
+                get_api_2026_10_01_resources_employee_updates_absences,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4234,26 +4570,26 @@ class EmployeeUpdatesContractChangesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_contract_changes."""
-        return get_api_2026_07_01_resources_employee_updates_contract_changes.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_employee_updates_contract_changes."""
+        return get_api_2026_10_01_resources_employee_updates_contract_changes.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_contract_changes.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_employee_updates_contract_changes.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_contract_changes_id."""
-        return get_api_2026_07_01_resources_employee_updates_contract_changes_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_contract_changes_id."""
+        return get_api_2026_10_01_resources_employee_updates_contract_changes_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_contract_changes_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_contract_changes_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                get_api_2026_10_01_resources_employee_updates_contract_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4263,7 +4599,7 @@ class EmployeeUpdatesContractChangesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                get_api_2026_10_01_resources_employee_updates_contract_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4273,7 +4609,7 @@ class EmployeeUpdatesContractChangesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_contract_changes,
+                get_api_2026_10_01_resources_employee_updates_contract_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4287,26 +4623,26 @@ class EmployeeUpdatesNewHiresResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_new_hires."""
-        return get_api_2026_07_01_resources_employee_updates_new_hires.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_employee_updates_new_hires."""
+        return get_api_2026_10_01_resources_employee_updates_new_hires.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_new_hires.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_employee_updates_new_hires.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_new_hires_id."""
-        return get_api_2026_07_01_resources_employee_updates_new_hires_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_new_hires_id."""
+        return get_api_2026_10_01_resources_employee_updates_new_hires_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_new_hires_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_new_hires_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_new_hires,
+                get_api_2026_10_01_resources_employee_updates_new_hires,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4316,7 +4652,7 @@ class EmployeeUpdatesNewHiresResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_new_hires,
+                get_api_2026_10_01_resources_employee_updates_new_hires,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4326,7 +4662,7 @@ class EmployeeUpdatesNewHiresResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_new_hires,
+                get_api_2026_10_01_resources_employee_updates_new_hires,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4340,26 +4676,26 @@ class EmployeeUpdatesPersonalChangesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_personal_changes."""
-        return get_api_2026_07_01_resources_employee_updates_personal_changes.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_employee_updates_personal_changes."""
+        return get_api_2026_10_01_resources_employee_updates_personal_changes.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_personal_changes.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_employee_updates_personal_changes.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_personal_changes_id."""
-        return get_api_2026_07_01_resources_employee_updates_personal_changes_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_personal_changes_id."""
+        return get_api_2026_10_01_resources_employee_updates_personal_changes_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_personal_changes_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_personal_changes_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                get_api_2026_10_01_resources_employee_updates_personal_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4369,7 +4705,7 @@ class EmployeeUpdatesPersonalChangesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                get_api_2026_10_01_resources_employee_updates_personal_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4379,7 +4715,7 @@ class EmployeeUpdatesPersonalChangesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_personal_changes,
+                get_api_2026_10_01_resources_employee_updates_personal_changes,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4393,26 +4729,26 @@ class EmployeeUpdatesSummariesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, legal_entities_ids: Any = UNSET, type_: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_summaries."""
-        return get_api_2026_07_01_resources_employee_updates_summaries.sync(client=self._client, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on)
+        """Calls get_api_2026_10_01_resources_employee_updates_summaries."""
+        return get_api_2026_10_01_resources_employee_updates_summaries.sync(client=self._client, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, legal_entities_ids: Any = UNSET, type_: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_summaries.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on)
+        return await get_api_2026_10_01_resources_employee_updates_summaries.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_summaries_id."""
-        return get_api_2026_07_01_resources_employee_updates_summaries_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_summaries_id."""
+        return get_api_2026_10_01_resources_employee_updates_summaries_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_summaries_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_summaries_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, legal_entities_ids: Any = UNSET, type_: Any = UNSET, starts_on: Any = UNSET, ends_on: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_summaries,
+                get_api_2026_10_01_resources_employee_updates_summaries,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
@@ -4422,7 +4758,7 @@ class EmployeeUpdatesSummariesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_summaries,
+                get_api_2026_10_01_resources_employee_updates_summaries,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
@@ -4432,7 +4768,7 @@ class EmployeeUpdatesSummariesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_summaries,
+                get_api_2026_10_01_resources_employee_updates_summaries,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, legal_entities_ids=legal_entities_ids, type_=type_, starts_on=starts_on, ends_on=ends_on,
             )
@@ -4446,26 +4782,26 @@ class EmployeeUpdatesTerminationsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_terminations."""
-        return get_api_2026_07_01_resources_employee_updates_terminations.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_employee_updates_terminations."""
+        return get_api_2026_10_01_resources_employee_updates_terminations.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employee_updates_terminations.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_employee_updates_terminations.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employee_updates_terminations_id."""
-        return get_api_2026_07_01_resources_employee_updates_terminations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employee_updates_terminations_id."""
+        return get_api_2026_10_01_resources_employee_updates_terminations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employee_updates_terminations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employee_updates_terminations_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_terminations,
+                get_api_2026_10_01_resources_employee_updates_terminations,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4475,7 +4811,7 @@ class EmployeeUpdatesTerminationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employee_updates_terminations,
+                get_api_2026_10_01_resources_employee_updates_terminations,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4485,7 +4821,7 @@ class EmployeeUpdatesTerminationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employee_updates_terminations,
+                get_api_2026_10_01_resources_employee_updates_terminations,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -4499,74 +4835,74 @@ class EmployeesEmployeesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, access_ids: Any = UNSET, emails: Any = UNSET, full_text_name: Any = UNSET, updated_at_gteq: Any = UNSET, legal_entity_ids: Any = UNSET, company_identifier: Any = UNSET, only_active: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, only_managers: Any = UNSET, name_starts_with: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_employees_employees."""
-        return get_api_2026_07_01_resources_employees_employees.sync(client=self._client, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with)
+        """Calls get_api_2026_10_01_resources_employees_employees."""
+        return get_api_2026_10_01_resources_employees_employees.sync(client=self._client, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with)
 
     async def list_async(self, ids: Any = UNSET, access_ids: Any = UNSET, emails: Any = UNSET, full_text_name: Any = UNSET, updated_at_gteq: Any = UNSET, legal_entity_ids: Any = UNSET, company_identifier: Any = UNSET, only_active: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, only_managers: Any = UNSET, name_starts_with: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_employees_employees.asyncio(client=self._client, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with)
+        return await get_api_2026_10_01_resources_employees_employees.asyncio(client=self._client, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_employees_employees_id."""
-        return get_api_2026_07_01_resources_employees_employees_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_employees_employees_id."""
+        return get_api_2026_10_01_resources_employees_employees_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_employees_employees_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_employees_employees_id.asyncio(id, client=self._client)
 
     def create_with_contract(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_employees_employees_create_with_contract."""
-        return post_api_2026_07_01_resources_employees_employees_create_with_contract.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_employees_employees_create_with_contract."""
+        return post_api_2026_10_01_resources_employees_employees_create_with_contract.sync(client=self._client, body=body)
 
     async def create_with_contract_async(self, body: Any = UNSET) -> Any:
         """Async version of create_with_contract."""
-        return await post_api_2026_07_01_resources_employees_employees_create_with_contract.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_employees_employees_create_with_contract.asyncio(client=self._client, body=body)
 
     def invite(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_employees_employees_invite."""
-        return post_api_2026_07_01_resources_employees_employees_invite.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_employees_employees_invite."""
+        return post_api_2026_10_01_resources_employees_employees_invite.sync(client=self._client, body=body)
 
     async def invite_async(self, body: Any = UNSET) -> Any:
         """Async version of invite."""
-        return await post_api_2026_07_01_resources_employees_employees_invite.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_employees_employees_invite.asyncio(client=self._client, body=body)
 
     def set_regular_access_start_date(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_employees_employees_set_regular_access_start_date."""
-        return post_api_2026_07_01_resources_employees_employees_set_regular_access_start_date.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_employees_employees_set_regular_access_start_date."""
+        return post_api_2026_10_01_resources_employees_employees_set_regular_access_start_date.sync(client=self._client, body=body)
 
     async def set_regular_access_start_date_async(self, body: Any = UNSET) -> Any:
         """Async version of set_regular_access_start_date."""
-        return await post_api_2026_07_01_resources_employees_employees_set_regular_access_start_date.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_employees_employees_set_regular_access_start_date.asyncio(client=self._client, body=body)
 
     def terminate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_employees_employees_terminate."""
-        return post_api_2026_07_01_resources_employees_employees_terminate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_employees_employees_terminate."""
+        return post_api_2026_10_01_resources_employees_employees_terminate.sync(client=self._client, body=body)
 
     async def terminate_async(self, body: Any = UNSET) -> Any:
         """Async version of terminate."""
-        return await post_api_2026_07_01_resources_employees_employees_terminate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_employees_employees_terminate.asyncio(client=self._client, body=body)
 
     def unterminate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_employees_employees_unterminate."""
-        return post_api_2026_07_01_resources_employees_employees_unterminate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_employees_employees_unterminate."""
+        return post_api_2026_10_01_resources_employees_employees_unterminate.sync(client=self._client, body=body)
 
     async def unterminate_async(self, body: Any = UNSET) -> Any:
         """Async version of unterminate."""
-        return await post_api_2026_07_01_resources_employees_employees_unterminate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_employees_employees_unterminate.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_employees_employees_id."""
-        return put_api_2026_07_01_resources_employees_employees_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_employees_employees_id."""
+        return put_api_2026_10_01_resources_employees_employees_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_employees_employees_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_employees_employees_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, access_ids: Any = UNSET, emails: Any = UNSET, full_text_name: Any = UNSET, updated_at_gteq: Any = UNSET, legal_entity_ids: Any = UNSET, company_identifier: Any = UNSET, only_active: Any = UNSET, team_ids: Any = UNSET, location_ids: Any = UNSET, only_managers: Any = UNSET, name_starts_with: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employees_employees,
+                get_api_2026_10_01_resources_employees_employees,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
@@ -4576,7 +4912,7 @@ class EmployeesEmployeesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_employees_employees,
+                get_api_2026_10_01_resources_employees_employees,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
@@ -4586,7 +4922,7 @@ class EmployeesEmployeesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_employees_employees,
+                get_api_2026_10_01_resources_employees_employees,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, emails=emails, full_text_name=full_text_name, updated_at_gteq=updated_at_gteq, legal_entity_ids=legal_entity_ids, company_identifier=company_identifier, only_active=only_active, team_ids=team_ids, location_ids=location_ids, only_managers=only_managers, name_starts_with=name_starts_with,
             )
@@ -4600,42 +4936,42 @@ class ExpensesExpensablesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, company_id: Any = UNSET, group_ids: Any = UNSET, by_resources: Any = UNSET, employee_ids: Any = UNSET, reporter_ids: Any = UNSET, status: Any = UNSET, creation_type: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, search: Any = UNSET, include_grouped: Any = UNSET, include_attachments: Any = UNSET, include_manual_drafts: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_expensables."""
-        return get_api_2026_07_01_resources_expenses_expensables.sync(client=self._client, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts)
+        """Calls get_api_2026_10_01_resources_expenses_expensables."""
+        return get_api_2026_10_01_resources_expenses_expensables.sync(client=self._client, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts)
 
     async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, group_ids: Any = UNSET, by_resources: Any = UNSET, employee_ids: Any = UNSET, reporter_ids: Any = UNSET, status: Any = UNSET, creation_type: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, search: Any = UNSET, include_grouped: Any = UNSET, include_attachments: Any = UNSET, include_manual_drafts: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_expenses_expensables.asyncio(client=self._client, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts)
+        return await get_api_2026_10_01_resources_expenses_expensables.asyncio(client=self._client, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_expensables_id."""
-        return get_api_2026_07_01_resources_expenses_expensables_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_expenses_expensables_id."""
+        return get_api_2026_10_01_resources_expenses_expensables_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_expenses_expensables_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_expenses_expensables_id.asyncio(id, client=self._client)
 
     def bulk_set_to_paid(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_expenses_expensables_bulk_set_to_paid."""
-        return post_api_2026_07_01_resources_expenses_expensables_bulk_set_to_paid.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_expenses_expensables_bulk_set_to_paid."""
+        return post_api_2026_10_01_resources_expenses_expensables_bulk_set_to_paid.sync(client=self._client, body=body)
 
     async def bulk_set_to_paid_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_set_to_paid."""
-        return await post_api_2026_07_01_resources_expenses_expensables_bulk_set_to_paid.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_expenses_expensables_bulk_set_to_paid.asyncio(client=self._client, body=body)
 
     def update_reimbursable_amount(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_expenses_expensables_update_reimbursable_amount."""
-        return post_api_2026_07_01_resources_expenses_expensables_update_reimbursable_amount.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_expenses_expensables_update_reimbursable_amount."""
+        return post_api_2026_10_01_resources_expenses_expensables_update_reimbursable_amount.sync(client=self._client, body=body)
 
     async def update_reimbursable_amount_async(self, body: Any = UNSET) -> Any:
         """Async version of update_reimbursable_amount."""
-        return await post_api_2026_07_01_resources_expenses_expensables_update_reimbursable_amount.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_expenses_expensables_update_reimbursable_amount.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, group_ids: Any = UNSET, by_resources: Any = UNSET, employee_ids: Any = UNSET, reporter_ids: Any = UNSET, status: Any = UNSET, creation_type: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, search: Any = UNSET, include_grouped: Any = UNSET, include_attachments: Any = UNSET, include_manual_drafts: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_expensables,
+                get_api_2026_10_01_resources_expenses_expensables,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
@@ -4645,7 +4981,7 @@ class ExpensesExpensablesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_expensables,
+                get_api_2026_10_01_resources_expenses_expensables,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
@@ -4655,7 +4991,7 @@ class ExpensesExpensablesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_expenses_expensables,
+                get_api_2026_10_01_resources_expenses_expensables,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, group_ids=group_ids, by_resources=by_resources, employee_ids=employee_ids, reporter_ids=reporter_ids, status=status, creation_type=creation_type, from_=from_, to=to, search=search, include_grouped=include_grouped, include_attachments=include_attachments, include_manual_drafts=include_manual_drafts,
             )
@@ -4669,26 +5005,26 @@ class ExpensesExpensesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_expenses."""
-        return get_api_2026_07_01_resources_expenses_expenses.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
+        """Calls get_api_2026_10_01_resources_expenses_expenses."""
+        return get_api_2026_10_01_resources_expenses_expenses.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
 
     async def list_async(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_expenses_expenses.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
+        return await get_api_2026_10_01_resources_expenses_expenses.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_expenses_id."""
-        return get_api_2026_07_01_resources_expenses_expenses_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_expenses_expenses_id."""
+        return get_api_2026_10_01_resources_expenses_expenses_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_expenses_expenses_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_expenses_expenses_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_expenses,
+                get_api_2026_10_01_resources_expenses_expenses,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4698,7 +5034,7 @@ class ExpensesExpensesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_expenses,
+                get_api_2026_10_01_resources_expenses_expenses,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4708,7 +5044,7 @@ class ExpensesExpensesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_expenses_expenses,
+                get_api_2026_10_01_resources_expenses_expenses,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4722,26 +5058,26 @@ class ExpensesMileagesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_mileages."""
-        return get_api_2026_07_01_resources_expenses_mileages.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
+        """Calls get_api_2026_10_01_resources_expenses_mileages."""
+        return get_api_2026_10_01_resources_expenses_mileages.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
 
     async def list_async(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_expenses_mileages.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
+        return await get_api_2026_10_01_resources_expenses_mileages.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_mileages_id."""
-        return get_api_2026_07_01_resources_expenses_mileages_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_expenses_mileages_id."""
+        return get_api_2026_10_01_resources_expenses_mileages_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_expenses_mileages_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_expenses_mileages_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, include_manual_drafts: Any = UNSET, employee_ids: Any = UNSET, external_authorization_ids: Any = UNSET, card_ids: Any = UNSET, card_payment_ids: Any = UNSET, include_attachments: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, dispute_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_mileages,
+                get_api_2026_10_01_resources_expenses_mileages,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4751,7 +5087,7 @@ class ExpensesMileagesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_mileages,
+                get_api_2026_10_01_resources_expenses_mileages,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4761,7 +5097,7 @@ class ExpensesMileagesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_expenses_mileages,
+                get_api_2026_10_01_resources_expenses_mileages,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, include_manual_drafts=include_manual_drafts, employee_ids=employee_ids, external_authorization_ids=external_authorization_ids, card_ids=card_ids, card_payment_ids=card_payment_ids, include_attachments=include_attachments, from_=from_, to=to, dispute_ids=dispute_ids,
             )
@@ -4775,26 +5111,26 @@ class ExpensesPerDiemsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, exclude_drafts: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_per_diems."""
-        return get_api_2026_07_01_resources_expenses_per_diems.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts)
+        """Calls get_api_2026_10_01_resources_expenses_per_diems."""
+        return get_api_2026_10_01_resources_expenses_per_diems.sync(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts)
 
     async def list_async(self, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, exclude_drafts: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_expenses_per_diems.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts)
+        return await get_api_2026_10_01_resources_expenses_per_diems.asyncio(client=self._client, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_expenses_per_diems_id."""
-        return get_api_2026_07_01_resources_expenses_per_diems_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_expenses_per_diems_id."""
+        return get_api_2026_10_01_resources_expenses_per_diems_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_expenses_per_diems_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_expenses_per_diems_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, expenses_expensable_ids: Any = UNSET, exclude_drafts: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_per_diems,
+                get_api_2026_10_01_resources_expenses_per_diems,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
@@ -4804,7 +5140,7 @@ class ExpensesPerDiemsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_expenses_per_diems,
+                get_api_2026_10_01_resources_expenses_per_diems,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
@@ -4814,7 +5150,7 @@ class ExpensesPerDiemsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_expenses_per_diems,
+                get_api_2026_10_01_resources_expenses_per_diems,
                 self._client,
                 after_id, limit=limit, ids=ids, expenses_expensable_ids=expenses_expensable_ids, exclude_drafts=exclude_drafts,
             )
@@ -4828,34 +5164,34 @@ class FinanceAccountingSettingsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_accounting_settings."""
-        return get_api_2026_07_01_resources_finance_accounting_settings.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_accounting_settings."""
+        return get_api_2026_10_01_resources_finance_accounting_settings.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_accounting_settings.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_accounting_settings.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_accounting_settings_id."""
-        return get_api_2026_07_01_resources_finance_accounting_settings_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_accounting_settings_id."""
+        return get_api_2026_10_01_resources_finance_accounting_settings_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_accounting_settings_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_accounting_settings_id.asyncio(id, client=self._client)
 
     def upsert(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_accounting_settings_upsert."""
-        return post_api_2026_07_01_resources_finance_accounting_settings_upsert.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_accounting_settings_upsert."""
+        return post_api_2026_10_01_resources_finance_accounting_settings_upsert.sync(client=self._client, body=body)
 
     async def upsert_async(self, body: Any = UNSET) -> Any:
         """Async version of upsert."""
-        return await post_api_2026_07_01_resources_finance_accounting_settings_upsert.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_accounting_settings_upsert.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_accounting_settings,
+                get_api_2026_10_01_resources_finance_accounting_settings,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -4865,7 +5201,7 @@ class FinanceAccountingSettingsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_accounting_settings,
+                get_api_2026_10_01_resources_finance_accounting_settings,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -4875,7 +5211,7 @@ class FinanceAccountingSettingsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_accounting_settings,
+                get_api_2026_10_01_resources_finance_accounting_settings,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, updated_from=updated_from,
             )
@@ -4889,42 +5225,42 @@ class FinanceAccountsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, types: Any = UNSET, number: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_accounts."""
-        return get_api_2026_07_01_resources_finance_accounts.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_accounts."""
+        return get_api_2026_10_01_resources_finance_accounts.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, types: Any = UNSET, number: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_accounts.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_accounts.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_accounts_id."""
-        return get_api_2026_07_01_resources_finance_accounts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_accounts_id."""
+        return get_api_2026_10_01_resources_finance_accounts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_accounts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_accounts_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_accounts."""
-        return post_api_2026_07_01_resources_finance_accounts.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_accounts."""
+        return post_api_2026_10_01_resources_finance_accounts.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_accounts.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_accounts.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_finance_accounts_id."""
-        return put_api_2026_07_01_resources_finance_accounts_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_finance_accounts_id."""
+        return put_api_2026_10_01_resources_finance_accounts_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_finance_accounts_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_finance_accounts_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, legal_entity_ids: Any = UNSET, types: Any = UNSET, number: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_accounts,
+                get_api_2026_10_01_resources_finance_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
@@ -4934,7 +5270,7 @@ class FinanceAccountsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_accounts,
+                get_api_2026_10_01_resources_finance_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
@@ -4944,7 +5280,7 @@ class FinanceAccountsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_accounts,
+                get_api_2026_10_01_resources_finance_accounts,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, types=types, number=number, updated_from=updated_from,
             )
@@ -4958,26 +5294,26 @@ class FinanceBudgetOptionsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, effective_at: Any = UNSET, include_inactive: Any = UNSET, include_archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_budget_options."""
-        return get_api_2026_07_01_resources_finance_budget_options.sync(client=self._client, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived)
+        """Calls get_api_2026_10_01_resources_finance_budget_options."""
+        return get_api_2026_10_01_resources_finance_budget_options.sync(client=self._client, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, effective_at: Any = UNSET, include_inactive: Any = UNSET, include_archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_budget_options.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived)
+        return await get_api_2026_10_01_resources_finance_budget_options.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_budget_options_id."""
-        return get_api_2026_07_01_resources_finance_budget_options_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_budget_options_id."""
+        return get_api_2026_10_01_resources_finance_budget_options_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_budget_options_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_budget_options_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, effective_at: Any = UNSET, include_inactive: Any = UNSET, include_archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_budget_options,
+                get_api_2026_10_01_resources_finance_budget_options,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
@@ -4987,7 +5323,7 @@ class FinanceBudgetOptionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_budget_options,
+                get_api_2026_10_01_resources_finance_budget_options,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
@@ -4997,7 +5333,7 @@ class FinanceBudgetOptionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_budget_options,
+                get_api_2026_10_01_resources_finance_budget_options,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, effective_at=effective_at, include_inactive=include_inactive, include_archived=include_archived,
             )
@@ -5011,26 +5347,26 @@ class FinanceCategoriesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, company_ids: Any = UNSET, parent_category_ids: Any = UNSET, category_level: Any = UNSET, type_: Any = UNSET, statuses: Any = UNSET, search: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_categories."""
-        return get_api_2026_07_01_resources_finance_categories.sync(client=self._client, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search)
+        """Calls get_api_2026_10_01_resources_finance_categories."""
+        return get_api_2026_10_01_resources_finance_categories.sync(client=self._client, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search)
 
     async def list_async(self, ids: Any = UNSET, company_ids: Any = UNSET, parent_category_ids: Any = UNSET, category_level: Any = UNSET, type_: Any = UNSET, statuses: Any = UNSET, search: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_categories.asyncio(client=self._client, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search)
+        return await get_api_2026_10_01_resources_finance_categories.asyncio(client=self._client, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_categories_id."""
-        return get_api_2026_07_01_resources_finance_categories_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_categories_id."""
+        return get_api_2026_10_01_resources_finance_categories_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_categories_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_categories_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_ids: Any = UNSET, parent_category_ids: Any = UNSET, category_level: Any = UNSET, type_: Any = UNSET, statuses: Any = UNSET, search: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_categories,
+                get_api_2026_10_01_resources_finance_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
@@ -5040,7 +5376,7 @@ class FinanceCategoriesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_categories,
+                get_api_2026_10_01_resources_finance_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
@@ -5050,7 +5386,7 @@ class FinanceCategoriesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_categories,
+                get_api_2026_10_01_resources_finance_categories,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, parent_category_ids=parent_category_ids, category_level=category_level, type_=type_, statuses=statuses, search=search,
             )
@@ -5064,42 +5400,42 @@ class FinanceContactsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, tax_ids: Any = UNSET, legal_name: Any = UNSET, name: Any = UNSET, contact_type: Any = UNSET, website: Any = UNSET, email: Any = UNSET, phone_number: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_contacts."""
-        return get_api_2026_07_01_resources_finance_contacts.sync(client=self._client, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_contacts."""
+        return get_api_2026_10_01_resources_finance_contacts.sync(client=self._client, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, tax_ids: Any = UNSET, legal_name: Any = UNSET, name: Any = UNSET, contact_type: Any = UNSET, website: Any = UNSET, email: Any = UNSET, phone_number: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_contacts.asyncio(client=self._client, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_contacts.asyncio(client=self._client, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_contacts_id."""
-        return get_api_2026_07_01_resources_finance_contacts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_contacts_id."""
+        return get_api_2026_10_01_resources_finance_contacts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_contacts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_contacts_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_contacts."""
-        return post_api_2026_07_01_resources_finance_contacts.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_contacts."""
+        return post_api_2026_10_01_resources_finance_contacts.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_contacts.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_contacts.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_finance_contacts_id."""
-        return put_api_2026_07_01_resources_finance_contacts_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_finance_contacts_id."""
+        return put_api_2026_10_01_resources_finance_contacts_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_finance_contacts_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_finance_contacts_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, tax_ids: Any = UNSET, legal_name: Any = UNSET, name: Any = UNSET, contact_type: Any = UNSET, website: Any = UNSET, email: Any = UNSET, phone_number: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_contacts,
+                get_api_2026_10_01_resources_finance_contacts,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
@@ -5109,7 +5445,7 @@ class FinanceContactsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_contacts,
+                get_api_2026_10_01_resources_finance_contacts,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
@@ -5119,7 +5455,7 @@ class FinanceContactsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_contacts,
+                get_api_2026_10_01_resources_finance_contacts,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_ids=tax_ids, legal_name=legal_name, name=name, contact_type=contact_type, website=website, email=email, phone_number=phone_number, updated_from=updated_from,
             )
@@ -5133,26 +5469,26 @@ class FinanceCostCenterMembershipsResource:
         self._client = client
 
     def list(self, cost_center_id: Any = UNSET, employee_id: Any = UNSET, active_on: Any = UNSET, only_active: Any = UNSET, applying_on: Any = UNSET, company_id: Any = UNSET, cost_center_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_cost_center_memberships."""
-        return get_api_2026_07_01_resources_finance_cost_center_memberships.sync(client=self._client, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids)
+        """Calls get_api_2026_10_01_resources_finance_cost_center_memberships."""
+        return get_api_2026_10_01_resources_finance_cost_center_memberships.sync(client=self._client, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids)
 
     async def list_async(self, cost_center_id: Any = UNSET, employee_id: Any = UNSET, active_on: Any = UNSET, only_active: Any = UNSET, applying_on: Any = UNSET, company_id: Any = UNSET, cost_center_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_cost_center_memberships.asyncio(client=self._client, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids)
+        return await get_api_2026_10_01_resources_finance_cost_center_memberships.asyncio(client=self._client, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids)
 
     def bulk_create_update(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_cost_center_memberships_bulk_create_update."""
-        return post_api_2026_07_01_resources_finance_cost_center_memberships_bulk_create_update.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_cost_center_memberships_bulk_create_update."""
+        return post_api_2026_10_01_resources_finance_cost_center_memberships_bulk_create_update.sync(client=self._client, body=body)
 
     async def bulk_create_update_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create_update."""
-        return await post_api_2026_07_01_resources_finance_cost_center_memberships_bulk_create_update.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_cost_center_memberships_bulk_create_update.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, cost_center_id: Any = UNSET, employee_id: Any = UNSET, active_on: Any = UNSET, only_active: Any = UNSET, applying_on: Any = UNSET, company_id: Any = UNSET, cost_center_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                get_api_2026_10_01_resources_finance_cost_center_memberships,
                 self._client,
                 after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
@@ -5162,7 +5498,7 @@ class FinanceCostCenterMembershipsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                get_api_2026_10_01_resources_finance_cost_center_memberships,
                 self._client,
                 after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
@@ -5172,7 +5508,7 @@ class FinanceCostCenterMembershipsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_cost_center_memberships,
+                get_api_2026_10_01_resources_finance_cost_center_memberships,
                 self._client,
                 after_id, limit=limit, cost_center_id=cost_center_id, employee_id=employee_id, active_on=active_on, only_active=only_active, applying_on=applying_on, company_id=company_id, cost_center_ids=cost_center_ids,
             )
@@ -5186,50 +5522,50 @@ class FinanceCostCentersResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_finance_cost_centers_id."""
-        return delete_api_2026_07_01_resources_finance_cost_centers_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_finance_cost_centers_id."""
+        return delete_api_2026_10_01_resources_finance_cost_centers_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_finance_cost_centers_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_finance_cost_centers_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, include_actives_on_date: Any = UNSET, search: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_cost_centers."""
-        return get_api_2026_07_01_resources_finance_cost_centers.sync(client=self._client, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search)
+        """Calls get_api_2026_10_01_resources_finance_cost_centers."""
+        return get_api_2026_10_01_resources_finance_cost_centers.sync(client=self._client, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search)
 
     async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, include_actives_on_date: Any = UNSET, search: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_cost_centers.asyncio(client=self._client, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search)
+        return await get_api_2026_10_01_resources_finance_cost_centers.asyncio(client=self._client, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_cost_centers_id."""
-        return get_api_2026_07_01_resources_finance_cost_centers_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_cost_centers_id."""
+        return get_api_2026_10_01_resources_finance_cost_centers_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_cost_centers_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_cost_centers_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_cost_centers."""
-        return post_api_2026_07_01_resources_finance_cost_centers.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_cost_centers."""
+        return post_api_2026_10_01_resources_finance_cost_centers.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_cost_centers.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_cost_centers.asyncio(client=self._client, body=body)
 
     def edit(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_cost_centers_edit."""
-        return post_api_2026_07_01_resources_finance_cost_centers_edit.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_cost_centers_edit."""
+        return post_api_2026_10_01_resources_finance_cost_centers_edit.sync(client=self._client, body=body)
 
     async def edit_async(self, body: Any = UNSET) -> Any:
         """Async version of edit."""
-        return await post_api_2026_07_01_resources_finance_cost_centers_edit.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_cost_centers_edit.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, legal_entity_ids: Any = UNSET, include_actives_on_date: Any = UNSET, search: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_cost_centers,
+                get_api_2026_10_01_resources_finance_cost_centers,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
@@ -5239,7 +5575,7 @@ class FinanceCostCentersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_cost_centers,
+                get_api_2026_10_01_resources_finance_cost_centers,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
@@ -5249,7 +5585,7 @@ class FinanceCostCentersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_cost_centers,
+                get_api_2026_10_01_resources_finance_cost_centers,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, legal_entity_ids=legal_entity_ids, include_actives_on_date=include_actives_on_date, search=search,
             )
@@ -5263,26 +5599,42 @@ class FinanceFinancialDocumentsResource:
         self._client = client
 
     def list(self, company_id: Any = UNSET, ids: Any = UNSET, vendor_id: Any = UNSET, currency: Any = UNSET, statuses: Any = UNSET, legal_entity_ids: Any = UNSET, document_types: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_financial_documents."""
-        return get_api_2026_07_01_resources_finance_financial_documents.sync(client=self._client, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_financial_documents."""
+        return get_api_2026_10_01_resources_finance_financial_documents.sync(client=self._client, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from)
 
     async def list_async(self, company_id: Any = UNSET, ids: Any = UNSET, vendor_id: Any = UNSET, currency: Any = UNSET, statuses: Any = UNSET, legal_entity_ids: Any = UNSET, document_types: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_financial_documents.asyncio(client=self._client, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_financial_documents.asyncio(client=self._client, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_financial_documents_id."""
-        return get_api_2026_07_01_resources_finance_financial_documents_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_financial_documents_id."""
+        return get_api_2026_10_01_resources_finance_financial_documents_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_financial_documents_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_financial_documents_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_finance_financial_documents."""
+        return post_api_2026_10_01_resources_finance_financial_documents.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_finance_financial_documents.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_finance_financial_documents_id."""
+        return put_api_2026_10_01_resources_finance_financial_documents_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_finance_financial_documents_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, ids: Any = UNSET, vendor_id: Any = UNSET, currency: Any = UNSET, statuses: Any = UNSET, legal_entity_ids: Any = UNSET, document_types: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_financial_documents,
+                get_api_2026_10_01_resources_finance_financial_documents,
                 self._client,
                 after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
@@ -5292,7 +5644,7 @@ class FinanceFinancialDocumentsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_financial_documents,
+                get_api_2026_10_01_resources_finance_financial_documents,
                 self._client,
                 after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
@@ -5302,7 +5654,7 @@ class FinanceFinancialDocumentsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_financial_documents,
+                get_api_2026_10_01_resources_finance_financial_documents,
                 self._client,
                 after_id, limit=limit, company_id=company_id, ids=ids, vendor_id=vendor_id, currency=currency, statuses=statuses, legal_entity_ids=legal_entity_ids, document_types=document_types, updated_from=updated_from,
             )
@@ -5316,34 +5668,34 @@ class FinanceJournalEntriesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, source_ids: Any = UNSET, source_type: Any = UNSET, types: Any = UNSET, status: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_journal_entries."""
-        return get_api_2026_07_01_resources_finance_journal_entries.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_journal_entries."""
+        return get_api_2026_10_01_resources_finance_journal_entries.sync(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, legal_entity_ids: Any = UNSET, source_ids: Any = UNSET, source_type: Any = UNSET, types: Any = UNSET, status: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_journal_entries.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_journal_entries.asyncio(client=self._client, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_journal_entries_id."""
-        return get_api_2026_07_01_resources_finance_journal_entries_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_journal_entries_id."""
+        return get_api_2026_10_01_resources_finance_journal_entries_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_journal_entries_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_journal_entries_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_journal_entries."""
-        return post_api_2026_07_01_resources_finance_journal_entries.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_journal_entries."""
+        return post_api_2026_10_01_resources_finance_journal_entries.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_journal_entries.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_journal_entries.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, legal_entity_ids: Any = UNSET, source_ids: Any = UNSET, source_type: Any = UNSET, types: Any = UNSET, status: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_journal_entries,
+                get_api_2026_10_01_resources_finance_journal_entries,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
@@ -5353,7 +5705,7 @@ class FinanceJournalEntriesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_journal_entries,
+                get_api_2026_10_01_resources_finance_journal_entries,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
@@ -5363,7 +5715,7 @@ class FinanceJournalEntriesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_journal_entries,
+                get_api_2026_10_01_resources_finance_journal_entries,
                 self._client,
                 after_id, limit=limit, ids=ids, legal_entity_ids=legal_entity_ids, source_ids=source_ids, source_type=source_type, types=types, status=status, updated_from=updated_from,
             )
@@ -5377,26 +5729,26 @@ class FinanceJournalLinesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, journal_entry_ids: Any = UNSET, account_ids: Any = UNSET, journal_entry_types: Any = UNSET, reconciliation_status: Any = UNSET, description: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_journal_lines."""
-        return get_api_2026_07_01_resources_finance_journal_lines.sync(client=self._client, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_journal_lines."""
+        return get_api_2026_10_01_resources_finance_journal_lines.sync(client=self._client, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, journal_entry_ids: Any = UNSET, account_ids: Any = UNSET, journal_entry_types: Any = UNSET, reconciliation_status: Any = UNSET, description: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_journal_lines.asyncio(client=self._client, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_journal_lines.asyncio(client=self._client, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_journal_lines_id."""
-        return get_api_2026_07_01_resources_finance_journal_lines_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_journal_lines_id."""
+        return get_api_2026_10_01_resources_finance_journal_lines_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_journal_lines_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_journal_lines_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, journal_entry_ids: Any = UNSET, account_ids: Any = UNSET, journal_entry_types: Any = UNSET, reconciliation_status: Any = UNSET, description: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_journal_lines,
+                get_api_2026_10_01_resources_finance_journal_lines,
                 self._client,
                 after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
@@ -5406,7 +5758,7 @@ class FinanceJournalLinesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_journal_lines,
+                get_api_2026_10_01_resources_finance_journal_lines,
                 self._client,
                 after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
@@ -5416,7 +5768,7 @@ class FinanceJournalLinesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_journal_lines,
+                get_api_2026_10_01_resources_finance_journal_lines,
                 self._client,
                 after_id, limit=limit, ids=ids, journal_entry_ids=journal_entry_ids, account_ids=account_ids, journal_entry_types=journal_entry_types, reconciliation_status=reconciliation_status, description=description, updated_from=updated_from,
             )
@@ -5430,34 +5782,34 @@ class FinanceLedgerAccountResourcesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, resource_ids: Any = UNSET, resource_type: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET, finance_account_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_ledger_account_resources."""
-        return get_api_2026_07_01_resources_finance_ledger_account_resources.sync(client=self._client, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids)
+        """Calls get_api_2026_10_01_resources_finance_ledger_account_resources."""
+        return get_api_2026_10_01_resources_finance_ledger_account_resources.sync(client=self._client, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids)
 
     async def list_async(self, ids: Any = UNSET, resource_ids: Any = UNSET, resource_type: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET, finance_account_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_ledger_account_resources.asyncio(client=self._client, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids)
+        return await get_api_2026_10_01_resources_finance_ledger_account_resources.asyncio(client=self._client, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_ledger_account_resources_id."""
-        return get_api_2026_07_01_resources_finance_ledger_account_resources_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_ledger_account_resources_id."""
+        return get_api_2026_10_01_resources_finance_ledger_account_resources_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_ledger_account_resources_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_ledger_account_resources_id.asyncio(id, client=self._client)
 
     def upsert(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_ledger_account_resources_upsert."""
-        return post_api_2026_07_01_resources_finance_ledger_account_resources_upsert.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_ledger_account_resources_upsert."""
+        return post_api_2026_10_01_resources_finance_ledger_account_resources_upsert.sync(client=self._client, body=body)
 
     async def upsert_async(self, body: Any = UNSET) -> Any:
         """Async version of upsert."""
-        return await post_api_2026_07_01_resources_finance_ledger_account_resources_upsert.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_ledger_account_resources_upsert.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, resource_ids: Any = UNSET, resource_type: Any = UNSET, legal_entity_ids: Any = UNSET, updated_from: Any = UNSET, finance_account_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                get_api_2026_10_01_resources_finance_ledger_account_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
@@ -5467,7 +5819,7 @@ class FinanceLedgerAccountResourcesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                get_api_2026_10_01_resources_finance_ledger_account_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
@@ -5477,7 +5829,7 @@ class FinanceLedgerAccountResourcesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_ledger_account_resources,
+                get_api_2026_10_01_resources_finance_ledger_account_resources,
                 self._client,
                 after_id, limit=limit, ids=ids, resource_ids=resource_ids, resource_type=resource_type, legal_entity_ids=legal_entity_ids, updated_from=updated_from, finance_account_ids=finance_account_ids,
             )
@@ -5491,42 +5843,42 @@ class FinanceTaxRatesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, tax_type_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_tax_rates."""
-        return get_api_2026_07_01_resources_finance_tax_rates.sync(client=self._client, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_tax_rates."""
+        return get_api_2026_10_01_resources_finance_tax_rates.sync(client=self._client, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, tax_type_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_tax_rates.asyncio(client=self._client, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_tax_rates.asyncio(client=self._client, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_tax_rates_id."""
-        return get_api_2026_07_01_resources_finance_tax_rates_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_tax_rates_id."""
+        return get_api_2026_10_01_resources_finance_tax_rates_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_tax_rates_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_tax_rates_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_tax_rates."""
-        return post_api_2026_07_01_resources_finance_tax_rates.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_tax_rates."""
+        return post_api_2026_10_01_resources_finance_tax_rates.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_tax_rates.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_tax_rates.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_finance_tax_rates_id."""
-        return put_api_2026_07_01_resources_finance_tax_rates_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_finance_tax_rates_id."""
+        return put_api_2026_10_01_resources_finance_tax_rates_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_finance_tax_rates_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_finance_tax_rates_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, tax_type_ids: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_tax_rates,
+                get_api_2026_10_01_resources_finance_tax_rates,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
@@ -5536,7 +5888,7 @@ class FinanceTaxRatesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_tax_rates,
+                get_api_2026_10_01_resources_finance_tax_rates,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
@@ -5546,7 +5898,7 @@ class FinanceTaxRatesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_tax_rates,
+                get_api_2026_10_01_resources_finance_tax_rates,
                 self._client,
                 after_id, limit=limit, ids=ids, tax_type_ids=tax_type_ids, updated_from=updated_from,
             )
@@ -5560,42 +5912,42 @@ class FinanceTaxTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, country_code: Any = UNSET, type_: Any = UNSET, updated_from: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_tax_types."""
-        return get_api_2026_07_01_resources_finance_tax_types.sync(client=self._client, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from)
+        """Calls get_api_2026_10_01_resources_finance_tax_types."""
+        return get_api_2026_10_01_resources_finance_tax_types.sync(client=self._client, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from)
 
     async def list_async(self, ids: Any = UNSET, country_code: Any = UNSET, type_: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_finance_tax_types.asyncio(client=self._client, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from)
+        return await get_api_2026_10_01_resources_finance_tax_types.asyncio(client=self._client, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_finance_tax_types_id."""
-        return get_api_2026_07_01_resources_finance_tax_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_finance_tax_types_id."""
+        return get_api_2026_10_01_resources_finance_tax_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_finance_tax_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_finance_tax_types_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_finance_tax_types."""
-        return post_api_2026_07_01_resources_finance_tax_types.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_finance_tax_types."""
+        return post_api_2026_10_01_resources_finance_tax_types.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_finance_tax_types.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_finance_tax_types.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_finance_tax_types_id."""
-        return put_api_2026_07_01_resources_finance_tax_types_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_finance_tax_types_id."""
+        return put_api_2026_10_01_resources_finance_tax_types_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_finance_tax_types_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_finance_tax_types_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, country_code: Any = UNSET, type_: Any = UNSET, updated_from: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_tax_types,
+                get_api_2026_10_01_resources_finance_tax_types,
                 self._client,
                 after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
@@ -5605,7 +5957,7 @@ class FinanceTaxTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_finance_tax_types,
+                get_api_2026_10_01_resources_finance_tax_types,
                 self._client,
                 after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
@@ -5615,7 +5967,7 @@ class FinanceTaxTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_finance_tax_types,
+                get_api_2026_10_01_resources_finance_tax_types,
                 self._client,
                 after_id, limit=limit, ids=ids, country_code=country_code, type_=type_, updated_from=updated_from,
             )
@@ -5629,26 +5981,26 @@ class HolidaysCompanyHolidaysResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, location_ids: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_holidays_company_holidays."""
-        return get_api_2026_07_01_resources_holidays_company_holidays.sync(client=self._client, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at)
+        """Calls get_api_2026_10_01_resources_holidays_company_holidays."""
+        return get_api_2026_10_01_resources_holidays_company_holidays.sync(client=self._client, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at)
 
     async def list_async(self, ids: Any = UNSET, location_ids: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_holidays_company_holidays.asyncio(client=self._client, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at)
+        return await get_api_2026_10_01_resources_holidays_company_holidays.asyncio(client=self._client, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_holidays_company_holidays_id."""
-        return get_api_2026_07_01_resources_holidays_company_holidays_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_holidays_company_holidays_id."""
+        return get_api_2026_10_01_resources_holidays_company_holidays_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_holidays_company_holidays_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_holidays_company_holidays_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, location_ids: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_holidays_company_holidays,
+                get_api_2026_10_01_resources_holidays_company_holidays,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
@@ -5658,7 +6010,7 @@ class HolidaysCompanyHolidaysResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_holidays_company_holidays,
+                get_api_2026_10_01_resources_holidays_company_holidays,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
@@ -5668,7 +6020,7 @@ class HolidaysCompanyHolidaysResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_holidays_company_holidays,
+                get_api_2026_10_01_resources_holidays_company_holidays,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, team_ids=team_ids, employee_ids=employee_ids, start_at=start_at, end_at=end_at,
             )
@@ -5682,12 +6034,73 @@ class IntegrationsSyncRunOutputsResource:
         self._client = client
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_integrations_sync_run_outputs."""
-        return post_api_2026_07_01_resources_integrations_sync_run_outputs.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_integrations_sync_run_outputs."""
+        return post_api_2026_10_01_resources_integrations_sync_run_outputs.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_integrations_sync_run_outputs.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_integrations_sync_run_outputs.asyncio(client=self._client, body=body)
+
+
+class IntegrationsSyncRunsResource:
+    """Methods for the integrations > sync_runs resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, marketplace_integration_uuid: Any = UNSET, created_at_gteq: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_sync_runs."""
+        return get_api_2026_10_01_resources_integrations_sync_runs.sync(client=self._client, ids=ids, marketplace_integration_uuid=marketplace_integration_uuid, created_at_gteq=created_at_gteq)
+
+    async def list_async(self, ids: Any = UNSET, marketplace_integration_uuid: Any = UNSET, created_at_gteq: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_integrations_sync_runs.asyncio(client=self._client, ids=ids, marketplace_integration_uuid=marketplace_integration_uuid, created_at_gteq=created_at_gteq)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_sync_runs_id."""
+        return get_api_2026_10_01_resources_integrations_sync_runs_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_integrations_sync_runs_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_integrations_sync_runs."""
+        return post_api_2026_10_01_resources_integrations_sync_runs.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_integrations_sync_runs.asyncio(client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, marketplace_integration_uuid: Any = UNSET, created_at_gteq: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, marketplace_integration_uuid=marketplace_integration_uuid, created_at_gteq=created_at_gteq,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, marketplace_integration_uuid: Any = UNSET, created_at_gteq: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, marketplace_integration_uuid=marketplace_integration_uuid, created_at_gteq=created_at_gteq,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, marketplace_integration_uuid: Any = UNSET, created_at_gteq: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_integrations_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, marketplace_integration_uuid=marketplace_integration_uuid, created_at_gteq=created_at_gteq,
+            )
+        return paginate_async(fetcher, max_items=max_items)
 
 
 class IntegrationsSyncableItemsResource:
@@ -5697,18 +6110,18 @@ class IntegrationsSyncableItemsResource:
         self._client = client
 
     def list(self, sync_run_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_integrations_syncable_items."""
-        return get_api_2026_07_01_resources_integrations_syncable_items.sync(client=self._client, sync_run_id=sync_run_id)
+        """Calls get_api_2026_10_01_resources_integrations_syncable_items."""
+        return get_api_2026_10_01_resources_integrations_syncable_items.sync(client=self._client, sync_run_id=sync_run_id)
 
     async def list_async(self, sync_run_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_integrations_syncable_items.asyncio(client=self._client, sync_run_id=sync_run_id)
+        return await get_api_2026_10_01_resources_integrations_syncable_items.asyncio(client=self._client, sync_run_id=sync_run_id)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, sync_run_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_integrations_syncable_items,
+                get_api_2026_10_01_resources_integrations_syncable_items,
                 self._client,
                 after_id, limit=limit, sync_run_id=sync_run_id,
             )
@@ -5718,7 +6131,7 @@ class IntegrationsSyncableItemsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_integrations_syncable_items,
+                get_api_2026_10_01_resources_integrations_syncable_items,
                 self._client,
                 after_id, limit=limit, sync_run_id=sync_run_id,
             )
@@ -5728,9 +6141,62 @@ class IntegrationsSyncableItemsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_integrations_syncable_items,
+                get_api_2026_10_01_resources_integrations_syncable_items,
                 self._client,
                 after_id, limit=limit, sync_run_id=sync_run_id,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class IntegrationsSyncableStatesResource:
+    """Methods for the integrations > syncable_states resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, syncable_ids: Any = UNSET, resource_syncable_type: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_syncable_states."""
+        return get_api_2026_10_01_resources_integrations_syncable_states.sync(client=self._client, ids=ids, syncable_ids=syncable_ids, resource_syncable_type=resource_syncable_type, integration_uuid=integration_uuid)
+
+    async def list_async(self, ids: Any = UNSET, syncable_ids: Any = UNSET, resource_syncable_type: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_integrations_syncable_states.asyncio(client=self._client, ids=ids, syncable_ids=syncable_ids, resource_syncable_type=resource_syncable_type, integration_uuid=integration_uuid)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_syncable_states_id."""
+        return get_api_2026_10_01_resources_integrations_syncable_states_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_integrations_syncable_states_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, syncable_ids: Any = UNSET, resource_syncable_type: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_syncable_states,
+                self._client,
+                after_id, limit=limit, ids=ids, syncable_ids=syncable_ids, resource_syncable_type=resource_syncable_type, integration_uuid=integration_uuid,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, syncable_ids: Any = UNSET, resource_syncable_type: Any = UNSET, integration_uuid: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_syncable_states,
+                self._client,
+                after_id, limit=limit, ids=ids, syncable_ids=syncable_ids, resource_syncable_type=resource_syncable_type, integration_uuid=integration_uuid,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, syncable_ids: Any = UNSET, resource_syncable_type: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_integrations_syncable_states,
+                self._client,
+                after_id, limit=limit, ids=ids, syncable_ids=syncable_ids, resource_syncable_type=resource_syncable_type, integration_uuid=integration_uuid,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5741,58 +6207,96 @@ class IntegrationsSyncableSyncRunsResource:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
+    def list(self, ids: Any = UNSET, sync_run_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_syncable_sync_runs."""
+        return get_api_2026_10_01_resources_integrations_syncable_sync_runs.sync(client=self._client, ids=ids, sync_run_ids=sync_run_ids)
+
+    async def list_async(self, ids: Any = UNSET, sync_run_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_integrations_syncable_sync_runs.asyncio(client=self._client, ids=ids, sync_run_ids=sync_run_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_integrations_syncable_sync_runs_id."""
+        return get_api_2026_10_01_resources_integrations_syncable_sync_runs_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_integrations_syncable_sync_runs_id.asyncio(id, client=self._client)
+
+    def bulk_upsert(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_integrations_syncable_sync_runs_bulk_upsert."""
+        return post_api_2026_10_01_resources_integrations_syncable_sync_runs_bulk_upsert.sync(client=self._client, body=body)
+
+    async def bulk_upsert_async(self, body: Any = UNSET) -> Any:
+        """Async version of bulk_upsert."""
+        return await post_api_2026_10_01_resources_integrations_syncable_sync_runs_bulk_upsert.asyncio(client=self._client, body=body)
+
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_integrations_syncable_sync_runs_id."""
-        return put_api_2026_07_01_resources_integrations_syncable_sync_runs_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_integrations_syncable_sync_runs_id."""
+        return put_api_2026_10_01_resources_integrations_syncable_sync_runs_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_integrations_syncable_sync_runs_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_integrations_syncable_sync_runs_id.asyncio(id, client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, sync_run_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_syncable_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, sync_run_ids=sync_run_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, sync_run_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_integrations_syncable_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, sync_run_ids=sync_run_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, sync_run_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_integrations_syncable_sync_runs,
+                self._client,
+                after_id, limit=limit, ids=ids, sync_run_ids=sync_run_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
 
 
-class ItManagementItAssetModelsResource:
-    """Methods for the it_management > it_asset_models resource."""
+class ItManagementAssetCategoriesResource:
+    """Methods for the it_management > asset_categories resource."""
 
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_it_management_it_asset_models."""
-        return get_api_2026_07_01_resources_it_management_it_asset_models.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_it_management_asset_categories."""
+        return get_api_2026_10_01_resources_it_management_asset_categories.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_it_management_it_asset_models.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_it_management_asset_categories.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_it_management_it_asset_models_id."""
-        return get_api_2026_07_01_resources_it_management_it_asset_models_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_it_management_asset_categories_id."""
+        return get_api_2026_10_01_resources_it_management_asset_categories_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_it_management_it_asset_models_id.asyncio(id, client=self._client)
-
-    def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_it_management_it_asset_models."""
-        return post_api_2026_07_01_resources_it_management_it_asset_models.sync(client=self._client, body=body)
-
-    async def create_async(self, body: Any = UNSET) -> Any:
-        """Async version of create."""
-        return await post_api_2026_07_01_resources_it_management_it_asset_models.asyncio(client=self._client, body=body)
-
-    def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_it_management_it_asset_models_id."""
-        return put_api_2026_07_01_resources_it_management_it_asset_models_id.sync(id, client=self._client, body=body)
-
-    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
-        """Async version of update."""
-        return await put_api_2026_07_01_resources_it_management_it_asset_models_id.asyncio(id, client=self._client, body=body)
+        return await get_api_2026_10_01_resources_it_management_asset_categories_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_it_management_it_asset_models,
+                get_api_2026_10_01_resources_it_management_asset_categories,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -5802,7 +6306,7 @@ class ItManagementItAssetModelsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_it_management_it_asset_models,
+                get_api_2026_10_01_resources_it_management_asset_categories,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -5812,7 +6316,76 @@ class ItManagementItAssetModelsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_it_management_it_asset_models,
+                get_api_2026_10_01_resources_it_management_asset_categories,
+                self._client,
+                after_id, limit=limit, ids=ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ItManagementItAssetModelsResource:
+    """Methods for the it_management > it_asset_models resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_it_management_it_asset_models."""
+        return get_api_2026_10_01_resources_it_management_it_asset_models.sync(client=self._client, ids=ids)
+
+    async def list_async(self, ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_it_management_it_asset_models.asyncio(client=self._client, ids=ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_it_management_it_asset_models_id."""
+        return get_api_2026_10_01_resources_it_management_it_asset_models_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_it_management_it_asset_models_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_it_management_it_asset_models."""
+        return post_api_2026_10_01_resources_it_management_it_asset_models.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_it_management_it_asset_models.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_it_management_it_asset_models_id."""
+        return put_api_2026_10_01_resources_it_management_it_asset_models_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_it_management_it_asset_models_id.asyncio(id, client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_it_management_it_asset_models,
+                self._client,
+                after_id, limit=limit, ids=ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_it_management_it_asset_models,
+                self._client,
+                after_id, limit=limit, ids=ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_it_management_it_asset_models,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -5826,72 +6399,72 @@ class ItManagementItAssetsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_it_management_it_assets_id."""
-        return delete_api_2026_07_01_resources_it_management_it_assets_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_it_management_it_assets_id."""
+        return delete_api_2026_10_01_resources_it_management_it_assets_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_it_management_it_assets_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_it_management_it_assets_id.asyncio(id, client=self._client)
 
-    def list(self, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_it_management_it_assets."""
-        return get_api_2026_07_01_resources_it_management_it_assets.sync(client=self._client, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids)
+    def list(self, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, asset_category_ids: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_it_management_it_assets."""
+        return get_api_2026_10_01_resources_it_management_it_assets.sync(client=self._client, ids=ids, serial_numbers=serial_numbers, type_names=type_names, asset_category_ids=asset_category_ids, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids)
 
-    async def list_async(self, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, asset_category_ids: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_it_management_it_assets.asyncio(client=self._client, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids)
+        return await get_api_2026_10_01_resources_it_management_it_assets.asyncio(client=self._client, ids=ids, serial_numbers=serial_numbers, type_names=type_names, asset_category_ids=asset_category_ids, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_it_management_it_assets_id."""
-        return get_api_2026_07_01_resources_it_management_it_assets_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_it_management_it_assets_id."""
+        return get_api_2026_10_01_resources_it_management_it_assets_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_it_management_it_assets_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_it_management_it_assets_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_it_management_it_assets."""
-        return post_api_2026_07_01_resources_it_management_it_assets.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_it_management_it_assets."""
+        return post_api_2026_10_01_resources_it_management_it_assets.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_it_management_it_assets.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_it_management_it_assets.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_it_management_it_assets_id."""
-        return put_api_2026_07_01_resources_it_management_it_assets_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_it_management_it_assets_id."""
+        return put_api_2026_10_01_resources_it_management_it_assets_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_it_management_it_assets_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_it_management_it_assets_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, asset_category_ids: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_it_management_it_assets,
+                get_api_2026_10_01_resources_it_management_it_assets,
                 self._client,
-                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, asset_category_ids=asset_category_ids, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, asset_category_ids: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_it_management_it_assets,
+                get_api_2026_10_01_resources_it_management_it_assets,
                 self._client,
-                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, asset_category_ids=asset_category_ids, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, serial_numbers: Any = UNSET, type_names: Any = UNSET, asset_category_ids: Any = UNSET, owner_ids: Any = UNSET, location_ids: Any = UNSET, workplace_ids: Any = UNSET, team_ids: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_it_management_it_assets,
+                get_api_2026_10_01_resources_it_management_it_assets,
                 self._client,
-                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
+                after_id, limit=limit, ids=ids, serial_numbers=serial_numbers, type_names=type_names, asset_category_ids=asset_category_ids, owner_ids=owner_ids, location_ids=location_ids, workplace_ids=workplace_ids, team_ids=team_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -5903,26 +6476,26 @@ class JobCatalogLevelsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, role_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_levels."""
-        return get_api_2026_07_01_resources_job_catalog_levels.sync(client=self._client, ids=ids, role_ids=role_ids)
+        """Calls get_api_2026_10_01_resources_job_catalog_levels."""
+        return get_api_2026_10_01_resources_job_catalog_levels.sync(client=self._client, ids=ids, role_ids=role_ids)
 
     async def list_async(self, ids: Any = UNSET, role_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_job_catalog_levels.asyncio(client=self._client, ids=ids, role_ids=role_ids)
+        return await get_api_2026_10_01_resources_job_catalog_levels.asyncio(client=self._client, ids=ids, role_ids=role_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_levels_id."""
-        return get_api_2026_07_01_resources_job_catalog_levels_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_job_catalog_levels_id."""
+        return get_api_2026_10_01_resources_job_catalog_levels_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_job_catalog_levels_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_job_catalog_levels_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, role_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_levels,
+                get_api_2026_10_01_resources_job_catalog_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
@@ -5932,7 +6505,7 @@ class JobCatalogLevelsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_levels,
+                get_api_2026_10_01_resources_job_catalog_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
@@ -5942,7 +6515,7 @@ class JobCatalogLevelsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_job_catalog_levels,
+                get_api_2026_10_01_resources_job_catalog_levels,
                 self._client,
                 after_id, limit=limit, ids=ids, role_ids=role_ids,
             )
@@ -5956,18 +6529,18 @@ class JobCatalogNodeAttributesResource:
         self._client = client
 
     def list(self, node_uuid: Any = UNSET, attribute_types: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_node_attributes."""
-        return get_api_2026_07_01_resources_job_catalog_node_attributes.sync(client=self._client, node_uuid=node_uuid, attribute_types=attribute_types)
+        """Calls get_api_2026_10_01_resources_job_catalog_node_attributes."""
+        return get_api_2026_10_01_resources_job_catalog_node_attributes.sync(client=self._client, node_uuid=node_uuid, attribute_types=attribute_types)
 
     async def list_async(self, node_uuid: Any = UNSET, attribute_types: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_job_catalog_node_attributes.asyncio(client=self._client, node_uuid=node_uuid, attribute_types=attribute_types)
+        return await get_api_2026_10_01_resources_job_catalog_node_attributes.asyncio(client=self._client, node_uuid=node_uuid, attribute_types=attribute_types)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, node_uuid: Any = UNSET, attribute_types: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                get_api_2026_10_01_resources_job_catalog_node_attributes,
                 self._client,
                 after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
@@ -5977,7 +6550,7 @@ class JobCatalogNodeAttributesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                get_api_2026_10_01_resources_job_catalog_node_attributes,
                 self._client,
                 after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
@@ -5987,7 +6560,7 @@ class JobCatalogNodeAttributesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_job_catalog_node_attributes,
+                get_api_2026_10_01_resources_job_catalog_node_attributes,
                 self._client,
                 after_id, limit=limit, node_uuid=node_uuid, attribute_types=attribute_types,
             )
@@ -6001,26 +6574,26 @@ class JobCatalogRolesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_roles."""
-        return get_api_2026_07_01_resources_job_catalog_roles.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_job_catalog_roles."""
+        return get_api_2026_10_01_resources_job_catalog_roles.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_job_catalog_roles.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_job_catalog_roles.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_roles_id."""
-        return get_api_2026_07_01_resources_job_catalog_roles_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_job_catalog_roles_id."""
+        return get_api_2026_10_01_resources_job_catalog_roles_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_job_catalog_roles_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_job_catalog_roles_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_roles,
+                get_api_2026_10_01_resources_job_catalog_roles,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6030,7 +6603,7 @@ class JobCatalogRolesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_roles,
+                get_api_2026_10_01_resources_job_catalog_roles,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6040,7 +6613,7 @@ class JobCatalogRolesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_job_catalog_roles,
+                get_api_2026_10_01_resources_job_catalog_roles,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6054,18 +6627,18 @@ class JobCatalogTreeNodesResource:
         self._client = client
 
     def list(self, uuids: Any = UNSET, node_type: Any = UNSET, ancestor_uuids: Any = UNSET, include_full_path: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_job_catalog_tree_nodes."""
-        return get_api_2026_07_01_resources_job_catalog_tree_nodes.sync(client=self._client, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path)
+        """Calls get_api_2026_10_01_resources_job_catalog_tree_nodes."""
+        return get_api_2026_10_01_resources_job_catalog_tree_nodes.sync(client=self._client, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path)
 
     async def list_async(self, uuids: Any = UNSET, node_type: Any = UNSET, ancestor_uuids: Any = UNSET, include_full_path: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_job_catalog_tree_nodes.asyncio(client=self._client, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path)
+        return await get_api_2026_10_01_resources_job_catalog_tree_nodes.asyncio(client=self._client, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, uuids: Any = UNSET, node_type: Any = UNSET, ancestor_uuids: Any = UNSET, include_full_path: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                get_api_2026_10_01_resources_job_catalog_tree_nodes,
                 self._client,
                 after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
@@ -6075,7 +6648,7 @@ class JobCatalogTreeNodesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                get_api_2026_10_01_resources_job_catalog_tree_nodes,
                 self._client,
                 after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
@@ -6085,7 +6658,7 @@ class JobCatalogTreeNodesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_job_catalog_tree_nodes,
+                get_api_2026_10_01_resources_job_catalog_tree_nodes,
                 self._client,
                 after_id, limit=limit, uuids=uuids, node_type=node_type, ancestor_uuids=ancestor_uuids, include_full_path=include_full_path,
             )
@@ -6099,50 +6672,50 @@ class LocationsLocationsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_locations_locations_id."""
-        return delete_api_2026_07_01_resources_locations_locations_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_locations_locations_id."""
+        return delete_api_2026_10_01_resources_locations_locations_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_locations_locations_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_locations_locations_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, main: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_locations_locations."""
-        return get_api_2026_07_01_resources_locations_locations.sync(client=self._client, ids=ids, employee_ids=employee_ids, main=main)
+        """Calls get_api_2026_10_01_resources_locations_locations."""
+        return get_api_2026_10_01_resources_locations_locations.sync(client=self._client, ids=ids, employee_ids=employee_ids, main=main)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, main: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_locations_locations.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, main=main)
+        return await get_api_2026_10_01_resources_locations_locations.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, main=main)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_locations_locations_id."""
-        return get_api_2026_07_01_resources_locations_locations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_locations_locations_id."""
+        return get_api_2026_10_01_resources_locations_locations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_locations_locations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_locations_locations_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_locations_locations."""
-        return post_api_2026_07_01_resources_locations_locations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_locations_locations."""
+        return post_api_2026_10_01_resources_locations_locations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_locations_locations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_locations_locations.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_locations_locations_id."""
-        return put_api_2026_07_01_resources_locations_locations_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_locations_locations_id."""
+        return put_api_2026_10_01_resources_locations_locations_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_locations_locations_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_locations_locations_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, main: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_locations_locations,
+                get_api_2026_10_01_resources_locations_locations,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
@@ -6152,7 +6725,7 @@ class LocationsLocationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_locations_locations,
+                get_api_2026_10_01_resources_locations_locations,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
@@ -6162,7 +6735,7 @@ class LocationsLocationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_locations_locations,
+                get_api_2026_10_01_resources_locations_locations,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, main=main,
             )
@@ -6176,58 +6749,58 @@ class LocationsWorkAreasResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, location_ids: Any = UNSET, only_non_archived: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_locations_work_areas."""
-        return get_api_2026_07_01_resources_locations_work_areas.sync(client=self._client, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived)
+        """Calls get_api_2026_10_01_resources_locations_work_areas."""
+        return get_api_2026_10_01_resources_locations_work_areas.sync(client=self._client, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived)
 
     async def list_async(self, ids: Any = UNSET, location_ids: Any = UNSET, only_non_archived: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_locations_work_areas.asyncio(client=self._client, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived)
+        return await get_api_2026_10_01_resources_locations_work_areas.asyncio(client=self._client, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_locations_work_areas_id."""
-        return get_api_2026_07_01_resources_locations_work_areas_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_locations_work_areas_id."""
+        return get_api_2026_10_01_resources_locations_work_areas_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_locations_work_areas_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_locations_work_areas_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_locations_work_areas."""
-        return post_api_2026_07_01_resources_locations_work_areas.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_locations_work_areas."""
+        return post_api_2026_10_01_resources_locations_work_areas.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_locations_work_areas.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_locations_work_areas.asyncio(client=self._client, body=body)
 
     def archive(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_locations_work_areas_archive."""
-        return post_api_2026_07_01_resources_locations_work_areas_archive.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_locations_work_areas_archive."""
+        return post_api_2026_10_01_resources_locations_work_areas_archive.sync(client=self._client, body=body)
 
     async def archive_async(self, body: Any = UNSET) -> Any:
         """Async version of archive."""
-        return await post_api_2026_07_01_resources_locations_work_areas_archive.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_locations_work_areas_archive.asyncio(client=self._client, body=body)
 
     def unarchive(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_locations_work_areas_unarchive."""
-        return post_api_2026_07_01_resources_locations_work_areas_unarchive.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_locations_work_areas_unarchive."""
+        return post_api_2026_10_01_resources_locations_work_areas_unarchive.sync(client=self._client, body=body)
 
     async def unarchive_async(self, body: Any = UNSET) -> Any:
         """Async version of unarchive."""
-        return await post_api_2026_07_01_resources_locations_work_areas_unarchive.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_locations_work_areas_unarchive.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_locations_work_areas_id."""
-        return put_api_2026_07_01_resources_locations_work_areas_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_locations_work_areas_id."""
+        return put_api_2026_10_01_resources_locations_work_areas_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_locations_work_areas_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_locations_work_areas_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, location_ids: Any = UNSET, only_non_archived: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_locations_work_areas,
+                get_api_2026_10_01_resources_locations_work_areas,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
@@ -6237,7 +6810,7 @@ class LocationsWorkAreasResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_locations_work_areas,
+                get_api_2026_10_01_resources_locations_work_areas,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
@@ -6247,7 +6820,7 @@ class LocationsWorkAreasResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_locations_work_areas,
+                get_api_2026_10_01_resources_locations_work_areas,
                 self._client,
                 after_id, limit=limit, ids=ids, location_ids=location_ids, only_non_archived=only_non_archived,
             )
@@ -6260,41 +6833,41 @@ class MarketplaceInstallationSettingsResource:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
-    def list(self, company_id: Any = UNSET, integration_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_marketplace_installation_settings."""
-        return get_api_2026_07_01_resources_marketplace_installation_settings.sync(client=self._client, company_id=company_id, integration_id=integration_id)
+    def list(self, company_id: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_marketplace_installation_settings."""
+        return get_api_2026_10_01_resources_marketplace_installation_settings.sync(client=self._client, company_id=company_id, integration_uuid=integration_uuid)
 
-    async def list_async(self, company_id: Any = UNSET, integration_id: Any = UNSET) -> Any:
+    async def list_async(self, company_id: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_marketplace_installation_settings.asyncio(client=self._client, company_id=company_id, integration_id=integration_id)
+        return await get_api_2026_10_01_resources_marketplace_installation_settings.asyncio(client=self._client, company_id=company_id, integration_uuid=integration_uuid)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_id: Any = UNSET) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_marketplace_installation_settings,
+                get_api_2026_10_01_resources_marketplace_installation_settings,
                 self._client,
-                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
+                after_id, limit=limit, company_id=company_id, integration_uuid=integration_uuid,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_id: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_uuid: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_marketplace_installation_settings,
+                get_api_2026_10_01_resources_marketplace_installation_settings,
                 self._client,
-                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
+                after_id, limit=limit, company_id=company_id, integration_uuid=integration_uuid,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_id: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, company_id: Any = UNSET, integration_uuid: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_marketplace_installation_settings,
+                get_api_2026_10_01_resources_marketplace_installation_settings,
                 self._client,
-                after_id, limit=limit, company_id=company_id, integration_id=integration_id,
+                after_id, limit=limit, company_id=company_id, integration_uuid=integration_uuid,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6306,12 +6879,12 @@ class MarketplaceInstallationsResource:
         self._client = client
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_marketplace_installations."""
-        return post_api_2026_07_01_resources_marketplace_installations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_marketplace_installations."""
+        return post_api_2026_10_01_resources_marketplace_installations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_marketplace_installations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_marketplace_installations.asyncio(client=self._client, body=body)
 
 
 class PayrollFamilySituationsResource:
@@ -6321,34 +6894,34 @@ class PayrollFamilySituationsResource:
         self._client = client
 
     def list(self, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_family_situations."""
-        return get_api_2026_07_01_resources_payroll_family_situations.sync(client=self._client, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_payroll_family_situations."""
+        return get_api_2026_10_01_resources_payroll_family_situations.sync(client=self._client, employee_ids=employee_ids)
 
     async def list_async(self, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_payroll_family_situations.asyncio(client=self._client, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_payroll_family_situations.asyncio(client=self._client, employee_ids=employee_ids)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_payroll_family_situations."""
-        return post_api_2026_07_01_resources_payroll_family_situations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_payroll_family_situations."""
+        return post_api_2026_10_01_resources_payroll_family_situations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_payroll_family_situations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_payroll_family_situations.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_payroll_family_situations_id."""
-        return put_api_2026_07_01_resources_payroll_family_situations_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_payroll_family_situations_id."""
+        return put_api_2026_10_01_resources_payroll_family_situations_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_payroll_family_situations_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_payroll_family_situations_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_family_situations,
+                get_api_2026_10_01_resources_payroll_family_situations,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -6358,7 +6931,7 @@ class PayrollFamilySituationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_family_situations,
+                get_api_2026_10_01_resources_payroll_family_situations,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -6368,7 +6941,7 @@ class PayrollFamilySituationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_payroll_family_situations,
+                get_api_2026_10_01_resources_payroll_family_situations,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids,
             )
@@ -6382,12 +6955,12 @@ class PayrollPolicyPeriodsResource:
         self._client = client
 
     def change_status(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_payroll_policy_periods_change_status."""
-        return post_api_2026_07_01_resources_payroll_policy_periods_change_status.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_payroll_policy_periods_change_status."""
+        return post_api_2026_10_01_resources_payroll_policy_periods_change_status.sync(client=self._client, body=body)
 
     async def change_status_async(self, body: Any = UNSET) -> Any:
         """Async version of change_status."""
-        return await post_api_2026_07_01_resources_payroll_policy_periods_change_status.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_payroll_policy_periods_change_status.asyncio(client=self._client, body=body)
 
 
 class PayrollSupplementsResource:
@@ -6397,50 +6970,50 @@ class PayrollSupplementsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_payroll_supplements_id."""
-        return delete_api_2026_07_01_resources_payroll_supplements_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_payroll_supplements_id."""
+        return delete_api_2026_10_01_resources_payroll_supplements_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_payroll_supplements_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_payroll_supplements_id.asyncio(id, client=self._client)
 
     def list(self, from_: Any = UNSET, to: Any = UNSET, employee_ids: Any = UNSET, policy_period_ids: Any = UNSET, compensation_id: Any = UNSET, ids: Any = UNSET, legal_entity_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_supplements."""
-        return get_api_2026_07_01_resources_payroll_supplements.sync(client=self._client, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids)
+        """Calls get_api_2026_10_01_resources_payroll_supplements."""
+        return get_api_2026_10_01_resources_payroll_supplements.sync(client=self._client, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids)
 
     async def list_async(self, from_: Any = UNSET, to: Any = UNSET, employee_ids: Any = UNSET, policy_period_ids: Any = UNSET, compensation_id: Any = UNSET, ids: Any = UNSET, legal_entity_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_payroll_supplements.asyncio(client=self._client, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids)
+        return await get_api_2026_10_01_resources_payroll_supplements.asyncio(client=self._client, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_supplements_id."""
-        return get_api_2026_07_01_resources_payroll_supplements_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_payroll_supplements_id."""
+        return get_api_2026_10_01_resources_payroll_supplements_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_payroll_supplements_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_payroll_supplements_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_payroll_supplements."""
-        return post_api_2026_07_01_resources_payroll_supplements.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_payroll_supplements."""
+        return post_api_2026_10_01_resources_payroll_supplements.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_payroll_supplements.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_payroll_supplements.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_payroll_supplements_id."""
-        return put_api_2026_07_01_resources_payroll_supplements_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_payroll_supplements_id."""
+        return put_api_2026_10_01_resources_payroll_supplements_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_payroll_supplements_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_payroll_supplements_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, from_: Any = UNSET, to: Any = UNSET, employee_ids: Any = UNSET, policy_period_ids: Any = UNSET, compensation_id: Any = UNSET, ids: Any = UNSET, legal_entity_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_supplements,
+                get_api_2026_10_01_resources_payroll_supplements,
                 self._client,
                 after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
             )
@@ -6450,7 +7023,7 @@ class PayrollSupplementsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_supplements,
+                get_api_2026_10_01_resources_payroll_supplements,
                 self._client,
                 after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
             )
@@ -6460,9 +7033,78 @@ class PayrollSupplementsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_payroll_supplements,
+                get_api_2026_10_01_resources_payroll_supplements,
                 self._client,
                 after_id, limit=limit, from_=from_, to=to, employee_ids=employee_ids, policy_period_ids=policy_period_ids, compensation_id=compensation_id, ids=ids, legal_entity_ids=legal_entity_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class PayrollEmployeesGermanEmployeeDataResource:
+    """Methods for the payroll_employees > german_employee_data resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_payroll_employees_german_employee_data."""
+        return get_api_2026_10_01_resources_payroll_employees_german_employee_data.sync(client=self._client, ids=ids, employee_ids=employee_ids)
+
+    async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_payroll_employees_german_employee_data.asyncio(client=self._client, ids=ids, employee_ids=employee_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_payroll_employees_german_employee_data_id."""
+        return get_api_2026_10_01_resources_payroll_employees_german_employee_data_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_payroll_employees_german_employee_data_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_payroll_employees_german_employee_data."""
+        return post_api_2026_10_01_resources_payroll_employees_german_employee_data.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_payroll_employees_german_employee_data.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_payroll_employees_german_employee_data_id."""
+        return put_api_2026_10_01_resources_payroll_employees_german_employee_data_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_payroll_employees_german_employee_data_id.asyncio(id, client=self._client, body=body)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_payroll_employees_german_employee_data,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_payroll_employees_german_employee_data,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_payroll_employees_german_employee_data,
+                self._client,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -6474,50 +7116,50 @@ class PayrollEmployeesIdentifiersResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_payroll_employees_identifiers_id."""
-        return delete_api_2026_07_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_payroll_employees_identifiers_id."""
+        return delete_api_2026_10_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employees_ids: Any = UNSET, legal_entities_ids: Any = UNSET, country: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_employees_identifiers."""
-        return get_api_2026_07_01_resources_payroll_employees_identifiers.sync(client=self._client, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country)
+        """Calls get_api_2026_10_01_resources_payroll_employees_identifiers."""
+        return get_api_2026_10_01_resources_payroll_employees_identifiers.sync(client=self._client, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country)
 
     async def list_async(self, ids: Any = UNSET, employees_ids: Any = UNSET, legal_entities_ids: Any = UNSET, country: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_payroll_employees_identifiers.asyncio(client=self._client, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country)
+        return await get_api_2026_10_01_resources_payroll_employees_identifiers.asyncio(client=self._client, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_employees_identifiers_id."""
-        return get_api_2026_07_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_payroll_employees_identifiers_id."""
+        return get_api_2026_10_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_payroll_employees_identifiers."""
-        return post_api_2026_07_01_resources_payroll_employees_identifiers.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_payroll_employees_identifiers."""
+        return post_api_2026_10_01_resources_payroll_employees_identifiers.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_payroll_employees_identifiers.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_payroll_employees_identifiers.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_payroll_employees_identifiers_id."""
-        return put_api_2026_07_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_payroll_employees_identifiers_id."""
+        return put_api_2026_10_01_resources_payroll_employees_identifiers_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_payroll_employees_identifiers_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employees_ids: Any = UNSET, legal_entities_ids: Any = UNSET, country: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                get_api_2026_10_01_resources_payroll_employees_identifiers,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
@@ -6527,7 +7169,7 @@ class PayrollEmployeesIdentifiersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                get_api_2026_10_01_resources_payroll_employees_identifiers,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
@@ -6537,7 +7179,7 @@ class PayrollEmployeesIdentifiersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_payroll_employees_identifiers,
+                get_api_2026_10_01_resources_payroll_employees_identifiers,
                 self._client,
                 after_id, limit=limit, ids=ids, employees_ids=employees_ids, legal_entities_ids=legal_entities_ids, country=country,
             )
@@ -6551,42 +7193,42 @@ class PayrollIntegrationsBaseCodesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_payroll_integrations_base_codes_id."""
-        return delete_api_2026_07_01_resources_payroll_integrations_base_codes_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_payroll_integrations_base_codes_id."""
+        return delete_api_2026_10_01_resources_payroll_integrations_base_codes_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_payroll_integrations_base_codes_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_payroll_integrations_base_codes_id.asyncio(id, client=self._client)
 
     def list(self, code: Any = UNSET, integrations: Any = UNSET, codeable_id: Any = UNSET, codeable_type: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_payroll_integrations_base_codes."""
-        return get_api_2026_07_01_resources_payroll_integrations_base_codes.sync(client=self._client, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type)
+        """Calls get_api_2026_10_01_resources_payroll_integrations_base_codes."""
+        return get_api_2026_10_01_resources_payroll_integrations_base_codes.sync(client=self._client, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type)
 
     async def list_async(self, code: Any = UNSET, integrations: Any = UNSET, codeable_id: Any = UNSET, codeable_type: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_payroll_integrations_base_codes.asyncio(client=self._client, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type)
+        return await get_api_2026_10_01_resources_payroll_integrations_base_codes.asyncio(client=self._client, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_payroll_integrations_base_codes."""
-        return post_api_2026_07_01_resources_payroll_integrations_base_codes.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_payroll_integrations_base_codes."""
+        return post_api_2026_10_01_resources_payroll_integrations_base_codes.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_payroll_integrations_base_codes.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_payroll_integrations_base_codes.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_payroll_integrations_base_codes_id."""
-        return put_api_2026_07_01_resources_payroll_integrations_base_codes_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_payroll_integrations_base_codes_id."""
+        return put_api_2026_10_01_resources_payroll_integrations_base_codes_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_payroll_integrations_base_codes_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_payroll_integrations_base_codes_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, code: Any = UNSET, integrations: Any = UNSET, codeable_id: Any = UNSET, codeable_type: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                get_api_2026_10_01_resources_payroll_integrations_base_codes,
                 self._client,
                 after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
@@ -6596,7 +7238,7 @@ class PayrollIntegrationsBaseCodesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                get_api_2026_10_01_resources_payroll_integrations_base_codes,
                 self._client,
                 after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
@@ -6606,7 +7248,7 @@ class PayrollIntegrationsBaseCodesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_payroll_integrations_base_codes,
+                get_api_2026_10_01_resources_payroll_integrations_base_codes,
                 self._client,
                 after_id, limit=limit, code=code, integrations=integrations, codeable_id=codeable_id, codeable_type=codeable_type,
             )
@@ -6620,42 +7262,42 @@ class PerformanceAgreementsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, process_ids: Any = UNSET, target_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_agreements."""
-        return get_api_2026_07_01_resources_performance_agreements.sync(client=self._client, ids=ids, process_ids=process_ids, target_ids=target_ids)
+        """Calls get_api_2026_10_01_resources_performance_agreements."""
+        return get_api_2026_10_01_resources_performance_agreements.sync(client=self._client, ids=ids, process_ids=process_ids, target_ids=target_ids)
 
     async def list_async(self, ids: Any = UNSET, process_ids: Any = UNSET, target_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_agreements.asyncio(client=self._client, ids=ids, process_ids=process_ids, target_ids=target_ids)
+        return await get_api_2026_10_01_resources_performance_agreements.asyncio(client=self._client, ids=ids, process_ids=process_ids, target_ids=target_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_agreements_id."""
-        return get_api_2026_07_01_resources_performance_agreements_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_agreements_id."""
+        return get_api_2026_10_01_resources_performance_agreements_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_agreements_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_agreements_id.asyncio(id, client=self._client)
 
     def bulk_initiate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_agreements_bulk_initiate."""
-        return post_api_2026_07_01_resources_performance_agreements_bulk_initiate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_agreements_bulk_initiate."""
+        return post_api_2026_10_01_resources_performance_agreements_bulk_initiate.sync(client=self._client, body=body)
 
     async def bulk_initiate_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_initiate."""
-        return await post_api_2026_07_01_resources_performance_agreements_bulk_initiate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_agreements_bulk_initiate.asyncio(client=self._client, body=body)
 
     def initiate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_agreements_initiate."""
-        return post_api_2026_07_01_resources_performance_agreements_initiate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_agreements_initiate."""
+        return post_api_2026_10_01_resources_performance_agreements_initiate.sync(client=self._client, body=body)
 
     async def initiate_async(self, body: Any = UNSET) -> Any:
         """Async version of initiate."""
-        return await post_api_2026_07_01_resources_performance_agreements_initiate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_agreements_initiate.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, process_ids: Any = UNSET, target_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_agreements,
+                get_api_2026_10_01_resources_performance_agreements,
                 self._client,
                 after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
@@ -6665,7 +7307,7 @@ class PerformanceAgreementsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_agreements,
+                get_api_2026_10_01_resources_performance_agreements,
                 self._client,
                 after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
@@ -6675,7 +7317,7 @@ class PerformanceAgreementsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_agreements,
+                get_api_2026_10_01_resources_performance_agreements,
                 self._client,
                 after_id, limit=limit, ids=ids, process_ids=process_ids, target_ids=target_ids,
             )
@@ -6689,34 +7331,34 @@ class PerformanceCompanyEmployeeScoreScalesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_company_employee_score_scales."""
-        return get_api_2026_07_01_resources_performance_company_employee_score_scales.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_performance_company_employee_score_scales."""
+        return get_api_2026_10_01_resources_performance_company_employee_score_scales.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_company_employee_score_scales.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_performance_company_employee_score_scales.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_company_employee_score_scales_id."""
-        return get_api_2026_07_01_resources_performance_company_employee_score_scales_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_company_employee_score_scales_id."""
+        return get_api_2026_10_01_resources_performance_company_employee_score_scales_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_company_employee_score_scales_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_company_employee_score_scales_id.asyncio(id, client=self._client)
 
     def set(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_company_employee_score_scales_set."""
-        return post_api_2026_07_01_resources_performance_company_employee_score_scales_set.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_company_employee_score_scales_set."""
+        return post_api_2026_10_01_resources_performance_company_employee_score_scales_set.sync(client=self._client, body=body)
 
     async def set_async(self, body: Any = UNSET) -> Any:
         """Async version of set."""
-        return await post_api_2026_07_01_resources_performance_company_employee_score_scales_set.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_company_employee_score_scales_set.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                get_api_2026_10_01_resources_performance_company_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6726,7 +7368,7 @@ class PerformanceCompanyEmployeeScoreScalesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                get_api_2026_10_01_resources_performance_company_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6736,7 +7378,7 @@ class PerformanceCompanyEmployeeScoreScalesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_company_employee_score_scales,
+                get_api_2026_10_01_resources_performance_company_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6750,26 +7392,26 @@ class PerformanceEmployeeScoreScalesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_employee_score_scales."""
-        return get_api_2026_07_01_resources_performance_employee_score_scales.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_performance_employee_score_scales."""
+        return get_api_2026_10_01_resources_performance_employee_score_scales.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_employee_score_scales.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_performance_employee_score_scales.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_employee_score_scales_id."""
-        return get_api_2026_07_01_resources_performance_employee_score_scales_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_employee_score_scales_id."""
+        return get_api_2026_10_01_resources_performance_employee_score_scales_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_employee_score_scales_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_employee_score_scales_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_employee_score_scales,
+                get_api_2026_10_01_resources_performance_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6779,7 +7421,7 @@ class PerformanceEmployeeScoreScalesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_employee_score_scales,
+                get_api_2026_10_01_resources_performance_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6789,7 +7431,7 @@ class PerformanceEmployeeScoreScalesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_employee_score_scales,
+                get_api_2026_10_01_resources_performance_employee_score_scales,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -6803,18 +7445,18 @@ class PerformanceReviewEvaluationAnswersResource:
         self._client = client
 
     def list(self, performance_review_evaluation_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_evaluation_answers."""
-        return get_api_2026_07_01_resources_performance_review_evaluation_answers.sync(client=self._client, performance_review_evaluation_ids=performance_review_evaluation_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_evaluation_answers."""
+        return get_api_2026_10_01_resources_performance_review_evaluation_answers.sync(client=self._client, performance_review_evaluation_ids=performance_review_evaluation_ids)
 
     async def list_async(self, performance_review_evaluation_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_evaluation_answers.asyncio(client=self._client, performance_review_evaluation_ids=performance_review_evaluation_ids)
+        return await get_api_2026_10_01_resources_performance_review_evaluation_answers.asyncio(client=self._client, performance_review_evaluation_ids=performance_review_evaluation_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_evaluation_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                get_api_2026_10_01_resources_performance_review_evaluation_answers,
                 self._client,
                 after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
@@ -6824,7 +7466,7 @@ class PerformanceReviewEvaluationAnswersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                get_api_2026_10_01_resources_performance_review_evaluation_answers,
                 self._client,
                 after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
@@ -6834,7 +7476,7 @@ class PerformanceReviewEvaluationAnswersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_evaluation_answers,
+                get_api_2026_10_01_resources_performance_review_evaluation_answers,
                 self._client,
                 after_id, limit=limit, performance_review_evaluation_ids=performance_review_evaluation_ids,
             )
@@ -6848,26 +7490,26 @@ class PerformanceReviewEvaluationScoresResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, review_process_ids: Any = UNSET, review_evaluation_ids: Any = UNSET, target_access_ids: Any = UNSET, reviewer_strategies: Any = UNSET, review_process_target_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_evaluation_scores."""
-        return get_api_2026_07_01_resources_performance_review_evaluation_scores.sync(client=self._client, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_evaluation_scores."""
+        return get_api_2026_10_01_resources_performance_review_evaluation_scores.sync(client=self._client, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids)
 
     async def list_async(self, ids: Any = UNSET, review_process_ids: Any = UNSET, review_evaluation_ids: Any = UNSET, target_access_ids: Any = UNSET, reviewer_strategies: Any = UNSET, review_process_target_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_evaluation_scores.asyncio(client=self._client, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids)
+        return await get_api_2026_10_01_resources_performance_review_evaluation_scores.asyncio(client=self._client, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_evaluation_scores_id."""
-        return get_api_2026_07_01_resources_performance_review_evaluation_scores_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_evaluation_scores_id."""
+        return get_api_2026_10_01_resources_performance_review_evaluation_scores_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_evaluation_scores_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_evaluation_scores_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, review_process_ids: Any = UNSET, review_evaluation_ids: Any = UNSET, target_access_ids: Any = UNSET, reviewer_strategies: Any = UNSET, review_process_target_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                get_api_2026_10_01_resources_performance_review_evaluation_scores,
                 self._client,
                 after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
@@ -6877,7 +7519,7 @@ class PerformanceReviewEvaluationScoresResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                get_api_2026_10_01_resources_performance_review_evaluation_scores,
                 self._client,
                 after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
@@ -6887,7 +7529,7 @@ class PerformanceReviewEvaluationScoresResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_evaluation_scores,
+                get_api_2026_10_01_resources_performance_review_evaluation_scores,
                 self._client,
                 after_id, limit=limit, ids=ids, review_process_ids=review_process_ids, review_evaluation_ids=review_evaluation_ids, target_access_ids=target_access_ids, reviewer_strategies=reviewer_strategies, review_process_target_ids=review_process_target_ids,
             )
@@ -6901,34 +7543,34 @@ class PerformanceReviewEvaluationsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, performance_review_process_ids: Any = UNSET, published: Any = UNSET, reviewer_ids: Any = UNSET, reviewer_strategies: Any = UNSET, target_access_ids: Any = UNSET, review_process_target_ids: Any = UNSET, with_targets_managed_by_filter: Any = UNSET, exclude_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_evaluations."""
-        return get_api_2026_07_01_resources_performance_review_evaluations.sync(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_evaluations."""
+        return get_api_2026_10_01_resources_performance_review_evaluations.sync(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids)
 
     async def list_async(self, ids: Any = UNSET, performance_review_process_ids: Any = UNSET, published: Any = UNSET, reviewer_ids: Any = UNSET, reviewer_strategies: Any = UNSET, target_access_ids: Any = UNSET, review_process_target_ids: Any = UNSET, with_targets_managed_by_filter: Any = UNSET, exclude_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_evaluations.asyncio(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids)
+        return await get_api_2026_10_01_resources_performance_review_evaluations.asyncio(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_evaluations_id."""
-        return get_api_2026_07_01_resources_performance_review_evaluations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_evaluations_id."""
+        return get_api_2026_10_01_resources_performance_review_evaluations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_evaluations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_evaluations_id.asyncio(id, client=self._client)
 
     def replace_reviewer(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_evaluations_replace_reviewer."""
-        return post_api_2026_07_01_resources_performance_review_evaluations_replace_reviewer.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_evaluations_replace_reviewer."""
+        return post_api_2026_10_01_resources_performance_review_evaluations_replace_reviewer.sync(client=self._client, body=body)
 
     async def replace_reviewer_async(self, body: Any = UNSET) -> Any:
         """Async version of replace_reviewer."""
-        return await post_api_2026_07_01_resources_performance_review_evaluations_replace_reviewer.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_evaluations_replace_reviewer.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, performance_review_process_ids: Any = UNSET, published: Any = UNSET, reviewer_ids: Any = UNSET, reviewer_strategies: Any = UNSET, target_access_ids: Any = UNSET, review_process_target_ids: Any = UNSET, with_targets_managed_by_filter: Any = UNSET, exclude_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluations,
+                get_api_2026_10_01_resources_performance_review_evaluations,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
@@ -6938,7 +7580,7 @@ class PerformanceReviewEvaluationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_evaluations,
+                get_api_2026_10_01_resources_performance_review_evaluations,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
@@ -6948,7 +7590,7 @@ class PerformanceReviewEvaluationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_evaluations,
+                get_api_2026_10_01_resources_performance_review_evaluations,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids, published=published, reviewer_ids=reviewer_ids, reviewer_strategies=reviewer_strategies, target_access_ids=target_access_ids, review_process_target_ids=review_process_target_ids, with_targets_managed_by_filter=with_targets_managed_by_filter, exclude_ids=exclude_ids,
             )
@@ -6962,34 +7604,34 @@ class PerformanceReviewOwnersResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_performance_review_owners_id."""
-        return delete_api_2026_07_01_resources_performance_review_owners_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_performance_review_owners_id."""
+        return delete_api_2026_10_01_resources_performance_review_owners_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_performance_review_owners_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_performance_review_owners_id.asyncio(id, client=self._client)
 
     def list(self, performance_review_process_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_owners."""
-        return get_api_2026_07_01_resources_performance_review_owners.sync(client=self._client, performance_review_process_ids=performance_review_process_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_owners."""
+        return get_api_2026_10_01_resources_performance_review_owners.sync(client=self._client, performance_review_process_ids=performance_review_process_ids)
 
     async def list_async(self, performance_review_process_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_owners.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids)
+        return await get_api_2026_10_01_resources_performance_review_owners.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_owners_bulk_create."""
-        return post_api_2026_07_01_resources_performance_review_owners_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_owners_bulk_create."""
+        return post_api_2026_10_01_resources_performance_review_owners_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_performance_review_owners_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_owners_bulk_create.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_owners,
+                get_api_2026_10_01_resources_performance_review_owners,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -6999,7 +7641,7 @@ class PerformanceReviewOwnersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_owners,
+                get_api_2026_10_01_resources_performance_review_owners,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7009,7 +7651,7 @@ class PerformanceReviewOwnersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_owners,
+                get_api_2026_10_01_resources_performance_review_owners,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7023,26 +7665,26 @@ class PerformanceReviewProcessCustomTemplatesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, author_ids: Any = UNSET, search: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_process_custom_templates."""
-        return get_api_2026_07_01_resources_performance_review_process_custom_templates.sync(client=self._client, ids=ids, author_ids=author_ids, search=search)
+        """Calls get_api_2026_10_01_resources_performance_review_process_custom_templates."""
+        return get_api_2026_10_01_resources_performance_review_process_custom_templates.sync(client=self._client, ids=ids, author_ids=author_ids, search=search)
 
     async def list_async(self, ids: Any = UNSET, author_ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_process_custom_templates.asyncio(client=self._client, ids=ids, author_ids=author_ids, search=search)
+        return await get_api_2026_10_01_resources_performance_review_process_custom_templates.asyncio(client=self._client, ids=ids, author_ids=author_ids, search=search)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_process_custom_templates_id."""
-        return get_api_2026_07_01_resources_performance_review_process_custom_templates_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_process_custom_templates_id."""
+        return get_api_2026_10_01_resources_performance_review_process_custom_templates_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_process_custom_templates_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_process_custom_templates_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, author_ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                get_api_2026_10_01_resources_performance_review_process_custom_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
@@ -7052,7 +7694,7 @@ class PerformanceReviewProcessCustomTemplatesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                get_api_2026_10_01_resources_performance_review_process_custom_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
@@ -7062,7 +7704,7 @@ class PerformanceReviewProcessCustomTemplatesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_process_custom_templates,
+                get_api_2026_10_01_resources_performance_review_process_custom_templates,
                 self._client,
                 after_id, limit=limit, ids=ids, author_ids=author_ids, search=search,
             )
@@ -7076,18 +7718,18 @@ class PerformanceReviewProcessEstimatedTargetsResource:
         self._client = client
 
     def list(self, performance_review_process_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_process_estimated_targets."""
-        return get_api_2026_07_01_resources_performance_review_process_estimated_targets.sync(client=self._client, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_process_estimated_targets."""
+        return get_api_2026_10_01_resources_performance_review_process_estimated_targets.sync(client=self._client, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids)
 
     async def list_async(self, performance_review_process_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_process_estimated_targets.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids)
+        return await get_api_2026_10_01_resources_performance_review_process_estimated_targets.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                get_api_2026_10_01_resources_performance_review_process_estimated_targets,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
@@ -7097,7 +7739,7 @@ class PerformanceReviewProcessEstimatedTargetsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                get_api_2026_10_01_resources_performance_review_process_estimated_targets,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
@@ -7107,7 +7749,7 @@ class PerformanceReviewProcessEstimatedTargetsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_process_estimated_targets,
+                get_api_2026_10_01_resources_performance_review_process_estimated_targets,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids, access_ids=access_ids,
             )
@@ -7121,58 +7763,58 @@ class PerformanceReviewProcessTargetsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_performance_review_process_targets_id."""
-        return delete_api_2026_07_01_resources_performance_review_process_targets_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_performance_review_process_targets_id."""
+        return delete_api_2026_10_01_resources_performance_review_process_targets_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_performance_review_process_targets_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_performance_review_process_targets_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, access_ids: Any = UNSET, only_for_peer_assignment: Any = UNSET, without_manager: Any = UNSET, performance_review_process_ids: Any = UNSET, agreement_completion_status: Any = UNSET, pending_peer_evaluations: Any = UNSET, managed_by_filter: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_process_targets."""
-        return get_api_2026_07_01_resources_performance_review_process_targets.sync(client=self._client, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter)
+        """Calls get_api_2026_10_01_resources_performance_review_process_targets."""
+        return get_api_2026_10_01_resources_performance_review_process_targets.sync(client=self._client, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter)
 
     async def list_async(self, ids: Any = UNSET, access_ids: Any = UNSET, only_for_peer_assignment: Any = UNSET, without_manager: Any = UNSET, performance_review_process_ids: Any = UNSET, agreement_completion_status: Any = UNSET, pending_peer_evaluations: Any = UNSET, managed_by_filter: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_process_targets.asyncio(client=self._client, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter)
+        return await get_api_2026_10_01_resources_performance_review_process_targets.asyncio(client=self._client, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_process_targets_id."""
-        return get_api_2026_07_01_resources_performance_review_process_targets_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_process_targets_id."""
+        return get_api_2026_10_01_resources_performance_review_process_targets_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_process_targets_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_process_targets_id.asyncio(id, client=self._client)
 
     def add_peers(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_process_targets_add_peers."""
-        return post_api_2026_07_01_resources_performance_review_process_targets_add_peers.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_process_targets_add_peers."""
+        return post_api_2026_10_01_resources_performance_review_process_targets_add_peers.sync(client=self._client, body=body)
 
     async def add_peers_async(self, body: Any = UNSET) -> Any:
         """Async version of add_peers."""
-        return await post_api_2026_07_01_resources_performance_review_process_targets_add_peers.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_process_targets_add_peers.asyncio(client=self._client, body=body)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_process_targets_bulk_create."""
-        return post_api_2026_07_01_resources_performance_review_process_targets_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_process_targets_bulk_create."""
+        return post_api_2026_10_01_resources_performance_review_process_targets_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_performance_review_process_targets_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_process_targets_bulk_create.asyncio(client=self._client, body=body)
 
     def remove_peer_evaluations(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_process_targets_remove_peer_evaluations."""
-        return post_api_2026_07_01_resources_performance_review_process_targets_remove_peer_evaluations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_process_targets_remove_peer_evaluations."""
+        return post_api_2026_10_01_resources_performance_review_process_targets_remove_peer_evaluations.sync(client=self._client, body=body)
 
     async def remove_peer_evaluations_async(self, body: Any = UNSET) -> Any:
         """Async version of remove_peer_evaluations."""
-        return await post_api_2026_07_01_resources_performance_review_process_targets_remove_peer_evaluations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_process_targets_remove_peer_evaluations.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, access_ids: Any = UNSET, only_for_peer_assignment: Any = UNSET, without_manager: Any = UNSET, performance_review_process_ids: Any = UNSET, agreement_completion_status: Any = UNSET, pending_peer_evaluations: Any = UNSET, managed_by_filter: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_targets,
+                get_api_2026_10_01_resources_performance_review_process_targets,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
@@ -7182,7 +7824,7 @@ class PerformanceReviewProcessTargetsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_process_targets,
+                get_api_2026_10_01_resources_performance_review_process_targets,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
@@ -7192,7 +7834,7 @@ class PerformanceReviewProcessTargetsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_process_targets,
+                get_api_2026_10_01_resources_performance_review_process_targets,
                 self._client,
                 after_id, limit=limit, ids=ids, access_ids=access_ids, only_for_peer_assignment=only_for_peer_assignment, without_manager=without_manager, performance_review_process_ids=performance_review_process_ids, agreement_completion_status=agreement_completion_status, pending_peer_evaluations=pending_peer_evaluations, managed_by_filter=managed_by_filter,
             )
@@ -7206,178 +7848,178 @@ class PerformanceReviewProcessesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_performance_review_processes_id."""
-        return delete_api_2026_07_01_resources_performance_review_processes_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_performance_review_processes_id."""
+        return delete_api_2026_10_01_resources_performance_review_processes_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_performance_review_processes_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_performance_review_processes_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, search: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_processes."""
-        return get_api_2026_07_01_resources_performance_review_processes.sync(client=self._client, ids=ids, search=search)
+        """Calls get_api_2026_10_01_resources_performance_review_processes."""
+        return get_api_2026_10_01_resources_performance_review_processes.sync(client=self._client, ids=ids, search=search)
 
     async def list_async(self, ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_processes.asyncio(client=self._client, ids=ids, search=search)
+        return await get_api_2026_10_01_resources_performance_review_processes.asyncio(client=self._client, ids=ids, search=search)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_processes_id."""
-        return get_api_2026_07_01_resources_performance_review_processes_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_processes_id."""
+        return get_api_2026_10_01_resources_performance_review_processes_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_processes_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_processes_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes."""
-        return post_api_2026_07_01_resources_performance_review_processes.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes."""
+        return post_api_2026_10_01_resources_performance_review_processes.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_performance_review_processes.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes.asyncio(client=self._client, body=body)
 
     def create_from_template(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_create_from_template."""
-        return post_api_2026_07_01_resources_performance_review_processes_create_from_template.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_create_from_template."""
+        return post_api_2026_10_01_resources_performance_review_processes_create_from_template.sync(client=self._client, body=body)
 
     async def create_from_template_async(self, body: Any = UNSET) -> Any:
         """Async version of create_from_template."""
-        return await post_api_2026_07_01_resources_performance_review_processes_create_from_template.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_create_from_template.asyncio(client=self._client, body=body)
 
     def duplicate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_duplicate."""
-        return post_api_2026_07_01_resources_performance_review_processes_duplicate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_duplicate."""
+        return post_api_2026_10_01_resources_performance_review_processes_duplicate.sync(client=self._client, body=body)
 
     async def duplicate_async(self, body: Any = UNSET) -> Any:
         """Async version of duplicate."""
-        return await post_api_2026_07_01_resources_performance_review_processes_duplicate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_duplicate.asyncio(client=self._client, body=body)
 
     def remind_in_bulk(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_remind_in_bulk."""
-        return post_api_2026_07_01_resources_performance_review_processes_remind_in_bulk.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_remind_in_bulk."""
+        return post_api_2026_10_01_resources_performance_review_processes_remind_in_bulk.sync(client=self._client, body=body)
 
     async def remind_in_bulk_async(self, body: Any = UNSET) -> Any:
         """Async version of remind_in_bulk."""
-        return await post_api_2026_07_01_resources_performance_review_processes_remind_in_bulk.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_remind_in_bulk.asyncio(client=self._client, body=body)
 
     def remove_schedule(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_remove_schedule."""
-        return post_api_2026_07_01_resources_performance_review_processes_remove_schedule.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_remove_schedule."""
+        return post_api_2026_10_01_resources_performance_review_processes_remove_schedule.sync(client=self._client, body=body)
 
     async def remove_schedule_async(self, body: Any = UNSET) -> Any:
         """Async version of remove_schedule."""
-        return await post_api_2026_07_01_resources_performance_review_processes_remove_schedule.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_remove_schedule.asyncio(client=self._client, body=body)
 
     def reopen(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_reopen."""
-        return post_api_2026_07_01_resources_performance_review_processes_reopen.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_reopen."""
+        return post_api_2026_10_01_resources_performance_review_processes_reopen.sync(client=self._client, body=body)
 
     async def reopen_async(self, body: Any = UNSET) -> Any:
         """Async version of reopen."""
-        return await post_api_2026_07_01_resources_performance_review_processes_reopen.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_reopen.asyncio(client=self._client, body=body)
 
     def schedule(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_schedule."""
-        return post_api_2026_07_01_resources_performance_review_processes_schedule.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_schedule."""
+        return post_api_2026_10_01_resources_performance_review_processes_schedule.sync(client=self._client, body=body)
 
     async def schedule_async(self, body: Any = UNSET) -> Any:
         """Async version of schedule."""
-        return await post_api_2026_07_01_resources_performance_review_processes_schedule.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_schedule.asyncio(client=self._client, body=body)
 
     def start(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_start."""
-        return post_api_2026_07_01_resources_performance_review_processes_start.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_start."""
+        return post_api_2026_10_01_resources_performance_review_processes_start.sync(client=self._client, body=body)
 
     async def start_async(self, body: Any = UNSET) -> Any:
         """Async version of start."""
-        return await post_api_2026_07_01_resources_performance_review_processes_start.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_start.asyncio(client=self._client, body=body)
 
     def stop(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_stop."""
-        return post_api_2026_07_01_resources_performance_review_processes_stop.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_stop."""
+        return post_api_2026_10_01_resources_performance_review_processes_stop.sync(client=self._client, body=body)
 
     async def stop_async(self, body: Any = UNSET) -> Any:
         """Async version of stop."""
-        return await post_api_2026_07_01_resources_performance_review_processes_stop.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_stop.asyncio(client=self._client, body=body)
 
     def toggle_archive(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_toggle_archive."""
-        return post_api_2026_07_01_resources_performance_review_processes_toggle_archive.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_toggle_archive."""
+        return post_api_2026_10_01_resources_performance_review_processes_toggle_archive.sync(client=self._client, body=body)
 
     async def toggle_archive_async(self, body: Any = UNSET) -> Any:
         """Async version of toggle_archive."""
-        return await post_api_2026_07_01_resources_performance_review_processes_toggle_archive.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_toggle_archive.asyncio(client=self._client, body=body)
 
     def update_agreements_configuration(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_agreements_configuration."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_agreements_configuration.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_agreements_configuration."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_agreements_configuration.sync(client=self._client, body=body)
 
     async def update_agreements_configuration_async(self, body: Any = UNSET) -> Any:
         """Async version of update_agreements_configuration."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_agreements_configuration.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_agreements_configuration.asyncio(client=self._client, body=body)
 
     def update_basic_info(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_basic_info."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_basic_info.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_basic_info."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_basic_info.sync(client=self._client, body=body)
 
     async def update_basic_info_async(self, body: Any = UNSET) -> Any:
         """Async version of update_basic_info."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_basic_info.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_basic_info.asyncio(client=self._client, body=body)
 
     def update_competencies_assessments_configuration(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_competencies_assessments_configuration."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_competencies_assessments_configuration.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_competencies_assessments_configuration."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_competencies_assessments_configuration.sync(client=self._client, body=body)
 
     async def update_competencies_assessments_configuration_async(self, body: Any = UNSET) -> Any:
         """Async version of update_competencies_assessments_configuration."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_competencies_assessments_configuration.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_competencies_assessments_configuration.asyncio(client=self._client, body=body)
 
     def update_deadline(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_deadline."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_deadline.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_deadline."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_deadline.sync(client=self._client, body=body)
 
     async def update_deadline_async(self, body: Any = UNSET) -> Any:
         """Async version of update_deadline."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_deadline.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_deadline.asyncio(client=self._client, body=body)
 
     def update_employee_score_configuration(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_employee_score_configuration."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_employee_score_configuration.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_employee_score_configuration."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_employee_score_configuration.sync(client=self._client, body=body)
 
     async def update_employee_score_configuration_async(self, body: Any = UNSET) -> Any:
         """Async version of update_employee_score_configuration."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_employee_score_configuration.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_employee_score_configuration.asyncio(client=self._client, body=body)
 
     def update_reviewer_strategies(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_reviewer_strategies."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_reviewer_strategies.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_reviewer_strategies."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_reviewer_strategies.sync(client=self._client, body=body)
 
     async def update_reviewer_strategies_async(self, body: Any = UNSET) -> Any:
         """Async version of update_reviewer_strategies."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_reviewer_strategies.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_reviewer_strategies.asyncio(client=self._client, body=body)
 
     def update_schedule(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_schedule."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_schedule.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_schedule."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_schedule.sync(client=self._client, body=body)
 
     async def update_schedule_async(self, body: Any = UNSET) -> Any:
         """Async version of update_schedule."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_schedule.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_schedule.asyncio(client=self._client, body=body)
 
     def update_target_strategy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_processes_update_target_strategy."""
-        return post_api_2026_07_01_resources_performance_review_processes_update_target_strategy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_processes_update_target_strategy."""
+        return post_api_2026_10_01_resources_performance_review_processes_update_target_strategy.sync(client=self._client, body=body)
 
     async def update_target_strategy_async(self, body: Any = UNSET) -> Any:
         """Async version of update_target_strategy."""
-        return await post_api_2026_07_01_resources_performance_review_processes_update_target_strategy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_processes_update_target_strategy.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_processes,
+                get_api_2026_10_01_resources_performance_review_processes,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7387,7 +8029,7 @@ class PerformanceReviewProcessesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_processes,
+                get_api_2026_10_01_resources_performance_review_processes,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7397,7 +8039,7 @@ class PerformanceReviewProcessesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_processes,
+                get_api_2026_10_01_resources_performance_review_processes,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7411,42 +8053,42 @@ class PerformanceReviewQuestionnaireByStrategiesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies."""
-        return get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies."""
+        return get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_id."""
-        return get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_id."""
+        return get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_id.asyncio(id, client=self._client)
 
     def update_default_rating_scale(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale."""
-        return post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale."""
+        return post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale.sync(client=self._client, body=body)
 
     async def update_default_rating_scale_async(self, body: Any = UNSET) -> Any:
         """Async version of update_default_rating_scale."""
-        return await post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_default_rating_scale.asyncio(client=self._client, body=body)
 
     def update_questionnaire_for_strategy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy."""
-        return post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy."""
+        return post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy.sync(client=self._client, body=body)
 
     async def update_questionnaire_for_strategy_async(self, body: Any = UNSET) -> Any:
         """Async version of update_questionnaire_for_strategy."""
-        return await post_api_2026_07_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_performance_review_questionnaire_by_strategies_update_questionnaire_for_strategy.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7456,7 +8098,7 @@ class PerformanceReviewQuestionnaireByStrategiesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7466,7 +8108,7 @@ class PerformanceReviewQuestionnaireByStrategiesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_questionnaire_by_strategies,
+                get_api_2026_10_01_resources_performance_review_questionnaire_by_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7480,26 +8122,26 @@ class PerformanceReviewVisibilitySettingsResource:
         self._client = client
 
     def list(self, performance_review_process_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_review_visibility_settings."""
-        return get_api_2026_07_01_resources_performance_review_visibility_settings.sync(client=self._client, performance_review_process_ids=performance_review_process_ids)
+        """Calls get_api_2026_10_01_resources_performance_review_visibility_settings."""
+        return get_api_2026_10_01_resources_performance_review_visibility_settings.sync(client=self._client, performance_review_process_ids=performance_review_process_ids)
 
     async def list_async(self, performance_review_process_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_review_visibility_settings.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids)
+        return await get_api_2026_10_01_resources_performance_review_visibility_settings.asyncio(client=self._client, performance_review_process_ids=performance_review_process_ids)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_performance_review_visibility_settings_id."""
-        return put_api_2026_07_01_resources_performance_review_visibility_settings_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_performance_review_visibility_settings_id."""
+        return put_api_2026_10_01_resources_performance_review_visibility_settings_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_performance_review_visibility_settings_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_performance_review_visibility_settings_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, performance_review_process_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                get_api_2026_10_01_resources_performance_review_visibility_settings,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7509,7 +8151,7 @@ class PerformanceReviewVisibilitySettingsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                get_api_2026_10_01_resources_performance_review_visibility_settings,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7519,7 +8161,7 @@ class PerformanceReviewVisibilitySettingsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_review_visibility_settings,
+                get_api_2026_10_01_resources_performance_review_visibility_settings,
                 self._client,
                 after_id, limit=limit, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7533,26 +8175,26 @@ class PerformanceTargetManagersResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, performance_review_process_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_target_managers."""
-        return get_api_2026_07_01_resources_performance_target_managers.sync(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids)
+        """Calls get_api_2026_10_01_resources_performance_target_managers."""
+        return get_api_2026_10_01_resources_performance_target_managers.sync(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids)
 
     async def list_async(self, ids: Any = UNSET, performance_review_process_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_performance_target_managers.asyncio(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids)
+        return await get_api_2026_10_01_resources_performance_target_managers.asyncio(client=self._client, ids=ids, performance_review_process_ids=performance_review_process_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_performance_target_managers_id."""
-        return get_api_2026_07_01_resources_performance_target_managers_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_performance_target_managers_id."""
+        return get_api_2026_10_01_resources_performance_target_managers_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_performance_target_managers_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_performance_target_managers_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, performance_review_process_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_target_managers,
+                get_api_2026_10_01_resources_performance_target_managers,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7562,7 +8204,7 @@ class PerformanceTargetManagersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_performance_target_managers,
+                get_api_2026_10_01_resources_performance_target_managers,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7572,7 +8214,7 @@ class PerformanceTargetManagersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_performance_target_managers,
+                get_api_2026_10_01_resources_performance_target_managers,
                 self._client,
                 after_id, limit=limit, ids=ids, performance_review_process_ids=performance_review_process_ids,
             )
@@ -7586,50 +8228,50 @@ class PostsCommentsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_posts_comments_id."""
-        return delete_api_2026_07_01_resources_posts_comments_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_posts_comments_id."""
+        return delete_api_2026_10_01_resources_posts_comments_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_posts_comments_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_posts_comments_id.asyncio(id, client=self._client)
 
     def list(self, post_ids: Any = UNSET, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_comments."""
-        return get_api_2026_07_01_resources_posts_comments.sync(client=self._client, post_ids=post_ids, ids=ids)
+        """Calls get_api_2026_10_01_resources_posts_comments."""
+        return get_api_2026_10_01_resources_posts_comments.sync(client=self._client, post_ids=post_ids, ids=ids)
 
     async def list_async(self, post_ids: Any = UNSET, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_posts_comments.asyncio(client=self._client, post_ids=post_ids, ids=ids)
+        return await get_api_2026_10_01_resources_posts_comments.asyncio(client=self._client, post_ids=post_ids, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_comments_id."""
-        return get_api_2026_07_01_resources_posts_comments_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_posts_comments_id."""
+        return get_api_2026_10_01_resources_posts_comments_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_posts_comments_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_posts_comments_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_posts_comments."""
-        return post_api_2026_07_01_resources_posts_comments.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_posts_comments."""
+        return post_api_2026_10_01_resources_posts_comments.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_posts_comments.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_posts_comments.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_posts_comments_id."""
-        return put_api_2026_07_01_resources_posts_comments_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_posts_comments_id."""
+        return put_api_2026_10_01_resources_posts_comments_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_posts_comments_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_posts_comments_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, post_ids: Any = UNSET, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_comments,
+                get_api_2026_10_01_resources_posts_comments,
                 self._client,
                 after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
@@ -7639,7 +8281,7 @@ class PostsCommentsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_comments,
+                get_api_2026_10_01_resources_posts_comments,
                 self._client,
                 after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
@@ -7649,7 +8291,7 @@ class PostsCommentsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_posts_comments,
+                get_api_2026_10_01_resources_posts_comments,
                 self._client,
                 after_id, limit=limit, post_ids=post_ids, ids=ids,
             )
@@ -7663,58 +8305,58 @@ class PostsGroupsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_posts_groups_id."""
-        return delete_api_2026_07_01_resources_posts_groups_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_posts_groups_id."""
+        return delete_api_2026_10_01_resources_posts_groups_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_posts_groups_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_posts_groups_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, search: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_groups."""
-        return get_api_2026_07_01_resources_posts_groups.sync(client=self._client, ids=ids, search=search)
+        """Calls get_api_2026_10_01_resources_posts_groups."""
+        return get_api_2026_10_01_resources_posts_groups.sync(client=self._client, ids=ids, search=search)
 
     async def list_async(self, ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_posts_groups.asyncio(client=self._client, ids=ids, search=search)
+        return await get_api_2026_10_01_resources_posts_groups.asyncio(client=self._client, ids=ids, search=search)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_groups_id."""
-        return get_api_2026_07_01_resources_posts_groups_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_posts_groups_id."""
+        return get_api_2026_10_01_resources_posts_groups_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_posts_groups_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_posts_groups_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_posts_groups."""
-        return post_api_2026_07_01_resources_posts_groups.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_posts_groups."""
+        return post_api_2026_10_01_resources_posts_groups.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_posts_groups.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_posts_groups.asyncio(client=self._client, body=body)
 
     def archive(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_posts_groups_archive."""
-        return post_api_2026_07_01_resources_posts_groups_archive.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_posts_groups_archive."""
+        return post_api_2026_10_01_resources_posts_groups_archive.sync(client=self._client, body=body)
 
     async def archive_async(self, body: Any = UNSET) -> Any:
         """Async version of archive."""
-        return await post_api_2026_07_01_resources_posts_groups_archive.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_posts_groups_archive.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_posts_groups_id."""
-        return put_api_2026_07_01_resources_posts_groups_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_posts_groups_id."""
+        return put_api_2026_10_01_resources_posts_groups_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_posts_groups_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_posts_groups_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, search: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_groups,
+                get_api_2026_10_01_resources_posts_groups,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7724,7 +8366,7 @@ class PostsGroupsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_groups,
+                get_api_2026_10_01_resources_posts_groups,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7734,7 +8376,7 @@ class PostsGroupsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_posts_groups,
+                get_api_2026_10_01_resources_posts_groups,
                 self._client,
                 after_id, limit=limit, ids=ids, search=search,
             )
@@ -7748,50 +8390,50 @@ class PostsPostsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_posts_posts_id."""
-        return delete_api_2026_07_01_resources_posts_posts_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_posts_posts_id."""
+        return delete_api_2026_10_01_resources_posts_posts_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_posts_posts_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_posts_posts_id.asyncio(id, client=self._client)
 
     def list(self, groups: Any = UNSET, from_: Any = UNSET, until: Any = UNSET, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_posts."""
-        return get_api_2026_07_01_resources_posts_posts.sync(client=self._client, groups=groups, from_=from_, until=until, ids=ids)
+        """Calls get_api_2026_10_01_resources_posts_posts."""
+        return get_api_2026_10_01_resources_posts_posts.sync(client=self._client, groups=groups, from_=from_, until=until, ids=ids)
 
     async def list_async(self, groups: Any = UNSET, from_: Any = UNSET, until: Any = UNSET, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_posts_posts.asyncio(client=self._client, groups=groups, from_=from_, until=until, ids=ids)
+        return await get_api_2026_10_01_resources_posts_posts.asyncio(client=self._client, groups=groups, from_=from_, until=until, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_posts_posts_id."""
-        return get_api_2026_07_01_resources_posts_posts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_posts_posts_id."""
+        return get_api_2026_10_01_resources_posts_posts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_posts_posts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_posts_posts_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_posts_posts."""
-        return post_api_2026_07_01_resources_posts_posts.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_posts_posts."""
+        return post_api_2026_10_01_resources_posts_posts.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_posts_posts.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_posts_posts.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_posts_posts_id."""
-        return put_api_2026_07_01_resources_posts_posts_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_posts_posts_id."""
+        return put_api_2026_10_01_resources_posts_posts_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_posts_posts_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_posts_posts_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, groups: Any = UNSET, from_: Any = UNSET, until: Any = UNSET, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_posts,
+                get_api_2026_10_01_resources_posts_posts,
                 self._client,
                 after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
             )
@@ -7801,7 +8443,7 @@ class PostsPostsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_posts_posts,
+                get_api_2026_10_01_resources_posts_posts,
                 self._client,
                 after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
             )
@@ -7811,9 +8453,274 @@ class PostsPostsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_posts_posts,
+                get_api_2026_10_01_resources_posts_posts,
                 self._client,
                 after_id, limit=limit, groups=groups, from_=from_, until=until, ids=ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProcurementPoFieldValuesResource:
+    """Methods for the procurement > po_field_values resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, purchase_order_ids: Any = UNSET, line_item_ids: Any = UNSET, exclude_line_items: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_field_values."""
+        return get_api_2026_10_01_resources_procurement_po_field_values.sync(client=self._client, ids=ids, purchase_order_ids=purchase_order_ids, line_item_ids=line_item_ids, exclude_line_items=exclude_line_items)
+
+    async def list_async(self, ids: Any = UNSET, purchase_order_ids: Any = UNSET, line_item_ids: Any = UNSET, exclude_line_items: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_procurement_po_field_values.asyncio(client=self._client, ids=ids, purchase_order_ids=purchase_order_ids, line_item_ids=line_item_ids, exclude_line_items=exclude_line_items)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_field_values_id."""
+        return get_api_2026_10_01_resources_procurement_po_field_values_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_procurement_po_field_values_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET, line_item_ids: Any = UNSET, exclude_line_items: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_field_values,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids, line_item_ids=line_item_ids, exclude_line_items=exclude_line_items,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET, line_item_ids: Any = UNSET, exclude_line_items: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_field_values,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids, line_item_ids=line_item_ids, exclude_line_items=exclude_line_items,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET, line_item_ids: Any = UNSET, exclude_line_items: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_procurement_po_field_values,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids, line_item_ids=line_item_ids, exclude_line_items=exclude_line_items,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProcurementPoLineItemsResource:
+    """Methods for the procurement > po_line_items resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, purchase_order_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_line_items."""
+        return get_api_2026_10_01_resources_procurement_po_line_items.sync(client=self._client, ids=ids, purchase_order_ids=purchase_order_ids)
+
+    async def list_async(self, ids: Any = UNSET, purchase_order_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_procurement_po_line_items.asyncio(client=self._client, ids=ids, purchase_order_ids=purchase_order_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_line_items_id."""
+        return get_api_2026_10_01_resources_procurement_po_line_items_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_procurement_po_line_items_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_line_items,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_line_items,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_order_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_procurement_po_line_items,
+                self._client,
+                after_id, limit=limit, ids=ids, purchase_order_ids=purchase_order_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProcurementPoTemplateFieldDefinitionsResource:
+    """Methods for the procurement > po_template_field_definitions resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, po_template_version_ids: Any = UNSET, section_type: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_template_field_definitions."""
+        return get_api_2026_10_01_resources_procurement_po_template_field_definitions.sync(client=self._client, ids=ids, po_template_version_ids=po_template_version_ids, section_type=section_type)
+
+    async def list_async(self, ids: Any = UNSET, po_template_version_ids: Any = UNSET, section_type: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_procurement_po_template_field_definitions.asyncio(client=self._client, ids=ids, po_template_version_ids=po_template_version_ids, section_type=section_type)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_template_field_definitions_id."""
+        return get_api_2026_10_01_resources_procurement_po_template_field_definitions_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_procurement_po_template_field_definitions_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_version_ids: Any = UNSET, section_type: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_template_field_definitions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_version_ids=po_template_version_ids, section_type=section_type,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_version_ids: Any = UNSET, section_type: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_template_field_definitions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_version_ids=po_template_version_ids, section_type=section_type,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_version_ids: Any = UNSET, section_type: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_procurement_po_template_field_definitions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_version_ids=po_template_version_ids, section_type=section_type,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProcurementPoTemplateVersionsResource:
+    """Methods for the procurement > po_template_versions resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, po_template_ids: Any = UNSET, status: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_template_versions."""
+        return get_api_2026_10_01_resources_procurement_po_template_versions.sync(client=self._client, ids=ids, po_template_ids=po_template_ids, status=status)
+
+    async def list_async(self, ids: Any = UNSET, po_template_ids: Any = UNSET, status: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_procurement_po_template_versions.asyncio(client=self._client, ids=ids, po_template_ids=po_template_ids, status=status)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_template_versions_id."""
+        return get_api_2026_10_01_resources_procurement_po_template_versions_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_procurement_po_template_versions_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_ids: Any = UNSET, status: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_template_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_ids=po_template_ids, status=status,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_ids: Any = UNSET, status: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_template_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_ids=po_template_ids, status=status,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, po_template_ids: Any = UNSET, status: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_procurement_po_template_versions,
+                self._client,
+                after_id, limit=limit, ids=ids, po_template_ids=po_template_ids, status=status,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProcurementPoTemplatesResource:
+    """Methods for the procurement > po_templates resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_templates."""
+        return get_api_2026_10_01_resources_procurement_po_templates.sync(client=self._client, ids=ids)
+
+    async def list_async(self, ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_procurement_po_templates.asyncio(client=self._client, ids=ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_procurement_po_templates_id."""
+        return get_api_2026_10_01_resources_procurement_po_templates_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_procurement_po_templates_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_templates,
+                self._client,
+                after_id, limit=limit, ids=ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_procurement_po_templates,
+                self._client,
+                after_id, limit=limit, ids=ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_procurement_po_templates,
+                self._client,
+                after_id, limit=limit, ids=ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -7825,26 +8732,42 @@ class ProcurementPurchaseOrdersResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, purchase_request_ids: Any = UNSET, status: Any = UNSET, vendor_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_purchase_orders."""
-        return get_api_2026_07_01_resources_procurement_purchase_orders.sync(client=self._client, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids)
+        """Calls get_api_2026_10_01_resources_procurement_purchase_orders."""
+        return get_api_2026_10_01_resources_procurement_purchase_orders.sync(client=self._client, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids)
 
     async def list_async(self, ids: Any = UNSET, purchase_request_ids: Any = UNSET, status: Any = UNSET, vendor_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_procurement_purchase_orders.asyncio(client=self._client, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids)
+        return await get_api_2026_10_01_resources_procurement_purchase_orders.asyncio(client=self._client, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_purchase_orders_id."""
-        return get_api_2026_07_01_resources_procurement_purchase_orders_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_procurement_purchase_orders_id."""
+        return get_api_2026_10_01_resources_procurement_purchase_orders_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_procurement_purchase_orders_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_procurement_purchase_orders_id.asyncio(id, client=self._client)
+
+    def create(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_procurement_purchase_orders."""
+        return post_api_2026_10_01_resources_procurement_purchase_orders.sync(client=self._client, body=body)
+
+    async def create_async(self, body: Any = UNSET) -> Any:
+        """Async version of create."""
+        return await post_api_2026_10_01_resources_procurement_purchase_orders.asyncio(client=self._client, body=body)
+
+    def update(self, id: Any, body: Any = UNSET) -> Any:
+        """Calls put_api_2026_10_01_resources_procurement_purchase_orders_id."""
+        return put_api_2026_10_01_resources_procurement_purchase_orders_id.sync(id, client=self._client, body=body)
+
+    async def update_async(self, id: Any, body: Any = UNSET) -> Any:
+        """Async version of update."""
+        return await put_api_2026_10_01_resources_procurement_purchase_orders_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, purchase_request_ids: Any = UNSET, status: Any = UNSET, vendor_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_purchase_orders,
+                get_api_2026_10_01_resources_procurement_purchase_orders,
                 self._client,
                 after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
@@ -7854,7 +8777,7 @@ class ProcurementPurchaseOrdersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_purchase_orders,
+                get_api_2026_10_01_resources_procurement_purchase_orders,
                 self._client,
                 after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
@@ -7864,7 +8787,7 @@ class ProcurementPurchaseOrdersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_procurement_purchase_orders,
+                get_api_2026_10_01_resources_procurement_purchase_orders,
                 self._client,
                 after_id, limit=limit, ids=ids, purchase_request_ids=purchase_request_ids, status=status, vendor_ids=vendor_ids,
             )
@@ -7878,26 +8801,26 @@ class ProcurementPurchaseRequestsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, requester_employee_ids: Any = UNSET, type_ids: Any = UNSET, status: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_purchase_requests."""
-        return get_api_2026_07_01_resources_procurement_purchase_requests.sync(client=self._client, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status)
+        """Calls get_api_2026_10_01_resources_procurement_purchase_requests."""
+        return get_api_2026_10_01_resources_procurement_purchase_requests.sync(client=self._client, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status)
 
     async def list_async(self, ids: Any = UNSET, requester_employee_ids: Any = UNSET, type_ids: Any = UNSET, status: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_procurement_purchase_requests.asyncio(client=self._client, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status)
+        return await get_api_2026_10_01_resources_procurement_purchase_requests.asyncio(client=self._client, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_purchase_requests_id."""
-        return get_api_2026_07_01_resources_procurement_purchase_requests_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_procurement_purchase_requests_id."""
+        return get_api_2026_10_01_resources_procurement_purchase_requests_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_procurement_purchase_requests_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_procurement_purchase_requests_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, requester_employee_ids: Any = UNSET, type_ids: Any = UNSET, status: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_purchase_requests,
+                get_api_2026_10_01_resources_procurement_purchase_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
@@ -7907,7 +8830,7 @@ class ProcurementPurchaseRequestsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_purchase_requests,
+                get_api_2026_10_01_resources_procurement_purchase_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
@@ -7917,7 +8840,7 @@ class ProcurementPurchaseRequestsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_procurement_purchase_requests,
+                get_api_2026_10_01_resources_procurement_purchase_requests,
                 self._client,
                 after_id, limit=limit, ids=ids, requester_employee_ids=requester_employee_ids, type_ids=type_ids, status=status,
             )
@@ -7931,26 +8854,26 @@ class ProcurementTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_types."""
-        return get_api_2026_07_01_resources_procurement_types.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_procurement_types."""
+        return get_api_2026_10_01_resources_procurement_types.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_procurement_types.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_procurement_types.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_procurement_types_id."""
-        return get_api_2026_07_01_resources_procurement_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_procurement_types_id."""
+        return get_api_2026_10_01_resources_procurement_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_procurement_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_procurement_types_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_types,
+                get_api_2026_10_01_resources_procurement_types,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7960,7 +8883,7 @@ class ProcurementTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_procurement_types,
+                get_api_2026_10_01_resources_procurement_types,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7970,7 +8893,7 @@ class ProcurementTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_procurement_types,
+                get_api_2026_10_01_resources_procurement_types,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -7984,50 +8907,50 @@ class ProjectManagementBudgetStrategiesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_project_management_budget_strategies_id."""
-        return delete_api_2026_07_01_resources_project_management_budget_strategies_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_project_management_budget_strategies_id."""
+        return delete_api_2026_10_01_resources_project_management_budget_strategies_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, without_subproject: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_budget_strategies."""
-        return get_api_2026_07_01_resources_project_management_budget_strategies.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject)
+        """Calls get_api_2026_10_01_resources_project_management_budget_strategies."""
+        return get_api_2026_10_01_resources_project_management_budget_strategies.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject)
 
     async def list_async(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, without_subproject: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_budget_strategies.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject)
+        return await get_api_2026_10_01_resources_project_management_budget_strategies.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_budget_strategies_id."""
-        return get_api_2026_07_01_resources_project_management_budget_strategies_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_budget_strategies_id."""
+        return get_api_2026_10_01_resources_project_management_budget_strategies_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_budget_strategies."""
-        return post_api_2026_07_01_resources_project_management_budget_strategies.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_budget_strategies."""
+        return post_api_2026_10_01_resources_project_management_budget_strategies.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_budget_strategies.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_budget_strategies.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_project_management_budget_strategies_id."""
-        return put_api_2026_07_01_resources_project_management_budget_strategies_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_project_management_budget_strategies_id."""
+        return put_api_2026_10_01_resources_project_management_budget_strategies_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_project_management_budget_strategies_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, without_subproject: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_budget_strategies,
+                get_api_2026_10_01_resources_project_management_budget_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
@@ -8037,7 +8960,7 @@ class ProjectManagementBudgetStrategiesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_budget_strategies,
+                get_api_2026_10_01_resources_project_management_budget_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
@@ -8047,7 +8970,7 @@ class ProjectManagementBudgetStrategiesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_budget_strategies,
+                get_api_2026_10_01_resources_project_management_budget_strategies,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, without_subproject=without_subproject,
             )
@@ -8061,26 +8984,26 @@ class ProjectManagementExpenseRecordsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, expense_ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, updated_after: Any = UNSET, employee_user_name_like: Any = UNSET, project_worker_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_expense_records."""
-        return get_api_2026_07_01_resources_project_management_expense_records.sync(client=self._client, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids)
+        """Calls get_api_2026_10_01_resources_project_management_expense_records."""
+        return get_api_2026_10_01_resources_project_management_expense_records.sync(client=self._client, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids)
 
     async def list_async(self, ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, expense_ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, updated_after: Any = UNSET, employee_user_name_like: Any = UNSET, project_worker_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_expense_records.asyncio(client=self._client, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids)
+        return await get_api_2026_10_01_resources_project_management_expense_records.asyncio(client=self._client, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_expense_records_id."""
-        return get_api_2026_07_01_resources_project_management_expense_records_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_expense_records_id."""
+        return get_api_2026_10_01_resources_project_management_expense_records_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_expense_records_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_expense_records_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, expense_ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, updated_after: Any = UNSET, employee_user_name_like: Any = UNSET, project_worker_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_expense_records,
+                get_api_2026_10_01_resources_project_management_expense_records,
                 self._client,
                 after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
@@ -8090,7 +9013,7 @@ class ProjectManagementExpenseRecordsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_expense_records,
+                get_api_2026_10_01_resources_project_management_expense_records,
                 self._client,
                 after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
@@ -8100,7 +9023,7 @@ class ProjectManagementExpenseRecordsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_expense_records,
+                get_api_2026_10_01_resources_project_management_expense_records,
                 self._client,
                 after_id, limit=limit, ids=ids, start_date=start_date, end_date=end_date, expense_ids=expense_ids, project_ids=project_ids, subproject_ids=subproject_ids, updated_after=updated_after, employee_user_name_like=employee_user_name_like, project_worker_ids=project_worker_ids,
             )
@@ -8114,18 +9037,18 @@ class ProjectManagementExportableExpensesResource:
         self._client = client
 
     def list(self, start_date: Any = UNSET, end_date: Any = UNSET, project_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_exportable_expenses."""
-        return get_api_2026_07_01_resources_project_management_exportable_expenses.sync(client=self._client, start_date=start_date, end_date=end_date, project_ids=project_ids)
+        """Calls get_api_2026_10_01_resources_project_management_exportable_expenses."""
+        return get_api_2026_10_01_resources_project_management_exportable_expenses.sync(client=self._client, start_date=start_date, end_date=end_date, project_ids=project_ids)
 
     async def list_async(self, start_date: Any = UNSET, end_date: Any = UNSET, project_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_exportable_expenses.asyncio(client=self._client, start_date=start_date, end_date=end_date, project_ids=project_ids)
+        return await get_api_2026_10_01_resources_project_management_exportable_expenses.asyncio(client=self._client, start_date=start_date, end_date=end_date, project_ids=project_ids)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, start_date: Any = UNSET, end_date: Any = UNSET, project_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                get_api_2026_10_01_resources_project_management_exportable_expenses,
                 self._client,
                 after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
@@ -8135,7 +9058,7 @@ class ProjectManagementExportableExpensesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                get_api_2026_10_01_resources_project_management_exportable_expenses,
                 self._client,
                 after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
@@ -8145,7 +9068,7 @@ class ProjectManagementExportableExpensesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_exportable_expenses,
+                get_api_2026_10_01_resources_project_management_exportable_expenses,
                 self._client,
                 after_id, limit=limit, start_date=start_date, end_date=end_date, project_ids=project_ids,
             )
@@ -8159,26 +9082,26 @@ class ProjectManagementImputableProjectsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, name_or_code: Any = UNSET, only_active: Any = UNSET, assigned: Any = UNSET, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_imputable_projects."""
-        return get_api_2026_07_01_resources_project_management_imputable_projects.sync(client=self._client, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_project_management_imputable_projects."""
+        return get_api_2026_10_01_resources_project_management_imputable_projects.sync(client=self._client, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids)
 
     async def list_async(self, ids: Any = UNSET, name_or_code: Any = UNSET, only_active: Any = UNSET, assigned: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_imputable_projects.asyncio(client=self._client, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_project_management_imputable_projects.asyncio(client=self._client, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_imputable_projects_id."""
-        return get_api_2026_07_01_resources_project_management_imputable_projects_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_imputable_projects_id."""
+        return get_api_2026_10_01_resources_project_management_imputable_projects_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_imputable_projects_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_imputable_projects_id.asyncio(id, client=self._client)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, name_or_code: Any = UNSET, only_active: Any = UNSET, assigned: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_imputable_projects,
+                get_api_2026_10_01_resources_project_management_imputable_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
@@ -8188,7 +9111,7 @@ class ProjectManagementImputableProjectsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_imputable_projects,
+                get_api_2026_10_01_resources_project_management_imputable_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
@@ -8198,7 +9121,7 @@ class ProjectManagementImputableProjectsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_imputable_projects,
+                get_api_2026_10_01_resources_project_management_imputable_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name_or_code=name_or_code, only_active=only_active, assigned=assigned, employee_ids=employee_ids,
             )
@@ -8212,50 +9135,50 @@ class ProjectManagementPlannedRecordsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_project_management_planned_records_id."""
-        return delete_api_2026_07_01_resources_project_management_planned_records_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_project_management_planned_records_id."""
+        return delete_api_2026_10_01_resources_project_management_planned_records_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_project_management_planned_records_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_project_management_planned_records_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, subproject_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_planned_records."""
-        return get_api_2026_07_01_resources_project_management_planned_records.sync(client=self._client, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids)
+        """Calls get_api_2026_10_01_resources_project_management_planned_records."""
+        return get_api_2026_10_01_resources_project_management_planned_records.sync(client=self._client, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids)
 
     async def list_async(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, subproject_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_planned_records.asyncio(client=self._client, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids)
+        return await get_api_2026_10_01_resources_project_management_planned_records.asyncio(client=self._client, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_planned_records_id."""
-        return get_api_2026_07_01_resources_project_management_planned_records_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_planned_records_id."""
+        return get_api_2026_10_01_resources_project_management_planned_records_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_planned_records_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_planned_records_id.asyncio(id, client=self._client)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_planned_records_bulk_create."""
-        return post_api_2026_07_01_resources_project_management_planned_records_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_planned_records_bulk_create."""
+        return post_api_2026_10_01_resources_project_management_planned_records_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_project_management_planned_records_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_planned_records_bulk_create.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_project_management_planned_records_id."""
-        return put_api_2026_07_01_resources_project_management_planned_records_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_project_management_planned_records_id."""
+        return put_api_2026_10_01_resources_project_management_planned_records_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_project_management_planned_records_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_project_management_planned_records_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET, subproject_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_planned_records,
+                get_api_2026_10_01_resources_project_management_planned_records,
                 self._client,
                 after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
@@ -8265,7 +9188,7 @@ class ProjectManagementPlannedRecordsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_planned_records,
+                get_api_2026_10_01_resources_project_management_planned_records,
                 self._client,
                 after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
@@ -8275,7 +9198,7 @@ class ProjectManagementPlannedRecordsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_planned_records,
+                get_api_2026_10_01_resources_project_management_planned_records,
                 self._client,
                 after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, start_date=start_date, end_date=end_date, subproject_ids=subproject_ids,
             )
@@ -8289,58 +9212,58 @@ class ProjectManagementProjectTasksResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, task_ids: Any = UNSET, completed: Any = UNSET, overdue: Any = UNSET, search: Any = UNSET, due_status: Any = UNSET, client_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_project_tasks."""
-        return get_api_2026_07_01_resources_project_management_project_tasks.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids)
+        """Calls get_api_2026_10_01_resources_project_management_project_tasks."""
+        return get_api_2026_10_01_resources_project_management_project_tasks.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids)
 
     async def list_async(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, task_ids: Any = UNSET, completed: Any = UNSET, overdue: Any = UNSET, search: Any = UNSET, due_status: Any = UNSET, client_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_project_tasks.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids)
+        return await get_api_2026_10_01_resources_project_management_project_tasks.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_project_tasks_id."""
-        return get_api_2026_07_01_resources_project_management_project_tasks_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_project_tasks_id."""
+        return get_api_2026_10_01_resources_project_management_project_tasks_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_project_tasks_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_project_tasks_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_tasks."""
-        return post_api_2026_07_01_resources_project_management_project_tasks.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_tasks."""
+        return post_api_2026_10_01_resources_project_management_project_tasks.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_project_tasks.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_tasks.asyncio(client=self._client, body=body)
 
     def bulk_destroy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_tasks_bulk_destroy."""
-        return post_api_2026_07_01_resources_project_management_project_tasks_bulk_destroy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_tasks_bulk_destroy."""
+        return post_api_2026_10_01_resources_project_management_project_tasks_bulk_destroy.sync(client=self._client, body=body)
 
     async def bulk_destroy_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_destroy."""
-        return await post_api_2026_07_01_resources_project_management_project_tasks_bulk_destroy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_tasks_bulk_destroy.asyncio(client=self._client, body=body)
 
     def bulk_duplicate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_tasks_bulk_duplicate."""
-        return post_api_2026_07_01_resources_project_management_project_tasks_bulk_duplicate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_tasks_bulk_duplicate."""
+        return post_api_2026_10_01_resources_project_management_project_tasks_bulk_duplicate.sync(client=self._client, body=body)
 
     async def bulk_duplicate_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_duplicate."""
-        return await post_api_2026_07_01_resources_project_management_project_tasks_bulk_duplicate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_tasks_bulk_duplicate.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_project_management_project_tasks_id."""
-        return put_api_2026_07_01_resources_project_management_project_tasks_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_project_management_project_tasks_id."""
+        return put_api_2026_10_01_resources_project_management_project_tasks_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_project_management_project_tasks_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_project_management_project_tasks_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, task_ids: Any = UNSET, completed: Any = UNSET, overdue: Any = UNSET, search: Any = UNSET, due_status: Any = UNSET, client_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_project_tasks,
+                get_api_2026_10_01_resources_project_management_project_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
@@ -8350,7 +9273,7 @@ class ProjectManagementProjectTasksResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_project_tasks,
+                get_api_2026_10_01_resources_project_management_project_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
@@ -8360,7 +9283,7 @@ class ProjectManagementProjectTasksResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_project_tasks,
+                get_api_2026_10_01_resources_project_management_project_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, task_ids=task_ids, completed=completed, overdue=overdue, search=search, due_status=due_status, client_ids=client_ids,
             )
@@ -8374,58 +9297,58 @@ class ProjectManagementProjectWorkersResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, no_subproject: Any = UNSET, employee_ids: Any = UNSET, assigned: Any = UNSET, project_active: Any = UNSET, employee_name: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET, include_labor_cost: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_project_workers."""
-        return get_api_2026_07_01_resources_project_management_project_workers.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost)
+        """Calls get_api_2026_10_01_resources_project_management_project_workers."""
+        return get_api_2026_10_01_resources_project_management_project_workers.sync(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost)
 
     async def list_async(self, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, no_subproject: Any = UNSET, employee_ids: Any = UNSET, assigned: Any = UNSET, project_active: Any = UNSET, employee_name: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET, include_labor_cost: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_project_workers.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost)
+        return await get_api_2026_10_01_resources_project_management_project_workers.asyncio(client=self._client, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_project_workers_id."""
-        return get_api_2026_07_01_resources_project_management_project_workers_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_project_workers_id."""
+        return get_api_2026_10_01_resources_project_management_project_workers_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_project_workers_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_project_workers_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_workers."""
-        return post_api_2026_07_01_resources_project_management_project_workers.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_workers."""
+        return post_api_2026_10_01_resources_project_management_project_workers.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_project_workers.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_workers.asyncio(client=self._client, body=body)
 
     def bulk_assign(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_workers_bulk_assign."""
-        return post_api_2026_07_01_resources_project_management_project_workers_bulk_assign.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_workers_bulk_assign."""
+        return post_api_2026_10_01_resources_project_management_project_workers_bulk_assign.sync(client=self._client, body=body)
 
     async def bulk_assign_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_assign."""
-        return await post_api_2026_07_01_resources_project_management_project_workers_bulk_assign.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_workers_bulk_assign.asyncio(client=self._client, body=body)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_workers_bulk_create."""
-        return post_api_2026_07_01_resources_project_management_project_workers_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_workers_bulk_create."""
+        return post_api_2026_10_01_resources_project_management_project_workers_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_project_management_project_workers_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_workers_bulk_create.asyncio(client=self._client, body=body)
 
     def unassign(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_project_workers_unassign."""
-        return post_api_2026_07_01_resources_project_management_project_workers_unassign.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_project_workers_unassign."""
+        return post_api_2026_10_01_resources_project_management_project_workers_unassign.sync(client=self._client, body=body)
 
     async def unassign_async(self, body: Any = UNSET) -> Any:
         """Async version of unassign."""
-        return await post_api_2026_07_01_resources_project_management_project_workers_unassign.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_project_workers_unassign.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_ids: Any = UNSET, subproject_ids: Any = UNSET, no_subproject: Any = UNSET, employee_ids: Any = UNSET, assigned: Any = UNSET, project_active: Any = UNSET, employee_name: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET, include_labor_cost: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_project_workers,
+                get_api_2026_10_01_resources_project_management_project_workers,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
@@ -8435,7 +9358,7 @@ class ProjectManagementProjectWorkersResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_project_workers,
+                get_api_2026_10_01_resources_project_management_project_workers,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
@@ -8445,7 +9368,7 @@ class ProjectManagementProjectWorkersResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_project_workers,
+                get_api_2026_10_01_resources_project_management_project_workers,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, subproject_ids=subproject_ids, no_subproject=no_subproject, employee_ids=employee_ids, assigned=assigned, project_active=project_active, employee_name=employee_name, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after, include_labor_cost=include_labor_cost,
             )
@@ -8459,82 +9382,82 @@ class ProjectManagementProjectsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, name: Any = UNSET, name_or_code: Any = UNSET, include_inputed_minutes: Any = UNSET, include_costs: Any = UNSET, updated_after: Any = UNSET, legal_entity_id: Any = UNSET, client_ids: Any = UNSET, no_clients: Any = UNSET, total_currency: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_projects."""
-        return get_api_2026_07_01_resources_project_management_projects.sync(client=self._client, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency)
+        """Calls get_api_2026_10_01_resources_project_management_projects."""
+        return get_api_2026_10_01_resources_project_management_projects.sync(client=self._client, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency)
 
     async def list_async(self, ids: Any = UNSET, name: Any = UNSET, name_or_code: Any = UNSET, include_inputed_minutes: Any = UNSET, include_costs: Any = UNSET, updated_after: Any = UNSET, legal_entity_id: Any = UNSET, client_ids: Any = UNSET, no_clients: Any = UNSET, total_currency: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_projects.asyncio(client=self._client, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency)
+        return await get_api_2026_10_01_resources_project_management_projects.asyncio(client=self._client, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_projects_id."""
-        return get_api_2026_07_01_resources_project_management_projects_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_projects_id."""
+        return get_api_2026_10_01_resources_project_management_projects_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_projects_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_projects_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects."""
-        return post_api_2026_07_01_resources_project_management_projects.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects."""
+        return post_api_2026_10_01_resources_project_management_projects.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_projects.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects.asyncio(client=self._client, body=body)
 
     def activate(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects_activate."""
-        return post_api_2026_07_01_resources_project_management_projects_activate.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects_activate."""
+        return post_api_2026_10_01_resources_project_management_projects_activate.sync(client=self._client, body=body)
 
     async def activate_async(self, body: Any = UNSET) -> Any:
         """Async version of activate."""
-        return await post_api_2026_07_01_resources_project_management_projects_activate.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects_activate.asyncio(client=self._client, body=body)
 
     def change_assignment(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects_change_assignment."""
-        return post_api_2026_07_01_resources_project_management_projects_change_assignment.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects_change_assignment."""
+        return post_api_2026_10_01_resources_project_management_projects_change_assignment.sync(client=self._client, body=body)
 
     async def change_assignment_async(self, body: Any = UNSET) -> Any:
         """Async version of change_assignment."""
-        return await post_api_2026_07_01_resources_project_management_projects_change_assignment.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects_change_assignment.asyncio(client=self._client, body=body)
 
     def change_status(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects_change_status."""
-        return post_api_2026_07_01_resources_project_management_projects_change_status.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects_change_status."""
+        return post_api_2026_10_01_resources_project_management_projects_change_status.sync(client=self._client, body=body)
 
     async def change_status_async(self, body: Any = UNSET) -> Any:
         """Async version of change_status."""
-        return await post_api_2026_07_01_resources_project_management_projects_change_status.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects_change_status.asyncio(client=self._client, body=body)
 
     def close(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects_close."""
-        return post_api_2026_07_01_resources_project_management_projects_close.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects_close."""
+        return post_api_2026_10_01_resources_project_management_projects_close.sync(client=self._client, body=body)
 
     async def close_async(self, body: Any = UNSET) -> Any:
         """Async version of close."""
-        return await post_api_2026_07_01_resources_project_management_projects_close.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects_close.asyncio(client=self._client, body=body)
 
     def soft_delete(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_projects_soft_delete."""
-        return post_api_2026_07_01_resources_project_management_projects_soft_delete.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_projects_soft_delete."""
+        return post_api_2026_10_01_resources_project_management_projects_soft_delete.sync(client=self._client, body=body)
 
     async def soft_delete_async(self, body: Any = UNSET) -> Any:
         """Async version of soft_delete."""
-        return await post_api_2026_07_01_resources_project_management_projects_soft_delete.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_projects_soft_delete.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_project_management_projects_id."""
-        return put_api_2026_07_01_resources_project_management_projects_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_project_management_projects_id."""
+        return put_api_2026_10_01_resources_project_management_projects_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_project_management_projects_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_project_management_projects_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, name: Any = UNSET, name_or_code: Any = UNSET, include_inputed_minutes: Any = UNSET, include_costs: Any = UNSET, updated_after: Any = UNSET, legal_entity_id: Any = UNSET, client_ids: Any = UNSET, no_clients: Any = UNSET, total_currency: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_projects,
+                get_api_2026_10_01_resources_project_management_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
             )
@@ -8544,7 +9467,7 @@ class ProjectManagementProjectsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_projects,
+                get_api_2026_10_01_resources_project_management_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
             )
@@ -8554,9 +9477,62 @@ class ProjectManagementProjectsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_projects,
+                get_api_2026_10_01_resources_project_management_projects,
                 self._client,
                 after_id, limit=limit, ids=ids, name=name, name_or_code=name_or_code, include_inputed_minutes=include_inputed_minutes, include_costs=include_costs, updated_after=updated_after, legal_entity_id=legal_entity_id, client_ids=client_ids, no_clients=no_clients, total_currency=total_currency,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class ProjectManagementRatesResource:
+    """Methods for the project_management > rates resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, ids: Any = UNSET, company_id: Any = UNSET, project_id: Any = UNSET, resource_ids: Any = UNSET, resource_kind: Any = UNSET, reference_rate_id: Any = UNSET, role_or_level: Any = UNSET, employee_name: Any = UNSET, quote_id: Any = UNSET, only_active: Any = UNSET, without_project: Any = UNSET, without_quote: Any = UNSET, record_type: Any = UNSET, reference_rate_ids: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_project_management_rates."""
+        return get_api_2026_10_01_resources_project_management_rates.sync(client=self._client, ids=ids, company_id=company_id, project_id=project_id, resource_ids=resource_ids, resource_kind=resource_kind, reference_rate_id=reference_rate_id, role_or_level=role_or_level, employee_name=employee_name, quote_id=quote_id, only_active=only_active, without_project=without_project, without_quote=without_quote, record_type=record_type, reference_rate_ids=reference_rate_ids)
+
+    async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, project_id: Any = UNSET, resource_ids: Any = UNSET, resource_kind: Any = UNSET, reference_rate_id: Any = UNSET, role_or_level: Any = UNSET, employee_name: Any = UNSET, quote_id: Any = UNSET, only_active: Any = UNSET, without_project: Any = UNSET, without_quote: Any = UNSET, record_type: Any = UNSET, reference_rate_ids: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_project_management_rates.asyncio(client=self._client, ids=ids, company_id=company_id, project_id=project_id, resource_ids=resource_ids, resource_kind=resource_kind, reference_rate_id=reference_rate_id, role_or_level=role_or_level, employee_name=employee_name, quote_id=quote_id, only_active=only_active, without_project=without_project, without_quote=without_quote, record_type=record_type, reference_rate_ids=reference_rate_ids)
+
+    def get(self, id: Any) -> Any:
+        """Calls get_api_2026_10_01_resources_project_management_rates_id."""
+        return get_api_2026_10_01_resources_project_management_rates_id.sync(id, client=self._client)
+
+    async def get_async(self, id: Any) -> Any:
+        """Async version of get."""
+        return await get_api_2026_10_01_resources_project_management_rates_id.asyncio(id, client=self._client)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, project_id: Any = UNSET, resource_ids: Any = UNSET, resource_kind: Any = UNSET, reference_rate_id: Any = UNSET, role_or_level: Any = UNSET, employee_name: Any = UNSET, quote_id: Any = UNSET, only_active: Any = UNSET, without_project: Any = UNSET, without_quote: Any = UNSET, record_type: Any = UNSET, reference_rate_ids: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_project_management_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, project_id=project_id, resource_ids=resource_ids, resource_kind=resource_kind, reference_rate_id=reference_rate_id, role_or_level=role_or_level, employee_name=employee_name, quote_id=quote_id, only_active=only_active, without_project=without_project, without_quote=without_quote, record_type=record_type, reference_rate_ids=reference_rate_ids,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, project_id: Any = UNSET, resource_ids: Any = UNSET, resource_kind: Any = UNSET, reference_rate_id: Any = UNSET, role_or_level: Any = UNSET, employee_name: Any = UNSET, quote_id: Any = UNSET, only_active: Any = UNSET, without_project: Any = UNSET, without_quote: Any = UNSET, record_type: Any = UNSET, reference_rate_ids: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_project_management_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, project_id=project_id, resource_ids=resource_ids, resource_kind=resource_kind, reference_rate_id=reference_rate_id, role_or_level=role_or_level, employee_name=employee_name, quote_id=quote_id, only_active=only_active, without_project=without_project, without_quote=without_quote, record_type=record_type, reference_rate_ids=reference_rate_ids,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, project_id: Any = UNSET, resource_ids: Any = UNSET, resource_kind: Any = UNSET, reference_rate_id: Any = UNSET, role_or_level: Any = UNSET, employee_name: Any = UNSET, quote_id: Any = UNSET, only_active: Any = UNSET, without_project: Any = UNSET, without_quote: Any = UNSET, record_type: Any = UNSET, reference_rate_ids: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_project_management_rates,
+                self._client,
+                after_id, limit=limit, ids=ids, company_id=company_id, project_id=project_id, resource_ids=resource_ids, resource_kind=resource_kind, reference_rate_id=reference_rate_id, role_or_level=role_or_level, employee_name=employee_name, quote_id=quote_id, only_active=only_active, without_project=without_project, without_quote=without_quote, record_type=record_type, reference_rate_ids=reference_rate_ids,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8568,58 +9544,58 @@ class ProjectManagementSubprojectsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_project_management_subprojects_id."""
-        return delete_api_2026_07_01_resources_project_management_subprojects_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_project_management_subprojects_id."""
+        return delete_api_2026_10_01_resources_project_management_subprojects_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_project_management_subprojects_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_project_management_subprojects_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, project_ids: Any = UNSET, name: Any = UNSET, include_no_subproject: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_subprojects."""
-        return get_api_2026_07_01_resources_project_management_subprojects.sync(client=self._client, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after)
+        """Calls get_api_2026_10_01_resources_project_management_subprojects."""
+        return get_api_2026_10_01_resources_project_management_subprojects.sync(client=self._client, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after)
 
     async def list_async(self, ids: Any = UNSET, project_ids: Any = UNSET, name: Any = UNSET, include_no_subproject: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_subprojects.asyncio(client=self._client, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after)
+        return await get_api_2026_10_01_resources_project_management_subprojects.asyncio(client=self._client, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_subprojects_id."""
-        return get_api_2026_07_01_resources_project_management_subprojects_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_subprojects_id."""
+        return get_api_2026_10_01_resources_project_management_subprojects_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_subprojects_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_subprojects_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_subprojects."""
-        return post_api_2026_07_01_resources_project_management_subprojects.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_subprojects."""
+        return post_api_2026_10_01_resources_project_management_subprojects.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_subprojects.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_subprojects.asyncio(client=self._client, body=body)
 
     def rename(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_subprojects_rename."""
-        return post_api_2026_07_01_resources_project_management_subprojects_rename.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_subprojects_rename."""
+        return post_api_2026_10_01_resources_project_management_subprojects_rename.sync(client=self._client, body=body)
 
     async def rename_async(self, body: Any = UNSET) -> Any:
         """Async version of rename."""
-        return await post_api_2026_07_01_resources_project_management_subprojects_rename.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_subprojects_rename.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_project_management_subprojects_id."""
-        return put_api_2026_07_01_resources_project_management_subprojects_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_project_management_subprojects_id."""
+        return put_api_2026_10_01_resources_project_management_subprojects_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_project_management_subprojects_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_project_management_subprojects_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_ids: Any = UNSET, name: Any = UNSET, include_no_subproject: Any = UNSET, include_inputed_minutes: Any = UNSET, include_cost: Any = UNSET, updated_after: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_subprojects,
+                get_api_2026_10_01_resources_project_management_subprojects,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
@@ -8629,7 +9605,7 @@ class ProjectManagementSubprojectsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_subprojects,
+                get_api_2026_10_01_resources_project_management_subprojects,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
@@ -8639,7 +9615,7 @@ class ProjectManagementSubprojectsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_subprojects,
+                get_api_2026_10_01_resources_project_management_subprojects,
                 self._client,
                 after_id, limit=limit, ids=ids, project_ids=project_ids, name=name, include_no_subproject=include_no_subproject, include_inputed_minutes=include_inputed_minutes, include_cost=include_cost, updated_after=updated_after,
             )
@@ -8653,88 +9629,96 @@ class ProjectManagementTimeRecordsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_project_management_time_records_id."""
-        return delete_api_2026_07_01_resources_project_management_time_records_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_project_management_time_records_id."""
+        return delete_api_2026_10_01_resources_project_management_time_records_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_project_management_time_records_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_project_management_time_records_id.asyncio(id, client=self._client)
 
-    def list(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_time_records."""
-        return get_api_2026_07_01_resources_project_management_time_records.sync(client=self._client, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after)
+    def list(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, project_task_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_project_management_time_records."""
+        return get_api_2026_10_01_resources_project_management_time_records.sync(client=self._client, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, project_task_ids=project_task_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after)
 
-    async def list_async(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, project_task_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_project_management_time_records.asyncio(client=self._client, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after)
+        return await get_api_2026_10_01_resources_project_management_time_records.asyncio(client=self._client, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, project_task_ids=project_task_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_project_management_time_records_id."""
-        return get_api_2026_07_01_resources_project_management_time_records_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_project_management_time_records_id."""
+        return get_api_2026_10_01_resources_project_management_time_records_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_project_management_time_records_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_project_management_time_records_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_time_records."""
-        return post_api_2026_07_01_resources_project_management_time_records.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_time_records."""
+        return post_api_2026_10_01_resources_project_management_time_records.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_project_management_time_records.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_time_records.asyncio(client=self._client, body=body)
 
     def bulk_delete(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_time_records_bulk_delete."""
-        return post_api_2026_07_01_resources_project_management_time_records_bulk_delete.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_time_records_bulk_delete."""
+        return post_api_2026_10_01_resources_project_management_time_records_bulk_delete.sync(client=self._client, body=body)
 
     async def bulk_delete_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_delete."""
-        return await post_api_2026_07_01_resources_project_management_time_records_bulk_delete.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_time_records_bulk_delete.asyncio(client=self._client, body=body)
 
     def bulk_process(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_time_records_bulk_process."""
-        return post_api_2026_07_01_resources_project_management_time_records_bulk_process.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_time_records_bulk_process."""
+        return post_api_2026_10_01_resources_project_management_time_records_bulk_process.sync(client=self._client, body=body)
 
     async def bulk_process_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_process."""
-        return await post_api_2026_07_01_resources_project_management_time_records_bulk_process.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_time_records_bulk_process.asyncio(client=self._client, body=body)
+
+    def update_observations(self, body: Any = UNSET) -> Any:
+        """Calls post_api_2026_10_01_resources_project_management_time_records_update_observations."""
+        return post_api_2026_10_01_resources_project_management_time_records_update_observations.sync(client=self._client, body=body)
+
+    async def update_observations_async(self, body: Any = UNSET) -> Any:
+        """Async version of update_observations."""
+        return await post_api_2026_10_01_resources_project_management_time_records_update_observations.asyncio(client=self._client, body=body)
 
     def update_project_worker(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_project_management_time_records_update_project_worker."""
-        return post_api_2026_07_01_resources_project_management_time_records_update_project_worker.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_project_management_time_records_update_project_worker."""
+        return post_api_2026_10_01_resources_project_management_time_records_update_project_worker.sync(client=self._client, body=body)
 
     async def update_project_worker_async(self, body: Any = UNSET) -> Any:
         """Async version of update_project_worker."""
-        return await post_api_2026_07_01_resources_project_management_time_records_update_project_worker.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_project_management_time_records_update_project_worker.asyncio(client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, project_task_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_time_records,
+                get_api_2026_10_01_resources_project_management_time_records,
                 self._client,
-                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, project_task_ids=project_task_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, project_task_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_project_management_time_records,
+                get_api_2026_10_01_resources_project_management_time_records,
                 self._client,
-                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, project_task_ids=project_task_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, project_worker_ids: Any = UNSET, subproject_ids: Any = UNSET, project_task_ids: Any = UNSET, attendance_shift_ids: Any = UNSET, employee_ids: Any = UNSET, month: Any = UNSET, year: Any = UNSET, updated_after: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_project_management_time_records,
+                get_api_2026_10_01_resources_project_management_time_records,
                 self._client,
-                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
+                after_id, limit=limit, ids=ids, project_worker_ids=project_worker_ids, subproject_ids=subproject_ids, project_task_ids=project_task_ids, attendance_shift_ids=attendance_shift_ids, employee_ids=employee_ids, month=month, year=year, updated_after=updated_after,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -8746,58 +9730,58 @@ class ShiftManagementShiftsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_shift_management_shifts_id."""
-        return delete_api_2026_07_01_resources_shift_management_shifts_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_shift_management_shifts_id."""
+        return delete_api_2026_10_01_resources_shift_management_shifts_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_shift_management_shifts_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_shift_management_shifts_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, without_ids: Any = UNSET, employee_ids: Any = UNSET, location_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET, only_published: Any = UNSET, only_states: Any = UNSET, split_overnight_shifts: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_shift_management_shifts."""
-        return get_api_2026_07_01_resources_shift_management_shifts.sync(client=self._client, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts)
+        """Calls get_api_2026_10_01_resources_shift_management_shifts."""
+        return get_api_2026_10_01_resources_shift_management_shifts.sync(client=self._client, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts)
 
     async def list_async(self, ids: Any = UNSET, without_ids: Any = UNSET, employee_ids: Any = UNSET, location_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET, only_published: Any = UNSET, only_states: Any = UNSET, split_overnight_shifts: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_shift_management_shifts.asyncio(client=self._client, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts)
+        return await get_api_2026_10_01_resources_shift_management_shifts.asyncio(client=self._client, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_shift_management_shifts_id."""
-        return get_api_2026_07_01_resources_shift_management_shifts_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_shift_management_shifts_id."""
+        return get_api_2026_10_01_resources_shift_management_shifts_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_shift_management_shifts_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_shift_management_shifts_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_shift_management_shifts."""
-        return post_api_2026_07_01_resources_shift_management_shifts.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_shift_management_shifts."""
+        return post_api_2026_10_01_resources_shift_management_shifts.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_shift_management_shifts.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_shift_management_shifts.asyncio(client=self._client, body=body)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_shift_management_shifts_bulk_create."""
-        return post_api_2026_07_01_resources_shift_management_shifts_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_shift_management_shifts_bulk_create."""
+        return post_api_2026_10_01_resources_shift_management_shifts_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_shift_management_shifts_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_shift_management_shifts_bulk_create.asyncio(client=self._client, body=body)
 
     def bulk_delete(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_shift_management_shifts_bulk_delete."""
-        return post_api_2026_07_01_resources_shift_management_shifts_bulk_delete.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_shift_management_shifts_bulk_delete."""
+        return post_api_2026_10_01_resources_shift_management_shifts_bulk_delete.sync(client=self._client, body=body)
 
     async def bulk_delete_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_delete."""
-        return await post_api_2026_07_01_resources_shift_management_shifts_bulk_delete.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_shift_management_shifts_bulk_delete.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, without_ids: Any = UNSET, employee_ids: Any = UNSET, location_ids: Any = UNSET, start_at: Any = UNSET, end_at: Any = UNSET, only_published: Any = UNSET, only_states: Any = UNSET, split_overnight_shifts: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_shift_management_shifts,
+                get_api_2026_10_01_resources_shift_management_shifts,
                 self._client,
                 after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
@@ -8807,7 +9791,7 @@ class ShiftManagementShiftsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_shift_management_shifts,
+                get_api_2026_10_01_resources_shift_management_shifts,
                 self._client,
                 after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
@@ -8817,7 +9801,7 @@ class ShiftManagementShiftsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_shift_management_shifts,
+                get_api_2026_10_01_resources_shift_management_shifts,
                 self._client,
                 after_id, limit=limit, ids=ids, without_ids=without_ids, employee_ids=employee_ids, location_ids=location_ids, start_at=start_at, end_at=end_at, only_published=only_published, only_states=only_states, split_overnight_shifts=split_overnight_shifts,
             )
@@ -8831,42 +9815,42 @@ class TasksTaskFilesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_tasks_task_files_id."""
-        return delete_api_2026_07_01_resources_tasks_task_files_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_tasks_task_files_id."""
+        return delete_api_2026_10_01_resources_tasks_task_files_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_tasks_task_files_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_tasks_task_files_id.asyncio(id, client=self._client)
 
     def list(self, task_id: Any = UNSET, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_tasks_task_files."""
-        return get_api_2026_07_01_resources_tasks_task_files.sync(client=self._client, task_id=task_id, ids=ids)
+        """Calls get_api_2026_10_01_resources_tasks_task_files."""
+        return get_api_2026_10_01_resources_tasks_task_files.sync(client=self._client, task_id=task_id, ids=ids)
 
     async def list_async(self, task_id: Any = UNSET, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_tasks_task_files.asyncio(client=self._client, task_id=task_id, ids=ids)
+        return await get_api_2026_10_01_resources_tasks_task_files.asyncio(client=self._client, task_id=task_id, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_tasks_task_files_id."""
-        return get_api_2026_07_01_resources_tasks_task_files_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_tasks_task_files_id."""
+        return get_api_2026_10_01_resources_tasks_task_files_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_tasks_task_files_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_tasks_task_files_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_task_files."""
-        return post_api_2026_07_01_resources_tasks_task_files.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_task_files."""
+        return post_api_2026_10_01_resources_tasks_task_files.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_tasks_task_files.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_task_files.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, task_id: Any = UNSET, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_tasks_task_files,
+                get_api_2026_10_01_resources_tasks_task_files,
                 self._client,
                 after_id, limit=limit, task_id=task_id, ids=ids,
             )
@@ -8876,7 +9860,7 @@ class TasksTaskFilesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_tasks_task_files,
+                get_api_2026_10_01_resources_tasks_task_files,
                 self._client,
                 after_id, limit=limit, task_id=task_id, ids=ids,
             )
@@ -8886,7 +9870,7 @@ class TasksTaskFilesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_tasks_task_files,
+                get_api_2026_10_01_resources_tasks_task_files,
                 self._client,
                 after_id, limit=limit, task_id=task_id, ids=ids,
             )
@@ -8900,90 +9884,90 @@ class TasksTasksResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_tasks_tasks_id."""
-        return delete_api_2026_07_01_resources_tasks_tasks_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_tasks_tasks_id."""
+        return delete_api_2026_10_01_resources_tasks_tasks_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_tasks_tasks_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_tasks_tasks_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, company_id: Any = UNSET, assignee_id: Any = UNSET, due_on: Any = UNSET, already_due: Any = UNSET, task_status: Any = UNSET, involvee_id: Any = UNSET, category: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_tasks_tasks."""
-        return get_api_2026_07_01_resources_tasks_tasks.sync(client=self._client, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category)
+        """Calls get_api_2026_10_01_resources_tasks_tasks."""
+        return get_api_2026_10_01_resources_tasks_tasks.sync(client=self._client, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category)
 
     async def list_async(self, ids: Any = UNSET, company_id: Any = UNSET, assignee_id: Any = UNSET, due_on: Any = UNSET, already_due: Any = UNSET, task_status: Any = UNSET, involvee_id: Any = UNSET, category: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_tasks_tasks.asyncio(client=self._client, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category)
+        return await get_api_2026_10_01_resources_tasks_tasks.asyncio(client=self._client, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_tasks_tasks_id."""
-        return get_api_2026_07_01_resources_tasks_tasks_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_tasks_tasks_id."""
+        return get_api_2026_10_01_resources_tasks_tasks_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_tasks_tasks_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_tasks_tasks_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks."""
-        return post_api_2026_07_01_resources_tasks_tasks.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks."""
+        return post_api_2026_10_01_resources_tasks_tasks.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_tasks_tasks.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks.asyncio(client=self._client, body=body)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks_bulk_create."""
-        return post_api_2026_07_01_resources_tasks_tasks_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks_bulk_create."""
+        return post_api_2026_10_01_resources_tasks_tasks_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_tasks_tasks_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks_bulk_create.asyncio(client=self._client, body=body)
 
     def bulk_delete(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks_bulk_delete."""
-        return post_api_2026_07_01_resources_tasks_tasks_bulk_delete.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks_bulk_delete."""
+        return post_api_2026_10_01_resources_tasks_tasks_bulk_delete.sync(client=self._client, body=body)
 
     async def bulk_delete_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_delete."""
-        return await post_api_2026_07_01_resources_tasks_tasks_bulk_delete.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks_bulk_delete.asyncio(client=self._client, body=body)
 
     def bulk_update(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks_bulk_update."""
-        return post_api_2026_07_01_resources_tasks_tasks_bulk_update.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks_bulk_update."""
+        return post_api_2026_10_01_resources_tasks_tasks_bulk_update.sync(client=self._client, body=body)
 
     async def bulk_update_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_update."""
-        return await post_api_2026_07_01_resources_tasks_tasks_bulk_update.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks_bulk_update.asyncio(client=self._client, body=body)
 
     def copy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks_copy."""
-        return post_api_2026_07_01_resources_tasks_tasks_copy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks_copy."""
+        return post_api_2026_10_01_resources_tasks_tasks_copy.sync(client=self._client, body=body)
 
     async def copy_async(self, body: Any = UNSET) -> Any:
         """Async version of copy."""
-        return await post_api_2026_07_01_resources_tasks_tasks_copy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks_copy.asyncio(client=self._client, body=body)
 
     def create_comment(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_tasks_tasks_create_comment."""
-        return post_api_2026_07_01_resources_tasks_tasks_create_comment.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_tasks_tasks_create_comment."""
+        return post_api_2026_10_01_resources_tasks_tasks_create_comment.sync(client=self._client, body=body)
 
     async def create_comment_async(self, body: Any = UNSET) -> Any:
         """Async version of create_comment."""
-        return await post_api_2026_07_01_resources_tasks_tasks_create_comment.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_tasks_tasks_create_comment.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_tasks_tasks_id."""
-        return put_api_2026_07_01_resources_tasks_tasks_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_tasks_tasks_id."""
+        return put_api_2026_10_01_resources_tasks_tasks_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_tasks_tasks_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_tasks_tasks_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_id: Any = UNSET, assignee_id: Any = UNSET, due_on: Any = UNSET, already_due: Any = UNSET, task_status: Any = UNSET, involvee_id: Any = UNSET, category: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_tasks_tasks,
+                get_api_2026_10_01_resources_tasks_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
@@ -8993,7 +9977,7 @@ class TasksTasksResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_tasks_tasks,
+                get_api_2026_10_01_resources_tasks_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
@@ -9003,7 +9987,7 @@ class TasksTasksResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_tasks_tasks,
+                get_api_2026_10_01_resources_tasks_tasks,
                 self._client,
                 after_id, limit=limit, ids=ids, company_id=company_id, assignee_id=assignee_id, due_on=due_on, already_due=already_due, task_status=task_status, involvee_id=involvee_id, category=category,
             )
@@ -9017,50 +10001,50 @@ class TeamsMembershipsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_teams_memberships_id."""
-        return delete_api_2026_07_01_resources_teams_memberships_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_teams_memberships_id."""
+        return delete_api_2026_10_01_resources_teams_memberships_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_teams_memberships_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_teams_memberships_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, lead: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_teams_memberships."""
-        return get_api_2026_07_01_resources_teams_memberships.sync(client=self._client, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids)
+        """Calls get_api_2026_10_01_resources_teams_memberships."""
+        return get_api_2026_10_01_resources_teams_memberships.sync(client=self._client, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids)
 
     async def list_async(self, ids: Any = UNSET, lead: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_teams_memberships.asyncio(client=self._client, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids)
+        return await get_api_2026_10_01_resources_teams_memberships.asyncio(client=self._client, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_teams_memberships_id."""
-        return get_api_2026_07_01_resources_teams_memberships_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_teams_memberships_id."""
+        return get_api_2026_10_01_resources_teams_memberships_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_teams_memberships_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_teams_memberships_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_teams_memberships."""
-        return post_api_2026_07_01_resources_teams_memberships.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_teams_memberships."""
+        return post_api_2026_10_01_resources_teams_memberships.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_teams_memberships.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_teams_memberships.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_teams_memberships_id."""
-        return put_api_2026_07_01_resources_teams_memberships_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_teams_memberships_id."""
+        return put_api_2026_10_01_resources_teams_memberships_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_teams_memberships_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_teams_memberships_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, lead: Any = UNSET, team_ids: Any = UNSET, employee_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_teams_memberships,
+                get_api_2026_10_01_resources_teams_memberships,
                 self._client,
                 after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
@@ -9070,7 +10054,7 @@ class TeamsMembershipsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_teams_memberships,
+                get_api_2026_10_01_resources_teams_memberships,
                 self._client,
                 after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
@@ -9080,7 +10064,7 @@ class TeamsMembershipsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_teams_memberships,
+                get_api_2026_10_01_resources_teams_memberships,
                 self._client,
                 after_id, limit=limit, ids=ids, lead=lead, team_ids=team_ids, employee_ids=employee_ids,
             )
@@ -9094,50 +10078,50 @@ class TeamsTeamsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_teams_teams_id."""
-        return delete_api_2026_07_01_resources_teams_teams_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_teams_teams_id."""
+        return delete_api_2026_10_01_resources_teams_teams_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_teams_teams_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_teams_teams_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_teams_teams."""
-        return get_api_2026_07_01_resources_teams_teams.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_teams_teams."""
+        return get_api_2026_10_01_resources_teams_teams.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_teams_teams.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_teams_teams.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_teams_teams_id."""
-        return get_api_2026_07_01_resources_teams_teams_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_teams_teams_id."""
+        return get_api_2026_10_01_resources_teams_teams_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_teams_teams_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_teams_teams_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_teams_teams."""
-        return post_api_2026_07_01_resources_teams_teams.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_teams_teams."""
+        return post_api_2026_10_01_resources_teams_teams.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_teams_teams.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_teams_teams.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_teams_teams_id."""
-        return put_api_2026_07_01_resources_teams_teams_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_teams_teams_id."""
+        return put_api_2026_10_01_resources_teams_teams_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_teams_teams_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_teams_teams_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_teams_teams,
+                get_api_2026_10_01_resources_teams_teams,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -9147,7 +10131,7 @@ class TeamsTeamsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_teams_teams,
+                get_api_2026_10_01_resources_teams_teams,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -9157,7 +10141,7 @@ class TeamsTeamsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_teams_teams,
+                get_api_2026_10_01_resources_teams_teams,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -9171,34 +10155,34 @@ class TimePlanningPlannedBreaksResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, paid: Any = UNSET, default_shift_ids: Any = UNSET, shift_ids: Any = UNSET, day_configuration_ids: Any = UNSET, shift_configuration_ids: Any = UNSET, active_break_configuration: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_time_planning_planned_breaks."""
-        return get_api_2026_07_01_resources_time_planning_planned_breaks.sync(client=self._client, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration)
+        """Calls get_api_2026_10_01_resources_time_planning_planned_breaks."""
+        return get_api_2026_10_01_resources_time_planning_planned_breaks.sync(client=self._client, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration)
 
     async def list_async(self, ids: Any = UNSET, paid: Any = UNSET, default_shift_ids: Any = UNSET, shift_ids: Any = UNSET, day_configuration_ids: Any = UNSET, shift_configuration_ids: Any = UNSET, active_break_configuration: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_time_planning_planned_breaks.asyncio(client=self._client, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration)
+        return await get_api_2026_10_01_resources_time_planning_planned_breaks.asyncio(client=self._client, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_time_planning_planned_breaks_id."""
-        return get_api_2026_07_01_resources_time_planning_planned_breaks_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_time_planning_planned_breaks_id."""
+        return get_api_2026_10_01_resources_time_planning_planned_breaks_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_time_planning_planned_breaks_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_time_planning_planned_breaks_id.asyncio(id, client=self._client)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_time_planning_planned_breaks_bulk_create."""
-        return post_api_2026_07_01_resources_time_planning_planned_breaks_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_time_planning_planned_breaks_bulk_create."""
+        return post_api_2026_10_01_resources_time_planning_planned_breaks_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_time_planning_planned_breaks_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_time_planning_planned_breaks_bulk_create.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, paid: Any = UNSET, default_shift_ids: Any = UNSET, shift_ids: Any = UNSET, day_configuration_ids: Any = UNSET, shift_configuration_ids: Any = UNSET, active_break_configuration: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                get_api_2026_10_01_resources_time_planning_planned_breaks,
                 self._client,
                 after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
@@ -9208,7 +10192,7 @@ class TimePlanningPlannedBreaksResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                get_api_2026_10_01_resources_time_planning_planned_breaks,
                 self._client,
                 after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
@@ -9218,7 +10202,7 @@ class TimePlanningPlannedBreaksResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_time_planning_planned_breaks,
+                get_api_2026_10_01_resources_time_planning_planned_breaks,
                 self._client,
                 after_id, limit=limit, ids=ids, paid=paid, default_shift_ids=default_shift_ids, shift_ids=shift_ids, day_configuration_ids=day_configuration_ids, shift_configuration_ids=shift_configuration_ids, active_break_configuration=active_break_configuration,
             )
@@ -9232,50 +10216,50 @@ class TimePlanningPlanningVersionsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_time_planning_planning_versions_id."""
-        return delete_api_2026_07_01_resources_time_planning_planning_versions_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_time_planning_planning_versions_id."""
+        return delete_api_2026_10_01_resources_time_planning_planning_versions_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_time_planning_planning_versions_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_time_planning_planning_versions_id.asyncio(id, client=self._client)
 
     def list(self, employee_ids: Any = UNSET, for_shifts: Any = UNSET, only_active: Any = UNSET, planning_tool: Any = UNSET, schedule_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_time_planning_planning_versions."""
-        return get_api_2026_07_01_resources_time_planning_planning_versions.sync(client=self._client, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids)
+        """Calls get_api_2026_10_01_resources_time_planning_planning_versions."""
+        return get_api_2026_10_01_resources_time_planning_planning_versions.sync(client=self._client, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids)
 
     async def list_async(self, employee_ids: Any = UNSET, for_shifts: Any = UNSET, only_active: Any = UNSET, planning_tool: Any = UNSET, schedule_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_time_planning_planning_versions.asyncio(client=self._client, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids)
+        return await get_api_2026_10_01_resources_time_planning_planning_versions.asyncio(client=self._client, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_time_planning_planning_versions."""
-        return post_api_2026_07_01_resources_time_planning_planning_versions.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_time_planning_planning_versions."""
+        return post_api_2026_10_01_resources_time_planning_planning_versions.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_time_planning_planning_versions.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_time_planning_planning_versions.asyncio(client=self._client, body=body)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_time_planning_planning_versions_bulk_create."""
-        return post_api_2026_07_01_resources_time_planning_planning_versions_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_time_planning_planning_versions_bulk_create."""
+        return post_api_2026_10_01_resources_time_planning_planning_versions_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_time_planning_planning_versions_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_time_planning_planning_versions_bulk_create.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_time_planning_planning_versions_id."""
-        return put_api_2026_07_01_resources_time_planning_planning_versions_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_time_planning_planning_versions_id."""
+        return put_api_2026_10_01_resources_time_planning_planning_versions_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_time_planning_planning_versions_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_time_planning_planning_versions_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_ids: Any = UNSET, for_shifts: Any = UNSET, only_active: Any = UNSET, planning_tool: Any = UNSET, schedule_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_planning_planning_versions,
+                get_api_2026_10_01_resources_time_planning_planning_versions,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
@@ -9285,7 +10269,7 @@ class TimePlanningPlanningVersionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_planning_planning_versions,
+                get_api_2026_10_01_resources_time_planning_planning_versions,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
@@ -9295,7 +10279,7 @@ class TimePlanningPlanningVersionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_time_planning_planning_versions,
+                get_api_2026_10_01_resources_time_planning_planning_versions,
                 self._client,
                 after_id, limit=limit, employee_ids=employee_ids, for_shifts=for_shifts, only_active=only_active, planning_tool=planning_tool, schedule_ids=schedule_ids,
             )
@@ -9309,42 +10293,42 @@ class TimeSettingsBreakConfigurationsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, active: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_time_settings_break_configurations."""
-        return get_api_2026_07_01_resources_time_settings_break_configurations.sync(client=self._client, ids=ids, active=active)
+        """Calls get_api_2026_10_01_resources_time_settings_break_configurations."""
+        return get_api_2026_10_01_resources_time_settings_break_configurations.sync(client=self._client, ids=ids, active=active)
 
     async def list_async(self, ids: Any = UNSET, active: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_time_settings_break_configurations.asyncio(client=self._client, ids=ids, active=active)
+        return await get_api_2026_10_01_resources_time_settings_break_configurations.asyncio(client=self._client, ids=ids, active=active)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_time_settings_break_configurations_id."""
-        return get_api_2026_07_01_resources_time_settings_break_configurations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_time_settings_break_configurations_id."""
+        return get_api_2026_10_01_resources_time_settings_break_configurations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_time_settings_break_configurations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_time_settings_break_configurations_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_time_settings_break_configurations."""
-        return post_api_2026_07_01_resources_time_settings_break_configurations.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_time_settings_break_configurations."""
+        return post_api_2026_10_01_resources_time_settings_break_configurations.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_time_settings_break_configurations.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_time_settings_break_configurations.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_time_settings_break_configurations_id."""
-        return put_api_2026_07_01_resources_time_settings_break_configurations_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_time_settings_break_configurations_id."""
+        return put_api_2026_10_01_resources_time_settings_break_configurations_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_time_settings_break_configurations_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_time_settings_break_configurations_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, active: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_settings_break_configurations,
+                get_api_2026_10_01_resources_time_settings_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, active=active,
             )
@@ -9354,7 +10338,7 @@ class TimeSettingsBreakConfigurationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_time_settings_break_configurations,
+                get_api_2026_10_01_resources_time_settings_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, active=active,
             )
@@ -9364,7 +10348,7 @@ class TimeSettingsBreakConfigurationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_time_settings_break_configurations,
+                get_api_2026_10_01_resources_time_settings_break_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, active=active,
             )
@@ -9378,50 +10362,50 @@ class TimeoffAllowanceIncidencesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_allowance_incidences_id."""
-        return delete_api_2026_07_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_allowance_incidences_id."""
+        return delete_api_2026_10_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_allowance_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowance_incidences."""
-        return get_api_2026_07_01_resources_timeoff_allowance_incidences.sync(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids)
+        """Calls get_api_2026_10_01_resources_timeoff_allowance_incidences."""
+        return get_api_2026_10_01_resources_timeoff_allowance_incidences.sync(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_allowance_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_allowance_incidences.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids)
+        return await get_api_2026_10_01_resources_timeoff_allowance_incidences.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowance_incidences_id."""
-        return get_api_2026_07_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_allowance_incidences_id."""
+        return get_api_2026_10_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_allowance_incidences."""
-        return post_api_2026_07_01_resources_timeoff_allowance_incidences.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_allowance_incidences."""
+        return post_api_2026_10_01_resources_timeoff_allowance_incidences.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_allowance_incidences.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_allowance_incidences.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_allowance_incidences_id."""
-        return put_api_2026_07_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_allowance_incidences_id."""
+        return put_api_2026_10_01_resources_timeoff_allowance_incidences_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_allowance_incidences_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_allowance_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                get_api_2026_10_01_resources_timeoff_allowance_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
@@ -9431,7 +10415,7 @@ class TimeoffAllowanceIncidencesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                get_api_2026_10_01_resources_timeoff_allowance_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
@@ -9441,7 +10425,7 @@ class TimeoffAllowanceIncidencesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_allowance_incidences,
+                get_api_2026_10_01_resources_timeoff_allowance_incidences,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_allowance_ids=timeoff_allowance_ids,
             )
@@ -9454,49 +10438,49 @@ class TimeoffAllowanceStatsResource:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
 
-    def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowance_stats."""
-        return get_api_2026_07_01_resources_timeoff_allowance_stats.sync(client=self._client, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date)
+    def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET, simulate_policy_change_to_id: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_timeoff_allowance_stats."""
+        return get_api_2026_10_01_resources_timeoff_allowance_stats.sync(client=self._client, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date, simulate_policy_change_to_id=simulate_policy_change_to_id)
 
-    async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET, simulate_policy_change_to_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_allowance_stats.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date)
+        return await get_api_2026_10_01_resources_timeoff_allowance_stats.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date, simulate_policy_change_to_id=simulate_policy_change_to_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowance_stats_id."""
-        return get_api_2026_07_01_resources_timeoff_allowance_stats_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_allowance_stats_id."""
+        return get_api_2026_10_01_resources_timeoff_allowance_stats_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_allowance_stats_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_allowance_stats_id.asyncio(id, client=self._client)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET, simulate_policy_change_to_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                get_api_2026_10_01_resources_timeoff_allowance_stats,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date, simulate_policy_change_to_id=simulate_policy_change_to_id,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET, simulate_policy_change_to_id: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                get_api_2026_10_01_resources_timeoff_allowance_stats,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date, simulate_policy_change_to_id=simulate_policy_change_to_id,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, allowance_ids: Any = UNSET, reference_date: Any = UNSET, simulate_policy_change_to_id: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_allowance_stats,
+                get_api_2026_10_01_resources_timeoff_allowance_stats,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, allowance_ids=allowance_ids, reference_date=reference_date, simulate_policy_change_to_id=simulate_policy_change_to_id,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9508,58 +10492,58 @@ class TimeoffAllowancesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_allowances_id."""
-        return delete_api_2026_07_01_resources_timeoff_allowances_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_allowances_id."""
+        return delete_api_2026_10_01_resources_timeoff_allowances_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_allowances_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_allowances_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, timeoff_policy_id: Any = UNSET, by_overtime: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowances."""
-        return get_api_2026_07_01_resources_timeoff_allowances.sync(client=self._client, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime)
+        """Calls get_api_2026_10_01_resources_timeoff_allowances."""
+        return get_api_2026_10_01_resources_timeoff_allowances.sync(client=self._client, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime)
 
     async def list_async(self, ids: Any = UNSET, timeoff_policy_id: Any = UNSET, by_overtime: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_allowances.asyncio(client=self._client, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime)
+        return await get_api_2026_10_01_resources_timeoff_allowances.asyncio(client=self._client, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_allowances_id."""
-        return get_api_2026_07_01_resources_timeoff_allowances_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_allowances_id."""
+        return get_api_2026_10_01_resources_timeoff_allowances_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_allowances_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_allowances_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_allowances."""
-        return post_api_2026_07_01_resources_timeoff_allowances.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_allowances."""
+        return post_api_2026_10_01_resources_timeoff_allowances.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_allowances.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_allowances.asyncio(client=self._client, body=body)
 
     def delete_with_alt_allowance(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_allowances_delete_with_alt_allowance."""
-        return post_api_2026_07_01_resources_timeoff_allowances_delete_with_alt_allowance.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_allowances_delete_with_alt_allowance."""
+        return post_api_2026_10_01_resources_timeoff_allowances_delete_with_alt_allowance.sync(client=self._client, body=body)
 
     async def delete_with_alt_allowance_async(self, body: Any = UNSET) -> Any:
         """Async version of delete_with_alt_allowance."""
-        return await post_api_2026_07_01_resources_timeoff_allowances_delete_with_alt_allowance.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_allowances_delete_with_alt_allowance.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_allowances_id."""
-        return put_api_2026_07_01_resources_timeoff_allowances_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_allowances_id."""
+        return put_api_2026_10_01_resources_timeoff_allowances_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_allowances_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_allowances_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, timeoff_policy_id: Any = UNSET, by_overtime: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowances,
+                get_api_2026_10_01_resources_timeoff_allowances,
                 self._client,
                 after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
@@ -9569,7 +10553,7 @@ class TimeoffAllowancesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_allowances,
+                get_api_2026_10_01_resources_timeoff_allowances,
                 self._client,
                 after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
@@ -9579,7 +10563,7 @@ class TimeoffAllowancesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_allowances,
+                get_api_2026_10_01_resources_timeoff_allowances,
                 self._client,
                 after_id, limit=limit, ids=ids, timeoff_policy_id=timeoff_policy_id, by_overtime=by_overtime,
             )
@@ -9593,50 +10577,50 @@ class TimeoffBlockedPeriodsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_blocked_periods_id."""
-        return delete_api_2026_07_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_blocked_periods_id."""
+        return delete_api_2026_10_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_blocked_periods."""
-        return get_api_2026_07_01_resources_timeoff_blocked_periods.sync(client=self._client, ids=ids, company_ids=company_ids)
+        """Calls get_api_2026_10_01_resources_timeoff_blocked_periods."""
+        return get_api_2026_10_01_resources_timeoff_blocked_periods.sync(client=self._client, ids=ids, company_ids=company_ids)
 
     async def list_async(self, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_blocked_periods.asyncio(client=self._client, ids=ids, company_ids=company_ids)
+        return await get_api_2026_10_01_resources_timeoff_blocked_periods.asyncio(client=self._client, ids=ids, company_ids=company_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_blocked_periods_id."""
-        return get_api_2026_07_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_blocked_periods_id."""
+        return get_api_2026_10_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_blocked_periods."""
-        return post_api_2026_07_01_resources_timeoff_blocked_periods.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_blocked_periods."""
+        return post_api_2026_10_01_resources_timeoff_blocked_periods.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_blocked_periods.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_blocked_periods.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_blocked_periods_id."""
-        return put_api_2026_07_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_blocked_periods_id."""
+        return put_api_2026_10_01_resources_timeoff_blocked_periods_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_blocked_periods_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                get_api_2026_10_01_resources_timeoff_blocked_periods,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
@@ -9646,7 +10630,7 @@ class TimeoffBlockedPeriodsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                get_api_2026_10_01_resources_timeoff_blocked_periods,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
@@ -9656,9 +10640,54 @@ class TimeoffBlockedPeriodsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_blocked_periods,
+                get_api_2026_10_01_resources_timeoff_blocked_periods,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
+            )
+        return paginate_async(fetcher, max_items=max_items)
+
+
+class TimeoffFrenchLeaveDayCountsResource:
+    """Methods for the timeoff > french_leave_day_counts resource."""
+
+    def __init__(self, client: AuthenticatedClient) -> None:
+        self._client = client
+
+    def list(self, leave_ids: Any = UNSET, employee_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, include_deleted: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_timeoff_french_leave_day_counts."""
+        return get_api_2026_10_01_resources_timeoff_french_leave_day_counts.sync(client=self._client, leave_ids=leave_ids, employee_ids=employee_ids, from_=from_, to=to, include_deleted=include_deleted)
+
+    async def list_async(self, leave_ids: Any = UNSET, employee_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, include_deleted: Any = UNSET) -> Any:
+        """Async version of list."""
+        return await get_api_2026_10_01_resources_timeoff_french_leave_day_counts.asyncio(client=self._client, leave_ids=leave_ids, employee_ids=employee_ids, from_=from_, to=to, include_deleted=include_deleted)
+
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, leave_ids: Any = UNSET, employee_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, include_deleted: Any = UNSET) -> Any:
+        """Cursor-paginated iterator over all items."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_timeoff_french_leave_day_counts,
+                self._client,
+                after_id, limit=limit, leave_ids=leave_ids, employee_ids=employee_ids, from_=from_, to=to, include_deleted=include_deleted,
+            )
+        return paginate(fetcher, max_items=max_items)
+
+    def all(self, *, max_items: int | None = None, limit: int | None = None, leave_ids: Any = UNSET, employee_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, include_deleted: Any = UNSET) -> List[Any]:
+        """Collect all pages into a list."""
+        def fetcher(after_id: str | None) -> Any:
+            return fetch_page(
+                get_api_2026_10_01_resources_timeoff_french_leave_day_counts,
+                self._client,
+                after_id, limit=limit, leave_ids=leave_ids, employee_ids=employee_ids, from_=from_, to=to, include_deleted=include_deleted,
+            )
+        return collect_all(fetcher, max_items=max_items)
+
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, leave_ids: Any = UNSET, employee_ids: Any = UNSET, from_: Any = UNSET, to: Any = UNSET, include_deleted: Any = UNSET) -> Any:
+        """Async cursor-paginated iterator."""
+        async def fetcher(after_id: str | None) -> Any:
+            return await fetch_page_async(
+                get_api_2026_10_01_resources_timeoff_french_leave_day_counts,
+                self._client,
+                after_id, limit=limit, leave_ids=leave_ids, employee_ids=employee_ids, from_=from_, to=to, include_deleted=include_deleted,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9670,42 +10699,42 @@ class TimeoffLeaveTypesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, company_ids: Any = UNSET, active: Any = UNSET, payable: Any = UNSET, identifier: Any = UNSET, employee_id: Any = UNSET, reference_date: Any = UNSET, leave_type_id: Any = UNSET, allow_endless: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_leave_types."""
-        return get_api_2026_07_01_resources_timeoff_leave_types.sync(client=self._client, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless)
+        """Calls get_api_2026_10_01_resources_timeoff_leave_types."""
+        return get_api_2026_10_01_resources_timeoff_leave_types.sync(client=self._client, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless)
 
     async def list_async(self, ids: Any = UNSET, company_ids: Any = UNSET, active: Any = UNSET, payable: Any = UNSET, identifier: Any = UNSET, employee_id: Any = UNSET, reference_date: Any = UNSET, leave_type_id: Any = UNSET, allow_endless: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_leave_types.asyncio(client=self._client, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless)
+        return await get_api_2026_10_01_resources_timeoff_leave_types.asyncio(client=self._client, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_leave_types_id."""
-        return get_api_2026_07_01_resources_timeoff_leave_types_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_leave_types_id."""
+        return get_api_2026_10_01_resources_timeoff_leave_types_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_leave_types_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_leave_types_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_leave_types."""
-        return post_api_2026_07_01_resources_timeoff_leave_types.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_leave_types."""
+        return post_api_2026_10_01_resources_timeoff_leave_types.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_leave_types.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_leave_types.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_leave_types_id."""
-        return put_api_2026_07_01_resources_timeoff_leave_types_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_leave_types_id."""
+        return put_api_2026_10_01_resources_timeoff_leave_types_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_leave_types_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_leave_types_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_ids: Any = UNSET, active: Any = UNSET, payable: Any = UNSET, identifier: Any = UNSET, employee_id: Any = UNSET, reference_date: Any = UNSET, leave_type_id: Any = UNSET, allow_endless: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_leave_types,
+                get_api_2026_10_01_resources_timeoff_leave_types,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
@@ -9715,7 +10744,7 @@ class TimeoffLeaveTypesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_leave_types,
+                get_api_2026_10_01_resources_timeoff_leave_types,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
@@ -9725,7 +10754,7 @@ class TimeoffLeaveTypesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_leave_types,
+                get_api_2026_10_01_resources_timeoff_leave_types,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids, active=active, payable=payable, identifier=identifier, employee_id=employee_id, reference_date=reference_date, leave_type_id=leave_type_id, allow_endless=allow_endless,
             )
@@ -9739,96 +10768,96 @@ class TimeoffLeavesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_leaves_id."""
-        return delete_api_2026_07_01_resources_timeoff_leaves_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_leaves_id."""
+        return delete_api_2026_10_01_resources_timeoff_leaves_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_leaves_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_leaves_id.asyncio(id, client=self._client)
 
-    def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_leaves."""
-        return get_api_2026_07_01_resources_timeoff_leaves.sync(client=self._client, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable)
+    def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, include_duration_by_day: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET, forced_finish_on: Any = UNSET) -> Any:
+        """Calls get_api_2026_10_01_resources_timeoff_leaves."""
+        return get_api_2026_10_01_resources_timeoff_leaves.sync(client=self._client, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, include_duration_by_day=include_duration_by_day, type_is_workable=type_is_workable, type_is_payable=type_is_payable, forced_finish_on=forced_finish_on)
 
-    async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET) -> Any:
+    async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, include_duration_by_day: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET, forced_finish_on: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_leaves.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable)
+        return await get_api_2026_10_01_resources_timeoff_leaves.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, include_duration_by_day=include_duration_by_day, type_is_workable=type_is_workable, type_is_payable=type_is_payable, forced_finish_on=forced_finish_on)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_leaves_id."""
-        return get_api_2026_07_01_resources_timeoff_leaves_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_leaves_id."""
+        return get_api_2026_10_01_resources_timeoff_leaves_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_leaves_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_leaves_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_leaves."""
-        return post_api_2026_07_01_resources_timeoff_leaves.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_leaves."""
+        return post_api_2026_10_01_resources_timeoff_leaves.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_leaves.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_leaves.asyncio(client=self._client, body=body)
 
     def approve(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_leaves_approve."""
-        return post_api_2026_07_01_resources_timeoff_leaves_approve.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_leaves_approve."""
+        return post_api_2026_10_01_resources_timeoff_leaves_approve.sync(client=self._client, body=body)
 
     async def approve_async(self, body: Any = UNSET) -> Any:
         """Async version of approve."""
-        return await post_api_2026_07_01_resources_timeoff_leaves_approve.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_leaves_approve.asyncio(client=self._client, body=body)
 
     def approve_all(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_leaves_approve_all."""
-        return post_api_2026_07_01_resources_timeoff_leaves_approve_all.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_leaves_approve_all."""
+        return post_api_2026_10_01_resources_timeoff_leaves_approve_all.sync(client=self._client, body=body)
 
     async def approve_all_async(self, body: Any = UNSET) -> Any:
         """Async version of approve_all."""
-        return await post_api_2026_07_01_resources_timeoff_leaves_approve_all.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_leaves_approve_all.asyncio(client=self._client, body=body)
 
     def reject(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_leaves_reject."""
-        return post_api_2026_07_01_resources_timeoff_leaves_reject.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_leaves_reject."""
+        return post_api_2026_10_01_resources_timeoff_leaves_reject.sync(client=self._client, body=body)
 
     async def reject_async(self, body: Any = UNSET) -> Any:
         """Async version of reject."""
-        return await post_api_2026_07_01_resources_timeoff_leaves_reject.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_leaves_reject.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_leaves_id."""
-        return put_api_2026_07_01_resources_timeoff_leaves_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_leaves_id."""
+        return put_api_2026_10_01_resources_timeoff_leaves_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_leaves_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_leaves_id.asyncio(id, client=self._client, body=body)
 
-    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET) -> Any:
+    def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, include_duration_by_day: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET, forced_finish_on: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_leaves,
+                get_api_2026_10_01_resources_timeoff_leaves,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, include_duration_by_day=include_duration_by_day, type_is_workable=type_is_workable, type_is_payable=type_is_payable, forced_finish_on=forced_finish_on,
             )
         return paginate(fetcher, max_items=max_items)
 
-    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET) -> List[Any]:
+    def all(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, include_duration_by_day: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET, forced_finish_on: Any = UNSET) -> List[Any]:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_leaves,
+                get_api_2026_10_01_resources_timeoff_leaves,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, include_duration_by_day=include_duration_by_day, type_is_workable=type_is_workable, type_is_payable=type_is_payable, forced_finish_on=forced_finish_on,
             )
         return collect_all(fetcher, max_items=max_items)
 
-    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET) -> Any:
+    async def paginate_async(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, leave_type_id: Any = UNSET, to: Any = UNSET, from_: Any = UNSET, only_active: Any = UNSET, include_deleted_leaves: Any = UNSET, approved: Any = UNSET, include_pending: Any = UNSET, include_leave_type: Any = UNSET, include_duration: Any = UNSET, include_duration_by_day: Any = UNSET, type_is_workable: Any = UNSET, type_is_payable: Any = UNSET, forced_finish_on: Any = UNSET) -> Any:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_leaves,
+                get_api_2026_10_01_resources_timeoff_leaves,
                 self._client,
-                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, type_is_workable=type_is_workable, type_is_payable=type_is_payable,
+                after_id, limit=limit, ids=ids, employee_ids=employee_ids, leave_type_id=leave_type_id, to=to, from_=from_, only_active=only_active, include_deleted_leaves=include_deleted_leaves, approved=approved, include_pending=include_pending, include_leave_type=include_leave_type, include_duration=include_duration, include_duration_by_day=include_duration_by_day, type_is_workable=type_is_workable, type_is_payable=type_is_payable, forced_finish_on=forced_finish_on,
             )
         return paginate_async(fetcher, max_items=max_items)
 
@@ -9840,50 +10869,50 @@ class TimeoffPoliciesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_policies_id."""
-        return delete_api_2026_07_01_resources_timeoff_policies_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_policies_id."""
+        return delete_api_2026_10_01_resources_timeoff_policies_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_policies_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_policies_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_policies."""
-        return get_api_2026_07_01_resources_timeoff_policies.sync(client=self._client, ids=ids, company_ids=company_ids)
+        """Calls get_api_2026_10_01_resources_timeoff_policies."""
+        return get_api_2026_10_01_resources_timeoff_policies.sync(client=self._client, ids=ids, company_ids=company_ids)
 
     async def list_async(self, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_policies.asyncio(client=self._client, ids=ids, company_ids=company_ids)
+        return await get_api_2026_10_01_resources_timeoff_policies.asyncio(client=self._client, ids=ids, company_ids=company_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_policies_id."""
-        return get_api_2026_07_01_resources_timeoff_policies_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_policies_id."""
+        return get_api_2026_10_01_resources_timeoff_policies_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_policies_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_policies_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_policies."""
-        return post_api_2026_07_01_resources_timeoff_policies.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_policies."""
+        return post_api_2026_10_01_resources_timeoff_policies.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_policies.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_policies.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_policies_id."""
-        return put_api_2026_07_01_resources_timeoff_policies_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_policies_id."""
+        return put_api_2026_10_01_resources_timeoff_policies_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_policies_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_policies_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, company_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policies,
+                get_api_2026_10_01_resources_timeoff_policies,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
@@ -9893,7 +10922,7 @@ class TimeoffPoliciesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policies,
+                get_api_2026_10_01_resources_timeoff_policies,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
@@ -9903,7 +10932,7 @@ class TimeoffPoliciesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_policies,
+                get_api_2026_10_01_resources_timeoff_policies,
                 self._client,
                 after_id, limit=limit, ids=ids, company_ids=company_ids,
             )
@@ -9917,50 +10946,50 @@ class TimeoffPolicyAssignmentsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_timeoff_policy_assignments_id."""
-        return delete_api_2026_07_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_timeoff_policy_assignments_id."""
+        return delete_api_2026_10_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_policy_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_policy_assignments."""
-        return get_api_2026_07_01_resources_timeoff_policy_assignments.sync(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids)
+        """Calls get_api_2026_10_01_resources_timeoff_policy_assignments."""
+        return get_api_2026_10_01_resources_timeoff_policy_assignments.sync(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids)
 
     async def list_async(self, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_policy_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_policy_assignments.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids)
+        return await get_api_2026_10_01_resources_timeoff_policy_assignments.asyncio(client=self._client, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_policy_assignments_id."""
-        return get_api_2026_07_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_timeoff_policy_assignments_id."""
+        return get_api_2026_10_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_timeoff_policy_assignments."""
-        return post_api_2026_07_01_resources_timeoff_policy_assignments.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_timeoff_policy_assignments."""
+        return post_api_2026_10_01_resources_timeoff_policy_assignments.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_timeoff_policy_assignments.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_timeoff_policy_assignments.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_timeoff_policy_assignments_id."""
-        return put_api_2026_07_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_timeoff_policy_assignments_id."""
+        return put_api_2026_10_01_resources_timeoff_policy_assignments_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_timeoff_policy_assignments_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, employee_ids: Any = UNSET, timeoff_policy_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                get_api_2026_10_01_resources_timeoff_policy_assignments,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
@@ -9970,7 +10999,7 @@ class TimeoffPolicyAssignmentsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                get_api_2026_10_01_resources_timeoff_policy_assignments,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
@@ -9980,7 +11009,7 @@ class TimeoffPolicyAssignmentsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_policy_assignments,
+                get_api_2026_10_01_resources_timeoff_policy_assignments,
                 self._client,
                 after_id, limit=limit, ids=ids, employee_ids=employee_ids, timeoff_policy_ids=timeoff_policy_ids,
             )
@@ -9994,18 +11023,18 @@ class TimeoffPolicyTimelinesResource:
         self._client = client
 
     def list(self, employee_id: Any = UNSET, reference_date: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_timeoff_policy_timelines."""
-        return get_api_2026_07_01_resources_timeoff_policy_timelines.sync(client=self._client, employee_id=employee_id, reference_date=reference_date)
+        """Calls get_api_2026_10_01_resources_timeoff_policy_timelines."""
+        return get_api_2026_10_01_resources_timeoff_policy_timelines.sync(client=self._client, employee_id=employee_id, reference_date=reference_date)
 
     async def list_async(self, employee_id: Any = UNSET, reference_date: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_timeoff_policy_timelines.asyncio(client=self._client, employee_id=employee_id, reference_date=reference_date)
+        return await get_api_2026_10_01_resources_timeoff_policy_timelines.asyncio(client=self._client, employee_id=employee_id, reference_date=reference_date)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, employee_id: Any = UNSET, reference_date: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                get_api_2026_10_01_resources_timeoff_policy_timelines,
                 self._client,
                 after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
@@ -10015,7 +11044,7 @@ class TimeoffPolicyTimelinesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                get_api_2026_10_01_resources_timeoff_policy_timelines,
                 self._client,
                 after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
@@ -10025,7 +11054,7 @@ class TimeoffPolicyTimelinesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_timeoff_policy_timelines,
+                get_api_2026_10_01_resources_timeoff_policy_timelines,
                 self._client,
                 after_id, limit=limit, employee_id=employee_id, reference_date=reference_date,
             )
@@ -10039,42 +11068,42 @@ class TrainingsCategoriesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_trainings_categories_id."""
-        return delete_api_2026_07_01_resources_trainings_categories_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_trainings_categories_id."""
+        return delete_api_2026_10_01_resources_trainings_categories_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_trainings_categories_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_trainings_categories_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_categories."""
-        return get_api_2026_07_01_resources_trainings_categories.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_trainings_categories."""
+        return get_api_2026_10_01_resources_trainings_categories.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_categories.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_trainings_categories.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_categories_id."""
-        return get_api_2026_07_01_resources_trainings_categories_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_categories_id."""
+        return get_api_2026_10_01_resources_trainings_categories_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_categories_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_categories_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_categories."""
-        return post_api_2026_07_01_resources_trainings_categories.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_categories."""
+        return post_api_2026_10_01_resources_trainings_categories.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_trainings_categories.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_categories.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_categories,
+                get_api_2026_10_01_resources_trainings_categories,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10084,7 +11113,7 @@ class TrainingsCategoriesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_categories,
+                get_api_2026_10_01_resources_trainings_categories,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10094,7 +11123,7 @@ class TrainingsCategoriesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_categories,
+                get_api_2026_10_01_resources_trainings_categories,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10108,42 +11137,42 @@ class TrainingsSessionAccessMembershipsResource:
         self._client = client
 
     def list(self, session_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_ids: Any = UNSET, status: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_session_access_memberships."""
-        return get_api_2026_07_01_resources_trainings_session_access_memberships.sync(client=self._client, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status)
+        """Calls get_api_2026_10_01_resources_trainings_session_access_memberships."""
+        return get_api_2026_10_01_resources_trainings_session_access_memberships.sync(client=self._client, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status)
 
     async def list_async(self, session_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_ids: Any = UNSET, status: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_session_access_memberships.asyncio(client=self._client, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status)
+        return await get_api_2026_10_01_resources_trainings_session_access_memberships.asyncio(client=self._client, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_session_access_memberships_id."""
-        return get_api_2026_07_01_resources_trainings_session_access_memberships_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_session_access_memberships_id."""
+        return get_api_2026_10_01_resources_trainings_session_access_memberships_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_session_access_memberships_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_session_access_memberships_id.asyncio(id, client=self._client)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_create."""
-        return post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_create."""
+        return post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_create.asyncio(client=self._client, body=body)
 
     def bulk_destroy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_destroy."""
-        return post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_destroy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_destroy."""
+        return post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_destroy.sync(client=self._client, body=body)
 
     async def bulk_destroy_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_destroy."""
-        return await post_api_2026_07_01_resources_trainings_session_access_memberships_bulk_destroy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_session_access_memberships_bulk_destroy.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_ids: Any = UNSET, status: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                get_api_2026_10_01_resources_trainings_session_access_memberships,
                 self._client,
                 after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
@@ -10153,7 +11182,7 @@ class TrainingsSessionAccessMembershipsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                get_api_2026_10_01_resources_trainings_session_access_memberships,
                 self._client,
                 after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
@@ -10163,7 +11192,7 @@ class TrainingsSessionAccessMembershipsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_session_access_memberships,
+                get_api_2026_10_01_resources_trainings_session_access_memberships,
                 self._client,
                 after_id, limit=limit, session_id=session_id, ids=ids, search=search, team_ids=team_ids, status=status,
             )
@@ -10177,34 +11206,34 @@ class TrainingsSessionAttendancesResource:
         self._client = client
 
     def list(self, session_id: Any = UNSET, id: Any = UNSET, ids: Any = UNSET, session_access_membership_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_session_attendances."""
-        return get_api_2026_07_01_resources_trainings_session_attendances.sync(client=self._client, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids)
+        """Calls get_api_2026_10_01_resources_trainings_session_attendances."""
+        return get_api_2026_10_01_resources_trainings_session_attendances.sync(client=self._client, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids)
 
     async def list_async(self, session_id: Any = UNSET, id: Any = UNSET, ids: Any = UNSET, session_access_membership_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_session_attendances.asyncio(client=self._client, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids)
+        return await get_api_2026_10_01_resources_trainings_session_attendances.asyncio(client=self._client, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_session_attendances_id."""
-        return get_api_2026_07_01_resources_trainings_session_attendances_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_session_attendances_id."""
+        return get_api_2026_10_01_resources_trainings_session_attendances_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_session_attendances_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_session_attendances_id.asyncio(id, client=self._client)
 
     def bulk_update(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_session_attendances_bulk_update."""
-        return post_api_2026_07_01_resources_trainings_session_attendances_bulk_update.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_session_attendances_bulk_update."""
+        return post_api_2026_10_01_resources_trainings_session_attendances_bulk_update.sync(client=self._client, body=body)
 
     async def bulk_update_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_update."""
-        return await post_api_2026_07_01_resources_trainings_session_attendances_bulk_update.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_session_attendances_bulk_update.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, session_id: Any = UNSET, id: Any = UNSET, ids: Any = UNSET, session_access_membership_ids: Any = UNSET, access_ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_session_attendances,
+                get_api_2026_10_01_resources_trainings_session_attendances,
                 self._client,
                 after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
@@ -10214,7 +11243,7 @@ class TrainingsSessionAttendancesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_session_attendances,
+                get_api_2026_10_01_resources_trainings_session_attendances,
                 self._client,
                 after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
@@ -10224,7 +11253,7 @@ class TrainingsSessionAttendancesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_session_attendances,
+                get_api_2026_10_01_resources_trainings_session_attendances,
                 self._client,
                 after_id, limit=limit, session_id=session_id, id=id, ids=ids, session_access_membership_ids=session_access_membership_ids, access_ids=access_ids,
             )
@@ -10238,50 +11267,50 @@ class TrainingsSessionsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_trainings_sessions_id."""
-        return delete_api_2026_07_01_resources_trainings_sessions_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_trainings_sessions_id."""
+        return delete_api_2026_10_01_resources_trainings_sessions_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_trainings_sessions_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_trainings_sessions_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, training_ids: Any = UNSET, search: Any = UNSET, start_after: Any = UNSET, start_before: Any = UNSET, access_id: Any = UNSET, employee_id: Any = UNSET, training_class_ids: Any = UNSET, next_: Any = UNSET, modality: Any = UNSET, starts_at: Any = UNSET, active: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_sessions."""
-        return get_api_2026_07_01_resources_trainings_sessions.sync(client=self._client, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active)
+        """Calls get_api_2026_10_01_resources_trainings_sessions."""
+        return get_api_2026_10_01_resources_trainings_sessions.sync(client=self._client, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active)
 
     async def list_async(self, ids: Any = UNSET, training_ids: Any = UNSET, search: Any = UNSET, start_after: Any = UNSET, start_before: Any = UNSET, access_id: Any = UNSET, employee_id: Any = UNSET, training_class_ids: Any = UNSET, next_: Any = UNSET, modality: Any = UNSET, starts_at: Any = UNSET, active: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_sessions.asyncio(client=self._client, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active)
+        return await get_api_2026_10_01_resources_trainings_sessions.asyncio(client=self._client, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_sessions_id."""
-        return get_api_2026_07_01_resources_trainings_sessions_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_sessions_id."""
+        return get_api_2026_10_01_resources_trainings_sessions_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_sessions_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_sessions_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_sessions."""
-        return post_api_2026_07_01_resources_trainings_sessions.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_sessions."""
+        return post_api_2026_10_01_resources_trainings_sessions.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_trainings_sessions.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_sessions.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_trainings_sessions_id."""
-        return put_api_2026_07_01_resources_trainings_sessions_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_trainings_sessions_id."""
+        return put_api_2026_10_01_resources_trainings_sessions_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_trainings_sessions_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_trainings_sessions_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, training_ids: Any = UNSET, search: Any = UNSET, start_after: Any = UNSET, start_before: Any = UNSET, access_id: Any = UNSET, employee_id: Any = UNSET, training_class_ids: Any = UNSET, next_: Any = UNSET, modality: Any = UNSET, starts_at: Any = UNSET, active: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_sessions,
+                get_api_2026_10_01_resources_trainings_sessions,
                 self._client,
                 after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
@@ -10291,7 +11320,7 @@ class TrainingsSessionsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_sessions,
+                get_api_2026_10_01_resources_trainings_sessions,
                 self._client,
                 after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
@@ -10301,7 +11330,7 @@ class TrainingsSessionsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_sessions,
+                get_api_2026_10_01_resources_trainings_sessions,
                 self._client,
                 after_id, limit=limit, ids=ids, training_ids=training_ids, search=search, start_after=start_after, start_before=start_before, access_id=access_id, employee_id=employee_id, training_class_ids=training_class_ids, next_=next_, modality=modality, starts_at=starts_at, active=active,
             )
@@ -10315,50 +11344,50 @@ class TrainingsTrainingClassesResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_trainings_training_classes_id."""
-        return delete_api_2026_07_01_resources_trainings_training_classes_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_trainings_training_classes_id."""
+        return delete_api_2026_10_01_resources_trainings_training_classes_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_trainings_training_classes_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_trainings_training_classes_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET, id: Any = UNSET, training_id: Any = UNSET, search: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_training_classes."""
-        return get_api_2026_07_01_resources_trainings_training_classes.sync(client=self._client, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date)
+        """Calls get_api_2026_10_01_resources_trainings_training_classes."""
+        return get_api_2026_10_01_resources_trainings_training_classes.sync(client=self._client, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date)
 
     async def list_async(self, ids: Any = UNSET, id: Any = UNSET, training_id: Any = UNSET, search: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_training_classes.asyncio(client=self._client, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date)
+        return await get_api_2026_10_01_resources_trainings_training_classes.asyncio(client=self._client, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_training_classes_id."""
-        return get_api_2026_07_01_resources_trainings_training_classes_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_training_classes_id."""
+        return get_api_2026_10_01_resources_trainings_training_classes_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_training_classes_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_training_classes_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_training_classes."""
-        return post_api_2026_07_01_resources_trainings_training_classes.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_training_classes."""
+        return post_api_2026_10_01_resources_trainings_training_classes.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_trainings_training_classes.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_training_classes.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_trainings_training_classes_id."""
-        return put_api_2026_07_01_resources_trainings_training_classes_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_trainings_training_classes_id."""
+        return put_api_2026_10_01_resources_trainings_training_classes_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_trainings_training_classes_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_trainings_training_classes_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, id: Any = UNSET, training_id: Any = UNSET, search: Any = UNSET, start_date: Any = UNSET, end_date: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_training_classes,
+                get_api_2026_10_01_resources_trainings_training_classes,
                 self._client,
                 after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
@@ -10368,7 +11397,7 @@ class TrainingsTrainingClassesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_training_classes,
+                get_api_2026_10_01_resources_trainings_training_classes,
                 self._client,
                 after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
@@ -10378,7 +11407,7 @@ class TrainingsTrainingClassesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_training_classes,
+                get_api_2026_10_01_resources_trainings_training_classes,
                 self._client,
                 after_id, limit=limit, ids=ids, id=id, training_id=training_id, search=search, start_date=start_date, end_date=end_date,
             )
@@ -10392,50 +11421,50 @@ class TrainingsTrainingMembershipsResource:
         self._client = client
 
     def list(self, training_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_id: Any = UNSET, status: Any = UNSET, class_id: Any = UNSET, employee_id: Any = UNSET, due_date: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_training_memberships."""
-        return get_api_2026_07_01_resources_trainings_training_memberships.sync(client=self._client, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date)
+        """Calls get_api_2026_10_01_resources_trainings_training_memberships."""
+        return get_api_2026_10_01_resources_trainings_training_memberships.sync(client=self._client, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date)
 
     async def list_async(self, training_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_id: Any = UNSET, status: Any = UNSET, class_id: Any = UNSET, employee_id: Any = UNSET, due_date: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_training_memberships.asyncio(client=self._client, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date)
+        return await get_api_2026_10_01_resources_trainings_training_memberships.asyncio(client=self._client, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_training_memberships_id."""
-        return get_api_2026_07_01_resources_trainings_training_memberships_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_training_memberships_id."""
+        return get_api_2026_10_01_resources_trainings_training_memberships_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_training_memberships_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_training_memberships_id.asyncio(id, client=self._client)
 
     def bulk_create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_training_memberships_bulk_create."""
-        return post_api_2026_07_01_resources_trainings_training_memberships_bulk_create.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_training_memberships_bulk_create."""
+        return post_api_2026_10_01_resources_trainings_training_memberships_bulk_create.sync(client=self._client, body=body)
 
     async def bulk_create_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_create."""
-        return await post_api_2026_07_01_resources_trainings_training_memberships_bulk_create.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_training_memberships_bulk_create.asyncio(client=self._client, body=body)
 
     def bulk_destroy(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_training_memberships_bulk_destroy."""
-        return post_api_2026_07_01_resources_trainings_training_memberships_bulk_destroy.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_training_memberships_bulk_destroy."""
+        return post_api_2026_10_01_resources_trainings_training_memberships_bulk_destroy.sync(client=self._client, body=body)
 
     async def bulk_destroy_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_destroy."""
-        return await post_api_2026_07_01_resources_trainings_training_memberships_bulk_destroy.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_training_memberships_bulk_destroy.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_trainings_training_memberships_id."""
-        return put_api_2026_07_01_resources_trainings_training_memberships_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_trainings_training_memberships_id."""
+        return put_api_2026_10_01_resources_trainings_training_memberships_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_trainings_training_memberships_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_trainings_training_memberships_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, training_id: Any = UNSET, ids: Any = UNSET, search: Any = UNSET, team_id: Any = UNSET, status: Any = UNSET, class_id: Any = UNSET, employee_id: Any = UNSET, due_date: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_training_memberships,
+                get_api_2026_10_01_resources_trainings_training_memberships,
                 self._client,
                 after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
@@ -10445,7 +11474,7 @@ class TrainingsTrainingMembershipsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_training_memberships,
+                get_api_2026_10_01_resources_trainings_training_memberships,
                 self._client,
                 after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
@@ -10455,7 +11484,7 @@ class TrainingsTrainingMembershipsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_training_memberships,
+                get_api_2026_10_01_resources_trainings_training_memberships,
                 self._client,
                 after_id, limit=limit, training_id=training_id, ids=ids, search=search, team_id=team_id, status=status, class_id=class_id, employee_id=employee_id, due_date=due_date,
             )
@@ -10469,74 +11498,74 @@ class TrainingsTrainingsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_trainings_trainings_id."""
-        return delete_api_2026_07_01_resources_trainings_trainings_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_trainings_trainings_id."""
+        return delete_api_2026_10_01_resources_trainings_trainings_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_trainings_trainings_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_trainings_trainings_id.asyncio(id, client=self._client)
 
     def list(self, id: Any = UNSET, ids: Any = UNSET, access_id: Any = UNSET, search: Any = UNSET, status: Any = UNSET, catalog: Any = UNSET, only_assigned: Any = UNSET, with_expired_memberships: Any = UNSET, return_expired_memberships: Any = UNSET, is_mandatory: Any = UNSET, with_current_training_classes: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_trainings."""
-        return get_api_2026_07_01_resources_trainings_trainings.sync(client=self._client, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes)
+        """Calls get_api_2026_10_01_resources_trainings_trainings."""
+        return get_api_2026_10_01_resources_trainings_trainings.sync(client=self._client, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes)
 
     async def list_async(self, id: Any = UNSET, ids: Any = UNSET, access_id: Any = UNSET, search: Any = UNSET, status: Any = UNSET, catalog: Any = UNSET, only_assigned: Any = UNSET, with_expired_memberships: Any = UNSET, return_expired_memberships: Any = UNSET, is_mandatory: Any = UNSET, with_current_training_classes: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_trainings_trainings.asyncio(client=self._client, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes)
+        return await get_api_2026_10_01_resources_trainings_trainings.asyncio(client=self._client, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_trainings_trainings_id."""
-        return get_api_2026_07_01_resources_trainings_trainings_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_trainings_trainings_id."""
+        return get_api_2026_10_01_resources_trainings_trainings_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_trainings_trainings_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_trainings_trainings_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_trainings."""
-        return post_api_2026_07_01_resources_trainings_trainings.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_trainings."""
+        return post_api_2026_10_01_resources_trainings_trainings.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_trainings_trainings.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_trainings.asyncio(client=self._client, body=body)
 
     def bulk_delete(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_trainings_bulk_delete."""
-        return post_api_2026_07_01_resources_trainings_trainings_bulk_delete.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_trainings_bulk_delete."""
+        return post_api_2026_10_01_resources_trainings_trainings_bulk_delete.sync(client=self._client, body=body)
 
     async def bulk_delete_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_delete."""
-        return await post_api_2026_07_01_resources_trainings_trainings_bulk_delete.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_trainings_bulk_delete.asyncio(client=self._client, body=body)
 
     def bulk_update_catalog(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_trainings_bulk_update_catalog."""
-        return post_api_2026_07_01_resources_trainings_trainings_bulk_update_catalog.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_trainings_bulk_update_catalog."""
+        return post_api_2026_10_01_resources_trainings_trainings_bulk_update_catalog.sync(client=self._client, body=body)
 
     async def bulk_update_catalog_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_update_catalog."""
-        return await post_api_2026_07_01_resources_trainings_trainings_bulk_update_catalog.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_trainings_bulk_update_catalog.asyncio(client=self._client, body=body)
 
     def update_status(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_trainings_trainings_update_status."""
-        return post_api_2026_07_01_resources_trainings_trainings_update_status.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_trainings_trainings_update_status."""
+        return post_api_2026_10_01_resources_trainings_trainings_update_status.sync(client=self._client, body=body)
 
     async def update_status_async(self, body: Any = UNSET) -> Any:
         """Async version of update_status."""
-        return await post_api_2026_07_01_resources_trainings_trainings_update_status.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_trainings_trainings_update_status.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_trainings_trainings_id."""
-        return put_api_2026_07_01_resources_trainings_trainings_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_trainings_trainings_id."""
+        return put_api_2026_10_01_resources_trainings_trainings_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_trainings_trainings_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_trainings_trainings_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, id: Any = UNSET, ids: Any = UNSET, access_id: Any = UNSET, search: Any = UNSET, status: Any = UNSET, catalog: Any = UNSET, only_assigned: Any = UNSET, with_expired_memberships: Any = UNSET, return_expired_memberships: Any = UNSET, is_mandatory: Any = UNSET, with_current_training_classes: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_trainings,
+                get_api_2026_10_01_resources_trainings_trainings,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
@@ -10546,7 +11575,7 @@ class TrainingsTrainingsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_trainings_trainings,
+                get_api_2026_10_01_resources_trainings_trainings,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
@@ -10556,7 +11585,7 @@ class TrainingsTrainingsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_trainings_trainings,
+                get_api_2026_10_01_resources_trainings_trainings,
                 self._client,
                 after_id, limit=limit, id=id, ids=ids, access_id=access_id, search=search, status=status, catalog=catalog, only_assigned=only_assigned, with_expired_memberships=with_expired_memberships, return_expired_memberships=return_expired_memberships, is_mandatory=is_mandatory, with_current_training_classes=with_current_training_classes,
             )
@@ -10570,34 +11599,34 @@ class WorkScheduleDayConfigurationsResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, overlap_period_id: Any = UNSET, schedule_id: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_day_configurations."""
-        return get_api_2026_07_01_resources_work_schedule_day_configurations.sync(client=self._client, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id)
+        """Calls get_api_2026_10_01_resources_work_schedule_day_configurations."""
+        return get_api_2026_10_01_resources_work_schedule_day_configurations.sync(client=self._client, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id)
 
     async def list_async(self, ids: Any = UNSET, overlap_period_id: Any = UNSET, schedule_id: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_work_schedule_day_configurations.asyncio(client=self._client, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id)
+        return await get_api_2026_10_01_resources_work_schedule_day_configurations.asyncio(client=self._client, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_day_configurations_id."""
-        return get_api_2026_07_01_resources_work_schedule_day_configurations_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_work_schedule_day_configurations_id."""
+        return get_api_2026_10_01_resources_work_schedule_day_configurations_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_work_schedule_day_configurations_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_work_schedule_day_configurations_id.asyncio(id, client=self._client)
 
     def bulk_cud(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_work_schedule_day_configurations_bulk_cud."""
-        return post_api_2026_07_01_resources_work_schedule_day_configurations_bulk_cud.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_work_schedule_day_configurations_bulk_cud."""
+        return post_api_2026_10_01_resources_work_schedule_day_configurations_bulk_cud.sync(client=self._client, body=body)
 
     async def bulk_cud_async(self, body: Any = UNSET) -> Any:
         """Async version of bulk_cud."""
-        return await post_api_2026_07_01_resources_work_schedule_day_configurations_bulk_cud.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_work_schedule_day_configurations_bulk_cud.asyncio(client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, overlap_period_id: Any = UNSET, schedule_id: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                get_api_2026_10_01_resources_work_schedule_day_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
@@ -10607,7 +11636,7 @@ class WorkScheduleDayConfigurationsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                get_api_2026_10_01_resources_work_schedule_day_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
@@ -10617,7 +11646,7 @@ class WorkScheduleDayConfigurationsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_work_schedule_day_configurations,
+                get_api_2026_10_01_resources_work_schedule_day_configurations,
                 self._client,
                 after_id, limit=limit, ids=ids, overlap_period_id=overlap_period_id, schedule_id=schedule_id,
             )
@@ -10631,50 +11660,50 @@ class WorkScheduleOverlapPeriodsResource:
         self._client = client
 
     def delete(self, id: Any) -> Any:
-        """Calls delete_api_2026_07_01_resources_work_schedule_overlap_periods_id."""
-        return delete_api_2026_07_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client)
+        """Calls delete_api_2026_10_01_resources_work_schedule_overlap_periods_id."""
+        return delete_api_2026_10_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client)
 
     async def delete_async(self, id: Any) -> Any:
         """Async version of delete."""
-        return await delete_api_2026_07_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client)
+        return await delete_api_2026_10_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client)
 
     def list(self, ids: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_overlap_periods."""
-        return get_api_2026_07_01_resources_work_schedule_overlap_periods.sync(client=self._client, ids=ids)
+        """Calls get_api_2026_10_01_resources_work_schedule_overlap_periods."""
+        return get_api_2026_10_01_resources_work_schedule_overlap_periods.sync(client=self._client, ids=ids)
 
     async def list_async(self, ids: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_work_schedule_overlap_periods.asyncio(client=self._client, ids=ids)
+        return await get_api_2026_10_01_resources_work_schedule_overlap_periods.asyncio(client=self._client, ids=ids)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_overlap_periods_id."""
-        return get_api_2026_07_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_work_schedule_overlap_periods_id."""
+        return get_api_2026_10_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_work_schedule_overlap_periods."""
-        return post_api_2026_07_01_resources_work_schedule_overlap_periods.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_work_schedule_overlap_periods."""
+        return post_api_2026_10_01_resources_work_schedule_overlap_periods.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_work_schedule_overlap_periods.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_work_schedule_overlap_periods.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_work_schedule_overlap_periods_id."""
-        return put_api_2026_07_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_work_schedule_overlap_periods_id."""
+        return put_api_2026_10_01_resources_work_schedule_overlap_periods_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_work_schedule_overlap_periods_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                get_api_2026_10_01_resources_work_schedule_overlap_periods,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10684,7 +11713,7 @@ class WorkScheduleOverlapPeriodsResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                get_api_2026_10_01_resources_work_schedule_overlap_periods,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10694,7 +11723,7 @@ class WorkScheduleOverlapPeriodsResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_work_schedule_overlap_periods,
+                get_api_2026_10_01_resources_work_schedule_overlap_periods,
                 self._client,
                 after_id, limit=limit, ids=ids,
             )
@@ -10708,50 +11737,50 @@ class WorkScheduleSchedulesResource:
         self._client = client
 
     def list(self, ids: Any = UNSET, with_employee_ids: Any = UNSET, with_periods: Any = UNSET) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_schedules."""
-        return get_api_2026_07_01_resources_work_schedule_schedules.sync(client=self._client, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods)
+        """Calls get_api_2026_10_01_resources_work_schedule_schedules."""
+        return get_api_2026_10_01_resources_work_schedule_schedules.sync(client=self._client, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods)
 
     async def list_async(self, ids: Any = UNSET, with_employee_ids: Any = UNSET, with_periods: Any = UNSET) -> Any:
         """Async version of list."""
-        return await get_api_2026_07_01_resources_work_schedule_schedules.asyncio(client=self._client, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods)
+        return await get_api_2026_10_01_resources_work_schedule_schedules.asyncio(client=self._client, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods)
 
     def get(self, id: Any) -> Any:
-        """Calls get_api_2026_07_01_resources_work_schedule_schedules_id."""
-        return get_api_2026_07_01_resources_work_schedule_schedules_id.sync(id, client=self._client)
+        """Calls get_api_2026_10_01_resources_work_schedule_schedules_id."""
+        return get_api_2026_10_01_resources_work_schedule_schedules_id.sync(id, client=self._client)
 
     async def get_async(self, id: Any) -> Any:
         """Async version of get."""
-        return await get_api_2026_07_01_resources_work_schedule_schedules_id.asyncio(id, client=self._client)
+        return await get_api_2026_10_01_resources_work_schedule_schedules_id.asyncio(id, client=self._client)
 
     def create(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_work_schedule_schedules."""
-        return post_api_2026_07_01_resources_work_schedule_schedules.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_work_schedule_schedules."""
+        return post_api_2026_10_01_resources_work_schedule_schedules.sync(client=self._client, body=body)
 
     async def create_async(self, body: Any = UNSET) -> Any:
         """Async version of create."""
-        return await post_api_2026_07_01_resources_work_schedule_schedules.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_work_schedule_schedules.asyncio(client=self._client, body=body)
 
     def toggle_archive(self, body: Any = UNSET) -> Any:
-        """Calls post_api_2026_07_01_resources_work_schedule_schedules_toggle_archive."""
-        return post_api_2026_07_01_resources_work_schedule_schedules_toggle_archive.sync(client=self._client, body=body)
+        """Calls post_api_2026_10_01_resources_work_schedule_schedules_toggle_archive."""
+        return post_api_2026_10_01_resources_work_schedule_schedules_toggle_archive.sync(client=self._client, body=body)
 
     async def toggle_archive_async(self, body: Any = UNSET) -> Any:
         """Async version of toggle_archive."""
-        return await post_api_2026_07_01_resources_work_schedule_schedules_toggle_archive.asyncio(client=self._client, body=body)
+        return await post_api_2026_10_01_resources_work_schedule_schedules_toggle_archive.asyncio(client=self._client, body=body)
 
     def update(self, id: Any, body: Any = UNSET) -> Any:
-        """Calls put_api_2026_07_01_resources_work_schedule_schedules_id."""
-        return put_api_2026_07_01_resources_work_schedule_schedules_id.sync(id, client=self._client, body=body)
+        """Calls put_api_2026_10_01_resources_work_schedule_schedules_id."""
+        return put_api_2026_10_01_resources_work_schedule_schedules_id.sync(id, client=self._client, body=body)
 
     async def update_async(self, id: Any, body: Any = UNSET) -> Any:
         """Async version of update."""
-        return await put_api_2026_07_01_resources_work_schedule_schedules_id.asyncio(id, client=self._client, body=body)
+        return await put_api_2026_10_01_resources_work_schedule_schedules_id.asyncio(id, client=self._client, body=body)
 
     def paginate(self, *, max_items: int | None = None, limit: int | None = None, ids: Any = UNSET, with_employee_ids: Any = UNSET, with_periods: Any = UNSET) -> Any:
         """Cursor-paginated iterator over all items."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_schedules,
+                get_api_2026_10_01_resources_work_schedule_schedules,
                 self._client,
                 after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
@@ -10761,7 +11790,7 @@ class WorkScheduleSchedulesResource:
         """Collect all pages into a list."""
         def fetcher(after_id: str | None) -> Any:
             return fetch_page(
-                get_api_2026_07_01_resources_work_schedule_schedules,
+                get_api_2026_10_01_resources_work_schedule_schedules,
                 self._client,
                 after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
@@ -10771,7 +11800,7 @@ class WorkScheduleSchedulesResource:
         """Async cursor-paginated iterator."""
         async def fetcher(after_id: str | None) -> Any:
             return await fetch_page_async(
-                get_api_2026_07_01_resources_work_schedule_schedules,
+                get_api_2026_10_01_resources_work_schedule_schedules,
                 self._client,
                 after_id, limit=limit, ids=ids, with_employee_ids=with_employee_ids, with_periods=with_periods,
             )
@@ -10854,6 +11883,10 @@ class CompensationsNamespace:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
         self.concepts = CompensationsConceptsResource(client)
+        self.cycles = CompensationsCyclesResource(client)
+        self.employees_compensations = CompensationsEmployeesCompensationsResource(client)
+        self.payroll_results = CompensationsPayrollResultsResource(client)
+        self.payroll_runs = CompensationsPayrollRunsResource(client)
 
 class ContractsNamespace:
     """Domain namespace for contracts."""
@@ -10965,7 +11998,9 @@ class IntegrationsNamespace:
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
         self.sync_run_outputs = IntegrationsSyncRunOutputsResource(client)
+        self.sync_runs = IntegrationsSyncRunsResource(client)
         self.syncable_items = IntegrationsSyncableItemsResource(client)
+        self.syncable_states = IntegrationsSyncableStatesResource(client)
         self.syncable_sync_runs = IntegrationsSyncableSyncRunsResource(client)
 
 class ItManagementNamespace:
@@ -10973,6 +12008,7 @@ class ItManagementNamespace:
 
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
+        self.asset_categories = ItManagementAssetCategoriesResource(client)
         self.it_asset_models = ItManagementItAssetModelsResource(client)
         self.it_assets = ItManagementItAssetsResource(client)
 
@@ -11016,6 +12052,7 @@ class PayrollEmployeesNamespace:
 
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
+        self.german_employee_data = PayrollEmployeesGermanEmployeeDataResource(client)
         self.identifiers = PayrollEmployeesIdentifiersResource(client)
 
 class PayrollIntegrationsBaseNamespace:
@@ -11059,6 +12096,11 @@ class ProcurementNamespace:
 
     def __init__(self, client: AuthenticatedClient) -> None:
         self._client = client
+        self.po_field_values = ProcurementPoFieldValuesResource(client)
+        self.po_line_items = ProcurementPoLineItemsResource(client)
+        self.po_template_field_definitions = ProcurementPoTemplateFieldDefinitionsResource(client)
+        self.po_template_versions = ProcurementPoTemplateVersionsResource(client)
+        self.po_templates = ProcurementPoTemplatesResource(client)
         self.purchase_orders = ProcurementPurchaseOrdersResource(client)
         self.purchase_requests = ProcurementPurchaseRequestsResource(client)
         self.types = ProcurementTypesResource(client)
@@ -11076,6 +12118,7 @@ class ProjectManagementNamespace:
         self.project_tasks = ProjectManagementProjectTasksResource(client)
         self.project_workers = ProjectManagementProjectWorkersResource(client)
         self.projects = ProjectManagementProjectsResource(client)
+        self.rates = ProjectManagementRatesResource(client)
         self.subprojects = ProjectManagementSubprojectsResource(client)
         self.time_records = ProjectManagementTimeRecordsResource(client)
 
@@ -11126,6 +12169,7 @@ class TimeoffNamespace:
         self.allowance_stats = TimeoffAllowanceStatsResource(client)
         self.allowances = TimeoffAllowancesResource(client)
         self.blocked_periods = TimeoffBlockedPeriodsResource(client)
+        self.french_leave_day_counts = TimeoffFrenchLeaveDayCountsResource(client)
         self.leave_types = TimeoffLeaveTypesResource(client)
         self.leaves = TimeoffLeavesResource(client)
         self.policies = TimeoffPoliciesResource(client)

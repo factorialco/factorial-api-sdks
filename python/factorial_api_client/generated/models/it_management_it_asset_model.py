@@ -6,6 +6,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..types import UNSET, Unset
+
 T = TypeVar("T", bound="ItManagementItAssetModel")
 
 
@@ -14,8 +16,9 @@ class ItManagementItAssetModel:
     id: str
     """ IT Asset Model identifier """
     type_name: str
-    """ Type name of the IT asset model. Possible values are 'laptop', 'desktop', 'tablet', 'phone', 'screen',
-    'mouse', 'keyboard', 'headset', 'other' """
+    """ Deprecated: legacy IT-only type. Possible values are 'laptop', 'desktop', 'tablet', 'phone', 'screen',
+    'mouse', 'keyboard', 'headset', 'other'. Use `subtype`/`asset_category_id` instead, which cover the full catalog
+    (IT and beyond). """
     company_id: str
     """ Company identifier """
     brand: str
@@ -26,6 +29,8 @@ class ItManagementItAssetModel:
     """ Creation date of the IT asset model """
     updated_at: str
     """ Last update date of the IT asset model """
+    asset_category_id: str | Unset = UNSET
+    """ FK to the leaf AssetCategory (Subtype). NULL if not yet categorised. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +48,8 @@ class ItManagementItAssetModel:
 
         updated_at = self.updated_at
 
+        asset_category_id = self.asset_category_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -56,6 +63,8 @@ class ItManagementItAssetModel:
                 "updated_at": updated_at,
             }
         )
+        if asset_category_id is not UNSET:
+            field_dict["asset_category_id"] = asset_category_id
 
         return field_dict
 
@@ -76,6 +85,8 @@ class ItManagementItAssetModel:
 
         updated_at = d.pop("updated_at")
 
+        asset_category_id = d.pop("asset_category_id", UNSET)
+
         it_management_it_asset_model = cls(
             id=id,
             type_name=type_name,
@@ -84,6 +95,7 @@ class ItManagementItAssetModel:
             name=name,
             created_at=created_at,
             updated_at=updated_at,
+            asset_category_id=asset_category_id,
         )
 
         it_management_it_asset_model.additional_properties = d

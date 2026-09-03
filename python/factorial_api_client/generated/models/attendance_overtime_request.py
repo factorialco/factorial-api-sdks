@@ -15,18 +15,28 @@ T = TypeVar("T", bound="AttendanceOvertimeRequest")
 @_attrs_define
 class AttendanceOvertimeRequest:
     id: str
+    """ Unique identifier of the overtime request """
     employee_id: str
+    """ ID of the employee the overtime is for """
     author_id: str
+    """ ID of the employee who created the request """
     status: AttendanceOvertimeRequestStatus
+    """ Approval status of the overtime request — one of `pending`, `approved`, `rejected`, `none` """
     date: str
+    """ The day the overtime was (or will be) worked """
     hours_amount_in_cents: int
+    """ Requested overtime amount in hundredths of an hour (e.g. 800 = 8 hours) """
     approver: bool
     is_editable: bool
     """ Defines if the overtime request can be edited """
     approver_id: str | Unset = UNSET
+    """ ID of the employee assigned to approve the request (null if unassigned) """
     description: str | Unset = UNSET
+    """ Free-text description of the overtime request """
     reason: str | Unset = UNSET
+    """ Reason provided for the overtime """
     created_at: str | Unset = UNSET
+    """ When the request was created """
     approver_full_name: str | Unset = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

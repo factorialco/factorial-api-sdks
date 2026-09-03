@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -9,6 +9,9 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.performance_review_questionnaires_by_strategy_default_rating_scale_item import (
+        PerformanceReviewQuestionnairesByStrategyDefaultRatingScaleItem,
+    )
     from ..models.performance_review_questionnaires_by_strategy_direct_report_questionnaire import (
         PerformanceReviewQuestionnairesByStrategyDirectReportQuestionnaire,
     )
@@ -41,7 +44,7 @@ class PerformanceReviewQuestionnairesByStrategy:
     """ Review process ID """
     performance_review_process_id: str
     """ Review process ID """
-    default_rating_scale: list[Any]
+    default_rating_scale: list[PerformanceReviewQuestionnairesByStrategyDefaultRatingScaleItem]
     """ Scoring range used in rating questions """
     self_questionnaire: PerformanceReviewQuestionnairesByStrategySelfQuestionnaire | Unset = UNSET
     """ Questionnaire for self evaluation """
@@ -74,7 +77,10 @@ class PerformanceReviewQuestionnairesByStrategy:
 
         performance_review_process_id = self.performance_review_process_id
 
-        default_rating_scale = self.default_rating_scale
+        default_rating_scale = []
+        for default_rating_scale_item_data in self.default_rating_scale:
+            default_rating_scale_item = default_rating_scale_item_data.to_dict()
+            default_rating_scale.append(default_rating_scale_item)
 
         self_questionnaire: dict[str, Any] | Unset = UNSET
         if not isinstance(self.self_questionnaire, Unset):
@@ -140,6 +146,9 @@ class PerformanceReviewQuestionnairesByStrategy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.performance_review_questionnaires_by_strategy_default_rating_scale_item import (
+            PerformanceReviewQuestionnairesByStrategyDefaultRatingScaleItem,
+        )
         from ..models.performance_review_questionnaires_by_strategy_direct_report_questionnaire import (
             PerformanceReviewQuestionnairesByStrategyDirectReportQuestionnaire,
         )
@@ -167,7 +176,16 @@ class PerformanceReviewQuestionnairesByStrategy:
 
         performance_review_process_id = d.pop("performance_review_process_id")
 
-        default_rating_scale = cast(list[Any], d.pop("default_rating_scale"))
+        default_rating_scale = []
+        _default_rating_scale = d.pop("default_rating_scale")
+        for default_rating_scale_item_data in _default_rating_scale:
+            default_rating_scale_item = (
+                PerformanceReviewQuestionnairesByStrategyDefaultRatingScaleItem.from_dict(
+                    default_rating_scale_item_data
+                )
+            )
+
+            default_rating_scale.append(default_rating_scale_item)
 
         _self_questionnaire = d.pop("self_questionnaire", UNSET)
         self_questionnaire: PerformanceReviewQuestionnairesByStrategySelfQuestionnaire | Unset
