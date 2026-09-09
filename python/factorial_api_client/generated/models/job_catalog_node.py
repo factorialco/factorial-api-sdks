@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.job_catalog_node_type import JobCatalogNodeType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.job_catalog_node_full_path_to_root_item import JobCatalogNodeFullPathToRootItem
+
 
 T = TypeVar("T", bound="JobCatalogNode")
 
@@ -28,7 +32,7 @@ class JobCatalogNode:
     """ Name of the node. """
     description: str | Unset = UNSET
     """ Description of the node in the Job Catalog. """
-    full_path_to_root: list[Any] | Unset = UNSET
+    full_path_to_root: list[JobCatalogNodeFullPathToRootItem] | Unset = UNSET
     """ Array with the list of nodes tha compose full path from the current node to the root node. """
     job_catalog_title: str | Unset = UNSET
     """ Full title that represents the job position. """
@@ -49,9 +53,12 @@ class JobCatalogNode:
 
         description = self.description
 
-        full_path_to_root: list[Any] | Unset = UNSET
+        full_path_to_root: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.full_path_to_root, Unset):
-            full_path_to_root = self.full_path_to_root
+            full_path_to_root = []
+            for full_path_to_root_item_data in self.full_path_to_root:
+                full_path_to_root_item = full_path_to_root_item_data.to_dict()
+                full_path_to_root.append(full_path_to_root_item)
 
         job_catalog_title = self.job_catalog_title
 
@@ -80,6 +87,10 @@ class JobCatalogNode:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.job_catalog_node_full_path_to_root_item import (
+            JobCatalogNodeFullPathToRootItem,
+        )
+
         d = dict(src_dict)
         type_ = JobCatalogNodeType(d.pop("type"))
 
@@ -95,7 +106,16 @@ class JobCatalogNode:
 
         description = d.pop("description", UNSET)
 
-        full_path_to_root = cast(list[Any], d.pop("full_path_to_root", UNSET))
+        _full_path_to_root = d.pop("full_path_to_root", UNSET)
+        full_path_to_root: list[JobCatalogNodeFullPathToRootItem] | Unset = UNSET
+        if _full_path_to_root is not UNSET:
+            full_path_to_root = []
+            for full_path_to_root_item_data in _full_path_to_root:
+                full_path_to_root_item = JobCatalogNodeFullPathToRootItem.from_dict(
+                    full_path_to_root_item_data
+                )
+
+                full_path_to_root.append(full_path_to_root_item)
 
         job_catalog_title = d.pop("job_catalog_title", UNSET)
 

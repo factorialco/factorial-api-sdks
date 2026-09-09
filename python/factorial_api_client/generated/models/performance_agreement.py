@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,6 +11,12 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.performance_agreement_conclusions import PerformanceAgreementConclusions
+    from ..models.performance_agreement_manager_comments_item import (
+        PerformanceAgreementManagerCommentsItem,
+    )
+    from ..models.performance_agreement_self_comments_item import (
+        PerformanceAgreementSelfCommentsItem,
+    )
 
 
 T = TypeVar("T", bound="PerformanceAgreement")
@@ -28,9 +34,9 @@ class PerformanceAgreement:
     """ Action plan status """
     locked: bool
     """ When the action plan cannot be edited anymore. Locked when both manager and employee signed it. """
-    self_comments: list[Any]
+    self_comments: list[PerformanceAgreementSelfCommentsItem]
     """ Self comments by question """
-    manager_comments: list[Any]
+    manager_comments: list[PerformanceAgreementManagerCommentsItem]
     """ Manager comments by question """
     signer_id: str | Unset = UNSET
     """ Manager access ID who signed the action plan """
@@ -63,9 +69,15 @@ class PerformanceAgreement:
 
         locked = self.locked
 
-        self_comments = self.self_comments
+        self_comments = []
+        for self_comments_item_data in self.self_comments:
+            self_comments_item = self_comments_item_data.to_dict()
+            self_comments.append(self_comments_item)
 
-        manager_comments = self.manager_comments
+        manager_comments = []
+        for manager_comments_item_data in self.manager_comments:
+            manager_comments_item = manager_comments_item_data.to_dict()
+            manager_comments.append(manager_comments_item)
 
         signer_id = self.signer_id
 
@@ -124,6 +136,12 @@ class PerformanceAgreement:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.performance_agreement_conclusions import PerformanceAgreementConclusions
+        from ..models.performance_agreement_manager_comments_item import (
+            PerformanceAgreementManagerCommentsItem,
+        )
+        from ..models.performance_agreement_self_comments_item import (
+            PerformanceAgreementSelfCommentsItem,
+        )
 
         d = dict(src_dict)
         id = d.pop("id")
@@ -136,9 +154,23 @@ class PerformanceAgreement:
 
         locked = d.pop("locked")
 
-        self_comments = cast(list[Any], d.pop("self_comments"))
+        self_comments = []
+        _self_comments = d.pop("self_comments")
+        for self_comments_item_data in _self_comments:
+            self_comments_item = PerformanceAgreementSelfCommentsItem.from_dict(
+                self_comments_item_data
+            )
 
-        manager_comments = cast(list[Any], d.pop("manager_comments"))
+            self_comments.append(self_comments_item)
+
+        manager_comments = []
+        _manager_comments = d.pop("manager_comments")
+        for manager_comments_item_data in _manager_comments:
+            manager_comments_item = PerformanceAgreementManagerCommentsItem.from_dict(
+                manager_comments_item_data
+            )
+
+            manager_comments.append(manager_comments_item)
 
         signer_id = d.pop("signer_id", UNSET)
 

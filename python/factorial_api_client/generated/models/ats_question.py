@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.ats_question_question_type import AtsQuestionQuestionType
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.ats_question_options_item import AtsQuestionOptionsItem
+
 
 T = TypeVar("T", bound="AtsQuestion")
 
@@ -32,7 +36,7 @@ class AtsQuestion:
     """ creation date """
     updated_at: str
     """ last update date """
-    options: list[Any] | Unset = UNSET
+    options: list[AtsQuestionOptionsItem] | Unset = UNSET
     """ options for the question. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -55,9 +59,12 @@ class AtsQuestion:
 
         updated_at = self.updated_at
 
-        options: list[Any] | Unset = UNSET
+        options: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.options, Unset):
-            options = self.options
+            options = []
+            for options_item_data in self.options:
+                options_item = options_item_data.to_dict()
+                options.append(options_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -81,6 +88,8 @@ class AtsQuestion:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ats_question_options_item import AtsQuestionOptionsItem
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -100,7 +109,14 @@ class AtsQuestion:
 
         updated_at = d.pop("updated_at")
 
-        options = cast(list[Any], d.pop("options", UNSET))
+        _options = d.pop("options", UNSET)
+        options: list[AtsQuestionOptionsItem] | Unset = UNSET
+        if _options is not UNSET:
+            options = []
+            for options_item_data in _options:
+                options_item = AtsQuestionOptionsItem.from_dict(options_item_data)
+
+                options.append(options_item)
 
         ats_question = cls(
             id=id,
