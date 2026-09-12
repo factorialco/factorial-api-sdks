@@ -20,9 +20,9 @@ class JobCatalogLevel:
     role_name: str
     """ Role name. """
     order: int
-    """ Order of the level. """
+    """ Sort order of the level within its role (lower is more junior). """
     archived: bool
-    """ Shows if the role is archived. """
+    """ Whether this level is archived. """
     is_default: bool
     """ Shows if the level is the default one. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
