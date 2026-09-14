@@ -1,8 +1,9 @@
 {
-  "comment": "Maps SDK major versions to the Factorial API version they target. Used by release scripts to set the npm dist-tag and PyPI classifier.",
-  "latest": "2",
+  "comment": "Maps SDK major versions to the Factorial API version they target. Used by release scripts to set the npm dist-tag and PyPI classifier. A major is normally cut for a new API version, but can also be cut for a breaking change to an SDK itself, so two majors may point at the same API date.",
+  "latest": "3",
   "versions": {
     "1": "2026-04-01",
-    "2": "2026-07-01"
+    "2": "2026-07-01",
+    "3": "2026-07-01"
   }
 }

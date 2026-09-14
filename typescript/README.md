@@ -10,8 +10,11 @@ The SDK uses standard semver (`MAJOR.MINOR.PATCH`), independent of the Factorial
 |-------------|----------------------|
 | `1.x.y`     | `2026-04-01`         |
 | `2.x.y`     | `2026-07-01`         |
+| `3.x.y`     | `2026-07-01`         |
 
-Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
+Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct). A new major is
+usually cut for a new API version, but can also be cut for a breaking change to
+the SDK itself — which is why `2.x` and `3.x` target the same API version.
 
 See the [Factorial API versioning docs](https://apidoc.factorialhr.com/docs/api-versioning) for details.
 
@@ -30,8 +33,10 @@ const client = new FactorialClient({
   apiKey: process.env.FACTORIAL_API_KEY,
 });
 
-const { data: { data: { data, meta } = {}, error } = {}, error } = await client.employees.employees.list();
-console.log(`${meta.total} employees total`);
+const { data: page } = await client.employees.employees.list({
+  query: { only_active: true, only_managers: false },
+});
+console.log(`${page.meta?.total} employees total`);
 ```
 
 ## Authentication
@@ -90,8 +95,8 @@ Every resource exposes the standard methods available in the API:
 
 ```ts
 // List (single page, up to 100 items)
-const { data: { data, meta } = {}, error } = await client.employees.employees.list({
-  query: { only_active: true },
+const { data: page } = await client.employees.employees.list({
+  query: { only_active: true, only_managers: false },
 });
 
 // Get by ID
@@ -115,40 +120,53 @@ await client.timeoff.leaves.delete({ path: { id: 99 } });
 
 // Named actions
 await client.timeoff.leaves.approve({ body: { id: 99 } });
-await client.attendance.shifts.clockIn({ body: { employee_id: 1, , now: new Date().toISOString().slice(0, 19) } });
+await client.attendance.shifts.clockIn({
+  body: { employee_id: 1, now: new Date().toISOString().slice(0, 19) },
+});
 ```
 
 ## Pagination
 
-The Factorial API uses **cursor-based pagination**. All list endpoints return
-`{ data: { data, meta } = {}, error }` where `meta` contains `has_next_page`, `end_cursor`, and `total`.
+The Factorial API uses **cursor-based pagination**. Every list endpoint resolves
+to `{ data: { data, meta }, request, response }`, where `meta` carries
+`has_next_page`, `end_cursor`, and `total`. The spec marks `data` and `meta`
+optional, so access them with `?.`. A non-2xx response throws — see
+[Error handling](#error-handling).
 
 ### Single page
 
 ```ts
-const { data: { data, meta } = {}, error } = await client.employees.employees.list({ query: { limit: 50 } });
-
-// Fetch next page manually
-if (meta.has_next_page) {
-  const page2 = await client.employees.employees.list({
-    query: { limit: 50, after_id: meta.end_cursor },
-  });
-}
+const { data: page } = await client.employees.employees.list({
+  query: { only_active: true, only_managers: false },
+});
+console.log(page.data?.length, page.meta?.has_next_page);
 ```
+
+`limit` and `after_id` work at runtime but are absent from the OpenAPI spec, so
+they are not part of the typed `query`. Prefer `paginate({ limit })` below; to
+cursor by hand, cast the query.
 
 ### Stream all pages (async iterator)
 
 ```ts
-for await (const employee of client.employees.employees.paginate()) {
+for await (const employee of client.employees.employees.paginate({
+  query: { only_active: true, only_managers: false },
+})) {
   console.log(employee.full_name);
 }
 ```
+
+`paginate()` and `all()` accept `limit` (items per request, max 100) and
+`maxItems` (a cap on the total fetched) alongside the endpoint's own options.
 
 ### Collect all into array
 
 ```ts
 // Optional safety cap via maxItems
-const all = await client.employees.employees.all({ maxItems: 500 });
+const all = await client.employees.employees.all({
+  query: { only_active: true, only_managers: false },
+  maxItems: 500,
+});
 ```
 
 Both `paginate()` and `all()` are available on every list endpoint.
@@ -172,23 +190,47 @@ There is no server-side aggregation endpoint; compute totals client-side.
 
 ## Error handling
 
-The client is configured with `throwOnError: true`, so any non-2xx response
-(bad/expired token, wrong base URL, `4xx`/`5xx`) **throws** rather than silently
-resolving to empty data. Wrap calls in `try`/`catch`:
+Any non-2xx response (bad/expired token, wrong base URL, `4xx`/`5xx`) **throws a
+`FactorialApiError`** rather than resolving to empty data. Results carry no
+`error` field — wrap calls in `try`/`catch`:
 
 ```ts
+import { FactorialApiError, FactorialClient } from "@factorialco/api-client";
+
 try {
-  const { data } = await client.employees.employees.list();
+  const { data } = await client.employees.employees.get({ path: { id: "42" } });
   console.log(data);
 } catch (err) {
-  // For HTTP errors, `err` is the API's parsed error body.
-  // For transport failures (DNS/connection), `err` is a TypeError.
-  console.error("Request failed:", err);
+  if (err instanceof FactorialApiError) {
+    console.error(err.status);     // 404
+    console.error(err.method);     // "GET"
+    console.error(err.url);        // full request URL
+    console.error(err.body);       // parsed error body from the API
+    console.error(err.message);    // "Factorial API 404 Not Found: GET https://… — {…}"
+  } else {
+    // Transport failure (DNS, connection reset, abort) — not an HTTP response.
+    throw err;
+  }
 }
 ```
 
-You can opt out per client (restoring the `{ data, error }` return shape) with
-`new FactorialClient({ ..., throwOnError: false })`.
+`FactorialApiError` fields:
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `status` | `number` | HTTP status code |
+| `statusText` | `string` | Reason phrase; empty over HTTP/2 |
+| `method` | `string` | Request method |
+| `url` | `string` | Full request URL, including the query string |
+| `body` | `unknown` | Parsed JSON, the raw string for non-JSON, `undefined` when empty |
+| `headers` | `Headers` | Response headers; non-enumerable |
+| `response` | `Response` | Raw response; non-enumerable, body already consumed |
+
+`headers` and `response` are non-enumerable so `console.error(err)` stays
+readable — they are still accessible directly.
+
+Across package copies (the ESM + CJS dual-package hazard) `instanceof` can fail;
+`isFactorialApiError(err)` is a name-based fallback for that case.
 
 ## Webhooks
 
