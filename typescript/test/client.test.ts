@@ -70,6 +70,43 @@ describe("HTTP errors", () => {
     expect(apiError.body).toBe("<html>Bad Gateway</html>");
   });
 
+  it("keeps a plain-text body raw even when the response claims JSON", async () => {
+    // Observed on the live API: a 400 answers `Invalid parameters` under
+    // `content-type: application/json`, so JSON.parse fails and the raw text
+    // must survive onto the error rather than being lost.
+    const { client } = makeClient(
+      () =>
+        new Response("Invalid parameters", {
+          status: 400,
+          statusText: "Bad Request",
+          headers: { "content-type": "application/json; charset=utf-8" },
+        }),
+    );
+
+    const error = (await client.employees.employees
+      .list({ query: EMPLOYEE_LIST_QUERY })
+      .catch((err: unknown) => err)) as FactorialApiError;
+
+    expect(error).toBeInstanceOf(FactorialApiError);
+    expect(error.status).toBe(400);
+    expect(error.body).toBe("Invalid parameters");
+    expect(error.message).toContain("Invalid parameters");
+  });
+
+  it("exposes the status so callers can branch without parsing the body", async () => {
+    const statuses = [400, 401, 404, 429, 500];
+
+    for (const status of statuses) {
+      const { client } = makeClient(() => jsonResponse(status, { errors: null }));
+      const error = (await client.employees.employees
+        .get({ path: { id: "1" } })
+        .catch((err: unknown) => err)) as FactorialApiError;
+
+      expect(error).toBeInstanceOf(FactorialApiError);
+      expect(error.status).toBe(status);
+    }
+  });
+
   it("truncates a long error body in the message but keeps it whole on the error", async () => {
     const detail = "x".repeat(500);
     const { client } = makeClient(() => jsonResponse(422, { detail }));
