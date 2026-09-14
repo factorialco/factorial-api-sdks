@@ -7,6 +7,9 @@
  *   2. paginate() — stream all employees one-by-one via async iterator
  *   3. all()      — collect all employees into an array (with a safety cap)
  *
+ * Any non-2xx response throws a FactorialApiError, reported by the handler at
+ * the bottom of this file.
+ *
  * Usage:
  *   FACTORIAL_API_KEY=your_key npm run test:api
  *
@@ -17,7 +20,7 @@
  *   FACTORIAL_BASE_URL=https://api.factorialhr.com  (default)
  */
 
-import { FactorialClient } from "../src/index.js";
+import { FactorialApiError, FactorialClient } from "../src/index.js";
 
 // ─── Auth ────────────────────────────────────────────────────────────────────
 
@@ -45,22 +48,38 @@ console.log("🔑  Authenticated via", apiKey ? "API key" : "OAuth token");
 console.log("🌐  Base URL:", process.env.FACTORIAL_BASE_URL ?? "https://api.factorialhr.com");
 console.log();
 
+// ─── Failure reporting ───────────────────────────────────────────────────────
+
+// Every non-2xx response rejects with a FactorialApiError. Report it compactly
+// instead of letting Node dump a stack trace for an expected API failure.
+const reportFailure = (reason: unknown) => {
+  if (reason instanceof FactorialApiError) {
+    console.error(`❌  ${reason.message}`);
+    console.error(`    status: ${reason.status}  method: ${reason.method}`);
+    console.error(`    url:    ${reason.url}`);
+    console.error(`    body:   ${JSON.stringify(reason.body)}`);
+  } else {
+    console.error("❌  Request failed:", reason);
+  }
+  process.exit(1);
+};
+
+// A rejected top-level await surfaces as an uncaught exception, not an
+// unhandled rejection, so both are wired to the same reporter.
+process.on("uncaughtException", reportFailure);
+process.on("unhandledRejection", reportFailure);
+
 // ─── 1. list() — single page ─────────────────────────────────────────────────
 
 console.log("─────────────────────────────────────────────────");
 console.log("1️⃣   list()  — fetch first page (up to 100 items)");
 console.log("─────────────────────────────────────────────────");
 
-const page1 = await client.employees.employees.list({
-  query: { only_active: true },
-});
+const listQuery = { only_active: true, only_managers: false } as const;
 
-if (page1.error) {
-  console.error("❌  Error:", page1.error);
-  process.exit(1);
-}
+const page1 = await client.employees.employees.list({ query: listQuery });
 
-const { data: employees, meta } = page1.data!;
+const { data: employees, meta } = page1.data;
 
 console.log(`✅  Received ${employees.length} employees`);
 console.log(`    Total employees: ${meta.total}`);
@@ -84,7 +103,7 @@ console.log("2️⃣   paginate()  — stream first 5 employees via async iterat
 console.log("─────────────────────────────────────────────────");
 
 let count = 0;
-for await (const employee of client.employees.employees.paginate({ maxItems: 5 })) {
+for await (const employee of client.employees.employees.paginate({ query: listQuery, maxItems: 5 })) {
   count++;
   console.log(
     `    [${count}] id=${employee.id}  name=${(employee as Record<string, unknown>).full_name ?? "n/a"}`,
@@ -99,7 +118,7 @@ console.log("──────────────────────�
 console.log("3️⃣   all()  — collect up to 10 employees into an array");
 console.log("─────────────────────────────────────────────────");
 
-const allEmployees = await client.employees.employees.all({ maxItems: 10 });
+const allEmployees = await client.employees.employees.all({ query: listQuery, maxItems: 10 });
 
 console.log(`✅  Collected ${allEmployees.length} employees`);
 console.log();
