@@ -85,7 +85,7 @@ URL, `4xx`/`5xx`) instead of silently returning `None`. These raise
 `UnexpectedStatus`:
 
 ```python
-from factorial_api_client.generated.errors import UnexpectedStatus
+from factorial_api_client import UnexpectedStatus
 
 try:
     employees = client.employees.employee.list()

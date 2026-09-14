@@ -315,6 +315,9 @@ def main():
     out.append("            token=auth_token,")
     out.append("            prefix=prefix,")
     out.append("            auth_header_name=auth_header_name,")
+    out.append("            # Fail loudly on any non-2xx status: without this the generated")
+    out.append("            # helpers return None and the SDK fails silently.")
+    out.append("            raise_on_unexpected_status=True,")
     out.append("        )")
     for ns in sorted(namespaces):
         out.append(f"        self.{ns} = {pascal(ns)}Namespace(self._client)")
