@@ -14,29 +14,30 @@ T = TypeVar("T", bound="LocationsLocation")
 @_attrs_define
 class LocationsLocation:
     id: str
-    """ identifier of the location """
+    """ Unique identifier of the workplace """
     company_id: str
-    """ company identifier """
+    """ ID of the company this workplace belongs to """
     name: str
-    """ name of the location """
+    """ Human-readable name of the workplace (e.g. "Barcelona Office") """
     main: bool
-    """ whether the location is the main one """
+    """ Whether this is the company's main (HQ) workplace """
     timezone: str | Unset = UNSET
-    """ timezone of the location """
+    """ IANA timezone the workplace operates in (e.g. "Europe/Madrid") """
     country: str | Unset = UNSET
-    """ country code of the location """
+    """ ISO country code of the workplace — the jurisdiction it sits in, often used for country-specific policy
+    thresholds """
     state: str | Unset = UNSET
-    """ State of the location """
+    """ State or province the workplace is located in """
     city: str | Unset = UNSET
-    """ City of the location """
+    """ City the workplace is located in """
     address_line_1: str | Unset = UNSET
-    """ Address line 1 of the location """
+    """ First line of the workplace street address """
     address_line_2: str | Unset = UNSET
-    """ Address line 2 of the location """
+    """ Second line of the workplace street address (suite, floor, …) """
     postal_code: str | Unset = UNSET
-    """ Postal code of the location """
+    """ Postal/ZIP code of the workplace address """
     phone_number: str | Unset = UNSET
-    """ phone number of the location """
+    """ Contact phone number for the workplace """
     latitude: float | Unset = UNSET
     """ latitude of the location """
     longitude: float | Unset = UNSET
