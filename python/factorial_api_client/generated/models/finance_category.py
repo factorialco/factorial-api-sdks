@@ -16,11 +16,16 @@ class FinanceCategory:
     id: str
     """ Unique identifier for the category """
     label: str
-    """ Custom label for the category """
+    """ The category's display name — the one shown in the UI and the one a person will call it by. It is the
+    company's own label when they renamed the category, otherwise the translated default name. Match on this, never
+    on `identifier`, which is a stable internal key that need not resemble the name (`restaurants` is displayed as
+    "Meals"). """
     default_label: str
     """ Default translated label for the category """
     identifier: str
-    """ System identifier for the category """
+    """ Stable internal key for the category, for callers that hold one. NOT a display name and not derivable from
+    one — `restaurants` is shown to everyone as "Meals" — so never present it to a user or match a user's wording
+    against it; use `label` for both. """
     visible: bool
     """ Whether the category is visible """
     enabled: bool

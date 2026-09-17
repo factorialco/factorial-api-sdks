@@ -19,19 +19,44 @@ class PerformanceReviewProcessCustomTemplateVisibilitySettings:
 
     """
 
+    restrict_answers_visibility_to_reportees: bool
+    early_access_to_answers_for_managers: bool
+    anonymous_peer_evaluation_for_target: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        restrict_answers_visibility_to_reportees = self.restrict_answers_visibility_to_reportees
+
+        early_access_to_answers_for_managers = self.early_access_to_answers_for_managers
+
+        anonymous_peer_evaluation_for_target = self.anonymous_peer_evaluation_for_target
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "restrict_answers_visibility_to_reportees": restrict_answers_visibility_to_reportees,
+                "early_access_to_answers_for_managers": early_access_to_answers_for_managers,
+                "anonymous_peer_evaluation_for_target": anonymous_peer_evaluation_for_target,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        performance_review_process_custom_template_visibility_settings = cls()
+        restrict_answers_visibility_to_reportees = d.pop("restrict_answers_visibility_to_reportees")
+
+        early_access_to_answers_for_managers = d.pop("early_access_to_answers_for_managers")
+
+        anonymous_peer_evaluation_for_target = d.pop("anonymous_peer_evaluation_for_target")
+
+        performance_review_process_custom_template_visibility_settings = cls(
+            restrict_answers_visibility_to_reportees=restrict_answers_visibility_to_reportees,
+            early_access_to_answers_for_managers=early_access_to_answers_for_managers,
+            anonymous_peer_evaluation_for_target=anonymous_peer_evaluation_for_target,
+        )
 
         performance_review_process_custom_template_visibility_settings.additional_properties = d
         return performance_review_process_custom_template_visibility_settings
