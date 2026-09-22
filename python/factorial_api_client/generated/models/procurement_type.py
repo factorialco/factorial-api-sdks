@@ -31,6 +31,8 @@ class ProcurementType:
     """ Defines if a type is enabled """
     identifier: str | Unset = UNSET
     """ System identifier for default types """
+    workflow_currency: str | Unset = UNSET
+    """ Currency for workflow approval thresholds """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,6 +54,8 @@ class ProcurementType:
 
         identifier = self.identifier
 
+        workflow_currency = self.workflow_currency
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -71,6 +75,8 @@ class ProcurementType:
             field_dict["enabled"] = enabled
         if identifier is not UNSET:
             field_dict["identifier"] = identifier
+        if workflow_currency is not UNSET:
+            field_dict["workflow_currency"] = workflow_currency
 
         return field_dict
 
@@ -95,6 +101,8 @@ class ProcurementType:
 
         identifier = d.pop("identifier", UNSET)
 
+        workflow_currency = d.pop("workflow_currency", UNSET)
+
         procurement_type = cls(
             company_id=company_id,
             created_at=created_at,
@@ -105,6 +113,7 @@ class ProcurementType:
             description=description,
             enabled=enabled,
             identifier=identifier,
+            workflow_currency=workflow_currency,
         )
 
         procurement_type.additional_properties = d
