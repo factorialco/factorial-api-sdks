@@ -54,7 +54,10 @@ type FetchParams = {
  * Async generator that auto-paginates through all pages of a list endpoint,
  * yielding one item at a time.
  *
- * @param fetcher - A function that accepts pagination params and returns a paged response.
+ * @param fetcher - A function that accepts pagination params and resolves to a
+ *   paged response. It must *reject* on failure rather than reporting the error
+ *   in its result: `FactorialClient` methods throw a `FactorialApiError`, which
+ *   propagates out of the generator to the caller.
  * @param options - Optional limit and maxItems cap.
  *
  * @example
@@ -66,7 +69,7 @@ type FetchParams = {
  * ```
  */
 export async function* paginate<T>(
-  fetcher: (params: FetchParams) => Promise<{ data: PagedResponse<T> | undefined; error: unknown }>,
+  fetcher: (params: FetchParams) => Promise<{ data?: PagedResponse<T> }>,
   options: PaginateOptions = {},
 ): AsyncGenerator<T> {
   const { maxItems, limit } = options;
@@ -78,13 +81,7 @@ export async function* paginate<T>(
     if (limit !== undefined) params.limit = limit;
     if (afterId !== undefined) params.after_id = afterId;
 
-    const response = await fetcher(params);
-
-    if (response.error) {
-      throw response.error;
-    }
-
-    const paged = response.data;
+    const { data: paged } = await fetcher(params);
     if (!paged || !paged.data?.length) break;
 
     for (const item of paged.data) {

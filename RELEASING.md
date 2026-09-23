@@ -51,7 +51,9 @@ what previously let a tag drift from the code it was supposed to point at.
 ## Backporting fixes to previous majors
 
 Each SDK major tracks a dated Factorial API version (`version_map.json`), so
-previous majors stay supported. Patch releases for them use release-please's
+previous majors stay supported. A major is also cut when an SDK itself makes a
+breaking change, in which case two majors map to the same API date (TypeScript
+`2.x` and `3.x` both target `2026-07-01`). Patch releases for them use release-please's
 maintenance branches: the workflow also runs on `N.x` branches
 (`.github/workflows/release-please.yaml`), and release-please reads the config
 and manifest from the branch it runs on, so each branch carries its own
