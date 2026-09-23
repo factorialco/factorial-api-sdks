@@ -200,37 +200,6 @@ def _patch_enum_none_safety_to_dict(models_dir: Path) -> None:
     print(f"  Patched {patched_files} model files for enum None-safety in to_dict")
 
 
-def _patch_raise_on_unexpected_status(client_py: Path) -> None:
-    """
-    The stage-2 generator builds the AuthenticatedClient without
-    raise_on_unexpected_status, which defaults to False. That makes the
-    generated sync/asyncio helpers return None on any undocumented status
-    (bad/expired token, wrong base URL, server errors) — the SDK fails
-    silently. Inject raise_on_unexpected_status=True so it fails loudly.
-    """
-    if not client_py.exists():
-        print(f"  WARNING: {client_py} not found — skipping raise_on_unexpected_status patch")
-        return
-
-    content = client_py.read_text()
-    if "raise_on_unexpected_status=True" in content:
-        print("  client.py already raises on unexpected status — nothing to patch")
-        return
-
-    patched = content.replace(
-        "            auth_header_name=auth_header_name,\n        )",
-        "            auth_header_name=auth_header_name,\n"
-        "            raise_on_unexpected_status=True,\n        )",
-        1,
-    )
-    if patched == content:
-        print("  WARNING: could not locate AuthenticatedClient(...) call to patch")
-        return
-
-    client_py.write_text(patched)
-    print("  Patched client.py to raise on unexpected status")
-
-
 def _patch_env_var_support(client_py: Path) -> None:
     """
     The stage-2 generator builds FactorialClient.__init__ to read credentials
@@ -397,9 +366,6 @@ def main() -> None:
         run(["python3", str(REPO_ROOT / "scripts" / "generate_skill.py"), webhook_spec_path])
     finally:
         os.unlink(webhook_spec_path)
-
-    # Make the high-level client fail loudly on undocumented HTTP statuses.
-    _patch_raise_on_unexpected_status(PYTHON_DIR / "factorial_api_client" / "client.py")
 
     # Let the high-level client read credentials from environment variables.
     _patch_env_var_support(PYTHON_DIR / "factorial_api_client" / "client.py")

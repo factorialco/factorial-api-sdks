@@ -22,6 +22,10 @@ Quick start::
 """
 
 from factorial_api_client.client import FactorialClient
+
+# Raised for every non-2xx response. Re-exported so callers don't have to reach
+# into the generated tree to catch it.
+from factorial_api_client.generated.errors import UnexpectedStatus
 from factorial_api_client.pagination import collect_all, paginate, paginate_async
 
 # The per-event payload aliases (e.g. AtsApplicationCreateWebhook) are generated
@@ -38,6 +42,7 @@ from factorial_api_client.webhooks import __all__ as _webhook_all
 
 __all__ = [
     "FactorialClient",
+    "UnexpectedStatus",
     "paginate",
     "paginate_async",
     "collect_all",
