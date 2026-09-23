@@ -11,5 +11,5 @@ Generator version: 7.23.0
 =end
 
 module F::Api
-  VERSION = '2.0.0'
+  VERSION = '2.1.0'
 end
