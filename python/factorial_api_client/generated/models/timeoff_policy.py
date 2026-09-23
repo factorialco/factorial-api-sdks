@@ -18,9 +18,10 @@ class TimeoffPolicy:
     name: str
     """ Policy name. """
     company_id: str
-    """ The company id. """
+    """ ID of the company that owns this policy. """
     main: bool | Unset = UNSET
-    """ Is the main policy? It will return true if it's the main policy if not it will return false. """
+    """ Whether this is the company's main (default) time off policy — the one employees fall under unless assigned
+    a specific policy. """
     description: str | Unset = UNSET
     """ The policy description. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)

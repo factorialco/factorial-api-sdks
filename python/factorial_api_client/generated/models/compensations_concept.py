@@ -29,12 +29,18 @@ class CompensationsConcept:
     """ The name of the concept """
     translated_name: str
     """ The translated name of the concept if it is a default concept. """
+    enabled: bool
+    """ Whether the concept is enabled for the company """
     category: CompensationsConceptCategory | Unset = UNSET
-    """ The category of the concept """
+    """ The accounting category of the concept (e.g. `earnings_fixed_salary`, `deductions`) """
     unit_name: str | Unset = UNSET
     """ The name of the unit of the concept """
     unit_type: CompensationsConceptUnitType | Unset = UNSET
-    """ The type of the unit of the concept """
+    """ What the concept's amount is measured in (e.g. `money`, a quantity of units) """
+    created_at: str | Unset = UNSET
+    """ Timestamp when the concept was created """
+    updated_at: str | Unset = UNSET
+    """ Timestamp when the concept was last updated """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,6 +58,8 @@ class CompensationsConcept:
 
         translated_name = self.translated_name
 
+        enabled = self.enabled
+
         category: str | Unset = UNSET
         if not isinstance(self.category, Unset):
             category = self.category.value if self.category is not None else None
@@ -61,6 +69,10 @@ class CompensationsConcept:
         unit_type: str | Unset = UNSET
         if not isinstance(self.unit_type, Unset):
             unit_type = self.unit_type.value if self.unit_type is not None else None
+
+        created_at = self.created_at
+
+        updated_at = self.updated_at
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -73,6 +85,7 @@ class CompensationsConcept:
                 "label": label,
                 "name": name,
                 "translated_name": translated_name,
+                "enabled": enabled,
             }
         )
         if category is not UNSET:
@@ -81,6 +94,10 @@ class CompensationsConcept:
             field_dict["unit_name"] = unit_name
         if unit_type is not UNSET:
             field_dict["unit_type"] = unit_type
+        if created_at is not UNSET:
+            field_dict["created_at"] = created_at
+        if updated_at is not UNSET:
+            field_dict["updated_at"] = updated_at
 
         return field_dict
 
@@ -101,6 +118,8 @@ class CompensationsConcept:
 
         translated_name = d.pop("translated_name")
 
+        enabled = d.pop("enabled")
+
         _category = d.pop("category", UNSET)
         category: CompensationsConceptCategory | Unset
         if isinstance(_category, Unset):
@@ -117,6 +136,10 @@ class CompensationsConcept:
         else:
             unit_type = CompensationsConceptUnitType(_unit_type) if _unit_type is not None else None
 
+        created_at = d.pop("created_at", UNSET)
+
+        updated_at = d.pop("updated_at", UNSET)
+
         compensations_concept = cls(
             id=id,
             company_id=company_id,
@@ -125,9 +148,12 @@ class CompensationsConcept:
             label=label,
             name=name,
             translated_name=translated_name,
+            enabled=enabled,
             category=category,
             unit_name=unit_name,
             unit_type=unit_type,
+            created_at=created_at,
+            updated_at=updated_at,
         )
 
         compensations_concept.additional_properties = d

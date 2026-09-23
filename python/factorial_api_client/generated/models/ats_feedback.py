@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.ats_feedback_evaluation_form_answers_item import (
+        AtsFeedbackEvaluationFormAnswersItem,
+    )
+
 
 T = TypeVar("T", bound="AtsFeedback")
 
@@ -29,7 +35,7 @@ class AtsFeedback:
     """ the ID of the phase within the application related to the feedback. """
     ats_evaluation_forms_id: str | Unset = UNSET
     """ the ID of the evaluation form to which the feedback belongs if the evaluation forms feature is active. """
-    evaluation_form_answers: list[Any] | Unset = UNSET
+    evaluation_form_answers: list[AtsFeedbackEvaluationFormAnswersItem] | Unset = UNSET
     """ the answers from the evaluation form, if this feedback is related to an evaluation form. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -50,9 +56,12 @@ class AtsFeedback:
 
         ats_evaluation_forms_id = self.ats_evaluation_forms_id
 
-        evaluation_form_answers: list[Any] | Unset = UNSET
+        evaluation_form_answers: list[dict[str, Any]] | Unset = UNSET
         if not isinstance(self.evaluation_form_answers, Unset):
-            evaluation_form_answers = self.evaluation_form_answers
+            evaluation_form_answers = []
+            for evaluation_form_answers_item_data in self.evaluation_form_answers:
+                evaluation_form_answers_item = evaluation_form_answers_item_data.to_dict()
+                evaluation_form_answers.append(evaluation_form_answers_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -80,6 +89,10 @@ class AtsFeedback:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ats_feedback_evaluation_form_answers_item import (
+            AtsFeedbackEvaluationFormAnswersItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -97,7 +110,16 @@ class AtsFeedback:
 
         ats_evaluation_forms_id = d.pop("ats_evaluation_forms_id", UNSET)
 
-        evaluation_form_answers = cast(list[Any], d.pop("evaluation_form_answers", UNSET))
+        _evaluation_form_answers = d.pop("evaluation_form_answers", UNSET)
+        evaluation_form_answers: list[AtsFeedbackEvaluationFormAnswersItem] | Unset = UNSET
+        if _evaluation_form_answers is not UNSET:
+            evaluation_form_answers = []
+            for evaluation_form_answers_item_data in _evaluation_form_answers:
+                evaluation_form_answers_item = AtsFeedbackEvaluationFormAnswersItem.from_dict(
+                    evaluation_form_answers_item_data
+                )
+
+                evaluation_form_answers.append(evaluation_form_answers_item)
 
         ats_feedback = cls(
             id=id,
