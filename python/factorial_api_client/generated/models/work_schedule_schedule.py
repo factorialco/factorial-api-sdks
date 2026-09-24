@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.work_schedule_schedule_periods_item import WorkScheduleSchedulePeriodsItem
+
 
 T = TypeVar("T", bound="WorkScheduleSchedule")
 
@@ -14,13 +18,21 @@ T = TypeVar("T", bound="WorkScheduleSchedule")
 @_attrs_define
 class WorkScheduleSchedule:
     id: str
+    """ Identifier of the schedule """
     name: str
+    """ Name of the schedule """
     company_id: str
+    """ Identifier of the company the schedule belongs to """
     created_at: str
+    """ When the schedule was created """
     updated_at: str
+    """ When the schedule was last updated """
     employee_ids: list[str]
-    periods: list[Any]
+    """ Identifiers of the employees assigned to the schedule """
+    periods: list[WorkScheduleSchedulePeriodsItem]
+    """ Overlap periods that make up the schedule """
     archived_at: str | Unset = UNSET
+    """ When the schedule was archived; null when the schedule is active """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,7 +48,10 @@ class WorkScheduleSchedule:
 
         employee_ids = self.employee_ids
 
-        periods = self.periods
+        periods = []
+        for periods_item_data in self.periods:
+            periods_item = periods_item_data.to_dict()
+            periods.append(periods_item)
 
         archived_at = self.archived_at
 
@@ -60,6 +75,8 @@ class WorkScheduleSchedule:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.work_schedule_schedule_periods_item import WorkScheduleSchedulePeriodsItem
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -73,7 +90,12 @@ class WorkScheduleSchedule:
 
         employee_ids = cast(list[str], d.pop("employee_ids"))
 
-        periods = cast(list[Any], d.pop("periods"))
+        periods = []
+        _periods = d.pop("periods")
+        for periods_item_data in _periods:
+            periods_item = WorkScheduleSchedulePeriodsItem.from_dict(periods_item_data)
+
+            periods.append(periods_item)
 
         archived_at = d.pop("archived_at", UNSET)
 

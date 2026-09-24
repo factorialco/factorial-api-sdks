@@ -18,19 +18,37 @@ class PerformanceAgreementConclusions:
 
     """
 
+    text: str
+    last_updated_at: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        text = self.text
+
+        last_updated_at = self.last_updated_at
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "text": text,
+                "last_updated_at": last_updated_at,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        performance_agreement_conclusions = cls()
+        text = d.pop("text")
+
+        last_updated_at = d.pop("last_updated_at")
+
+        performance_agreement_conclusions = cls(
+            text=text,
+            last_updated_at=last_updated_at,
+        )
 
         performance_agreement_conclusions.additional_properties = d
         return performance_agreement_conclusions

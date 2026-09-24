@@ -4,6 +4,9 @@ from enum import Enum
 class IntegrationsSyncableItemSyncableType(str, Enum):
     COMPENSATIONSCOMPENSATION = "compensations/compensation"
     EMPLOYEE_UPDATESLEAVE = "employee_updates/leave"
+    EMPLOYEE_UPDATESNEW_HIRE = "employee_updates/new_hire"
+    EMPLOYEE_UPDATESTERMINATION = "employee_updates/termination"
+    EMPLOYEE_UPDATESWORKED_TIME = "employee_updates/worked_time"
     EXPENSESEXPENSE = "expenses/expense"
     FINANCEVENDOR = "finance/vendor"
 

@@ -50,7 +50,8 @@ class ExpensesExpensable:
     effective_on: str | Unset = UNSET
     """ The optional date and time when the expensable was effective """
     review_request_at: str | Unset = UNSET
-    """ The optional date and time when the expensable was requested for review """
+    """ The date and time the expensable was submitted for review. Null while it is a draft; set at submission and
+    never cleared afterwards. Compare it with `effective_on` to measure how late a document was submitted. """
     paid_at: str | Unset = UNSET
     """ The optional date and time when the expensable was set as paid """
     reimbursable_amount: int | Unset = UNSET
