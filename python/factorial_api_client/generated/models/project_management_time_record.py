@@ -17,10 +17,16 @@ class ProjectManagementTimeRecord:
     """ Id of the time record """
     project_worker_id: str
     """ Id of the project worker """
+    employee_id: str
+    """ Id of the employee the time record belongs to """
+    project_id: str
+    """ Id of the project the time record belongs to """
     attendance_shift_id: str | Unset = UNSET
     """ Id of the attendance shift """
     subproject_id: str | Unset = UNSET
     """ Id of the subproject """
+    project_task_id: str | Unset = UNSET
+    """ Id of the project task assigned to the time record. Refers to project_management/project_tasks endpoint. """
     date: str | Unset = UNSET
     """ Reference date of the shift """
     imputed_minutes: int | Unset = UNSET
@@ -38,9 +44,15 @@ class ProjectManagementTimeRecord:
 
         project_worker_id = self.project_worker_id
 
+        employee_id = self.employee_id
+
+        project_id = self.project_id
+
         attendance_shift_id = self.attendance_shift_id
 
         subproject_id = self.subproject_id
+
+        project_task_id = self.project_task_id
 
         date = self.date
 
@@ -58,12 +70,16 @@ class ProjectManagementTimeRecord:
             {
                 "id": id,
                 "project_worker_id": project_worker_id,
+                "employee_id": employee_id,
+                "project_id": project_id,
             }
         )
         if attendance_shift_id is not UNSET:
             field_dict["attendance_shift_id"] = attendance_shift_id
         if subproject_id is not UNSET:
             field_dict["subproject_id"] = subproject_id
+        if project_task_id is not UNSET:
+            field_dict["project_task_id"] = project_task_id
         if date is not UNSET:
             field_dict["date"] = date
         if imputed_minutes is not UNSET:
@@ -84,9 +100,15 @@ class ProjectManagementTimeRecord:
 
         project_worker_id = d.pop("project_worker_id")
 
+        employee_id = d.pop("employee_id")
+
+        project_id = d.pop("project_id")
+
         attendance_shift_id = d.pop("attendance_shift_id", UNSET)
 
         subproject_id = d.pop("subproject_id", UNSET)
+
+        project_task_id = d.pop("project_task_id", UNSET)
 
         date = d.pop("date", UNSET)
 
@@ -101,8 +123,11 @@ class ProjectManagementTimeRecord:
         project_management_time_record = cls(
             id=id,
             project_worker_id=project_worker_id,
+            employee_id=employee_id,
+            project_id=project_id,
             attendance_shift_id=attendance_shift_id,
             subproject_id=subproject_id,
+            project_task_id=project_task_id,
             date=date,
             imputed_minutes=imputed_minutes,
             clock_in=clock_in,

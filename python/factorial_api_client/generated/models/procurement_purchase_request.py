@@ -40,6 +40,8 @@ class ProcurementPurchaseRequest:
     """ URL related to the purchase request (e.g., product link) """
     additional_information: str | Unset = UNSET
     """ Additional information or notes about the purchase request """
+    rejection_reason: str | Unset = UNSET
+    """ Reason for rejection if the purchase request was rejected """
     deadline: str | Unset = UNSET
     """ Deadline date for the purchase request """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -67,6 +69,8 @@ class ProcurementPurchaseRequest:
 
         additional_information = self.additional_information
 
+        rejection_reason = self.rejection_reason
+
         deadline = self.deadline
 
         field_dict: dict[str, Any] = {}
@@ -90,6 +94,8 @@ class ProcurementPurchaseRequest:
             field_dict["url"] = url
         if additional_information is not UNSET:
             field_dict["additional_information"] = additional_information
+        if rejection_reason is not UNSET:
+            field_dict["rejection_reason"] = rejection_reason
         if deadline is not UNSET:
             field_dict["deadline"] = deadline
 
@@ -122,6 +128,8 @@ class ProcurementPurchaseRequest:
 
         additional_information = d.pop("additional_information", UNSET)
 
+        rejection_reason = d.pop("rejection_reason", UNSET)
+
         deadline = d.pop("deadline", UNSET)
 
         procurement_purchase_request = cls(
@@ -136,6 +144,7 @@ class ProcurementPurchaseRequest:
             vendor_id=vendor_id,
             url=url,
             additional_information=additional_information,
+            rejection_reason=rejection_reason,
             deadline=deadline,
         )
 

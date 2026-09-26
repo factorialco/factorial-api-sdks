@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.performance_employee_score_scale_scale_item import (
+        PerformanceEmployeeScoreScaleScaleItem,
+    )
+
 
 T = TypeVar("T", bound="PerformanceEmployeeScoreScale")
 
@@ -13,7 +19,7 @@ T = TypeVar("T", bound="PerformanceEmployeeScoreScale")
 class PerformanceEmployeeScoreScale:
     id: str
     """ Employee score scale ID """
-    scale: list[Any]
+    scale: list[PerformanceEmployeeScoreScaleScaleItem]
     """ Scale to be used when scoring the employee performance """
     is_default: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -21,7 +27,10 @@ class PerformanceEmployeeScoreScale:
     def to_dict(self) -> dict[str, Any]:
         id = self.id
 
-        scale = self.scale
+        scale = []
+        for scale_item_data in self.scale:
+            scale_item = scale_item_data.to_dict()
+            scale.append(scale_item)
 
         is_default = self.is_default
 
@@ -39,10 +48,19 @@ class PerformanceEmployeeScoreScale:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.performance_employee_score_scale_scale_item import (
+            PerformanceEmployeeScoreScaleScaleItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
-        scale = cast(list[Any], d.pop("scale"))
+        scale = []
+        _scale = d.pop("scale")
+        for scale_item_data in _scale:
+            scale_item = PerformanceEmployeeScoreScaleScaleItem.from_dict(scale_item_data)
+
+            scale.append(scale_item)
 
         is_default = d.pop("is_default")
 
