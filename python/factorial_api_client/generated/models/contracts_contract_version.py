@@ -43,6 +43,9 @@ class ContractsContractVersion:
     """ identifier for the contract version. """
     country: str | Unset = UNSET
     """ nationality country code of the employee (Spain ES, United Kingdom GB). """
+    contracts_contract_id: str | Unset = UNSET
+    """ contract identifier, refers to the /contracts/contracts endpoint. Use it to read the contract this version
+    belongs to, and its activity periods. """
     job_title: str | Unset = UNSET
     """ job title of the employee. """
     job_catalog_level_id: str | Unset = UNSET
@@ -63,6 +66,8 @@ class ContractsContractVersion:
     date is not related with the end date of a contract. """
     salary_amount: int | Unset = UNSET
     """ the amount of money the employee earns in cents. """
+    salary_currency: str | Unset = UNSET
+    """ the currency of the salary amount, inherited from the governing legal entity. """
     salary_frequency: str | Unset = UNSET
     """ the frequency of the salary payment. """
     working_week_days: str | Unset = UNSET
@@ -159,6 +164,8 @@ class ContractsContractVersion:
 
         country = self.country
 
+        contracts_contract_id = self.contracts_contract_id
+
         job_title = self.job_title
 
         job_catalog_level_id = self.job_catalog_level_id
@@ -174,6 +181,8 @@ class ContractsContractVersion:
         trial_period_ends_on = self.trial_period_ends_on
 
         salary_amount = self.salary_amount
+
+        salary_currency = self.salary_currency
 
         salary_frequency = self.salary_frequency
 
@@ -265,6 +274,8 @@ class ContractsContractVersion:
             field_dict["id"] = id
         if country is not UNSET:
             field_dict["country"] = country
+        if contracts_contract_id is not UNSET:
+            field_dict["contracts_contract_id"] = contracts_contract_id
         if job_title is not UNSET:
             field_dict["job_title"] = job_title
         if job_catalog_level_id is not UNSET:
@@ -281,6 +292,8 @@ class ContractsContractVersion:
             field_dict["trial_period_ends_on"] = trial_period_ends_on
         if salary_amount is not UNSET:
             field_dict["salary_amount"] = salary_amount
+        if salary_currency is not UNSET:
+            field_dict["salary_currency"] = salary_currency
         if salary_frequency is not UNSET:
             field_dict["salary_frequency"] = salary_frequency
         if working_week_days is not UNSET:
@@ -381,6 +394,8 @@ class ContractsContractVersion:
 
         country = d.pop("country", UNSET)
 
+        contracts_contract_id = d.pop("contracts_contract_id", UNSET)
+
         job_title = d.pop("job_title", UNSET)
 
         job_catalog_level_id = d.pop("job_catalog_level_id", UNSET)
@@ -396,6 +411,8 @@ class ContractsContractVersion:
         trial_period_ends_on = d.pop("trial_period_ends_on", UNSET)
 
         salary_amount = d.pop("salary_amount", UNSET)
+
+        salary_currency = d.pop("salary_currency", UNSET)
 
         salary_frequency = d.pop("salary_frequency", UNSET)
 
@@ -492,6 +509,7 @@ class ContractsContractVersion:
             fr_forfait_jours=fr_forfait_jours,
             id=id,
             country=country,
+            contracts_contract_id=contracts_contract_id,
             job_title=job_title,
             job_catalog_level_id=job_catalog_level_id,
             job_catalog_tree_node_uuid=job_catalog_tree_node_uuid,
@@ -500,6 +518,7 @@ class ContractsContractVersion:
             has_trial_period=has_trial_period,
             trial_period_ends_on=trial_period_ends_on,
             salary_amount=salary_amount,
+            salary_currency=salary_currency,
             salary_frequency=salary_frequency,
             working_week_days=working_week_days,
             working_hours=working_hours,

@@ -26,6 +26,9 @@ class CompaniesLegalEntity:
     """ The currency code in ISO 4217 format """
     tin: str | Unset = UNSET
     """ Tax identification number """
+    siret: str | Unset = UNSET
+    """ SIRET number (France-specific). System for identifying French establishments. 14-digit identifier for each
+    French establishment. """
     city: str | Unset = UNSET
     """ City of the legal entity """
     state: str | Unset = UNSET
@@ -51,6 +54,8 @@ class CompaniesLegalEntity:
 
         tin = self.tin
 
+        siret = self.siret
+
         city = self.city
 
         state = self.state
@@ -74,6 +79,8 @@ class CompaniesLegalEntity:
         )
         if tin is not UNSET:
             field_dict["tin"] = tin
+        if siret is not UNSET:
+            field_dict["siret"] = siret
         if city is not UNSET:
             field_dict["city"] = city
         if state is not UNSET:
@@ -102,6 +109,8 @@ class CompaniesLegalEntity:
 
         tin = d.pop("tin", UNSET)
 
+        siret = d.pop("siret", UNSET)
+
         city = d.pop("city", UNSET)
 
         state = d.pop("state", UNSET)
@@ -119,6 +128,7 @@ class CompaniesLegalEntity:
             legal_name=legal_name,
             currency=currency,
             tin=tin,
+            siret=siret,
             city=city,
             state=state,
             postal_code=postal_code,

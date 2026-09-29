@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.performance_review_evaluation_answer_answered_questionnaire_with_sections_content_item import (
+        PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentItem,
+    )
+
 
 T = TypeVar("T", bound="PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSections")
 
@@ -27,19 +33,44 @@ class PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSections:
 
     """
 
+    content: list[PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentItem]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        content = []
+        for content_item_data in self.content:
+            content_item = content_item_data.to_dict()
+            content.append(content_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "content": content,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.performance_review_evaluation_answer_answered_questionnaire_with_sections_content_item import (
+            PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentItem,
+        )
+
         d = dict(src_dict)
-        performance_review_evaluation_answer_answered_questionnaire_with_sections = cls()
+        content = []
+        _content = d.pop("content")
+        for content_item_data in _content:
+            content_item = PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentItem.from_dict(
+                content_item_data
+            )
+
+            content.append(content_item)
+
+        performance_review_evaluation_answer_answered_questionnaire_with_sections = cls(
+            content=content,
+        )
 
         performance_review_evaluation_answer_answered_questionnaire_with_sections.additional_properties = d
         return performance_review_evaluation_answer_answered_questionnaire_with_sections
