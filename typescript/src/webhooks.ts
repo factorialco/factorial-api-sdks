@@ -49,6 +49,7 @@ import type {
   PayrollPolicyPeriod,
   PayrollSupplement,
   PerformanceReviewProcess,
+  ProjectManagementTimeRecord,
   ShiftManagementShift,
   TasksTask,
   TeamsMembership,
@@ -231,6 +232,16 @@ export type PerformanceReviewProcessUpdateReviewerStrategiesWebhook = Performanc
 export type PerformanceReviewProcessUpdateScheduleWebhook = PerformanceReviewProcess;
 /** Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies). */
 export type PerformanceReviewProcessUpdateTargetStrategyWebhook = PerformanceReviewProcess;
+/** Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates). */
+export type ProjectManagementTimeRecordCreateWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes). */
+export type ProjectManagementTimeRecordDeleteWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_imputed_minutes` (ProjectManagement > TimeRecord > Update imputed minutes). */
+export type ProjectManagementTimeRecordUpdateImputedMinutesWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_observations` (ProjectManagement > TimeRecord > Update observations). */
+export type ProjectManagementTimeRecordUpdateObservationsWebhook = ProjectManagementTimeRecord;
+/** Payload for `project_management/time_record/update_project_worker` (ProjectManagement > TimeRecord > Update project workers). */
+export type ProjectManagementTimeRecordUpdateProjectWorkerWebhook = ProjectManagementTimeRecord;
 /** Payload for `shift_management/shift/bulk_create` (ShiftManagement > Shift > Bulk creates). */
 export type ShiftManagementShiftBulkCreateWebhook = ShiftManagementShift;
 /** Payload for `shift_management/shift/bulk_delete` (ShiftManagement > Shift > Bulk deletes). */
@@ -261,12 +272,16 @@ export type TeamsMembershipBulkUpsertWebhook = TeamsMembership;
 export type TeamsMembershipCreateWebhook = TeamsMembership;
 /** Payload for `teams/membership/delete` (Teams > Membership > Deletes). */
 export type TeamsMembershipDeleteWebhook = TeamsMembership;
+/** Payload for `teams/membership/move` (Teams > Membership > Moves). */
+export type TeamsMembershipMoveWebhook = TeamsMembership;
 /** Payload for `teams/membership/update` (Teams > Membership > Updates). */
 export type TeamsMembershipUpdateWebhook = TeamsMembership;
 /** Payload for `teams/team/create` (Teams > Team > Creates). */
 export type TeamsTeamCreateWebhook = TeamsTeam;
 /** Payload for `teams/team/delete` (Teams > Team > Deletes). */
 export type TeamsTeamDeleteWebhook = TeamsTeam;
+/** Payload for `teams/team/move` (Teams > Team > Moves). */
+export type TeamsTeamMoveWebhook = TeamsTeam;
 /** Payload for `teams/team/project` (Teams > Team > Projects). */
 export type TeamsTeamProjectWebhook = TeamsTeam;
 /** Payload for `teams/team/update` (Teams > Team > Updates). */
@@ -283,6 +298,8 @@ export type TimeoffLeaveTypeCreateWebhook = TimeoffLeaveType;
 export type TimeoffLeaveTypeUpdateWebhook = TimeoffLeaveType;
 /** Payload for `timeoff/leave/approve` (Timeoff > Leave > Approves). */
 export type TimeoffLeaveApproveWebhook = TimeoffLeave;
+/** Payload for `timeoff/leave/bulk_delete` (Timeoff > Leave > Bulk deletes). */
+export type TimeoffLeaveBulkDeleteWebhook = TimeoffLeave;
 /** Payload for `timeoff/leave/create` (Timeoff > Leave > Creates). */
 export type TimeoffLeaveCreateWebhook = TimeoffLeave;
 /** Payload for `timeoff/leave/delete` (Timeoff > Leave > Deletes). */
@@ -301,6 +318,8 @@ export type TimeoffPolicyUpdateWebhook = TimeoffPolicy;
 export type TrainingsCategoryCreateWebhook = TrainingsCategory;
 /** Payload for `trainings/category/delete` (Trainings > Category > Deletes). */
 export type TrainingsCategoryDeleteWebhook = TrainingsCategory;
+/** Payload for `trainings/category/update` (Trainings > Category > Updates). */
+export type TrainingsCategoryUpdateWebhook = TrainingsCategory;
 /** Payload for `trainings/training/bulk_delete` (Trainings > Training > Bulk deletes). */
 export type TrainingsTrainingBulkDeleteWebhook = TrainingsTraining;
 /** Payload for `trainings/training/bulk_update_catalog` (Trainings > Training > Bulk update catalogs). */
@@ -407,6 +426,11 @@ export type WebhookSubscriptionType =
   | "performance/review_process/update_reviewer_strategies"
   | "performance/review_process/update_schedule"
   | "performance/review_process/update_target_strategy"
+  | "project_management/time_record/create"
+  | "project_management/time_record/delete"
+  | "project_management/time_record/update_imputed_minutes"
+  | "project_management/time_record/update_observations"
+  | "project_management/time_record/update_project_worker"
   | "shift_management/shift/bulk_create"
   | "shift_management/shift/bulk_delete"
   | "shift_management/shift/create"
@@ -422,9 +446,11 @@ export type WebhookSubscriptionType =
   | "teams/membership/bulk_upsert"
   | "teams/membership/create"
   | "teams/membership/delete"
+  | "teams/membership/move"
   | "teams/membership/update"
   | "teams/team/create"
   | "teams/team/delete"
+  | "teams/team/move"
   | "teams/team/project"
   | "teams/team/update"
   | "timeoff/blocked_period/create"
@@ -433,6 +459,7 @@ export type WebhookSubscriptionType =
   | "timeoff/leave_type/create"
   | "timeoff/leave_type/update"
   | "timeoff/leave/approve"
+  | "timeoff/leave/bulk_delete"
   | "timeoff/leave/create"
   | "timeoff/leave/delete"
   | "timeoff/leave/reject"
@@ -442,6 +469,7 @@ export type WebhookSubscriptionType =
   | "timeoff/policy/update"
   | "trainings/category/create"
   | "trainings/category/delete"
+  | "trainings/category/update"
   | "trainings/training/bulk_delete"
   | "trainings/training/bulk_update_catalog"
   | "trainings/training/create"
@@ -539,6 +567,11 @@ export interface WebhookPayloadMap {
   "performance/review_process/update_reviewer_strategies": PerformanceReviewProcess;
   "performance/review_process/update_schedule": PerformanceReviewProcess;
   "performance/review_process/update_target_strategy": PerformanceReviewProcess;
+  "project_management/time_record/create": ProjectManagementTimeRecord;
+  "project_management/time_record/delete": ProjectManagementTimeRecord;
+  "project_management/time_record/update_imputed_minutes": ProjectManagementTimeRecord;
+  "project_management/time_record/update_observations": ProjectManagementTimeRecord;
+  "project_management/time_record/update_project_worker": ProjectManagementTimeRecord;
   "shift_management/shift/bulk_create": ShiftManagementShift;
   "shift_management/shift/bulk_delete": ShiftManagementShift;
   "shift_management/shift/create": ShiftManagementShift;
@@ -554,9 +587,11 @@ export interface WebhookPayloadMap {
   "teams/membership/bulk_upsert": TeamsMembership;
   "teams/membership/create": TeamsMembership;
   "teams/membership/delete": TeamsMembership;
+  "teams/membership/move": TeamsMembership;
   "teams/membership/update": TeamsMembership;
   "teams/team/create": TeamsTeam;
   "teams/team/delete": TeamsTeam;
+  "teams/team/move": TeamsTeam;
   "teams/team/project": TeamsTeam;
   "teams/team/update": TeamsTeam;
   "timeoff/blocked_period/create": TimeoffBlockedPeriodsPolicy;
@@ -565,6 +600,7 @@ export interface WebhookPayloadMap {
   "timeoff/leave_type/create": TimeoffLeaveType;
   "timeoff/leave_type/update": TimeoffLeaveType;
   "timeoff/leave/approve": TimeoffLeave;
+  "timeoff/leave/bulk_delete": TimeoffLeave;
   "timeoff/leave/create": TimeoffLeave;
   "timeoff/leave/delete": TimeoffLeave;
   "timeoff/leave/reject": TimeoffLeave;
@@ -574,6 +610,7 @@ export interface WebhookPayloadMap {
   "timeoff/policy/update": TimeoffPolicy;
   "trainings/category/create": TrainingsCategory;
   "trainings/category/delete": TrainingsCategory;
+  "trainings/category/update": TrainingsCategory;
   "trainings/training/bulk_delete": TrainingsTraining;
   "trainings/training/bulk_update_catalog": TrainingsTraining;
   "trainings/training/create": TrainingsTraining;
@@ -687,6 +724,11 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "performance/review_process/update_reviewer_strategies", namespace: "Performance", resource: "ReviewProcess", event: "Update reviewer strategies", summary: "Performance > ReviewProcess > Update reviewer strategies", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_schedule", namespace: "Performance", resource: "ReviewProcess", event: "Update schedules", summary: "Performance > ReviewProcess > Update schedules", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_target_strategy", namespace: "Performance", resource: "ReviewProcess", event: "Update target strategies", summary: "Performance > ReviewProcess > Update target strategies", payloadSchema: "performance_review_process" },
+  { subscriptionType: "project_management/time_record/create", namespace: "ProjectManagement", resource: "TimeRecord", event: "Creates", summary: "ProjectManagement > TimeRecord > Creates", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/delete", namespace: "ProjectManagement", resource: "TimeRecord", event: "Deletes", summary: "ProjectManagement > TimeRecord > Deletes", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_imputed_minutes", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update imputed minutes", summary: "ProjectManagement > TimeRecord > Update imputed minutes", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_observations", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update observations", summary: "ProjectManagement > TimeRecord > Update observations", payloadSchema: "project_management_time_record" },
+  { subscriptionType: "project_management/time_record/update_project_worker", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update project workers", summary: "ProjectManagement > TimeRecord > Update project workers", payloadSchema: "project_management_time_record" },
   { subscriptionType: "shift_management/shift/bulk_create", namespace: "ShiftManagement", resource: "Shift", event: "Bulk creates", summary: "ShiftManagement > Shift > Bulk creates", payloadSchema: "shift_management_shift" },
   { subscriptionType: "shift_management/shift/bulk_delete", namespace: "ShiftManagement", resource: "Shift", event: "Bulk deletes", summary: "ShiftManagement > Shift > Bulk deletes", payloadSchema: "shift_management_shift" },
   { subscriptionType: "shift_management/shift/create", namespace: "ShiftManagement", resource: "Shift", event: "Creates", summary: "ShiftManagement > Shift > Creates", payloadSchema: "shift_management_shift" },
@@ -702,9 +744,11 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "teams/membership/bulk_upsert", namespace: "Teams", resource: "Membership", event: "Bulk upserts", summary: "Teams > Membership > Bulk upserts", payloadSchema: "teams_membership" },
   { subscriptionType: "teams/membership/create", namespace: "Teams", resource: "Membership", event: "Creates", summary: "Teams > Membership > Creates", payloadSchema: "teams_membership" },
   { subscriptionType: "teams/membership/delete", namespace: "Teams", resource: "Membership", event: "Deletes", summary: "Teams > Membership > Deletes", payloadSchema: "teams_membership" },
+  { subscriptionType: "teams/membership/move", namespace: "Teams", resource: "Membership", event: "Moves", summary: "Teams > Membership > Moves", payloadSchema: "teams_membership" },
   { subscriptionType: "teams/membership/update", namespace: "Teams", resource: "Membership", event: "Updates", summary: "Teams > Membership > Updates", payloadSchema: "teams_membership" },
   { subscriptionType: "teams/team/create", namespace: "Teams", resource: "Team", event: "Creates", summary: "Teams > Team > Creates", payloadSchema: "teams_team" },
   { subscriptionType: "teams/team/delete", namespace: "Teams", resource: "Team", event: "Deletes", summary: "Teams > Team > Deletes", payloadSchema: "teams_team" },
+  { subscriptionType: "teams/team/move", namespace: "Teams", resource: "Team", event: "Moves", summary: "Teams > Team > Moves", payloadSchema: "teams_team" },
   { subscriptionType: "teams/team/project", namespace: "Teams", resource: "Team", event: "Projects", summary: "Teams > Team > Projects", payloadSchema: "teams_team" },
   { subscriptionType: "teams/team/update", namespace: "Teams", resource: "Team", event: "Updates", summary: "Teams > Team > Updates", payloadSchema: "teams_team" },
   { subscriptionType: "timeoff/blocked_period/create", namespace: "Timeoff", resource: "BlockedPeriod", event: "Creates", summary: "Timeoff > BlockedPeriod > Creates", payloadSchema: "timeoff_blocked_periods_policy" },
@@ -713,6 +757,7 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "timeoff/leave_type/create", namespace: "Timeoff", resource: "LeaveType", event: "Creates", summary: "Timeoff > LeaveType > Creates", payloadSchema: "timeoff_leave_type" },
   { subscriptionType: "timeoff/leave_type/update", namespace: "Timeoff", resource: "LeaveType", event: "Updates", summary: "Timeoff > LeaveType > Updates", payloadSchema: "timeoff_leave_type" },
   { subscriptionType: "timeoff/leave/approve", namespace: "Timeoff", resource: "Leave", event: "Approves", summary: "Timeoff > Leave > Approves", payloadSchema: "timeoff_leave" },
+  { subscriptionType: "timeoff/leave/bulk_delete", namespace: "Timeoff", resource: "Leave", event: "Bulk deletes", summary: "Timeoff > Leave > Bulk deletes", payloadSchema: "timeoff_leave" },
   { subscriptionType: "timeoff/leave/create", namespace: "Timeoff", resource: "Leave", event: "Creates", summary: "Timeoff > Leave > Creates", payloadSchema: "timeoff_leave" },
   { subscriptionType: "timeoff/leave/delete", namespace: "Timeoff", resource: "Leave", event: "Deletes", summary: "Timeoff > Leave > Deletes", payloadSchema: "timeoff_leave" },
   { subscriptionType: "timeoff/leave/reject", namespace: "Timeoff", resource: "Leave", event: "Rejects", summary: "Timeoff > Leave > Rejects", payloadSchema: "timeoff_leave" },
@@ -722,6 +767,7 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "timeoff/policy/update", namespace: "Timeoff", resource: "Policy", event: "Updates", summary: "Timeoff > Policy > Updates", payloadSchema: "timeoff_policy" },
   { subscriptionType: "trainings/category/create", namespace: "Trainings", resource: "Category", event: "Creates", summary: "Trainings > Category > Creates", payloadSchema: "trainings_category" },
   { subscriptionType: "trainings/category/delete", namespace: "Trainings", resource: "Category", event: "Deletes", summary: "Trainings > Category > Deletes", payloadSchema: "trainings_category" },
+  { subscriptionType: "trainings/category/update", namespace: "Trainings", resource: "Category", event: "Updates", summary: "Trainings > Category > Updates", payloadSchema: "trainings_category" },
   { subscriptionType: "trainings/training/bulk_delete", namespace: "Trainings", resource: "Training", event: "Bulk deletes", summary: "Trainings > Training > Bulk deletes", payloadSchema: "trainings_training" },
   { subscriptionType: "trainings/training/bulk_update_catalog", namespace: "Trainings", resource: "Training", event: "Bulk update catalogs", summary: "Trainings > Training > Bulk update catalogs", payloadSchema: "trainings_training" },
   { subscriptionType: "trainings/training/create", namespace: "Trainings", resource: "Training", event: "Creates", summary: "Trainings > Training > Creates", payloadSchema: "trainings_training" },

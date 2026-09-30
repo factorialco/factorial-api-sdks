@@ -46,6 +46,7 @@ from factorial_api_client.generated.models import (
     PayrollPolicyPeriod,
     PayrollSupplement,
     PerformanceReviewProcess,
+    ProjectManagementTimeRecord,
     ShiftManagementShift,
     TasksTask,
     TeamsMembership,
@@ -234,6 +235,16 @@ PerformanceReviewProcessUpdateReviewerStrategiesWebhook: TypeAlias = Performance
 PerformanceReviewProcessUpdateScheduleWebhook: TypeAlias = PerformanceReviewProcess
 # Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies).
 PerformanceReviewProcessUpdateTargetStrategyWebhook: TypeAlias = PerformanceReviewProcess
+# Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates).
+ProjectManagementTimeRecordCreateWebhook: TypeAlias = ProjectManagementTimeRecord
+# Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes).
+ProjectManagementTimeRecordDeleteWebhook: TypeAlias = ProjectManagementTimeRecord
+# Payload for `project_management/time_record/update_imputed_minutes` (ProjectManagement > TimeRecord > Update imputed minutes).
+ProjectManagementTimeRecordUpdateImputedMinutesWebhook: TypeAlias = ProjectManagementTimeRecord
+# Payload for `project_management/time_record/update_observations` (ProjectManagement > TimeRecord > Update observations).
+ProjectManagementTimeRecordUpdateObservationsWebhook: TypeAlias = ProjectManagementTimeRecord
+# Payload for `project_management/time_record/update_project_worker` (ProjectManagement > TimeRecord > Update project workers).
+ProjectManagementTimeRecordUpdateProjectWorkerWebhook: TypeAlias = ProjectManagementTimeRecord
 # Payload for `shift_management/shift/bulk_create` (ShiftManagement > Shift > Bulk creates).
 ShiftManagementShiftBulkCreateWebhook: TypeAlias = ShiftManagementShift
 # Payload for `shift_management/shift/bulk_delete` (ShiftManagement > Shift > Bulk deletes).
@@ -264,12 +275,16 @@ TeamsMembershipBulkUpsertWebhook: TypeAlias = TeamsMembership
 TeamsMembershipCreateWebhook: TypeAlias = TeamsMembership
 # Payload for `teams/membership/delete` (Teams > Membership > Deletes).
 TeamsMembershipDeleteWebhook: TypeAlias = TeamsMembership
+# Payload for `teams/membership/move` (Teams > Membership > Moves).
+TeamsMembershipMoveWebhook: TypeAlias = TeamsMembership
 # Payload for `teams/membership/update` (Teams > Membership > Updates).
 TeamsMembershipUpdateWebhook: TypeAlias = TeamsMembership
 # Payload for `teams/team/create` (Teams > Team > Creates).
 TeamsTeamCreateWebhook: TypeAlias = TeamsTeam
 # Payload for `teams/team/delete` (Teams > Team > Deletes).
 TeamsTeamDeleteWebhook: TypeAlias = TeamsTeam
+# Payload for `teams/team/move` (Teams > Team > Moves).
+TeamsTeamMoveWebhook: TypeAlias = TeamsTeam
 # Payload for `teams/team/project` (Teams > Team > Projects).
 TeamsTeamProjectWebhook: TypeAlias = TeamsTeam
 # Payload for `teams/team/update` (Teams > Team > Updates).
@@ -282,6 +297,8 @@ TimeoffBlockedPeriodDeleteWebhook: TypeAlias = TimeoffBlockedPeriodsPolicy
 TimeoffBlockedPeriodUpdateWebhook: TypeAlias = TimeoffBlockedPeriodsPolicy
 # Payload for `timeoff/leave/approve` (Timeoff > Leave > Approves).
 TimeoffLeaveApproveWebhook: TypeAlias = TimeoffLeave
+# Payload for `timeoff/leave/bulk_delete` (Timeoff > Leave > Bulk deletes).
+TimeoffLeaveBulkDeleteWebhook: TypeAlias = TimeoffLeave
 # Payload for `timeoff/leave/create` (Timeoff > Leave > Creates).
 TimeoffLeaveCreateWebhook: TypeAlias = TimeoffLeave
 # Payload for `timeoff/leave/delete` (Timeoff > Leave > Deletes).
@@ -304,6 +321,8 @@ TimeoffPolicyUpdateWebhook: TypeAlias = TimeoffPolicy
 TrainingsCategoryCreateWebhook: TypeAlias = TrainingsCategory
 # Payload for `trainings/category/delete` (Trainings > Category > Deletes).
 TrainingsCategoryDeleteWebhook: TypeAlias = TrainingsCategory
+# Payload for `trainings/category/update` (Trainings > Category > Updates).
+TrainingsCategoryUpdateWebhook: TypeAlias = TrainingsCategory
 # Payload for `trainings/training/bulk_delete` (Trainings > Training > Bulk deletes).
 TrainingsTrainingBulkDeleteWebhook: TypeAlias = TrainingsTraining
 # Payload for `trainings/training/bulk_update_catalog` (Trainings > Training > Bulk update catalogs).
@@ -410,6 +429,11 @@ WebhookSubscriptionType = Literal[
     "performance/review_process/update_reviewer_strategies",
     "performance/review_process/update_schedule",
     "performance/review_process/update_target_strategy",
+    "project_management/time_record/create",
+    "project_management/time_record/delete",
+    "project_management/time_record/update_imputed_minutes",
+    "project_management/time_record/update_observations",
+    "project_management/time_record/update_project_worker",
     "shift_management/shift/bulk_create",
     "shift_management/shift/bulk_delete",
     "shift_management/shift/create",
@@ -425,15 +449,18 @@ WebhookSubscriptionType = Literal[
     "teams/membership/bulk_upsert",
     "teams/membership/create",
     "teams/membership/delete",
+    "teams/membership/move",
     "teams/membership/update",
     "teams/team/create",
     "teams/team/delete",
+    "teams/team/move",
     "teams/team/project",
     "teams/team/update",
     "timeoff/blocked_period/create",
     "timeoff/blocked_period/delete",
     "timeoff/blocked_period/update",
     "timeoff/leave/approve",
+    "timeoff/leave/bulk_delete",
     "timeoff/leave/create",
     "timeoff/leave/delete",
     "timeoff/leave/reject",
@@ -445,6 +472,7 @@ WebhookSubscriptionType = Literal[
     "timeoff/policy/update",
     "trainings/category/create",
     "trainings/category/delete",
+    "trainings/category/update",
     "trainings/training/bulk_delete",
     "trainings/training/bulk_update_catalog",
     "trainings/training/create",
@@ -543,6 +571,11 @@ WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {
     "performance/review_process/update_reviewer_strategies": PerformanceReviewProcess,
     "performance/review_process/update_schedule": PerformanceReviewProcess,
     "performance/review_process/update_target_strategy": PerformanceReviewProcess,
+    "project_management/time_record/create": ProjectManagementTimeRecord,
+    "project_management/time_record/delete": ProjectManagementTimeRecord,
+    "project_management/time_record/update_imputed_minutes": ProjectManagementTimeRecord,
+    "project_management/time_record/update_observations": ProjectManagementTimeRecord,
+    "project_management/time_record/update_project_worker": ProjectManagementTimeRecord,
     "shift_management/shift/bulk_create": ShiftManagementShift,
     "shift_management/shift/bulk_delete": ShiftManagementShift,
     "shift_management/shift/create": ShiftManagementShift,
@@ -558,15 +591,18 @@ WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {
     "teams/membership/bulk_upsert": TeamsMembership,
     "teams/membership/create": TeamsMembership,
     "teams/membership/delete": TeamsMembership,
+    "teams/membership/move": TeamsMembership,
     "teams/membership/update": TeamsMembership,
     "teams/team/create": TeamsTeam,
     "teams/team/delete": TeamsTeam,
+    "teams/team/move": TeamsTeam,
     "teams/team/project": TeamsTeam,
     "teams/team/update": TeamsTeam,
     "timeoff/blocked_period/create": TimeoffBlockedPeriodsPolicy,
     "timeoff/blocked_period/delete": TimeoffBlockedPeriodsPolicy,
     "timeoff/blocked_period/update": TimeoffBlockedPeriodsPolicy,
     "timeoff/leave/approve": TimeoffLeave,
+    "timeoff/leave/bulk_delete": TimeoffLeave,
     "timeoff/leave/create": TimeoffLeave,
     "timeoff/leave/delete": TimeoffLeave,
     "timeoff/leave/reject": TimeoffLeave,
@@ -578,6 +614,7 @@ WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {
     "timeoff/policy/update": TimeoffPolicy,
     "trainings/category/create": TrainingsCategory,
     "trainings/category/delete": TrainingsCategory,
+    "trainings/category/update": TrainingsCategory,
     "trainings/training/bulk_delete": TrainingsTraining,
     "trainings/training/bulk_update_catalog": TrainingsTraining,
     "trainings/training/create": TrainingsTraining,
@@ -1277,6 +1314,46 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         payload_schema="performance_review_process",
     ),
     WebhookCatalogEntry(
+        subscription_type="project_management/time_record/create",
+        namespace="ProjectManagement",
+        resource="TimeRecord",
+        event="Creates",
+        summary="ProjectManagement > TimeRecord > Creates",
+        payload_schema="project_management_time_record",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/time_record/delete",
+        namespace="ProjectManagement",
+        resource="TimeRecord",
+        event="Deletes",
+        summary="ProjectManagement > TimeRecord > Deletes",
+        payload_schema="project_management_time_record",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/time_record/update_imputed_minutes",
+        namespace="ProjectManagement",
+        resource="TimeRecord",
+        event="Update imputed minutes",
+        summary="ProjectManagement > TimeRecord > Update imputed minutes",
+        payload_schema="project_management_time_record",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/time_record/update_observations",
+        namespace="ProjectManagement",
+        resource="TimeRecord",
+        event="Update observations",
+        summary="ProjectManagement > TimeRecord > Update observations",
+        payload_schema="project_management_time_record",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/time_record/update_project_worker",
+        namespace="ProjectManagement",
+        resource="TimeRecord",
+        event="Update project workers",
+        summary="ProjectManagement > TimeRecord > Update project workers",
+        payload_schema="project_management_time_record",
+    ),
+    WebhookCatalogEntry(
         subscription_type="shift_management/shift/bulk_create",
         namespace="ShiftManagement",
         resource="Shift",
@@ -1397,6 +1474,14 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         payload_schema="teams_membership",
     ),
     WebhookCatalogEntry(
+        subscription_type="teams/membership/move",
+        namespace="Teams",
+        resource="Membership",
+        event="Moves",
+        summary="Teams > Membership > Moves",
+        payload_schema="teams_membership",
+    ),
+    WebhookCatalogEntry(
         subscription_type="teams/membership/update",
         namespace="Teams",
         resource="Membership",
@@ -1418,6 +1503,14 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         resource="Team",
         event="Deletes",
         summary="Teams > Team > Deletes",
+        payload_schema="teams_team",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="teams/team/move",
+        namespace="Teams",
+        resource="Team",
+        event="Moves",
+        summary="Teams > Team > Moves",
         payload_schema="teams_team",
     ),
     WebhookCatalogEntry(
@@ -1466,6 +1559,14 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         resource="Leave",
         event="Approves",
         summary="Timeoff > Leave > Approves",
+        payload_schema="timeoff_leave",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="timeoff/leave/bulk_delete",
+        namespace="Timeoff",
+        resource="Leave",
+        event="Bulk deletes",
+        summary="Timeoff > Leave > Bulk deletes",
         payload_schema="timeoff_leave",
     ),
     WebhookCatalogEntry(
@@ -1554,6 +1655,14 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         resource="Category",
         event="Deletes",
         summary="Trainings > Category > Deletes",
+        payload_schema="trainings_category",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="trainings/category/update",
+        namespace="Trainings",
+        resource="Category",
+        event="Updates",
+        summary="Trainings > Category > Updates",
         payload_schema="trainings_category",
     ),
     WebhookCatalogEntry(
@@ -1720,6 +1829,11 @@ __all__ = [
     "PerformanceReviewProcessUpdateReviewerStrategiesWebhook",
     "PerformanceReviewProcessUpdateScheduleWebhook",
     "PerformanceReviewProcessUpdateTargetStrategyWebhook",
+    "ProjectManagementTimeRecordCreateWebhook",
+    "ProjectManagementTimeRecordDeleteWebhook",
+    "ProjectManagementTimeRecordUpdateImputedMinutesWebhook",
+    "ProjectManagementTimeRecordUpdateObservationsWebhook",
+    "ProjectManagementTimeRecordUpdateProjectWorkerWebhook",
     "ShiftManagementShiftBulkCreateWebhook",
     "ShiftManagementShiftBulkDeleteWebhook",
     "ShiftManagementShiftCreateWebhook",
@@ -1735,15 +1849,18 @@ __all__ = [
     "TeamsMembershipBulkUpsertWebhook",
     "TeamsMembershipCreateWebhook",
     "TeamsMembershipDeleteWebhook",
+    "TeamsMembershipMoveWebhook",
     "TeamsMembershipUpdateWebhook",
     "TeamsTeamCreateWebhook",
     "TeamsTeamDeleteWebhook",
+    "TeamsTeamMoveWebhook",
     "TeamsTeamProjectWebhook",
     "TeamsTeamUpdateWebhook",
     "TimeoffBlockedPeriodCreateWebhook",
     "TimeoffBlockedPeriodDeleteWebhook",
     "TimeoffBlockedPeriodUpdateWebhook",
     "TimeoffLeaveApproveWebhook",
+    "TimeoffLeaveBulkDeleteWebhook",
     "TimeoffLeaveCreateWebhook",
     "TimeoffLeaveDeleteWebhook",
     "TimeoffLeaveRejectWebhook",
@@ -1755,6 +1872,7 @@ __all__ = [
     "TimeoffPolicyUpdateWebhook",
     "TrainingsCategoryCreateWebhook",
     "TrainingsCategoryDeleteWebhook",
+    "TrainingsCategoryUpdateWebhook",
     "TrainingsTrainingBulkDeleteWebhook",
     "TrainingsTrainingBulkUpdateCatalogWebhook",
     "TrainingsTrainingCreateWebhook",

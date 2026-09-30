@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+if TYPE_CHECKING:
+    from ..models.timeoff_policy_timeline_items_item import TimeoffPolicyTimelineItemsItem
+
 
 T = TypeVar("T", bound="TimeoffPolicyTimeline")
 
@@ -14,7 +18,7 @@ class TimeoffPolicyTimeline:
     employee_id: str
     start_limit_date: str
     end_limit_date: str
-    items: list[Any]
+    items: list[TimeoffPolicyTimelineItemsItem]
     id: str
     """ This is the employee id since it's a virtual entity """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -26,7 +30,10 @@ class TimeoffPolicyTimeline:
 
         end_limit_date = self.end_limit_date
 
-        items = self.items
+        items = []
+        for items_item_data in self.items:
+            items_item = items_item_data.to_dict()
+            items.append(items_item)
 
         id = self.id
 
@@ -46,6 +53,8 @@ class TimeoffPolicyTimeline:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.timeoff_policy_timeline_items_item import TimeoffPolicyTimelineItemsItem
+
         d = dict(src_dict)
         employee_id = d.pop("employee_id")
 
@@ -53,7 +62,12 @@ class TimeoffPolicyTimeline:
 
         end_limit_date = d.pop("end_limit_date")
 
-        items = cast(list[Any], d.pop("items"))
+        items = []
+        _items = d.pop("items")
+        for items_item_data in _items:
+            items_item = TimeoffPolicyTimelineItemsItem.from_dict(items_item_data)
+
+            items.append(items_item)
 
         id = d.pop("id")
 
