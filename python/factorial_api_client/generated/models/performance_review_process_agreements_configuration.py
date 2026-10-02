@@ -18,19 +18,37 @@ class PerformanceReviewProcessAgreementsConfiguration:
 
     """
 
+    enabled: bool
+    esignature_enabled: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        enabled = self.enabled
+
+        esignature_enabled = self.esignature_enabled
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "enabled": enabled,
+                "esignature_enabled": esignature_enabled,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        performance_review_process_agreements_configuration = cls()
+        enabled = d.pop("enabled")
+
+        esignature_enabled = d.pop("esignature_enabled")
+
+        performance_review_process_agreements_configuration = cls(
+            enabled=enabled,
+            esignature_enabled=esignature_enabled,
+        )
 
         performance_review_process_agreements_configuration.additional_properties = d
         return performance_review_process_agreements_configuration

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -10,6 +10,12 @@ from ..models.approvals_materialized_approvals_flow_status import (
     ApprovalsMaterializedApprovalsFlowStatus,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.approvals_materialized_approvals_flow_approvers_item import (
+        ApprovalsMaterializedApprovalsFlowApproversItem,
+    )
+
 
 T = TypeVar("T", bound="ApprovalsMaterializedApprovalsFlow")
 
@@ -25,7 +31,7 @@ class ApprovalsMaterializedApprovalsFlow:
     status: ApprovalsMaterializedApprovalsFlowStatus
     expires_at: str
     approval_flow_id: str
-    approvers: list[Any]
+    approvers: list[ApprovalsMaterializedApprovalsFlowApproversItem]
     email_detail_blocks: list[str]
     author_employee_id: str | Unset = UNSET
     owner_employee_id: str | Unset = UNSET
@@ -57,7 +63,10 @@ class ApprovalsMaterializedApprovalsFlow:
 
         approval_flow_id = self.approval_flow_id
 
-        approvers = self.approvers
+        approvers = []
+        for approvers_item_data in self.approvers:
+            approvers_item = approvers_item_data.to_dict()
+            approvers.append(approvers_item)
 
         email_detail_blocks = self.email_detail_blocks
 
@@ -119,6 +128,10 @@ class ApprovalsMaterializedApprovalsFlow:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.approvals_materialized_approvals_flow_approvers_item import (
+            ApprovalsMaterializedApprovalsFlowApproversItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -138,7 +151,14 @@ class ApprovalsMaterializedApprovalsFlow:
 
         approval_flow_id = d.pop("approval_flow_id")
 
-        approvers = cast(list[Any], d.pop("approvers"))
+        approvers = []
+        _approvers = d.pop("approvers")
+        for approvers_item_data in _approvers:
+            approvers_item = ApprovalsMaterializedApprovalsFlowApproversItem.from_dict(
+                approvers_item_data
+            )
+
+            approvers.append(approvers_item)
 
         email_detail_blocks = cast(list[str], d.pop("email_detail_blocks"))
 
