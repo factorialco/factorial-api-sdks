@@ -18,6 +18,8 @@ class ProjectManagementSubproject:
     """ The name of the subproject """
     project_id: str
     """ The id of the project """
+    status: ProjectManagementSubprojectStatus
+    """ The status of the subproject """
     id: str | Unset = UNSET
     """ The id of the subproject """
     inputed_minutes: int | Unset = UNSET
@@ -26,8 +28,6 @@ class ProjectManagementSubproject:
     """ The total labor cost of the subproject in cents (if requested) """
     description: str | Unset = UNSET
     """ The description of the subproject """
-    status: ProjectManagementSubprojectStatus | Unset = UNSET
-    """ The status of the subproject """
     code: str | Unset = UNSET
     """ The code of the subproject """
     start_date: str | Unset = UNSET
@@ -43,6 +43,8 @@ class ProjectManagementSubproject:
 
         project_id = self.project_id
 
+        status = self.status.value
+
         id = self.id
 
         inputed_minutes = self.inputed_minutes
@@ -50,10 +52,6 @@ class ProjectManagementSubproject:
         labor_cost_cents = self.labor_cost_cents
 
         description = self.description
-
-        status: str | Unset = UNSET
-        if not isinstance(self.status, Unset):
-            status = self.status.value if self.status is not None else None
 
         code = self.code
 
@@ -69,6 +67,7 @@ class ProjectManagementSubproject:
             {
                 "name": name,
                 "project_id": project_id,
+                "status": status,
             }
         )
         if id is not UNSET:
@@ -79,8 +78,6 @@ class ProjectManagementSubproject:
             field_dict["labor_cost_cents"] = labor_cost_cents
         if description is not UNSET:
             field_dict["description"] = description
-        if status is not UNSET:
-            field_dict["status"] = status
         if code is not UNSET:
             field_dict["code"] = code
         if start_date is not UNSET:
@@ -99,6 +96,8 @@ class ProjectManagementSubproject:
 
         project_id = d.pop("project_id")
 
+        status = ProjectManagementSubprojectStatus(d.pop("status"))
+
         id = d.pop("id", UNSET)
 
         inputed_minutes = d.pop("inputed_minutes", UNSET)
@@ -106,13 +105,6 @@ class ProjectManagementSubproject:
         labor_cost_cents = d.pop("labor_cost_cents", UNSET)
 
         description = d.pop("description", UNSET)
-
-        _status = d.pop("status", UNSET)
-        status: ProjectManagementSubprojectStatus | Unset
-        if isinstance(_status, Unset):
-            status = UNSET
-        else:
-            status = ProjectManagementSubprojectStatus(_status) if _status is not None else None
 
         code = d.pop("code", UNSET)
 
@@ -125,11 +117,11 @@ class ProjectManagementSubproject:
         project_management_subproject = cls(
             name=name,
             project_id=project_id,
+            status=status,
             id=id,
             inputed_minutes=inputed_minutes,
             labor_cost_cents=labor_cost_cents,
             description=description,
-            status=status,
             code=code,
             start_date=start_date,
             due_date=due_date,

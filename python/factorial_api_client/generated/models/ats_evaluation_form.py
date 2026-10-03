@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.ats_evaluation_form_questions_item import AtsEvaluationFormQuestionsItem
+
 
 T = TypeVar("T", bound="AtsEvaluationForm")
 
@@ -19,7 +23,7 @@ class AtsEvaluationForm:
     """ Id of the company that the evaluation form belongs to. """
     name: str
     """ Name of the evaluation form. """
-    questions: list[Any]
+    questions: list[AtsEvaluationFormQuestionsItem]
     """ List of questions in the evaluation form. """
     created_at: str
     """ date and time when the evaluation form was created. """
@@ -38,7 +42,10 @@ class AtsEvaluationForm:
 
         name = self.name
 
-        questions = self.questions
+        questions = []
+        for questions_item_data in self.questions:
+            questions_item = questions_item_data.to_dict()
+            questions.append(questions_item)
 
         created_at = self.created_at
 
@@ -69,6 +76,8 @@ class AtsEvaluationForm:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.ats_evaluation_form_questions_item import AtsEvaluationFormQuestionsItem
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -76,7 +85,12 @@ class AtsEvaluationForm:
 
         name = d.pop("name")
 
-        questions = cast(list[Any], d.pop("questions"))
+        questions = []
+        _questions = d.pop("questions")
+        for questions_item_data in _questions:
+            questions_item = AtsEvaluationFormQuestionsItem.from_dict(questions_item_data)
+
+            questions.append(questions_item)
 
         created_at = d.pop("created_at")
 

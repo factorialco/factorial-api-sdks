@@ -47,7 +47,7 @@ class EmployeesEmployee:
     identifier_type: str | Unset = UNSET
     """ type of identifier (ex passport). """
     email: str | Unset = UNSET
-    """ personal email of the employee. """
+    """ company communications email of the employee (falls back to the login email). Not the personal email. """
     login_email: str | Unset = UNSET
     """ email associated to the session. """
     birthday_on: str | Unset = UNSET
@@ -103,7 +103,7 @@ class EmployeesEmployee:
     contact_number: str | Unset = UNSET
     """ phone number of the employee contact . """
     personal_email: str | Unset = UNSET
-    """ personal email of the employee. """
+    """ personal (non-corporate) email of the employee, shown as "Personal email" in the profile. """
     seniority_calculation_date: str | Unset = UNSET
     """ date since when the employee is working in the company. """
     communications_email: str | Unset = UNSET

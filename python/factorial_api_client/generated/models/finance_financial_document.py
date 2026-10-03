@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.finance_financial_document_file import FinanceFinancialDocumentFile
+    from ..models.finance_financial_document_taxes_item import FinanceFinancialDocumentTaxesItem
 
 
 T = TypeVar("T", bound="FinanceFinancialDocument")
@@ -20,27 +21,35 @@ T = TypeVar("T", bound="FinanceFinancialDocument")
 @_attrs_define
 class FinanceFinancialDocument:
     id: str
-    """ Factorial unique identifier. """
+    """ Factorial unique identifier for the financial document. """
     status: FinanceFinancialDocumentStatus
-    """ Current status. """
+    """ Where the document stands on its way to being paid: `processing` while it is still being prepared, `review`
+    while it awaits review (the value is `review`, never `pending`), `sent_to_pay` once it has been sent for
+    payment, and `paid`. This is not an approval state: a document generated from an employee expense is created
+    already `paid`, because the money left before Factorial ever saw it. """
     updated_at: str
     """ Updation date. """
-    taxes: list[Any]
+    taxes: list[FinanceFinancialDocumentTaxesItem]
     """ Taxes. """
     document_type: FinanceFinancialDocumentDocumentType
-    """ Type of the financial document. Using "invoice" as default. """
+    """ One of `invoice`, `receipt` or `credit_note`. A document generated from an expense is typed automatically
+    and can flip between `receipt` and `invoice` when the employee edits the expense. """
     net_amount_cents: int | Unset = UNSET
-    """ Net amount in cents. """
+    """ Sum of the line items before taxes, in cents. Use `total_amount_cents` for what is actually payable. """
     total_amount_cents: int | Unset = UNSET
-    """ Total amount in cents. """
+    """ Total payable on the document, taxes included, in cents. """
     document_number: str | Unset = UNSET
-    """ Document number. """
+    """ Number the issuer printed on the document; for a purchase, the vendor's own invoice number. Not a Factorial
+    identifier: on a purchase it is only unique per vendor, so the same number can legitimately appear on documents
+    from two different vendors. """
     currency: str | Unset = UNSET
-    """ Document currency. """
+    """ ISO 4217 code of the currency the document is issued in, such as EUR or USD. Every amount on the document is
+    expressed in it, so comparing amounts across documents without checking this is unsafe. """
     due_date: str | Unset = UNSET
-    """ Due date. """
+    """ Date the payment falls due, as stated on the document. """
     document_date: str | Unset = UNSET
-    """ Document date. """
+    """ Date the issuer put on the document. Distinct from `created_at`, which is when it reached Factorial; a
+    document can arrive weeks after it was issued. """
     legal_entity_id: str | Unset = UNSET
     """ Factorial unique identifier for the legal entity of the financial document. """
     vendor_id: str | Unset = UNSET
@@ -48,19 +57,33 @@ class FinanceFinancialDocument:
     file: FinanceFinancialDocumentFile | Unset = UNSET
     """ File attached. """
     fully_reconciled_at: str | Unset = UNSET
-    """ Date when was fully reconciled. """
+    """ When the document was fully matched against bank transactions. Null while any part of it remains
+    unreconciled. """
     recorded_at: str | Unset = UNSET
-    """ Date when was recorded. """
+    """ When the document was posted to accounting. Only possible once `validated_at` is set. """
     duplicate_financial_document_id: str | Unset = UNSET
     """ Factorial unique identifier for the duplicate financial document. """
     validated_at: str | Unset = UNSET
-    """ Date when was validated. """
+    """ When a person confirmed the document data is correct. Validation is what unlocks recording and payment; it
+    is not an approval decision, and says nothing about whether the spend was authorised. """
     validated_by_id: str | Unset = UNSET
-    """ Factorial unique identifier for the user who validated the financial document. """
+    """ Factorial unique identifier of the employee who validated the document. """
+    approval_rejected_at: str | Unset = UNSET
+    """ When the CURRENT review round of the finance approval flow turned this purchase invoice down. A rejection is
+    terminal for its own round -- the document stops being editable and deletable, and a correction goes through a
+    credit note rather than a second review of the same round -- but it is not terminal for the document: a new
+    round can open, for instance when the expense behind the invoice is restarted, and opening one clears this
+    field. So it can go back to null. Null also on a document that was approved, is still pending a decision, or
+    never entered the flow. """
+    approval_approved_at: str | Unset = UNSET
+    """ When the CURRENT review round of the finance approval flow approved this purchase invoice. Not the same
+    question as `validated_at`: approving through the finance action seals both, but a document can be validated on
+    its own through an update, and one that never entered the flow is neither. Like its counterpart it reports the
+    current round only, so opening a new one clears it and it can go back to null. """
     parent_financial_document_id: str | Unset = UNSET
     """ Factorial unique identifier for the parent financial document of the financial document. """
     taxes_total_amount_cents: int | Unset = UNSET
-    """ Taxes total amount in cents. """
+    """ Sum of every tax charged on the document, in cents. """
     issuer_name: str | Unset = UNSET
     """ Name of the entity issuing the financial document. """
     issuer_address_line_1: str | Unset = UNSET
@@ -102,7 +125,10 @@ class FinanceFinancialDocument:
 
         updated_at = self.updated_at
 
-        taxes = self.taxes
+        taxes = []
+        for taxes_item_data in self.taxes:
+            taxes_item = taxes_item_data.to_dict()
+            taxes.append(taxes_item)
 
         document_type = self.document_type.value
 
@@ -135,6 +161,10 @@ class FinanceFinancialDocument:
         validated_at = self.validated_at
 
         validated_by_id = self.validated_by_id
+
+        approval_rejected_at = self.approval_rejected_at
+
+        approval_approved_at = self.approval_approved_at
 
         parent_financial_document_id = self.parent_financial_document_id
 
@@ -211,6 +241,10 @@ class FinanceFinancialDocument:
             field_dict["validated_at"] = validated_at
         if validated_by_id is not UNSET:
             field_dict["validated_by_id"] = validated_by_id
+        if approval_rejected_at is not UNSET:
+            field_dict["approval_rejected_at"] = approval_rejected_at
+        if approval_approved_at is not UNSET:
+            field_dict["approval_approved_at"] = approval_approved_at
         if parent_financial_document_id is not UNSET:
             field_dict["parent_financial_document_id"] = parent_financial_document_id
         if taxes_total_amount_cents is not UNSET:
@@ -253,6 +287,7 @@ class FinanceFinancialDocument:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.finance_financial_document_file import FinanceFinancialDocumentFile
+        from ..models.finance_financial_document_taxes_item import FinanceFinancialDocumentTaxesItem
 
         d = dict(src_dict)
         id = d.pop("id")
@@ -261,7 +296,12 @@ class FinanceFinancialDocument:
 
         updated_at = d.pop("updated_at")
 
-        taxes = cast(list[Any], d.pop("taxes"))
+        taxes = []
+        _taxes = d.pop("taxes")
+        for taxes_item_data in _taxes:
+            taxes_item = FinanceFinancialDocumentTaxesItem.from_dict(taxes_item_data)
+
+            taxes.append(taxes_item)
 
         document_type = FinanceFinancialDocumentDocumentType(d.pop("document_type"))
 
@@ -297,6 +337,10 @@ class FinanceFinancialDocument:
         validated_at = d.pop("validated_at", UNSET)
 
         validated_by_id = d.pop("validated_by_id", UNSET)
+
+        approval_rejected_at = d.pop("approval_rejected_at", UNSET)
+
+        approval_approved_at = d.pop("approval_approved_at", UNSET)
 
         parent_financial_document_id = d.pop("parent_financial_document_id", UNSET)
 
@@ -354,6 +398,8 @@ class FinanceFinancialDocument:
             duplicate_financial_document_id=duplicate_financial_document_id,
             validated_at=validated_at,
             validated_by_id=validated_by_id,
+            approval_rejected_at=approval_rejected_at,
+            approval_approved_at=approval_approved_at,
             parent_financial_document_id=parent_financial_document_id,
             taxes_total_amount_cents=taxes_total_amount_cents,
             issuer_name=issuer_name,
