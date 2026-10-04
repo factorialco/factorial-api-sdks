@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.timeoff_blocked_periods_policy_time_periods_item import (
+        TimeoffBlockedPeriodsPolicyTimePeriodsItem,
+    )
+
 
 T = TypeVar("T", bound="TimeoffBlockedPeriodsPolicy")
 
@@ -21,7 +27,7 @@ class TimeoffBlockedPeriodsPolicy:
     """ Name of the blocked period. """
     leave_type_ids: list[str]
     """ Leave types for which absence request has been blocked """
-    time_periods: list[Any]
+    time_periods: list[TimeoffBlockedPeriodsPolicyTimePeriodsItem]
     """ The tenure periods associated with the allowance. """
     strategy: str
     """ Type of access group """
@@ -44,7 +50,10 @@ class TimeoffBlockedPeriodsPolicy:
 
         leave_type_ids = self.leave_type_ids
 
-        time_periods = self.time_periods
+        time_periods = []
+        for time_periods_item_data in self.time_periods:
+            time_periods_item = time_periods_item_data.to_dict()
+            time_periods.append(time_periods_item)
 
         strategy = self.strategy
 
@@ -86,6 +95,10 @@ class TimeoffBlockedPeriodsPolicy:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.timeoff_blocked_periods_policy_time_periods_item import (
+            TimeoffBlockedPeriodsPolicyTimePeriodsItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -95,7 +108,14 @@ class TimeoffBlockedPeriodsPolicy:
 
         leave_type_ids = cast(list[str], d.pop("leave_type_ids"))
 
-        time_periods = cast(list[Any], d.pop("time_periods"))
+        time_periods = []
+        _time_periods = d.pop("time_periods")
+        for time_periods_item_data in _time_periods:
+            time_periods_item = TimeoffBlockedPeriodsPolicyTimePeriodsItem.from_dict(
+                time_periods_item_data
+            )
+
+            time_periods.append(time_periods_item)
 
         strategy = d.pop("strategy")
 

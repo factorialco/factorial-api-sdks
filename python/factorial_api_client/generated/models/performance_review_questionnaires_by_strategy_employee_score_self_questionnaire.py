@@ -1,10 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+
+from ..models.performance_review_questionnaires_by_strategy_employee_score_self_questionnaire_reviewer_strategy import (
+    PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireReviewerStrategy,
+)
+
+if TYPE_CHECKING:
+    from ..models.performance_review_questionnaires_by_strategy_employee_score_self_questionnaire_content_item import (
+        PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireContentItem,
+    )
+
 
 T = TypeVar("T", bound="PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaire")
 
@@ -13,19 +23,59 @@ T = TypeVar("T", bound="PerformanceReviewQuestionnairesByStrategyEmployeeScoreSe
 class PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaire:
     """Questionnaire included in the end of self evaluation to evaluate the employee performance"""
 
+    reviewer_strategy: (
+        PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireReviewerStrategy
+    )
+    content: list[
+        PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireContentItem
+    ]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        reviewer_strategy = self.reviewer_strategy.value
+
+        content = []
+        for content_item_data in self.content:
+            content_item = content_item_data.to_dict()
+            content.append(content_item)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "reviewer_strategy": reviewer_strategy,
+                "content": content,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.performance_review_questionnaires_by_strategy_employee_score_self_questionnaire_content_item import (
+            PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireContentItem,
+        )
+
         d = dict(src_dict)
-        performance_review_questionnaires_by_strategy_employee_score_self_questionnaire = cls()
+        reviewer_strategy = (
+            PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireReviewerStrategy(
+                d.pop("reviewer_strategy")
+            )
+        )
+
+        content = []
+        _content = d.pop("content")
+        for content_item_data in _content:
+            content_item = PerformanceReviewQuestionnairesByStrategyEmployeeScoreSelfQuestionnaireContentItem.from_dict(
+                content_item_data
+            )
+
+            content.append(content_item)
+
+        performance_review_questionnaires_by_strategy_employee_score_self_questionnaire = cls(
+            reviewer_strategy=reviewer_strategy,
+            content=content,
+        )
 
         performance_review_questionnaires_by_strategy_employee_score_self_questionnaire.additional_properties = d
         return performance_review_questionnaires_by_strategy_employee_score_self_questionnaire

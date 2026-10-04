@@ -1,6 +1,6 @@
 # Factorial webhook events
 
-Auto-generated from the OpenAPI spec. 128 events across 22 namespaces, 33 distinct payload schemas.
+Auto-generated from the OpenAPI spec. 137 events across 23 namespaces, 34 distinct payload schemas.
 
 Factorial POSTs the payload (the resource object) to your `target_url` at the **top level** — it is not wrapped in a `{ type, data }` envelope. Subscribe with the `subscription_type` value shown below. See `../SKILL.md` for delivery, verification, and retry details.
 
@@ -172,6 +172,16 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 | `performance/review_process/update_schedule` | Update schedules | [`performance_review_process`](#performance_review_process) | Performance > ReviewProcess > Update schedules |
 | `performance/review_process/update_target_strategy` | Update target strategies | [`performance_review_process`](#performance_review_process) | Performance > ReviewProcess > Update target strategies |
 
+### ProjectManagement
+
+| subscription_type | event | payload schema | summary |
+| --- | --- | --- | --- |
+| `project_management/time_record/create` | Creates | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Creates |
+| `project_management/time_record/delete` | Deletes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Deletes |
+| `project_management/time_record/update_imputed_minutes` | Update imputed minutes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Update imputed minutes |
+| `project_management/time_record/update_observations` | Update observations | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Update observations |
+| `project_management/time_record/update_project_worker` | Update project workers | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Update project workers |
+
 ### ShiftManagement
 
 | subscription_type | event | payload schema | summary |
@@ -201,9 +211,11 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 | `teams/membership/bulk_upsert` | Bulk upserts | [`teams_membership`](#teams_membership) | Teams > Membership > Bulk upserts |
 | `teams/membership/create` | Creates | [`teams_membership`](#teams_membership) | Teams > Membership > Creates |
 | `teams/membership/delete` | Deletes | [`teams_membership`](#teams_membership) | Teams > Membership > Deletes |
+| `teams/membership/move` | Moves | [`teams_membership`](#teams_membership) | Teams > Membership > Moves |
 | `teams/membership/update` | Updates | [`teams_membership`](#teams_membership) | Teams > Membership > Updates |
 | `teams/team/create` | Creates | [`teams_team`](#teams_team) | Teams > Team > Creates |
 | `teams/team/delete` | Deletes | [`teams_team`](#teams_team) | Teams > Team > Deletes |
+| `teams/team/move` | Moves | [`teams_team`](#teams_team) | Teams > Team > Moves |
 | `teams/team/project` | Projects | [`teams_team`](#teams_team) | Teams > Team > Projects |
 | `teams/team/update` | Updates | [`teams_team`](#teams_team) | Teams > Team > Updates |
 
@@ -215,6 +227,7 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 | `timeoff/blocked_period/delete` | Deletes | [`timeoff_blocked_periods_policy`](#timeoff_blocked_periods_policy) | Timeoff > BlockedPeriod > Deletes |
 | `timeoff/blocked_period/update` | Updates | [`timeoff_blocked_periods_policy`](#timeoff_blocked_periods_policy) | Timeoff > BlockedPeriod > Updates |
 | `timeoff/leave/approve` | Approves | [`timeoff_leave`](#timeoff_leave) | Timeoff > Leave > Approves |
+| `timeoff/leave/bulk_delete` | Bulk deletes | [`timeoff_leave`](#timeoff_leave) | Timeoff > Leave > Bulk deletes |
 | `timeoff/leave/create` | Creates | [`timeoff_leave`](#timeoff_leave) | Timeoff > Leave > Creates |
 | `timeoff/leave/delete` | Deletes | [`timeoff_leave`](#timeoff_leave) | Timeoff > Leave > Deletes |
 | `timeoff/leave/reject` | Rejects | [`timeoff_leave`](#timeoff_leave) | Timeoff > Leave > Rejects |
@@ -231,6 +244,7 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 | --- | --- | --- | --- |
 | `trainings/category/create` | Creates | [`trainings_category`](#trainings_category) | Trainings > Category > Creates |
 | `trainings/category/delete` | Deletes | [`trainings_category`](#trainings_category) | Trainings > Category > Deletes |
+| `trainings/category/update` | Updates | [`trainings_category`](#trainings_category) | Trainings > Category > Updates |
 | `trainings/training/bulk_delete` | Bulk deletes | [`trainings_training`](#trainings_training) | Trainings > Training > Bulk deletes |
 | `trainings/training/bulk_update_catalog` | Bulk update catalogs | [`trainings_training`](#trainings_training) | Trainings > Training > Bulk update catalogs |
 | `trainings/training/create` | Creates | [`trainings_training`](#trainings_training) | Trainings > Training > Creates |
@@ -361,21 +375,21 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `id` | string | yes | Unique identifier for the shift |
 | `employee_id` | string | yes | Identifier for the employee assigned to the shift |
 | `date` | string | yes | Date of the shift |
-| `reference_date` | string | yes | Reference date for the shift |
+| `reference_date` | string | yes | The business day this shift is attributed to; can differ from `date` for overnight shifts that cross midnight |
 | `clock_in` | string | no | Time when the employee clocked in |
 | `clock_out` | string | no | Time when the employee clocked out |
 | `in_source` | string | no | Source of the clock-in time |
 | `out_source` | string | no | Source of the clock-out time |
 | `observations` | string | no | Additional observations about the shift |
 | `location_type` | string | no | Type of location for the shift |
-| `half_day` | string | no | Indicates which worked part of the day |
+| `half_day` | string | no | Which half of the day the shift covers when it is a half-day — `beginning_of_day` or `end_of_day`; null for full-day shifts |
 | `in_location_latitude` | number | no | Latitude of the clock-in location |
 | `in_location_longitude` | number | no | Longitude of the clock-in location |
 | `in_location_accuracy` | number | no | Accuracy of the clock-in location |
 | `out_location_latitude` | number | no | Latitude of the clock-out location |
 | `out_location_longitude` | number | no | Longitude of the clock-out location |
 | `out_location_accuracy` | number | no | Accuracy of the clock-out location |
-| `workable` | boolean | no | Indicates if the shift is workable |
+| `workable` | boolean | no | Whether the shift counts as worked (workable) time rather than a break |
 | `created_at` | string | yes | Timestamp when the shift record was created |
 | `workplace_id` | string | no | Identifier for the location |
 | `time_settings_break_configuration_id` | string | no | Identifier for the break configuration |
@@ -428,6 +442,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `legal_name` | string | yes | Legal name of the legal entity |
 | `currency` | string | yes | The currency code in ISO 4217 format |
 | `tin` | string | no | Tax identification number |
+| `siret` | string | no | SIRET number (France-specific). System for identifying French establishments. 14-digit identifier for each French establishment. |
 | `city` | string | no | City of the legal entity |
 | `state` | string | no | State of the legal entity |
 | `postal_code` | string | no | Postal code of the legal entity |
@@ -443,6 +458,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `employee_id` | string | yes | employee identifier, refers to /employees/employees endpoint. |
 | `effective_on` | string | yes | the day the specific contract starts, in case of hiring the same than starts_on. |
 | `country` | string | no | nationality country code of the employee (Spain ES, United Kingdom GB). |
+| `contracts_contract_id` | string | no | contract identifier, refers to the /contracts/contracts endpoint. Use it to read the contract this version belongs to, and its activity periods. |
 | `job_title` | string | no | job title of the employee. |
 | `job_catalog_level_id` | string | no | job catalog level identifier, refers to /job_catalog/levels endpoint. |
 | `job_catalog_tree_node_uuid` | string | no | the uuid node in the job catalog tree. For now it only supports level nodes. From this point in the job catalog tree you can get the full ancestor path to the root node including the role. Refer to job_catalog/tree_nodes endpoint. |
@@ -452,6 +468,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `has_trial_period` | boolean | no | a flag that indicates if the contract version has ever had a trial period. |
 | `trial_period_ends_on` | string | no | when the trial period ends. If there is no date, it means that the employee has never been in trial. This date is not related with the end date of a contract. |
 | `salary_amount` | integer | no | the amount of money the employee earns in cents. |
+| `salary_currency` | string | no | the currency of the salary amount, inherited from the governing legal entity. |
 | `salary_frequency` | string | no | the frequency of the salary payment. |
 | `working_week_days` | string | no | the days of the week the employee works. |
 | `working_hours` | integer | no | the amount of hours the employee works. |
@@ -649,7 +666,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `gender` | string | no | gender of the employee (male \| female). |
 | `identifier` | string | no | national identifier number. |
 | `identifier_type` | string | no | type of identifier (ex passport). |
-| `email` | string | no | personal email of the employee. |
+| `email` | string | no | company communications email of the employee (falls back to the login email). Not the personal email. |
 | `login_email` | string | no | email associated to the session. |
 | `birthday_on` | string | no | birthday of the employee. |
 | `nationality` | string | no | nationality country code of the employee (Spain ES, United Kingdom GB). |
@@ -682,7 +699,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `termination_type_description` | string | no | The description of the termination type. |
 | `contact_name` | string | no | name of the employee contact. |
 | `contact_number` | string | no | phone number of the employee contact . |
-| `personal_email` | string | no | personal email of the employee. |
+| `personal_email` | string | no | personal (non-corporate) email of the employee, shown as "Personal email" in the profile. |
 | `seniority_calculation_date` | string | no | date since when the employee is working in the company. |
 | `communications_email` | string | no | Confirmed email address for company communications and notifications. Separate from login email, used for internal company announcements. |
 | `unconfirmed_communications_email` | string | no | unconfirmed communications email address for the employee. |
@@ -712,7 +729,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `reporter_id` | string | no | The optional ID of the employee that reported the expensable |
 | `status_updated_at` | string | yes | The optional date and time when the status was last updated |
 | `effective_on` | string | no | The optional date and time when the expensable was effective |
-| `review_request_at` | string | no | The optional date and time when the expensable was requested for review |
+| `review_request_at` | string | no | The date and time the expensable was submitted for review. Null while it is a draft; set at submission and never cleared afterwards. Compare it with `effective_on` to measure how late a document was submitted. |
 | `paid_at` | string | no | The optional date and time when the expensable was set as paid |
 | `updated_at` | string | yes | The date and time when the expensable was last updated |
 | `reimbursable_amount` | integer | no | The optional reimbursable amount in cents |
@@ -730,33 +747,33 @@ Top-level fields of each payload. Nested object types reference other schemas by
 
 | field | type | required | description |
 | --- | --- | --- | --- |
-| `id` | string | yes |  |
-| `name` | string | yes |  |
-| `company_id` | string | yes |  |
-| `legal_entity_id` | string | no |  |
-| `code` | string | no |  |
-| `description` | string | no |  |
-| `active_employees_count` | integer | yes |  |
-| `historical_employees_count` | integer | yes |  |
-| `status` | string | yes |  |
-| `deactivation_date` | string | no |  |
+| `id` | string | yes | Factorial id of the cost center. |
+| `name` | string | yes | Name of the cost center. |
+| `company_id` | string | yes | Company id the cost center belongs to. |
+| `legal_entity_id` | string | no | Legal entity id the cost center belongs to. |
+| `code` | string | no | Optional unique code of the cost center. |
+| `description` | string | no | Optional free text describing the cost center. |
+| `active_employees_count` | integer | yes | Number of employees currently assigned to the cost center. |
+| `historical_employees_count` | integer | yes | Number of employees ever assigned to the cost center. |
+| `status` | string | yes | Whether the cost center is active or inactive. |
+| `deactivation_date` | string | no | Date the cost center was deactivated, if inactive. |
 
 ### locations_location
 
 | field | type | required | description |
 | --- | --- | --- | --- |
-| `id` | string | yes | identifier of the location |
-| `company_id` | string | yes | company identifier |
-| `name` | string | yes | name of the location |
-| `timezone` | string | no | timezone of the location |
-| `country` | string | no | country code of the location |
-| `state` | string | no | State of the location |
-| `city` | string | no | City of the location |
-| `address_line_1` | string | no | Address line 1 of the location |
-| `address_line_2` | string | no | Address line 2 of the location |
-| `postal_code` | string | no | Postal code of the location |
-| `phone_number` | string | no | phone number of the location |
-| `main` | boolean | yes | whether the location is the main one |
+| `id` | string | yes | Unique identifier of the workplace |
+| `company_id` | string | yes | ID of the company this workplace belongs to |
+| `name` | string | yes | Human-readable name of the workplace (e.g. "Barcelona Office") |
+| `timezone` | string | no | IANA timezone the workplace operates in (e.g. "Europe/Madrid") |
+| `country` | string | no | ISO country code of the workplace — the jurisdiction it sits in, often used for country-specific policy thresholds |
+| `state` | string | no | State or province the workplace is located in |
+| `city` | string | no | City the workplace is located in |
+| `address_line_1` | string | no | First line of the workplace street address |
+| `address_line_2` | string | no | Second line of the workplace street address (suite, floor, …) |
+| `postal_code` | string | no | Postal/ZIP code of the workplace address |
+| `phone_number` | string | no | Contact phone number for the workplace |
+| `main` | boolean | yes | Whether this is the company's main (HQ) workplace |
 | `latitude` | number | no | latitude of the location |
 | `longitude` | number | no | longitude of the location |
 | `radius` | number | no | radius of the location |
@@ -829,7 +846,23 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `agreements_configuration` | object | yes | Action plans help track goal progress, and facilitate performance review discussions. |
 | `competencies_assessments_configuration` | object | yes | Assess employees based on their assigned competencies through both manager and self-reviews. Ensure roles with designated competencies are properly set up. |
 | `last_bulk_reminder` | string | no | Date when the last bulk reminder was sent |
-| `cycle_id` | string | no | Performance cycle ID |
+
+### project_management_time_record
+
+| field | type | required | description |
+| --- | --- | --- | --- |
+| `id` | string | yes | Id of the time record |
+| `project_worker_id` | string | yes | Id of the project worker |
+| `employee_id` | string | yes | Id of the employee the time record belongs to |
+| `project_id` | string | yes | Id of the project the time record belongs to |
+| `attendance_shift_id` | string | no | Id of the attendance shift |
+| `subproject_id` | string | no | Id of the subproject |
+| `project_task_id` | string | no | Id of the project task assigned to the time record. Refers to project_management/project_tasks endpoint. |
+| `date` | string | no | Reference date of the shift |
+| `imputed_minutes` | integer | no | Minutes difference between the clock in and clock out |
+| `clock_in` | string | no | Clock in time |
+| `clock_out` | string | no | Clock out time |
+| `observations` | string | no | Comment for the time record |
 
 ### shift_management_shift
 
@@ -877,18 +910,23 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `employee_id` | string | yes | Employee ID of the membership |
 | `team_id` | string | yes | Team ID of the membership |
 | `lead` | boolean | yes | Whether the employee is a lead of the team or not |
+| `source_team_ids` | array<string> | yes | IDs of the teams this membership originates from (nested teams). In a company with nested teams, a direct membership includes the team itself; an inherited one, the sub-team(s) where the employee is a direct member. Only populated on reads that compute source attribution — reads filtered by a single team, or by a single employee with `with_source_attribution` enabled. Empty otherwise, including create, update and delete responses, and always empty for companies without nested teams. An empty array does not distinguish "computed and genuinely empty" from "not computed for this read" or "could not be computed", so only apply attribution-dependent logic to a read you explicitly shaped for it. A team-anchored read stops attributing above roughly a thousand members of the filtered team: past that the attribution is not computed at all and every row comes back empty, behind a normal `200`. |
+| `parent_team_ids` | array<string> | yes | IDs of the ancestor teams that receive an inherited membership through this row (nested teams) — the teams this membership rolls up into. Populated under the same conditions as `source_team_ids`; empty otherwise. |
+| `direct` | boolean | no | Whether the employee is a direct member of the team (nested teams). Always present. `true` means direct member; `false` means the row exists only through inheritance from a sub-team; `null` means not computed for this read. Only computed on reads filtered by a single employee with `with_source_attribution` enabled — always `null` otherwise, including create, update and delete responses and companies without nested teams. `null` is also returned when directness could not be resolved for a transient reason, even with `with_source_attribution` enabled, so never treat `null` as `false` — retry the read instead. |
 
 ### teams_team
 
 | field | type | required | description |
 | --- | --- | --- | --- |
-| `id` | string | yes |  |
-| `name` | string | yes |  |
-| `description` | string | no |  |
-| `avatar` | string | no |  |
-| `employee_ids` | array<string> | no |  |
-| `lead_ids` | array<string> | no |  |
-| `company_id` | string | yes |  |
+| `id` | string | yes | Unique identifier of the team |
+| `name` | string | yes | Human-readable name of the team (e.g. "Engineering") |
+| `description` | string | no | Free-text description of the team |
+| `avatar` | string | no | URL of the team's avatar image (null when the team has none) |
+| `employee_ids` | array<string> | no | IDs of the employees who are members of this team |
+| `lead_ids` | array<string> | no | IDs of the employees who are leads of this team (subset of employee_ids) |
+| `company_id` | string | yes | ID of the company this team belongs to |
+| `depth` | integer | no | Depth of this team in the nested-team hierarchy: 1 for a top-level team, 2 for its children, and so on. Returned by read, create and move; null on update and delete, which do not change the hierarchy, and always null for companies without nested teams. |
+| `parent_team_id` | string | no | ID of the parent team this team is nested under (null for a root team). Returned by read, create and move; null on update and delete, which do not change the hierarchy, and always null for companies without nested teams. |
 
 ### timeoff_blocked_periods_policy
 
@@ -910,24 +948,25 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | field | type | required | description |
 | --- | --- | --- | --- |
 | `id` | string | yes | Identifier of the Leave |
-| `company_id` | string | yes | Company identifier of the employee of the leave |
-| `employee_id` | string | yes | Employee identifier of the leave |
-| `start_on` | string | yes | The start date of the leave |
-| `finish_on` | string | no | The end date of the leave |
-| `half_day` | string | no | Indicates if the leave is taken as a half-day |
-| `description` | string | no | A description of the leave |
+| `company_id` | string | yes | ID of the company the leave belongs to |
+| `employee_id` | string | yes | ID of the employee taking the leave |
+| `start_on` | string | yes | First day of the leave |
+| `finish_on` | string | no | Last day of the leave (inclusive); null while an open-ended leave has no end yet |
+| `half_day` | string | no | Which half of the day a half-day leave covers — `beginning_of_day` or `end_of_day`; null for full-day leaves |
+| `description` | string | no | Free-text description of the leave |
 | `reason` | string | no | The reason provided by the employee for taking the leave |
-| `leave_type_id` | string | no | The identifier for the type of leave |
-| `leave_type_name` | string | no | The name of the leave type |
-| `approved` | boolean | no | Indicates whether the leave has been approved |
+| `leave_type_id` | string | no | ID of the leave type this leave is of |
+| `leave_type_name` | string | no | Denormalised name of the leave type |
+| `approved` | boolean | no | Tri-state approval status — true = approved, false = rejected, null = pending approval |
 | `employee_full_name` | string | no | The full name of the employee taking the leave |
 | `start_time` | string | no | The start time of the leave |
-| `hours_amount_in_cents` | integer | no | The total number of hours taken for the leave, represented in cents |
+| `hours_amount_in_cents` | integer | no | Total hours the leave consumes, in hundredths of an hour (e.g. 800 = 8 hours); set for hourly leaves |
 | `updated_at` | string | yes | The updated at date of the leave |
 | `created_at` | string | no | The created at date of the leave |
 | `deleted_at` | string | no | The date when the leave was deleted |
 | `duration_attributes` | string | no | The duration attributes of the leave |
-| `days_taken` | number | yes | Number of days taken for paid leave |
+| `duration_by_day_attributes` | object | no | Per-day breakdown of the leave's workable and used units, keyed by calendar date. Populated only when the read requests `include_duration_by_day=true`; null otherwise. |
+| `days_taken` | number | yes | Number of days taken for paid leave. Reflects the summed per-day used total when the per-day breakdown is computed; otherwise the leave's calendar-day duration. |
 
 ### timeoff_leave_type
 
@@ -940,22 +979,22 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `color` | string | yes | The color associated with this leave type |
 | `active` | boolean | no | Whether the leave type is active |
 | `editable` | boolean | no | Whether the leave type is editable |
-| `approval_required` | boolean | no | Whether approval is required for this leave type |
-| `accrues` | boolean | no | Whether the leave type accrues over time |
-| `attachment` | boolean | yes | Whether an attachment is required for this leave type |
-| `allow_endless` | boolean | no | Whether endless leave is allowed |
-| `restricted` | boolean | no | Whether the leave type is restricted |
-| `visibility` | boolean | yes | Whether the leave type is visible to employees |
-| `workable` | boolean | yes | Whether the leave type is workable |
-| `payable` | boolean | no | Whether the leave type is payable |
-| `company_id` | string | yes | Identifier of the company associated with this leave type |
-| `is_attachment_mandatory` | boolean | no | Whether the attachment is mandatory |
-| `allowance_ids` | array<string> | yes | List of allowance identifiers associated with this leave type |
-| `half_days_units_enabled` | boolean | no | Whether half-day units are enabled for this leave type |
-| `max_days_in_cents` | integer | no | Maximum days in cents that can be taken |
-| `min_days_in_cents` | integer | no | Minimum days in cents that must be taken |
-| `description` | string | no | Description of the leave type |
-| `details_required` | boolean | yes | Whether additional details are required for the leave type |
+| `approval_required` | boolean | no | Whether leaves of this type must be approved before they take effect (when false, requests are auto-approved on creation) |
+| `accrues` | boolean | no | Whether leaves of this type consume an accruing balance/allowance (vs. a non-accruing type that does not draw down a balance) |
+| `attachment` | boolean | yes | Whether an attachment (e.g. a sick note) can be added to leaves of this type |
+| `allow_endless` | boolean | no | Whether leaves of this type may be open-ended (created with no finish date) |
+| `restricted` | boolean | no | Whether requesting this leave type is restricted to specific employees or conditions rather than open to everyone |
+| `visibility` | boolean | yes | Whether the leave type is visible to employees (vs. admin-only) |
+| `workable` | boolean | yes | Whether days taken under this leave type still count as workable (working) days |
+| `payable` | boolean | no | Whether leaves of this type are paid |
+| `company_id` | string | yes | ID of the company this leave type belongs to |
+| `is_attachment_mandatory` | boolean | no | Whether an attachment is mandatory (not just allowed) to request this leave type |
+| `allowance_ids` | array<string> | yes | IDs of the allowances this leave type draws its balance from |
+| `half_days_units_enabled` | boolean | no | Whether leaves of this type can be requested in half-day units |
+| `max_days_in_cents` | integer | no | Maximum number of days a single request may take, in hundredths of a day (e.g. 5000 = 50 days); null if unbounded |
+| `min_days_in_cents` | integer | no | Minimum number of days a single request must take, in hundredths of a day (e.g. 1000 = 10 days); null if unbounded |
+| `description` | string | no | Free-text description of the leave type |
+| `details_required` | boolean | yes | Whether the requester must provide additional details (a reason) when requesting this leave type |
 
 ### timeoff_policy
 
@@ -963,8 +1002,8 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | --- | --- | --- | --- |
 | `id` | string | yes | The policy id. |
 | `name` | string | yes | Policy name. |
-| `main` | boolean | no | Is the main policy? It will return true if it's the main policy if not it will return false. |
-| `company_id` | string | yes | The company id. |
+| `main` | boolean | no | Whether this is the company's main (default) time off policy — the one employees fall under unless assigned a specific policy. |
+| `company_id` | string | yes | ID of the company that owns this policy. |
 | `description` | string | no | The policy description. |
 
 ### trainings_category
@@ -1021,11 +1060,11 @@ Top-level fields of each payload. Nested object types reference other schemas by
 
 | field | type | required | description |
 | --- | --- | --- | --- |
-| `id` | string | yes |  |
-| `name` | string | yes |  |
-| `archived_at` | string | no |  |
-| `company_id` | string | yes |  |
-| `created_at` | string | yes |  |
-| `updated_at` | string | yes |  |
-| `employee_ids` | array<string> | yes |  |
-| `periods` | array<object> | yes |  |
+| `id` | string | yes | Identifier of the schedule |
+| `name` | string | yes | Name of the schedule |
+| `archived_at` | string | no | When the schedule was archived; null when the schedule is active |
+| `company_id` | string | yes | Identifier of the company the schedule belongs to |
+| `created_at` | string | yes | When the schedule was created |
+| `updated_at` | string | yes | When the schedule was last updated |
+| `employee_ids` | array<string> | yes | Identifiers of the employees assigned to the schedule |
+| `periods` | array<object> | yes | Overlap periods that make up the schedule |
