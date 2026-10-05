@@ -175,9 +175,9 @@ RSpec.describe F::Api::OAuth do
   end
 
   describe 'F::Api::OAuth::Session' do
-    let(:fresh_jwt)  { build_jwt('exp' => Time.now.to_i + 3600) }
-    let(:stale_jwt)  { build_jwt('exp' => Time.now.to_i + 5) }
-    let(:rotations)  { [] }
+    let(:fresh_jwt) { build_jwt('exp' => Time.now.to_i + 3600) }
+    let(:stale_jwt) { build_jwt('exp' => Time.now.to_i + 5) }
+    let(:rotations) { [] }
 
     def tokens_with(access_token, refresh_token: 'REFRESH-1', **extra)
       F::Api::OAuth::Tokens.new({ 'access_token' => access_token,

@@ -64,7 +64,7 @@ module F::Api
     def self.openapi_types
       {
         :'reviewer_strategy' => :'String',
-        :'content' => :'Array<PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInner>'
+        :'content' => :'Array<PerformanceReviewQuestionnaireSection>'
       }
     end
 

@@ -92,11 +92,15 @@ If an automated publish fails, re-run it without touching versions:
 
 ## Notes
 
-- `uv.lock` and `ruby/Gemfile.lock` record the package version too, but the
-  published artifact takes its version from `pyproject.toml` (hatchling) and
-  from the gemspec via `version.rb` (`gem build`), so a stale version line in a
-  lockfile does not affect releases. Refresh with `uv lock` / `bundle lock`
-  when convenient.
+- `uv.lock` records the package version too, but the published artifact takes
+  its version from `pyproject.toml` (hatchling), so a stale version line there
+  does not affect releases. Refresh with `uv lock` when convenient.
+- `ruby/Gemfile.lock` is not committed (the usual choice for a gem): CI
+  installs with a frozen lockfile, so a committed one breaks the Ruby job as
+  soon as release-please bumps `version.rb`. release-please's ruby release
+  type only rewrites a `<component> (x.y.z)` lockfile line, and the component
+  here is `ruby`, not `factorial_api`. `setup-ruby` generates the lockfile on
+  the fly and caches by its hash.
 - The Ruby manifest entry was seeded at `2.0.0` so the gem's first release is
   necessarily `2.x` (matching `version_map.json`, where major 2 = API
   2026-07-01). release-please treats that seed as already released, so the

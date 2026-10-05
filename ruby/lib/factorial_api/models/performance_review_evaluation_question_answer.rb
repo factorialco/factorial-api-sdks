@@ -14,16 +14,28 @@ require 'date'
 require 'time'
 
 module F::Api
-  class PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner < ApiModelBase
-    attr_accessor :value
+  class PerformanceReviewEvaluationQuestionAnswer < ApiModelBase
+    attr_accessor :uuid
 
-    attr_accessor :text
+    attr_accessor :answer_text
+
+    attr_accessor :answer_int
+
+    attr_accessor :answer_float
+
+    attr_accessor :answer_choice
+
+    attr_accessor :answer_rating
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'value' => :'value',
-        :'text' => :'text'
+        :'uuid' => :'uuid',
+        :'answer_text' => :'answer_text',
+        :'answer_int' => :'answer_int',
+        :'answer_float' => :'answer_float',
+        :'answer_choice' => :'answer_choice',
+        :'answer_rating' => :'answer_rating'
       }
     end
 
@@ -40,8 +52,12 @@ module F::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'value' => :'Integer',
-        :'text' => :'String'
+        :'uuid' => :'String',
+        :'answer_text' => :'String',
+        :'answer_int' => :'Integer',
+        :'answer_float' => :'Float',
+        :'answer_choice' => :'Array<String>',
+        :'answer_rating' => :'PerformanceReviewEvaluationQuestionAnswerRating'
       }
     end
 
@@ -55,28 +71,44 @@ module F::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewEvaluationQuestionAnswer` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewEvaluationQuestionAnswer`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'uuid')
+        self.uuid = attributes[:'uuid']
       else
-        self.value = nil
+        self.uuid = nil
       end
 
-      if attributes.key?(:'text')
-        self.text = attributes[:'text']
-      else
-        self.text = nil
+      if attributes.key?(:'answer_text')
+        self.answer_text = attributes[:'answer_text']
+      end
+
+      if attributes.key?(:'answer_int')
+        self.answer_int = attributes[:'answer_int']
+      end
+
+      if attributes.key?(:'answer_float')
+        self.answer_float = attributes[:'answer_float']
+      end
+
+      if attributes.key?(:'answer_choice')
+        if (value = attributes[:'answer_choice']).is_a?(Array)
+          self.answer_choice = value
+        end
+      end
+
+      if attributes.key?(:'answer_rating')
+        self.answer_rating = attributes[:'answer_rating']
       end
     end
 
@@ -85,12 +117,8 @@ module F::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @value.nil?
-        invalid_properties.push('invalid value for "value", value cannot be nil.')
-      end
-
-      if @text.nil?
-        invalid_properties.push('invalid value for "text", text cannot be nil.')
+      if @uuid.nil?
+        invalid_properties.push('invalid value for "uuid", uuid cannot be nil.')
       end
 
       invalid_properties
@@ -100,31 +128,19 @@ module F::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @value.nil?
-      return false if @text.nil?
+      return false if @uuid.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] value Value to be assigned
-    def value=(value)
-      if value.nil?
-        @value = nil
+    # @param [Object] uuid Value to be assigned
+    def uuid=(uuid)
+      if uuid.nil?
+        @uuid = nil
         return
       end
 
-      @value = value
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] text Value to be assigned
-    def text=(text)
-      if text.nil?
-        @text = nil
-        return
-      end
-
-      @text = text
+      @uuid = uuid
     end
 
     # Checks equality by comparing each attribute.
@@ -132,8 +148,12 @@ module F::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          value == o.value &&
-          text == o.text
+          uuid == o.uuid &&
+          answer_text == o.answer_text &&
+          answer_int == o.answer_int &&
+          answer_float == o.answer_float &&
+          answer_choice == o.answer_choice &&
+          answer_rating == o.answer_rating
     end
 
     # @see the `==` method
@@ -145,7 +165,7 @@ module F::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [value, text].hash
+      [uuid, answer_text, answer_int, answer_float, answer_choice, answer_rating].hash
     end
 
     # Builds the object from hash

@@ -166,6 +166,15 @@ load_check = <<~'RUBY'
 RUBY
 run!('bundle', 'exec', 'ruby', '-e', load_check)
 
+# --- 9.1. Verify the gem packages ---
+# `gem build` is what publish.yaml runs, and it rejects file names over 100
+# bytes (ustar cap) — deep inline schemas can exceed it. Fail here, not at
+# release time. The package lands in gitignored tmp/ and is discarded.
+step 'Verifying the gem packages'
+FileUtils.mkdir_p('tmp')
+run!('gem', 'build', 'factorial_api.gemspec', '-o', 'tmp/factorial_api-check.gem')
+FileUtils.rm_f('tmp/factorial_api-check.gem')
+
 # --- 9.5. Refresh the skill reference tables ---
 # ruby-methods.json (committed) maps every endpoint to its Ruby call by
 # reflecting on the freshly verified gem; generate_skill.py then rebuilds the

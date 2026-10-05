@@ -14,16 +14,44 @@ require 'date'
 require 'time'
 
 module F::Api
-  class PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentInnerQuestionsInner < ApiModelBase
-    attr_accessor :question
+  class PerformanceReviewQuestionnaireSection < ApiModelBase
+    attr_accessor :uuid
 
-    attr_accessor :answer
+    attr_accessor :type
+
+    attr_accessor :section_title
+
+    attr_accessor :questions
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'question' => :'question',
-        :'answer' => :'answer'
+        :'uuid' => :'uuid',
+        :'type' => :'type',
+        :'section_title' => :'section_title',
+        :'questions' => :'questions'
       }
     end
 
@@ -40,8 +68,10 @@ module F::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'question' => :'PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInnerQuestionsInner',
-        :'answer' => :'PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentInnerQuestionsInnerAnswer'
+        :'uuid' => :'String',
+        :'type' => :'String',
+        :'section_title' => :'String',
+        :'questions' => :'Array<PerformanceReviewQuestionnaireQuestion>'
       }
     end
 
@@ -55,26 +85,40 @@ module F::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentInnerQuestionsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewQuestionnaireSection` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentInnerQuestionsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewQuestionnaireSection`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'question')
-        self.question = attributes[:'question']
+      if attributes.key?(:'uuid')
+        self.uuid = attributes[:'uuid']
       else
-        self.question = nil
+        self.uuid = nil
       end
 
-      if attributes.key?(:'answer')
-        self.answer = attributes[:'answer']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
+      end
+
+      if attributes.key?(:'section_title')
+        self.section_title = attributes[:'section_title']
+      end
+
+      if attributes.key?(:'questions')
+        if (value = attributes[:'questions']).is_a?(Array)
+          self.questions = value
+        end
+      else
+        self.questions = nil
       end
     end
 
@@ -83,8 +127,16 @@ module F::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @question.nil?
-        invalid_properties.push('invalid value for "question", question cannot be nil.')
+      if @uuid.nil?
+        invalid_properties.push('invalid value for "uuid", uuid cannot be nil.')
+      end
+
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @questions.nil?
+        invalid_properties.push('invalid value for "questions", questions cannot be nil.')
       end
 
       invalid_properties
@@ -94,19 +146,44 @@ module F::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @question.nil?
+      return false if @uuid.nil?
+      return false if @type.nil?
+      type_validator = EnumAttributeValidator.new('String', ["question", "section"])
+      return false unless type_validator.valid?(@type)
+      return false if @questions.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] question Value to be assigned
-    def question=(question)
-      if question.nil?
-        @question = nil
+    # @param [Object] uuid Value to be assigned
+    def uuid=(uuid)
+      if uuid.nil?
+        @uuid = nil
         return
       end
 
-      @question = question
+      @uuid = uuid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["question", "section"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+      end
+      @type = type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] questions Value to be assigned
+    def questions=(questions)
+      if questions.nil?
+        @questions = nil
+        return
+      end
+
+      @questions = questions
     end
 
     # Checks equality by comparing each attribute.
@@ -114,8 +191,10 @@ module F::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          question == o.question &&
-          answer == o.answer
+          uuid == o.uuid &&
+          type == o.type &&
+          section_title == o.section_title &&
+          questions == o.questions
     end
 
     # @see the `==` method
@@ -127,7 +206,7 @@ module F::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [question, answer].hash
+      [uuid, type, section_title, questions].hash
     end
 
     # Builds the object from hash
