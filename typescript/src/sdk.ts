@@ -5,6 +5,7 @@
 import type { Config } from "./generated/client/index.js";
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { ClientOptions } from "./generated/types.gen.js";
+import { toFactorialApiError } from "./errors.js";
 import {
   deleteApi20260701ResourcesApiPublicWebhookSubscriptionsById,
   deleteApi20260701ResourcesAtsApplicationsById,
@@ -563,8 +564,21 @@ export * from "./generated/types.gen.js";
 
 import { paginate, collectAll } from "./pagination.js";
 export type { PagedMeta, PaginateOptions } from "./pagination.js";
+export { FactorialApiError, isFactorialApiError } from "./errors.js";
+export type { FactorialApiErrorInit } from "./errors.js";
 
-export type FactorialClientConfig = Omit<Partial<Config<ClientOptions>>, "baseUrl" | "auth"> & {
+/**
+ * Options for {@link FactorialClient}.
+ *
+ * `throwOnError` and `responseStyle` are deliberately not configurable: the
+ * resource methods are typed as throwing and as resolving to
+ * `{ data, request, response }`, and either option would contradict that
+ * contract at runtime.
+ */
+export type FactorialClientConfig = Omit<
+  Partial<Config<ClientOptions>>,
+  "baseUrl" | "auth" | "throwOnError" | "responseStyle"
+> & {
   /**
    * Base URL of the Factorial API.
    * Falls back to the `FACTORIAL_BASE_URL` env var, then https://api.factorialhr.com
@@ -589,17 +603,19 @@ export class ApiPublicCredentialsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all credentials */
-  list: typeof getApi20260701ResourcesApiPublicCredentials = (options?: any) => getApi20260701ResourcesApiPublicCredentials({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesApiPublicCredentials<true> = (options) => getApi20260701ResourcesApiPublicCredentials<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all credentials, yielding one item at a time.
    * @example for await (const item of client.apiPublic.credentials.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesApiPublicCredentials>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesApiPublicCredentials<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesApiPublicCredentials({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesApiPublicCredentials<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -607,7 +623,7 @@ export class ApiPublicCredentialsResource {
    * Fetch all credentials across all pages into a single array.
    * @example const all = await client.apiPublic.credentials.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesApiPublicCredentials>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesApiPublicCredentials<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -617,17 +633,19 @@ export class ApiPublicWebhookSubscriptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all webhook_subscriptions */
-  list: typeof getApi20260701ResourcesApiPublicWebhookSubscriptions = (options?: any) => getApi20260701ResourcesApiPublicWebhookSubscriptions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesApiPublicWebhookSubscriptions<true> = (options) => getApi20260701ResourcesApiPublicWebhookSubscriptions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all webhook_subscriptions, yielding one item at a time.
    * @example for await (const item of client.apiPublic.webhookSubscriptions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesApiPublicWebhookSubscriptions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesApiPublicWebhookSubscriptions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesApiPublicWebhookSubscriptions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesApiPublicWebhookSubscriptions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -635,21 +653,21 @@ export class ApiPublicWebhookSubscriptionsResource {
    * Fetch all webhook_subscriptions across all pages into a single array.
    * @example const all = await client.apiPublic.webhookSubscriptions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesApiPublicWebhookSubscriptions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesApiPublicWebhookSubscriptions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a webhook_subscriptions record */
-  create: typeof postApi20260701ResourcesApiPublicWebhookSubscriptions = (options?: any) => postApi20260701ResourcesApiPublicWebhookSubscriptions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesApiPublicWebhookSubscriptions<true> = (options) => postApi20260701ResourcesApiPublicWebhookSubscriptions<true>({ client: this._client, ...options });
 
   /** Reads a single webhook_subscriptions record */
-  get: typeof getApi20260701ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => getApi20260701ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesApiPublicWebhookSubscriptionsById<true> = (options) => getApi20260701ResourcesApiPublicWebhookSubscriptionsById<true>({ client: this._client, ...options });
 
   /** Updates a webhook_subscriptions record */
-  update: typeof putApi20260701ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => putApi20260701ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesApiPublicWebhookSubscriptionsById<true> = (options) => putApi20260701ResourcesApiPublicWebhookSubscriptionsById<true>({ client: this._client, ...options });
 
   /** Deletes a webhook_subscriptions record */
-  delete: typeof deleteApi20260701ResourcesApiPublicWebhookSubscriptionsById = (options?: any) => deleteApi20260701ResourcesApiPublicWebhookSubscriptionsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesApiPublicWebhookSubscriptionsById<true> = (options) => deleteApi20260701ResourcesApiPublicWebhookSubscriptionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the approvals > materialized_approvals_flows resource */
@@ -657,10 +675,10 @@ export class ApprovalsMaterializedApprovalsFlowsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** approveResource */
-  approveResource: typeof postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResource = (options?: any) => postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResource({ client: this._client, ...options });
+  approveResource: typeof postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResource<true> = (options) => postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsApproveResource<true>({ client: this._client, ...options });
 
   /** rejectResource */
-  rejectResource: typeof postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResource = (options?: any) => postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResource({ client: this._client, ...options });
+  rejectResource: typeof postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResource<true> = (options) => postApi20260701ResourcesApprovalsMaterializedApprovalsFlowsRejectResource<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > answers resource */
@@ -668,17 +686,19 @@ export class AtsAnswersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all answers */
-  list: typeof getApi20260701ResourcesAtsAnswers = (options?: any) => getApi20260701ResourcesAtsAnswers({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsAnswers<true> = (options) => getApi20260701ResourcesAtsAnswers<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all answers, yielding one item at a time.
    * @example for await (const item of client.ats.answers.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsAnswers>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsAnswers<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsAnswers({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsAnswers<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -686,15 +706,15 @@ export class AtsAnswersResource {
    * Fetch all answers across all pages into a single array.
    * @example const all = await client.ats.answers.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsAnswers>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsAnswers<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a answers record */
-  create: typeof postApi20260701ResourcesAtsAnswers = (options?: any) => postApi20260701ResourcesAtsAnswers({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsAnswers<true> = (options) => postApi20260701ResourcesAtsAnswers<true>({ client: this._client, ...options });
 
   /** Reads a single answers record */
-  get: typeof getApi20260701ResourcesAtsAnswersById = (options?: any) => getApi20260701ResourcesAtsAnswersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsAnswersById<true> = (options) => getApi20260701ResourcesAtsAnswersById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > application_phases resource */
@@ -702,17 +722,19 @@ export class AtsApplicationPhasesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all application_phases */
-  list: typeof getApi20260701ResourcesAtsApplicationPhases = (options?: any) => getApi20260701ResourcesAtsApplicationPhases({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsApplicationPhases<true> = (options) => getApi20260701ResourcesAtsApplicationPhases<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all application_phases, yielding one item at a time.
    * @example for await (const item of client.ats.applicationPhases.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsApplicationPhases>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsApplicationPhases<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsApplicationPhases({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsApplicationPhases<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -720,12 +742,12 @@ export class AtsApplicationPhasesResource {
    * Fetch all application_phases across all pages into a single array.
    * @example const all = await client.ats.applicationPhases.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsApplicationPhases>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsApplicationPhases<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single application_phases record */
-  get: typeof getApi20260701ResourcesAtsApplicationPhasesById = (options?: any) => getApi20260701ResourcesAtsApplicationPhasesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsApplicationPhasesById<true> = (options) => getApi20260701ResourcesAtsApplicationPhasesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > applications resource */
@@ -733,17 +755,19 @@ export class AtsApplicationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all applications */
-  list: typeof getApi20260701ResourcesAtsApplications = (options?: any) => getApi20260701ResourcesAtsApplications({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsApplications<true> = (options) => getApi20260701ResourcesAtsApplications<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all applications, yielding one item at a time.
    * @example for await (const item of client.ats.applications.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsApplications>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsApplications<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsApplications({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsApplications<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -751,27 +775,27 @@ export class AtsApplicationsResource {
    * Fetch all applications across all pages into a single array.
    * @example const all = await client.ats.applications.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsApplications>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsApplications<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a applications record */
-  create: typeof postApi20260701ResourcesAtsApplications = (options?: any) => postApi20260701ResourcesAtsApplications({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsApplications<true> = (options) => postApi20260701ResourcesAtsApplications<true>({ client: this._client, ...options });
 
   /** Reads a single applications record */
-  get: typeof getApi20260701ResourcesAtsApplicationsById = (options?: any) => getApi20260701ResourcesAtsApplicationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsApplicationsById<true> = (options) => getApi20260701ResourcesAtsApplicationsById<true>({ client: this._client, ...options });
 
   /** Updates a applications record */
-  update: typeof putApi20260701ResourcesAtsApplicationsById = (options?: any) => putApi20260701ResourcesAtsApplicationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAtsApplicationsById<true> = (options) => putApi20260701ResourcesAtsApplicationsById<true>({ client: this._client, ...options });
 
   /** Deletes a applications record */
-  delete: typeof deleteApi20260701ResourcesAtsApplicationsById = (options?: any) => deleteApi20260701ResourcesAtsApplicationsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAtsApplicationsById<true> = (options) => deleteApi20260701ResourcesAtsApplicationsById<true>({ client: this._client, ...options });
 
   /** apply */
-  apply: typeof postApi20260701ResourcesAtsApplicationsApply = (options?: any) => postApi20260701ResourcesAtsApplicationsApply({ client: this._client, ...options });
+  apply: typeof postApi20260701ResourcesAtsApplicationsApply<true> = (options) => postApi20260701ResourcesAtsApplicationsApply<true>({ client: this._client, ...options });
 
   /** moveToPhase */
-  moveToPhase: typeof postApi20260701ResourcesAtsApplicationsMoveToPhase = (options?: any) => postApi20260701ResourcesAtsApplicationsMoveToPhase({ client: this._client, ...options });
+  moveToPhase: typeof postApi20260701ResourcesAtsApplicationsMoveToPhase<true> = (options) => postApi20260701ResourcesAtsApplicationsMoveToPhase<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > candidate_sources resource */
@@ -779,17 +803,19 @@ export class AtsCandidateSourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all candidate_sources */
-  list: typeof getApi20260701ResourcesAtsCandidateSources = (options?: any) => getApi20260701ResourcesAtsCandidateSources({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsCandidateSources<true> = (options) => getApi20260701ResourcesAtsCandidateSources<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all candidate_sources, yielding one item at a time.
    * @example for await (const item of client.ats.candidateSources.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsCandidateSources>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsCandidateSources<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsCandidateSources({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsCandidateSources<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -797,12 +823,12 @@ export class AtsCandidateSourcesResource {
    * Fetch all candidate_sources across all pages into a single array.
    * @example const all = await client.ats.candidateSources.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsCandidateSources>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsCandidateSources<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single candidate_sources record */
-  get: typeof getApi20260701ResourcesAtsCandidateSourcesById = (options?: any) => getApi20260701ResourcesAtsCandidateSourcesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsCandidateSourcesById<true> = (options) => getApi20260701ResourcesAtsCandidateSourcesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > candidates resource */
@@ -810,17 +836,19 @@ export class AtsCandidatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all candidates */
-  list: typeof getApi20260701ResourcesAtsCandidates = (options?: any) => getApi20260701ResourcesAtsCandidates({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsCandidates<true> = (options) => getApi20260701ResourcesAtsCandidates<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all candidates, yielding one item at a time.
    * @example for await (const item of client.ats.candidates.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsCandidates>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsCandidates<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsCandidates({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsCandidates<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -828,21 +856,21 @@ export class AtsCandidatesResource {
    * Fetch all candidates across all pages into a single array.
    * @example const all = await client.ats.candidates.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsCandidates>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsCandidates<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a candidates record */
-  create: typeof postApi20260701ResourcesAtsCandidates = (options?: any) => postApi20260701ResourcesAtsCandidates({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsCandidates<true> = (options) => postApi20260701ResourcesAtsCandidates<true>({ client: this._client, ...options });
 
   /** Reads a single candidates record */
-  get: typeof getApi20260701ResourcesAtsCandidatesById = (options?: any) => getApi20260701ResourcesAtsCandidatesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsCandidatesById<true> = (options) => getApi20260701ResourcesAtsCandidatesById<true>({ client: this._client, ...options });
 
   /** Updates a candidates record */
-  update: typeof putApi20260701ResourcesAtsCandidatesById = (options?: any) => putApi20260701ResourcesAtsCandidatesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAtsCandidatesById<true> = (options) => putApi20260701ResourcesAtsCandidatesById<true>({ client: this._client, ...options });
 
   /** Deletes a candidates record */
-  delete: typeof deleteApi20260701ResourcesAtsCandidatesById = (options?: any) => deleteApi20260701ResourcesAtsCandidatesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAtsCandidatesById<true> = (options) => deleteApi20260701ResourcesAtsCandidatesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > evaluation_forms resource */
@@ -850,17 +878,19 @@ export class AtsEvaluationFormsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all evaluation_forms */
-  list: typeof getApi20260701ResourcesAtsEvaluationForms = (options?: any) => getApi20260701ResourcesAtsEvaluationForms({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsEvaluationForms<true> = (options) => getApi20260701ResourcesAtsEvaluationForms<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all evaluation_forms, yielding one item at a time.
    * @example for await (const item of client.ats.evaluationForms.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsEvaluationForms>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsEvaluationForms<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsEvaluationForms({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsEvaluationForms<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -868,15 +898,15 @@ export class AtsEvaluationFormsResource {
    * Fetch all evaluation_forms across all pages into a single array.
    * @example const all = await client.ats.evaluationForms.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsEvaluationForms>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsEvaluationForms<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single evaluation_forms record */
-  get: typeof getApi20260701ResourcesAtsEvaluationFormsById = (options?: any) => getApi20260701ResourcesAtsEvaluationFormsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsEvaluationFormsById<true> = (options) => getApi20260701ResourcesAtsEvaluationFormsById<true>({ client: this._client, ...options });
 
   /** saveAsTemplate */
-  saveAsTemplate: typeof postApi20260701ResourcesAtsEvaluationFormsSaveAsTemplate = (options?: any) => postApi20260701ResourcesAtsEvaluationFormsSaveAsTemplate({ client: this._client, ...options });
+  saveAsTemplate: typeof postApi20260701ResourcesAtsEvaluationFormsSaveAsTemplate<true> = (options) => postApi20260701ResourcesAtsEvaluationFormsSaveAsTemplate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > feedbacks resource */
@@ -884,17 +914,19 @@ export class AtsFeedbacksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all feedbacks */
-  list: typeof getApi20260701ResourcesAtsFeedbacks = (options?: any) => getApi20260701ResourcesAtsFeedbacks({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsFeedbacks<true> = (options) => getApi20260701ResourcesAtsFeedbacks<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all feedbacks, yielding one item at a time.
    * @example for await (const item of client.ats.feedbacks.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsFeedbacks>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsFeedbacks<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsFeedbacks({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsFeedbacks<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -902,21 +934,21 @@ export class AtsFeedbacksResource {
    * Fetch all feedbacks across all pages into a single array.
    * @example const all = await client.ats.feedbacks.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsFeedbacks>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsFeedbacks<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a feedbacks record */
-  create: typeof postApi20260701ResourcesAtsFeedbacks = (options?: any) => postApi20260701ResourcesAtsFeedbacks({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsFeedbacks<true> = (options) => postApi20260701ResourcesAtsFeedbacks<true>({ client: this._client, ...options });
 
   /** Reads a single feedbacks record */
-  get: typeof getApi20260701ResourcesAtsFeedbacksById = (options?: any) => getApi20260701ResourcesAtsFeedbacksById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsFeedbacksById<true> = (options) => getApi20260701ResourcesAtsFeedbacksById<true>({ client: this._client, ...options });
 
   /** Updates a feedbacks record */
-  update: typeof putApi20260701ResourcesAtsFeedbacksById = (options?: any) => putApi20260701ResourcesAtsFeedbacksById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAtsFeedbacksById<true> = (options) => putApi20260701ResourcesAtsFeedbacksById<true>({ client: this._client, ...options });
 
   /** Deletes a feedbacks record */
-  delete: typeof deleteApi20260701ResourcesAtsFeedbacksById = (options?: any) => deleteApi20260701ResourcesAtsFeedbacksById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAtsFeedbacksById<true> = (options) => deleteApi20260701ResourcesAtsFeedbacksById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > hiring_stages resource */
@@ -924,17 +956,19 @@ export class AtsHiringStagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all hiring_stages */
-  list: typeof getApi20260701ResourcesAtsHiringStages = (options?: any) => getApi20260701ResourcesAtsHiringStages({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsHiringStages<true> = (options) => getApi20260701ResourcesAtsHiringStages<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all hiring_stages, yielding one item at a time.
    * @example for await (const item of client.ats.hiringStages.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsHiringStages>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsHiringStages<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsHiringStages({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsHiringStages<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -942,12 +976,12 @@ export class AtsHiringStagesResource {
    * Fetch all hiring_stages across all pages into a single array.
    * @example const all = await client.ats.hiringStages.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsHiringStages>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsHiringStages<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single hiring_stages record */
-  get: typeof getApi20260701ResourcesAtsHiringStagesById = (options?: any) => getApi20260701ResourcesAtsHiringStagesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsHiringStagesById<true> = (options) => getApi20260701ResourcesAtsHiringStagesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > job_postings resource */
@@ -955,17 +989,19 @@ export class AtsJobPostingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all job_postings */
-  list: typeof getApi20260701ResourcesAtsJobPostings = (options?: any) => getApi20260701ResourcesAtsJobPostings({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsJobPostings<true> = (options) => getApi20260701ResourcesAtsJobPostings<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all job_postings, yielding one item at a time.
    * @example for await (const item of client.ats.jobPostings.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsJobPostings>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsJobPostings<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsJobPostings({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsJobPostings<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -973,24 +1009,24 @@ export class AtsJobPostingsResource {
    * Fetch all job_postings across all pages into a single array.
    * @example const all = await client.ats.jobPostings.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsJobPostings>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsJobPostings<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a job_postings record */
-  create: typeof postApi20260701ResourcesAtsJobPostings = (options?: any) => postApi20260701ResourcesAtsJobPostings({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsJobPostings<true> = (options) => postApi20260701ResourcesAtsJobPostings<true>({ client: this._client, ...options });
 
   /** Reads a single job_postings record */
-  get: typeof getApi20260701ResourcesAtsJobPostingsById = (options?: any) => getApi20260701ResourcesAtsJobPostingsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsJobPostingsById<true> = (options) => getApi20260701ResourcesAtsJobPostingsById<true>({ client: this._client, ...options });
 
   /** Updates a job_postings record */
-  update: typeof putApi20260701ResourcesAtsJobPostingsById = (options?: any) => putApi20260701ResourcesAtsJobPostingsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAtsJobPostingsById<true> = (options) => putApi20260701ResourcesAtsJobPostingsById<true>({ client: this._client, ...options });
 
   /** Deletes a job_postings record */
-  delete: typeof deleteApi20260701ResourcesAtsJobPostingsById = (options?: any) => deleteApi20260701ResourcesAtsJobPostingsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAtsJobPostingsById<true> = (options) => deleteApi20260701ResourcesAtsJobPostingsById<true>({ client: this._client, ...options });
 
   /** duplicate */
-  duplicate: typeof postApi20260701ResourcesAtsJobPostingsDuplicate = (options?: any) => postApi20260701ResourcesAtsJobPostingsDuplicate({ client: this._client, ...options });
+  duplicate: typeof postApi20260701ResourcesAtsJobPostingsDuplicate<true> = (options) => postApi20260701ResourcesAtsJobPostingsDuplicate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > messages resource */
@@ -998,17 +1034,19 @@ export class AtsMessagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all messages */
-  list: typeof getApi20260701ResourcesAtsMessages = (options?: any) => getApi20260701ResourcesAtsMessages({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsMessages<true> = (options) => getApi20260701ResourcesAtsMessages<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all messages, yielding one item at a time.
    * @example for await (const item of client.ats.messages.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsMessages>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsMessages<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsMessages({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsMessages<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1016,15 +1054,15 @@ export class AtsMessagesResource {
    * Fetch all messages across all pages into a single array.
    * @example const all = await client.ats.messages.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsMessages>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsMessages<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a messages record */
-  create: typeof postApi20260701ResourcesAtsMessages = (options?: any) => postApi20260701ResourcesAtsMessages({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsMessages<true> = (options) => postApi20260701ResourcesAtsMessages<true>({ client: this._client, ...options });
 
   /** Reads a single messages record */
-  get: typeof getApi20260701ResourcesAtsMessagesById = (options?: any) => getApi20260701ResourcesAtsMessagesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsMessagesById<true> = (options) => getApi20260701ResourcesAtsMessagesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > questions resource */
@@ -1032,17 +1070,19 @@ export class AtsQuestionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all questions */
-  list: typeof getApi20260701ResourcesAtsQuestions = (options?: any) => getApi20260701ResourcesAtsQuestions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsQuestions<true> = (options) => getApi20260701ResourcesAtsQuestions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all questions, yielding one item at a time.
    * @example for await (const item of client.ats.questions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsQuestions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsQuestions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsQuestions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsQuestions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1050,21 +1090,21 @@ export class AtsQuestionsResource {
    * Fetch all questions across all pages into a single array.
    * @example const all = await client.ats.questions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsQuestions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsQuestions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a questions record */
-  create: typeof postApi20260701ResourcesAtsQuestions = (options?: any) => postApi20260701ResourcesAtsQuestions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAtsQuestions<true> = (options) => postApi20260701ResourcesAtsQuestions<true>({ client: this._client, ...options });
 
   /** Reads a single questions record */
-  get: typeof getApi20260701ResourcesAtsQuestionsById = (options?: any) => getApi20260701ResourcesAtsQuestionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsQuestionsById<true> = (options) => getApi20260701ResourcesAtsQuestionsById<true>({ client: this._client, ...options });
 
   /** Updates a questions record */
-  update: typeof putApi20260701ResourcesAtsQuestionsById = (options?: any) => putApi20260701ResourcesAtsQuestionsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAtsQuestionsById<true> = (options) => putApi20260701ResourcesAtsQuestionsById<true>({ client: this._client, ...options });
 
   /** Deletes a questions record */
-  delete: typeof deleteApi20260701ResourcesAtsQuestionsById = (options?: any) => deleteApi20260701ResourcesAtsQuestionsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAtsQuestionsById<true> = (options) => deleteApi20260701ResourcesAtsQuestionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the ats > rejection_reasons resource */
@@ -1072,17 +1112,19 @@ export class AtsRejectionReasonsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all rejection_reasons */
-  list: typeof getApi20260701ResourcesAtsRejectionReasons = (options?: any) => getApi20260701ResourcesAtsRejectionReasons({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAtsRejectionReasons<true> = (options) => getApi20260701ResourcesAtsRejectionReasons<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all rejection_reasons, yielding one item at a time.
    * @example for await (const item of client.ats.rejectionReasons.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsRejectionReasons>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAtsRejectionReasons<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAtsRejectionReasons({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAtsRejectionReasons<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1090,12 +1132,12 @@ export class AtsRejectionReasonsResource {
    * Fetch all rejection_reasons across all pages into a single array.
    * @example const all = await client.ats.rejectionReasons.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAtsRejectionReasons>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAtsRejectionReasons<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single rejection_reasons record */
-  get: typeof getApi20260701ResourcesAtsRejectionReasonsById = (options?: any) => getApi20260701ResourcesAtsRejectionReasonsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAtsRejectionReasonsById<true> = (options) => getApi20260701ResourcesAtsRejectionReasonsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > break_configurations resource */
@@ -1103,17 +1145,19 @@ export class AttendanceBreakConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all break_configurations */
-  list: typeof getApi20260701ResourcesAttendanceBreakConfigurations = (options?: any) => getApi20260701ResourcesAttendanceBreakConfigurations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceBreakConfigurations<true> = (options) => getApi20260701ResourcesAttendanceBreakConfigurations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all break_configurations, yielding one item at a time.
    * @example for await (const item of client.attendance.breakConfigurations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceBreakConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceBreakConfigurations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceBreakConfigurations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1121,18 +1165,18 @@ export class AttendanceBreakConfigurationsResource {
    * Fetch all break_configurations across all pages into a single array.
    * @example const all = await client.attendance.breakConfigurations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceBreakConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a break_configurations record */
-  create: typeof postApi20260701ResourcesAttendanceBreakConfigurations = (options?: any) => postApi20260701ResourcesAttendanceBreakConfigurations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAttendanceBreakConfigurations<true> = (options) => postApi20260701ResourcesAttendanceBreakConfigurations<true>({ client: this._client, ...options });
 
   /** Reads a single break_configurations record */
-  get: typeof getApi20260701ResourcesAttendanceBreakConfigurationsById = (options?: any) => getApi20260701ResourcesAttendanceBreakConfigurationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAttendanceBreakConfigurationsById<true> = (options) => getApi20260701ResourcesAttendanceBreakConfigurationsById<true>({ client: this._client, ...options });
 
   /** Updates a break_configurations record */
-  update: typeof putApi20260701ResourcesAttendanceBreakConfigurationsById = (options?: any) => putApi20260701ResourcesAttendanceBreakConfigurationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAttendanceBreakConfigurationsById<true> = (options) => putApi20260701ResourcesAttendanceBreakConfigurationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > edit_timesheet_requests resource */
@@ -1140,17 +1184,19 @@ export class AttendanceEditTimesheetRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all edit_timesheet_requests */
-  list: typeof getApi20260701ResourcesAttendanceEditTimesheetRequests = (options?: any) => getApi20260701ResourcesAttendanceEditTimesheetRequests({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceEditTimesheetRequests<true> = (options) => getApi20260701ResourcesAttendanceEditTimesheetRequests<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all edit_timesheet_requests, yielding one item at a time.
    * @example for await (const item of client.attendance.editTimesheetRequests.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceEditTimesheetRequests>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceEditTimesheetRequests<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceEditTimesheetRequests({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceEditTimesheetRequests<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1158,21 +1204,21 @@ export class AttendanceEditTimesheetRequestsResource {
    * Fetch all edit_timesheet_requests across all pages into a single array.
    * @example const all = await client.attendance.editTimesheetRequests.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceEditTimesheetRequests>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceEditTimesheetRequests<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a edit_timesheet_requests record */
-  create: typeof postApi20260701ResourcesAttendanceEditTimesheetRequests = (options?: any) => postApi20260701ResourcesAttendanceEditTimesheetRequests({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAttendanceEditTimesheetRequests<true> = (options) => postApi20260701ResourcesAttendanceEditTimesheetRequests<true>({ client: this._client, ...options });
 
   /** Reads a single edit_timesheet_requests record */
-  get: typeof getApi20260701ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => getApi20260701ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAttendanceEditTimesheetRequestsById<true> = (options) => getApi20260701ResourcesAttendanceEditTimesheetRequestsById<true>({ client: this._client, ...options });
 
   /** Updates a edit_timesheet_requests record */
-  update: typeof putApi20260701ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => putApi20260701ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAttendanceEditTimesheetRequestsById<true> = (options) => putApi20260701ResourcesAttendanceEditTimesheetRequestsById<true>({ client: this._client, ...options });
 
   /** Deletes a edit_timesheet_requests record */
-  delete: typeof deleteApi20260701ResourcesAttendanceEditTimesheetRequestsById = (options?: any) => deleteApi20260701ResourcesAttendanceEditTimesheetRequestsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAttendanceEditTimesheetRequestsById<true> = (options) => deleteApi20260701ResourcesAttendanceEditTimesheetRequestsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > estimated_times resource */
@@ -1180,17 +1226,19 @@ export class AttendanceEstimatedTimesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all estimated_times */
-  list: typeof getApi20260701ResourcesAttendanceEstimatedTimes = (options?: any) => getApi20260701ResourcesAttendanceEstimatedTimes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceEstimatedTimes<true> = (options) => getApi20260701ResourcesAttendanceEstimatedTimes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all estimated_times, yielding one item at a time.
    * @example for await (const item of client.attendance.estimatedTimes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceEstimatedTimes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceEstimatedTimes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceEstimatedTimes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceEstimatedTimes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1198,7 +1246,7 @@ export class AttendanceEstimatedTimesResource {
    * Fetch all estimated_times across all pages into a single array.
    * @example const all = await client.attendance.estimatedTimes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceEstimatedTimes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceEstimatedTimes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1208,17 +1256,19 @@ export class AttendanceOpenShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all open_shifts */
-  list: typeof getApi20260701ResourcesAttendanceOpenShifts = (options?: any) => getApi20260701ResourcesAttendanceOpenShifts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceOpenShifts<true> = (options) => getApi20260701ResourcesAttendanceOpenShifts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all open_shifts, yielding one item at a time.
    * @example for await (const item of client.attendance.openShifts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceOpenShifts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceOpenShifts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceOpenShifts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceOpenShifts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1226,7 +1276,7 @@ export class AttendanceOpenShiftsResource {
    * Fetch all open_shifts across all pages into a single array.
    * @example const all = await client.attendance.openShifts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceOpenShifts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceOpenShifts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1236,17 +1286,19 @@ export class AttendanceOvertimeRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all overtime_requests */
-  list: typeof getApi20260701ResourcesAttendanceOvertimeRequests = (options?: any) => getApi20260701ResourcesAttendanceOvertimeRequests({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceOvertimeRequests<true> = (options) => getApi20260701ResourcesAttendanceOvertimeRequests<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all overtime_requests, yielding one item at a time.
    * @example for await (const item of client.attendance.overtimeRequests.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceOvertimeRequests>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceOvertimeRequests<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceOvertimeRequests({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceOvertimeRequests<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1254,27 +1306,27 @@ export class AttendanceOvertimeRequestsResource {
    * Fetch all overtime_requests across all pages into a single array.
    * @example const all = await client.attendance.overtimeRequests.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceOvertimeRequests>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceOvertimeRequests<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a overtime_requests record */
-  create: typeof postApi20260701ResourcesAttendanceOvertimeRequests = (options?: any) => postApi20260701ResourcesAttendanceOvertimeRequests({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAttendanceOvertimeRequests<true> = (options) => postApi20260701ResourcesAttendanceOvertimeRequests<true>({ client: this._client, ...options });
 
   /** Reads a single overtime_requests record */
-  get: typeof getApi20260701ResourcesAttendanceOvertimeRequestsById = (options?: any) => getApi20260701ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAttendanceOvertimeRequestsById<true> = (options) => getApi20260701ResourcesAttendanceOvertimeRequestsById<true>({ client: this._client, ...options });
 
   /** Updates a overtime_requests record */
-  update: typeof putApi20260701ResourcesAttendanceOvertimeRequestsById = (options?: any) => putApi20260701ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAttendanceOvertimeRequestsById<true> = (options) => putApi20260701ResourcesAttendanceOvertimeRequestsById<true>({ client: this._client, ...options });
 
   /** Deletes a overtime_requests record */
-  delete: typeof deleteApi20260701ResourcesAttendanceOvertimeRequestsById = (options?: any) => deleteApi20260701ResourcesAttendanceOvertimeRequestsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAttendanceOvertimeRequestsById<true> = (options) => deleteApi20260701ResourcesAttendanceOvertimeRequestsById<true>({ client: this._client, ...options });
 
   /** approve */
-  approve: typeof postApi20260701ResourcesAttendanceOvertimeRequestsApprove = (options?: any) => postApi20260701ResourcesAttendanceOvertimeRequestsApprove({ client: this._client, ...options });
+  approve: typeof postApi20260701ResourcesAttendanceOvertimeRequestsApprove<true> = (options) => postApi20260701ResourcesAttendanceOvertimeRequestsApprove<true>({ client: this._client, ...options });
 
   /** reject */
-  reject: typeof postApi20260701ResourcesAttendanceOvertimeRequestsReject = (options?: any) => postApi20260701ResourcesAttendanceOvertimeRequestsReject({ client: this._client, ...options });
+  reject: typeof postApi20260701ResourcesAttendanceOvertimeRequestsReject<true> = (options) => postApi20260701ResourcesAttendanceOvertimeRequestsReject<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > reviews resource */
@@ -1282,17 +1334,19 @@ export class AttendanceReviewsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all reviews */
-  list: typeof getApi20260701ResourcesAttendanceReviews = (options?: any) => getApi20260701ResourcesAttendanceReviews({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceReviews<true> = (options) => getApi20260701ResourcesAttendanceReviews<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all reviews, yielding one item at a time.
    * @example for await (const item of client.attendance.reviews.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceReviews>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceReviews<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceReviews({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceReviews<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1300,15 +1354,15 @@ export class AttendanceReviewsResource {
    * Fetch all reviews across all pages into a single array.
    * @example const all = await client.attendance.reviews.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceReviews>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceReviews<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesAttendanceReviewsBulkCreate = (options?: any) => postApi20260701ResourcesAttendanceReviewsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesAttendanceReviewsBulkCreate<true> = (options) => postApi20260701ResourcesAttendanceReviewsBulkCreate<true>({ client: this._client, ...options });
 
   /** bulkDestroy */
-  bulkDestroy: typeof postApi20260701ResourcesAttendanceReviewsBulkDestroy = (options?: any) => postApi20260701ResourcesAttendanceReviewsBulkDestroy({ client: this._client, ...options });
+  bulkDestroy: typeof postApi20260701ResourcesAttendanceReviewsBulkDestroy<true> = (options) => postApi20260701ResourcesAttendanceReviewsBulkDestroy<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > shifts resource */
@@ -1316,17 +1370,19 @@ export class AttendanceShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all shifts */
-  list: typeof getApi20260701ResourcesAttendanceShifts = (options?: any) => getApi20260701ResourcesAttendanceShifts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceShifts<true> = (options) => getApi20260701ResourcesAttendanceShifts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all shifts, yielding one item at a time.
    * @example for await (const item of client.attendance.shifts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceShifts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceShifts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceShifts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceShifts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1334,39 +1390,39 @@ export class AttendanceShiftsResource {
    * Fetch all shifts across all pages into a single array.
    * @example const all = await client.attendance.shifts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceShifts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceShifts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a shifts record */
-  create: typeof postApi20260701ResourcesAttendanceShifts = (options?: any) => postApi20260701ResourcesAttendanceShifts({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesAttendanceShifts<true> = (options) => postApi20260701ResourcesAttendanceShifts<true>({ client: this._client, ...options });
 
   /** Reads a single shifts record */
-  get: typeof getApi20260701ResourcesAttendanceShiftsById = (options?: any) => getApi20260701ResourcesAttendanceShiftsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesAttendanceShiftsById<true> = (options) => getApi20260701ResourcesAttendanceShiftsById<true>({ client: this._client, ...options });
 
   /** Updates a shifts record */
-  update: typeof putApi20260701ResourcesAttendanceShiftsById = (options?: any) => putApi20260701ResourcesAttendanceShiftsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesAttendanceShiftsById<true> = (options) => putApi20260701ResourcesAttendanceShiftsById<true>({ client: this._client, ...options });
 
   /** Deletes a shifts record */
-  delete: typeof deleteApi20260701ResourcesAttendanceShiftsById = (options?: any) => deleteApi20260701ResourcesAttendanceShiftsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesAttendanceShiftsById<true> = (options) => deleteApi20260701ResourcesAttendanceShiftsById<true>({ client: this._client, ...options });
 
   /** autofill */
-  autofill: typeof postApi20260701ResourcesAttendanceShiftsAutofill = (options?: any) => postApi20260701ResourcesAttendanceShiftsAutofill({ client: this._client, ...options });
+  autofill: typeof postApi20260701ResourcesAttendanceShiftsAutofill<true> = (options) => postApi20260701ResourcesAttendanceShiftsAutofill<true>({ client: this._client, ...options });
 
   /** breakEnd */
-  breakEnd: typeof postApi20260701ResourcesAttendanceShiftsBreakEnd = (options?: any) => postApi20260701ResourcesAttendanceShiftsBreakEnd({ client: this._client, ...options });
+  breakEnd: typeof postApi20260701ResourcesAttendanceShiftsBreakEnd<true> = (options) => postApi20260701ResourcesAttendanceShiftsBreakEnd<true>({ client: this._client, ...options });
 
   /** breakStart */
-  breakStart: typeof postApi20260701ResourcesAttendanceShiftsBreakStart = (options?: any) => postApi20260701ResourcesAttendanceShiftsBreakStart({ client: this._client, ...options });
+  breakStart: typeof postApi20260701ResourcesAttendanceShiftsBreakStart<true> = (options) => postApi20260701ResourcesAttendanceShiftsBreakStart<true>({ client: this._client, ...options });
 
   /** clockIn */
-  clockIn: typeof postApi20260701ResourcesAttendanceShiftsClockIn = (options?: any) => postApi20260701ResourcesAttendanceShiftsClockIn({ client: this._client, ...options });
+  clockIn: typeof postApi20260701ResourcesAttendanceShiftsClockIn<true> = (options) => postApi20260701ResourcesAttendanceShiftsClockIn<true>({ client: this._client, ...options });
 
   /** clockOut */
-  clockOut: typeof postApi20260701ResourcesAttendanceShiftsClockOut = (options?: any) => postApi20260701ResourcesAttendanceShiftsClockOut({ client: this._client, ...options });
+  clockOut: typeof postApi20260701ResourcesAttendanceShiftsClockOut<true> = (options) => postApi20260701ResourcesAttendanceShiftsClockOut<true>({ client: this._client, ...options });
 
   /** toggleClock */
-  toggleClock: typeof postApi20260701ResourcesAttendanceShiftsToggleClock = (options?: any) => postApi20260701ResourcesAttendanceShiftsToggleClock({ client: this._client, ...options });
+  toggleClock: typeof postApi20260701ResourcesAttendanceShiftsToggleClock<true> = (options) => postApi20260701ResourcesAttendanceShiftsToggleClock<true>({ client: this._client, ...options });
 
 }
 /** Methods for the attendance > worked_times resource */
@@ -1374,17 +1430,19 @@ export class AttendanceWorkedTimesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all worked_times */
-  list: typeof getApi20260701ResourcesAttendanceWorkedTimes = (options?: any) => getApi20260701ResourcesAttendanceWorkedTimes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesAttendanceWorkedTimes<true> = (options) => getApi20260701ResourcesAttendanceWorkedTimes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all worked_times, yielding one item at a time.
    * @example for await (const item of client.attendance.workedTimes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceWorkedTimes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesAttendanceWorkedTimes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesAttendanceWorkedTimes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesAttendanceWorkedTimes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1392,7 +1450,7 @@ export class AttendanceWorkedTimesResource {
    * Fetch all worked_times across all pages into a single array.
    * @example const all = await client.attendance.workedTimes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceWorkedTimes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesAttendanceWorkedTimes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1402,17 +1460,19 @@ export class BankingBankAccountsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all bank_accounts */
-  list: typeof getApi20260701ResourcesBankingBankAccounts = (options?: any) => getApi20260701ResourcesBankingBankAccounts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesBankingBankAccounts<true> = (options) => getApi20260701ResourcesBankingBankAccounts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all bank_accounts, yielding one item at a time.
    * @example for await (const item of client.banking.bankAccounts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingBankAccounts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingBankAccounts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesBankingBankAccounts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesBankingBankAccounts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1420,15 +1480,15 @@ export class BankingBankAccountsResource {
    * Fetch all bank_accounts across all pages into a single array.
    * @example const all = await client.banking.bankAccounts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesBankingBankAccounts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesBankingBankAccounts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single bank_accounts record */
-  get: typeof getApi20260701ResourcesBankingBankAccountsById = (options?: any) => getApi20260701ResourcesBankingBankAccountsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesBankingBankAccountsById<true> = (options) => getApi20260701ResourcesBankingBankAccountsById<true>({ client: this._client, ...options });
 
   /** createManual */
-  createManual: typeof postApi20260701ResourcesBankingBankAccountsCreateManual = (options?: any) => postApi20260701ResourcesBankingBankAccountsCreateManual({ client: this._client, ...options });
+  createManual: typeof postApi20260701ResourcesBankingBankAccountsCreateManual<true> = (options) => postApi20260701ResourcesBankingBankAccountsCreateManual<true>({ client: this._client, ...options });
 
 }
 /** Methods for the banking > card_payments resource */
@@ -1436,17 +1496,19 @@ export class BankingCardPaymentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all card_payments */
-  list: typeof getApi20260701ResourcesBankingCardPayments = (options?: any) => getApi20260701ResourcesBankingCardPayments({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesBankingCardPayments<true> = (options) => getApi20260701ResourcesBankingCardPayments<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all card_payments, yielding one item at a time.
    * @example for await (const item of client.banking.cardPayments.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingCardPayments>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingCardPayments<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesBankingCardPayments({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesBankingCardPayments<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1454,12 +1516,12 @@ export class BankingCardPaymentsResource {
    * Fetch all card_payments across all pages into a single array.
    * @example const all = await client.banking.cardPayments.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesBankingCardPayments>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesBankingCardPayments<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single card_payments record */
-  get: typeof getApi20260701ResourcesBankingCardPaymentsById = (options?: any) => getApi20260701ResourcesBankingCardPaymentsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesBankingCardPaymentsById<true> = (options) => getApi20260701ResourcesBankingCardPaymentsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the banking > transactions resource */
@@ -1467,17 +1529,19 @@ export class BankingTransactionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all transactions */
-  list: typeof getApi20260701ResourcesBankingTransactions = (options?: any) => getApi20260701ResourcesBankingTransactions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesBankingTransactions<true> = (options) => getApi20260701ResourcesBankingTransactions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all transactions, yielding one item at a time.
    * @example for await (const item of client.banking.transactions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingTransactions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesBankingTransactions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesBankingTransactions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesBankingTransactions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1485,12 +1549,12 @@ export class BankingTransactionsResource {
    * Fetch all transactions across all pages into a single array.
    * @example const all = await client.banking.transactions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesBankingTransactions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesBankingTransactions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single transactions record */
-  get: typeof getApi20260701ResourcesBankingTransactionsById = (options?: any) => getApi20260701ResourcesBankingTransactionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesBankingTransactionsById<true> = (options) => getApi20260701ResourcesBankingTransactionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the bookkeepers_management > incidences resource */
@@ -1498,17 +1562,19 @@ export class BookkeepersManagementIncidencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all incidences */
-  list: typeof getApi20260701ResourcesBookkeepersManagementIncidences = (options?: any) => getApi20260701ResourcesBookkeepersManagementIncidences({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesBookkeepersManagementIncidences<true> = (options) => getApi20260701ResourcesBookkeepersManagementIncidences<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all incidences, yielding one item at a time.
    * @example for await (const item of client.bookkeepersManagement.incidences.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesBookkeepersManagementIncidences>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesBookkeepersManagementIncidences<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesBookkeepersManagementIncidences({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesBookkeepersManagementIncidences<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1516,15 +1582,15 @@ export class BookkeepersManagementIncidencesResource {
    * Fetch all incidences across all pages into a single array.
    * @example const all = await client.bookkeepersManagement.incidences.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesBookkeepersManagementIncidences>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesBookkeepersManagementIncidences<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single incidences record */
-  get: typeof getApi20260701ResourcesBookkeepersManagementIncidencesById = (options?: any) => getApi20260701ResourcesBookkeepersManagementIncidencesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesBookkeepersManagementIncidencesById<true> = (options) => getApi20260701ResourcesBookkeepersManagementIncidencesById<true>({ client: this._client, ...options });
 
   /** Updates a incidences record */
-  update: typeof putApi20260701ResourcesBookkeepersManagementIncidencesById = (options?: any) => putApi20260701ResourcesBookkeepersManagementIncidencesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesBookkeepersManagementIncidencesById<true> = (options) => putApi20260701ResourcesBookkeepersManagementIncidencesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the companies > legal_entities resource */
@@ -1532,17 +1598,19 @@ export class CompaniesLegalEntitiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all legal_entities */
-  list: typeof getApi20260701ResourcesCompaniesLegalEntities = (options?: any) => getApi20260701ResourcesCompaniesLegalEntities({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCompaniesLegalEntities<true> = (options) => getApi20260701ResourcesCompaniesLegalEntities<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all legal_entities, yielding one item at a time.
    * @example for await (const item of client.companies.legalEntities.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCompaniesLegalEntities>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCompaniesLegalEntities<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCompaniesLegalEntities({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCompaniesLegalEntities<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1550,15 +1618,15 @@ export class CompaniesLegalEntitiesResource {
    * Fetch all legal_entities across all pages into a single array.
    * @example const all = await client.companies.legalEntities.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCompaniesLegalEntities>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCompaniesLegalEntities<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a legal_entities record */
-  create: typeof postApi20260701ResourcesCompaniesLegalEntities = (options?: any) => postApi20260701ResourcesCompaniesLegalEntities({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCompaniesLegalEntities<true> = (options) => postApi20260701ResourcesCompaniesLegalEntities<true>({ client: this._client, ...options });
 
   /** Reads a single legal_entities record */
-  get: typeof getApi20260701ResourcesCompaniesLegalEntitiesById = (options?: any) => getApi20260701ResourcesCompaniesLegalEntitiesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCompaniesLegalEntitiesById<true> = (options) => getApi20260701ResourcesCompaniesLegalEntitiesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the compensations > concepts resource */
@@ -1566,17 +1634,19 @@ export class CompensationsConceptsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all concepts */
-  list: typeof getApi20260701ResourcesCompensationsConcepts = (options?: any) => getApi20260701ResourcesCompensationsConcepts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCompensationsConcepts<true> = (options) => getApi20260701ResourcesCompensationsConcepts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all concepts, yielding one item at a time.
    * @example for await (const item of client.compensations.concepts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCompensationsConcepts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCompensationsConcepts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCompensationsConcepts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCompensationsConcepts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1584,12 +1654,12 @@ export class CompensationsConceptsResource {
    * Fetch all concepts across all pages into a single array.
    * @example const all = await client.compensations.concepts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCompensationsConcepts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCompensationsConcepts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single concepts record */
-  get: typeof getApi20260701ResourcesCompensationsConceptsById = (options?: any) => getApi20260701ResourcesCompensationsConceptsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCompensationsConceptsById<true> = (options) => getApi20260701ResourcesCompensationsConceptsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > compensations resource */
@@ -1597,17 +1667,19 @@ export class ContractsCompensationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all compensations */
-  list: typeof getApi20260701ResourcesContractsCompensations = (options?: any) => getApi20260701ResourcesContractsCompensations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsCompensations<true> = (options) => getApi20260701ResourcesContractsCompensations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all compensations, yielding one item at a time.
    * @example for await (const item of client.contracts.compensations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsCompensations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsCompensations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsCompensations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsCompensations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1615,21 +1687,21 @@ export class ContractsCompensationsResource {
    * Fetch all compensations across all pages into a single array.
    * @example const all = await client.contracts.compensations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsCompensations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsCompensations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a compensations record */
-  create: typeof postApi20260701ResourcesContractsCompensations = (options?: any) => postApi20260701ResourcesContractsCompensations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsCompensations<true> = (options) => postApi20260701ResourcesContractsCompensations<true>({ client: this._client, ...options });
 
   /** Reads a single compensations record */
-  get: typeof getApi20260701ResourcesContractsCompensationsById = (options?: any) => getApi20260701ResourcesContractsCompensationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsCompensationsById<true> = (options) => getApi20260701ResourcesContractsCompensationsById<true>({ client: this._client, ...options });
 
   /** Updates a compensations record */
-  update: typeof putApi20260701ResourcesContractsCompensationsById = (options?: any) => putApi20260701ResourcesContractsCompensationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesContractsCompensationsById<true> = (options) => putApi20260701ResourcesContractsCompensationsById<true>({ client: this._client, ...options });
 
   /** Deletes a compensations record */
-  delete: typeof deleteApi20260701ResourcesContractsCompensationsById = (options?: any) => deleteApi20260701ResourcesContractsCompensationsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesContractsCompensationsById<true> = (options) => deleteApi20260701ResourcesContractsCompensationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > contract_templates resource */
@@ -1637,17 +1709,19 @@ export class ContractsContractTemplatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contract_templates */
-  list: typeof getApi20260701ResourcesContractsContractTemplates = (options?: any) => getApi20260701ResourcesContractsContractTemplates({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsContractTemplates<true> = (options) => getApi20260701ResourcesContractsContractTemplates<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contract_templates, yielding one item at a time.
    * @example for await (const item of client.contracts.contractTemplates.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractTemplates>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsContractTemplates({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsContractTemplates<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1655,12 +1729,12 @@ export class ContractsContractTemplatesResource {
    * Fetch all contract_templates across all pages into a single array.
    * @example const all = await client.contracts.contractTemplates.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractTemplates>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single contract_templates record */
-  get: typeof getApi20260701ResourcesContractsContractTemplatesById = (options?: any) => getApi20260701ResourcesContractsContractTemplatesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsContractTemplatesById<true> = (options) => getApi20260701ResourcesContractsContractTemplatesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > contract_version_histories resource */
@@ -1668,17 +1742,19 @@ export class ContractsContractVersionHistoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contract_version_histories */
-  list: typeof getApi20260701ResourcesContractsContractVersionHistories = (options?: any) => getApi20260701ResourcesContractsContractVersionHistories({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsContractVersionHistories<true> = (options) => getApi20260701ResourcesContractsContractVersionHistories<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contract_version_histories, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersionHistories.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionHistories>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionHistories<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsContractVersionHistories({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsContractVersionHistories<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1686,12 +1762,12 @@ export class ContractsContractVersionHistoriesResource {
    * Fetch all contract_version_histories across all pages into a single array.
    * @example const all = await client.contracts.contractVersionHistories.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionHistories>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionHistories<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single contract_version_histories record */
-  get: typeof getApi20260701ResourcesContractsContractVersionHistoriesById = (options?: any) => getApi20260701ResourcesContractsContractVersionHistoriesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsContractVersionHistoriesById<true> = (options) => getApi20260701ResourcesContractsContractVersionHistoriesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > contract_version_meta_data resource */
@@ -1699,17 +1775,19 @@ export class ContractsContractVersionMetaDataResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contract_version_meta_data */
-  list: typeof getApi20260701ResourcesContractsContractVersionMetaData = (options?: any) => getApi20260701ResourcesContractsContractVersionMetaData({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsContractVersionMetaData<true> = (options) => getApi20260701ResourcesContractsContractVersionMetaData<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contract_version_meta_data, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersionMetaData.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionMetaData>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionMetaData<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsContractVersionMetaData({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsContractVersionMetaData<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1717,7 +1795,7 @@ export class ContractsContractVersionMetaDataResource {
    * Fetch all contract_version_meta_data across all pages into a single array.
    * @example const all = await client.contracts.contractVersionMetaData.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionMetaData>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersionMetaData<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1727,17 +1805,19 @@ export class ContractsContractVersionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contract_versions */
-  list: typeof getApi20260701ResourcesContractsContractVersions = (options?: any) => getApi20260701ResourcesContractsContractVersions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsContractVersions<true> = (options) => getApi20260701ResourcesContractsContractVersions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contract_versions, yielding one item at a time.
    * @example for await (const item of client.contracts.contractVersions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsContractVersions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsContractVersions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1745,21 +1825,21 @@ export class ContractsContractVersionsResource {
    * Fetch all contract_versions across all pages into a single array.
    * @example const all = await client.contracts.contractVersions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsContractVersions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a contract_versions record */
-  create: typeof postApi20260701ResourcesContractsContractVersions = (options?: any) => postApi20260701ResourcesContractsContractVersions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsContractVersions<true> = (options) => postApi20260701ResourcesContractsContractVersions<true>({ client: this._client, ...options });
 
   /** Reads a single contract_versions record */
-  get: typeof getApi20260701ResourcesContractsContractVersionsById = (options?: any) => getApi20260701ResourcesContractsContractVersionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsContractVersionsById<true> = (options) => getApi20260701ResourcesContractsContractVersionsById<true>({ client: this._client, ...options });
 
   /** Updates a contract_versions record */
-  update: typeof putApi20260701ResourcesContractsContractVersionsById = (options?: any) => putApi20260701ResourcesContractsContractVersionsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesContractsContractVersionsById<true> = (options) => putApi20260701ResourcesContractsContractVersionsById<true>({ client: this._client, ...options });
 
   /** Deletes a contract_versions record */
-  delete: typeof deleteApi20260701ResourcesContractsContractVersionsById = (options?: any) => deleteApi20260701ResourcesContractsContractVersionsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesContractsContractVersionsById<true> = (options) => deleteApi20260701ResourcesContractsContractVersionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > french_contract_types resource */
@@ -1767,17 +1847,19 @@ export class ContractsFrenchContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all french_contract_types */
-  list: typeof getApi20260701ResourcesContractsFrenchContractTypes = (options?: any) => getApi20260701ResourcesContractsFrenchContractTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsFrenchContractTypes<true> = (options) => getApi20260701ResourcesContractsFrenchContractTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all french_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.frenchContractTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsFrenchContractTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsFrenchContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsFrenchContractTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsFrenchContractTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1785,12 +1867,12 @@ export class ContractsFrenchContractTypesResource {
    * Fetch all french_contract_types across all pages into a single array.
    * @example const all = await client.contracts.frenchContractTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsFrenchContractTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsFrenchContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single french_contract_types record */
-  get: typeof getApi20260701ResourcesContractsFrenchContractTypesById = (options?: any) => getApi20260701ResourcesContractsFrenchContractTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsFrenchContractTypesById<true> = (options) => getApi20260701ResourcesContractsFrenchContractTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > german_contract_types resource */
@@ -1798,17 +1880,19 @@ export class ContractsGermanContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all german_contract_types */
-  list: typeof getApi20260701ResourcesContractsGermanContractTypes = (options?: any) => getApi20260701ResourcesContractsGermanContractTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsGermanContractTypes<true> = (options) => getApi20260701ResourcesContractsGermanContractTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all german_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.germanContractTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsGermanContractTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsGermanContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsGermanContractTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsGermanContractTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1816,12 +1900,12 @@ export class ContractsGermanContractTypesResource {
    * Fetch all german_contract_types across all pages into a single array.
    * @example const all = await client.contracts.germanContractTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsGermanContractTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsGermanContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single german_contract_types record */
-  get: typeof getApi20260701ResourcesContractsGermanContractTypesById = (options?: any) => getApi20260701ResourcesContractsGermanContractTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsGermanContractTypesById<true> = (options) => getApi20260701ResourcesContractsGermanContractTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > materialized_templates resource */
@@ -1829,17 +1913,19 @@ export class ContractsMaterializedTemplatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all materialized_templates */
-  list: typeof getApi20260701ResourcesContractsMaterializedTemplates = (options?: any) => getApi20260701ResourcesContractsMaterializedTemplates({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsMaterializedTemplates<true> = (options) => getApi20260701ResourcesContractsMaterializedTemplates<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all materialized_templates, yielding one item at a time.
    * @example for await (const item of client.contracts.materializedTemplates.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsMaterializedTemplates>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsMaterializedTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsMaterializedTemplates({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsMaterializedTemplates<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1847,7 +1933,7 @@ export class ContractsMaterializedTemplatesResource {
    * Fetch all materialized_templates across all pages into a single array.
    * @example const all = await client.contracts.materializedTemplates.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsMaterializedTemplates>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsMaterializedTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1857,17 +1943,19 @@ export class ContractsPortugueseContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all portuguese_contract_types */
-  list: typeof getApi20260701ResourcesContractsPortugueseContractTypes = (options?: any) => getApi20260701ResourcesContractsPortugueseContractTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsPortugueseContractTypes<true> = (options) => getApi20260701ResourcesContractsPortugueseContractTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all portuguese_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.portugueseContractTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsPortugueseContractTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsPortugueseContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsPortugueseContractTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsPortugueseContractTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1875,12 +1963,12 @@ export class ContractsPortugueseContractTypesResource {
    * Fetch all portuguese_contract_types across all pages into a single array.
    * @example const all = await client.contracts.portugueseContractTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsPortugueseContractTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsPortugueseContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single portuguese_contract_types record */
-  get: typeof getApi20260701ResourcesContractsPortugueseContractTypesById = (options?: any) => getApi20260701ResourcesContractsPortugueseContractTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsPortugueseContractTypesById<true> = (options) => getApi20260701ResourcesContractsPortugueseContractTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > reference_contracts resource */
@@ -1888,17 +1976,19 @@ export class ContractsReferenceContractsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all reference_contracts */
-  list: typeof getApi20260701ResourcesContractsReferenceContracts = (options?: any) => getApi20260701ResourcesContractsReferenceContracts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsReferenceContracts<true> = (options) => getApi20260701ResourcesContractsReferenceContracts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all reference_contracts, yielding one item at a time.
    * @example for await (const item of client.contracts.referenceContracts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsReferenceContracts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsReferenceContracts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsReferenceContracts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsReferenceContracts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1906,7 +1996,7 @@ export class ContractsReferenceContractsResource {
    * Fetch all reference_contracts across all pages into a single array.
    * @example const all = await client.contracts.referenceContracts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsReferenceContracts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsReferenceContracts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -1916,17 +2006,19 @@ export class ContractsSpanishContractTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all spanish_contract_types */
-  list: typeof getApi20260701ResourcesContractsSpanishContractTypes = (options?: any) => getApi20260701ResourcesContractsSpanishContractTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsSpanishContractTypes<true> = (options) => getApi20260701ResourcesContractsSpanishContractTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all spanish_contract_types, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishContractTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishContractTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsSpanishContractTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsSpanishContractTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1934,15 +2026,15 @@ export class ContractsSpanishContractTypesResource {
    * Fetch all spanish_contract_types across all pages into a single array.
    * @example const all = await client.contracts.spanishContractTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishContractTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishContractTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a spanish_contract_types record */
-  create: typeof postApi20260701ResourcesContractsSpanishContractTypes = (options?: any) => postApi20260701ResourcesContractsSpanishContractTypes({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsSpanishContractTypes<true> = (options) => postApi20260701ResourcesContractsSpanishContractTypes<true>({ client: this._client, ...options });
 
   /** Reads a single spanish_contract_types record */
-  get: typeof getApi20260701ResourcesContractsSpanishContractTypesById = (options?: any) => getApi20260701ResourcesContractsSpanishContractTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsSpanishContractTypesById<true> = (options) => getApi20260701ResourcesContractsSpanishContractTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > spanish_education_levels resource */
@@ -1950,17 +2042,19 @@ export class ContractsSpanishEducationLevelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all spanish_education_levels */
-  list: typeof getApi20260701ResourcesContractsSpanishEducationLevels = (options?: any) => getApi20260701ResourcesContractsSpanishEducationLevels({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsSpanishEducationLevels<true> = (options) => getApi20260701ResourcesContractsSpanishEducationLevels<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all spanish_education_levels, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishEducationLevels.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishEducationLevels>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishEducationLevels<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsSpanishEducationLevels({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsSpanishEducationLevels<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -1968,15 +2062,15 @@ export class ContractsSpanishEducationLevelsResource {
    * Fetch all spanish_education_levels across all pages into a single array.
    * @example const all = await client.contracts.spanishEducationLevels.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishEducationLevels>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishEducationLevels<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a spanish_education_levels record */
-  create: typeof postApi20260701ResourcesContractsSpanishEducationLevels = (options?: any) => postApi20260701ResourcesContractsSpanishEducationLevels({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsSpanishEducationLevels<true> = (options) => postApi20260701ResourcesContractsSpanishEducationLevels<true>({ client: this._client, ...options });
 
   /** Reads a single spanish_education_levels record */
-  get: typeof getApi20260701ResourcesContractsSpanishEducationLevelsById = (options?: any) => getApi20260701ResourcesContractsSpanishEducationLevelsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsSpanishEducationLevelsById<true> = (options) => getApi20260701ResourcesContractsSpanishEducationLevelsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > spanish_professional_categories resource */
@@ -1984,17 +2078,19 @@ export class ContractsSpanishProfessionalCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all spanish_professional_categories */
-  list: typeof getApi20260701ResourcesContractsSpanishProfessionalCategories = (options?: any) => getApi20260701ResourcesContractsSpanishProfessionalCategories({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsSpanishProfessionalCategories<true> = (options) => getApi20260701ResourcesContractsSpanishProfessionalCategories<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all spanish_professional_categories, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishProfessionalCategories.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishProfessionalCategories>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishProfessionalCategories<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsSpanishProfessionalCategories({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsSpanishProfessionalCategories<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2002,15 +2098,15 @@ export class ContractsSpanishProfessionalCategoriesResource {
    * Fetch all spanish_professional_categories across all pages into a single array.
    * @example const all = await client.contracts.spanishProfessionalCategories.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishProfessionalCategories>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishProfessionalCategories<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a spanish_professional_categories record */
-  create: typeof postApi20260701ResourcesContractsSpanishProfessionalCategories = (options?: any) => postApi20260701ResourcesContractsSpanishProfessionalCategories({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsSpanishProfessionalCategories<true> = (options) => postApi20260701ResourcesContractsSpanishProfessionalCategories<true>({ client: this._client, ...options });
 
   /** Reads a single spanish_professional_categories record */
-  get: typeof getApi20260701ResourcesContractsSpanishProfessionalCategoriesById = (options?: any) => getApi20260701ResourcesContractsSpanishProfessionalCategoriesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsSpanishProfessionalCategoriesById<true> = (options) => getApi20260701ResourcesContractsSpanishProfessionalCategoriesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > spanish_working_day_types resource */
@@ -2018,17 +2114,19 @@ export class ContractsSpanishWorkingDayTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all spanish_working_day_types */
-  list: typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes = (options?: any) => getApi20260701ResourcesContractsSpanishWorkingDayTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes<true> = (options) => getApi20260701ResourcesContractsSpanishWorkingDayTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all spanish_working_day_types, yielding one item at a time.
    * @example for await (const item of client.contracts.spanishWorkingDayTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsSpanishWorkingDayTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsSpanishWorkingDayTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2036,15 +2134,15 @@ export class ContractsSpanishWorkingDayTypesResource {
    * Fetch all spanish_working_day_types across all pages into a single array.
    * @example const all = await client.contracts.spanishWorkingDayTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsSpanishWorkingDayTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a spanish_working_day_types record */
-  create: typeof postApi20260701ResourcesContractsSpanishWorkingDayTypes = (options?: any) => postApi20260701ResourcesContractsSpanishWorkingDayTypes({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesContractsSpanishWorkingDayTypes<true> = (options) => postApi20260701ResourcesContractsSpanishWorkingDayTypes<true>({ client: this._client, ...options });
 
   /** Reads a single spanish_working_day_types record */
-  get: typeof getApi20260701ResourcesContractsSpanishWorkingDayTypesById = (options?: any) => getApi20260701ResourcesContractsSpanishWorkingDayTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsSpanishWorkingDayTypesById<true> = (options) => getApi20260701ResourcesContractsSpanishWorkingDayTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the contracts > taxonomies resource */
@@ -2052,17 +2150,19 @@ export class ContractsTaxonomiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all taxonomies */
-  list: typeof getApi20260701ResourcesContractsTaxonomies = (options?: any) => getApi20260701ResourcesContractsTaxonomies({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesContractsTaxonomies<true> = (options) => getApi20260701ResourcesContractsTaxonomies<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all taxonomies, yielding one item at a time.
    * @example for await (const item of client.contracts.taxonomies.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsTaxonomies>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesContractsTaxonomies<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesContractsTaxonomies({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesContractsTaxonomies<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2070,12 +2170,12 @@ export class ContractsTaxonomiesResource {
    * Fetch all taxonomies across all pages into a single array.
    * @example const all = await client.contracts.taxonomies.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesContractsTaxonomies>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesContractsTaxonomies<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single taxonomies record */
-  get: typeof getApi20260701ResourcesContractsTaxonomiesById = (options?: any) => getApi20260701ResourcesContractsTaxonomiesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesContractsTaxonomiesById<true> = (options) => getApi20260701ResourcesContractsTaxonomiesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_fields > fields resource */
@@ -2083,17 +2183,19 @@ export class CustomFieldsFieldsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all fields */
-  list: typeof getApi20260701ResourcesCustomFieldsFields = (options?: any) => getApi20260701ResourcesCustomFieldsFields({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomFieldsFields<true> = (options) => getApi20260701ResourcesCustomFieldsFields<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all fields, yielding one item at a time.
    * @example for await (const item of client.customFields.fields.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsFields>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsFields<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomFieldsFields({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomFieldsFields<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2101,18 +2203,18 @@ export class CustomFieldsFieldsResource {
    * Fetch all fields across all pages into a single array.
    * @example const all = await client.customFields.fields.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsFields>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsFields<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a fields record */
-  create: typeof postApi20260701ResourcesCustomFieldsFields = (options?: any) => postApi20260701ResourcesCustomFieldsFields({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomFieldsFields<true> = (options) => postApi20260701ResourcesCustomFieldsFields<true>({ client: this._client, ...options });
 
   /** Reads a single fields record */
-  get: typeof getApi20260701ResourcesCustomFieldsFieldsById = (options?: any) => getApi20260701ResourcesCustomFieldsFieldsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomFieldsFieldsById<true> = (options) => getApi20260701ResourcesCustomFieldsFieldsById<true>({ client: this._client, ...options });
 
   /** Deletes a fields record */
-  delete: typeof deleteApi20260701ResourcesCustomFieldsFieldsById = (options?: any) => deleteApi20260701ResourcesCustomFieldsFieldsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesCustomFieldsFieldsById<true> = (options) => deleteApi20260701ResourcesCustomFieldsFieldsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_fields > options resource */
@@ -2120,17 +2222,19 @@ export class CustomFieldsOptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all options */
-  list: typeof getApi20260701ResourcesCustomFieldsOptions = (options?: any) => getApi20260701ResourcesCustomFieldsOptions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomFieldsOptions<true> = (options) => getApi20260701ResourcesCustomFieldsOptions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all options, yielding one item at a time.
    * @example for await (const item of client.customFields.options.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsOptions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsOptions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomFieldsOptions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomFieldsOptions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2138,15 +2242,15 @@ export class CustomFieldsOptionsResource {
    * Fetch all options across all pages into a single array.
    * @example const all = await client.customFields.options.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsOptions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsOptions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a options record */
-  create: typeof postApi20260701ResourcesCustomFieldsOptions = (options?: any) => postApi20260701ResourcesCustomFieldsOptions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomFieldsOptions<true> = (options) => postApi20260701ResourcesCustomFieldsOptions<true>({ client: this._client, ...options });
 
   /** Reads a single options record */
-  get: typeof getApi20260701ResourcesCustomFieldsOptionsById = (options?: any) => getApi20260701ResourcesCustomFieldsOptionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomFieldsOptionsById<true> = (options) => getApi20260701ResourcesCustomFieldsOptionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_fields > resource_fields resource */
@@ -2154,17 +2258,19 @@ export class CustomFieldsResourceFieldsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all resource_fields */
-  list: typeof getApi20260701ResourcesCustomFieldsResourceFields = (options?: any) => getApi20260701ResourcesCustomFieldsResourceFields({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomFieldsResourceFields<true> = (options) => getApi20260701ResourcesCustomFieldsResourceFields<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all resource_fields, yielding one item at a time.
    * @example for await (const item of client.customFields.resourceFields.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsResourceFields>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsResourceFields<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomFieldsResourceFields({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomFieldsResourceFields<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2172,15 +2278,15 @@ export class CustomFieldsResourceFieldsResource {
    * Fetch all resource_fields across all pages into a single array.
    * @example const all = await client.customFields.resourceFields.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsResourceFields>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsResourceFields<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a resource_fields record */
-  create: typeof postApi20260701ResourcesCustomFieldsResourceFields = (options?: any) => postApi20260701ResourcesCustomFieldsResourceFields({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomFieldsResourceFields<true> = (options) => postApi20260701ResourcesCustomFieldsResourceFields<true>({ client: this._client, ...options });
 
   /** Reads a single resource_fields record */
-  get: typeof getApi20260701ResourcesCustomFieldsResourceFieldsById = (options?: any) => getApi20260701ResourcesCustomFieldsResourceFieldsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomFieldsResourceFieldsById<true> = (options) => getApi20260701ResourcesCustomFieldsResourceFieldsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_fields > values resource */
@@ -2188,17 +2294,19 @@ export class CustomFieldsValuesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all values */
-  list: typeof getApi20260701ResourcesCustomFieldsValues = (options?: any) => getApi20260701ResourcesCustomFieldsValues({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomFieldsValues<true> = (options) => getApi20260701ResourcesCustomFieldsValues<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all values, yielding one item at a time.
    * @example for await (const item of client.customFields.values.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsValues>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsValues<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomFieldsValues({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomFieldsValues<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2206,18 +2314,18 @@ export class CustomFieldsValuesResource {
    * Fetch all values across all pages into a single array.
    * @example const all = await client.customFields.values.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsValues>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomFieldsValues<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a values record */
-  create: typeof postApi20260701ResourcesCustomFieldsValues = (options?: any) => postApi20260701ResourcesCustomFieldsValues({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomFieldsValues<true> = (options) => postApi20260701ResourcesCustomFieldsValues<true>({ client: this._client, ...options });
 
   /** Reads a single values record */
-  get: typeof getApi20260701ResourcesCustomFieldsValuesById = (options?: any) => getApi20260701ResourcesCustomFieldsValuesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomFieldsValuesById<true> = (options) => getApi20260701ResourcesCustomFieldsValuesById<true>({ client: this._client, ...options });
 
   /** Updates a values record */
-  update: typeof putApi20260701ResourcesCustomFieldsValuesById = (options?: any) => putApi20260701ResourcesCustomFieldsValuesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesCustomFieldsValuesById<true> = (options) => putApi20260701ResourcesCustomFieldsValuesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_resources > resources resource */
@@ -2225,17 +2333,19 @@ export class CustomResourcesResourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all resources */
-  list: typeof getApi20260701ResourcesCustomResourcesResources = (options?: any) => getApi20260701ResourcesCustomResourcesResources({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomResourcesResources<true> = (options) => getApi20260701ResourcesCustomResourcesResources<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all resources, yielding one item at a time.
    * @example for await (const item of client.customResources.resources.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesResources>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesResources<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomResourcesResources({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomResourcesResources<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2243,12 +2353,12 @@ export class CustomResourcesResourcesResource {
    * Fetch all resources across all pages into a single array.
    * @example const all = await client.customResources.resources.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesResources>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesResources<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single resources record */
-  get: typeof getApi20260701ResourcesCustomResourcesResourcesById = (options?: any) => getApi20260701ResourcesCustomResourcesResourcesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomResourcesResourcesById<true> = (options) => getApi20260701ResourcesCustomResourcesResourcesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_resources > schemas resource */
@@ -2256,17 +2366,19 @@ export class CustomResourcesSchemasResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all schemas */
-  list: typeof getApi20260701ResourcesCustomResourcesSchemas = (options?: any) => getApi20260701ResourcesCustomResourcesSchemas({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomResourcesSchemas<true> = (options) => getApi20260701ResourcesCustomResourcesSchemas<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all schemas, yielding one item at a time.
    * @example for await (const item of client.customResources.schemas.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesSchemas>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesSchemas<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomResourcesSchemas({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomResourcesSchemas<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2274,15 +2386,15 @@ export class CustomResourcesSchemasResource {
    * Fetch all schemas across all pages into a single array.
    * @example const all = await client.customResources.schemas.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesSchemas>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesSchemas<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a schemas record */
-  create: typeof postApi20260701ResourcesCustomResourcesSchemas = (options?: any) => postApi20260701ResourcesCustomResourcesSchemas({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomResourcesSchemas<true> = (options) => postApi20260701ResourcesCustomResourcesSchemas<true>({ client: this._client, ...options });
 
   /** Reads a single schemas record */
-  get: typeof getApi20260701ResourcesCustomResourcesSchemasById = (options?: any) => getApi20260701ResourcesCustomResourcesSchemasById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomResourcesSchemasById<true> = (options) => getApi20260701ResourcesCustomResourcesSchemasById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the custom_resources > values resource */
@@ -2290,17 +2402,19 @@ export class CustomResourcesValuesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all values */
-  list: typeof getApi20260701ResourcesCustomResourcesValues = (options?: any) => getApi20260701ResourcesCustomResourcesValues({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesCustomResourcesValues<true> = (options) => getApi20260701ResourcesCustomResourcesValues<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all values, yielding one item at a time.
    * @example for await (const item of client.customResources.values.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesValues>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesValues<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesCustomResourcesValues({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesCustomResourcesValues<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2308,15 +2422,15 @@ export class CustomResourcesValuesResource {
    * Fetch all values across all pages into a single array.
    * @example const all = await client.customResources.values.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesValues>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesCustomResourcesValues<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a values record */
-  create: typeof postApi20260701ResourcesCustomResourcesValues = (options?: any) => postApi20260701ResourcesCustomResourcesValues({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesCustomResourcesValues<true> = (options) => postApi20260701ResourcesCustomResourcesValues<true>({ client: this._client, ...options });
 
   /** Reads a single values record */
-  get: typeof getApi20260701ResourcesCustomResourcesValuesById = (options?: any) => getApi20260701ResourcesCustomResourcesValuesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesCustomResourcesValuesById<true> = (options) => getApi20260701ResourcesCustomResourcesValuesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the documents > documents resource */
@@ -2324,17 +2438,19 @@ export class DocumentsDocumentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all documents */
-  list: typeof getApi20260701ResourcesDocumentsDocuments = (options?: any) => getApi20260701ResourcesDocumentsDocuments({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesDocumentsDocuments<true> = (options) => getApi20260701ResourcesDocumentsDocuments<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all documents, yielding one item at a time.
    * @example for await (const item of client.documents.documents.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesDocumentsDocuments>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesDocumentsDocuments<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesDocumentsDocuments({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesDocumentsDocuments<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2342,27 +2458,27 @@ export class DocumentsDocumentsResource {
    * Fetch all documents across all pages into a single array.
    * @example const all = await client.documents.documents.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesDocumentsDocuments>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesDocumentsDocuments<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a documents record */
-  create: typeof postApi20260701ResourcesDocumentsDocuments = (options?: any) => postApi20260701ResourcesDocumentsDocuments({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesDocumentsDocuments<true> = (options) => postApi20260701ResourcesDocumentsDocuments<true>({ client: this._client, ...options });
 
   /** Reads a single documents record */
-  get: typeof getApi20260701ResourcesDocumentsDocumentsById = (options?: any) => getApi20260701ResourcesDocumentsDocumentsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesDocumentsDocumentsById<true> = (options) => getApi20260701ResourcesDocumentsDocumentsById<true>({ client: this._client, ...options });
 
   /** Updates a documents record */
-  update: typeof putApi20260701ResourcesDocumentsDocumentsById = (options?: any) => putApi20260701ResourcesDocumentsDocumentsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesDocumentsDocumentsById<true> = (options) => putApi20260701ResourcesDocumentsDocumentsById<true>({ client: this._client, ...options });
 
   /** Deletes a documents record */
-  delete: typeof deleteApi20260701ResourcesDocumentsDocumentsById = (options?: any) => deleteApi20260701ResourcesDocumentsDocumentsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesDocumentsDocumentsById<true> = (options) => deleteApi20260701ResourcesDocumentsDocumentsById<true>({ client: this._client, ...options });
 
   /** moveToTrashBin */
-  moveToTrashBin: typeof postApi20260701ResourcesDocumentsDocumentsMoveToTrashBin = (options?: any) => postApi20260701ResourcesDocumentsDocumentsMoveToTrashBin({ client: this._client, ...options });
+  moveToTrashBin: typeof postApi20260701ResourcesDocumentsDocumentsMoveToTrashBin<true> = (options) => postApi20260701ResourcesDocumentsDocumentsMoveToTrashBin<true>({ client: this._client, ...options });
 
   /** restoreFromTrashBin */
-  restoreFromTrashBin: typeof postApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBin = (options?: any) => postApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBin({ client: this._client, ...options });
+  restoreFromTrashBin: typeof postApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBin<true> = (options) => postApi20260701ResourcesDocumentsDocumentsRestoreFromTrashBin<true>({ client: this._client, ...options });
 
 }
 /** Methods for the documents > download_urls resource */
@@ -2370,7 +2486,7 @@ export class DocumentsDownloadUrlsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesDocumentsDownloadUrlsBulkCreate = (options?: any) => postApi20260701ResourcesDocumentsDownloadUrlsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesDocumentsDownloadUrlsBulkCreate<true> = (options) => postApi20260701ResourcesDocumentsDownloadUrlsBulkCreate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the documents > folders resource */
@@ -2378,17 +2494,19 @@ export class DocumentsFoldersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all folders */
-  list: typeof getApi20260701ResourcesDocumentsFolders = (options?: any) => getApi20260701ResourcesDocumentsFolders({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesDocumentsFolders<true> = (options) => getApi20260701ResourcesDocumentsFolders<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all folders, yielding one item at a time.
    * @example for await (const item of client.documents.folders.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesDocumentsFolders>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesDocumentsFolders<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesDocumentsFolders({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesDocumentsFolders<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2396,18 +2514,18 @@ export class DocumentsFoldersResource {
    * Fetch all folders across all pages into a single array.
    * @example const all = await client.documents.folders.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesDocumentsFolders>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesDocumentsFolders<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a folders record */
-  create: typeof postApi20260701ResourcesDocumentsFolders = (options?: any) => postApi20260701ResourcesDocumentsFolders({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesDocumentsFolders<true> = (options) => postApi20260701ResourcesDocumentsFolders<true>({ client: this._client, ...options });
 
   /** Reads a single folders record */
-  get: typeof getApi20260701ResourcesDocumentsFoldersById = (options?: any) => getApi20260701ResourcesDocumentsFoldersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesDocumentsFoldersById<true> = (options) => getApi20260701ResourcesDocumentsFoldersById<true>({ client: this._client, ...options });
 
   /** Updates a folders record */
-  update: typeof putApi20260701ResourcesDocumentsFoldersById = (options?: any) => putApi20260701ResourcesDocumentsFoldersById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesDocumentsFoldersById<true> = (options) => putApi20260701ResourcesDocumentsFoldersById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > absences resource */
@@ -2415,17 +2533,19 @@ export class EmployeeUpdatesAbsencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all absences */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesAbsences = (options?: any) => getApi20260701ResourcesEmployeeUpdatesAbsences({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesAbsences<true> = (options) => getApi20260701ResourcesEmployeeUpdatesAbsences<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all absences, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.absences.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesAbsences>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesAbsences<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesAbsences({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesAbsences<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2433,12 +2553,12 @@ export class EmployeeUpdatesAbsencesResource {
    * Fetch all absences across all pages into a single array.
    * @example const all = await client.employeeUpdates.absences.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesAbsences>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesAbsences<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single absences record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesAbsencesById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesAbsencesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesAbsencesById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesAbsencesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > contract_changes resource */
@@ -2446,17 +2566,19 @@ export class EmployeeUpdatesContractChangesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contract_changes */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesContractChanges = (options?: any) => getApi20260701ResourcesEmployeeUpdatesContractChanges({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesContractChanges<true> = (options) => getApi20260701ResourcesEmployeeUpdatesContractChanges<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contract_changes, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.contractChanges.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesContractChanges>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesContractChanges<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesContractChanges({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesContractChanges<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2464,12 +2586,12 @@ export class EmployeeUpdatesContractChangesResource {
    * Fetch all contract_changes across all pages into a single array.
    * @example const all = await client.employeeUpdates.contractChanges.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesContractChanges>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesContractChanges<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single contract_changes record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesContractChangesById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesContractChangesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesContractChangesById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesContractChangesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > new_hires resource */
@@ -2477,17 +2599,19 @@ export class EmployeeUpdatesNewHiresResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all new_hires */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesNewHires = (options?: any) => getApi20260701ResourcesEmployeeUpdatesNewHires({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesNewHires<true> = (options) => getApi20260701ResourcesEmployeeUpdatesNewHires<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all new_hires, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.newHires.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesNewHires>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesNewHires<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesNewHires({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesNewHires<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2495,12 +2619,12 @@ export class EmployeeUpdatesNewHiresResource {
    * Fetch all new_hires across all pages into a single array.
    * @example const all = await client.employeeUpdates.newHires.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesNewHires>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesNewHires<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single new_hires record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesNewHiresById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesNewHiresById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesNewHiresById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesNewHiresById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > personal_changes resource */
@@ -2508,17 +2632,19 @@ export class EmployeeUpdatesPersonalChangesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all personal_changes */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges = (options?: any) => getApi20260701ResourcesEmployeeUpdatesPersonalChanges({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges<true> = (options) => getApi20260701ResourcesEmployeeUpdatesPersonalChanges<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all personal_changes, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.personalChanges.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesPersonalChanges({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesPersonalChanges<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2526,12 +2652,12 @@ export class EmployeeUpdatesPersonalChangesResource {
    * Fetch all personal_changes across all pages into a single array.
    * @example const all = await client.employeeUpdates.personalChanges.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesPersonalChanges<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single personal_changes record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesPersonalChangesById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesPersonalChangesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesPersonalChangesById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesPersonalChangesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > summaries resource */
@@ -2539,17 +2665,19 @@ export class EmployeeUpdatesSummariesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all summaries */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesSummaries = (options?: any) => getApi20260701ResourcesEmployeeUpdatesSummaries({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesSummaries<true> = (options) => getApi20260701ResourcesEmployeeUpdatesSummaries<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all summaries, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.summaries.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesSummaries>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesSummaries<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesSummaries({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesSummaries<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2557,12 +2685,12 @@ export class EmployeeUpdatesSummariesResource {
    * Fetch all summaries across all pages into a single array.
    * @example const all = await client.employeeUpdates.summaries.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesSummaries>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesSummaries<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single summaries record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesSummariesById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesSummariesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesSummariesById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesSummariesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employee_updates > terminations resource */
@@ -2570,17 +2698,19 @@ export class EmployeeUpdatesTerminationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all terminations */
-  list: typeof getApi20260701ResourcesEmployeeUpdatesTerminations = (options?: any) => getApi20260701ResourcesEmployeeUpdatesTerminations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeeUpdatesTerminations<true> = (options) => getApi20260701ResourcesEmployeeUpdatesTerminations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all terminations, yielding one item at a time.
    * @example for await (const item of client.employeeUpdates.terminations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesTerminations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesTerminations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeeUpdatesTerminations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeeUpdatesTerminations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2588,12 +2718,12 @@ export class EmployeeUpdatesTerminationsResource {
    * Fetch all terminations across all pages into a single array.
    * @example const all = await client.employeeUpdates.terminations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesTerminations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeeUpdatesTerminations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single terminations record */
-  get: typeof getApi20260701ResourcesEmployeeUpdatesTerminationsById = (options?: any) => getApi20260701ResourcesEmployeeUpdatesTerminationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeeUpdatesTerminationsById<true> = (options) => getApi20260701ResourcesEmployeeUpdatesTerminationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the employees > employees resource */
@@ -2601,17 +2731,19 @@ export class EmployeesEmployeesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all employees */
-  list: typeof getApi20260701ResourcesEmployeesEmployees = (options?: any) => getApi20260701ResourcesEmployeesEmployees({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesEmployeesEmployees<true> = (options) => getApi20260701ResourcesEmployeesEmployees<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all employees, yielding one item at a time.
    * @example for await (const item of client.employees.employees.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeesEmployees>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesEmployeesEmployees<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesEmployeesEmployees({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesEmployeesEmployees<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2619,30 +2751,30 @@ export class EmployeesEmployeesResource {
    * Fetch all employees across all pages into a single array.
    * @example const all = await client.employees.employees.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesEmployeesEmployees>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesEmployeesEmployees<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single employees record */
-  get: typeof getApi20260701ResourcesEmployeesEmployeesById = (options?: any) => getApi20260701ResourcesEmployeesEmployeesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesEmployeesEmployeesById<true> = (options) => getApi20260701ResourcesEmployeesEmployeesById<true>({ client: this._client, ...options });
 
   /** Updates a employees record */
-  update: typeof putApi20260701ResourcesEmployeesEmployeesById = (options?: any) => putApi20260701ResourcesEmployeesEmployeesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesEmployeesEmployeesById<true> = (options) => putApi20260701ResourcesEmployeesEmployeesById<true>({ client: this._client, ...options });
 
   /** createWithContract */
-  createWithContract: typeof postApi20260701ResourcesEmployeesEmployeesCreateWithContract = (options?: any) => postApi20260701ResourcesEmployeesEmployeesCreateWithContract({ client: this._client, ...options });
+  createWithContract: typeof postApi20260701ResourcesEmployeesEmployeesCreateWithContract<true> = (options) => postApi20260701ResourcesEmployeesEmployeesCreateWithContract<true>({ client: this._client, ...options });
 
   /** invite */
-  invite: typeof postApi20260701ResourcesEmployeesEmployeesInvite = (options?: any) => postApi20260701ResourcesEmployeesEmployeesInvite({ client: this._client, ...options });
+  invite: typeof postApi20260701ResourcesEmployeesEmployeesInvite<true> = (options) => postApi20260701ResourcesEmployeesEmployeesInvite<true>({ client: this._client, ...options });
 
   /** setRegularAccessStartDate */
-  setRegularAccessStartDate: typeof postApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDate = (options?: any) => postApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDate({ client: this._client, ...options });
+  setRegularAccessStartDate: typeof postApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDate<true> = (options) => postApi20260701ResourcesEmployeesEmployeesSetRegularAccessStartDate<true>({ client: this._client, ...options });
 
   /** terminate */
-  terminate: typeof postApi20260701ResourcesEmployeesEmployeesTerminate = (options?: any) => postApi20260701ResourcesEmployeesEmployeesTerminate({ client: this._client, ...options });
+  terminate: typeof postApi20260701ResourcesEmployeesEmployeesTerminate<true> = (options) => postApi20260701ResourcesEmployeesEmployeesTerminate<true>({ client: this._client, ...options });
 
   /** unterminate */
-  unterminate: typeof postApi20260701ResourcesEmployeesEmployeesUnterminate = (options?: any) => postApi20260701ResourcesEmployeesEmployeesUnterminate({ client: this._client, ...options });
+  unterminate: typeof postApi20260701ResourcesEmployeesEmployeesUnterminate<true> = (options) => postApi20260701ResourcesEmployeesEmployeesUnterminate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the expenses > expensables resource */
@@ -2650,17 +2782,19 @@ export class ExpensesExpensablesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all expensables */
-  list: typeof getApi20260701ResourcesExpensesExpensables = (options?: any) => getApi20260701ResourcesExpensesExpensables({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesExpensesExpensables<true> = (options) => getApi20260701ResourcesExpensesExpensables<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all expensables, yielding one item at a time.
    * @example for await (const item of client.expenses.expensables.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesExpensables>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesExpensables<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesExpensesExpensables({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesExpensesExpensables<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2668,18 +2802,18 @@ export class ExpensesExpensablesResource {
    * Fetch all expensables across all pages into a single array.
    * @example const all = await client.expenses.expensables.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesExpensesExpensables>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesExpensesExpensables<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single expensables record */
-  get: typeof getApi20260701ResourcesExpensesExpensablesById = (options?: any) => getApi20260701ResourcesExpensesExpensablesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesExpensesExpensablesById<true> = (options) => getApi20260701ResourcesExpensesExpensablesById<true>({ client: this._client, ...options });
 
   /** bulkSetToPaid */
-  bulkSetToPaid: typeof postApi20260701ResourcesExpensesExpensablesBulkSetToPaid = (options?: any) => postApi20260701ResourcesExpensesExpensablesBulkSetToPaid({ client: this._client, ...options });
+  bulkSetToPaid: typeof postApi20260701ResourcesExpensesExpensablesBulkSetToPaid<true> = (options) => postApi20260701ResourcesExpensesExpensablesBulkSetToPaid<true>({ client: this._client, ...options });
 
   /** updateReimbursableAmount */
-  updateReimbursableAmount: typeof postApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmount = (options?: any) => postApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmount({ client: this._client, ...options });
+  updateReimbursableAmount: typeof postApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmount<true> = (options) => postApi20260701ResourcesExpensesExpensablesUpdateReimbursableAmount<true>({ client: this._client, ...options });
 
 }
 /** Methods for the expenses > expenses resource */
@@ -2687,17 +2821,19 @@ export class ExpensesExpensesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all expenses */
-  list: typeof getApi20260701ResourcesExpensesExpenses = (options?: any) => getApi20260701ResourcesExpensesExpenses({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesExpensesExpenses<true> = (options) => getApi20260701ResourcesExpensesExpenses<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all expenses, yielding one item at a time.
    * @example for await (const item of client.expenses.expenses.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesExpenses>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesExpenses<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesExpensesExpenses({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesExpensesExpenses<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2705,12 +2841,12 @@ export class ExpensesExpensesResource {
    * Fetch all expenses across all pages into a single array.
    * @example const all = await client.expenses.expenses.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesExpensesExpenses>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesExpensesExpenses<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single expenses record */
-  get: typeof getApi20260701ResourcesExpensesExpensesById = (options?: any) => getApi20260701ResourcesExpensesExpensesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesExpensesExpensesById<true> = (options) => getApi20260701ResourcesExpensesExpensesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the expenses > mileages resource */
@@ -2718,17 +2854,19 @@ export class ExpensesMileagesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all mileages */
-  list: typeof getApi20260701ResourcesExpensesMileages = (options?: any) => getApi20260701ResourcesExpensesMileages({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesExpensesMileages<true> = (options) => getApi20260701ResourcesExpensesMileages<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all mileages, yielding one item at a time.
    * @example for await (const item of client.expenses.mileages.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesMileages>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesMileages<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesExpensesMileages({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesExpensesMileages<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2736,12 +2874,12 @@ export class ExpensesMileagesResource {
    * Fetch all mileages across all pages into a single array.
    * @example const all = await client.expenses.mileages.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesExpensesMileages>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesExpensesMileages<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single mileages record */
-  get: typeof getApi20260701ResourcesExpensesMileagesById = (options?: any) => getApi20260701ResourcesExpensesMileagesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesExpensesMileagesById<true> = (options) => getApi20260701ResourcesExpensesMileagesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the expenses > per_diems resource */
@@ -2749,17 +2887,19 @@ export class ExpensesPerDiemsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all per_diems */
-  list: typeof getApi20260701ResourcesExpensesPerDiems = (options?: any) => getApi20260701ResourcesExpensesPerDiems({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesExpensesPerDiems<true> = (options) => getApi20260701ResourcesExpensesPerDiems<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all per_diems, yielding one item at a time.
    * @example for await (const item of client.expenses.perDiems.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesPerDiems>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesExpensesPerDiems<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesExpensesPerDiems({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesExpensesPerDiems<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2767,12 +2907,12 @@ export class ExpensesPerDiemsResource {
    * Fetch all per_diems across all pages into a single array.
    * @example const all = await client.expenses.perDiems.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesExpensesPerDiems>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesExpensesPerDiems<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single per_diems record */
-  get: typeof getApi20260701ResourcesExpensesPerDiemsById = (options?: any) => getApi20260701ResourcesExpensesPerDiemsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesExpensesPerDiemsById<true> = (options) => getApi20260701ResourcesExpensesPerDiemsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > accounting_settings resource */
@@ -2780,17 +2920,19 @@ export class FinanceAccountingSettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all accounting_settings */
-  list: typeof getApi20260701ResourcesFinanceAccountingSettings = (options?: any) => getApi20260701ResourcesFinanceAccountingSettings({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceAccountingSettings<true> = (options) => getApi20260701ResourcesFinanceAccountingSettings<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all accounting_settings, yielding one item at a time.
    * @example for await (const item of client.finance.accountingSettings.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceAccountingSettings>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceAccountingSettings<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceAccountingSettings({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceAccountingSettings<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2798,15 +2940,15 @@ export class FinanceAccountingSettingsResource {
    * Fetch all accounting_settings across all pages into a single array.
    * @example const all = await client.finance.accountingSettings.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceAccountingSettings>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceAccountingSettings<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single accounting_settings record */
-  get: typeof getApi20260701ResourcesFinanceAccountingSettingsById = (options?: any) => getApi20260701ResourcesFinanceAccountingSettingsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceAccountingSettingsById<true> = (options) => getApi20260701ResourcesFinanceAccountingSettingsById<true>({ client: this._client, ...options });
 
   /** upsert */
-  upsert: typeof postApi20260701ResourcesFinanceAccountingSettingsUpsert = (options?: any) => postApi20260701ResourcesFinanceAccountingSettingsUpsert({ client: this._client, ...options });
+  upsert: typeof postApi20260701ResourcesFinanceAccountingSettingsUpsert<true> = (options) => postApi20260701ResourcesFinanceAccountingSettingsUpsert<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > accounts resource */
@@ -2814,17 +2956,19 @@ export class FinanceAccountsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all accounts */
-  list: typeof getApi20260701ResourcesFinanceAccounts = (options?: any) => getApi20260701ResourcesFinanceAccounts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceAccounts<true> = (options) => getApi20260701ResourcesFinanceAccounts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all accounts, yielding one item at a time.
    * @example for await (const item of client.finance.accounts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceAccounts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceAccounts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceAccounts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceAccounts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2832,18 +2976,18 @@ export class FinanceAccountsResource {
    * Fetch all accounts across all pages into a single array.
    * @example const all = await client.finance.accounts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceAccounts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceAccounts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a accounts record */
-  create: typeof postApi20260701ResourcesFinanceAccounts = (options?: any) => postApi20260701ResourcesFinanceAccounts({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceAccounts<true> = (options) => postApi20260701ResourcesFinanceAccounts<true>({ client: this._client, ...options });
 
   /** Reads a single accounts record */
-  get: typeof getApi20260701ResourcesFinanceAccountsById = (options?: any) => getApi20260701ResourcesFinanceAccountsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceAccountsById<true> = (options) => getApi20260701ResourcesFinanceAccountsById<true>({ client: this._client, ...options });
 
   /** Updates a accounts record */
-  update: typeof putApi20260701ResourcesFinanceAccountsById = (options?: any) => putApi20260701ResourcesFinanceAccountsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesFinanceAccountsById<true> = (options) => putApi20260701ResourcesFinanceAccountsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > budget_options resource */
@@ -2851,17 +2995,19 @@ export class FinanceBudgetOptionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all budget_options */
-  list: typeof getApi20260701ResourcesFinanceBudgetOptions = (options?: any) => getApi20260701ResourcesFinanceBudgetOptions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceBudgetOptions<true> = (options) => getApi20260701ResourcesFinanceBudgetOptions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all budget_options, yielding one item at a time.
    * @example for await (const item of client.finance.budgetOptions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceBudgetOptions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceBudgetOptions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceBudgetOptions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceBudgetOptions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2869,12 +3015,12 @@ export class FinanceBudgetOptionsResource {
    * Fetch all budget_options across all pages into a single array.
    * @example const all = await client.finance.budgetOptions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceBudgetOptions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceBudgetOptions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single budget_options record */
-  get: typeof getApi20260701ResourcesFinanceBudgetOptionsById = (options?: any) => getApi20260701ResourcesFinanceBudgetOptionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceBudgetOptionsById<true> = (options) => getApi20260701ResourcesFinanceBudgetOptionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > categories resource */
@@ -2882,17 +3028,19 @@ export class FinanceCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all categories */
-  list: typeof getApi20260701ResourcesFinanceCategories = (options?: any) => getApi20260701ResourcesFinanceCategories({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceCategories<true> = (options) => getApi20260701ResourcesFinanceCategories<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all categories, yielding one item at a time.
    * @example for await (const item of client.finance.categories.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCategories>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCategories<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceCategories({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceCategories<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2900,12 +3048,12 @@ export class FinanceCategoriesResource {
    * Fetch all categories across all pages into a single array.
    * @example const all = await client.finance.categories.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCategories>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCategories<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single categories record */
-  get: typeof getApi20260701ResourcesFinanceCategoriesById = (options?: any) => getApi20260701ResourcesFinanceCategoriesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceCategoriesById<true> = (options) => getApi20260701ResourcesFinanceCategoriesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > contacts resource */
@@ -2913,17 +3061,19 @@ export class FinanceContactsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all contacts */
-  list: typeof getApi20260701ResourcesFinanceContacts = (options?: any) => getApi20260701ResourcesFinanceContacts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceContacts<true> = (options) => getApi20260701ResourcesFinanceContacts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all contacts, yielding one item at a time.
    * @example for await (const item of client.finance.contacts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceContacts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceContacts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceContacts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceContacts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2931,18 +3081,18 @@ export class FinanceContactsResource {
    * Fetch all contacts across all pages into a single array.
    * @example const all = await client.finance.contacts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceContacts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceContacts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a contacts record */
-  create: typeof postApi20260701ResourcesFinanceContacts = (options?: any) => postApi20260701ResourcesFinanceContacts({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceContacts<true> = (options) => postApi20260701ResourcesFinanceContacts<true>({ client: this._client, ...options });
 
   /** Reads a single contacts record */
-  get: typeof getApi20260701ResourcesFinanceContactsById = (options?: any) => getApi20260701ResourcesFinanceContactsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceContactsById<true> = (options) => getApi20260701ResourcesFinanceContactsById<true>({ client: this._client, ...options });
 
   /** Updates a contacts record */
-  update: typeof putApi20260701ResourcesFinanceContactsById = (options?: any) => putApi20260701ResourcesFinanceContactsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesFinanceContactsById<true> = (options) => putApi20260701ResourcesFinanceContactsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > cost_center_memberships resource */
@@ -2950,17 +3100,19 @@ export class FinanceCostCenterMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all cost_center_memberships */
-  list: typeof getApi20260701ResourcesFinanceCostCenterMemberships = (options?: any) => getApi20260701ResourcesFinanceCostCenterMemberships({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceCostCenterMemberships<true> = (options) => getApi20260701ResourcesFinanceCostCenterMemberships<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all cost_center_memberships, yielding one item at a time.
    * @example for await (const item of client.finance.costCenterMemberships.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenterMemberships>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenterMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceCostCenterMemberships({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceCostCenterMemberships<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2968,12 +3120,12 @@ export class FinanceCostCenterMembershipsResource {
    * Fetch all cost_center_memberships across all pages into a single array.
    * @example const all = await client.finance.costCenterMemberships.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenterMemberships>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenterMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** bulkCreateUpdate */
-  bulkCreateUpdate: typeof postApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdate = (options?: any) => postApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdate({ client: this._client, ...options });
+  bulkCreateUpdate: typeof postApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdate<true> = (options) => postApi20260701ResourcesFinanceCostCenterMembershipsBulkCreateUpdate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > cost_centers resource */
@@ -2981,17 +3133,19 @@ export class FinanceCostCentersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all cost_centers */
-  list: typeof getApi20260701ResourcesFinanceCostCenters = (options?: any) => getApi20260701ResourcesFinanceCostCenters({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceCostCenters<true> = (options) => getApi20260701ResourcesFinanceCostCenters<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all cost_centers, yielding one item at a time.
    * @example for await (const item of client.finance.costCenters.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenters>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenters<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceCostCenters({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceCostCenters<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -2999,21 +3153,21 @@ export class FinanceCostCentersResource {
    * Fetch all cost_centers across all pages into a single array.
    * @example const all = await client.finance.costCenters.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenters>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceCostCenters<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a cost_centers record */
-  create: typeof postApi20260701ResourcesFinanceCostCenters = (options?: any) => postApi20260701ResourcesFinanceCostCenters({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceCostCenters<true> = (options) => postApi20260701ResourcesFinanceCostCenters<true>({ client: this._client, ...options });
 
   /** Reads a single cost_centers record */
-  get: typeof getApi20260701ResourcesFinanceCostCentersById = (options?: any) => getApi20260701ResourcesFinanceCostCentersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceCostCentersById<true> = (options) => getApi20260701ResourcesFinanceCostCentersById<true>({ client: this._client, ...options });
 
   /** Deletes a cost_centers record */
-  delete: typeof deleteApi20260701ResourcesFinanceCostCentersById = (options?: any) => deleteApi20260701ResourcesFinanceCostCentersById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesFinanceCostCentersById<true> = (options) => deleteApi20260701ResourcesFinanceCostCentersById<true>({ client: this._client, ...options });
 
   /** edit */
-  edit: typeof postApi20260701ResourcesFinanceCostCentersEdit = (options?: any) => postApi20260701ResourcesFinanceCostCentersEdit({ client: this._client, ...options });
+  edit: typeof postApi20260701ResourcesFinanceCostCentersEdit<true> = (options) => postApi20260701ResourcesFinanceCostCentersEdit<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > financial_documents resource */
@@ -3021,17 +3175,19 @@ export class FinanceFinancialDocumentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all financial_documents */
-  list: typeof getApi20260701ResourcesFinanceFinancialDocuments = (options?: any) => getApi20260701ResourcesFinanceFinancialDocuments({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceFinancialDocuments<true> = (options) => getApi20260701ResourcesFinanceFinancialDocuments<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all financial_documents, yielding one item at a time.
    * @example for await (const item of client.finance.financialDocuments.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceFinancialDocuments>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceFinancialDocuments<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceFinancialDocuments({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceFinancialDocuments<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3039,12 +3195,12 @@ export class FinanceFinancialDocumentsResource {
    * Fetch all financial_documents across all pages into a single array.
    * @example const all = await client.finance.financialDocuments.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceFinancialDocuments>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceFinancialDocuments<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single financial_documents record */
-  get: typeof getApi20260701ResourcesFinanceFinancialDocumentsById = (options?: any) => getApi20260701ResourcesFinanceFinancialDocumentsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceFinancialDocumentsById<true> = (options) => getApi20260701ResourcesFinanceFinancialDocumentsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > journal_entries resource */
@@ -3052,17 +3208,19 @@ export class FinanceJournalEntriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all journal_entries */
-  list: typeof getApi20260701ResourcesFinanceJournalEntries = (options?: any) => getApi20260701ResourcesFinanceJournalEntries({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceJournalEntries<true> = (options) => getApi20260701ResourcesFinanceJournalEntries<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all journal_entries, yielding one item at a time.
    * @example for await (const item of client.finance.journalEntries.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalEntries>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalEntries<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceJournalEntries({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceJournalEntries<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3070,15 +3228,15 @@ export class FinanceJournalEntriesResource {
    * Fetch all journal_entries across all pages into a single array.
    * @example const all = await client.finance.journalEntries.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalEntries>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalEntries<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a journal_entries record */
-  create: typeof postApi20260701ResourcesFinanceJournalEntries = (options?: any) => postApi20260701ResourcesFinanceJournalEntries({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceJournalEntries<true> = (options) => postApi20260701ResourcesFinanceJournalEntries<true>({ client: this._client, ...options });
 
   /** Reads a single journal_entries record */
-  get: typeof getApi20260701ResourcesFinanceJournalEntriesById = (options?: any) => getApi20260701ResourcesFinanceJournalEntriesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceJournalEntriesById<true> = (options) => getApi20260701ResourcesFinanceJournalEntriesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > journal_lines resource */
@@ -3086,17 +3244,19 @@ export class FinanceJournalLinesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all journal_lines */
-  list: typeof getApi20260701ResourcesFinanceJournalLines = (options?: any) => getApi20260701ResourcesFinanceJournalLines({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceJournalLines<true> = (options) => getApi20260701ResourcesFinanceJournalLines<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all journal_lines, yielding one item at a time.
    * @example for await (const item of client.finance.journalLines.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalLines>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalLines<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceJournalLines({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceJournalLines<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3104,12 +3264,12 @@ export class FinanceJournalLinesResource {
    * Fetch all journal_lines across all pages into a single array.
    * @example const all = await client.finance.journalLines.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalLines>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceJournalLines<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single journal_lines record */
-  get: typeof getApi20260701ResourcesFinanceJournalLinesById = (options?: any) => getApi20260701ResourcesFinanceJournalLinesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceJournalLinesById<true> = (options) => getApi20260701ResourcesFinanceJournalLinesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > ledger_account_resources resource */
@@ -3117,17 +3277,19 @@ export class FinanceLedgerAccountResourcesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all ledger_account_resources */
-  list: typeof getApi20260701ResourcesFinanceLedgerAccountResources = (options?: any) => getApi20260701ResourcesFinanceLedgerAccountResources({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceLedgerAccountResources<true> = (options) => getApi20260701ResourcesFinanceLedgerAccountResources<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all ledger_account_resources, yielding one item at a time.
    * @example for await (const item of client.finance.ledgerAccountResources.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceLedgerAccountResources>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceLedgerAccountResources<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceLedgerAccountResources({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceLedgerAccountResources<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3135,15 +3297,15 @@ export class FinanceLedgerAccountResourcesResource {
    * Fetch all ledger_account_resources across all pages into a single array.
    * @example const all = await client.finance.ledgerAccountResources.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceLedgerAccountResources>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceLedgerAccountResources<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single ledger_account_resources record */
-  get: typeof getApi20260701ResourcesFinanceLedgerAccountResourcesById = (options?: any) => getApi20260701ResourcesFinanceLedgerAccountResourcesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceLedgerAccountResourcesById<true> = (options) => getApi20260701ResourcesFinanceLedgerAccountResourcesById<true>({ client: this._client, ...options });
 
   /** upsert */
-  upsert: typeof postApi20260701ResourcesFinanceLedgerAccountResourcesUpsert = (options?: any) => postApi20260701ResourcesFinanceLedgerAccountResourcesUpsert({ client: this._client, ...options });
+  upsert: typeof postApi20260701ResourcesFinanceLedgerAccountResourcesUpsert<true> = (options) => postApi20260701ResourcesFinanceLedgerAccountResourcesUpsert<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > tax_rates resource */
@@ -3151,17 +3313,19 @@ export class FinanceTaxRatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all tax_rates */
-  list: typeof getApi20260701ResourcesFinanceTaxRates = (options?: any) => getApi20260701ResourcesFinanceTaxRates({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceTaxRates<true> = (options) => getApi20260701ResourcesFinanceTaxRates<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all tax_rates, yielding one item at a time.
    * @example for await (const item of client.finance.taxRates.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxRates>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxRates<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceTaxRates({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceTaxRates<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3169,18 +3333,18 @@ export class FinanceTaxRatesResource {
    * Fetch all tax_rates across all pages into a single array.
    * @example const all = await client.finance.taxRates.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxRates>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxRates<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a tax_rates record */
-  create: typeof postApi20260701ResourcesFinanceTaxRates = (options?: any) => postApi20260701ResourcesFinanceTaxRates({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceTaxRates<true> = (options) => postApi20260701ResourcesFinanceTaxRates<true>({ client: this._client, ...options });
 
   /** Reads a single tax_rates record */
-  get: typeof getApi20260701ResourcesFinanceTaxRatesById = (options?: any) => getApi20260701ResourcesFinanceTaxRatesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceTaxRatesById<true> = (options) => getApi20260701ResourcesFinanceTaxRatesById<true>({ client: this._client, ...options });
 
   /** Updates a tax_rates record */
-  update: typeof putApi20260701ResourcesFinanceTaxRatesById = (options?: any) => putApi20260701ResourcesFinanceTaxRatesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesFinanceTaxRatesById<true> = (options) => putApi20260701ResourcesFinanceTaxRatesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the finance > tax_types resource */
@@ -3188,17 +3352,19 @@ export class FinanceTaxTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all tax_types */
-  list: typeof getApi20260701ResourcesFinanceTaxTypes = (options?: any) => getApi20260701ResourcesFinanceTaxTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesFinanceTaxTypes<true> = (options) => getApi20260701ResourcesFinanceTaxTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all tax_types, yielding one item at a time.
    * @example for await (const item of client.finance.taxTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesFinanceTaxTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesFinanceTaxTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3206,18 +3372,18 @@ export class FinanceTaxTypesResource {
    * Fetch all tax_types across all pages into a single array.
    * @example const all = await client.finance.taxTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesFinanceTaxTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a tax_types record */
-  create: typeof postApi20260701ResourcesFinanceTaxTypes = (options?: any) => postApi20260701ResourcesFinanceTaxTypes({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesFinanceTaxTypes<true> = (options) => postApi20260701ResourcesFinanceTaxTypes<true>({ client: this._client, ...options });
 
   /** Reads a single tax_types record */
-  get: typeof getApi20260701ResourcesFinanceTaxTypesById = (options?: any) => getApi20260701ResourcesFinanceTaxTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesFinanceTaxTypesById<true> = (options) => getApi20260701ResourcesFinanceTaxTypesById<true>({ client: this._client, ...options });
 
   /** Updates a tax_types record */
-  update: typeof putApi20260701ResourcesFinanceTaxTypesById = (options?: any) => putApi20260701ResourcesFinanceTaxTypesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesFinanceTaxTypesById<true> = (options) => putApi20260701ResourcesFinanceTaxTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the holidays > company_holidays resource */
@@ -3225,17 +3391,19 @@ export class HolidaysCompanyHolidaysResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all company_holidays */
-  list: typeof getApi20260701ResourcesHolidaysCompanyHolidays = (options?: any) => getApi20260701ResourcesHolidaysCompanyHolidays({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesHolidaysCompanyHolidays<true> = (options) => getApi20260701ResourcesHolidaysCompanyHolidays<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all company_holidays, yielding one item at a time.
    * @example for await (const item of client.holidays.companyHolidays.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesHolidaysCompanyHolidays>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesHolidaysCompanyHolidays<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesHolidaysCompanyHolidays({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesHolidaysCompanyHolidays<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3243,12 +3411,12 @@ export class HolidaysCompanyHolidaysResource {
    * Fetch all company_holidays across all pages into a single array.
    * @example const all = await client.holidays.companyHolidays.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesHolidaysCompanyHolidays>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesHolidaysCompanyHolidays<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single company_holidays record */
-  get: typeof getApi20260701ResourcesHolidaysCompanyHolidaysById = (options?: any) => getApi20260701ResourcesHolidaysCompanyHolidaysById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesHolidaysCompanyHolidaysById<true> = (options) => getApi20260701ResourcesHolidaysCompanyHolidaysById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the integrations > sync_run_outputs resource */
@@ -3256,7 +3424,7 @@ export class IntegrationsSyncRunOutputsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Creates a sync_run_outputs record */
-  create: typeof postApi20260701ResourcesIntegrationsSyncRunOutputs = (options?: any) => postApi20260701ResourcesIntegrationsSyncRunOutputs({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesIntegrationsSyncRunOutputs<true> = (options) => postApi20260701ResourcesIntegrationsSyncRunOutputs<true>({ client: this._client, ...options });
 
 }
 /** Methods for the integrations > syncable_items resource */
@@ -3264,17 +3432,19 @@ export class IntegrationsSyncableItemsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all syncable_items */
-  list: typeof getApi20260701ResourcesIntegrationsSyncableItems = (options?: any) => getApi20260701ResourcesIntegrationsSyncableItems({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesIntegrationsSyncableItems<true> = (options) => getApi20260701ResourcesIntegrationsSyncableItems<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all syncable_items, yielding one item at a time.
    * @example for await (const item of client.integrations.syncableItems.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesIntegrationsSyncableItems>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesIntegrationsSyncableItems<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesIntegrationsSyncableItems({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesIntegrationsSyncableItems<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3282,7 +3452,7 @@ export class IntegrationsSyncableItemsResource {
    * Fetch all syncable_items across all pages into a single array.
    * @example const all = await client.integrations.syncableItems.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesIntegrationsSyncableItems>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesIntegrationsSyncableItems<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -3292,7 +3462,7 @@ export class IntegrationsSyncableSyncRunsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Updates a syncable_sync_runs record */
-  update: typeof putApi20260701ResourcesIntegrationsSyncableSyncRunsById = (options?: any) => putApi20260701ResourcesIntegrationsSyncableSyncRunsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesIntegrationsSyncableSyncRunsById<true> = (options) => putApi20260701ResourcesIntegrationsSyncableSyncRunsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the it_management > it_asset_models resource */
@@ -3300,17 +3470,19 @@ export class ItManagementItAssetModelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all it_asset_models */
-  list: typeof getApi20260701ResourcesItManagementItAssetModels = (options?: any) => getApi20260701ResourcesItManagementItAssetModels({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesItManagementItAssetModels<true> = (options) => getApi20260701ResourcesItManagementItAssetModels<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all it_asset_models, yielding one item at a time.
    * @example for await (const item of client.itManagement.itAssetModels.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssetModels>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssetModels<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesItManagementItAssetModels({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesItManagementItAssetModels<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3318,18 +3490,18 @@ export class ItManagementItAssetModelsResource {
    * Fetch all it_asset_models across all pages into a single array.
    * @example const all = await client.itManagement.itAssetModels.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssetModels>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssetModels<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a it_asset_models record */
-  create: typeof postApi20260701ResourcesItManagementItAssetModels = (options?: any) => postApi20260701ResourcesItManagementItAssetModels({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesItManagementItAssetModels<true> = (options) => postApi20260701ResourcesItManagementItAssetModels<true>({ client: this._client, ...options });
 
   /** Reads a single it_asset_models record */
-  get: typeof getApi20260701ResourcesItManagementItAssetModelsById = (options?: any) => getApi20260701ResourcesItManagementItAssetModelsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesItManagementItAssetModelsById<true> = (options) => getApi20260701ResourcesItManagementItAssetModelsById<true>({ client: this._client, ...options });
 
   /** Updates a it_asset_models record */
-  update: typeof putApi20260701ResourcesItManagementItAssetModelsById = (options?: any) => putApi20260701ResourcesItManagementItAssetModelsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesItManagementItAssetModelsById<true> = (options) => putApi20260701ResourcesItManagementItAssetModelsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the it_management > it_assets resource */
@@ -3337,17 +3509,19 @@ export class ItManagementItAssetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all it_assets */
-  list: typeof getApi20260701ResourcesItManagementItAssets = (options?: any) => getApi20260701ResourcesItManagementItAssets({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesItManagementItAssets<true> = (options) => getApi20260701ResourcesItManagementItAssets<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all it_assets, yielding one item at a time.
    * @example for await (const item of client.itManagement.itAssets.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssets>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssets<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesItManagementItAssets({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesItManagementItAssets<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3355,21 +3529,21 @@ export class ItManagementItAssetsResource {
    * Fetch all it_assets across all pages into a single array.
    * @example const all = await client.itManagement.itAssets.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssets>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesItManagementItAssets<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a it_assets record */
-  create: typeof postApi20260701ResourcesItManagementItAssets = (options?: any) => postApi20260701ResourcesItManagementItAssets({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesItManagementItAssets<true> = (options) => postApi20260701ResourcesItManagementItAssets<true>({ client: this._client, ...options });
 
   /** Reads a single it_assets record */
-  get: typeof getApi20260701ResourcesItManagementItAssetsById = (options?: any) => getApi20260701ResourcesItManagementItAssetsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesItManagementItAssetsById<true> = (options) => getApi20260701ResourcesItManagementItAssetsById<true>({ client: this._client, ...options });
 
   /** Updates a it_assets record */
-  update: typeof putApi20260701ResourcesItManagementItAssetsById = (options?: any) => putApi20260701ResourcesItManagementItAssetsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesItManagementItAssetsById<true> = (options) => putApi20260701ResourcesItManagementItAssetsById<true>({ client: this._client, ...options });
 
   /** Deletes a it_assets record */
-  delete: typeof deleteApi20260701ResourcesItManagementItAssetsById = (options?: any) => deleteApi20260701ResourcesItManagementItAssetsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesItManagementItAssetsById<true> = (options) => deleteApi20260701ResourcesItManagementItAssetsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the job_catalog > levels resource */
@@ -3377,17 +3551,19 @@ export class JobCatalogLevelsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all levels */
-  list: typeof getApi20260701ResourcesJobCatalogLevels = (options?: any) => getApi20260701ResourcesJobCatalogLevels({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesJobCatalogLevels<true> = (options) => getApi20260701ResourcesJobCatalogLevels<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all levels, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.levels.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogLevels>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogLevels<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesJobCatalogLevels({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesJobCatalogLevels<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3395,12 +3571,12 @@ export class JobCatalogLevelsResource {
    * Fetch all levels across all pages into a single array.
    * @example const all = await client.jobCatalog.levels.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogLevels>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogLevels<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single levels record */
-  get: typeof getApi20260701ResourcesJobCatalogLevelsById = (options?: any) => getApi20260701ResourcesJobCatalogLevelsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesJobCatalogLevelsById<true> = (options) => getApi20260701ResourcesJobCatalogLevelsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the job_catalog > node_attributes resource */
@@ -3408,17 +3584,19 @@ export class JobCatalogNodeAttributesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all node_attributes */
-  list: typeof getApi20260701ResourcesJobCatalogNodeAttributes = (options?: any) => getApi20260701ResourcesJobCatalogNodeAttributes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesJobCatalogNodeAttributes<true> = (options) => getApi20260701ResourcesJobCatalogNodeAttributes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all node_attributes, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.nodeAttributes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogNodeAttributes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogNodeAttributes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesJobCatalogNodeAttributes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesJobCatalogNodeAttributes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3426,7 +3604,7 @@ export class JobCatalogNodeAttributesResource {
    * Fetch all node_attributes across all pages into a single array.
    * @example const all = await client.jobCatalog.nodeAttributes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogNodeAttributes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogNodeAttributes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -3436,17 +3614,19 @@ export class JobCatalogRolesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all roles */
-  list: typeof getApi20260701ResourcesJobCatalogRoles = (options?: any) => getApi20260701ResourcesJobCatalogRoles({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesJobCatalogRoles<true> = (options) => getApi20260701ResourcesJobCatalogRoles<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all roles, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.roles.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogRoles>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogRoles<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesJobCatalogRoles({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesJobCatalogRoles<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3454,12 +3634,12 @@ export class JobCatalogRolesResource {
    * Fetch all roles across all pages into a single array.
    * @example const all = await client.jobCatalog.roles.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogRoles>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogRoles<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single roles record */
-  get: typeof getApi20260701ResourcesJobCatalogRolesById = (options?: any) => getApi20260701ResourcesJobCatalogRolesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesJobCatalogRolesById<true> = (options) => getApi20260701ResourcesJobCatalogRolesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the job_catalog > tree_nodes resource */
@@ -3467,17 +3647,19 @@ export class JobCatalogTreeNodesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all tree_nodes */
-  list: typeof getApi20260701ResourcesJobCatalogTreeNodes = (options?: any) => getApi20260701ResourcesJobCatalogTreeNodes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesJobCatalogTreeNodes<true> = (options) => getApi20260701ResourcesJobCatalogTreeNodes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all tree_nodes, yielding one item at a time.
    * @example for await (const item of client.jobCatalog.treeNodes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogTreeNodes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesJobCatalogTreeNodes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesJobCatalogTreeNodes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesJobCatalogTreeNodes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3485,7 +3667,7 @@ export class JobCatalogTreeNodesResource {
    * Fetch all tree_nodes across all pages into a single array.
    * @example const all = await client.jobCatalog.treeNodes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogTreeNodes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesJobCatalogTreeNodes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -3495,17 +3677,19 @@ export class LocationsLocationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all locations */
-  list: typeof getApi20260701ResourcesLocationsLocations = (options?: any) => getApi20260701ResourcesLocationsLocations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesLocationsLocations<true> = (options) => getApi20260701ResourcesLocationsLocations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all locations, yielding one item at a time.
    * @example for await (const item of client.locations.locations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesLocationsLocations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesLocationsLocations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesLocationsLocations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesLocationsLocations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3513,21 +3697,21 @@ export class LocationsLocationsResource {
    * Fetch all locations across all pages into a single array.
    * @example const all = await client.locations.locations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesLocationsLocations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesLocationsLocations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a locations record */
-  create: typeof postApi20260701ResourcesLocationsLocations = (options?: any) => postApi20260701ResourcesLocationsLocations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesLocationsLocations<true> = (options) => postApi20260701ResourcesLocationsLocations<true>({ client: this._client, ...options });
 
   /** Reads a single locations record */
-  get: typeof getApi20260701ResourcesLocationsLocationsById = (options?: any) => getApi20260701ResourcesLocationsLocationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesLocationsLocationsById<true> = (options) => getApi20260701ResourcesLocationsLocationsById<true>({ client: this._client, ...options });
 
   /** Updates a locations record */
-  update: typeof putApi20260701ResourcesLocationsLocationsById = (options?: any) => putApi20260701ResourcesLocationsLocationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesLocationsLocationsById<true> = (options) => putApi20260701ResourcesLocationsLocationsById<true>({ client: this._client, ...options });
 
   /** Deletes a locations record */
-  delete: typeof deleteApi20260701ResourcesLocationsLocationsById = (options?: any) => deleteApi20260701ResourcesLocationsLocationsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesLocationsLocationsById<true> = (options) => deleteApi20260701ResourcesLocationsLocationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the locations > work_areas resource */
@@ -3535,17 +3719,19 @@ export class LocationsWorkAreasResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all work_areas */
-  list: typeof getApi20260701ResourcesLocationsWorkAreas = (options?: any) => getApi20260701ResourcesLocationsWorkAreas({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesLocationsWorkAreas<true> = (options) => getApi20260701ResourcesLocationsWorkAreas<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all work_areas, yielding one item at a time.
    * @example for await (const item of client.locations.workAreas.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesLocationsWorkAreas>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesLocationsWorkAreas<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesLocationsWorkAreas({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesLocationsWorkAreas<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3553,24 +3739,24 @@ export class LocationsWorkAreasResource {
    * Fetch all work_areas across all pages into a single array.
    * @example const all = await client.locations.workAreas.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesLocationsWorkAreas>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesLocationsWorkAreas<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a work_areas record */
-  create: typeof postApi20260701ResourcesLocationsWorkAreas = (options?: any) => postApi20260701ResourcesLocationsWorkAreas({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesLocationsWorkAreas<true> = (options) => postApi20260701ResourcesLocationsWorkAreas<true>({ client: this._client, ...options });
 
   /** Reads a single work_areas record */
-  get: typeof getApi20260701ResourcesLocationsWorkAreasById = (options?: any) => getApi20260701ResourcesLocationsWorkAreasById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesLocationsWorkAreasById<true> = (options) => getApi20260701ResourcesLocationsWorkAreasById<true>({ client: this._client, ...options });
 
   /** Updates a work_areas record */
-  update: typeof putApi20260701ResourcesLocationsWorkAreasById = (options?: any) => putApi20260701ResourcesLocationsWorkAreasById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesLocationsWorkAreasById<true> = (options) => putApi20260701ResourcesLocationsWorkAreasById<true>({ client: this._client, ...options });
 
   /** archive */
-  archive: typeof postApi20260701ResourcesLocationsWorkAreasArchive = (options?: any) => postApi20260701ResourcesLocationsWorkAreasArchive({ client: this._client, ...options });
+  archive: typeof postApi20260701ResourcesLocationsWorkAreasArchive<true> = (options) => postApi20260701ResourcesLocationsWorkAreasArchive<true>({ client: this._client, ...options });
 
   /** unarchive */
-  unarchive: typeof postApi20260701ResourcesLocationsWorkAreasUnarchive = (options?: any) => postApi20260701ResourcesLocationsWorkAreasUnarchive({ client: this._client, ...options });
+  unarchive: typeof postApi20260701ResourcesLocationsWorkAreasUnarchive<true> = (options) => postApi20260701ResourcesLocationsWorkAreasUnarchive<true>({ client: this._client, ...options });
 
 }
 /** Methods for the marketplace > installation_settings resource */
@@ -3578,17 +3764,19 @@ export class MarketplaceInstallationSettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all installation_settings */
-  list: typeof getApi20260701ResourcesMarketplaceInstallationSettings = (options?: any) => getApi20260701ResourcesMarketplaceInstallationSettings({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesMarketplaceInstallationSettings<true> = (options) => getApi20260701ResourcesMarketplaceInstallationSettings<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all installation_settings, yielding one item at a time.
    * @example for await (const item of client.marketplace.installationSettings.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesMarketplaceInstallationSettings>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesMarketplaceInstallationSettings<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesMarketplaceInstallationSettings({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesMarketplaceInstallationSettings<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3596,7 +3784,7 @@ export class MarketplaceInstallationSettingsResource {
    * Fetch all installation_settings across all pages into a single array.
    * @example const all = await client.marketplace.installationSettings.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesMarketplaceInstallationSettings>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesMarketplaceInstallationSettings<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -3606,7 +3794,7 @@ export class MarketplaceInstallationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Creates a installations record */
-  create: typeof postApi20260701ResourcesMarketplaceInstallations = (options?: any) => postApi20260701ResourcesMarketplaceInstallations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesMarketplaceInstallations<true> = (options) => postApi20260701ResourcesMarketplaceInstallations<true>({ client: this._client, ...options });
 
 }
 /** Methods for the payroll > family_situations resource */
@@ -3614,17 +3802,19 @@ export class PayrollFamilySituationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all family_situations */
-  list: typeof getApi20260701ResourcesPayrollFamilySituations = (options?: any) => getApi20260701ResourcesPayrollFamilySituations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPayrollFamilySituations<true> = (options) => getApi20260701ResourcesPayrollFamilySituations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all family_situations, yielding one item at a time.
    * @example for await (const item of client.payroll.familySituations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollFamilySituations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollFamilySituations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPayrollFamilySituations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPayrollFamilySituations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3632,15 +3822,15 @@ export class PayrollFamilySituationsResource {
    * Fetch all family_situations across all pages into a single array.
    * @example const all = await client.payroll.familySituations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPayrollFamilySituations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPayrollFamilySituations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a family_situations record */
-  create: typeof postApi20260701ResourcesPayrollFamilySituations = (options?: any) => postApi20260701ResourcesPayrollFamilySituations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPayrollFamilySituations<true> = (options) => postApi20260701ResourcesPayrollFamilySituations<true>({ client: this._client, ...options });
 
   /** Updates a family_situations record */
-  update: typeof putApi20260701ResourcesPayrollFamilySituationsById = (options?: any) => putApi20260701ResourcesPayrollFamilySituationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPayrollFamilySituationsById<true> = (options) => putApi20260701ResourcesPayrollFamilySituationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the payroll > policy_periods resource */
@@ -3648,7 +3838,7 @@ export class PayrollPolicyPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** changeStatus */
-  changeStatus: typeof postApi20260701ResourcesPayrollPolicyPeriodsChangeStatus = (options?: any) => postApi20260701ResourcesPayrollPolicyPeriodsChangeStatus({ client: this._client, ...options });
+  changeStatus: typeof postApi20260701ResourcesPayrollPolicyPeriodsChangeStatus<true> = (options) => postApi20260701ResourcesPayrollPolicyPeriodsChangeStatus<true>({ client: this._client, ...options });
 
 }
 /** Methods for the payroll > supplements resource */
@@ -3656,17 +3846,19 @@ export class PayrollSupplementsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all supplements */
-  list: typeof getApi20260701ResourcesPayrollSupplements = (options?: any) => getApi20260701ResourcesPayrollSupplements({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPayrollSupplements<true> = (options) => getApi20260701ResourcesPayrollSupplements<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all supplements, yielding one item at a time.
    * @example for await (const item of client.payroll.supplements.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollSupplements>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollSupplements<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPayrollSupplements({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPayrollSupplements<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3674,21 +3866,21 @@ export class PayrollSupplementsResource {
    * Fetch all supplements across all pages into a single array.
    * @example const all = await client.payroll.supplements.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPayrollSupplements>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPayrollSupplements<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a supplements record */
-  create: typeof postApi20260701ResourcesPayrollSupplements = (options?: any) => postApi20260701ResourcesPayrollSupplements({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPayrollSupplements<true> = (options) => postApi20260701ResourcesPayrollSupplements<true>({ client: this._client, ...options });
 
   /** Reads a single supplements record */
-  get: typeof getApi20260701ResourcesPayrollSupplementsById = (options?: any) => getApi20260701ResourcesPayrollSupplementsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPayrollSupplementsById<true> = (options) => getApi20260701ResourcesPayrollSupplementsById<true>({ client: this._client, ...options });
 
   /** Updates a supplements record */
-  update: typeof putApi20260701ResourcesPayrollSupplementsById = (options?: any) => putApi20260701ResourcesPayrollSupplementsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPayrollSupplementsById<true> = (options) => putApi20260701ResourcesPayrollSupplementsById<true>({ client: this._client, ...options });
 
   /** Deletes a supplements record */
-  delete: typeof deleteApi20260701ResourcesPayrollSupplementsById = (options?: any) => deleteApi20260701ResourcesPayrollSupplementsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPayrollSupplementsById<true> = (options) => deleteApi20260701ResourcesPayrollSupplementsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the payroll_employees > identifiers resource */
@@ -3696,17 +3888,19 @@ export class PayrollEmployeesIdentifiersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all identifiers */
-  list: typeof getApi20260701ResourcesPayrollEmployeesIdentifiers = (options?: any) => getApi20260701ResourcesPayrollEmployeesIdentifiers({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPayrollEmployeesIdentifiers<true> = (options) => getApi20260701ResourcesPayrollEmployeesIdentifiers<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all identifiers, yielding one item at a time.
    * @example for await (const item of client.payrollEmployees.identifiers.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollEmployeesIdentifiers>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollEmployeesIdentifiers<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPayrollEmployeesIdentifiers({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPayrollEmployeesIdentifiers<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3714,21 +3908,21 @@ export class PayrollEmployeesIdentifiersResource {
    * Fetch all identifiers across all pages into a single array.
    * @example const all = await client.payrollEmployees.identifiers.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPayrollEmployeesIdentifiers>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPayrollEmployeesIdentifiers<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a identifiers record */
-  create: typeof postApi20260701ResourcesPayrollEmployeesIdentifiers = (options?: any) => postApi20260701ResourcesPayrollEmployeesIdentifiers({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPayrollEmployeesIdentifiers<true> = (options) => postApi20260701ResourcesPayrollEmployeesIdentifiers<true>({ client: this._client, ...options });
 
   /** Reads a single identifiers record */
-  get: typeof getApi20260701ResourcesPayrollEmployeesIdentifiersById = (options?: any) => getApi20260701ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPayrollEmployeesIdentifiersById<true> = (options) => getApi20260701ResourcesPayrollEmployeesIdentifiersById<true>({ client: this._client, ...options });
 
   /** Updates a identifiers record */
-  update: typeof putApi20260701ResourcesPayrollEmployeesIdentifiersById = (options?: any) => putApi20260701ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPayrollEmployeesIdentifiersById<true> = (options) => putApi20260701ResourcesPayrollEmployeesIdentifiersById<true>({ client: this._client, ...options });
 
   /** Deletes a identifiers record */
-  delete: typeof deleteApi20260701ResourcesPayrollEmployeesIdentifiersById = (options?: any) => deleteApi20260701ResourcesPayrollEmployeesIdentifiersById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPayrollEmployeesIdentifiersById<true> = (options) => deleteApi20260701ResourcesPayrollEmployeesIdentifiersById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the payroll_integrations_base > codes resource */
@@ -3736,17 +3930,19 @@ export class PayrollIntegrationsBaseCodesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all codes */
-  list: typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes = (options?: any) => getApi20260701ResourcesPayrollIntegrationsBaseCodes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes<true> = (options) => getApi20260701ResourcesPayrollIntegrationsBaseCodes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all codes, yielding one item at a time.
    * @example for await (const item of client.payrollIntegrationsBase.codes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPayrollIntegrationsBaseCodes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPayrollIntegrationsBaseCodes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3754,18 +3950,18 @@ export class PayrollIntegrationsBaseCodesResource {
    * Fetch all codes across all pages into a single array.
    * @example const all = await client.payrollIntegrationsBase.codes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPayrollIntegrationsBaseCodes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a codes record */
-  create: typeof postApi20260701ResourcesPayrollIntegrationsBaseCodes = (options?: any) => postApi20260701ResourcesPayrollIntegrationsBaseCodes({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPayrollIntegrationsBaseCodes<true> = (options) => postApi20260701ResourcesPayrollIntegrationsBaseCodes<true>({ client: this._client, ...options });
 
   /** Updates a codes record */
-  update: typeof putApi20260701ResourcesPayrollIntegrationsBaseCodesById = (options?: any) => putApi20260701ResourcesPayrollIntegrationsBaseCodesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPayrollIntegrationsBaseCodesById<true> = (options) => putApi20260701ResourcesPayrollIntegrationsBaseCodesById<true>({ client: this._client, ...options });
 
   /** Deletes a codes record */
-  delete: typeof deleteApi20260701ResourcesPayrollIntegrationsBaseCodesById = (options?: any) => deleteApi20260701ResourcesPayrollIntegrationsBaseCodesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPayrollIntegrationsBaseCodesById<true> = (options) => deleteApi20260701ResourcesPayrollIntegrationsBaseCodesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > agreements resource */
@@ -3773,17 +3969,19 @@ export class PerformanceAgreementsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all agreements */
-  list: typeof getApi20260701ResourcesPerformanceAgreements = (options?: any) => getApi20260701ResourcesPerformanceAgreements({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceAgreements<true> = (options) => getApi20260701ResourcesPerformanceAgreements<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all agreements, yielding one item at a time.
    * @example for await (const item of client.performance.agreements.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceAgreements>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceAgreements<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceAgreements({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceAgreements<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3791,18 +3989,18 @@ export class PerformanceAgreementsResource {
    * Fetch all agreements across all pages into a single array.
    * @example const all = await client.performance.agreements.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceAgreements>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceAgreements<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single agreements record */
-  get: typeof getApi20260701ResourcesPerformanceAgreementsById = (options?: any) => getApi20260701ResourcesPerformanceAgreementsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceAgreementsById<true> = (options) => getApi20260701ResourcesPerformanceAgreementsById<true>({ client: this._client, ...options });
 
   /** bulkInitiate */
-  bulkInitiate: typeof postApi20260701ResourcesPerformanceAgreementsBulkInitiate = (options?: any) => postApi20260701ResourcesPerformanceAgreementsBulkInitiate({ client: this._client, ...options });
+  bulkInitiate: typeof postApi20260701ResourcesPerformanceAgreementsBulkInitiate<true> = (options) => postApi20260701ResourcesPerformanceAgreementsBulkInitiate<true>({ client: this._client, ...options });
 
   /** initiate */
-  initiate: typeof postApi20260701ResourcesPerformanceAgreementsInitiate = (options?: any) => postApi20260701ResourcesPerformanceAgreementsInitiate({ client: this._client, ...options });
+  initiate: typeof postApi20260701ResourcesPerformanceAgreementsInitiate<true> = (options) => postApi20260701ResourcesPerformanceAgreementsInitiate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > company_employee_score_scales resource */
@@ -3810,17 +4008,19 @@ export class PerformanceCompanyEmployeeScoreScalesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all company_employee_score_scales */
-  list: typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales = (options?: any) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales<true> = (options) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all company_employee_score_scales, yielding one item at a time.
    * @example for await (const item of client.performance.companyEmployeeScoreScales.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3828,15 +4028,15 @@ export class PerformanceCompanyEmployeeScoreScalesResource {
    * Fetch all company_employee_score_scales across all pages into a single array.
    * @example const all = await client.performance.companyEmployeeScoreScales.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScales<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single company_employee_score_scales record */
-  get: typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesById = (options?: any) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesById<true> = (options) => getApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesById<true>({ client: this._client, ...options });
 
   /** set */
-  set: typeof postApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSet = (options?: any) => postApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSet({ client: this._client, ...options });
+  set: typeof postApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSet<true> = (options) => postApi20260701ResourcesPerformanceCompanyEmployeeScoreScalesSet<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > employee_score_scales resource */
@@ -3844,17 +4044,19 @@ export class PerformanceEmployeeScoreScalesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all employee_score_scales */
-  list: typeof getApi20260701ResourcesPerformanceEmployeeScoreScales = (options?: any) => getApi20260701ResourcesPerformanceEmployeeScoreScales({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceEmployeeScoreScales<true> = (options) => getApi20260701ResourcesPerformanceEmployeeScoreScales<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all employee_score_scales, yielding one item at a time.
    * @example for await (const item of client.performance.employeeScoreScales.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceEmployeeScoreScales<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceEmployeeScoreScales({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceEmployeeScoreScales<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3862,12 +4064,12 @@ export class PerformanceEmployeeScoreScalesResource {
    * Fetch all employee_score_scales across all pages into a single array.
    * @example const all = await client.performance.employeeScoreScales.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceEmployeeScoreScales>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceEmployeeScoreScales<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single employee_score_scales record */
-  get: typeof getApi20260701ResourcesPerformanceEmployeeScoreScalesById = (options?: any) => getApi20260701ResourcesPerformanceEmployeeScoreScalesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceEmployeeScoreScalesById<true> = (options) => getApi20260701ResourcesPerformanceEmployeeScoreScalesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_evaluation_answers resource */
@@ -3875,17 +4077,19 @@ export class PerformanceReviewEvaluationAnswersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_evaluation_answers */
-  list: typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers = (options?: any) => getApi20260701ResourcesPerformanceReviewEvaluationAnswers({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers<true> = (options) => getApi20260701ResourcesPerformanceReviewEvaluationAnswers<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_evaluation_answers, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluationAnswers.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewEvaluationAnswers({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewEvaluationAnswers<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3893,7 +4097,7 @@ export class PerformanceReviewEvaluationAnswersResource {
    * Fetch all review_evaluation_answers across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluationAnswers.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationAnswers<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -3903,17 +4107,19 @@ export class PerformanceReviewEvaluationScoresResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_evaluation_scores */
-  list: typeof getApi20260701ResourcesPerformanceReviewEvaluationScores = (options?: any) => getApi20260701ResourcesPerformanceReviewEvaluationScores({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewEvaluationScores<true> = (options) => getApi20260701ResourcesPerformanceReviewEvaluationScores<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_evaluation_scores, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluationScores.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationScores>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationScores<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewEvaluationScores({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewEvaluationScores<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3921,12 +4127,12 @@ export class PerformanceReviewEvaluationScoresResource {
    * Fetch all review_evaluation_scores across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluationScores.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationScores>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluationScores<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single review_evaluation_scores record */
-  get: typeof getApi20260701ResourcesPerformanceReviewEvaluationScoresById = (options?: any) => getApi20260701ResourcesPerformanceReviewEvaluationScoresById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewEvaluationScoresById<true> = (options) => getApi20260701ResourcesPerformanceReviewEvaluationScoresById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_evaluations resource */
@@ -3934,17 +4140,19 @@ export class PerformanceReviewEvaluationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_evaluations */
-  list: typeof getApi20260701ResourcesPerformanceReviewEvaluations = (options?: any) => getApi20260701ResourcesPerformanceReviewEvaluations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewEvaluations<true> = (options) => getApi20260701ResourcesPerformanceReviewEvaluations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_evaluations, yielding one item at a time.
    * @example for await (const item of client.performance.reviewEvaluations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewEvaluations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewEvaluations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3952,15 +4160,15 @@ export class PerformanceReviewEvaluationsResource {
    * Fetch all review_evaluations across all pages into a single array.
    * @example const all = await client.performance.reviewEvaluations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewEvaluations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single review_evaluations record */
-  get: typeof getApi20260701ResourcesPerformanceReviewEvaluationsById = (options?: any) => getApi20260701ResourcesPerformanceReviewEvaluationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewEvaluationsById<true> = (options) => getApi20260701ResourcesPerformanceReviewEvaluationsById<true>({ client: this._client, ...options });
 
   /** replaceReviewer */
-  replaceReviewer: typeof postApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewer = (options?: any) => postApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewer({ client: this._client, ...options });
+  replaceReviewer: typeof postApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewer<true> = (options) => postApi20260701ResourcesPerformanceReviewEvaluationsReplaceReviewer<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_owners resource */
@@ -3968,17 +4176,19 @@ export class PerformanceReviewOwnersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_owners */
-  list: typeof getApi20260701ResourcesPerformanceReviewOwners = (options?: any) => getApi20260701ResourcesPerformanceReviewOwners({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewOwners<true> = (options) => getApi20260701ResourcesPerformanceReviewOwners<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_owners, yielding one item at a time.
    * @example for await (const item of client.performance.reviewOwners.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewOwners>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewOwners<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewOwners({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewOwners<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -3986,15 +4196,15 @@ export class PerformanceReviewOwnersResource {
    * Fetch all review_owners across all pages into a single array.
    * @example const all = await client.performance.reviewOwners.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewOwners>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewOwners<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Deletes a review_owners record */
-  delete: typeof deleteApi20260701ResourcesPerformanceReviewOwnersById = (options?: any) => deleteApi20260701ResourcesPerformanceReviewOwnersById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPerformanceReviewOwnersById<true> = (options) => deleteApi20260701ResourcesPerformanceReviewOwnersById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesPerformanceReviewOwnersBulkCreate = (options?: any) => postApi20260701ResourcesPerformanceReviewOwnersBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesPerformanceReviewOwnersBulkCreate<true> = (options) => postApi20260701ResourcesPerformanceReviewOwnersBulkCreate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_process_custom_templates resource */
@@ -4002,17 +4212,19 @@ export class PerformanceReviewProcessCustomTemplatesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_process_custom_templates */
-  list: typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplates({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplates<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_process_custom_templates, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessCustomTemplates.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplates({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplates<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4020,12 +4232,12 @@ export class PerformanceReviewProcessCustomTemplatesResource {
    * Fetch all review_process_custom_templates across all pages into a single array.
    * @example const all = await client.performance.reviewProcessCustomTemplates.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplates<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single review_process_custom_templates record */
-  get: typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplatesById = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplatesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewProcessCustomTemplatesById<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessCustomTemplatesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_process_estimated_targets resource */
@@ -4033,17 +4245,19 @@ export class PerformanceReviewProcessEstimatedTargetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_process_estimated_targets */
-  list: typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_process_estimated_targets, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessEstimatedTargets.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4051,7 +4265,7 @@ export class PerformanceReviewProcessEstimatedTargetsResource {
    * Fetch all review_process_estimated_targets across all pages into a single array.
    * @example const all = await client.performance.reviewProcessEstimatedTargets.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessEstimatedTargets<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -4061,17 +4275,19 @@ export class PerformanceReviewProcessTargetsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_process_targets */
-  list: typeof getApi20260701ResourcesPerformanceReviewProcessTargets = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessTargets({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewProcessTargets<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessTargets<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_process_targets, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcessTargets.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessTargets>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessTargets<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewProcessTargets({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewProcessTargets<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4079,24 +4295,24 @@ export class PerformanceReviewProcessTargetsResource {
    * Fetch all review_process_targets across all pages into a single array.
    * @example const all = await client.performance.reviewProcessTargets.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessTargets>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcessTargets<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single review_process_targets record */
-  get: typeof getApi20260701ResourcesPerformanceReviewProcessTargetsById = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessTargetsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewProcessTargetsById<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessTargetsById<true>({ client: this._client, ...options });
 
   /** Deletes a review_process_targets record */
-  delete: typeof deleteApi20260701ResourcesPerformanceReviewProcessTargetsById = (options?: any) => deleteApi20260701ResourcesPerformanceReviewProcessTargetsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPerformanceReviewProcessTargetsById<true> = (options) => deleteApi20260701ResourcesPerformanceReviewProcessTargetsById<true>({ client: this._client, ...options });
 
   /** addPeers */
-  addPeers: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsAddPeers = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessTargetsAddPeers({ client: this._client, ...options });
+  addPeers: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsAddPeers<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessTargetsAddPeers<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreate = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreate<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessTargetsBulkCreate<true>({ client: this._client, ...options });
 
   /** removePeerEvaluations */
-  removePeerEvaluations: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations({ client: this._client, ...options });
+  removePeerEvaluations: typeof postApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessTargetsRemovePeerEvaluations<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_processes resource */
@@ -4104,17 +4320,19 @@ export class PerformanceReviewProcessesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_processes */
-  list: typeof getApi20260701ResourcesPerformanceReviewProcesses = (options?: any) => getApi20260701ResourcesPerformanceReviewProcesses({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewProcesses<true> = (options) => getApi20260701ResourcesPerformanceReviewProcesses<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_processes, yielding one item at a time.
    * @example for await (const item of client.performance.reviewProcesses.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcesses>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcesses<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewProcesses({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewProcesses<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4122,69 +4340,69 @@ export class PerformanceReviewProcessesResource {
    * Fetch all review_processes across all pages into a single array.
    * @example const all = await client.performance.reviewProcesses.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcesses>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewProcesses<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a review_processes record */
-  create: typeof postApi20260701ResourcesPerformanceReviewProcesses = (options?: any) => postApi20260701ResourcesPerformanceReviewProcesses({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPerformanceReviewProcesses<true> = (options) => postApi20260701ResourcesPerformanceReviewProcesses<true>({ client: this._client, ...options });
 
   /** Reads a single review_processes record */
-  get: typeof getApi20260701ResourcesPerformanceReviewProcessesById = (options?: any) => getApi20260701ResourcesPerformanceReviewProcessesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewProcessesById<true> = (options) => getApi20260701ResourcesPerformanceReviewProcessesById<true>({ client: this._client, ...options });
 
   /** Deletes a review_processes record */
-  delete: typeof deleteApi20260701ResourcesPerformanceReviewProcessesById = (options?: any) => deleteApi20260701ResourcesPerformanceReviewProcessesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPerformanceReviewProcessesById<true> = (options) => deleteApi20260701ResourcesPerformanceReviewProcessesById<true>({ client: this._client, ...options });
 
   /** createFromTemplate */
-  createFromTemplate: typeof postApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplate = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplate({ client: this._client, ...options });
+  createFromTemplate: typeof postApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplate<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesCreateFromTemplate<true>({ client: this._client, ...options });
 
   /** duplicate */
-  duplicate: typeof postApi20260701ResourcesPerformanceReviewProcessesDuplicate = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesDuplicate({ client: this._client, ...options });
+  duplicate: typeof postApi20260701ResourcesPerformanceReviewProcessesDuplicate<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesDuplicate<true>({ client: this._client, ...options });
 
   /** remindInBulk */
-  remindInBulk: typeof postApi20260701ResourcesPerformanceReviewProcessesRemindInBulk = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesRemindInBulk({ client: this._client, ...options });
+  remindInBulk: typeof postApi20260701ResourcesPerformanceReviewProcessesRemindInBulk<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesRemindInBulk<true>({ client: this._client, ...options });
 
   /** removeSchedule */
-  removeSchedule: typeof postApi20260701ResourcesPerformanceReviewProcessesRemoveSchedule = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesRemoveSchedule({ client: this._client, ...options });
+  removeSchedule: typeof postApi20260701ResourcesPerformanceReviewProcessesRemoveSchedule<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesRemoveSchedule<true>({ client: this._client, ...options });
 
   /** reopen */
-  reopen: typeof postApi20260701ResourcesPerformanceReviewProcessesReopen = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesReopen({ client: this._client, ...options });
+  reopen: typeof postApi20260701ResourcesPerformanceReviewProcessesReopen<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesReopen<true>({ client: this._client, ...options });
 
   /** schedule */
-  schedule: typeof postApi20260701ResourcesPerformanceReviewProcessesSchedule = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesSchedule({ client: this._client, ...options });
+  schedule: typeof postApi20260701ResourcesPerformanceReviewProcessesSchedule<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesSchedule<true>({ client: this._client, ...options });
 
   /** start */
-  start: typeof postApi20260701ResourcesPerformanceReviewProcessesStart = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesStart({ client: this._client, ...options });
+  start: typeof postApi20260701ResourcesPerformanceReviewProcessesStart<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesStart<true>({ client: this._client, ...options });
 
   /** stop */
-  stop: typeof postApi20260701ResourcesPerformanceReviewProcessesStop = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesStop({ client: this._client, ...options });
+  stop: typeof postApi20260701ResourcesPerformanceReviewProcessesStop<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesStop<true>({ client: this._client, ...options });
 
   /** toggleArchive */
-  toggleArchive: typeof postApi20260701ResourcesPerformanceReviewProcessesToggleArchive = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesToggleArchive({ client: this._client, ...options });
+  toggleArchive: typeof postApi20260701ResourcesPerformanceReviewProcessesToggleArchive<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesToggleArchive<true>({ client: this._client, ...options });
 
   /** updateAgreementsConfiguration */
-  updateAgreementsConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration({ client: this._client, ...options });
+  updateAgreementsConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateAgreementsConfiguration<true>({ client: this._client, ...options });
 
   /** updateBasicInfo */
-  updateBasicInfo: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfo = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfo({ client: this._client, ...options });
+  updateBasicInfo: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfo<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateBasicInfo<true>({ client: this._client, ...options });
 
   /** updateCompetenciesAssessmentsConfiguration */
-  updateCompetenciesAssessmentsConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration({ client: this._client, ...options });
+  updateCompetenciesAssessmentsConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateCompetenciesAssessmentsConfiguration<true>({ client: this._client, ...options });
 
   /** updateDeadline */
-  updateDeadline: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateDeadline = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateDeadline({ client: this._client, ...options });
+  updateDeadline: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateDeadline<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateDeadline<true>({ client: this._client, ...options });
 
   /** updateEmployeeScoreConfiguration */
-  updateEmployeeScoreConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration({ client: this._client, ...options });
+  updateEmployeeScoreConfiguration: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateEmployeeScoreConfiguration<true>({ client: this._client, ...options });
 
   /** updateReviewerStrategies */
-  updateReviewerStrategies: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategies = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategies({ client: this._client, ...options });
+  updateReviewerStrategies: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategies<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateReviewerStrategies<true>({ client: this._client, ...options });
 
   /** updateSchedule */
-  updateSchedule: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateSchedule = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateSchedule({ client: this._client, ...options });
+  updateSchedule: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateSchedule<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateSchedule<true>({ client: this._client, ...options });
 
   /** updateTargetStrategy */
-  updateTargetStrategy: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategy = (options?: any) => postApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategy({ client: this._client, ...options });
+  updateTargetStrategy: typeof postApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategy<true> = (options) => postApi20260701ResourcesPerformanceReviewProcessesUpdateTargetStrategy<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_questionnaire_by_strategies resource */
@@ -4192,17 +4410,19 @@ export class PerformanceReviewQuestionnaireByStrategiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_questionnaire_by_strategies */
-  list: typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies = (options?: any) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies<true> = (options) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_questionnaire_by_strategies, yielding one item at a time.
    * @example for await (const item of client.performance.reviewQuestionnaireByStrategies.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4210,18 +4430,18 @@ export class PerformanceReviewQuestionnaireByStrategiesResource {
    * Fetch all review_questionnaire_by_strategies across all pages into a single array.
    * @example const all = await client.performance.reviewQuestionnaireByStrategies.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategies<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single review_questionnaire_by_strategies record */
-  get: typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesById = (options?: any) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesById<true> = (options) => getApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesById<true>({ client: this._client, ...options });
 
   /** updateDefaultRatingScale */
-  updateDefaultRatingScale: typeof postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale = (options?: any) => postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale({ client: this._client, ...options });
+  updateDefaultRatingScale: typeof postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale<true> = (options) => postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScale<true>({ client: this._client, ...options });
 
   /** updateQuestionnaireForStrategy */
-  updateQuestionnaireForStrategy: typeof postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy = (options?: any) => postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy({ client: this._client, ...options });
+  updateQuestionnaireForStrategy: typeof postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy<true> = (options) => postApi20260701ResourcesPerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategy<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > review_visibility_settings resource */
@@ -4229,17 +4449,19 @@ export class PerformanceReviewVisibilitySettingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all review_visibility_settings */
-  list: typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings = (options?: any) => getApi20260701ResourcesPerformanceReviewVisibilitySettings({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings<true> = (options) => getApi20260701ResourcesPerformanceReviewVisibilitySettings<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all review_visibility_settings, yielding one item at a time.
    * @example for await (const item of client.performance.reviewVisibilitySettings.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceReviewVisibilitySettings({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceReviewVisibilitySettings<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4247,12 +4469,12 @@ export class PerformanceReviewVisibilitySettingsResource {
    * Fetch all review_visibility_settings across all pages into a single array.
    * @example const all = await client.performance.reviewVisibilitySettings.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceReviewVisibilitySettings<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Updates a review_visibility_settings record */
-  update: typeof putApi20260701ResourcesPerformanceReviewVisibilitySettingsById = (options?: any) => putApi20260701ResourcesPerformanceReviewVisibilitySettingsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPerformanceReviewVisibilitySettingsById<true> = (options) => putApi20260701ResourcesPerformanceReviewVisibilitySettingsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the performance > target_managers resource */
@@ -4260,17 +4482,19 @@ export class PerformanceTargetManagersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all target_managers */
-  list: typeof getApi20260701ResourcesPerformanceTargetManagers = (options?: any) => getApi20260701ResourcesPerformanceTargetManagers({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPerformanceTargetManagers<true> = (options) => getApi20260701ResourcesPerformanceTargetManagers<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all target_managers, yielding one item at a time.
    * @example for await (const item of client.performance.targetManagers.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceTargetManagers>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPerformanceTargetManagers<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPerformanceTargetManagers({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPerformanceTargetManagers<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4278,12 +4502,12 @@ export class PerformanceTargetManagersResource {
    * Fetch all target_managers across all pages into a single array.
    * @example const all = await client.performance.targetManagers.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceTargetManagers>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPerformanceTargetManagers<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single target_managers record */
-  get: typeof getApi20260701ResourcesPerformanceTargetManagersById = (options?: any) => getApi20260701ResourcesPerformanceTargetManagersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPerformanceTargetManagersById<true> = (options) => getApi20260701ResourcesPerformanceTargetManagersById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the posts > comments resource */
@@ -4291,17 +4515,19 @@ export class PostsCommentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all comments */
-  list: typeof getApi20260701ResourcesPostsComments = (options?: any) => getApi20260701ResourcesPostsComments({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPostsComments<true> = (options) => getApi20260701ResourcesPostsComments<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all comments, yielding one item at a time.
    * @example for await (const item of client.posts.comments.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsComments>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsComments<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPostsComments({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPostsComments<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4309,21 +4535,21 @@ export class PostsCommentsResource {
    * Fetch all comments across all pages into a single array.
    * @example const all = await client.posts.comments.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPostsComments>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPostsComments<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a comments record */
-  create: typeof postApi20260701ResourcesPostsComments = (options?: any) => postApi20260701ResourcesPostsComments({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPostsComments<true> = (options) => postApi20260701ResourcesPostsComments<true>({ client: this._client, ...options });
 
   /** Reads a single comments record */
-  get: typeof getApi20260701ResourcesPostsCommentsById = (options?: any) => getApi20260701ResourcesPostsCommentsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPostsCommentsById<true> = (options) => getApi20260701ResourcesPostsCommentsById<true>({ client: this._client, ...options });
 
   /** Updates a comments record */
-  update: typeof putApi20260701ResourcesPostsCommentsById = (options?: any) => putApi20260701ResourcesPostsCommentsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPostsCommentsById<true> = (options) => putApi20260701ResourcesPostsCommentsById<true>({ client: this._client, ...options });
 
   /** Deletes a comments record */
-  delete: typeof deleteApi20260701ResourcesPostsCommentsById = (options?: any) => deleteApi20260701ResourcesPostsCommentsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPostsCommentsById<true> = (options) => deleteApi20260701ResourcesPostsCommentsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the posts > groups resource */
@@ -4331,17 +4557,19 @@ export class PostsGroupsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all groups */
-  list: typeof getApi20260701ResourcesPostsGroups = (options?: any) => getApi20260701ResourcesPostsGroups({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPostsGroups<true> = (options) => getApi20260701ResourcesPostsGroups<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all groups, yielding one item at a time.
    * @example for await (const item of client.posts.groups.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsGroups>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsGroups<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPostsGroups({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPostsGroups<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4349,24 +4577,24 @@ export class PostsGroupsResource {
    * Fetch all groups across all pages into a single array.
    * @example const all = await client.posts.groups.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPostsGroups>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPostsGroups<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a groups record */
-  create: typeof postApi20260701ResourcesPostsGroups = (options?: any) => postApi20260701ResourcesPostsGroups({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPostsGroups<true> = (options) => postApi20260701ResourcesPostsGroups<true>({ client: this._client, ...options });
 
   /** Reads a single groups record */
-  get: typeof getApi20260701ResourcesPostsGroupsById = (options?: any) => getApi20260701ResourcesPostsGroupsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPostsGroupsById<true> = (options) => getApi20260701ResourcesPostsGroupsById<true>({ client: this._client, ...options });
 
   /** Updates a groups record */
-  update: typeof putApi20260701ResourcesPostsGroupsById = (options?: any) => putApi20260701ResourcesPostsGroupsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPostsGroupsById<true> = (options) => putApi20260701ResourcesPostsGroupsById<true>({ client: this._client, ...options });
 
   /** Deletes a groups record */
-  delete: typeof deleteApi20260701ResourcesPostsGroupsById = (options?: any) => deleteApi20260701ResourcesPostsGroupsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPostsGroupsById<true> = (options) => deleteApi20260701ResourcesPostsGroupsById<true>({ client: this._client, ...options });
 
   /** archive */
-  archive: typeof postApi20260701ResourcesPostsGroupsArchive = (options?: any) => postApi20260701ResourcesPostsGroupsArchive({ client: this._client, ...options });
+  archive: typeof postApi20260701ResourcesPostsGroupsArchive<true> = (options) => postApi20260701ResourcesPostsGroupsArchive<true>({ client: this._client, ...options });
 
 }
 /** Methods for the posts > posts resource */
@@ -4374,17 +4602,19 @@ export class PostsPostsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all posts */
-  list: typeof getApi20260701ResourcesPostsPosts = (options?: any) => getApi20260701ResourcesPostsPosts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesPostsPosts<true> = (options) => getApi20260701ResourcesPostsPosts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all posts, yielding one item at a time.
    * @example for await (const item of client.posts.posts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsPosts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesPostsPosts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesPostsPosts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesPostsPosts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4392,21 +4622,21 @@ export class PostsPostsResource {
    * Fetch all posts across all pages into a single array.
    * @example const all = await client.posts.posts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesPostsPosts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesPostsPosts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a posts record */
-  create: typeof postApi20260701ResourcesPostsPosts = (options?: any) => postApi20260701ResourcesPostsPosts({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesPostsPosts<true> = (options) => postApi20260701ResourcesPostsPosts<true>({ client: this._client, ...options });
 
   /** Reads a single posts record */
-  get: typeof getApi20260701ResourcesPostsPostsById = (options?: any) => getApi20260701ResourcesPostsPostsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesPostsPostsById<true> = (options) => getApi20260701ResourcesPostsPostsById<true>({ client: this._client, ...options });
 
   /** Updates a posts record */
-  update: typeof putApi20260701ResourcesPostsPostsById = (options?: any) => putApi20260701ResourcesPostsPostsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesPostsPostsById<true> = (options) => putApi20260701ResourcesPostsPostsById<true>({ client: this._client, ...options });
 
   /** Deletes a posts record */
-  delete: typeof deleteApi20260701ResourcesPostsPostsById = (options?: any) => deleteApi20260701ResourcesPostsPostsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesPostsPostsById<true> = (options) => deleteApi20260701ResourcesPostsPostsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the procurement > purchase_orders resource */
@@ -4414,17 +4644,19 @@ export class ProcurementPurchaseOrdersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all purchase_orders */
-  list: typeof getApi20260701ResourcesProcurementPurchaseOrders = (options?: any) => getApi20260701ResourcesProcurementPurchaseOrders({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProcurementPurchaseOrders<true> = (options) => getApi20260701ResourcesProcurementPurchaseOrders<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all purchase_orders, yielding one item at a time.
    * @example for await (const item of client.procurement.purchaseOrders.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseOrders>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseOrders<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProcurementPurchaseOrders({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProcurementPurchaseOrders<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4432,12 +4664,12 @@ export class ProcurementPurchaseOrdersResource {
    * Fetch all purchase_orders across all pages into a single array.
    * @example const all = await client.procurement.purchaseOrders.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseOrders>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseOrders<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single purchase_orders record */
-  get: typeof getApi20260701ResourcesProcurementPurchaseOrdersById = (options?: any) => getApi20260701ResourcesProcurementPurchaseOrdersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProcurementPurchaseOrdersById<true> = (options) => getApi20260701ResourcesProcurementPurchaseOrdersById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the procurement > purchase_requests resource */
@@ -4445,17 +4677,19 @@ export class ProcurementPurchaseRequestsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all purchase_requests */
-  list: typeof getApi20260701ResourcesProcurementPurchaseRequests = (options?: any) => getApi20260701ResourcesProcurementPurchaseRequests({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProcurementPurchaseRequests<true> = (options) => getApi20260701ResourcesProcurementPurchaseRequests<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all purchase_requests, yielding one item at a time.
    * @example for await (const item of client.procurement.purchaseRequests.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseRequests>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseRequests<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProcurementPurchaseRequests({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProcurementPurchaseRequests<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4463,12 +4697,12 @@ export class ProcurementPurchaseRequestsResource {
    * Fetch all purchase_requests across all pages into a single array.
    * @example const all = await client.procurement.purchaseRequests.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseRequests>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProcurementPurchaseRequests<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single purchase_requests record */
-  get: typeof getApi20260701ResourcesProcurementPurchaseRequestsById = (options?: any) => getApi20260701ResourcesProcurementPurchaseRequestsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProcurementPurchaseRequestsById<true> = (options) => getApi20260701ResourcesProcurementPurchaseRequestsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the procurement > types resource */
@@ -4476,17 +4710,19 @@ export class ProcurementTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all types */
-  list: typeof getApi20260701ResourcesProcurementTypes = (options?: any) => getApi20260701ResourcesProcurementTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProcurementTypes<true> = (options) => getApi20260701ResourcesProcurementTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all types, yielding one item at a time.
    * @example for await (const item of client.procurement.types.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProcurementTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProcurementTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProcurementTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4494,12 +4730,12 @@ export class ProcurementTypesResource {
    * Fetch all types across all pages into a single array.
    * @example const all = await client.procurement.types.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProcurementTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProcurementTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single types record */
-  get: typeof getApi20260701ResourcesProcurementTypesById = (options?: any) => getApi20260701ResourcesProcurementTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProcurementTypesById<true> = (options) => getApi20260701ResourcesProcurementTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > budget_strategies resource */
@@ -4507,17 +4743,19 @@ export class ProjectManagementBudgetStrategiesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all budget_strategies */
-  list: typeof getApi20260701ResourcesProjectManagementBudgetStrategies = (options?: any) => getApi20260701ResourcesProjectManagementBudgetStrategies({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementBudgetStrategies<true> = (options) => getApi20260701ResourcesProjectManagementBudgetStrategies<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all budget_strategies, yielding one item at a time.
    * @example for await (const item of client.projectManagement.budgetStrategies.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementBudgetStrategies>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementBudgetStrategies<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementBudgetStrategies({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementBudgetStrategies<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4525,21 +4763,21 @@ export class ProjectManagementBudgetStrategiesResource {
    * Fetch all budget_strategies across all pages into a single array.
    * @example const all = await client.projectManagement.budgetStrategies.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementBudgetStrategies>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementBudgetStrategies<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a budget_strategies record */
-  create: typeof postApi20260701ResourcesProjectManagementBudgetStrategies = (options?: any) => postApi20260701ResourcesProjectManagementBudgetStrategies({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementBudgetStrategies<true> = (options) => postApi20260701ResourcesProjectManagementBudgetStrategies<true>({ client: this._client, ...options });
 
   /** Reads a single budget_strategies record */
-  get: typeof getApi20260701ResourcesProjectManagementBudgetStrategiesById = (options?: any) => getApi20260701ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementBudgetStrategiesById<true> = (options) => getApi20260701ResourcesProjectManagementBudgetStrategiesById<true>({ client: this._client, ...options });
 
   /** Updates a budget_strategies record */
-  update: typeof putApi20260701ResourcesProjectManagementBudgetStrategiesById = (options?: any) => putApi20260701ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesProjectManagementBudgetStrategiesById<true> = (options) => putApi20260701ResourcesProjectManagementBudgetStrategiesById<true>({ client: this._client, ...options });
 
   /** Deletes a budget_strategies record */
-  delete: typeof deleteApi20260701ResourcesProjectManagementBudgetStrategiesById = (options?: any) => deleteApi20260701ResourcesProjectManagementBudgetStrategiesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesProjectManagementBudgetStrategiesById<true> = (options) => deleteApi20260701ResourcesProjectManagementBudgetStrategiesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > expense_records resource */
@@ -4547,17 +4785,19 @@ export class ProjectManagementExpenseRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all expense_records */
-  list: typeof getApi20260701ResourcesProjectManagementExpenseRecords = (options?: any) => getApi20260701ResourcesProjectManagementExpenseRecords({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementExpenseRecords<true> = (options) => getApi20260701ResourcesProjectManagementExpenseRecords<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all expense_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.expenseRecords.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExpenseRecords>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExpenseRecords<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementExpenseRecords({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementExpenseRecords<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4565,12 +4805,12 @@ export class ProjectManagementExpenseRecordsResource {
    * Fetch all expense_records across all pages into a single array.
    * @example const all = await client.projectManagement.expenseRecords.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExpenseRecords>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExpenseRecords<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single expense_records record */
-  get: typeof getApi20260701ResourcesProjectManagementExpenseRecordsById = (options?: any) => getApi20260701ResourcesProjectManagementExpenseRecordsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementExpenseRecordsById<true> = (options) => getApi20260701ResourcesProjectManagementExpenseRecordsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > exportable_expenses resource */
@@ -4578,17 +4818,19 @@ export class ProjectManagementExportableExpensesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all exportable_expenses */
-  list: typeof getApi20260701ResourcesProjectManagementExportableExpenses = (options?: any) => getApi20260701ResourcesProjectManagementExportableExpenses({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementExportableExpenses<true> = (options) => getApi20260701ResourcesProjectManagementExportableExpenses<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all exportable_expenses, yielding one item at a time.
    * @example for await (const item of client.projectManagement.exportableExpenses.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExportableExpenses>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExportableExpenses<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementExportableExpenses({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementExportableExpenses<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4596,7 +4838,7 @@ export class ProjectManagementExportableExpensesResource {
    * Fetch all exportable_expenses across all pages into a single array.
    * @example const all = await client.projectManagement.exportableExpenses.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExportableExpenses>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementExportableExpenses<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -4606,17 +4848,19 @@ export class ProjectManagementImputableProjectsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all imputable_projects */
-  list: typeof getApi20260701ResourcesProjectManagementImputableProjects = (options?: any) => getApi20260701ResourcesProjectManagementImputableProjects({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementImputableProjects<true> = (options) => getApi20260701ResourcesProjectManagementImputableProjects<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all imputable_projects, yielding one item at a time.
    * @example for await (const item of client.projectManagement.imputableProjects.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementImputableProjects>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementImputableProjects<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementImputableProjects({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementImputableProjects<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4624,12 +4868,12 @@ export class ProjectManagementImputableProjectsResource {
    * Fetch all imputable_projects across all pages into a single array.
    * @example const all = await client.projectManagement.imputableProjects.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementImputableProjects>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementImputableProjects<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single imputable_projects record */
-  get: typeof getApi20260701ResourcesProjectManagementImputableProjectsById = (options?: any) => getApi20260701ResourcesProjectManagementImputableProjectsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementImputableProjectsById<true> = (options) => getApi20260701ResourcesProjectManagementImputableProjectsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > planned_records resource */
@@ -4637,17 +4881,19 @@ export class ProjectManagementPlannedRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all planned_records */
-  list: typeof getApi20260701ResourcesProjectManagementPlannedRecords = (options?: any) => getApi20260701ResourcesProjectManagementPlannedRecords({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementPlannedRecords<true> = (options) => getApi20260701ResourcesProjectManagementPlannedRecords<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all planned_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.plannedRecords.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementPlannedRecords>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementPlannedRecords<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementPlannedRecords({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementPlannedRecords<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4655,21 +4901,21 @@ export class ProjectManagementPlannedRecordsResource {
    * Fetch all planned_records across all pages into a single array.
    * @example const all = await client.projectManagement.plannedRecords.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementPlannedRecords>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementPlannedRecords<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single planned_records record */
-  get: typeof getApi20260701ResourcesProjectManagementPlannedRecordsById = (options?: any) => getApi20260701ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementPlannedRecordsById<true> = (options) => getApi20260701ResourcesProjectManagementPlannedRecordsById<true>({ client: this._client, ...options });
 
   /** Updates a planned_records record */
-  update: typeof putApi20260701ResourcesProjectManagementPlannedRecordsById = (options?: any) => putApi20260701ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesProjectManagementPlannedRecordsById<true> = (options) => putApi20260701ResourcesProjectManagementPlannedRecordsById<true>({ client: this._client, ...options });
 
   /** Deletes a planned_records record */
-  delete: typeof deleteApi20260701ResourcesProjectManagementPlannedRecordsById = (options?: any) => deleteApi20260701ResourcesProjectManagementPlannedRecordsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesProjectManagementPlannedRecordsById<true> = (options) => deleteApi20260701ResourcesProjectManagementPlannedRecordsById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesProjectManagementPlannedRecordsBulkCreate = (options?: any) => postApi20260701ResourcesProjectManagementPlannedRecordsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesProjectManagementPlannedRecordsBulkCreate<true> = (options) => postApi20260701ResourcesProjectManagementPlannedRecordsBulkCreate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > project_tasks resource */
@@ -4677,17 +4923,19 @@ export class ProjectManagementProjectTasksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all project_tasks */
-  list: typeof getApi20260701ResourcesProjectManagementProjectTasks = (options?: any) => getApi20260701ResourcesProjectManagementProjectTasks({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementProjectTasks<true> = (options) => getApi20260701ResourcesProjectManagementProjectTasks<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all project_tasks, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projectTasks.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectTasks>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectTasks<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementProjectTasks({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementProjectTasks<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4695,24 +4943,24 @@ export class ProjectManagementProjectTasksResource {
    * Fetch all project_tasks across all pages into a single array.
    * @example const all = await client.projectManagement.projectTasks.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectTasks>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectTasks<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a project_tasks record */
-  create: typeof postApi20260701ResourcesProjectManagementProjectTasks = (options?: any) => postApi20260701ResourcesProjectManagementProjectTasks({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementProjectTasks<true> = (options) => postApi20260701ResourcesProjectManagementProjectTasks<true>({ client: this._client, ...options });
 
   /** Reads a single project_tasks record */
-  get: typeof getApi20260701ResourcesProjectManagementProjectTasksById = (options?: any) => getApi20260701ResourcesProjectManagementProjectTasksById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementProjectTasksById<true> = (options) => getApi20260701ResourcesProjectManagementProjectTasksById<true>({ client: this._client, ...options });
 
   /** Updates a project_tasks record */
-  update: typeof putApi20260701ResourcesProjectManagementProjectTasksById = (options?: any) => putApi20260701ResourcesProjectManagementProjectTasksById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesProjectManagementProjectTasksById<true> = (options) => putApi20260701ResourcesProjectManagementProjectTasksById<true>({ client: this._client, ...options });
 
   /** bulkDestroy */
-  bulkDestroy: typeof postApi20260701ResourcesProjectManagementProjectTasksBulkDestroy = (options?: any) => postApi20260701ResourcesProjectManagementProjectTasksBulkDestroy({ client: this._client, ...options });
+  bulkDestroy: typeof postApi20260701ResourcesProjectManagementProjectTasksBulkDestroy<true> = (options) => postApi20260701ResourcesProjectManagementProjectTasksBulkDestroy<true>({ client: this._client, ...options });
 
   /** bulkDuplicate */
-  bulkDuplicate: typeof postApi20260701ResourcesProjectManagementProjectTasksBulkDuplicate = (options?: any) => postApi20260701ResourcesProjectManagementProjectTasksBulkDuplicate({ client: this._client, ...options });
+  bulkDuplicate: typeof postApi20260701ResourcesProjectManagementProjectTasksBulkDuplicate<true> = (options) => postApi20260701ResourcesProjectManagementProjectTasksBulkDuplicate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > project_workers resource */
@@ -4720,17 +4968,19 @@ export class ProjectManagementProjectWorkersResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all project_workers */
-  list: typeof getApi20260701ResourcesProjectManagementProjectWorkers = (options?: any) => getApi20260701ResourcesProjectManagementProjectWorkers({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementProjectWorkers<true> = (options) => getApi20260701ResourcesProjectManagementProjectWorkers<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all project_workers, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projectWorkers.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectWorkers>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectWorkers<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementProjectWorkers({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementProjectWorkers<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4738,24 +4988,24 @@ export class ProjectManagementProjectWorkersResource {
    * Fetch all project_workers across all pages into a single array.
    * @example const all = await client.projectManagement.projectWorkers.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectWorkers>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjectWorkers<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a project_workers record */
-  create: typeof postApi20260701ResourcesProjectManagementProjectWorkers = (options?: any) => postApi20260701ResourcesProjectManagementProjectWorkers({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementProjectWorkers<true> = (options) => postApi20260701ResourcesProjectManagementProjectWorkers<true>({ client: this._client, ...options });
 
   /** Reads a single project_workers record */
-  get: typeof getApi20260701ResourcesProjectManagementProjectWorkersById = (options?: any) => getApi20260701ResourcesProjectManagementProjectWorkersById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementProjectWorkersById<true> = (options) => getApi20260701ResourcesProjectManagementProjectWorkersById<true>({ client: this._client, ...options });
 
   /** bulkAssign */
-  bulkAssign: typeof postApi20260701ResourcesProjectManagementProjectWorkersBulkAssign = (options?: any) => postApi20260701ResourcesProjectManagementProjectWorkersBulkAssign({ client: this._client, ...options });
+  bulkAssign: typeof postApi20260701ResourcesProjectManagementProjectWorkersBulkAssign<true> = (options) => postApi20260701ResourcesProjectManagementProjectWorkersBulkAssign<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesProjectManagementProjectWorkersBulkCreate = (options?: any) => postApi20260701ResourcesProjectManagementProjectWorkersBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesProjectManagementProjectWorkersBulkCreate<true> = (options) => postApi20260701ResourcesProjectManagementProjectWorkersBulkCreate<true>({ client: this._client, ...options });
 
   /** unassign */
-  unassign: typeof postApi20260701ResourcesProjectManagementProjectWorkersUnassign = (options?: any) => postApi20260701ResourcesProjectManagementProjectWorkersUnassign({ client: this._client, ...options });
+  unassign: typeof postApi20260701ResourcesProjectManagementProjectWorkersUnassign<true> = (options) => postApi20260701ResourcesProjectManagementProjectWorkersUnassign<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > projects resource */
@@ -4763,17 +5013,19 @@ export class ProjectManagementProjectsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all projects */
-  list: typeof getApi20260701ResourcesProjectManagementProjects = (options?: any) => getApi20260701ResourcesProjectManagementProjects({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementProjects<true> = (options) => getApi20260701ResourcesProjectManagementProjects<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all projects, yielding one item at a time.
    * @example for await (const item of client.projectManagement.projects.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjects>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjects<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementProjects({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementProjects<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4781,33 +5033,33 @@ export class ProjectManagementProjectsResource {
    * Fetch all projects across all pages into a single array.
    * @example const all = await client.projectManagement.projects.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjects>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementProjects<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a projects record */
-  create: typeof postApi20260701ResourcesProjectManagementProjects = (options?: any) => postApi20260701ResourcesProjectManagementProjects({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementProjects<true> = (options) => postApi20260701ResourcesProjectManagementProjects<true>({ client: this._client, ...options });
 
   /** Reads a single projects record */
-  get: typeof getApi20260701ResourcesProjectManagementProjectsById = (options?: any) => getApi20260701ResourcesProjectManagementProjectsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementProjectsById<true> = (options) => getApi20260701ResourcesProjectManagementProjectsById<true>({ client: this._client, ...options });
 
   /** Updates a projects record */
-  update: typeof putApi20260701ResourcesProjectManagementProjectsById = (options?: any) => putApi20260701ResourcesProjectManagementProjectsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesProjectManagementProjectsById<true> = (options) => putApi20260701ResourcesProjectManagementProjectsById<true>({ client: this._client, ...options });
 
   /** activate */
-  activate: typeof postApi20260701ResourcesProjectManagementProjectsActivate = (options?: any) => postApi20260701ResourcesProjectManagementProjectsActivate({ client: this._client, ...options });
+  activate: typeof postApi20260701ResourcesProjectManagementProjectsActivate<true> = (options) => postApi20260701ResourcesProjectManagementProjectsActivate<true>({ client: this._client, ...options });
 
   /** changeAssignment */
-  changeAssignment: typeof postApi20260701ResourcesProjectManagementProjectsChangeAssignment = (options?: any) => postApi20260701ResourcesProjectManagementProjectsChangeAssignment({ client: this._client, ...options });
+  changeAssignment: typeof postApi20260701ResourcesProjectManagementProjectsChangeAssignment<true> = (options) => postApi20260701ResourcesProjectManagementProjectsChangeAssignment<true>({ client: this._client, ...options });
 
   /** changeStatus */
-  changeStatus: typeof postApi20260701ResourcesProjectManagementProjectsChangeStatus = (options?: any) => postApi20260701ResourcesProjectManagementProjectsChangeStatus({ client: this._client, ...options });
+  changeStatus: typeof postApi20260701ResourcesProjectManagementProjectsChangeStatus<true> = (options) => postApi20260701ResourcesProjectManagementProjectsChangeStatus<true>({ client: this._client, ...options });
 
   /** close */
-  close: typeof postApi20260701ResourcesProjectManagementProjectsClose = (options?: any) => postApi20260701ResourcesProjectManagementProjectsClose({ client: this._client, ...options });
+  close: typeof postApi20260701ResourcesProjectManagementProjectsClose<true> = (options) => postApi20260701ResourcesProjectManagementProjectsClose<true>({ client: this._client, ...options });
 
   /** softDelete */
-  softDelete: typeof postApi20260701ResourcesProjectManagementProjectsSoftDelete = (options?: any) => postApi20260701ResourcesProjectManagementProjectsSoftDelete({ client: this._client, ...options });
+  softDelete: typeof postApi20260701ResourcesProjectManagementProjectsSoftDelete<true> = (options) => postApi20260701ResourcesProjectManagementProjectsSoftDelete<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > subprojects resource */
@@ -4815,17 +5067,19 @@ export class ProjectManagementSubprojectsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all subprojects */
-  list: typeof getApi20260701ResourcesProjectManagementSubprojects = (options?: any) => getApi20260701ResourcesProjectManagementSubprojects({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementSubprojects<true> = (options) => getApi20260701ResourcesProjectManagementSubprojects<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all subprojects, yielding one item at a time.
    * @example for await (const item of client.projectManagement.subprojects.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementSubprojects>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementSubprojects<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementSubprojects({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementSubprojects<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4833,24 +5087,24 @@ export class ProjectManagementSubprojectsResource {
    * Fetch all subprojects across all pages into a single array.
    * @example const all = await client.projectManagement.subprojects.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementSubprojects>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementSubprojects<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a subprojects record */
-  create: typeof postApi20260701ResourcesProjectManagementSubprojects = (options?: any) => postApi20260701ResourcesProjectManagementSubprojects({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementSubprojects<true> = (options) => postApi20260701ResourcesProjectManagementSubprojects<true>({ client: this._client, ...options });
 
   /** Reads a single subprojects record */
-  get: typeof getApi20260701ResourcesProjectManagementSubprojectsById = (options?: any) => getApi20260701ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementSubprojectsById<true> = (options) => getApi20260701ResourcesProjectManagementSubprojectsById<true>({ client: this._client, ...options });
 
   /** Updates a subprojects record */
-  update: typeof putApi20260701ResourcesProjectManagementSubprojectsById = (options?: any) => putApi20260701ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesProjectManagementSubprojectsById<true> = (options) => putApi20260701ResourcesProjectManagementSubprojectsById<true>({ client: this._client, ...options });
 
   /** Deletes a subprojects record */
-  delete: typeof deleteApi20260701ResourcesProjectManagementSubprojectsById = (options?: any) => deleteApi20260701ResourcesProjectManagementSubprojectsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesProjectManagementSubprojectsById<true> = (options) => deleteApi20260701ResourcesProjectManagementSubprojectsById<true>({ client: this._client, ...options });
 
   /** rename */
-  rename: typeof postApi20260701ResourcesProjectManagementSubprojectsRename = (options?: any) => postApi20260701ResourcesProjectManagementSubprojectsRename({ client: this._client, ...options });
+  rename: typeof postApi20260701ResourcesProjectManagementSubprojectsRename<true> = (options) => postApi20260701ResourcesProjectManagementSubprojectsRename<true>({ client: this._client, ...options });
 
 }
 /** Methods for the project_management > time_records resource */
@@ -4858,17 +5112,19 @@ export class ProjectManagementTimeRecordsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all time_records */
-  list: typeof getApi20260701ResourcesProjectManagementTimeRecords = (options?: any) => getApi20260701ResourcesProjectManagementTimeRecords({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesProjectManagementTimeRecords<true> = (options) => getApi20260701ResourcesProjectManagementTimeRecords<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all time_records, yielding one item at a time.
    * @example for await (const item of client.projectManagement.timeRecords.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementTimeRecords>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesProjectManagementTimeRecords<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesProjectManagementTimeRecords({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesProjectManagementTimeRecords<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4876,27 +5132,27 @@ export class ProjectManagementTimeRecordsResource {
    * Fetch all time_records across all pages into a single array.
    * @example const all = await client.projectManagement.timeRecords.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementTimeRecords>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesProjectManagementTimeRecords<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a time_records record */
-  create: typeof postApi20260701ResourcesProjectManagementTimeRecords = (options?: any) => postApi20260701ResourcesProjectManagementTimeRecords({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesProjectManagementTimeRecords<true> = (options) => postApi20260701ResourcesProjectManagementTimeRecords<true>({ client: this._client, ...options });
 
   /** Reads a single time_records record */
-  get: typeof getApi20260701ResourcesProjectManagementTimeRecordsById = (options?: any) => getApi20260701ResourcesProjectManagementTimeRecordsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesProjectManagementTimeRecordsById<true> = (options) => getApi20260701ResourcesProjectManagementTimeRecordsById<true>({ client: this._client, ...options });
 
   /** Deletes a time_records record */
-  delete: typeof deleteApi20260701ResourcesProjectManagementTimeRecordsById = (options?: any) => deleteApi20260701ResourcesProjectManagementTimeRecordsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesProjectManagementTimeRecordsById<true> = (options) => deleteApi20260701ResourcesProjectManagementTimeRecordsById<true>({ client: this._client, ...options });
 
   /** bulkDelete */
-  bulkDelete: typeof postApi20260701ResourcesProjectManagementTimeRecordsBulkDelete = (options?: any) => postApi20260701ResourcesProjectManagementTimeRecordsBulkDelete({ client: this._client, ...options });
+  bulkDelete: typeof postApi20260701ResourcesProjectManagementTimeRecordsBulkDelete<true> = (options) => postApi20260701ResourcesProjectManagementTimeRecordsBulkDelete<true>({ client: this._client, ...options });
 
   /** bulkProcess */
-  bulkProcess: typeof postApi20260701ResourcesProjectManagementTimeRecordsBulkProcess = (options?: any) => postApi20260701ResourcesProjectManagementTimeRecordsBulkProcess({ client: this._client, ...options });
+  bulkProcess: typeof postApi20260701ResourcesProjectManagementTimeRecordsBulkProcess<true> = (options) => postApi20260701ResourcesProjectManagementTimeRecordsBulkProcess<true>({ client: this._client, ...options });
 
   /** updateProjectWorker */
-  updateProjectWorker: typeof postApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorker = (options?: any) => postApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorker({ client: this._client, ...options });
+  updateProjectWorker: typeof postApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorker<true> = (options) => postApi20260701ResourcesProjectManagementTimeRecordsUpdateProjectWorker<true>({ client: this._client, ...options });
 
 }
 /** Methods for the shift_management > shifts resource */
@@ -4904,17 +5160,19 @@ export class ShiftManagementShiftsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all shifts */
-  list: typeof getApi20260701ResourcesShiftManagementShifts = (options?: any) => getApi20260701ResourcesShiftManagementShifts({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesShiftManagementShifts<true> = (options) => getApi20260701ResourcesShiftManagementShifts<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all shifts, yielding one item at a time.
    * @example for await (const item of client.shiftManagement.shifts.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesShiftManagementShifts>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesShiftManagementShifts<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesShiftManagementShifts({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesShiftManagementShifts<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4922,24 +5180,24 @@ export class ShiftManagementShiftsResource {
    * Fetch all shifts across all pages into a single array.
    * @example const all = await client.shiftManagement.shifts.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesShiftManagementShifts>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesShiftManagementShifts<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a shifts record */
-  create: typeof postApi20260701ResourcesShiftManagementShifts = (options?: any) => postApi20260701ResourcesShiftManagementShifts({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesShiftManagementShifts<true> = (options) => postApi20260701ResourcesShiftManagementShifts<true>({ client: this._client, ...options });
 
   /** Reads a single shifts record */
-  get: typeof getApi20260701ResourcesShiftManagementShiftsById = (options?: any) => getApi20260701ResourcesShiftManagementShiftsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesShiftManagementShiftsById<true> = (options) => getApi20260701ResourcesShiftManagementShiftsById<true>({ client: this._client, ...options });
 
   /** Deletes a shifts record */
-  delete: typeof deleteApi20260701ResourcesShiftManagementShiftsById = (options?: any) => deleteApi20260701ResourcesShiftManagementShiftsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesShiftManagementShiftsById<true> = (options) => deleteApi20260701ResourcesShiftManagementShiftsById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesShiftManagementShiftsBulkCreate = (options?: any) => postApi20260701ResourcesShiftManagementShiftsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesShiftManagementShiftsBulkCreate<true> = (options) => postApi20260701ResourcesShiftManagementShiftsBulkCreate<true>({ client: this._client, ...options });
 
   /** bulkDelete */
-  bulkDelete: typeof postApi20260701ResourcesShiftManagementShiftsBulkDelete = (options?: any) => postApi20260701ResourcesShiftManagementShiftsBulkDelete({ client: this._client, ...options });
+  bulkDelete: typeof postApi20260701ResourcesShiftManagementShiftsBulkDelete<true> = (options) => postApi20260701ResourcesShiftManagementShiftsBulkDelete<true>({ client: this._client, ...options });
 
 }
 /** Methods for the tasks > task_files resource */
@@ -4947,17 +5205,19 @@ export class TasksTaskFilesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all task_files */
-  list: typeof getApi20260701ResourcesTasksTaskFiles = (options?: any) => getApi20260701ResourcesTasksTaskFiles({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTasksTaskFiles<true> = (options) => getApi20260701ResourcesTasksTaskFiles<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all task_files, yielding one item at a time.
    * @example for await (const item of client.tasks.taskFiles.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTasksTaskFiles>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTasksTaskFiles<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTasksTaskFiles({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTasksTaskFiles<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -4965,18 +5225,18 @@ export class TasksTaskFilesResource {
    * Fetch all task_files across all pages into a single array.
    * @example const all = await client.tasks.taskFiles.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTasksTaskFiles>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTasksTaskFiles<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a task_files record */
-  create: typeof postApi20260701ResourcesTasksTaskFiles = (options?: any) => postApi20260701ResourcesTasksTaskFiles({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTasksTaskFiles<true> = (options) => postApi20260701ResourcesTasksTaskFiles<true>({ client: this._client, ...options });
 
   /** Reads a single task_files record */
-  get: typeof getApi20260701ResourcesTasksTaskFilesById = (options?: any) => getApi20260701ResourcesTasksTaskFilesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTasksTaskFilesById<true> = (options) => getApi20260701ResourcesTasksTaskFilesById<true>({ client: this._client, ...options });
 
   /** Deletes a task_files record */
-  delete: typeof deleteApi20260701ResourcesTasksTaskFilesById = (options?: any) => deleteApi20260701ResourcesTasksTaskFilesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTasksTaskFilesById<true> = (options) => deleteApi20260701ResourcesTasksTaskFilesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the tasks > tasks resource */
@@ -4984,17 +5244,19 @@ export class TasksTasksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all tasks */
-  list: typeof getApi20260701ResourcesTasksTasks = (options?: any) => getApi20260701ResourcesTasksTasks({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTasksTasks<true> = (options) => getApi20260701ResourcesTasksTasks<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all tasks, yielding one item at a time.
    * @example for await (const item of client.tasks.tasks.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTasksTasks>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTasksTasks<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTasksTasks({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTasksTasks<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5002,36 +5264,36 @@ export class TasksTasksResource {
    * Fetch all tasks across all pages into a single array.
    * @example const all = await client.tasks.tasks.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTasksTasks>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTasksTasks<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a tasks record */
-  create: typeof postApi20260701ResourcesTasksTasks = (options?: any) => postApi20260701ResourcesTasksTasks({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTasksTasks<true> = (options) => postApi20260701ResourcesTasksTasks<true>({ client: this._client, ...options });
 
   /** Reads a single tasks record */
-  get: typeof getApi20260701ResourcesTasksTasksById = (options?: any) => getApi20260701ResourcesTasksTasksById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTasksTasksById<true> = (options) => getApi20260701ResourcesTasksTasksById<true>({ client: this._client, ...options });
 
   /** Updates a tasks record */
-  update: typeof putApi20260701ResourcesTasksTasksById = (options?: any) => putApi20260701ResourcesTasksTasksById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTasksTasksById<true> = (options) => putApi20260701ResourcesTasksTasksById<true>({ client: this._client, ...options });
 
   /** Deletes a tasks record */
-  delete: typeof deleteApi20260701ResourcesTasksTasksById = (options?: any) => deleteApi20260701ResourcesTasksTasksById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTasksTasksById<true> = (options) => deleteApi20260701ResourcesTasksTasksById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesTasksTasksBulkCreate = (options?: any) => postApi20260701ResourcesTasksTasksBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesTasksTasksBulkCreate<true> = (options) => postApi20260701ResourcesTasksTasksBulkCreate<true>({ client: this._client, ...options });
 
   /** bulkDelete */
-  bulkDelete: typeof postApi20260701ResourcesTasksTasksBulkDelete = (options?: any) => postApi20260701ResourcesTasksTasksBulkDelete({ client: this._client, ...options });
+  bulkDelete: typeof postApi20260701ResourcesTasksTasksBulkDelete<true> = (options) => postApi20260701ResourcesTasksTasksBulkDelete<true>({ client: this._client, ...options });
 
   /** bulkUpdate */
-  bulkUpdate: typeof postApi20260701ResourcesTasksTasksBulkUpdate = (options?: any) => postApi20260701ResourcesTasksTasksBulkUpdate({ client: this._client, ...options });
+  bulkUpdate: typeof postApi20260701ResourcesTasksTasksBulkUpdate<true> = (options) => postApi20260701ResourcesTasksTasksBulkUpdate<true>({ client: this._client, ...options });
 
   /** copy */
-  copy: typeof postApi20260701ResourcesTasksTasksCopy = (options?: any) => postApi20260701ResourcesTasksTasksCopy({ client: this._client, ...options });
+  copy: typeof postApi20260701ResourcesTasksTasksCopy<true> = (options) => postApi20260701ResourcesTasksTasksCopy<true>({ client: this._client, ...options });
 
   /** createComment */
-  createComment: typeof postApi20260701ResourcesTasksTasksCreateComment = (options?: any) => postApi20260701ResourcesTasksTasksCreateComment({ client: this._client, ...options });
+  createComment: typeof postApi20260701ResourcesTasksTasksCreateComment<true> = (options) => postApi20260701ResourcesTasksTasksCreateComment<true>({ client: this._client, ...options });
 
 }
 /** Methods for the teams > memberships resource */
@@ -5039,17 +5301,19 @@ export class TeamsMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all memberships */
-  list: typeof getApi20260701ResourcesTeamsMemberships = (options?: any) => getApi20260701ResourcesTeamsMemberships({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTeamsMemberships<true> = (options) => getApi20260701ResourcesTeamsMemberships<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all memberships, yielding one item at a time.
    * @example for await (const item of client.teams.memberships.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTeamsMemberships>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTeamsMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTeamsMemberships({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTeamsMemberships<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5057,21 +5321,21 @@ export class TeamsMembershipsResource {
    * Fetch all memberships across all pages into a single array.
    * @example const all = await client.teams.memberships.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTeamsMemberships>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTeamsMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a memberships record */
-  create: typeof postApi20260701ResourcesTeamsMemberships = (options?: any) => postApi20260701ResourcesTeamsMemberships({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTeamsMemberships<true> = (options) => postApi20260701ResourcesTeamsMemberships<true>({ client: this._client, ...options });
 
   /** Reads a single memberships record */
-  get: typeof getApi20260701ResourcesTeamsMembershipsById = (options?: any) => getApi20260701ResourcesTeamsMembershipsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTeamsMembershipsById<true> = (options) => getApi20260701ResourcesTeamsMembershipsById<true>({ client: this._client, ...options });
 
   /** Updates a memberships record */
-  update: typeof putApi20260701ResourcesTeamsMembershipsById = (options?: any) => putApi20260701ResourcesTeamsMembershipsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTeamsMembershipsById<true> = (options) => putApi20260701ResourcesTeamsMembershipsById<true>({ client: this._client, ...options });
 
   /** Deletes a memberships record */
-  delete: typeof deleteApi20260701ResourcesTeamsMembershipsById = (options?: any) => deleteApi20260701ResourcesTeamsMembershipsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTeamsMembershipsById<true> = (options) => deleteApi20260701ResourcesTeamsMembershipsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the teams > teams resource */
@@ -5079,17 +5343,19 @@ export class TeamsTeamsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all teams */
-  list: typeof getApi20260701ResourcesTeamsTeams = (options?: any) => getApi20260701ResourcesTeamsTeams({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTeamsTeams<true> = (options) => getApi20260701ResourcesTeamsTeams<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all teams, yielding one item at a time.
    * @example for await (const item of client.teams.teams.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTeamsTeams>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTeamsTeams<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTeamsTeams({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTeamsTeams<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5097,21 +5363,21 @@ export class TeamsTeamsResource {
    * Fetch all teams across all pages into a single array.
    * @example const all = await client.teams.teams.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTeamsTeams>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTeamsTeams<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a teams record */
-  create: typeof postApi20260701ResourcesTeamsTeams = (options?: any) => postApi20260701ResourcesTeamsTeams({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTeamsTeams<true> = (options) => postApi20260701ResourcesTeamsTeams<true>({ client: this._client, ...options });
 
   /** Reads a single teams record */
-  get: typeof getApi20260701ResourcesTeamsTeamsById = (options?: any) => getApi20260701ResourcesTeamsTeamsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTeamsTeamsById<true> = (options) => getApi20260701ResourcesTeamsTeamsById<true>({ client: this._client, ...options });
 
   /** Updates a teams record */
-  update: typeof putApi20260701ResourcesTeamsTeamsById = (options?: any) => putApi20260701ResourcesTeamsTeamsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTeamsTeamsById<true> = (options) => putApi20260701ResourcesTeamsTeamsById<true>({ client: this._client, ...options });
 
   /** Deletes a teams record */
-  delete: typeof deleteApi20260701ResourcesTeamsTeamsById = (options?: any) => deleteApi20260701ResourcesTeamsTeamsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTeamsTeamsById<true> = (options) => deleteApi20260701ResourcesTeamsTeamsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the time_planning > planned_breaks resource */
@@ -5119,17 +5385,19 @@ export class TimePlanningPlannedBreaksResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all planned_breaks */
-  list: typeof getApi20260701ResourcesTimePlanningPlannedBreaks = (options?: any) => getApi20260701ResourcesTimePlanningPlannedBreaks({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimePlanningPlannedBreaks<true> = (options) => getApi20260701ResourcesTimePlanningPlannedBreaks<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all planned_breaks, yielding one item at a time.
    * @example for await (const item of client.timePlanning.plannedBreaks.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlannedBreaks>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlannedBreaks<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimePlanningPlannedBreaks({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimePlanningPlannedBreaks<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5137,15 +5405,15 @@ export class TimePlanningPlannedBreaksResource {
    * Fetch all planned_breaks across all pages into a single array.
    * @example const all = await client.timePlanning.plannedBreaks.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlannedBreaks>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlannedBreaks<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single planned_breaks record */
-  get: typeof getApi20260701ResourcesTimePlanningPlannedBreaksById = (options?: any) => getApi20260701ResourcesTimePlanningPlannedBreaksById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimePlanningPlannedBreaksById<true> = (options) => getApi20260701ResourcesTimePlanningPlannedBreaksById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesTimePlanningPlannedBreaksBulkCreate = (options?: any) => postApi20260701ResourcesTimePlanningPlannedBreaksBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesTimePlanningPlannedBreaksBulkCreate<true> = (options) => postApi20260701ResourcesTimePlanningPlannedBreaksBulkCreate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the time_planning > planning_versions resource */
@@ -5153,17 +5421,19 @@ export class TimePlanningPlanningVersionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all planning_versions */
-  list: typeof getApi20260701ResourcesTimePlanningPlanningVersions = (options?: any) => getApi20260701ResourcesTimePlanningPlanningVersions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimePlanningPlanningVersions<true> = (options) => getApi20260701ResourcesTimePlanningPlanningVersions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all planning_versions, yielding one item at a time.
    * @example for await (const item of client.timePlanning.planningVersions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlanningVersions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlanningVersions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimePlanningPlanningVersions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimePlanningPlanningVersions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5171,21 +5441,21 @@ export class TimePlanningPlanningVersionsResource {
    * Fetch all planning_versions across all pages into a single array.
    * @example const all = await client.timePlanning.planningVersions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlanningVersions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimePlanningPlanningVersions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a planning_versions record */
-  create: typeof postApi20260701ResourcesTimePlanningPlanningVersions = (options?: any) => postApi20260701ResourcesTimePlanningPlanningVersions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimePlanningPlanningVersions<true> = (options) => postApi20260701ResourcesTimePlanningPlanningVersions<true>({ client: this._client, ...options });
 
   /** Updates a planning_versions record */
-  update: typeof putApi20260701ResourcesTimePlanningPlanningVersionsById = (options?: any) => putApi20260701ResourcesTimePlanningPlanningVersionsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimePlanningPlanningVersionsById<true> = (options) => putApi20260701ResourcesTimePlanningPlanningVersionsById<true>({ client: this._client, ...options });
 
   /** Deletes a planning_versions record */
-  delete: typeof deleteApi20260701ResourcesTimePlanningPlanningVersionsById = (options?: any) => deleteApi20260701ResourcesTimePlanningPlanningVersionsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimePlanningPlanningVersionsById<true> = (options) => deleteApi20260701ResourcesTimePlanningPlanningVersionsById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesTimePlanningPlanningVersionsBulkCreate = (options?: any) => postApi20260701ResourcesTimePlanningPlanningVersionsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesTimePlanningPlanningVersionsBulkCreate<true> = (options) => postApi20260701ResourcesTimePlanningPlanningVersionsBulkCreate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the time_settings > break_configurations resource */
@@ -5193,17 +5463,19 @@ export class TimeSettingsBreakConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all break_configurations */
-  list: typeof getApi20260701ResourcesTimeSettingsBreakConfigurations = (options?: any) => getApi20260701ResourcesTimeSettingsBreakConfigurations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeSettingsBreakConfigurations<true> = (options) => getApi20260701ResourcesTimeSettingsBreakConfigurations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all break_configurations, yielding one item at a time.
    * @example for await (const item of client.timeSettings.breakConfigurations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeSettingsBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeSettingsBreakConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeSettingsBreakConfigurations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeSettingsBreakConfigurations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5211,18 +5483,18 @@ export class TimeSettingsBreakConfigurationsResource {
    * Fetch all break_configurations across all pages into a single array.
    * @example const all = await client.timeSettings.breakConfigurations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeSettingsBreakConfigurations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeSettingsBreakConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a break_configurations record */
-  create: typeof postApi20260701ResourcesTimeSettingsBreakConfigurations = (options?: any) => postApi20260701ResourcesTimeSettingsBreakConfigurations({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeSettingsBreakConfigurations<true> = (options) => postApi20260701ResourcesTimeSettingsBreakConfigurations<true>({ client: this._client, ...options });
 
   /** Reads a single break_configurations record */
-  get: typeof getApi20260701ResourcesTimeSettingsBreakConfigurationsById = (options?: any) => getApi20260701ResourcesTimeSettingsBreakConfigurationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeSettingsBreakConfigurationsById<true> = (options) => getApi20260701ResourcesTimeSettingsBreakConfigurationsById<true>({ client: this._client, ...options });
 
   /** Updates a break_configurations record */
-  update: typeof putApi20260701ResourcesTimeSettingsBreakConfigurationsById = (options?: any) => putApi20260701ResourcesTimeSettingsBreakConfigurationsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeSettingsBreakConfigurationsById<true> = (options) => putApi20260701ResourcesTimeSettingsBreakConfigurationsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > allowance_incidences resource */
@@ -5230,17 +5502,19 @@ export class TimeoffAllowanceIncidencesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all allowance_incidences */
-  list: typeof getApi20260701ResourcesTimeoffAllowanceIncidences = (options?: any) => getApi20260701ResourcesTimeoffAllowanceIncidences({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffAllowanceIncidences<true> = (options) => getApi20260701ResourcesTimeoffAllowanceIncidences<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all allowance_incidences, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowanceIncidences.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceIncidences>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceIncidences<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffAllowanceIncidences({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffAllowanceIncidences<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5248,21 +5522,21 @@ export class TimeoffAllowanceIncidencesResource {
    * Fetch all allowance_incidences across all pages into a single array.
    * @example const all = await client.timeoff.allowanceIncidences.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceIncidences>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceIncidences<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a allowance_incidences record */
-  create: typeof postApi20260701ResourcesTimeoffAllowanceIncidences = (options?: any) => postApi20260701ResourcesTimeoffAllowanceIncidences({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffAllowanceIncidences<true> = (options) => postApi20260701ResourcesTimeoffAllowanceIncidences<true>({ client: this._client, ...options });
 
   /** Reads a single allowance_incidences record */
-  get: typeof getApi20260701ResourcesTimeoffAllowanceIncidencesById = (options?: any) => getApi20260701ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffAllowanceIncidencesById<true> = (options) => getApi20260701ResourcesTimeoffAllowanceIncidencesById<true>({ client: this._client, ...options });
 
   /** Updates a allowance_incidences record */
-  update: typeof putApi20260701ResourcesTimeoffAllowanceIncidencesById = (options?: any) => putApi20260701ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffAllowanceIncidencesById<true> = (options) => putApi20260701ResourcesTimeoffAllowanceIncidencesById<true>({ client: this._client, ...options });
 
   /** Deletes a allowance_incidences record */
-  delete: typeof deleteApi20260701ResourcesTimeoffAllowanceIncidencesById = (options?: any) => deleteApi20260701ResourcesTimeoffAllowanceIncidencesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffAllowanceIncidencesById<true> = (options) => deleteApi20260701ResourcesTimeoffAllowanceIncidencesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > allowance_stats resource */
@@ -5270,17 +5544,19 @@ export class TimeoffAllowanceStatsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all allowance_stats */
-  list: typeof getApi20260701ResourcesTimeoffAllowanceStats = (options?: any) => getApi20260701ResourcesTimeoffAllowanceStats({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffAllowanceStats<true> = (options) => getApi20260701ResourcesTimeoffAllowanceStats<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all allowance_stats, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowanceStats.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceStats>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceStats<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffAllowanceStats({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffAllowanceStats<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5288,12 +5564,12 @@ export class TimeoffAllowanceStatsResource {
    * Fetch all allowance_stats across all pages into a single array.
    * @example const all = await client.timeoff.allowanceStats.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceStats>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowanceStats<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single allowance_stats record */
-  get: typeof getApi20260701ResourcesTimeoffAllowanceStatsById = (options?: any) => getApi20260701ResourcesTimeoffAllowanceStatsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffAllowanceStatsById<true> = (options) => getApi20260701ResourcesTimeoffAllowanceStatsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > allowances resource */
@@ -5301,17 +5577,19 @@ export class TimeoffAllowancesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all allowances */
-  list: typeof getApi20260701ResourcesTimeoffAllowances = (options?: any) => getApi20260701ResourcesTimeoffAllowances({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffAllowances<true> = (options) => getApi20260701ResourcesTimeoffAllowances<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all allowances, yielding one item at a time.
    * @example for await (const item of client.timeoff.allowances.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowances>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowances<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffAllowances({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffAllowances<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5319,24 +5597,24 @@ export class TimeoffAllowancesResource {
    * Fetch all allowances across all pages into a single array.
    * @example const all = await client.timeoff.allowances.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowances>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffAllowances<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a allowances record */
-  create: typeof postApi20260701ResourcesTimeoffAllowances = (options?: any) => postApi20260701ResourcesTimeoffAllowances({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffAllowances<true> = (options) => postApi20260701ResourcesTimeoffAllowances<true>({ client: this._client, ...options });
 
   /** Reads a single allowances record */
-  get: typeof getApi20260701ResourcesTimeoffAllowancesById = (options?: any) => getApi20260701ResourcesTimeoffAllowancesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffAllowancesById<true> = (options) => getApi20260701ResourcesTimeoffAllowancesById<true>({ client: this._client, ...options });
 
   /** Updates a allowances record */
-  update: typeof putApi20260701ResourcesTimeoffAllowancesById = (options?: any) => putApi20260701ResourcesTimeoffAllowancesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffAllowancesById<true> = (options) => putApi20260701ResourcesTimeoffAllowancesById<true>({ client: this._client, ...options });
 
   /** Deletes a allowances record */
-  delete: typeof deleteApi20260701ResourcesTimeoffAllowancesById = (options?: any) => deleteApi20260701ResourcesTimeoffAllowancesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffAllowancesById<true> = (options) => deleteApi20260701ResourcesTimeoffAllowancesById<true>({ client: this._client, ...options });
 
   /** deleteWithAltAllowance */
-  deleteWithAltAllowance: typeof postApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowance = (options?: any) => postApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowance({ client: this._client, ...options });
+  deleteWithAltAllowance: typeof postApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowance<true> = (options) => postApi20260701ResourcesTimeoffAllowancesDeleteWithAltAllowance<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > blocked_periods resource */
@@ -5344,17 +5622,19 @@ export class TimeoffBlockedPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all blocked_periods */
-  list: typeof getApi20260701ResourcesTimeoffBlockedPeriods = (options?: any) => getApi20260701ResourcesTimeoffBlockedPeriods({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffBlockedPeriods<true> = (options) => getApi20260701ResourcesTimeoffBlockedPeriods<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all blocked_periods, yielding one item at a time.
    * @example for await (const item of client.timeoff.blockedPeriods.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffBlockedPeriods>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffBlockedPeriods<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffBlockedPeriods({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffBlockedPeriods<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5362,21 +5642,21 @@ export class TimeoffBlockedPeriodsResource {
    * Fetch all blocked_periods across all pages into a single array.
    * @example const all = await client.timeoff.blockedPeriods.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffBlockedPeriods>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffBlockedPeriods<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a blocked_periods record */
-  create: typeof postApi20260701ResourcesTimeoffBlockedPeriods = (options?: any) => postApi20260701ResourcesTimeoffBlockedPeriods({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffBlockedPeriods<true> = (options) => postApi20260701ResourcesTimeoffBlockedPeriods<true>({ client: this._client, ...options });
 
   /** Reads a single blocked_periods record */
-  get: typeof getApi20260701ResourcesTimeoffBlockedPeriodsById = (options?: any) => getApi20260701ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffBlockedPeriodsById<true> = (options) => getApi20260701ResourcesTimeoffBlockedPeriodsById<true>({ client: this._client, ...options });
 
   /** Updates a blocked_periods record */
-  update: typeof putApi20260701ResourcesTimeoffBlockedPeriodsById = (options?: any) => putApi20260701ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffBlockedPeriodsById<true> = (options) => putApi20260701ResourcesTimeoffBlockedPeriodsById<true>({ client: this._client, ...options });
 
   /** Deletes a blocked_periods record */
-  delete: typeof deleteApi20260701ResourcesTimeoffBlockedPeriodsById = (options?: any) => deleteApi20260701ResourcesTimeoffBlockedPeriodsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffBlockedPeriodsById<true> = (options) => deleteApi20260701ResourcesTimeoffBlockedPeriodsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > leave_types resource */
@@ -5384,17 +5664,19 @@ export class TimeoffLeaveTypesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all leave_types */
-  list: typeof getApi20260701ResourcesTimeoffLeaveTypes = (options?: any) => getApi20260701ResourcesTimeoffLeaveTypes({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffLeaveTypes<true> = (options) => getApi20260701ResourcesTimeoffLeaveTypes<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all leave_types, yielding one item at a time.
    * @example for await (const item of client.timeoff.leaveTypes.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaveTypes>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaveTypes<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffLeaveTypes({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffLeaveTypes<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5402,18 +5684,18 @@ export class TimeoffLeaveTypesResource {
    * Fetch all leave_types across all pages into a single array.
    * @example const all = await client.timeoff.leaveTypes.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaveTypes>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaveTypes<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a leave_types record */
-  create: typeof postApi20260701ResourcesTimeoffLeaveTypes = (options?: any) => postApi20260701ResourcesTimeoffLeaveTypes({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffLeaveTypes<true> = (options) => postApi20260701ResourcesTimeoffLeaveTypes<true>({ client: this._client, ...options });
 
   /** Reads a single leave_types record */
-  get: typeof getApi20260701ResourcesTimeoffLeaveTypesById = (options?: any) => getApi20260701ResourcesTimeoffLeaveTypesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffLeaveTypesById<true> = (options) => getApi20260701ResourcesTimeoffLeaveTypesById<true>({ client: this._client, ...options });
 
   /** Updates a leave_types record */
-  update: typeof putApi20260701ResourcesTimeoffLeaveTypesById = (options?: any) => putApi20260701ResourcesTimeoffLeaveTypesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffLeaveTypesById<true> = (options) => putApi20260701ResourcesTimeoffLeaveTypesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > leaves resource */
@@ -5421,17 +5703,19 @@ export class TimeoffLeavesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all leaves */
-  list: typeof getApi20260701ResourcesTimeoffLeaves = (options?: any) => getApi20260701ResourcesTimeoffLeaves({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffLeaves<true> = (options) => getApi20260701ResourcesTimeoffLeaves<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all leaves, yielding one item at a time.
    * @example for await (const item of client.timeoff.leaves.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaves>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaves<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffLeaves({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffLeaves<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5439,30 +5723,30 @@ export class TimeoffLeavesResource {
    * Fetch all leaves across all pages into a single array.
    * @example const all = await client.timeoff.leaves.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaves>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffLeaves<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a leaves record */
-  create: typeof postApi20260701ResourcesTimeoffLeaves = (options?: any) => postApi20260701ResourcesTimeoffLeaves({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffLeaves<true> = (options) => postApi20260701ResourcesTimeoffLeaves<true>({ client: this._client, ...options });
 
   /** Reads a single leaves record */
-  get: typeof getApi20260701ResourcesTimeoffLeavesById = (options?: any) => getApi20260701ResourcesTimeoffLeavesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffLeavesById<true> = (options) => getApi20260701ResourcesTimeoffLeavesById<true>({ client: this._client, ...options });
 
   /** Updates a leaves record */
-  update: typeof putApi20260701ResourcesTimeoffLeavesById = (options?: any) => putApi20260701ResourcesTimeoffLeavesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffLeavesById<true> = (options) => putApi20260701ResourcesTimeoffLeavesById<true>({ client: this._client, ...options });
 
   /** Deletes a leaves record */
-  delete: typeof deleteApi20260701ResourcesTimeoffLeavesById = (options?: any) => deleteApi20260701ResourcesTimeoffLeavesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffLeavesById<true> = (options) => deleteApi20260701ResourcesTimeoffLeavesById<true>({ client: this._client, ...options });
 
   /** approve */
-  approve: typeof postApi20260701ResourcesTimeoffLeavesApprove = (options?: any) => postApi20260701ResourcesTimeoffLeavesApprove({ client: this._client, ...options });
+  approve: typeof postApi20260701ResourcesTimeoffLeavesApprove<true> = (options) => postApi20260701ResourcesTimeoffLeavesApprove<true>({ client: this._client, ...options });
 
   /** approveAll */
-  approveAll: typeof postApi20260701ResourcesTimeoffLeavesApproveAll = (options?: any) => postApi20260701ResourcesTimeoffLeavesApproveAll({ client: this._client, ...options });
+  approveAll: typeof postApi20260701ResourcesTimeoffLeavesApproveAll<true> = (options) => postApi20260701ResourcesTimeoffLeavesApproveAll<true>({ client: this._client, ...options });
 
   /** reject */
-  reject: typeof postApi20260701ResourcesTimeoffLeavesReject = (options?: any) => postApi20260701ResourcesTimeoffLeavesReject({ client: this._client, ...options });
+  reject: typeof postApi20260701ResourcesTimeoffLeavesReject<true> = (options) => postApi20260701ResourcesTimeoffLeavesReject<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > policies resource */
@@ -5470,17 +5754,19 @@ export class TimeoffPoliciesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all policies */
-  list: typeof getApi20260701ResourcesTimeoffPolicies = (options?: any) => getApi20260701ResourcesTimeoffPolicies({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffPolicies<true> = (options) => getApi20260701ResourcesTimeoffPolicies<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all policies, yielding one item at a time.
    * @example for await (const item of client.timeoff.policies.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicies>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicies<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffPolicies({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffPolicies<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5488,21 +5774,21 @@ export class TimeoffPoliciesResource {
    * Fetch all policies across all pages into a single array.
    * @example const all = await client.timeoff.policies.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicies>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicies<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a policies record */
-  create: typeof postApi20260701ResourcesTimeoffPolicies = (options?: any) => postApi20260701ResourcesTimeoffPolicies({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffPolicies<true> = (options) => postApi20260701ResourcesTimeoffPolicies<true>({ client: this._client, ...options });
 
   /** Reads a single policies record */
-  get: typeof getApi20260701ResourcesTimeoffPoliciesById = (options?: any) => getApi20260701ResourcesTimeoffPoliciesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffPoliciesById<true> = (options) => getApi20260701ResourcesTimeoffPoliciesById<true>({ client: this._client, ...options });
 
   /** Updates a policies record */
-  update: typeof putApi20260701ResourcesTimeoffPoliciesById = (options?: any) => putApi20260701ResourcesTimeoffPoliciesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffPoliciesById<true> = (options) => putApi20260701ResourcesTimeoffPoliciesById<true>({ client: this._client, ...options });
 
   /** Deletes a policies record */
-  delete: typeof deleteApi20260701ResourcesTimeoffPoliciesById = (options?: any) => deleteApi20260701ResourcesTimeoffPoliciesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffPoliciesById<true> = (options) => deleteApi20260701ResourcesTimeoffPoliciesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > policy_assignments resource */
@@ -5510,17 +5796,19 @@ export class TimeoffPolicyAssignmentsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all policy_assignments */
-  list: typeof getApi20260701ResourcesTimeoffPolicyAssignments = (options?: any) => getApi20260701ResourcesTimeoffPolicyAssignments({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffPolicyAssignments<true> = (options) => getApi20260701ResourcesTimeoffPolicyAssignments<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all policy_assignments, yielding one item at a time.
    * @example for await (const item of client.timeoff.policyAssignments.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyAssignments>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyAssignments<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffPolicyAssignments({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffPolicyAssignments<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5528,21 +5816,21 @@ export class TimeoffPolicyAssignmentsResource {
    * Fetch all policy_assignments across all pages into a single array.
    * @example const all = await client.timeoff.policyAssignments.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyAssignments>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyAssignments<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a policy_assignments record */
-  create: typeof postApi20260701ResourcesTimeoffPolicyAssignments = (options?: any) => postApi20260701ResourcesTimeoffPolicyAssignments({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTimeoffPolicyAssignments<true> = (options) => postApi20260701ResourcesTimeoffPolicyAssignments<true>({ client: this._client, ...options });
 
   /** Reads a single policy_assignments record */
-  get: typeof getApi20260701ResourcesTimeoffPolicyAssignmentsById = (options?: any) => getApi20260701ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTimeoffPolicyAssignmentsById<true> = (options) => getApi20260701ResourcesTimeoffPolicyAssignmentsById<true>({ client: this._client, ...options });
 
   /** Updates a policy_assignments record */
-  update: typeof putApi20260701ResourcesTimeoffPolicyAssignmentsById = (options?: any) => putApi20260701ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTimeoffPolicyAssignmentsById<true> = (options) => putApi20260701ResourcesTimeoffPolicyAssignmentsById<true>({ client: this._client, ...options });
 
   /** Deletes a policy_assignments record */
-  delete: typeof deleteApi20260701ResourcesTimeoffPolicyAssignmentsById = (options?: any) => deleteApi20260701ResourcesTimeoffPolicyAssignmentsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTimeoffPolicyAssignmentsById<true> = (options) => deleteApi20260701ResourcesTimeoffPolicyAssignmentsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the timeoff > policy_timelines resource */
@@ -5550,17 +5838,19 @@ export class TimeoffPolicyTimelinesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all policy_timelines */
-  list: typeof getApi20260701ResourcesTimeoffPolicyTimelines = (options?: any) => getApi20260701ResourcesTimeoffPolicyTimelines({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTimeoffPolicyTimelines<true> = (options) => getApi20260701ResourcesTimeoffPolicyTimelines<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all policy_timelines, yielding one item at a time.
    * @example for await (const item of client.timeoff.policyTimelines.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyTimelines>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyTimelines<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTimeoffPolicyTimelines({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTimeoffPolicyTimelines<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5568,7 +5858,7 @@ export class TimeoffPolicyTimelinesResource {
    * Fetch all policy_timelines across all pages into a single array.
    * @example const all = await client.timeoff.policyTimelines.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyTimelines>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTimeoffPolicyTimelines<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
@@ -5578,17 +5868,19 @@ export class TrainingsCategoriesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all categories */
-  list: typeof getApi20260701ResourcesTrainingsCategories = (options?: any) => getApi20260701ResourcesTrainingsCategories({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsCategories<true> = (options) => getApi20260701ResourcesTrainingsCategories<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all categories, yielding one item at a time.
    * @example for await (const item of client.trainings.categories.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsCategories>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsCategories<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsCategories({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsCategories<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5596,18 +5888,18 @@ export class TrainingsCategoriesResource {
    * Fetch all categories across all pages into a single array.
    * @example const all = await client.trainings.categories.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsCategories>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsCategories<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a categories record */
-  create: typeof postApi20260701ResourcesTrainingsCategories = (options?: any) => postApi20260701ResourcesTrainingsCategories({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTrainingsCategories<true> = (options) => postApi20260701ResourcesTrainingsCategories<true>({ client: this._client, ...options });
 
   /** Reads a single categories record */
-  get: typeof getApi20260701ResourcesTrainingsCategoriesById = (options?: any) => getApi20260701ResourcesTrainingsCategoriesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsCategoriesById<true> = (options) => getApi20260701ResourcesTrainingsCategoriesById<true>({ client: this._client, ...options });
 
   /** Deletes a categories record */
-  delete: typeof deleteApi20260701ResourcesTrainingsCategoriesById = (options?: any) => deleteApi20260701ResourcesTrainingsCategoriesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTrainingsCategoriesById<true> = (options) => deleteApi20260701ResourcesTrainingsCategoriesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > session_access_memberships resource */
@@ -5615,17 +5907,19 @@ export class TrainingsSessionAccessMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all session_access_memberships */
-  list: typeof getApi20260701ResourcesTrainingsSessionAccessMemberships = (options?: any) => getApi20260701ResourcesTrainingsSessionAccessMemberships({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsSessionAccessMemberships<true> = (options) => getApi20260701ResourcesTrainingsSessionAccessMemberships<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all session_access_memberships, yielding one item at a time.
    * @example for await (const item of client.trainings.sessionAccessMemberships.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAccessMemberships>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAccessMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsSessionAccessMemberships({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsSessionAccessMemberships<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5633,18 +5927,18 @@ export class TrainingsSessionAccessMembershipsResource {
    * Fetch all session_access_memberships across all pages into a single array.
    * @example const all = await client.trainings.sessionAccessMemberships.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAccessMemberships>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAccessMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single session_access_memberships record */
-  get: typeof getApi20260701ResourcesTrainingsSessionAccessMembershipsById = (options?: any) => getApi20260701ResourcesTrainingsSessionAccessMembershipsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsSessionAccessMembershipsById<true> = (options) => getApi20260701ResourcesTrainingsSessionAccessMembershipsById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreate = (options?: any) => postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreate<true> = (options) => postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkCreate<true>({ client: this._client, ...options });
 
   /** bulkDestroy */
-  bulkDestroy: typeof postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroy = (options?: any) => postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroy({ client: this._client, ...options });
+  bulkDestroy: typeof postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroy<true> = (options) => postApi20260701ResourcesTrainingsSessionAccessMembershipsBulkDestroy<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > session_attendances resource */
@@ -5652,17 +5946,19 @@ export class TrainingsSessionAttendancesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all session_attendances */
-  list: typeof getApi20260701ResourcesTrainingsSessionAttendances = (options?: any) => getApi20260701ResourcesTrainingsSessionAttendances({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsSessionAttendances<true> = (options) => getApi20260701ResourcesTrainingsSessionAttendances<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all session_attendances, yielding one item at a time.
    * @example for await (const item of client.trainings.sessionAttendances.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAttendances>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAttendances<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsSessionAttendances({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsSessionAttendances<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5670,15 +5966,15 @@ export class TrainingsSessionAttendancesResource {
    * Fetch all session_attendances across all pages into a single array.
    * @example const all = await client.trainings.sessionAttendances.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAttendances>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessionAttendances<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single session_attendances record */
-  get: typeof getApi20260701ResourcesTrainingsSessionAttendancesById = (options?: any) => getApi20260701ResourcesTrainingsSessionAttendancesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsSessionAttendancesById<true> = (options) => getApi20260701ResourcesTrainingsSessionAttendancesById<true>({ client: this._client, ...options });
 
   /** bulkUpdate */
-  bulkUpdate: typeof postApi20260701ResourcesTrainingsSessionAttendancesBulkUpdate = (options?: any) => postApi20260701ResourcesTrainingsSessionAttendancesBulkUpdate({ client: this._client, ...options });
+  bulkUpdate: typeof postApi20260701ResourcesTrainingsSessionAttendancesBulkUpdate<true> = (options) => postApi20260701ResourcesTrainingsSessionAttendancesBulkUpdate<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > sessions resource */
@@ -5686,17 +5982,19 @@ export class TrainingsSessionsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all sessions */
-  list: typeof getApi20260701ResourcesTrainingsSessions = (options?: any) => getApi20260701ResourcesTrainingsSessions({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsSessions<true> = (options) => getApi20260701ResourcesTrainingsSessions<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all sessions, yielding one item at a time.
    * @example for await (const item of client.trainings.sessions.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessions>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessions<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsSessions({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsSessions<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5704,21 +6002,21 @@ export class TrainingsSessionsResource {
    * Fetch all sessions across all pages into a single array.
    * @example const all = await client.trainings.sessions.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessions>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsSessions<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a sessions record */
-  create: typeof postApi20260701ResourcesTrainingsSessions = (options?: any) => postApi20260701ResourcesTrainingsSessions({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTrainingsSessions<true> = (options) => postApi20260701ResourcesTrainingsSessions<true>({ client: this._client, ...options });
 
   /** Reads a single sessions record */
-  get: typeof getApi20260701ResourcesTrainingsSessionsById = (options?: any) => getApi20260701ResourcesTrainingsSessionsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsSessionsById<true> = (options) => getApi20260701ResourcesTrainingsSessionsById<true>({ client: this._client, ...options });
 
   /** Updates a sessions record */
-  update: typeof putApi20260701ResourcesTrainingsSessionsById = (options?: any) => putApi20260701ResourcesTrainingsSessionsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTrainingsSessionsById<true> = (options) => putApi20260701ResourcesTrainingsSessionsById<true>({ client: this._client, ...options });
 
   /** Deletes a sessions record */
-  delete: typeof deleteApi20260701ResourcesTrainingsSessionsById = (options?: any) => deleteApi20260701ResourcesTrainingsSessionsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTrainingsSessionsById<true> = (options) => deleteApi20260701ResourcesTrainingsSessionsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > training_classes resource */
@@ -5726,17 +6024,19 @@ export class TrainingsTrainingClassesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all training_classes */
-  list: typeof getApi20260701ResourcesTrainingsTrainingClasses = (options?: any) => getApi20260701ResourcesTrainingsTrainingClasses({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsTrainingClasses<true> = (options) => getApi20260701ResourcesTrainingsTrainingClasses<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all training_classes, yielding one item at a time.
    * @example for await (const item of client.trainings.trainingClasses.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingClasses>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingClasses<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsTrainingClasses({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsTrainingClasses<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5744,21 +6044,21 @@ export class TrainingsTrainingClassesResource {
    * Fetch all training_classes across all pages into a single array.
    * @example const all = await client.trainings.trainingClasses.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingClasses>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingClasses<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a training_classes record */
-  create: typeof postApi20260701ResourcesTrainingsTrainingClasses = (options?: any) => postApi20260701ResourcesTrainingsTrainingClasses({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTrainingsTrainingClasses<true> = (options) => postApi20260701ResourcesTrainingsTrainingClasses<true>({ client: this._client, ...options });
 
   /** Reads a single training_classes record */
-  get: typeof getApi20260701ResourcesTrainingsTrainingClassesById = (options?: any) => getApi20260701ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsTrainingClassesById<true> = (options) => getApi20260701ResourcesTrainingsTrainingClassesById<true>({ client: this._client, ...options });
 
   /** Updates a training_classes record */
-  update: typeof putApi20260701ResourcesTrainingsTrainingClassesById = (options?: any) => putApi20260701ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTrainingsTrainingClassesById<true> = (options) => putApi20260701ResourcesTrainingsTrainingClassesById<true>({ client: this._client, ...options });
 
   /** Deletes a training_classes record */
-  delete: typeof deleteApi20260701ResourcesTrainingsTrainingClassesById = (options?: any) => deleteApi20260701ResourcesTrainingsTrainingClassesById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTrainingsTrainingClassesById<true> = (options) => deleteApi20260701ResourcesTrainingsTrainingClassesById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > training_memberships resource */
@@ -5766,17 +6066,19 @@ export class TrainingsTrainingMembershipsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all training_memberships */
-  list: typeof getApi20260701ResourcesTrainingsTrainingMemberships = (options?: any) => getApi20260701ResourcesTrainingsTrainingMemberships({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsTrainingMemberships<true> = (options) => getApi20260701ResourcesTrainingsTrainingMemberships<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all training_memberships, yielding one item at a time.
    * @example for await (const item of client.trainings.trainingMemberships.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingMemberships>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsTrainingMemberships({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsTrainingMemberships<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5784,21 +6086,21 @@ export class TrainingsTrainingMembershipsResource {
    * Fetch all training_memberships across all pages into a single array.
    * @example const all = await client.trainings.trainingMemberships.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingMemberships>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainingMemberships<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single training_memberships record */
-  get: typeof getApi20260701ResourcesTrainingsTrainingMembershipsById = (options?: any) => getApi20260701ResourcesTrainingsTrainingMembershipsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsTrainingMembershipsById<true> = (options) => getApi20260701ResourcesTrainingsTrainingMembershipsById<true>({ client: this._client, ...options });
 
   /** Updates a training_memberships record */
-  update: typeof putApi20260701ResourcesTrainingsTrainingMembershipsById = (options?: any) => putApi20260701ResourcesTrainingsTrainingMembershipsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTrainingsTrainingMembershipsById<true> = (options) => putApi20260701ResourcesTrainingsTrainingMembershipsById<true>({ client: this._client, ...options });
 
   /** bulkCreate */
-  bulkCreate: typeof postApi20260701ResourcesTrainingsTrainingMembershipsBulkCreate = (options?: any) => postApi20260701ResourcesTrainingsTrainingMembershipsBulkCreate({ client: this._client, ...options });
+  bulkCreate: typeof postApi20260701ResourcesTrainingsTrainingMembershipsBulkCreate<true> = (options) => postApi20260701ResourcesTrainingsTrainingMembershipsBulkCreate<true>({ client: this._client, ...options });
 
   /** bulkDestroy */
-  bulkDestroy: typeof postApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroy = (options?: any) => postApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroy({ client: this._client, ...options });
+  bulkDestroy: typeof postApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroy<true> = (options) => postApi20260701ResourcesTrainingsTrainingMembershipsBulkDestroy<true>({ client: this._client, ...options });
 
 }
 /** Methods for the trainings > trainings resource */
@@ -5806,17 +6108,19 @@ export class TrainingsTrainingsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all trainings */
-  list: typeof getApi20260701ResourcesTrainingsTrainings = (options?: any) => getApi20260701ResourcesTrainingsTrainings({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesTrainingsTrainings<true> = (options) => getApi20260701ResourcesTrainingsTrainings<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all trainings, yielding one item at a time.
    * @example for await (const item of client.trainings.trainings.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainings>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainings<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesTrainingsTrainings({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesTrainingsTrainings<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5824,30 +6128,30 @@ export class TrainingsTrainingsResource {
    * Fetch all trainings across all pages into a single array.
    * @example const all = await client.trainings.trainings.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainings>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesTrainingsTrainings<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a trainings record */
-  create: typeof postApi20260701ResourcesTrainingsTrainings = (options?: any) => postApi20260701ResourcesTrainingsTrainings({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesTrainingsTrainings<true> = (options) => postApi20260701ResourcesTrainingsTrainings<true>({ client: this._client, ...options });
 
   /** Reads a single trainings record */
-  get: typeof getApi20260701ResourcesTrainingsTrainingsById = (options?: any) => getApi20260701ResourcesTrainingsTrainingsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesTrainingsTrainingsById<true> = (options) => getApi20260701ResourcesTrainingsTrainingsById<true>({ client: this._client, ...options });
 
   /** Updates a trainings record */
-  update: typeof putApi20260701ResourcesTrainingsTrainingsById = (options?: any) => putApi20260701ResourcesTrainingsTrainingsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesTrainingsTrainingsById<true> = (options) => putApi20260701ResourcesTrainingsTrainingsById<true>({ client: this._client, ...options });
 
   /** Deletes a trainings record */
-  delete: typeof deleteApi20260701ResourcesTrainingsTrainingsById = (options?: any) => deleteApi20260701ResourcesTrainingsTrainingsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesTrainingsTrainingsById<true> = (options) => deleteApi20260701ResourcesTrainingsTrainingsById<true>({ client: this._client, ...options });
 
   /** bulkDelete */
-  bulkDelete: typeof postApi20260701ResourcesTrainingsTrainingsBulkDelete = (options?: any) => postApi20260701ResourcesTrainingsTrainingsBulkDelete({ client: this._client, ...options });
+  bulkDelete: typeof postApi20260701ResourcesTrainingsTrainingsBulkDelete<true> = (options) => postApi20260701ResourcesTrainingsTrainingsBulkDelete<true>({ client: this._client, ...options });
 
   /** bulkUpdateCatalog */
-  bulkUpdateCatalog: typeof postApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalog = (options?: any) => postApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalog({ client: this._client, ...options });
+  bulkUpdateCatalog: typeof postApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalog<true> = (options) => postApi20260701ResourcesTrainingsTrainingsBulkUpdateCatalog<true>({ client: this._client, ...options });
 
   /** updateStatus */
-  updateStatus: typeof postApi20260701ResourcesTrainingsTrainingsUpdateStatus = (options?: any) => postApi20260701ResourcesTrainingsTrainingsUpdateStatus({ client: this._client, ...options });
+  updateStatus: typeof postApi20260701ResourcesTrainingsTrainingsUpdateStatus<true> = (options) => postApi20260701ResourcesTrainingsTrainingsUpdateStatus<true>({ client: this._client, ...options });
 
 }
 /** Methods for the work_schedule > day_configurations resource */
@@ -5855,17 +6159,19 @@ export class WorkScheduleDayConfigurationsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all day_configurations */
-  list: typeof getApi20260701ResourcesWorkScheduleDayConfigurations = (options?: any) => getApi20260701ResourcesWorkScheduleDayConfigurations({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesWorkScheduleDayConfigurations<true> = (options) => getApi20260701ResourcesWorkScheduleDayConfigurations<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all day_configurations, yielding one item at a time.
    * @example for await (const item of client.workSchedule.dayConfigurations.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleDayConfigurations>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleDayConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesWorkScheduleDayConfigurations({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesWorkScheduleDayConfigurations<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5873,15 +6179,15 @@ export class WorkScheduleDayConfigurationsResource {
    * Fetch all day_configurations across all pages into a single array.
    * @example const all = await client.workSchedule.dayConfigurations.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleDayConfigurations>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleDayConfigurations<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Reads a single day_configurations record */
-  get: typeof getApi20260701ResourcesWorkScheduleDayConfigurationsById = (options?: any) => getApi20260701ResourcesWorkScheduleDayConfigurationsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesWorkScheduleDayConfigurationsById<true> = (options) => getApi20260701ResourcesWorkScheduleDayConfigurationsById<true>({ client: this._client, ...options });
 
   /** bulkCud */
-  bulkCud: typeof postApi20260701ResourcesWorkScheduleDayConfigurationsBulkCud = (options?: any) => postApi20260701ResourcesWorkScheduleDayConfigurationsBulkCud({ client: this._client, ...options });
+  bulkCud: typeof postApi20260701ResourcesWorkScheduleDayConfigurationsBulkCud<true> = (options) => postApi20260701ResourcesWorkScheduleDayConfigurationsBulkCud<true>({ client: this._client, ...options });
 
 }
 /** Methods for the work_schedule > overlap_periods resource */
@@ -5889,17 +6195,19 @@ export class WorkScheduleOverlapPeriodsResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all overlap_periods */
-  list: typeof getApi20260701ResourcesWorkScheduleOverlapPeriods = (options?: any) => getApi20260701ResourcesWorkScheduleOverlapPeriods({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesWorkScheduleOverlapPeriods<true> = (options) => getApi20260701ResourcesWorkScheduleOverlapPeriods<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all overlap_periods, yielding one item at a time.
    * @example for await (const item of client.workSchedule.overlapPeriods.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleOverlapPeriods>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleOverlapPeriods<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesWorkScheduleOverlapPeriods({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesWorkScheduleOverlapPeriods<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5907,21 +6215,21 @@ export class WorkScheduleOverlapPeriodsResource {
    * Fetch all overlap_periods across all pages into a single array.
    * @example const all = await client.workSchedule.overlapPeriods.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleOverlapPeriods>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleOverlapPeriods<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a overlap_periods record */
-  create: typeof postApi20260701ResourcesWorkScheduleOverlapPeriods = (options?: any) => postApi20260701ResourcesWorkScheduleOverlapPeriods({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesWorkScheduleOverlapPeriods<true> = (options) => postApi20260701ResourcesWorkScheduleOverlapPeriods<true>({ client: this._client, ...options });
 
   /** Reads a single overlap_periods record */
-  get: typeof getApi20260701ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => getApi20260701ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesWorkScheduleOverlapPeriodsById<true> = (options) => getApi20260701ResourcesWorkScheduleOverlapPeriodsById<true>({ client: this._client, ...options });
 
   /** Updates a overlap_periods record */
-  update: typeof putApi20260701ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => putApi20260701ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesWorkScheduleOverlapPeriodsById<true> = (options) => putApi20260701ResourcesWorkScheduleOverlapPeriodsById<true>({ client: this._client, ...options });
 
   /** Deletes a overlap_periods record */
-  delete: typeof deleteApi20260701ResourcesWorkScheduleOverlapPeriodsById = (options?: any) => deleteApi20260701ResourcesWorkScheduleOverlapPeriodsById({ client: this._client, ...options });
+  delete: typeof deleteApi20260701ResourcesWorkScheduleOverlapPeriodsById<true> = (options) => deleteApi20260701ResourcesWorkScheduleOverlapPeriodsById<true>({ client: this._client, ...options });
 
 }
 /** Methods for the work_schedule > schedules resource */
@@ -5929,17 +6237,19 @@ export class WorkScheduleSchedulesResource {
   constructor(private readonly _client: ReturnType<typeof createClient>) {}
 
   /** Lists all schedules */
-  list: typeof getApi20260701ResourcesWorkScheduleSchedules = (options?: any) => getApi20260701ResourcesWorkScheduleSchedules({ client: this._client, ...options });
+  list: typeof getApi20260701ResourcesWorkScheduleSchedules<true> = (options) => getApi20260701ResourcesWorkScheduleSchedules<true>({ client: this._client, ...options });
 
   /**
    * Auto-paginate through all schedules, yielding one item at a time.
    * @example for await (const item of client.workSchedule.schedules.paginate()) { ... }
    */
-  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleSchedules>[0] & { limit?: number; maxItems?: number }) {
-    const { maxItems, ...rest } = options ?? {};
+  paginate(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleSchedules<true>>[0] & { limit?: number; maxItems?: number }) {
+    const { maxItems, limit, ...rest } = options ?? {};
     return paginate(
-      (params) => getApi20260701ResourcesWorkScheduleSchedules({ client: this._client, ...rest, query: { ...(rest as any)?.query, ...params } } as any),
-      { maxItems },
+      // `limit`/`after_id` work at runtime but are absent from the spec's query type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (params) => getApi20260701ResourcesWorkScheduleSchedules<true>({ client: this._client, ...rest, query: { ...(rest as any).query, ...params } } as any),
+      { maxItems, limit },
     );
   }
 
@@ -5947,21 +6257,21 @@ export class WorkScheduleSchedulesResource {
    * Fetch all schedules across all pages into a single array.
    * @example const all = await client.workSchedule.schedules.all()
    */
-  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleSchedules>[0] & { limit?: number; maxItems?: number }) {
+  all(options?: Parameters<typeof getApi20260701ResourcesWorkScheduleSchedules<true>>[0] & { limit?: number; maxItems?: number }) {
     return collectAll(this.paginate(options));
   }
 
   /** Creates a schedules record */
-  create: typeof postApi20260701ResourcesWorkScheduleSchedules = (options?: any) => postApi20260701ResourcesWorkScheduleSchedules({ client: this._client, ...options });
+  create: typeof postApi20260701ResourcesWorkScheduleSchedules<true> = (options) => postApi20260701ResourcesWorkScheduleSchedules<true>({ client: this._client, ...options });
 
   /** Reads a single schedules record */
-  get: typeof getApi20260701ResourcesWorkScheduleSchedulesById = (options?: any) => getApi20260701ResourcesWorkScheduleSchedulesById({ client: this._client, ...options });
+  get: typeof getApi20260701ResourcesWorkScheduleSchedulesById<true> = (options) => getApi20260701ResourcesWorkScheduleSchedulesById<true>({ client: this._client, ...options });
 
   /** Updates a schedules record */
-  update: typeof putApi20260701ResourcesWorkScheduleSchedulesById = (options?: any) => putApi20260701ResourcesWorkScheduleSchedulesById({ client: this._client, ...options });
+  update: typeof putApi20260701ResourcesWorkScheduleSchedulesById<true> = (options) => putApi20260701ResourcesWorkScheduleSchedulesById<true>({ client: this._client, ...options });
 
   /** toggleArchive */
-  toggleArchive: typeof postApi20260701ResourcesWorkScheduleSchedulesToggleArchive = (options?: any) => postApi20260701ResourcesWorkScheduleSchedulesToggleArchive({ client: this._client, ...options });
+  toggleArchive: typeof postApi20260701ResourcesWorkScheduleSchedulesToggleArchive<true> = (options) => postApi20260701ResourcesWorkScheduleSchedulesToggleArchive<true>({ client: this._client, ...options });
 
 }
 /** Namespace for all api_public resources */
@@ -6462,14 +6772,16 @@ export class WorkScheduleNamespace {
  *
  * @example
  * ```ts
- * import { FactorialClient } from "@factorialco/api-client";
+ * import { FactorialApiError, FactorialClient } from "@factorialco/api-client";
  *
  * const client = new FactorialClient({
  *   apiKey: process.env.FACTORIAL_API_KEY,
  * });
  *
  * // List employees (single page, max 100)
- * const { data } = await client.employees.employees.list();
+ * const { data } = await client.employees.employees.list({
+ *   query: { only_active: true, only_managers: false },
+ * });
  *
  * // Stream all employees across all pages (cursor pagination)
  * for await (const employee of client.employees.employees.paginate()) {
@@ -6478,6 +6790,14 @@ export class WorkScheduleNamespace {
  *
  * // Collect all into an array (with optional safety cap)
  * const all = await client.employees.employees.all({ maxItems: 500 });
+ *
+ * // Any non-2xx response throws a FactorialApiError
+ * try {
+ *   await client.employees.employees.get({ path: { id: "1" } });
+ * } catch (err) {
+ *   if (err instanceof FactorialApiError) console.error(err.status, err.url, err.body);
+ *   else throw err; // transport failure
+ * }
  * ```
  */
 export class FactorialClient {
@@ -6596,10 +6916,16 @@ export class FactorialClient {
       createConfig<ClientOptions>({
         baseUrl: resolvedBaseUrl,
         throwOnError: true,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        auth: auth as any,
-        ...(rest as any),
+        auth,
+        ...rest,
       })
+    );
+
+    // Turn every non-2xx response into a FactorialApiError carrying the status,
+    // method, URL and parsed body. Transport failures (no Response) pass through
+    // untouched, e.g. a fetch TypeError for a DNS or connection error.
+    client.interceptors.error.use((error, response, request) =>
+      toFactorialApiError(error, response, request)
     );
     this.apiPublic = new ApiPublicNamespace(client);
     this.approvals = new ApprovalsNamespace(client);

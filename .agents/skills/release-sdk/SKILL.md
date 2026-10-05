@@ -37,6 +37,12 @@ purely additive. This is baked into the release infra:
 So a new API date → new major → new `version_map.json` entry → a `feat!:` PR.
 npm users pin `@2026-04-01` or `@2026-07-01`.
 
+A major is also cut when an SDK makes its own breaking change, in which case two
+majors point at the same API date (TypeScript `2.x` and `3.x` both target
+`2026-07-01`). Note `latest` is shared by all three SDKs, so `nextMajor` is
+derived from whichever SDK last bumped its major, and the others may skip a
+number.
+
 ## Steps
 
 Do everything on a feature branch off the latest `main`. Ask the user before the

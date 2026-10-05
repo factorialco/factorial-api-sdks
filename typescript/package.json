@@ -32,6 +32,9 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "lint": "eslint src test",
+    "test": "vitest run",
     "generate": "openapi-ts",
     "generate-sdk": "tsx scripts/generate-sdk.ts",
     "generate-webhooks": "tsx scripts/generate-webhooks.ts",
@@ -54,6 +57,7 @@
     "prettier": "^3.8.3",
     "tsx": "^4.22.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^5.0.0"
   }
 }

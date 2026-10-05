@@ -143,9 +143,44 @@ per period) must be computed client-side from the raw records.
 
 ## Errors
 
-The client throws on any non-2xx response (bad/expired token, wrong base URL,
-server errors) instead of silently returning empty data. Wrap calls in
-try/catch (TS) or try/except (Python).
+Every SDK fails loudly on a non-2xx response (bad/expired token, wrong base URL,
+server errors) instead of silently returning empty data. Each raises a typed
+error carrying the status and the response body:
+
+| SDK | Class | Status | Body |
+|-----|-------|--------|------|
+| TypeScript | `FactorialApiError` (extends `Error`) | `status` | `body` (parsed), plus `method`, `url` |
+| Python | `UnexpectedStatus` | `status_code` | `content` (bytes) |
+| Ruby | `F::Api::ApiError` | `code` | `response_body` |
+
+```ts
+// TypeScript — results have no `error` field; failures throw.
+import { FactorialApiError } from "@factorialco/api-client";
+try {
+  const { data } = await client.employees.employees.get({ path: { id: "42" } });
+} catch (err) {
+  if (err instanceof FactorialApiError) console.error(err.status, err.url, err.body);
+  else throw err; // transport failure (DNS/connection), not an HTTP response
+}
+```
+
+```python
+# Python
+from factorial_api_client.generated.errors import UnexpectedStatus
+try:
+    employees = client.employees.employees.list()
+except UnexpectedStatus as e:
+    print(e.status_code, e.content)
+```
+
+```ruby
+# Ruby
+begin
+  api.employees.employee.list
+rescue F::Api::ApiError => e
+  puts e.code, e.response_body
+end
+```
 
 ## API versioning
 

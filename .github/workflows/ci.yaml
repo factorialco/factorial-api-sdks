@@ -1,19 +1,23 @@
 name: "CI"
 
 # Runs the checks contributors are asked to run locally, so a PR cannot land
-# with a red suite. Ruby only for now: the TypeScript and Python SDKs have no
-# test job yet.
+# with a red suite. Ruby and TypeScript for now: the Python SDK has no test job
+# yet.
 
 on:
   pull_request:
     paths:
       - "ruby/**"
+      - "typescript/**"
       - ".github/workflows/ci.yaml"
+      - ".github/actions/setup-node-pnpm/**"
   push:
     branches: [main]
     paths:
       - "ruby/**"
+      - "typescript/**"
       - ".github/workflows/ci.yaml"
+      - ".github/actions/setup-node-pnpm/**"
 
 permissions:
   contents: read
@@ -41,3 +45,30 @@ jobs:
 
       - name: Run RuboCop
         run: bundle exec rubocop
+
+  typescript:
+    name: "[🟦 TYPESCRIPT] Typecheck, lint, tests and build"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typescript
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node and pnpm
+        uses: ./.github/actions/setup-node-pnpm
+        with:
+          working-directory: ./typescript
+
+      - name: Type-check (src and tests)
+        run: pnpm typecheck
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build (ESM and CJS)
+        run: pnpm build
