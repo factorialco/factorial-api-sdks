@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.4...python-v3.0.0) (2026-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* regenerate SDKs for API 2026-10-01 ([#65](https://github.com/factorialco/factorial-api-sdks/issues/65))
+
+### Features
+
+* regenerate SDKs for API 2026-10-01 ([#65](https://github.com/factorialco/factorial-api-sdks/issues/65)) ([fdfc440](https://github.com/factorialco/factorial-api-sdks/commit/fdfc440f72d6068cc6899a7b3b67a09914c4d767))
+
 ## [2.0.4](https://github.com/factorialco/factorial-api-sdks/compare/python-v2.0.3...python-v2.0.4) (2026-08-25)
 
 
