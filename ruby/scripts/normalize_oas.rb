@@ -19,10 +19,12 @@
 # and generated method names lose the noise too (`teams_teams_get` instead
 # of `api20260701_resources_teams_teams_get`).
 #
-# NOTE: the remaining margin is only 4 characters. A future endpoint with a
-# longer route will hit the limit again. The proper long-term fix is short
-# operationIds (or named schemas) in the source spec — raised with the API
-# team.
+# NOTE: the remaining margin is only 4 characters, and deeply nested inline
+# schemas (operationId + property path) can exceed the cap on their own.
+# Those get short names via `inlineSchemaNameMappings` in
+# openapi-ruby-client.yaml, and the `gem build` step in generate_sdk.rb
+# catches any new offender. The proper long-term fix is short operationIds
+# (or named schemas) in the source spec — raised with the API team.
 #
 # Usage: ruby scripts/normalize_oas.rb oas-2026-07-01.yaml
 

@@ -35,8 +35,9 @@ emitted by `scripts/generate_webhooks.rb` from the raw spec's `webhooks`
 section), re-attaches the handwritten facade, re-emits the ergonomic layer
 (`lib/factorial_api/sdk.rb`, by `scripts/generate_sdk_layer.rb` from the
 endpoint table it shares with `scripts/skill_methods.rb` — pass `--dry-run`
-to inspect that table), verifies the gem loads, refreshes the skill
-reference tables and runs the handwritten facade specs
+to inspect that table), verifies the gem loads and packages (`gem build`
+into gitignored `tmp/`), refreshes the skill reference tables and runs the
+handwritten facade specs
 (`spec/factorial_api/`) against the freshly generated code.
 
 ## Why the generated models are patched
@@ -56,6 +57,13 @@ names from full routes — some exceed the 100-character path limit of the
 tar format used by `.gem` packages, breaking `gem build`.
 `scripts/normalize_oas.rb` injects short operationIds to keep names under
 the limit. Full story in that script's header comment.
+
+Deeply nested inline schemas can still exceed it: the generator names them
+after the operationId plus the property path
+(`<operation>_request_<property>_inner…`). Those get short names through
+`inlineSchemaNameMappings` in `openapi-ruby-client.yaml`, and the
+pipeline's `gem build` step fails on any new offender, so it surfaces at
+regeneration time rather than at publish time.
 
 ## Handwritten vs generated files
 

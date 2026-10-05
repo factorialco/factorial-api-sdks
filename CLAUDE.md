@@ -269,7 +269,8 @@ bundle exec rake generate VERSION=<yyyy-mm-dd>   # full regeneration pipeline
 
 Generator: `openapi-generator` (CLI), config `ruby/openapi-ruby-client.yaml`.
 The pipeline (normalize → generate → patch models → webhooks → facade
-re-attach → ergonomic layer → sanity → skill refresh → specs) lives in
+re-attach → ergonomic layer → sanity → gem build → skill refresh → specs)
+lives in
 `ruby/scripts/generate_sdk.rb`; maintainer detail in `ruby/DEVELOPMENT.md`.
 Regenerating never bumps the version — release-please owns it.
 
