@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module F::Api
-  class PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInnerQuestionsInner < ApiModelBase
+  class PerformanceReviewQuestionnaireQuestion < ApiModelBase
     attr_accessor :uuid
 
     attr_accessor :mandatory
@@ -91,10 +91,10 @@ module F::Api
         :'with_comment' => :'Boolean',
         :'title' => :'String',
         :'answer_type' => :'String',
-        :'scale' => :'Array<PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner>',
+        :'scale' => :'Array<PerformanceReviewRatingScaleOption>',
         :'max_choices' => :'Integer',
         :'choice_options' => :'Array<String>',
-        :'metadata' => :'PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInnerQuestionsInnerMetadata',
+        :'metadata' => :'PerformanceReviewQuestionnaireQuestionMetadata',
         :'description' => :'String'
       }
     end
@@ -109,14 +109,14 @@ module F::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInnerQuestionsInner` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `F::Api::PerformanceReviewQuestionnaireQuestion` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInnerQuestionsInner`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `F::Api::PerformanceReviewQuestionnaireQuestion`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

@@ -46,7 +46,7 @@ module F::Api
     def self.openapi_types
       {
         :'id' => :'String',
-        :'scale' => :'Array<PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner>',
+        :'scale' => :'Array<PerformanceReviewRatingScaleOption>',
         :'is_default' => :'Boolean'
       }
     end

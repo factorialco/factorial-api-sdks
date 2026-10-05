@@ -70,7 +70,7 @@ module F::Api
       {
         :'performance_review_process_id' => :'String',
         :'strategy' => :'String',
-        :'questionnaire_content' => :'Array<PerformanceReviewQuestionnaireByStrategiesUpdateQuestionnaireForStrategyPostRequestQuestionnaireContentInner>'
+        :'questionnaire_content' => :'Array<PerformanceReviewQuestionnaireSection>'
       }
     end
 

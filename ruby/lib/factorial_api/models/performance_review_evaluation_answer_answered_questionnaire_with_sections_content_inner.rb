@@ -71,7 +71,7 @@ module F::Api
         :'uuid' => :'String',
         :'type' => :'String',
         :'section_title' => :'String',
-        :'questions' => :'Array<PerformanceReviewEvaluationAnswerAnsweredQuestionnaireWithSectionsContentInnerQuestionsInner>'
+        :'questions' => :'Array<PerformanceReviewEvaluationAnsweredQuestion>'
       }
     end
 

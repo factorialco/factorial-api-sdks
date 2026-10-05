@@ -69,7 +69,7 @@ module F::Api
       {
         :'id' => :'String',
         :'performance_review_process_id' => :'String',
-        :'default_rating_scale' => :'Array<PerformanceReviewQuestionnaireByStrategiesUpdateDefaultRatingScalePostRequestDefaultRatingScaleInner>',
+        :'default_rating_scale' => :'Array<PerformanceReviewRatingScaleOption>',
         :'self_questionnaire' => :'PerformanceReviewQuestionnairesByStrategySelfQuestionnaire',
         :'manager_questionnaire' => :'PerformanceReviewQuestionnairesByStrategySelfQuestionnaire',
         :'direct_report_questionnaire' => :'PerformanceReviewQuestionnairesByStrategySelfQuestionnaire',
