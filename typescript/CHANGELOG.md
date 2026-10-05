@@ -6,9 +6,11 @@
 ### ⚠ BREAKING CHANGES
 
 * **typescript:** non-2xx responses now reject with a FactorialApiError instead of the parsed response body. Resource methods are typed as throwing and resolve to `{ data, request, response }`, so destructuring `error` from a result no longer compiles. `throwOnError` and `responseStyle` are no longer accepted by FactorialClientConfig. `paginate({ limit })` now actually sends `limit`, which was previously dropped.
+* regenerate SDKs for API 2026-10-01 ([#65](https://github.com/factorialco/factorial-api-sdks/issues/65))
 
 ### Features
 
+* regenerate SDKs for API 2026-10-01 ([#65](https://github.com/factorialco/factorial-api-sdks/issues/65)) ([fdfc440](https://github.com/factorialco/factorial-api-sdks/commit/fdfc440f72d6068cc6899a7b3b67a09914c4d767))
 * **typescript:** throw FactorialApiError instead of the raw response body ([#62](https://github.com/factorialco/factorial-api-sdks/issues/62)) ([db3fa64](https://github.com/factorialco/factorial-api-sdks/commit/db3fa6442b8a3742382e7e589b3086fe8cf4defa))
 
 
