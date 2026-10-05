@@ -1,6 +1,6 @@
 ---
 generatorName: ruby
-inputSpec: oas-2026-07-01.normalized.yaml
+inputSpec: oas-2026-10-01.normalized.yaml
 outputDir: "."
 # Skip the per-class markdown docs (~1k files of churn, not shipped in the
 # gem; rubydoc.info serves docs from the YARD comments once published).

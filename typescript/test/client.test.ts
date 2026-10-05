@@ -46,7 +46,7 @@ describe("HTTP errors", () => {
     expect(apiError.status).toBe(500);
     expect(apiError.body).toBeUndefined();
     expect(apiError.message).toBe(
-      `Factorial API 500: GET ${TEST_BASE_URL}/api/2026-07-01/resources/employees/employees/1`,
+      `Factorial API 500: GET ${TEST_BASE_URL}/api/2026-10-01/resources/employees/employees/1`,
     );
   });
 

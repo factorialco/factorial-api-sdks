@@ -189,6 +189,16 @@ module F
     PerformanceReviewProcessUpdateScheduleWebhook = PerformanceReviewProcess
     # Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies).
     PerformanceReviewProcessUpdateTargetStrategyWebhook = PerformanceReviewProcess
+    # Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates).
+    ProjectManagementTimeRecordCreateWebhook = ProjectManagementTimeRecord
+    # Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes).
+    ProjectManagementTimeRecordDeleteWebhook = ProjectManagementTimeRecord
+    # Payload for `project_management/time_record/update_imputed_minutes` (ProjectManagement > TimeRecord > Update imputed minutes).
+    ProjectManagementTimeRecordUpdateImputedMinutesWebhook = ProjectManagementTimeRecord
+    # Payload for `project_management/time_record/update_observations` (ProjectManagement > TimeRecord > Update observations).
+    ProjectManagementTimeRecordUpdateObservationsWebhook = ProjectManagementTimeRecord
+    # Payload for `project_management/time_record/update_project_worker` (ProjectManagement > TimeRecord > Update project workers).
+    ProjectManagementTimeRecordUpdateProjectWorkerWebhook = ProjectManagementTimeRecord
     # Payload for `shift_management/shift/bulk_create` (ShiftManagement > Shift > Bulk creates).
     ShiftManagementShiftBulkCreateWebhook = ShiftManagementShift
     # Payload for `shift_management/shift/bulk_delete` (ShiftManagement > Shift > Bulk deletes).
@@ -219,12 +229,16 @@ module F
     TeamsMembershipCreateWebhook = TeamsMembership
     # Payload for `teams/membership/delete` (Teams > Membership > Deletes).
     TeamsMembershipDeleteWebhook = TeamsMembership
+    # Payload for `teams/membership/move` (Teams > Membership > Moves).
+    TeamsMembershipMoveWebhook = TeamsMembership
     # Payload for `teams/membership/update` (Teams > Membership > Updates).
     TeamsMembershipUpdateWebhook = TeamsMembership
     # Payload for `teams/team/create` (Teams > Team > Creates).
     TeamsTeamCreateWebhook = TeamsTeam
     # Payload for `teams/team/delete` (Teams > Team > Deletes).
     TeamsTeamDeleteWebhook = TeamsTeam
+    # Payload for `teams/team/move` (Teams > Team > Moves).
+    TeamsTeamMoveWebhook = TeamsTeam
     # Payload for `teams/team/project` (Teams > Team > Projects).
     TeamsTeamProjectWebhook = TeamsTeam
     # Payload for `teams/team/update` (Teams > Team > Updates).
@@ -237,6 +251,8 @@ module F
     TimeoffBlockedPeriodUpdateWebhook = TimeoffBlockedPeriodsPolicy
     # Payload for `timeoff/leave/approve` (Timeoff > Leave > Approves).
     TimeoffLeaveApproveWebhook = TimeoffLeave
+    # Payload for `timeoff/leave/bulk_delete` (Timeoff > Leave > Bulk deletes).
+    TimeoffLeaveBulkDeleteWebhook = TimeoffLeave
     # Payload for `timeoff/leave/create` (Timeoff > Leave > Creates).
     TimeoffLeaveCreateWebhook = TimeoffLeave
     # Payload for `timeoff/leave/delete` (Timeoff > Leave > Deletes).
@@ -259,6 +275,8 @@ module F
     TrainingsCategoryCreateWebhook = TrainingsCategory
     # Payload for `trainings/category/delete` (Trainings > Category > Deletes).
     TrainingsCategoryDeleteWebhook = TrainingsCategory
+    # Payload for `trainings/category/update` (Trainings > Category > Updates).
+    TrainingsCategoryUpdateWebhook = TrainingsCategory
     # Payload for `trainings/training/bulk_delete` (Trainings > Training > Bulk deletes).
     TrainingsTrainingBulkDeleteWebhook = TrainingsTraining
     # Payload for `trainings/training/bulk_update_catalog` (Trainings > Training > Bulk update catalogs).
@@ -364,6 +382,11 @@ module F
       "performance/review_process/update_reviewer_strategies",
       "performance/review_process/update_schedule",
       "performance/review_process/update_target_strategy",
+      "project_management/time_record/create",
+      "project_management/time_record/delete",
+      "project_management/time_record/update_imputed_minutes",
+      "project_management/time_record/update_observations",
+      "project_management/time_record/update_project_worker",
       "shift_management/shift/bulk_create",
       "shift_management/shift/bulk_delete",
       "shift_management/shift/create",
@@ -379,15 +402,18 @@ module F
       "teams/membership/bulk_upsert",
       "teams/membership/create",
       "teams/membership/delete",
+      "teams/membership/move",
       "teams/membership/update",
       "teams/team/create",
       "teams/team/delete",
+      "teams/team/move",
       "teams/team/project",
       "teams/team/update",
       "timeoff/blocked_period/create",
       "timeoff/blocked_period/delete",
       "timeoff/blocked_period/update",
       "timeoff/leave/approve",
+      "timeoff/leave/bulk_delete",
       "timeoff/leave/create",
       "timeoff/leave/delete",
       "timeoff/leave/reject",
@@ -399,6 +425,7 @@ module F
       "timeoff/policy/update",
       "trainings/category/create",
       "trainings/category/delete",
+      "trainings/category/update",
       "trainings/training/bulk_delete",
       "trainings/training/bulk_update_catalog",
       "trainings/training/create",
@@ -496,6 +523,11 @@ module F
       "performance/review_process/update_reviewer_strategies" => PerformanceReviewProcess,
       "performance/review_process/update_schedule" => PerformanceReviewProcess,
       "performance/review_process/update_target_strategy" => PerformanceReviewProcess,
+      "project_management/time_record/create" => ProjectManagementTimeRecord,
+      "project_management/time_record/delete" => ProjectManagementTimeRecord,
+      "project_management/time_record/update_imputed_minutes" => ProjectManagementTimeRecord,
+      "project_management/time_record/update_observations" => ProjectManagementTimeRecord,
+      "project_management/time_record/update_project_worker" => ProjectManagementTimeRecord,
       "shift_management/shift/bulk_create" => ShiftManagementShift,
       "shift_management/shift/bulk_delete" => ShiftManagementShift,
       "shift_management/shift/create" => ShiftManagementShift,
@@ -511,15 +543,18 @@ module F
       "teams/membership/bulk_upsert" => TeamsMembership,
       "teams/membership/create" => TeamsMembership,
       "teams/membership/delete" => TeamsMembership,
+      "teams/membership/move" => TeamsMembership,
       "teams/membership/update" => TeamsMembership,
       "teams/team/create" => TeamsTeam,
       "teams/team/delete" => TeamsTeam,
+      "teams/team/move" => TeamsTeam,
       "teams/team/project" => TeamsTeam,
       "teams/team/update" => TeamsTeam,
       "timeoff/blocked_period/create" => TimeoffBlockedPeriodsPolicy,
       "timeoff/blocked_period/delete" => TimeoffBlockedPeriodsPolicy,
       "timeoff/blocked_period/update" => TimeoffBlockedPeriodsPolicy,
       "timeoff/leave/approve" => TimeoffLeave,
+      "timeoff/leave/bulk_delete" => TimeoffLeave,
       "timeoff/leave/create" => TimeoffLeave,
       "timeoff/leave/delete" => TimeoffLeave,
       "timeoff/leave/reject" => TimeoffLeave,
@@ -531,6 +566,7 @@ module F
       "timeoff/policy/update" => TimeoffPolicy,
       "trainings/category/create" => TrainingsCategory,
       "trainings/category/delete" => TrainingsCategory,
+      "trainings/category/update" => TrainingsCategory,
       "trainings/training/bulk_delete" => TrainingsTraining,
       "trainings/training/bulk_update_catalog" => TrainingsTraining,
       "trainings/training/create" => TrainingsTraining,
@@ -971,6 +1007,31 @@ module F
         summary: "Performance > ReviewProcess > Update target strategies", payload_schema: "performance_review_process"
       ),
       WebhookCatalogEntry.new(
+        subscription_type: "project_management/time_record/create", namespace: "ProjectManagement",
+        resource: "TimeRecord", event: "Creates",
+        summary: "ProjectManagement > TimeRecord > Creates", payload_schema: "project_management_time_record"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "project_management/time_record/delete", namespace: "ProjectManagement",
+        resource: "TimeRecord", event: "Deletes",
+        summary: "ProjectManagement > TimeRecord > Deletes", payload_schema: "project_management_time_record"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "project_management/time_record/update_imputed_minutes", namespace: "ProjectManagement",
+        resource: "TimeRecord", event: "Update imputed minutes",
+        summary: "ProjectManagement > TimeRecord > Update imputed minutes", payload_schema: "project_management_time_record"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "project_management/time_record/update_observations", namespace: "ProjectManagement",
+        resource: "TimeRecord", event: "Update observations",
+        summary: "ProjectManagement > TimeRecord > Update observations", payload_schema: "project_management_time_record"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "project_management/time_record/update_project_worker", namespace: "ProjectManagement",
+        resource: "TimeRecord", event: "Update project workers",
+        summary: "ProjectManagement > TimeRecord > Update project workers", payload_schema: "project_management_time_record"
+      ),
+      WebhookCatalogEntry.new(
         subscription_type: "shift_management/shift/bulk_create", namespace: "ShiftManagement",
         resource: "Shift", event: "Bulk creates",
         summary: "ShiftManagement > Shift > Bulk creates", payload_schema: "shift_management_shift"
@@ -1046,6 +1107,11 @@ module F
         summary: "Teams > Membership > Deletes", payload_schema: "teams_membership"
       ),
       WebhookCatalogEntry.new(
+        subscription_type: "teams/membership/move", namespace: "Teams",
+        resource: "Membership", event: "Moves",
+        summary: "Teams > Membership > Moves", payload_schema: "teams_membership"
+      ),
+      WebhookCatalogEntry.new(
         subscription_type: "teams/membership/update", namespace: "Teams",
         resource: "Membership", event: "Updates",
         summary: "Teams > Membership > Updates", payload_schema: "teams_membership"
@@ -1059,6 +1125,11 @@ module F
         subscription_type: "teams/team/delete", namespace: "Teams",
         resource: "Team", event: "Deletes",
         summary: "Teams > Team > Deletes", payload_schema: "teams_team"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "teams/team/move", namespace: "Teams",
+        resource: "Team", event: "Moves",
+        summary: "Teams > Team > Moves", payload_schema: "teams_team"
       ),
       WebhookCatalogEntry.new(
         subscription_type: "teams/team/project", namespace: "Teams",
@@ -1089,6 +1160,11 @@ module F
         subscription_type: "timeoff/leave/approve", namespace: "Timeoff",
         resource: "Leave", event: "Approves",
         summary: "Timeoff > Leave > Approves", payload_schema: "timeoff_leave"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "timeoff/leave/bulk_delete", namespace: "Timeoff",
+        resource: "Leave", event: "Bulk deletes",
+        summary: "Timeoff > Leave > Bulk deletes", payload_schema: "timeoff_leave"
       ),
       WebhookCatalogEntry.new(
         subscription_type: "timeoff/leave/create", namespace: "Timeoff",
@@ -1144,6 +1220,11 @@ module F
         subscription_type: "trainings/category/delete", namespace: "Trainings",
         resource: "Category", event: "Deletes",
         summary: "Trainings > Category > Deletes", payload_schema: "trainings_category"
+      ),
+      WebhookCatalogEntry.new(
+        subscription_type: "trainings/category/update", namespace: "Trainings",
+        resource: "Category", event: "Updates",
+        summary: "Trainings > Category > Updates", payload_schema: "trainings_category"
       ),
       WebhookCatalogEntry.new(
         subscription_type: "trainings/training/bulk_delete", namespace: "Trainings",
