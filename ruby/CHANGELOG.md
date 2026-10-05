@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/factorialco/factorial-api-sdks/compare/ruby/v3.0.0...ruby/v3.0.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* **ruby:** shorten inline model names that break gem build ([#68](https://github.com/factorialco/factorial-api-sdks/issues/68)) ([1fc2500](https://github.com/factorialco/factorial-api-sdks/commit/1fc25000b3618c4f9e277ee293d3588b1aa37d88))
+
 ## [3.0.0](https://github.com/factorialco/factorial-api-sdks/compare/ruby-v2.0.0...ruby/v3.0.0) (2026-10-05)
 
 
