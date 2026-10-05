@@ -14,12 +14,27 @@ T = TypeVar("T", bound="TeamsTeam")
 @_attrs_define
 class TeamsTeam:
     id: str
+    """ Unique identifier of the team """
     name: str
+    """ Human-readable name of the team (e.g. "Engineering") """
     company_id: str
+    """ ID of the company this team belongs to """
     description: str | Unset = UNSET
+    """ Free-text description of the team """
     avatar: str | Unset = UNSET
+    """ URL of the team's avatar image (null when the team has none) """
     employee_ids: list[str] | Unset = UNSET
+    """ IDs of the employees who are members of this team """
     lead_ids: list[str] | Unset = UNSET
+    """ IDs of the employees who are leads of this team (subset of employee_ids) """
+    depth: int | Unset = UNSET
+    """ Depth of this team in the nested-team hierarchy: 1 for a top-level team, 2 for its children, and so on.
+    Returned by read, create and move; null on update and delete, which do not change the hierarchy, and always null
+    for companies without nested teams. """
+    parent_team_id: str | Unset = UNSET
+    """ ID of the parent team this team is nested under (null for a root team). Returned by read, create and move;
+    null on update and delete, which do not change the hierarchy, and always null for companies without nested
+    teams. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,6 +56,10 @@ class TeamsTeam:
         if not isinstance(self.lead_ids, Unset):
             lead_ids = self.lead_ids
 
+        depth = self.depth
+
+        parent_team_id = self.parent_team_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -58,6 +77,10 @@ class TeamsTeam:
             field_dict["employee_ids"] = employee_ids
         if lead_ids is not UNSET:
             field_dict["lead_ids"] = lead_ids
+        if depth is not UNSET:
+            field_dict["depth"] = depth
+        if parent_team_id is not UNSET:
+            field_dict["parent_team_id"] = parent_team_id
 
         return field_dict
 
@@ -78,6 +101,10 @@ class TeamsTeam:
 
         lead_ids = cast(list[str], d.pop("lead_ids", UNSET))
 
+        depth = d.pop("depth", UNSET)
+
+        parent_team_id = d.pop("parent_team_id", UNSET)
+
         teams_team = cls(
             id=id,
             name=name,
@@ -86,6 +113,8 @@ class TeamsTeam:
             avatar=avatar,
             employee_ids=employee_ids,
             lead_ids=lead_ids,
+            depth=depth,
+            parent_team_id=parent_team_id,
         )
 
         teams_team.additional_properties = d

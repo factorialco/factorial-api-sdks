@@ -76,6 +76,7 @@ The TypeScript and Python SDKs use standard semver (`MAJOR.MINOR.PATCH`), indepe
 |-------------|----------------------|
 | `1.x.y`     | `2026-04-01`         |
 | `2.x.y`     | `2026-07-01`         |
+| `3.x.y`     | `2026-10-01`         |
 
 Factorial releases new API versions quarterly (Jan/Apr/Jul/Oct).
 

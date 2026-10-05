@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -10,6 +10,12 @@ from ..models.contracts_materialized_template_template_type import (
     ContractsMaterializedTemplateTemplateType,
 )
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.contracts_materialized_template_template_item import (
+        ContractsMaterializedTemplateTemplateItem,
+    )
+
 
 T = TypeVar("T", bound="ContractsMaterializedTemplate")
 
@@ -30,7 +36,7 @@ class ContractsMaterializedTemplate:
     (final merged view per legal entity, combining all three levels). Use legal_entity when you need the definitive
     set of fields for a specific hiring context.
      """
-    template: list[Any]
+    template: list[ContractsMaterializedTemplateTemplateItem]
     """ The ordered list of contract fields defined in this template after merging all inheritance levels and
     removing hidden fields. Each entry is a FragmentField describing a single configurable attribute of a contract
     (e.g. contract type, job title, salary). The list reflects the final effective set of fields an employee
@@ -56,7 +62,10 @@ class ContractsMaterializedTemplate:
 
         template_type = self.template_type.value
 
-        template = self.template
+        template = []
+        for template_item_data in self.template:
+            template_item = template_item_data.to_dict()
+            template.append(template_item)
 
         legal_entity_id = self.legal_entity_id
 
@@ -81,6 +90,10 @@ class ContractsMaterializedTemplate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.contracts_materialized_template_template_item import (
+            ContractsMaterializedTemplateTemplateItem,
+        )
+
         d = dict(src_dict)
         id = d.pop("id")
 
@@ -88,7 +101,12 @@ class ContractsMaterializedTemplate:
 
         template_type = ContractsMaterializedTemplateTemplateType(d.pop("template_type"))
 
-        template = cast(list[Any], d.pop("template"))
+        template = []
+        _template = d.pop("template")
+        for template_item_data in _template:
+            template_item = ContractsMaterializedTemplateTemplateItem.from_dict(template_item_data)
+
+            template.append(template_item)
 
         legal_entity_id = d.pop("legal_entity_id", UNSET)
 

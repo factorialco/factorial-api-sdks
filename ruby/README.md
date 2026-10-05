@@ -289,7 +289,7 @@ Python SDKs:
 - **Major** tracks the Factorial API version — the mapping lives in the
   repo-root
   [`version_map.json`](https://github.com/factorialco/factorial-api-sdks/blob/main/version_map.json)
-  (e.g. `2.x.y` targets `2026-07-01`). **A new dated API version is a
+  (e.g. `3.x.y` targets `2026-10-01`). **A new dated API version is a
   breaking change** and ships as a new major.
 - **Minor/patch** — features/fixes of the handwritten SDK layer, always
   backwards compatible within the same major.

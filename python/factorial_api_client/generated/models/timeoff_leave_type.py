@@ -22,17 +22,17 @@ class TimeoffLeaveType:
     color: str
     """ The color associated with this leave type """
     attachment: bool
-    """ Whether an attachment is required for this leave type """
+    """ Whether an attachment (e.g. a sick note) can be added to leaves of this type """
     visibility: bool
-    """ Whether the leave type is visible to employees """
+    """ Whether the leave type is visible to employees (vs. admin-only) """
     workable: bool
-    """ Whether the leave type is workable """
+    """ Whether days taken under this leave type still count as workable (working) days """
     company_id: str
-    """ Identifier of the company associated with this leave type """
+    """ ID of the company this leave type belongs to """
     allowance_ids: list[str]
-    """ List of allowance identifiers associated with this leave type """
+    """ IDs of the allowances this leave type draws its balance from """
     details_required: bool
-    """ Whether additional details are required for the leave type """
+    """ Whether the requester must provide additional details (a reason) when requesting this leave type """
     translated_name: str | Unset = UNSET
     """ Translated name of the leave type, if available """
     active: bool | Unset = UNSET
@@ -40,25 +40,30 @@ class TimeoffLeaveType:
     editable: bool | Unset = UNSET
     """ Whether the leave type is editable """
     approval_required: bool | Unset = UNSET
-    """ Whether approval is required for this leave type """
+    """ Whether leaves of this type must be approved before they take effect (when false, requests are auto-approved
+    on creation) """
     accrues: bool | Unset = UNSET
-    """ Whether the leave type accrues over time """
+    """ Whether leaves of this type consume an accruing balance/allowance (vs. a non-accruing type that does not
+    draw down a balance) """
     allow_endless: bool | Unset = UNSET
-    """ Whether endless leave is allowed """
+    """ Whether leaves of this type may be open-ended (created with no finish date) """
     restricted: bool | Unset = UNSET
-    """ Whether the leave type is restricted """
+    """ Whether requesting this leave type is restricted to specific employees or conditions rather than open to
+    everyone """
     payable: bool | Unset = UNSET
-    """ Whether the leave type is payable """
+    """ Whether leaves of this type are paid """
     is_attachment_mandatory: bool | Unset = UNSET
-    """ Whether the attachment is mandatory """
+    """ Whether an attachment is mandatory (not just allowed) to request this leave type """
     half_days_units_enabled: bool | Unset = UNSET
-    """ Whether half-day units are enabled for this leave type """
+    """ Whether leaves of this type can be requested in half-day units """
     max_days_in_cents: int | Unset = UNSET
-    """ Maximum days in cents that can be taken """
+    """ Maximum number of days a single request may take, in hundredths of a day (e.g. 5000 = 50 days); null if
+    unbounded """
     min_days_in_cents: int | Unset = UNSET
-    """ Minimum days in cents that must be taken """
+    """ Minimum number of days a single request must take, in hundredths of a day (e.g. 1000 = 10 days); null if
+    unbounded """
     description: str | Unset = UNSET
-    """ Description of the leave type """
+    """ Free-text description of the leave type """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
