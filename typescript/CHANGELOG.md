@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.0.0](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v2.0.0...typescript-v3.0.0) (2026-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **typescript:** non-2xx responses now reject with a FactorialApiError instead of the parsed response body. Resource methods are typed as throwing and resolve to `{ data, request, response }`, so destructuring `error` from a result no longer compiles. `throwOnError` and `responseStyle` are no longer accepted by FactorialClientConfig. `paginate({ limit })` now actually sends `limit`, which was previously dropped.
+
+### Features
+
+* **typescript:** throw FactorialApiError instead of the raw response body ([#62](https://github.com/factorialco/factorial-api-sdks/issues/62)) ([db3fa64](https://github.com/factorialco/factorial-api-sdks/commit/db3fa6442b8a3742382e7e589b3086fe8cf4defa))
+
+
+### Bug Fixes
+
+* **python:** make from_dict/to_dict null-safe for nullable enum fields ([#53](https://github.com/factorialco/factorial-api-sdks/issues/53)) ([f664a7e](https://github.com/factorialco/factorial-api-sdks/commit/f664a7e6d5e4ebdffb067a4cbf0b380d3d3c2f4c))
+* **typescript:** add repository metadata required by npm provenance ([#61](https://github.com/factorialco/factorial-api-sdks/issues/61)) ([3649b76](https://github.com/factorialco/factorial-api-sdks/commit/3649b7602c17cff0994001acab603f54cdc94b51))
+
 ## [2.0.0](https://github.com/factorialco/factorial-api-sdks/compare/typescript-v1.3.0...typescript-v2.0.0) (2026-07-01)
 
 
