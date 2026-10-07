@@ -68,6 +68,18 @@ class FinanceFinancialDocument:
     is not an approval decision, and says nothing about whether the spend was authorised. """
     validated_by_id: str | Unset = UNSET
     """ Factorial unique identifier of the employee who validated the document. """
+    approval_rejected_at: str | Unset = UNSET
+    """ When the CURRENT review round of the finance approval flow turned this purchase invoice down. A rejection is
+    terminal for its own round -- the document stops being editable and deletable, and a correction goes through a
+    credit note rather than a second review of the same round -- but it is not terminal for the document: a new
+    round can open, for instance when the expense behind the invoice is restarted, and opening one clears this
+    field. So it can go back to null. Null also on a document that was approved, is still pending a decision, or
+    never entered the flow. """
+    approval_approved_at: str | Unset = UNSET
+    """ When the CURRENT review round of the finance approval flow approved this purchase invoice. Not the same
+    question as `validated_at`: approving through the finance action seals both, but a document can be validated on
+    its own through an update, and one that never entered the flow is neither. Like its counterpart it reports the
+    current round only, so opening a new one clears it and it can go back to null. """
     parent_financial_document_id: str | Unset = UNSET
     """ Factorial unique identifier for the parent financial document of the financial document. """
     taxes_total_amount_cents: int | Unset = UNSET
@@ -150,6 +162,10 @@ class FinanceFinancialDocument:
 
         validated_by_id = self.validated_by_id
 
+        approval_rejected_at = self.approval_rejected_at
+
+        approval_approved_at = self.approval_approved_at
+
         parent_financial_document_id = self.parent_financial_document_id
 
         taxes_total_amount_cents = self.taxes_total_amount_cents
@@ -225,6 +241,10 @@ class FinanceFinancialDocument:
             field_dict["validated_at"] = validated_at
         if validated_by_id is not UNSET:
             field_dict["validated_by_id"] = validated_by_id
+        if approval_rejected_at is not UNSET:
+            field_dict["approval_rejected_at"] = approval_rejected_at
+        if approval_approved_at is not UNSET:
+            field_dict["approval_approved_at"] = approval_approved_at
         if parent_financial_document_id is not UNSET:
             field_dict["parent_financial_document_id"] = parent_financial_document_id
         if taxes_total_amount_cents is not UNSET:
@@ -318,6 +338,10 @@ class FinanceFinancialDocument:
 
         validated_by_id = d.pop("validated_by_id", UNSET)
 
+        approval_rejected_at = d.pop("approval_rejected_at", UNSET)
+
+        approval_approved_at = d.pop("approval_approved_at", UNSET)
+
         parent_financial_document_id = d.pop("parent_financial_document_id", UNSET)
 
         taxes_total_amount_cents = d.pop("taxes_total_amount_cents", UNSET)
@@ -374,6 +398,8 @@ class FinanceFinancialDocument:
             duplicate_financial_document_id=duplicate_financial_document_id,
             validated_at=validated_at,
             validated_by_id=validated_by_id,
+            approval_rejected_at=approval_rejected_at,
+            approval_approved_at=approval_approved_at,
             parent_financial_document_id=parent_financial_document_id,
             taxes_total_amount_cents=taxes_total_amount_cents,
             issuer_name=issuer_name,

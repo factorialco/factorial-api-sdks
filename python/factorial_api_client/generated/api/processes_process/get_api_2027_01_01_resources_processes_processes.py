@@ -1,0 +1,225 @@
+from http import HTTPStatus
+from typing import Any
+
+import httpx
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...models.get_api_20270101_resources_processes_processes_categories import (
+    GetApi20270101ResourcesProcessesProcessesCategories,
+)
+from ...models.get_api_20270101_resources_processes_processes_response_200 import (
+    GetApi20270101ResourcesProcessesProcessesResponse200,
+)
+from ...types import UNSET, Response, Unset
+
+
+def _get_kwargs(
+    *,
+    ids: list[str] | Unset = UNSET,
+    categories: GetApi20270101ResourcesProcessesProcessesCategories | Unset = UNSET,
+    name: str | Unset = UNSET,
+) -> dict[str, Any]:
+
+    params: dict[str, Any] = {}
+
+    json_ids: list[str] | Unset = UNSET
+    if not isinstance(ids, Unset):
+        json_ids = ids
+
+    params["ids[]"] = json_ids
+
+    json_categories: str | Unset = UNSET
+    if not isinstance(categories, Unset):
+        json_categories = categories.value
+
+    params["categories[]"] = json_categories
+
+    params["name"] = name
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/api/2027-01-01/resources/processes/processes",
+        "params": params,
+    }
+
+    return _kwargs
+
+
+def _parse_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> GetApi20270101ResourcesProcessesProcessesResponse200 | None:
+    if response.status_code == 200:
+        response_200 = GetApi20270101ResourcesProcessesProcessesResponse200.from_dict(
+            response.json()
+        )
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[GetApi20270101ResourcesProcessesProcessesResponse200]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    *,
+    client: AuthenticatedClient,
+    ids: list[str] | Unset = UNSET,
+    categories: GetApi20270101ResourcesProcessesProcessesCategories | Unset = UNSET,
+    name: str | Unset = UNSET,
+) -> Response[GetApi20270101ResourcesProcessesProcessesResponse200]:
+    """Reads all Processes
+
+     Reads all Processes
+
+    Args:
+        ids (list[str] | Unset): identifiers of the workflows to return. Example: ['1', '2'].
+        categories (GetApi20270101ResourcesProcessesProcessesCategories | Unset): return only
+            workflows of these categories: `onboarding`, `offboarding`, `training` or `custom`.
+            Example: ['onboarding'].
+        name (str | Unset): return only workflows whose name contains this text. Example:
+            warehouse.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GetApi20270101ResourcesProcessesProcessesResponse200]
+    """
+
+    kwargs = _get_kwargs(
+        ids=ids,
+        categories=categories,
+        name=name,
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+def sync(
+    *,
+    client: AuthenticatedClient,
+    ids: list[str] | Unset = UNSET,
+    categories: GetApi20270101ResourcesProcessesProcessesCategories | Unset = UNSET,
+    name: str | Unset = UNSET,
+) -> GetApi20270101ResourcesProcessesProcessesResponse200 | None:
+    """Reads all Processes
+
+     Reads all Processes
+
+    Args:
+        ids (list[str] | Unset): identifiers of the workflows to return. Example: ['1', '2'].
+        categories (GetApi20270101ResourcesProcessesProcessesCategories | Unset): return only
+            workflows of these categories: `onboarding`, `offboarding`, `training` or `custom`.
+            Example: ['onboarding'].
+        name (str | Unset): return only workflows whose name contains this text. Example:
+            warehouse.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GetApi20270101ResourcesProcessesProcessesResponse200
+    """
+
+    return sync_detailed(
+        client=client,
+        ids=ids,
+        categories=categories,
+        name=name,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+    ids: list[str] | Unset = UNSET,
+    categories: GetApi20270101ResourcesProcessesProcessesCategories | Unset = UNSET,
+    name: str | Unset = UNSET,
+) -> Response[GetApi20270101ResourcesProcessesProcessesResponse200]:
+    """Reads all Processes
+
+     Reads all Processes
+
+    Args:
+        ids (list[str] | Unset): identifiers of the workflows to return. Example: ['1', '2'].
+        categories (GetApi20270101ResourcesProcessesProcessesCategories | Unset): return only
+            workflows of these categories: `onboarding`, `offboarding`, `training` or `custom`.
+            Example: ['onboarding'].
+        name (str | Unset): return only workflows whose name contains this text. Example:
+            warehouse.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[GetApi20270101ResourcesProcessesProcessesResponse200]
+    """
+
+    kwargs = _get_kwargs(
+        ids=ids,
+        categories=categories,
+        name=name,
+    )
+
+    response = await client.get_async_httpx_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+    ids: list[str] | Unset = UNSET,
+    categories: GetApi20270101ResourcesProcessesProcessesCategories | Unset = UNSET,
+    name: str | Unset = UNSET,
+) -> GetApi20270101ResourcesProcessesProcessesResponse200 | None:
+    """Reads all Processes
+
+     Reads all Processes
+
+    Args:
+        ids (list[str] | Unset): identifiers of the workflows to return. Example: ['1', '2'].
+        categories (GetApi20270101ResourcesProcessesProcessesCategories | Unset): return only
+            workflows of these categories: `onboarding`, `offboarding`, `training` or `custom`.
+            Example: ['onboarding'].
+        name (str | Unset): return only workflows whose name contains this text. Example:
+            warehouse.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        GetApi20270101ResourcesProcessesProcessesResponse200
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+            ids=ids,
+            categories=categories,
+            name=name,
+        )
+    ).parsed

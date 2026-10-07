@@ -74,7 +74,10 @@ class ExpensesExpense:
     external_authorization_id: str | Unset = UNSET
     """ The id of the external authorization """
     expenses_card_id: str | Unset = UNSET
-    """ The id of the card """
+    """ The id of the Factorial card the expense was paid with. It is set on every expense raised from a Factorial
+    card payment or dispute and null on every other expense, including one paid with a card from another provider,
+    so it is how to tell Factorial card spend apart. GraphQL exposes it as the `factorialCard` relation and
+    deprecates the raw id. """
     card: ExpensesExpenseCard | Unset = UNSET
     """ The card of the expense """
     document_id: str | Unset = UNSET
@@ -90,9 +93,15 @@ class ExpensesExpense:
     document_type: str | Unset = UNSET
     """ Type of the financial document associated to the expense """
     payment: ExpensesExpensePayment | Unset = UNSET
-    """ The payment of the expense """
+    """ Who paid, one of 'reimbursable' (the employee paid with their own money and is owed it back) or
+    'not_reimbursable' (the company paid, with a Factorial card, another corporate card or company cash). """
     payment_method: str | Unset = UNSET
-    """ The method of the payment """
+    """ How the expense was paid, as the id of an option in the company's payment-method list, or null when the
+    employee left it empty. The built-in ids are 'personal_debit_card', 'personal_credit_card' and 'cash' under a
+    reimbursable payment, and 'factorial_card', 'corporate_debit_card', 'corporate_credit_card' and 'company_cash'
+    under a not-reimbursable one; a company can add options with ids of its own. A corporate card from another
+    provider is one of the 'corporate_*' options, chosen by the employee. To tell Factorial card spend apart, use
+    `expenses_card_id` — the `factorialCard` relation in GraphQL — rather than 'factorial_card'. """
     exchange_rate: float | Unset = UNSET
     """ The exchange rate of the payment """
     reimbursable_currency: str | Unset = UNSET
