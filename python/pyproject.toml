@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "factorial-api-client"
-version = "3.0.0"
+version = "4.0.0b2027010103"
 description = "Official Python SDK for the Factorial API"
 readme = "README.md"
 license = { text = "MIT" }
