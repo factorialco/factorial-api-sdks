@@ -13,20 +13,35 @@ T = TypeVar("T", bound="ProjectManagementExportableExpense")
 
 @_attrs_define
 class ProjectManagementExportableExpense:
+    id: str
+    """ The id of the expense record linking the expense to the project """
     employee_name: str
+    """ The full name of the employee who reported the expense """
     date: str | Unset = UNSET
+    """ The effective date of the expense """
     project_name: str | Unset = UNSET
+    """ The name of the project """
     subproject_name: str | Unset = UNSET
+    """ The name of the subproject """
     preferred_name: str | Unset = UNSET
+    """ The preferred name of the employee who reported the expense """
     amount: str | Unset = UNSET
+    """ The amount of the expense, in the currency's major unit """
     currency: str | Unset = UNSET
+    """ The currency of the expense """
     expense_category: str | Unset = UNSET
+    """ The name of the expense category """
     expense_subcategory: str | Unset = UNSET
+    """ The label of the expense subcategory """
     expense_status: str | Unset = UNSET
+    """ The status of the expense """
     expense_link: str | Unset = UNSET
+    """ The link to the expense in Factorial """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = self.id
+
         employee_name = self.employee_name
 
         date = self.date
@@ -53,6 +68,7 @@ class ProjectManagementExportableExpense:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
                 "employee_name": employee_name,
             }
         )
@@ -82,6 +98,8 @@ class ProjectManagementExportableExpense:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        id = d.pop("id")
+
         employee_name = d.pop("employee_name")
 
         date = d.pop("date", UNSET)
@@ -105,6 +123,7 @@ class ProjectManagementExportableExpense:
         expense_link = d.pop("expense_link", UNSET)
 
         project_management_exportable_expense = cls(
+            id=id,
             employee_name=employee_name,
             date=date,
             project_name=project_name,
