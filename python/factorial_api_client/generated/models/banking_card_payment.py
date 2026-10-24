@@ -21,15 +21,18 @@ class BankingCardPayment:
     card_id: str
     """ The ID of the card. """
     amount_cents: int
-    """ The amount of the card payment. """
+    """ The amount the card settled, in cents of `currency`, negative for a payment and positive for a refund. For a
+    payment in another currency it is the converted amount, not what the merchant charged. """
     currency: str
-    """ The currency of the card payment. """
+    """ The currency the card settled the payment in, as an ISO 4217 code. """
     merchant_name: str
     """ The name of the merchant. """
     merchant_amount_cents: int
-    """ The amount of the merchant. """
+    """ The amount the merchant charged, in cents of `merchant_currency`, negative for a payment and positive for a
+    refund. Its absolute value is what the receipt shows, while `amount_cents` is what the card settled. """
     merchant_currency: str
-    """ The currency of the merchant. """
+    """ The currency the merchant charged in, as an ISO 4217 code. It differs from `currency` when the card paid
+    abroad. """
     approved: bool
     """ Whether the card payment was approved. """
     external_created_at: str
@@ -39,7 +42,8 @@ class BankingCardPayment:
     type_: BankingCardPaymentType
     """ The type of the card payment. """
     exchange_rate: float
-    """ The exchange rate of the card payment. """
+    """ The rate the card used to convert `merchant_amount_cents` into `amount_cents`; 1.0 when both currencies are
+    the same. """
     created_at: str
     """ The date and time the card payment was created in factorial """
     rejected_reason: BankingCardPaymentRejectedReason | Unset = UNSET
