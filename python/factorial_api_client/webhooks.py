@@ -46,6 +46,7 @@ from factorial_api_client.generated.models import (
     PayrollPolicyPeriod,
     PayrollSupplement,
     PerformanceReviewProcess,
+    ProjectManagementSubprojectWorker,
     ProjectManagementTimeRecord,
     ShiftManagementShift,
     TasksTask,
@@ -235,6 +236,12 @@ PerformanceReviewProcessUpdateReviewerStrategiesWebhook: TypeAlias = Performance
 PerformanceReviewProcessUpdateScheduleWebhook: TypeAlias = PerformanceReviewProcess
 # Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies).
 PerformanceReviewProcessUpdateTargetStrategyWebhook: TypeAlias = PerformanceReviewProcess
+# Payload for `project_management/subproject_worker/bulk_assign` (ProjectManagement > SubprojectWorker > Bulk assigns).
+ProjectManagementSubprojectWorkerBulkAssignWebhook: TypeAlias = ProjectManagementSubprojectWorker
+# Payload for `project_management/subproject_worker/create` (ProjectManagement > SubprojectWorker > Creates).
+ProjectManagementSubprojectWorkerCreateWebhook: TypeAlias = ProjectManagementSubprojectWorker
+# Payload for `project_management/subproject_worker/unassign` (ProjectManagement > SubprojectWorker > Unassigns).
+ProjectManagementSubprojectWorkerUnassignWebhook: TypeAlias = ProjectManagementSubprojectWorker
 # Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates).
 ProjectManagementTimeRecordCreateWebhook: TypeAlias = ProjectManagementTimeRecord
 # Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes).
@@ -429,6 +436,9 @@ WebhookSubscriptionType = Literal[
     "performance/review_process/update_reviewer_strategies",
     "performance/review_process/update_schedule",
     "performance/review_process/update_target_strategy",
+    "project_management/subproject_worker/bulk_assign",
+    "project_management/subproject_worker/create",
+    "project_management/subproject_worker/unassign",
     "project_management/time_record/create",
     "project_management/time_record/delete",
     "project_management/time_record/update_imputed_minutes",
@@ -571,6 +581,9 @@ WEBHOOK_PAYLOAD_TYPES: dict[str, type] = {
     "performance/review_process/update_reviewer_strategies": PerformanceReviewProcess,
     "performance/review_process/update_schedule": PerformanceReviewProcess,
     "performance/review_process/update_target_strategy": PerformanceReviewProcess,
+    "project_management/subproject_worker/bulk_assign": ProjectManagementSubprojectWorker,
+    "project_management/subproject_worker/create": ProjectManagementSubprojectWorker,
+    "project_management/subproject_worker/unassign": ProjectManagementSubprojectWorker,
     "project_management/time_record/create": ProjectManagementTimeRecord,
     "project_management/time_record/delete": ProjectManagementTimeRecord,
     "project_management/time_record/update_imputed_minutes": ProjectManagementTimeRecord,
@@ -1314,6 +1327,30 @@ WEBHOOK_CATALOG: list[WebhookCatalogEntry] = [
         payload_schema="performance_review_process",
     ),
     WebhookCatalogEntry(
+        subscription_type="project_management/subproject_worker/bulk_assign",
+        namespace="ProjectManagement",
+        resource="SubprojectWorker",
+        event="Bulk assigns",
+        summary="ProjectManagement > SubprojectWorker > Bulk assigns",
+        payload_schema="project_management_subproject_worker",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/subproject_worker/create",
+        namespace="ProjectManagement",
+        resource="SubprojectWorker",
+        event="Creates",
+        summary="ProjectManagement > SubprojectWorker > Creates",
+        payload_schema="project_management_subproject_worker",
+    ),
+    WebhookCatalogEntry(
+        subscription_type="project_management/subproject_worker/unassign",
+        namespace="ProjectManagement",
+        resource="SubprojectWorker",
+        event="Unassigns",
+        summary="ProjectManagement > SubprojectWorker > Unassigns",
+        payload_schema="project_management_subproject_worker",
+    ),
+    WebhookCatalogEntry(
         subscription_type="project_management/time_record/create",
         namespace="ProjectManagement",
         resource="TimeRecord",
@@ -1829,6 +1866,9 @@ __all__ = [
     "PerformanceReviewProcessUpdateReviewerStrategiesWebhook",
     "PerformanceReviewProcessUpdateScheduleWebhook",
     "PerformanceReviewProcessUpdateTargetStrategyWebhook",
+    "ProjectManagementSubprojectWorkerBulkAssignWebhook",
+    "ProjectManagementSubprojectWorkerCreateWebhook",
+    "ProjectManagementSubprojectWorkerUnassignWebhook",
     "ProjectManagementTimeRecordCreateWebhook",
     "ProjectManagementTimeRecordDeleteWebhook",
     "ProjectManagementTimeRecordUpdateImputedMinutesWebhook",
