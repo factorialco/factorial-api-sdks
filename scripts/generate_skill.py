@@ -85,6 +85,7 @@ def patch_unknown_types(node: object) -> dict:
 
 RUBY_METHODS_FILE = REFERENCE_DIR / "ruby-methods.json"
 DATED_PREFIX = re.compile(r"^/api/\d{4}-\d{2}-\d{2}/resources/")
+API_VERSION = re.compile(r"^/api/(\d{4}-\d{2}-\d{2})/")
 
 
 def load_ruby_calls() -> dict[str, str]:
@@ -289,12 +290,30 @@ def gen_sdk_methods(spec: dict, ruby_calls: dict[str, str]) -> str:
             )
 
     total = sum(len(v) for v in by_ns.values())
+    versions = sorted({m.group(1) for p in paths if (m := API_VERSION.match(p))})
+    version = ", ".join(versions) or "<unknown>"
     out: list[str] = []
     out.append("# Factorial API endpoints → SDK calls\n")
     out.append(
-        f"Auto-generated from the OpenAPI spec. {total} endpoints across "
+        f"Auto-generated from the OpenAPI spec of API version {version}, the same spec the "
+        f"[online reference]({DOCS_BASE}/reference) is built from. {total} endpoints across "
         f"{len(by_ns)} namespaces.\n"
     )
+    out.append(
+        "**This is every endpoint of the public API.** To tell whether the API offers "
+        "something (\"does it have goals?\"), look it up here: check the index below, then "
+        "search this file for the term and its synonyms. If it is not here, the public API "
+        "does not offer it in this version. OAuth scopes are coarse permissions, not a list "
+        "of endpoints, so they cannot answer that question, and there is no need to fetch "
+        "the online reference for it.\n"
+    )
+    out.append("## Index\n")
+    out.append("| namespace | resources |")
+    out.append("| --- | --- |")
+    for ns in sorted(by_ns):
+        resources = sorted({e["resource"] for e in by_ns[ns]})
+        out.append(f"| [{ns}](#{ns}) | {', '.join(resources)} |")
+    out.append("")
     out.append(
         "The SDK call column shows the **TypeScript** accessor and request shape "
         "(`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK "
