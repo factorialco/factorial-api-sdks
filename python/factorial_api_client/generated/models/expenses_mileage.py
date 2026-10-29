@@ -50,7 +50,7 @@ class ExpensesMileage:
     reimbursable_currency: str | Unset = UNSET
     """ The currency for the reimbursable amount. """
     mileage: int | Unset = UNSET
-    """ The distance travelled, expressed in `units` """
+    """ The distance travelled, in hundredths of `units` (a 12.5 km trip is 1250) """
     units: str | Unset = UNSET
     """ The distance unit `mileage` is expressed in (e.g. km) """
     rate: str | Unset = UNSET
