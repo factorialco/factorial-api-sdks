@@ -16,7 +16,7 @@ class TimePlanningPlanningVersion:
     effective_at: str
     """ Planning version start date """
     planning_tool: str
-    """ Type of planning tool (shift_management, work_schedules, contract_hours) """
+    """ Type of planning tool (shift_management, work_schedule, contract_hours) """
     employee_id: str
     """ Employee identifier """
     id: str | Unset = UNSET
