@@ -4,7 +4,9 @@ description: >-
   Build integrations with the Factorial HR API using the official TypeScript
   (@factorialco/api-client) and Python (factorial-api-client) SDKs. Use when
   authenticating, calling endpoints, paginating list results, subscribing to
-  webhooks, or typing webhook handler payloads against the Factorial API.
+  webhooks, or typing webhook handler payloads against the Factorial API. Also
+  the reference for which endpoints and resources the Factorial public API
+  exposes: answer "does the API have / support X?" from its endpoint list.
 ---
 
 # Factorial API SDKs
@@ -94,8 +96,25 @@ team = api.teams.team.create(teams_teams_post_request: { name: "Platform" })
 ```
 
 To discover the exact namespace/resource/method for any endpoint, consult
-`reference/sdk-methods.md` (every endpoint with its TS and Ruby calls, grouped)
-or the [online API reference](https://apidoc.factorialhr.com/reference).
+`reference/sdk-methods.md` (every endpoint with its TS and Ruby calls, grouped).
+The [online API reference](https://apidoc.factorialhr.com/reference) has the
+request and response fields.
+
+## Is X in the public API?
+
+`reference/sdk-methods.md` is generated from the same OpenAPI spec as the online
+reference, for the API version this SDK targets, and lists **every** public
+endpoint. It is the answer to "does the API have goals / shifts / …?":
+
+1. Read its **Index** (namespace → resources) at the top.
+2. Search the file for the term and its synonyms (e.g. goals → objectives, OKR,
+   targets; time off → leave, absences) rather than reading it page by page.
+3. Found → name the namespace, resource and SDK call. Not found → the public API
+   does not offer it in this version; say so plainly.
+
+Do not infer what the API offers from OAuth scopes: they are coarse permissions,
+and a resource can sit under a broader scope. Do not fetch the online reference
+to check whether something exists; this file already says.
 
 ## Pagination
 
@@ -256,9 +275,10 @@ Generated, SDK-specific lookup tables (consult these for exact names/shapes):
 
 - `reference/webhooks.md` — every webhook event, its `subscription_type`, and payload fields.
 - `reference/sdk-methods.md` — every REST endpoint grouped by namespace/resource, with the SDK call.
+  The source of truth for which endpoints exist (see [Is X in the public API?](#is-x-in-the-public-api)).
 
-For prose guides (OAuth flows, API keys, versioning, webhook policies, etc.), use the
-live docs — always current, not vendored here:
+For prose guides (OAuth flows, API keys, versioning, webhook policies, etc.) and the exact
+request/response fields, use the live docs:
 
 - Getting started: <https://apidoc.factorialhr.com/docs/getting-started>
 - Full API reference: <https://apidoc.factorialhr.com/reference>

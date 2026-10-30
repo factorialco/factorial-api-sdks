@@ -1,6 +1,51 @@
 # Factorial API endpoints → SDK calls
 
-Auto-generated from the OpenAPI spec. 615 endpoints across 38 namespaces.
+Auto-generated from the OpenAPI spec of API version 2026-10-01, the same spec the [online reference](https://apidoc.factorialhr.com/reference) is built from. 615 endpoints across 38 namespaces.
+
+**This is every endpoint of the public API.** To tell whether the API offers something ("does it have goals?"), look it up here: check the index below, then search this file for the term and its synonyms. If it is not here, the public API does not offer it in this version. OAuth scopes are coarse permissions, not a list of endpoints, so they cannot answer that question, and there is no need to fetch the online reference for it.
+
+## Index
+
+| namespace | resources |
+| --- | --- |
+| [api_public](#api_public) | credentials, webhook_subscriptions |
+| [approvals](#approvals) | materialized_approvals_flows |
+| [ats](#ats) | answers, application_phases, applications, candidate_sources, candidates, evaluation_forms, feedbacks, hiring_stages, job_postings, messages, questions, rejection_reasons |
+| [attendance](#attendance) | break_configurations, edit_timesheet_requests, estimated_times, open_shifts, overtime_requests, reviews, shifts, worked_times |
+| [banking](#banking) | bank_accounts, card_payments, transactions |
+| [bookkeepers_management](#bookkeepers_management) | incidences |
+| [companies](#companies) | legal_entities |
+| [compensations](#compensations) | additional_compensations, concepts, cycles, employees_compensations, payroll_results, payroll_run_employees_compensations, payroll_runs |
+| [contracts](#contracts) | compensations, contract_activity_periods, contract_templates, contract_version_histories, contract_version_meta_data, contract_versions, contracts, french_contract_types, german_contract_types, legal_entity_changes, materialized_templates, portuguese_contract_types, reference_contracts, spanish_contract_types, spanish_education_levels, spanish_professional_categories, spanish_working_day_types, taxonomies |
+| [custom_fields](#custom_fields) | fields, options, resource_fields, values |
+| [custom_resources](#custom_resources) | resources, schemas, values |
+| [documents](#documents) | documents, download_urls, folders |
+| [employee_updates](#employee_updates) | absences, contract_changes, new_hires, personal_changes, summaries, terminations |
+| [employees](#employees) | employees |
+| [expenses](#expenses) | expensables, expenses, mileages, per_diems |
+| [finance](#finance) | accounting_settings, accounts, budget_options, categories, contacts, cost_center_memberships, cost_centers, financial_documents, journal_entries, journal_lines, ledger_account_resources, tax_rates, tax_types |
+| [holidays](#holidays) | company_holidays |
+| [integrations](#integrations) | sync_run_outputs, sync_runs, syncable_states, syncable_sync_runs |
+| [it_management](#it_management) | asset_categories, it_asset_models, it_assets |
+| [job_catalog](#job_catalog) | levels, node_attributes, roles, tree_nodes |
+| [locations](#locations) | locations, work_areas |
+| [marketplace](#marketplace) | installation_settings, installations |
+| [payroll](#payroll) | family_situations, policy_periods, supplements |
+| [payroll_employees](#payroll_employees) | german_employee_data, identifiers |
+| [payroll_integrations_base](#payroll_integrations_base) | codes |
+| [performance](#performance) | agreements, company_employee_score_scales, employee_score_scales, review_evaluation_answers, review_evaluation_scores, review_evaluations, review_owners, review_process_custom_templates, review_process_estimated_targets, review_process_targets, review_processes, review_questionnaire_by_strategies, review_visibility_settings, target_managers |
+| [posts](#posts) | comments, groups, posts |
+| [processes](#processes) | materialized_processes, processes |
+| [procurement](#procurement) | po_field_values, po_line_items, po_template_field_definitions, po_template_versions, po_templates, purchase_orders, purchase_requests, types |
+| [project_management](#project_management) | budget_strategies, expense_records, exportable_expenses, imputable_projects, planned_records, project_tasks, project_workers, projects, rates, subprojects, time_records |
+| [shift_management](#shift_management) | shifts |
+| [tasks](#tasks) | task_files, tasks |
+| [teams](#teams) | memberships, teams |
+| [time_planning](#time_planning) | planned_breaks, planning_versions |
+| [time_settings](#time_settings) | break_configurations, split_custom_time_range_categories |
+| [timeoff](#timeoff) | allowance_incidences, allowance_stats, allowances, blocked_periods, french_leave_day_counts, leave_types, leaves, policies, policy_assignments, policy_timelines |
+| [trainings](#trainings) | categories, session_access_memberships, session_attendances, sessions, training_classes, training_memberships, trainings |
+| [work_schedule](#work_schedule) | day_configurations, overlap_periods, schedules |
 
 The SDK call column shows the **TypeScript** accessor and request shape (`client.<namespace>.<resource>.<method>({ path, query, body })`). The Python SDK uses the same namespaces/resources in `snake_case` (and `collect_all()` instead of `all()`), but takes the path id positionally: `get(id)`, `update(id, body=...)`. The Ruby column shows the full call on an `F::Api.new` client, with its required params as named keywords; optional query params go in a trailing `query_params:` hash and bodies under their `*_request` keyword (every listable resource also has `paginate` and `all`). `body` contents are endpoint-specific; see the [online reference](https://apidoc.factorialhr.com/reference) for exact fields.
 
