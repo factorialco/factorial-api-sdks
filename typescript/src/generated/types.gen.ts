@@ -6491,7 +6491,7 @@ export type PerformanceReviewProcess = {
     /**
      * Review types that will be assigned to the review process. It'll be used to create the evaluations when the process starts
      */
-    reviewer_strategies?: 'self' | 'manager' | 'direct_reports' | 'peers';
+    reviewer_strategies?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
     /**
      * Date when the review process should start
      */
@@ -6503,7 +6503,7 @@ export type PerformanceReviewProcess = {
     /**
      * Missing or invalid information to be able to start the review process
      */
-    start_validation_errors: 'missing_deadline' | 'invalid_deadline' | 'missing_title' | 'missing_target_strategy' | 'missing_target_strategy_members' | 'missing_reviewer_strategy' | 'missing_questions' | 'missing_potential_reviewers' | 'invalid_section_weights_sum';
+    start_validation_errors: Array<'missing_deadline' | 'invalid_deadline' | 'missing_title' | 'missing_target_strategy' | 'missing_target_strategy_members' | 'missing_reviewer_strategy' | 'missing_questions' | 'missing_potential_reviewers' | 'invalid_section_weights_sum'>;
     /**
      * Whether the review process is archived or not
      */
@@ -6562,7 +6562,7 @@ export type PerformanceReviewProcessCustomTemplate = {
     /**
      * Review types that will be assigned to the review process. It'll be used to create the evaluations when the process starts
      */
-    reviewer_strategies?: 'self' | 'manager' | 'direct_reports' | 'peers';
+    reviewer_strategies?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
     /**
      * Action plans help track goal progress, and facilitate performance review discussions.
      */
@@ -13055,7 +13055,7 @@ export type GetApi20261001ResourcesCompensationsConceptsData = {
         /**
          * Return only the concepts in these categories: `earnings_fixed_salary`, `earnings_variable`, `earnings_benefits_in_kind`, `earnings_others`, `deductions`, `company_contribution` or `summarized_values`.
          */
-        'categories[]'?: 'earnings_fixed_salary' | 'earnings_variable' | 'earnings_benefits_in_kind' | 'earnings_others' | 'deductions' | 'company_contribution' | 'summarized_values';
+        'categories[]'?: Array<'earnings_fixed_salary' | 'earnings_variable' | 'earnings_benefits_in_kind' | 'earnings_others' | 'deductions' | 'company_contribution' | 'summarized_values'>;
         /**
          * When true, returns only active concepts
          */
@@ -13586,7 +13586,7 @@ export type GetApi20261001ResourcesCompensationsPayrollRunsData = {
         /**
          * Filter by payment types (regular, extra_pay)
          */
-        'payment_types[]'?: 'regular' | 'severance' | 'extra_pay' | 'delayed_payment' | 'bonus_benefit' | 'salary_advance' | 'rate_difference';
+        'payment_types[]'?: Array<'regular' | 'severance' | 'extra_pay' | 'delayed_payment' | 'bonus_benefit' | 'salary_advance' | 'rate_difference'>;
         /**
          * Include hidden cycles' runs in the response
          */
@@ -17014,7 +17014,7 @@ export type GetApi20261001ResourcesExpensesExpensablesData = {
         /**
          * Return only the expensables in these states: `draft`, `pending`, `changes_requested`, `approved`, `rejected`, `reversed`, `in_payroll`, `sent_to_pay` or `paid`.
          */
-        'status[]'?: 'pending' | 'changes_requested' | 'approved' | 'paid' | 'rejected' | 'reversed' | 'draft' | 'in_payroll' | 'sent_to_pay';
+        'status[]'?: Array<'pending' | 'changes_requested' | 'approved' | 'paid' | 'rejected' | 'reversed' | 'draft' | 'in_payroll' | 'sent_to_pay'>;
         /**
          * Return only the expensables created this way: `manual` (entered by a person) or `automatic` (raised from a card transaction). Those are the only two values the filter understands, and any other string makes the read return nothing at all rather than ignoring the filter.
          */
@@ -17682,7 +17682,7 @@ export type GetApi20261001ResourcesFinanceCategoriesData = {
         /**
          * Filter by category status
          */
-        'statuses[]': 'deleted' | 'disabled' | 'enabled';
+        'statuses[]': Array<'deleted' | 'disabled' | 'enabled'>;
         /**
          * Search by category label or identifier
          */
@@ -18201,7 +18201,7 @@ export type GetApi20261001ResourcesFinanceFinancialDocumentsData = {
         /**
          * Return only the documents in these states: `processing`, `review` (awaiting approval), `sent_to_pay` or `paid`.
          */
-        'statuses[]'?: 'processing' | 'review' | 'sent_to_pay' | 'paid';
+        'statuses[]'?: Array<'processing' | 'review' | 'sent_to_pay' | 'paid'>;
         /**
          * Return only the documents booked against these legal entities.
          */
@@ -18209,7 +18209,7 @@ export type GetApi20261001ResourcesFinanceFinancialDocumentsData = {
         /**
          * Return only the documents of these kinds: `invoice`, `receipt` or `credit_note`.
          */
-        'document_types[]'?: 'invoice' | 'receipt' | 'credit_note';
+        'document_types[]'?: Array<'invoice' | 'receipt' | 'credit_note'>;
         /**
          * Filter financial documents updated from a specific date
          */
@@ -18457,7 +18457,7 @@ export type GetApi20261001ResourcesFinanceJournalEntriesData = {
         /**
          * Filter by entry type
          */
-        'types[]'?: 'bank' | 'bill' | 'invoice' | 'credit_note' | 'merged_ledger_account' | 'reconciliation' | 'tax' | 'receipt' | 'payroll_result' | 'external';
+        'types[]'?: Array<'bank' | 'bill' | 'invoice' | 'credit_note' | 'merged_ledger_account' | 'reconciliation' | 'tax' | 'receipt' | 'payroll_result' | 'external'>;
         /**
          * Filter by Journal Entry Status
          */
@@ -18584,7 +18584,7 @@ export type GetApi20261001ResourcesFinanceJournalLinesData = {
         /**
          * Filter by JournalEntry types, accepted values: bank, bill, invoice, credit_note, merged_ledger_account, reconciliation, tax, receipt, payroll_result, external
          */
-        'journal_entry_types[]'?: 'bank' | 'bill' | 'invoice' | 'credit_note' | 'merged_ledger_account' | 'reconciliation' | 'tax' | 'receipt' | 'payroll_result' | 'external';
+        'journal_entry_types[]'?: Array<'bank' | 'bill' | 'invoice' | 'credit_note' | 'merged_ledger_account' | 'reconciliation' | 'tax' | 'receipt' | 'payroll_result' | 'external'>;
         /**
          * The reconciliation status of the journal line
          */
@@ -19844,7 +19844,7 @@ export type GetApi20261001ResourcesJobCatalogNodeAttributesData = {
         /**
          * Restrict the response to attributes of these classes (e.g., competency, salary_range).
          */
-        'attribute_types[]': 'working_conditions' | 'competency' | 'salary_range' | 'it_management';
+        'attribute_types[]': Array<'working_conditions' | 'competency' | 'salary_range' | 'it_management'>;
     };
     url: '/api/2026-10-01/resources/job_catalog/node_attributes';
 };
@@ -21087,7 +21087,7 @@ export type GetApi20261001ResourcesPayrollIntegrationsBaseCodesData = {
         /**
          * Payroll Integration names
          */
-        'integrations[]': 'a3innuva' | 'a3nom' | 'agenda' | 'paierh' | 'yeap_paierh' | 'silae' | 'sage100' | 'datev' | 'datev_api' | 'datev_lug_api' | 'datev_lauds' | 'team_system' | 'zucchetti' | 'gispaghe' | 'job_sistemi';
+        'integrations[]': Array<'a3innuva' | 'a3nom' | 'agenda' | 'paierh' | 'yeap_paierh' | 'silae' | 'sage100' | 'datev' | 'datev_api' | 'datev_lug_api' | 'datev_lauds' | 'team_system' | 'zucchetti' | 'gispaghe' | 'job_sistemi'>;
         /**
          * Related object ID. Used together with codeable_type
          */
@@ -21424,7 +21424,7 @@ export type GetApi20261001ResourcesPerformanceReviewEvaluationsData = {
         /**
          * Filter by reviewer strategies
          */
-        'reviewer_strategies[]'?: 'self' | 'manager' | 'direct_reports' | 'peers';
+        'reviewer_strategies[]'?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
         /**
          * Filter by participant access IDs
          */
@@ -21553,7 +21553,7 @@ export type GetApi20261001ResourcesPerformanceReviewEvaluationScoresData = {
         /**
          * Filter by who scored the employee
          */
-        'reviewer_strategies[]'?: 'self' | 'manager' | 'direct_reports' | 'peers';
+        'reviewer_strategies[]'?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
         /**
          * Filter by review process target IDs
          */
@@ -21710,7 +21710,7 @@ export type PostApi20261001ResourcesPerformanceReviewProcessesData = {
         /**
          * Review types that will be assigned to the review process. It'll be used to create the evaluations when the process starts
          */
-        reviewer_strategies?: 'self' | 'manager' | 'direct_reports' | 'peers';
+        reviewer_strategies?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
         /**
          * Condition that defines the employees that will be evaluated (participants). Calculated when the review process starts
          */
@@ -21863,7 +21863,7 @@ export type PostApi20261001ResourcesPerformanceReviewProcessesRemindInBulkData =
         /**
          * Reviewer strategies to remind about
          */
-        evaluation_types?: 'self' | 'manager' | 'direct_reports' | 'peers';
+        evaluation_types?: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
     };
     path?: never;
     query?: never;
@@ -22142,7 +22142,7 @@ export type PostApi20261001ResourcesPerformanceReviewProcessesUpdateReviewerStra
         /**
          * New review types to be applied
          */
-        reviewer_strategies: 'self' | 'manager' | 'direct_reports' | 'peers';
+        reviewer_strategies: Array<'self' | 'manager' | 'direct_reports' | 'peers'>;
     };
     path?: never;
     query?: never;
@@ -23189,7 +23189,7 @@ export type GetApi20261001ResourcesProcessesProcessesData = {
         /**
          * return only workflows of these categories: `onboarding`, `offboarding`, `training` or `custom`.
          */
-        'categories[]'?: 'onboarding' | 'offboarding' | 'training' | 'custom';
+        'categories[]'?: Array<'onboarding' | 'offboarding' | 'training' | 'custom'>;
         /**
          * return only workflows whose name contains this text.
          */
@@ -23399,7 +23399,7 @@ export type GetApi20261001ResourcesProcurementPoTemplateFieldDefinitionsData = {
          * Filter by section type. "general_information", "vendor_contact" and "notes_and_delivery" are header-level (one value per PO); "line_item_columns" describes the per-line-item columns.
          *
          */
-        'section_type[]'?: 'general_information' | 'vendor_contact' | 'notes_and_delivery' | 'line_item_columns';
+        'section_type[]'?: Array<'general_information' | 'vendor_contact' | 'notes_and_delivery' | 'line_item_columns'>;
     };
     url: '/api/2026-10-01/resources/procurement/po_template_field_definitions';
 };
@@ -23454,7 +23454,7 @@ export type GetApi20261001ResourcesProcurementPoTemplateVersionsData = {
          * Filter by version status. Use "active" to retrieve the single currently-active version of each template (the schema new POs are created against). Other values: "draft", "archived".
          *
          */
-        'status[]'?: 'draft' | 'active' | 'archived';
+        'status[]'?: Array<'draft' | 'active' | 'archived'>;
     };
     url: '/api/2026-10-01/resources/procurement/po_template_versions';
 };
@@ -25632,7 +25632,7 @@ export type GetApi20261001ResourcesShiftManagementShiftsData = {
         /**
          * Filter shifts by their state. Provide an array of states ('draft', 'published', 'backup') to include. Can be combined with other filters for precise control
          */
-        'only_states[]'?: 'draft' | 'published' | 'backup';
+        'only_states[]'?: Array<'draft' | 'published' | 'backup'>;
         /**
          * When true, shifts that span across midnight (overnight shifts) are split into two separate shift objects - one for each calendar day. This makes it easier to display shifts in day-based views
          */

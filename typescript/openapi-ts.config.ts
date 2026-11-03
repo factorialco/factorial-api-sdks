@@ -1,10 +1,20 @@
 import { defineConfig } from "@hey-api/openapi-ts";
+import { moveArrayEnumsToItems } from "./scripts/patch-spec.js";
 
 const SPEC_URL =
   process.env.OPENAPI_SPEC_URL ?? "https://api.factorialhr.com/oas";
 
 export default defineConfig({
   input: SPEC_URL,
+  parser: {
+    patch: {
+      // The spec puts some enums on array schemas instead of their items,
+      // which makes openapi-ts drop the array (see scripts/patch-spec.ts).
+      input: (spec) => {
+        moveArrayEnumsToItems(spec);
+      },
+    },
+  },
   output: {
     path: "src/generated",
     format: "prettier",
