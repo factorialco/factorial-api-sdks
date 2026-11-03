@@ -1,6 +1,6 @@
 # Factorial webhook events
 
-Auto-generated from the OpenAPI spec. 137 events across 23 namespaces, 34 distinct payload schemas.
+Auto-generated from the OpenAPI spec. 140 events across 23 namespaces, 35 distinct payload schemas.
 
 Factorial POSTs the payload (the resource object) to your `target_url` at the **top level** — it is not wrapped in a `{ type, data }` envelope. Subscribe with the `subscription_type` value shown below. See `../SKILL.md` for delivery, verification, and retry details.
 
@@ -176,6 +176,9 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 
 | subscription_type | event | payload schema | summary |
 | --- | --- | --- | --- |
+| `project_management/subproject_worker/bulk_assign` | Bulk assigns | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Bulk assigns |
+| `project_management/subproject_worker/create` | Creates | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Creates |
+| `project_management/subproject_worker/unassign` | Unassigns | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Unassigns |
 | `project_management/time_record/create` | Creates | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Creates |
 | `project_management/time_record/delete` | Deletes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Deletes |
 | `project_management/time_record/update_imputed_minutes` | Update imputed minutes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Update imputed minutes |
@@ -846,6 +849,18 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `agreements_configuration` | object | yes | Action plans help track goal progress, and facilitate performance review discussions. |
 | `competencies_assessments_configuration` | object | yes | Assess employees based on their assigned competencies through both manager and self-reviews. Ensure roles with designated competencies are properly set up. |
 | `last_bulk_reminder` | string | no | Date when the last bulk reminder was sent |
+
+### project_management_subproject_worker
+
+| field | type | required | description |
+| --- | --- | --- | --- |
+| `id` | string | yes | id of the subproject worker. |
+| `subproject_id` | string | yes | id of the subproject (phase). |
+| `project_id` | string | yes | id of the project owning the subproject. |
+| `project_worker_id` | string | yes | id of the project worker. |
+| `employee_id` | string | yes | id of the employee. |
+| `assigned` | boolean | yes | true if the employee is assigned to the subproject, false otherwise. |
+| `company_id` | string | yes | id of the company that owns the subproject worker. |
 
 ### project_management_time_record
 
