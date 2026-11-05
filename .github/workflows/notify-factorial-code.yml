@@ -1,0 +1,35 @@
+name: Notify factorial-code
+
+# factorial-code pins these skills to a commit (ai/skills.json there). On each push to main that
+# changes them, tell it, so its "[🧩 ai] Skills update PR" workflow opens or updates the PR that
+# moves the pin here, with the agent evals run on it.
+#
+# Needs the FACTORIAL_CODE_DISPATCH_TOKEN secret: a fine-grained token (or GitHub App token) with
+# Contents: read and write on factorialco/factorial-code, which repository_dispatch requires.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch skills-updated to factorialco/factorial-code
+        env:
+          GH_TOKEN: ${{ secrets.FACTORIAL_CODE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::FACTORIAL_CODE_DISPATCH_TOKEN is not set: factorial-code was not told about this push. Run its \"[🧩 ai] Skills update PR\" workflow by hand."
+            exit 0
+          fi
+          gh api --method POST repos/factorialco/factorial-code/dispatches \
+            -f event_type=skills-updated \
+            -f "client_payload[repo]=$GITHUB_REPOSITORY" \
+            -f "client_payload[sha]=$GITHUB_SHA"
