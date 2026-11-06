@@ -40,6 +40,7 @@ class IntegrationsSyncableItemSyncableType(str, Enum):
     EMPLOYEE_UPDATESTERMINATION = "employee_updates/termination"
     EMPLOYEE_UPDATESWORKED_TIME = "employee_updates/worked_time"
     EXPENSESEXPENSE = "expenses/expense"
+    FINANCEFINANCIAL_DOCUMENT = "finance/financial_document"
     FINANCEVENDOR = "finance/vendor"
 
     def __str__(self) -> str:
