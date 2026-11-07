@@ -40,7 +40,10 @@ class IntegrationsSyncableStateSyncType(str, Enum):
     EMPLOYEE_UPDATESTERMINATION = "employee_updates/termination"
     EMPLOYEE_UPDATESWORKED_TIME = "employee_updates/worked_time"
     EXPENSESEXPENSE = "expenses/expense"
+    FINANCEFINANCIAL_DOCUMENT = "finance/financial_document"
+    FINANCEJOURNAL_ENTRY = "finance/journal_entry"
     FINANCEVENDOR = "finance/vendor"
+    PROCUREMENTPURCHASE_ORDER = "procurement/purchase_order"
 
     def __str__(self) -> str:
         return str(self.value)

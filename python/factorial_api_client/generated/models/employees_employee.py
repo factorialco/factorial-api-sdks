@@ -124,6 +124,9 @@ class EmployeesEmployee:
     """ Country of birth of the employee. """
     birthplace: str | Unset = UNSET
     """ Birthplace of the employee. """
+    birthplace_postal_code: str | Unset = UNSET
+    """ 5-digit French postal code of the employee's birthplace. Only set for employees in a French legal entity.
+    """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -237,6 +240,8 @@ class EmployeesEmployee:
 
         birthplace = self.birthplace
 
+        birthplace_postal_code = self.birthplace_postal_code
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -340,6 +345,8 @@ class EmployeesEmployee:
             field_dict["country_of_birth"] = country_of_birth
         if birthplace is not UNSET:
             field_dict["birthplace"] = birthplace
+        if birthplace_postal_code is not UNSET:
+            field_dict["birthplace_postal_code"] = birthplace_postal_code
 
         return field_dict
 
@@ -459,6 +466,8 @@ class EmployeesEmployee:
 
         birthplace = d.pop("birthplace", UNSET)
 
+        birthplace_postal_code = d.pop("birthplace_postal_code", UNSET)
+
         employees_employee = cls(
             id=id,
             access_id=access_id,
@@ -514,6 +523,7 @@ class EmployeesEmployee:
             identifier_expiration_date=identifier_expiration_date,
             country_of_birth=country_of_birth,
             birthplace=birthplace,
+            birthplace_postal_code=birthplace_postal_code,
         )
 
         employees_employee.additional_properties = d
