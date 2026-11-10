@@ -17,6 +17,10 @@ class EmployeeUpdatesContractChange:
     """ The id of the contract change incidence """
     status: str
     """ The status of the contract change incidence """
+    type_: str
+    """ The kind of contract change. `contract` is an update to the contract conditions. `contract_deactivation` and
+    `contract_reactivation` close and reopen an activity period of a fixed-discontinuous contract, and carry the
+    conditions of the contract version in force on that date. """
     effective_on: str
     """ The effective date of the contract """
     employee_id: str
@@ -26,7 +30,13 @@ class EmployeeUpdatesContractChange:
     fr_forfait_jours: bool
     """ The forfait jours status on the contract change """
     created_at: str
+    """ Time the contract change incidence was created """
     updated_at: str
+    """ Time the contract change incidence was last updated """
+    activity_changed_on: str | Unset = UNSET
+    """ The date the activity period closed or reopened, for a `contract_deactivation` or `contract_reactivation`.
+    Null for a plain `contract` change, whose date is `effective_on`. The other dates on this payload belong to the
+    contract version in force on this date, not to the activity change itself. """
     starts_on: str | Unset = UNSET
     """ The start date of the contract """
     ends_on: str | Unset = UNSET
@@ -96,6 +106,7 @@ class EmployeeUpdatesContractChange:
     fr_work_type_name: str | Unset = UNSET
     """ The work type name on the contract change """
     compensation_ids: list[str] | Unset = UNSET
+    """ The ids of the additional compensations on the contract change """
     fr_contract_type_id: str | Unset = UNSET
     """ The contract type id on the contract change """
     fr_contract_type_name: str | Unset = UNSET
@@ -115,6 +126,8 @@ class EmployeeUpdatesContractChange:
 
         status = self.status
 
+        type_ = self.type_
+
         effective_on = self.effective_on
 
         employee_id = self.employee_id
@@ -126,6 +139,8 @@ class EmployeeUpdatesContractChange:
         created_at = self.created_at
 
         updated_at = self.updated_at
+
+        activity_changed_on = self.activity_changed_on
 
         starts_on = self.starts_on
 
@@ -217,6 +232,7 @@ class EmployeeUpdatesContractChange:
             {
                 "id": id,
                 "status": status,
+                "type": type_,
                 "effective_on": effective_on,
                 "employee_id": employee_id,
                 "has_payroll": has_payroll,
@@ -225,6 +241,8 @@ class EmployeeUpdatesContractChange:
                 "updated_at": updated_at,
             }
         )
+        if activity_changed_on is not UNSET:
+            field_dict["activity_changed_on"] = activity_changed_on
         if starts_on is not UNSET:
             field_dict["starts_on"] = starts_on
         if ends_on is not UNSET:
@@ -317,6 +335,8 @@ class EmployeeUpdatesContractChange:
 
         status = d.pop("status")
 
+        type_ = d.pop("type")
+
         effective_on = d.pop("effective_on")
 
         employee_id = d.pop("employee_id")
@@ -328,6 +348,8 @@ class EmployeeUpdatesContractChange:
         created_at = d.pop("created_at")
 
         updated_at = d.pop("updated_at")
+
+        activity_changed_on = d.pop("activity_changed_on", UNSET)
 
         starts_on = d.pop("starts_on", UNSET)
 
@@ -414,12 +436,14 @@ class EmployeeUpdatesContractChange:
         employee_updates_contract_change = cls(
             id=id,
             status=status,
+            type_=type_,
             effective_on=effective_on,
             employee_id=employee_id,
             has_payroll=has_payroll,
             fr_forfait_jours=fr_forfait_jours,
             created_at=created_at,
             updated_at=updated_at,
+            activity_changed_on=activity_changed_on,
             starts_on=starts_on,
             ends_on=ends_on,
             job_title=job_title,
