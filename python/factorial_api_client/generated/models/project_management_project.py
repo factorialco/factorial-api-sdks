@@ -28,6 +28,9 @@ class ProjectManagementProject:
     company) """
     is_billable: bool
     """ Whether the project's costs can be billed (recharged) to a client """
+    restrict_booking_by_phase: bool
+    """ When true (and the phase assignment feature is enabled for the company), employees can only book time on the
+    subprojects (phases) they are assigned to. """
     legal_entity_id: str
     """ The legal entity id of the project """
     code: str | Unset = UNSET
@@ -63,6 +66,8 @@ class ProjectManagementProject:
 
         is_billable = self.is_billable
 
+        restrict_booking_by_phase = self.restrict_booking_by_phase
+
         legal_entity_id = self.legal_entity_id
 
         code = self.code
@@ -94,6 +99,7 @@ class ProjectManagementProject:
                 "status": status,
                 "employees_assignment": employees_assignment,
                 "is_billable": is_billable,
+                "restrict_booking_by_phase": restrict_booking_by_phase,
                 "legal_entity_id": legal_entity_id,
             }
         )
@@ -135,6 +141,8 @@ class ProjectManagementProject:
 
         is_billable = d.pop("is_billable")
 
+        restrict_booking_by_phase = d.pop("restrict_booking_by_phase")
+
         legal_entity_id = d.pop("legal_entity_id")
 
         code = d.pop("code", UNSET)
@@ -163,6 +171,7 @@ class ProjectManagementProject:
             status=status,
             employees_assignment=employees_assignment,
             is_billable=is_billable,
+            restrict_booking_by_phase=restrict_booking_by_phase,
             legal_entity_id=legal_entity_id,
             code=code,
             description=description,
