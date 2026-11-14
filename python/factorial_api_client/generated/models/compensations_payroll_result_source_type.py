@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class CompensationsPayrollResultSourceType(str, Enum):
+    ATTENDANCE_COMPENSATIONRULESDOCUMENT = "attendance_compensationrulesdocument"
     ATTENDANCE_REVIEW = "attendance_review"
     BENEFITS_COMPENSATION = "benefits_compensation"
     COMPENSATIONS_COMPENSATIONPOLICY = "compensations_compensationpolicy"

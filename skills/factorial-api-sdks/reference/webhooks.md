@@ -1,6 +1,6 @@
 # Factorial webhook events
 
-Auto-generated from the OpenAPI spec. 137 events across 23 namespaces, 34 distinct payload schemas.
+Auto-generated from the OpenAPI spec. 141 events across 23 namespaces, 36 distinct payload schemas.
 
 Factorial POSTs the payload (the resource object) to your `target_url` at the **top level** — it is not wrapped in a `{ type, data }` envelope. Subscribe with the `subscription_type` value shown below. See `../SKILL.md` for delivery, verification, and retry details.
 
@@ -33,6 +33,7 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 | `ats/job_posting/delete` | Deletes | [`ats_job_posting`](#ats_job_posting) | Ats > JobPosting > Deletes |
 | `ats/job_posting/duplicate` | Duplicates | [`ats_job_posting`](#ats_job_posting) | Ats > JobPosting > Duplicates |
 | `ats/job_posting/update` | Updates | [`ats_job_posting`](#ats_job_posting) | Ats > JobPosting > Updates |
+| `ats/referral/create` | Creates | [`ats_referral`](#ats_referral) | Ats > Referral > Creates |
 
 ### Attendance
 
@@ -176,6 +177,9 @@ Each SDK ships a typed catalog with one alias per event: at the package root in 
 
 | subscription_type | event | payload schema | summary |
 | --- | --- | --- | --- |
+| `project_management/subproject_worker/bulk_assign` | Bulk assigns | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Bulk assigns |
+| `project_management/subproject_worker/create` | Creates | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Creates |
+| `project_management/subproject_worker/unassign` | Unassigns | [`project_management_subproject_worker`](#project_management_subproject_worker) | ProjectManagement > SubprojectWorker > Unassigns |
 | `project_management/time_record/create` | Creates | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Creates |
 | `project_management/time_record/delete` | Deletes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Deletes |
 | `project_management/time_record/update_imputed_minutes` | Update imputed minutes | [`project_management_time_record`](#project_management_time_record) | ProjectManagement > TimeRecord > Update imputed minutes |
@@ -368,6 +372,18 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `published_at` | string | no | Published date in ISO 8601 format of the job. If never been published the value will be null |
 | `created_at` | string | yes | Date in ISO 8601 format when the job posting was created |
 
+### ats_referral
+
+| field | type | required | description |
+| --- | --- | --- | --- |
+| `id` | string | yes | Referral identifier. |
+| `access_id` | string | yes | The access that made the referral. |
+| `company_id` | string | yes | Identifier of the company. |
+| `ats_candidate_id` | string | yes | The referred candidate. |
+| `ats_application_id` | string | yes | The application created for the referral. |
+| `created_at` | string | yes | When the referral was made. |
+| `updated_at` | string | yes | When the referral was last updated. |
+
 ### attendance_shift
 
 | field | type | required | description |
@@ -392,6 +408,8 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `workable` | boolean | no | Whether the shift counts as worked (workable) time rather than a break |
 | `created_at` | string | yes | Timestamp when the shift record was created |
 | `workplace_id` | string | no | Identifier for the location |
+| `clock_in_work_area_id` | string | no | Identifier of the work area where the employee clocked in |
+| `clock_out_work_area_id` | string | no | Identifier of the work area where the employee clocked out |
 | `time_settings_break_configuration_id` | string | no | Identifier for the break configuration |
 | `company_id` | string | yes | Identifier for the company |
 | `updated_at` | string | yes | Timestamp when the shift record was updated |
@@ -416,12 +434,12 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `employee_id` | string | no | identifier of employee related. |
 | `legal_entity_id` | string | yes | identifier of legal entity related. |
 | `name` | string | yes | name of the incidence (aka employee update). It also represent the incidence type. For example a new hire incidence will be |
-| `custom_name` | string | no |  |
+| `custom_name` | string | no | Name of the custom leave type, for custom leave incidences (aka employee updates) only. Null for every other type, including manual incidences. |
 | `target_id` | string | yes | The incidence (aka employee update) is also related to a another resource, for example for a leave target, the target identifier will be the leave id. |
 | `target_type` | string | yes | The incidence (aka employee update) is also related to a another resource, for example a leave. This is the target type. The other types are Employee, Contracts::ContractVersion, BookkeepersManagement::ManualIncidence, Finance::CostCenterMembership. |
-| `starts_on` | string | no | The date the incidence (aka employee update) starts. |
-| `ends_on` | string | no | The date the incidence (aka employee update) end. |
-| `read_at` | string | no | The date the incidence (aka employee update) was read. |
+| `starts_on` | string | no | The date the incidence (aka employee update) takes effect. For a manual incidence, the effective date entered. For a leave, its first day. |
+| `ends_on` | string | no | The last date the incidence (aka employee update) applies to. For a manual incidence, the same as starts_on. For a leave, its last day. |
+| `read_at` | string | no | When a bookkeeper last read the incidence (aka employee update). Set on creation, cleared to null whenever the incidence changes or is reopened, and set again when a bookkeeper reads it. Null means it changed since a bookkeeper last read it. |
 | `status` | string | yes |  |
 | `company_id` | string | yes | identifier of company related. |
 | `message_from` | string | no | Indicate the message sender on the incidence (aka employee update). It can be any of 'bookkeeper', 'admin' |
@@ -710,6 +728,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `attendable` | boolean | yes | employee included in a time tracking policy. |
 | `country_of_birth` | string | no | Country of birth of the employee. |
 | `birthplace` | string | no | Birthplace of the employee. |
+| `birthplace_postal_code` | string | no | 5-digit French postal code of the employee's birthplace. Only set for employees in a French legal entity. |
 
 ### expenses_expensable
 
@@ -847,6 +866,18 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `competencies_assessments_configuration` | object | yes | Assess employees based on their assigned competencies through both manager and self-reviews. Ensure roles with designated competencies are properly set up. |
 | `last_bulk_reminder` | string | no | Date when the last bulk reminder was sent |
 
+### project_management_subproject_worker
+
+| field | type | required | description |
+| --- | --- | --- | --- |
+| `id` | string | yes | id of the subproject worker. |
+| `subproject_id` | string | yes | id of the subproject (phase). |
+| `project_id` | string | yes | id of the project owning the subproject. |
+| `project_worker_id` | string | yes | id of the project worker. |
+| `employee_id` | string | yes | id of the employee. |
+| `assigned` | boolean | yes | true if the employee is assigned to the subproject, false otherwise. |
+| `company_id` | string | yes | id of the company that owns the subproject worker. |
+
 ### project_management_time_record
 
 | field | type | required | description |
@@ -912,7 +943,7 @@ Top-level fields of each payload. Nested object types reference other schemas by
 | `lead` | boolean | yes | Whether the employee is a lead of the team or not |
 | `source_team_ids` | array<string> | yes | IDs of the teams this membership originates from (nested teams). In a company with nested teams, a direct membership includes the team itself; an inherited one, the sub-team(s) where the employee is a direct member. Only populated on reads that compute source attribution — reads filtered by a single team, or by a single employee with `with_source_attribution` enabled. Empty otherwise, including create, update and delete responses, and always empty for companies without nested teams. An empty array does not distinguish "computed and genuinely empty" from "not computed for this read" or "could not be computed", so only apply attribution-dependent logic to a read you explicitly shaped for it. A team-anchored read stops attributing above roughly a thousand members of the filtered team: past that the attribution is not computed at all and every row comes back empty, behind a normal `200`. |
 | `parent_team_ids` | array<string> | yes | IDs of the ancestor teams that receive an inherited membership through this row (nested teams) — the teams this membership rolls up into. Populated under the same conditions as `source_team_ids`; empty otherwise. |
-| `direct` | boolean | no | Whether the employee is a direct member of the team (nested teams). Always present. `true` means direct member; `false` means the row exists only through inheritance from a sub-team; `null` means not computed for this read. Only computed on reads filtered by a single employee with `with_source_attribution` enabled — always `null` otherwise, including create, update and delete responses and companies without nested teams. `null` is also returned when directness could not be resolved for a transient reason, even with `with_source_attribution` enabled, so never treat `null` as `false` — retry the read instead. |
+| `direct` | boolean | no | Whether the employee is a direct member of the team (nested teams). Always present. `true` means direct member; `false` means the row exists only through inheritance from a sub-team; `null` means not computed for this read. Computed on reads filtered by a single `team_ids` value, and on reads filtered by a single employee with `with_source_attribution` enabled — always `null` otherwise, including create, update and delete responses and companies without nested teams. `null` is also returned when directness could not be resolved for a transient reason, so never treat `null` as `false` — retry the read instead. |
 
 ### teams_team
 

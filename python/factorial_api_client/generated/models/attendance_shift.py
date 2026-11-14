@@ -63,6 +63,10 @@ class AttendanceShift:
     """ Whether the shift counts as worked (workable) time rather than a break """
     workplace_id: str | Unset = UNSET
     """ Identifier for the location """
+    clock_in_work_area_id: str | Unset = UNSET
+    """ Identifier of the work area where the employee clocked in """
+    clock_out_work_area_id: str | Unset = UNSET
+    """ Identifier of the work area where the employee clocked out """
     time_settings_break_configuration_id: str | Unset = UNSET
     """ Identifier for the break configuration """
     clock_in_with_seconds: str | Unset = UNSET
@@ -120,6 +124,10 @@ class AttendanceShift:
 
         workplace_id = self.workplace_id
 
+        clock_in_work_area_id = self.clock_in_work_area_id
+
+        clock_out_work_area_id = self.clock_out_work_area_id
+
         time_settings_break_configuration_id = self.time_settings_break_configuration_id
 
         clock_in_with_seconds = self.clock_in_with_seconds
@@ -168,6 +176,10 @@ class AttendanceShift:
             field_dict["workable"] = workable
         if workplace_id is not UNSET:
             field_dict["workplace_id"] = workplace_id
+        if clock_in_work_area_id is not UNSET:
+            field_dict["clock_in_work_area_id"] = clock_in_work_area_id
+        if clock_out_work_area_id is not UNSET:
+            field_dict["clock_out_work_area_id"] = clock_out_work_area_id
         if time_settings_break_configuration_id is not UNSET:
             field_dict["time_settings_break_configuration_id"] = (
                 time_settings_break_configuration_id
@@ -236,6 +248,10 @@ class AttendanceShift:
 
         workplace_id = d.pop("workplace_id", UNSET)
 
+        clock_in_work_area_id = d.pop("clock_in_work_area_id", UNSET)
+
+        clock_out_work_area_id = d.pop("clock_out_work_area_id", UNSET)
+
         time_settings_break_configuration_id = d.pop("time_settings_break_configuration_id", UNSET)
 
         clock_in_with_seconds = d.pop("clock_in_with_seconds", UNSET)
@@ -264,6 +280,8 @@ class AttendanceShift:
             out_location_accuracy=out_location_accuracy,
             workable=workable,
             workplace_id=workplace_id,
+            clock_in_work_area_id=clock_in_work_area_id,
+            clock_out_work_area_id=clock_out_work_area_id,
             time_settings_break_configuration_id=time_settings_break_configuration_id,
             clock_in_with_seconds=clock_in_with_seconds,
         )

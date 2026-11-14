@@ -39,10 +39,10 @@ class TeamsMembership:
     direct: bool | Unset = UNSET
     """ Whether the employee is a direct member of the team (nested teams). Always present. `true` means direct
     member; `false` means the row exists only through inheritance from a sub-team; `null` means not computed for
-    this read. Only computed on reads filtered by a single employee with `with_source_attribution` enabled — always
-    `null` otherwise, including create, update and delete responses and companies without nested teams. `null` is
-    also returned when directness could not be resolved for a transient reason, even with `with_source_attribution`
-    enabled, so never treat `null` as `false` — retry the read instead. """
+    this read. Computed on reads filtered by a single `team_ids` value, and on reads filtered by a single employee
+    with `with_source_attribution` enabled — always `null` otherwise, including create, update and delete responses
+    and companies without nested teams. `null` is also returned when directness could not be resolved for a
+    transient reason, so never treat `null` as `false` — retry the read instead. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
