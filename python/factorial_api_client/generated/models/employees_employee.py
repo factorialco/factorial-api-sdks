@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -27,7 +27,7 @@ class EmployeesEmployee:
     company_id: str
     """ id of the company to which the employee belongs (not editable). """
     location_id: str
-    """ location id of the employee, references to locations/locations. """
+    """ Default workplace ID of the employee. References locations/locations. """
     created_at: str
     """ creation date of the employee. """
     updated_at: str
@@ -76,6 +76,9 @@ class EmployeesEmployee:
     """ legal entity of the employee, references to companies/legal_entities. """
     default_work_area_id: str | Unset = UNSET
     """ Default work area ID for the employee at the default workplace. References locations/work_areas. """
+    employees_location_ids: list[str] | Unset = UNSET
+    """ All assigned workplace IDs, including the default workplace assignment. References locations/locations.
+    Returned when include_locations=true; otherwise null. """
     social_security_number: str | Unset = UNSET
     """ social security number of the employee. """
     terminated_on: str | Unset = UNSET
@@ -124,6 +127,9 @@ class EmployeesEmployee:
     """ Country of birth of the employee. """
     birthplace: str | Unset = UNSET
     """ Birthplace of the employee. """
+    birthplace_postal_code: str | Unset = UNSET
+    """ 5-digit French postal code of the employee's birthplace. Only set for employees in a French legal entity.
+    """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -191,6 +197,10 @@ class EmployeesEmployee:
 
         default_work_area_id = self.default_work_area_id
 
+        employees_location_ids: list[str] | Unset = UNSET
+        if not isinstance(self.employees_location_ids, Unset):
+            employees_location_ids = self.employees_location_ids
+
         social_security_number = self.social_security_number
 
         terminated_on = self.terminated_on
@@ -236,6 +246,8 @@ class EmployeesEmployee:
         country_of_birth = self.country_of_birth
 
         birthplace = self.birthplace
+
+        birthplace_postal_code = self.birthplace_postal_code
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -294,6 +306,8 @@ class EmployeesEmployee:
             field_dict["legal_entity_id"] = legal_entity_id
         if default_work_area_id is not UNSET:
             field_dict["default_work_area_id"] = default_work_area_id
+        if employees_location_ids is not UNSET:
+            field_dict["employees_location_ids"] = employees_location_ids
         if social_security_number is not UNSET:
             field_dict["social_security_number"] = social_security_number
         if terminated_on is not UNSET:
@@ -340,6 +354,8 @@ class EmployeesEmployee:
             field_dict["country_of_birth"] = country_of_birth
         if birthplace is not UNSET:
             field_dict["birthplace"] = birthplace
+        if birthplace_postal_code is not UNSET:
+            field_dict["birthplace_postal_code"] = birthplace_postal_code
 
         return field_dict
 
@@ -413,6 +429,8 @@ class EmployeesEmployee:
 
         default_work_area_id = d.pop("default_work_area_id", UNSET)
 
+        employees_location_ids = cast(list[str], d.pop("employees_location_ids", UNSET))
+
         social_security_number = d.pop("social_security_number", UNSET)
 
         terminated_on = d.pop("terminated_on", UNSET)
@@ -459,6 +477,8 @@ class EmployeesEmployee:
 
         birthplace = d.pop("birthplace", UNSET)
 
+        birthplace_postal_code = d.pop("birthplace_postal_code", UNSET)
+
         employees_employee = cls(
             id=id,
             access_id=access_id,
@@ -491,6 +511,7 @@ class EmployeesEmployee:
             bank_number_format=bank_number_format,
             legal_entity_id=legal_entity_id,
             default_work_area_id=default_work_area_id,
+            employees_location_ids=employees_location_ids,
             social_security_number=social_security_number,
             terminated_on=terminated_on,
             termination_reason_type=termination_reason_type,
@@ -514,6 +535,7 @@ class EmployeesEmployee:
             identifier_expiration_date=identifier_expiration_date,
             country_of_birth=country_of_birth,
             birthplace=birthplace,
+            birthplace_postal_code=birthplace_postal_code,
         )
 
         employees_employee.additional_properties = d
