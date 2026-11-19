@@ -20,7 +20,8 @@ class TeamsTeam:
     company_id: str
     """ ID of the company this team belongs to """
     description: str | Unset = UNSET
-    """ Free-text description of the team """
+    """ Description of the team in Markdown (GitHub flavored). It is stored as written, without sanitizing, so
+    sanitize it before rendering it as HTML """
     avatar: str | Unset = UNSET
     """ URL of the team's avatar image (null when the team has none) """
     employee_ids: list[str] | Unset = UNSET
