@@ -28,6 +28,7 @@ class AtsJobPostingContractType(str, Enum):
     PROMESSA_DE_TRABALHO = "promessa_de_trabalho"
     RECIBOS_VERDES = "recibos_verdes"
     SEM_TERMO = "sem_termo"
+    SUBSTITUTION = "substitution"
     TELETRABALHO = "teletrabalho"
     TEMPORARY = "temporary"
     TRAINING = "training"

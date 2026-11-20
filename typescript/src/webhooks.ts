@@ -32,6 +32,7 @@ import type {
   AtsCandidate,
   AtsEvaluationForm,
   AtsJobPosting,
+  AtsReferral,
   AttendanceShift,
   BankingBankAccountNumber,
   BookkeepersManagementIncidence,
@@ -49,6 +50,7 @@ import type {
   PayrollPolicyPeriod,
   PayrollSupplement,
   PerformanceReviewProcess,
+  ProjectManagementSubprojectWorker,
   ProjectManagementTimeRecord,
   ShiftManagementShift,
   TasksTask,
@@ -96,6 +98,8 @@ export type AtsJobPostingDeleteWebhook = AtsJobPosting;
 export type AtsJobPostingDuplicateWebhook = AtsJobPosting;
 /** Payload for `ats/job_posting/update` (Ats > JobPosting > Updates). */
 export type AtsJobPostingUpdateWebhook = AtsJobPosting;
+/** Payload for `ats/referral/create` (Ats > Referral > Creates). */
+export type AtsReferralCreateWebhook = AtsReferral;
 /** Payload for `attendance/shift/autofill` (Attendance > Shift > Autofills). */
 export type AttendanceShiftAutofillWebhook = AttendanceShift;
 /** Payload for `attendance/shift/break_end` (Attendance > Shift > Break ends). */
@@ -232,6 +236,12 @@ export type PerformanceReviewProcessUpdateReviewerStrategiesWebhook = Performanc
 export type PerformanceReviewProcessUpdateScheduleWebhook = PerformanceReviewProcess;
 /** Payload for `performance/review_process/update_target_strategy` (Performance > ReviewProcess > Update target strategies). */
 export type PerformanceReviewProcessUpdateTargetStrategyWebhook = PerformanceReviewProcess;
+/** Payload for `project_management/subproject_worker/bulk_assign` (ProjectManagement > SubprojectWorker > Bulk assigns). */
+export type ProjectManagementSubprojectWorkerBulkAssignWebhook = ProjectManagementSubprojectWorker;
+/** Payload for `project_management/subproject_worker/create` (ProjectManagement > SubprojectWorker > Creates). */
+export type ProjectManagementSubprojectWorkerCreateWebhook = ProjectManagementSubprojectWorker;
+/** Payload for `project_management/subproject_worker/unassign` (ProjectManagement > SubprojectWorker > Unassigns). */
+export type ProjectManagementSubprojectWorkerUnassignWebhook = ProjectManagementSubprojectWorker;
 /** Payload for `project_management/time_record/create` (ProjectManagement > TimeRecord > Creates). */
 export type ProjectManagementTimeRecordCreateWebhook = ProjectManagementTimeRecord;
 /** Payload for `project_management/time_record/delete` (ProjectManagement > TimeRecord > Deletes). */
@@ -358,6 +368,7 @@ export type WebhookSubscriptionType =
   | "ats/job_posting/delete"
   | "ats/job_posting/duplicate"
   | "ats/job_posting/update"
+  | "ats/referral/create"
   | "attendance/shift/autofill"
   | "attendance/shift/break_end"
   | "attendance/shift/break_start"
@@ -426,6 +437,9 @@ export type WebhookSubscriptionType =
   | "performance/review_process/update_reviewer_strategies"
   | "performance/review_process/update_schedule"
   | "performance/review_process/update_target_strategy"
+  | "project_management/subproject_worker/bulk_assign"
+  | "project_management/subproject_worker/create"
+  | "project_management/subproject_worker/unassign"
   | "project_management/time_record/create"
   | "project_management/time_record/delete"
   | "project_management/time_record/update_imputed_minutes"
@@ -499,6 +513,7 @@ export interface WebhookPayloadMap {
   "ats/job_posting/delete": AtsJobPosting;
   "ats/job_posting/duplicate": AtsJobPosting;
   "ats/job_posting/update": AtsJobPosting;
+  "ats/referral/create": AtsReferral;
   "attendance/shift/autofill": AttendanceShift;
   "attendance/shift/break_end": AttendanceShift;
   "attendance/shift/break_start": AttendanceShift;
@@ -567,6 +582,9 @@ export interface WebhookPayloadMap {
   "performance/review_process/update_reviewer_strategies": PerformanceReviewProcess;
   "performance/review_process/update_schedule": PerformanceReviewProcess;
   "performance/review_process/update_target_strategy": PerformanceReviewProcess;
+  "project_management/subproject_worker/bulk_assign": ProjectManagementSubprojectWorker;
+  "project_management/subproject_worker/create": ProjectManagementSubprojectWorker;
+  "project_management/subproject_worker/unassign": ProjectManagementSubprojectWorker;
   "project_management/time_record/create": ProjectManagementTimeRecord;
   "project_management/time_record/delete": ProjectManagementTimeRecord;
   "project_management/time_record/update_imputed_minutes": ProjectManagementTimeRecord;
@@ -656,6 +674,7 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "ats/job_posting/delete", namespace: "Ats", resource: "JobPosting", event: "Deletes", summary: "Ats > JobPosting > Deletes", payloadSchema: "ats_job_posting" },
   { subscriptionType: "ats/job_posting/duplicate", namespace: "Ats", resource: "JobPosting", event: "Duplicates", summary: "Ats > JobPosting > Duplicates", payloadSchema: "ats_job_posting" },
   { subscriptionType: "ats/job_posting/update", namespace: "Ats", resource: "JobPosting", event: "Updates", summary: "Ats > JobPosting > Updates", payloadSchema: "ats_job_posting" },
+  { subscriptionType: "ats/referral/create", namespace: "Ats", resource: "Referral", event: "Creates", summary: "Ats > Referral > Creates", payloadSchema: "ats_referral" },
   { subscriptionType: "attendance/shift/autofill", namespace: "Attendance", resource: "Shift", event: "Autofills", summary: "Attendance > Shift > Autofills", payloadSchema: "attendance_shift" },
   { subscriptionType: "attendance/shift/break_end", namespace: "Attendance", resource: "Shift", event: "Break ends", summary: "Attendance > Shift > Break ends", payloadSchema: "attendance_shift" },
   { subscriptionType: "attendance/shift/break_start", namespace: "Attendance", resource: "Shift", event: "Break starts", summary: "Attendance > Shift > Break starts", payloadSchema: "attendance_shift" },
@@ -724,6 +743,9 @@ export const WEBHOOK_CATALOG: readonly WebhookCatalogEntry[] = [
   { subscriptionType: "performance/review_process/update_reviewer_strategies", namespace: "Performance", resource: "ReviewProcess", event: "Update reviewer strategies", summary: "Performance > ReviewProcess > Update reviewer strategies", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_schedule", namespace: "Performance", resource: "ReviewProcess", event: "Update schedules", summary: "Performance > ReviewProcess > Update schedules", payloadSchema: "performance_review_process" },
   { subscriptionType: "performance/review_process/update_target_strategy", namespace: "Performance", resource: "ReviewProcess", event: "Update target strategies", summary: "Performance > ReviewProcess > Update target strategies", payloadSchema: "performance_review_process" },
+  { subscriptionType: "project_management/subproject_worker/bulk_assign", namespace: "ProjectManagement", resource: "SubprojectWorker", event: "Bulk assigns", summary: "ProjectManagement > SubprojectWorker > Bulk assigns", payloadSchema: "project_management_subproject_worker" },
+  { subscriptionType: "project_management/subproject_worker/create", namespace: "ProjectManagement", resource: "SubprojectWorker", event: "Creates", summary: "ProjectManagement > SubprojectWorker > Creates", payloadSchema: "project_management_subproject_worker" },
+  { subscriptionType: "project_management/subproject_worker/unassign", namespace: "ProjectManagement", resource: "SubprojectWorker", event: "Unassigns", summary: "ProjectManagement > SubprojectWorker > Unassigns", payloadSchema: "project_management_subproject_worker" },
   { subscriptionType: "project_management/time_record/create", namespace: "ProjectManagement", resource: "TimeRecord", event: "Creates", summary: "ProjectManagement > TimeRecord > Creates", payloadSchema: "project_management_time_record" },
   { subscriptionType: "project_management/time_record/delete", namespace: "ProjectManagement", resource: "TimeRecord", event: "Deletes", summary: "ProjectManagement > TimeRecord > Deletes", payloadSchema: "project_management_time_record" },
   { subscriptionType: "project_management/time_record/update_imputed_minutes", namespace: "ProjectManagement", resource: "TimeRecord", event: "Update imputed minutes", summary: "ProjectManagement > TimeRecord > Update imputed minutes", payloadSchema: "project_management_time_record" },
