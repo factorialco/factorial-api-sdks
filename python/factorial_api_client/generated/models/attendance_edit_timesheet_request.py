@@ -53,6 +53,12 @@ class AttendanceEditTimesheetRequest:
     """ Id of the clock-in work area within the workplace """
     clock_out_work_area_id: str | Unset = UNSET
     """ Id of the clock-out work area within the workplace """
+    project_worker_id: str | Unset = UNSET
+    """ Id of the employee's project assignment the work is logged on once approved """
+    subproject_id: str | Unset = UNSET
+    """ Id of the project phase the work is logged on once approved """
+    project_task_id: str | Unset = UNSET
+    """ Id of the project task the work is logged on once approved """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -91,6 +97,12 @@ class AttendanceEditTimesheetRequest:
         clock_in_work_area_id = self.clock_in_work_area_id
 
         clock_out_work_area_id = self.clock_out_work_area_id
+
+        project_worker_id = self.project_worker_id
+
+        subproject_id = self.subproject_id
+
+        project_task_id = self.project_task_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -131,6 +143,12 @@ class AttendanceEditTimesheetRequest:
             field_dict["clock_in_work_area_id"] = clock_in_work_area_id
         if clock_out_work_area_id is not UNSET:
             field_dict["clock_out_work_area_id"] = clock_out_work_area_id
+        if project_worker_id is not UNSET:
+            field_dict["project_worker_id"] = project_worker_id
+        if subproject_id is not UNSET:
+            field_dict["subproject_id"] = subproject_id
+        if project_task_id is not UNSET:
+            field_dict["project_task_id"] = project_task_id
 
         return field_dict
 
@@ -176,6 +194,12 @@ class AttendanceEditTimesheetRequest:
 
         clock_out_work_area_id = d.pop("clock_out_work_area_id", UNSET)
 
+        project_worker_id = d.pop("project_worker_id", UNSET)
+
+        subproject_id = d.pop("subproject_id", UNSET)
+
+        project_task_id = d.pop("project_task_id", UNSET)
+
         attendance_edit_timesheet_request = cls(
             id=id,
             request_type=request_type,
@@ -194,6 +218,9 @@ class AttendanceEditTimesheetRequest:
             workplace_id=workplace_id,
             clock_in_work_area_id=clock_in_work_area_id,
             clock_out_work_area_id=clock_out_work_area_id,
+            project_worker_id=project_worker_id,
+            subproject_id=subproject_id,
+            project_task_id=project_task_id,
         )
 
         attendance_edit_timesheet_request.additional_properties = d
