@@ -4,6 +4,8 @@ from enum import Enum
 class PayrollIntegrationsBaseCodeIntegration(str, Enum):
     A3INNUVA = "a3innuva"
     A3NOM = "a3nom"
+    ADP_FRANCE = "adp_france"
+    ADP_IBERIA = "adp_iberia"
     AGENDA = "agenda"
     DATEV = "datev"
     DATEV_API = "datev_api"
