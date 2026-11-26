@@ -37,12 +37,18 @@ class BookkeepersManagementIncidence:
     employee_id: str | Unset = UNSET
     """ identifier of employee related. """
     custom_name: str | Unset = UNSET
+    """ Name of the custom leave type, for custom leave incidences (aka employee updates) only. Null for every other
+    type, including manual incidences. """
     starts_on: str | Unset = UNSET
-    """ The date the incidence (aka employee update) starts. """
+    """ The date the incidence (aka employee update) takes effect. For a manual incidence, the effective date
+    entered. For a leave, its first day. """
     ends_on: str | Unset = UNSET
-    """ The date the incidence (aka employee update) end. """
+    """ The last date the incidence (aka employee update) applies to. For a manual incidence, the same as starts_on.
+    For a leave, its last day. """
     read_at: str | Unset = UNSET
-    """ The date the incidence (aka employee update) was read. """
+    """ When a bookkeeper last read the incidence (aka employee update). Set on creation, cleared to null whenever
+    the incidence changes or is reopened, and set again when a bookkeeper reads it. Null means it changed since a
+    bookkeeper last read it. """
     message_from: str | Unset = UNSET
     """ Indicate the message sender on the incidence (aka employee update). It can be any of 'bookkeeper', 'admin'
     """
