@@ -2,9 +2,11 @@ from enum import Enum
 
 
 class PerformanceReviewProcessStartValidationErrors(str, Enum):
+    GOALS_UNAVAILABLE = "goals_unavailable"
     INVALID_DEADLINE = "invalid_deadline"
     INVALID_SECTION_WEIGHTS_SUM = "invalid_section_weights_sum"
     MISSING_DEADLINE = "missing_deadline"
+    MISSING_PARTICIPANT_GOALS = "missing_participant_goals"
     MISSING_POTENTIAL_REVIEWERS = "missing_potential_reviewers"
     MISSING_QUESTIONS = "missing_questions"
     MISSING_REVIEWER_STRATEGY = "missing_reviewer_strategy"

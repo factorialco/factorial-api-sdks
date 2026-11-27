@@ -71,6 +71,8 @@ class ExpensesPerDiem:
     """ The category of the per diem. """
     subcategory: str | Unset = UNSET
     """ The subcategory of the per diem. """
+    category_id: str | Unset = UNSET
+    """ The ID of the custom category of the per diem (a per diem subcategory, or the per diem category itself). """
     budget_id: str | Unset = UNSET
     """ The id of the budget associated with this per diem """
     project_id: str | Unset = UNSET
@@ -136,6 +138,8 @@ class ExpensesPerDiem:
 
         subcategory = self.subcategory
 
+        category_id = self.category_id
+
         budget_id = self.budget_id
 
         project_id = self.project_id
@@ -188,6 +192,8 @@ class ExpensesPerDiem:
             field_dict["category"] = category
         if subcategory is not UNSET:
             field_dict["subcategory"] = subcategory
+        if category_id is not UNSET:
+            field_dict["category_id"] = category_id
         if budget_id is not UNSET:
             field_dict["budget_id"] = budget_id
         if project_id is not UNSET:
@@ -267,6 +273,8 @@ class ExpensesPerDiem:
 
         subcategory = d.pop("subcategory", UNSET)
 
+        category_id = d.pop("category_id", UNSET)
+
         budget_id = d.pop("budget_id", UNSET)
 
         project_id = d.pop("project_id", UNSET)
@@ -297,6 +305,7 @@ class ExpensesPerDiem:
             description=description,
             category=category,
             subcategory=subcategory,
+            category_id=category_id,
             budget_id=budget_id,
             project_id=project_id,
         )

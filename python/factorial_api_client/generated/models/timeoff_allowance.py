@@ -13,6 +13,9 @@ from ..models.timeoff_allowance_allowance_type import TimeoffAllowanceAllowanceT
 from ..models.timeoff_allowance_available_days import TimeoffAllowanceAvailableDays
 from ..models.timeoff_allowance_days_type import TimeoffAllowanceDaysType
 from ..models.timeoff_allowance_frequency import TimeoffAllowanceFrequency
+from ..models.timeoff_allowance_limit_negative_counter_type import (
+    TimeoffAllowanceLimitNegativeCounterType,
+)
 from ..models.timeoff_allowance_negative_counter_type import TimeoffAllowanceNegativeCounterType
 from ..models.timeoff_allowance_proration_type import TimeoffAllowanceProrationType
 from ..models.timeoff_allowance_range_type import TimeoffAllowanceRangeType
@@ -82,6 +85,10 @@ class TimeoffAllowance:
     """ Defines duration of the allowance cycles. Can be "yearly", "monthly_flexible" or "lifetime" """
     holiday_allowance_in_cents: int | Unset = UNSET
     """ Base amount of holiday allowance units multiplied by 100 """
+    limit_negative_counter_type: TimeoffAllowanceLimitNegativeCounterType | Unset = UNSET
+    """ How far the counter is allowed to go negative when negative_counter_type is negative_counter_enabled.
+    "no_limit" allows any negative balance; "limit_negative_counter" only allows a negative the next cycle can
+    cover. Always set when negative counters are enabled; null when they are disabled. """
     maximum_amount_in_cents: int | Unset = UNSET
     """ Maximum the allowance can reach on accrued """
     negative_counter_type: TimeoffAllowanceNegativeCounterType | Unset = UNSET
@@ -166,6 +173,10 @@ class TimeoffAllowance:
 
         holiday_allowance_in_cents = self.holiday_allowance_in_cents
 
+        limit_negative_counter_type: str | Unset = UNSET
+        if not isinstance(self.limit_negative_counter_type, Unset):
+            limit_negative_counter_type = self.limit_negative_counter_type.value if self.limit_negative_counter_type is not None else None
+
         maximum_amount_in_cents = self.maximum_amount_in_cents
 
         negative_counter_type: str | Unset = UNSET
@@ -241,6 +252,8 @@ class TimeoffAllowance:
             field_dict["frequency"] = frequency
         if holiday_allowance_in_cents is not UNSET:
             field_dict["holiday_allowance_in_cents"] = holiday_allowance_in_cents
+        if limit_negative_counter_type is not UNSET:
+            field_dict["limit_negative_counter_type"] = limit_negative_counter_type
         if maximum_amount_in_cents is not UNSET:
             field_dict["maximum_amount_in_cents"] = maximum_amount_in_cents
         if negative_counter_type is not UNSET:
@@ -345,6 +358,15 @@ class TimeoffAllowance:
 
         holiday_allowance_in_cents = d.pop("holiday_allowance_in_cents", UNSET)
 
+        _limit_negative_counter_type = d.pop("limit_negative_counter_type", UNSET)
+        limit_negative_counter_type: TimeoffAllowanceLimitNegativeCounterType | Unset
+        if isinstance(_limit_negative_counter_type, Unset):
+            limit_negative_counter_type = UNSET
+        else:
+            limit_negative_counter_type = TimeoffAllowanceLimitNegativeCounterType(
+                _limit_negative_counter_type
+            ) if _limit_negative_counter_type is not None else None
+
         maximum_amount_in_cents = d.pop("maximum_amount_in_cents", UNSET)
 
         _negative_counter_type = d.pop("negative_counter_type", UNSET)
@@ -417,6 +439,7 @@ class TimeoffAllowance:
             expire_in_months=expire_in_months,
             frequency=frequency,
             holiday_allowance_in_cents=holiday_allowance_in_cents,
+            limit_negative_counter_type=limit_negative_counter_type,
             maximum_amount_in_cents=maximum_amount_in_cents,
             negative_counter_type=negative_counter_type,
             position=position,

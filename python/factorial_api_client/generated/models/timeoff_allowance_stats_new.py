@@ -55,7 +55,12 @@ class TimeoffAllowanceStatsNew:
     """ Base policy entitlement for the cycle in allowance units (days or hours depending on allowance setup),
     before proration and adjustments. """
     prorated_allowance_days: str
-    """ Allowance days after proration based on employee tenure or configuration. """
+    """ Allowance days after proration based on employee tenure or configuration. When the allowance prorates (its
+    proration_type is proration_enabled) and the counter covers only part of the cycle (cycles start_at/end_at
+    differ from regular_start_at/regular_end_at, for example after a policy change), it counts only what accrues
+    within those covered days, so it is a part-cycle share of policy_allowance rather than the full-cycle amount.
+    With proration disabled the counter still gets the full policy_allowance over the covered days. Overtime and
+    worked-time allowances are never prorated; they count what was earned in the covered days. """
     used_carry_over: str
     """ Units from carry over already consumed. """
     used_days: str
