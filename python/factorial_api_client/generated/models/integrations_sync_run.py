@@ -33,6 +33,8 @@ class IntegrationsSyncRun:
     """ UUID of the marketplace integration """
     finished_at: str | Unset = UNSET
     """ Timestamp when the sync run finished """
+    access_id: str | Unset = UNSET
+    """ Identifier of the access that started the sync run. Null when no one started it, as in scheduled runs. """
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,6 +52,8 @@ class IntegrationsSyncRun:
 
         finished_at = self.finished_at
 
+        access_id = self.access_id
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -64,6 +68,8 @@ class IntegrationsSyncRun:
         )
         if finished_at is not UNSET:
             field_dict["finished_at"] = finished_at
+        if access_id is not UNSET:
+            field_dict["access_id"] = access_id
 
         return field_dict
 
@@ -86,6 +92,8 @@ class IntegrationsSyncRun:
 
         finished_at = d.pop("finished_at", UNSET)
 
+        access_id = d.pop("access_id", UNSET)
+
         integrations_sync_run = cls(
             id=id,
             status=status,
@@ -94,6 +102,7 @@ class IntegrationsSyncRun:
             company_id=company_id,
             integration_uuid=integration_uuid,
             finished_at=finished_at,
+            access_id=access_id,
         )
 
         integrations_sync_run.additional_properties = d

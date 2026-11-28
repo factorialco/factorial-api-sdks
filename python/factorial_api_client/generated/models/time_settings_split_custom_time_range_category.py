@@ -6,6 +6,9 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.time_settings_split_custom_time_range_category_category_type import (
+    TimeSettingsSplitCustomTimeRangeCategoryCategoryType,
+)
 from ..models.time_settings_split_custom_time_range_category_time_type import (
     TimeSettingsSplitCustomTimeRangeCategoryTimeType,
 )
@@ -24,6 +27,11 @@ class TimeSettingsSplitCustomTimeRangeCategory:
     """ Whether the split covers regular or overtime work. """
     active: bool
     """ Whether the split is active, i.e. its parent category is not archived. """
+    category_type: TimeSettingsSplitCustomTimeRangeCategoryCategoryType
+    """ The parent custom time range category's type (the split has none of its own). """
+    default: bool
+    """ Whether the parent custom time range category is the company's default (extra hours) category; a company has
+    at most one. """
     company_id: str
     """ Company the category belongs to. """
     custom_time_range_category_id: str
@@ -39,6 +47,10 @@ class TimeSettingsSplitCustomTimeRangeCategory:
 
         active = self.active
 
+        category_type = self.category_type.value
+
+        default = self.default
+
         company_id = self.company_id
 
         custom_time_range_category_id = self.custom_time_range_category_id
@@ -51,6 +63,8 @@ class TimeSettingsSplitCustomTimeRangeCategory:
                 "name": name,
                 "time_type": time_type,
                 "active": active,
+                "category_type": category_type,
+                "default": default,
                 "company_id": company_id,
                 "custom_time_range_category_id": custom_time_range_category_id,
             }
@@ -69,6 +83,10 @@ class TimeSettingsSplitCustomTimeRangeCategory:
 
         active = d.pop("active")
 
+        category_type = TimeSettingsSplitCustomTimeRangeCategoryCategoryType(d.pop("category_type"))
+
+        default = d.pop("default")
+
         company_id = d.pop("company_id")
 
         custom_time_range_category_id = d.pop("custom_time_range_category_id")
@@ -78,6 +96,8 @@ class TimeSettingsSplitCustomTimeRangeCategory:
             name=name,
             time_type=time_type,
             active=active,
+            category_type=category_type,
+            default=default,
             company_id=company_id,
             custom_time_range_category_id=custom_time_range_category_id,
         )

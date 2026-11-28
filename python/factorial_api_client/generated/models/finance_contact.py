@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -26,6 +26,8 @@ class FinanceContact:
     """ The address object containing street, city, etc. """
     updated_at: str
     """ Timestamp when the Contact was last updated. """
+    legal_entity_ids: list[str]
+    """ Legal entity IDs the Contact (vendor) belongs to. Empty means all of the company's legal entities. """
     legal_name: str | Unset = UNSET
     """ The official or legal name of the Contact. """
     tax_id: str | Unset = UNSET
@@ -55,6 +57,8 @@ class FinanceContact:
 
         updated_at = self.updated_at
 
+        legal_entity_ids = self.legal_entity_ids
+
         legal_name = self.legal_name
 
         tax_id = self.tax_id
@@ -83,6 +87,7 @@ class FinanceContact:
                 "name": name,
                 "address": address,
                 "updated_at": updated_at,
+                "legal_entity_ids": legal_entity_ids,
             }
         )
         if legal_name is not UNSET:
@@ -119,6 +124,8 @@ class FinanceContact:
 
         updated_at = d.pop("updated_at")
 
+        legal_entity_ids = cast(list[str], d.pop("legal_entity_ids"))
+
         legal_name = d.pop("legal_name", UNSET)
 
         tax_id = d.pop("tax_id", UNSET)
@@ -149,6 +156,7 @@ class FinanceContact:
             name=name,
             address=address,
             updated_at=updated_at,
+            legal_entity_ids=legal_entity_ids,
             legal_name=legal_name,
             tax_id=tax_id,
             external_id=external_id,
